@@ -720,7 +720,7 @@ With your OpenShift cluster up and running, you can now deploy your first app in
 
 3. Log in to the OpenShift client. Enter **admin** as your user name and **test123** as your password, or use any other user name and password that you set up earlier. 
    ```
-   c login https://<master_private_ip>:8443
+   oc login https://<master_private_ip>:8443
    ```
    {: pre} 
 
