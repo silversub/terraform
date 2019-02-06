@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-22"
+lastupdated: "2019-02-06"
 
 ---
 
@@ -233,12 +233,12 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    </tr>
    <tr>
    <td><code>ibm_sl_api_key</code></td>
-   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure API key to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. </td>
+   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure API key to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. To retrieve your API key: <ol><li>Log in to the [{{site.data.keyword.Bluemix_notm}} console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com). <li>From the menu bar, select **Manage > Access (IAM)**. <li>Select the **Users** tab and then click on your user name. <li>In the **API keys** pane, find the entry **Classic infrastructure API key** and click the **Action menu** ![Action menu icon](../../icons/action-menu-icon.svg "Action menu icon") **> Details**. If you do not see a classic infrastructure API key, generate one by clicking **Create an {{site.data.keyword.Bluemix_notm}} API key**. <li>Copy the API user name. </ol> </td>
    <td>n/a</td>
    </tr>
    <tr>
    <td><code>ibm_sl_username</code></td>
-   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure user name to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. </td>
+   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure user name to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. To retrieve your user name: <ol><li>Log in to the [{{site.data.keyword.Bluemix_notm}} console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com).<li>From the menu bar, select **Manage > Access (IAM)**.<li>Select the **Users** tab and then click on your user name. <li>In the **API keys** pane, find the entry **Classic infrastructure API key** and click the **Action menu** ![Action menu icon](../../icons/action-menu-icon.svg "Action menu icon") **> Details**. <li>Copy the API user name. </ol> </td>
    <td>n/a</td>
    </tr>
    <tr>
