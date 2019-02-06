@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-28"
+lastupdated: "2019-02-06"
 ---
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -14,17 +14,17 @@ lastupdated: "2019-01-28"
 {:important: .important}
 {:download: .download} 
  
-# Tutorial: Deploying WordPress in a highly available web site architecture across multiple regions with Terraform and Ansible  
+# Tutorial: Deploying WordPress in a highly available, cross-region web site architecture with Terraform and Ansible  
 {: #multi_region}
 
-Use this tutorial to provision a highly available web site architecture across multiple regions on {{site.data.keyword.Bluemix_notm}} with Terraform. Then, deploy a single instance of WordPress and replicate WordPress across the two regions to explore the security and resiliency features of {{site.data.keyword.Bluemix_notm}} Security Groups, DNS, Web Application Firewall (WAF), global and local load balancers. With this setup, you can create a resilient, secure and scalable web environment with highly available web sites that use custom DNS domain names. In this tutorial, Terraform and Ansible are loosely integrated through the sharing of inventory information.
+Use this tutorial to provision a highly available web site architecture across multiple regions on {{site.data.keyword.Bluemix}} with Terraform. Then, deploy a single instance of WordPress and replicate WordPress across the two regions to explore the security and resiliency features of {{site.data.keyword.Bluemix_notm}} Security Groups, DNS, Web Application Firewall (WAF), global and local load balancers. With this setup, you can create a resilient, secure and scalable web environment with highly available web sites that use custom DNS domain names. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 {: shortdesc}
  
 ## Solution overview
 {: #overview}
 
 The following image shows the infrastructure and software components of the highly available web site architecture that you provision as part of this tutorial. 
-The basic web site architecture that is used in [Tutorial: Deploying WordPress on {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and Ansible](/docs/terraform/tutorials/wordpress_with_terraform_and_ansible.html) is deployed into each {{site.data.keyword.Bluemix_notm}} region. To balance the workload between the two regions, an {{site.data.keyword.Bluemix_notm}} Internet Services Load Balancer with a user specified domain is deployed into your {{site.data.keyword.Bluemix_notm}} account and configured with a health check. The health check performs tests for each region to determine if a region is available to receive network traffic. If one region becomes unavailable due to a network, app, or infrastructure failure, the health check determines this event and stops sending network traffic to the unavailable region.
+The basic web site architecture that is used in [Tutorial: Deploying WordPress on {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and Ansible](/docs/terraform/tutorials/wordpress_with_terraform_and_ansible.html) is deployed into each {{site.data.keyword.Bluemix_notm}} region. To balance the workload between the two regions, an {{site.data.keyword.Bluemix_notm}} Internet Services Load Balancer with a user-specified domain is deployed into your {{site.data.keyword.Bluemix_notm}} account and configured with a health check. The health check performs tests for each region to determine if a region is available to receive network traffic. If one region becomes unavailable due to a network, app, or infrastructure failure, the health check determines this event and stops sending network traffic to the unavailable region.
 
 {{site.data.keyword.Bluemix_notm}} Security Groups extend across regions and are used to secure all Apache web servers and the two Mariadb instances. The security groups provide secure outbound access to the open source repositories for Apache, Mariadb and WordPress. At the same time, the security groups deny all inbound internet traffic except via the {{site.data.keyword.Bluemix_notm}} Load Balancers. To secure your environment, the communication between the WordPress instances and the Mariadb databases is limited to the private network and is allowed on the Mariadb ports only.
 
@@ -60,7 +60,7 @@ The following {{site.data.keyword.Bluemix_notm}} resources are provisioned for y
 </tbody>
 </table>
 
-This tutorial intends to demonstrate the capability of building secure, resilient, highly available and scalable websites on {{site.data.keyword.Bluemix_notm}} infrastructure with cross-region networking. The tutorial does not intend to provide a fully operational WordPress deployment. To run this tutorial, infrastructure costs incur for the virtual servers, load balancers, and the custom DNS domain name. The cost for the DNS domain name is fixed and depends on the domain name that you register and the duration that you request. The costs for your infrastructure resources depend on the number of hours or days that the infrastructure resources are provisioned for you. To cancel the billing for your resources, you must remove your infrastructure resources. 
+This tutorial intends to demonstrate the capability of building secure, resilient, highly available and scalable websites on {{site.data.keyword.Bluemix_notm}} infrastructure with cross-region networking. However, the tutorial does not intend to provide a fully operational WordPress deployment. To run this tutorial, infrastructure costs incur for the virtual servers, load balancers, and the custom DNS domain name. The cost for the DNS domain name is fixed and depends on the domain name that you register and the duration that you request. The costs for your infrastructure resources depend on the number of hours or days that the infrastructure resources are provisioned for you. To cancel the billing for your resources, you must remove your infrastructure resources. 
 {: important}
 
 ## Objectives
@@ -83,14 +83,18 @@ In this tutorial, you use Terraform to deploy a highly available {{site.data.key
 ## Audience
 {: #audience}
 
-This tutorial is intended for network administrators, software developers and architects, who want to become familiar with {{site.data.keyword.Bluemix_notm}} networking and infrastructure components, learn how to use Terraform and Ansible to automate network configuration, and to deploy web infrastructure and apps on IaaS. 
+This tutorial is intended for network administrators, software developers, and architects who want to become familiar with {{site.data.keyword.Bluemix_notm}} networking and infrastructure components, learn how to use Terraform and Ansible to automate network configuration, and to deploy web infrastructure and apps on IaaS. 
 
 ## Prerequisites
 {: #prerequisites}
 - If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic/services/domains). 
 - [Set up a VPN connection and SSH authentication](/docs/terraform/ansible/ansible.html#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} infrastructure resources over the private network. 
 - If you do not have an existing DNS domain registered with IBM Cloud, register one with the {{site.data.keyword.Bluemix_notm}} Domain Registration service. For more information about how to register a new domain, see [Register a New Domain](/docs/infrastructure/dns/register-new-domain.html#register-a-new-domain). To transfer an existing domain to {{site.data.keyword.Bluemix_notm}}, see [Transfer an Existing Domain to {{site.data.keyword.Bluemix_notm}}](/docs/infrastructure/dns/transfer-existing-domain.html#transfer-an-existing-domain-to-ibm-cloud). 
-- If you already completed the [Tutorial: Deploying WordPress on {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and Ansible](/docs/terraform/tutorials/wordpress_with_terraform_and_ansible.html), you can re-use the Terraform and Ansible installations. Simply remove the old Terraform `tf` configuration files from your Terraform project directory and follow step 1 and 6 in [Lesson 1](#setup_terraform) to copy the new Terraform configuration files into your project directory. Then, follow [Lesson 3](#provision_terraform_infrastructure) to provision the {{site.data.keyword.Bluemix_notm}} infrastructure. After the infrastructure is deployed, follow step 5 in [Lesson 4](#create_ansible_inventory) to update your Ansible infrastructure inventory. To deploy your Wordpress app, continue with [Lesson 5](#install_configure_wordpress) in this tutorial. 
+- If you already completed the [Tutorial: Deploying WordPress on {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and Ansible](/docs/terraform/tutorials/wordpress_with_terraform_and_ansible.html), you can re-use the Terraform and Ansible installations. 
+  1. Remove the old Terraform `tf` configuration files from your Terraform project directory and follow step 1 and 6 in [Lesson 1](#setup_terraform) to copy the new Terraform configuration files into your project directory.
+  2. Follow [Lesson 3](#provision_terraform_infrastructure) to provision the {{site.data.keyword.Bluemix_notm}} infrastructure. 
+  3. After the infrastructure is deployed, follow step 5 in [Lesson 4](#create_ansible_inventory) to update your Ansible infrastructure inventory. 
+  4. To deploy your Wordpress app, continue with [Lesson 5](#install_configure_wordpress) in this tutorial. 
 
 ## Lesson 1: Setting up Terraform 
 {: #setup_terraform}
@@ -238,7 +242,7 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
       ```
       {: codeblock}
       
-With your Terraform project directory set up, you can continue to set up your [Ansible work environment](#setup_ansible). 
+With your Terraform project directory set up, you can continue to set up your Ansible work environment in Lesson 2. 
 
 ## Lesson 2: Setting up Ansible
 {: #setup_ansible}
@@ -257,7 +261,7 @@ Set up your Ansible project directory and install Ansible on your local machine 
    {: pre}
    
 3. Install Ansible on your local machine. 
-   1. Install [Python version 3.6 or later](https://www.python.org/downloads/). 
+   1. Install [Python version 3.6 or later ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.python.org/downloads/). 
    2. Install the Python package manager `pip`. Use the same version that you used when you installed Python. The following example assumes that you downloaded Python version 3.6 and want to install pip version 3.6. 
       ```
       python3.6 -m pip install 3.6
@@ -304,7 +308,7 @@ Set up your Ansible project directory and install Ansible on your local machine 
       echo "<vault_file_password>" > ~/vault_pass.txt
       ```
    
-Great! Now that you completed the setup of Terraform and Ansible, you can start [provisioning the WordPress infrastructure](#provision_terraform_infrastructure) in {{site.data.keyword.Bluemix_notm}} by using Terraform. 
+Great! Now that you completed the setup of Terraform and Ansible, you can start provisioning the WordPress infrastructure in {{site.data.keyword.Bluemix_notm}} by using Terraform in Lesson 3. 
    
 ## Lesson 3: Provisioning the Wordpress infrastructure with Terraform
 {: #provision_terraform_infrastructure}
@@ -345,7 +349,7 @@ In this lesson, you deploy the virtual server instances, the {{site.data.keyword
       ```
       {: codeblock}
       
-2. Review the content of the Terraform `tf` files. The resources that are deployed in this tutorial are spread across a number of files depending on the function that they perform. You can find the {{site.data.keyword.Bluemix_notm}} Internet Services resources in the `dns.tf` file. Information about {{site.data.keyword.Bluemix_notm}} Security Groups are found in the `network.tf` file and the {{site.data.keyword.Bluemix_notm}} Virtual Server and CloudInit resources are included in the `main.tf`file. For more information about each resource and the resource configuration, see the [{{site.data.keyword.Bluemix_notm}} Provider documentation](https://ibm-cloud.github.io/tf-ibm-docs/).
+2. Review the content of the Terraform `tf` files. The resources that are deployed in this tutorial are spread across a number of files depending on the function that they perform. You can find the {{site.data.keyword.Bluemix_notm}} Internet Services resources in the `dns.tf` file. Information about {{site.data.keyword.Bluemix_notm}} Security Groups are found in the `network.tf` file and the {{site.data.keyword.Bluemix_notm}} Virtual Server and CloudInit resources are included in the `main.tf`file. For more information about each resource and the resource configuration, see the [{{site.data.keyword.Bluemix_notm}} Provider documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
 
 3. Deploy the {{site.data.keyword.Bluemix_notm}} infrastructure. 
    1. Instruct Terraform to deploy the infrastructure. Terraform parses the configuration files, creates an execution plan, and lists a summary of the resources that must be created. 
@@ -402,6 +406,8 @@ In this lesson, you deploy the virtual server instances, the {{site.data.keyword
    ```
    {: screen}
    
+Now that you provisioned the {{site.data.keyword.Bluemix_notm}} infrastructure, you must make this information available to Ansible by creating an Ansible infrastructure inventory in Lesson 4. 
+   
 ## Lesson 4: Creating an Ansible infrastructure inventory
 {: #create_ansible_inventory}
 
@@ -445,6 +451,8 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
       ansible-inventory -i ./inventory --list
       ```
       {: pre}
+      
+You successfully imported the {{site.data.keyword.Bluemix_notm}} infrastructure information into Ansible. You can now go ahead and use Ansible to install and configure your WordPress app in Lesson 5. 
 
 ## Lesson 5: Installing and configuring WordPress with Ansible
 {: #install_configure_wordpress}
@@ -478,7 +486,7 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.Bluemix_notm}} in
    If errors occur during the WordPress installation, you can correct the errors that are reported by Ansible and rerun the Ansible playbook again. Ansible playbooks are idempotent and can be executed multiple times. When you execute a playbook multiple times, only changes that bring the environment to the desired state are executed.
    {: tip}
    
-2. Open WordPress. After the initial installation, WordPress is not accessible via the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer. When you try to access WordPress after the initial installation, a 503 Service unavailable HTTP response code is returned from the {{site.data.keyword.Bluemix_notm}} Load Balancers that are deployed in each region. This behavior is expected. After the installation, WordPress forces the user who administers WordPress to set up the app by redirecting the user to the WordPress configuration dialog with a 302 Temporary redirect HTTP response code. The {{site.data.keyword.Bluemix_notm}} Load Balancers in each region do not allow to customize the list of valid HTTP response codes and do not recognize a 302 HTTP response code as a healthy response code. As a consequence, the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer returns the 503 HTTP response code to the user.
+2. Open WordPress. After the initial installation, WordPress is not accessible via the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer. When you try to access WordPress after the initial installation, a `503 Service unavailable` HTTP response code is returned from the {{site.data.keyword.Bluemix_notm}} Load Balancers that are deployed in each region. This behavior is expected. After the installation, WordPress forces the user who administers WordPress to set up the app by redirecting the user to the WordPress configuration dialog with a `302 Temporary redirect` HTTP response code. The {{site.data.keyword.Bluemix_notm}} Load Balancers in each region do not allow to customize the list of valid HTTP response codes and do not recognize a `302` HTTP response code as a healthy response code. As a consequence, the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer returns the `503` HTTP response code to the user.
    ```
    curl http://app101 -vS
    ```
@@ -567,10 +575,12 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.Bluemix_notm}} in
    ```
    {: pre}   
 
+With your WordPress app up and running, explore the failover capabilities of your highly available WordPress architecture in {{site.data.keyword.Bluemix_notm}}. 
+
 ## Lesson 6: Explore the high availability features of {{site.data.keyword.Bluemix_notm}} 
 {: #verify_resilience}
 
-With your WordPress app up and running, you can now experiment what happens if one or more {{site.data.keyword.Bluemix_notm}} Virtual Server instances become unavailable. 
+With your WordPress app up and running, you can now experiment with what happens if one or more {{site.data.keyword.Bluemix_notm}} Virtual Server instances become unavailable. 
 {: shortdesc}
 
 1. Shutdown one {{site.data.keyword.Bluemix_notm}} Virtual Server instance where WordPress is deployed and observe the status change of the  {{site.data.keyword.Bluemix_notm}} Load Balancers and the availability of the web site. 
@@ -627,7 +637,7 @@ With your WordPress app up and running, you can now experiment what happens if o
     2. Select **Reliability** > **Global Load Balancers** to navigate to the status page for your {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer. 
     3. Verify that your {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer shows a `Critical` health status. The `Critical` status is displayed because all WordPress app instances are unavailable.  
 
-12. Access WordPress with your preferred web browser and verify that your web site is not accessible anymore. Your web browser displays a **503 Service Unavailable** HTTP response because both WordPress web servers in one data center are down and the MariaDB database in the other data center is down.   
+12. Access WordPress with your preferred web browser and verify that your web site is not accessible anymore. Your web browser displays a `503 Service Unavailable` HTTP response because both WordPress web servers in one data center are down and the MariaDB database in the other data center is down.   
     ```
     http://<web-dns-address>
     ```
