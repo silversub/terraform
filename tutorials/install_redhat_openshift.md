@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-06"
+lastupdated: "2019-02-14"
 
 ---
 
@@ -49,7 +49,7 @@ In this tutorial, you set up Red Hat OpenShift Container Platform version 3.9 on
 ## Time required
 {: #time}
 
-60 minutes
+4-5 hours
 
 ## Audience
 {: #audience}
@@ -97,13 +97,13 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
       ```
       {: screen}
    
-   2. Create a container from your image and log in to your container. When the container is created, Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in are automatically installed. 
+   2. Create a container from your image and log in to your container. When the container is created, Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in are automatically installed and you are automatically logged in to the container. The working directory is set to `/go/bin`. 
       ```
       docker run -it ibmterraform/terraform-provider-ibm-docker:latest
       ```
       {: pre}
    
-2. Set up the IBM Terraform Openshift Project.
+2. From within your container, set up the IBM Terraform OpenShift Project.
    1. Install OpenSSH inside the container that you created in the previous step. 
       ```
       apk add --no-cache openssh
@@ -192,7 +192,7 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
       ```
       {: screen}
 
-4. Navigate back into your OpenShift installation directory. 
+4. Navigate back to your OpenShift installation directory. 
    ```
    cd /go/bin/terraform-ibm-openshift
    ```
@@ -229,16 +229,16 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    <tr>
    <td><code>datacenter</code></td>
    <td>Enter the zone where you want to provision your {{site.data.keyword.Bluemix_notm}} infrastructure. To find existing zones, run <code>ibmcloud ks zones</code>. </td>
-   <td>mel01</td>
+   <td>dal12</td>
    </tr>
    <tr>
    <td><code>ibm_sl_api_key</code></td>
-   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure API key to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. To retrieve your API key: <ol><li>Log in to the [{{site.data.keyword.Bluemix_notm}} console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com). <li>From the menu bar, select **Manage > Access (IAM)**. <li>Select the **Users** tab and then click on your user name. <li>In the **API keys** pane, find the entry **Classic infrastructure API key** and click the **Action menu** ![Action menu icon](../../icons/action-menu-icon.svg "Action menu icon") **> Details**. If you do not see a classic infrastructure API key, generate one by clicking **Create an {{site.data.keyword.Bluemix_notm}} API key**. <li>Copy the API user name. </ol> </td>
+   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure API key to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. To retrieve your API key: <ol><li>Log in to the [{{site.data.keyword.Bluemix_notm}} console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com). <li>From the menu bar, select **Manage > Access (IAM)**. <li>Select the **Users** tab and then click on your user name. <li>In the **API keys** pane, find the entry **Classic infrastructure API key** and click the **Action menu** ![Action menu icon](../../icons/action-menu-icon.svg "Action menu icon") **> Details**. If you do not see a classic infrastructure API key, generate one by clicking **Create an {{site.data.keyword.Bluemix_notm}} API key**. <li>Copy the API key and infrastructure user name. </ol> </td>
    <td>n/a</td>
    </tr>
    <tr>
    <td><code>ibm_sl_username</code></td>
-   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure user name to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. To retrieve your user name: <ol><li>Log in to the [{{site.data.keyword.Bluemix_notm}} console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com).<li>From the menu bar, select **Manage > Access (IAM)**.<li>Select the **Users** tab and then click on your user name. <li>In the **API keys** pane, find the entry **Classic infrastructure API key** and click the **Action menu** ![Action menu icon](../../icons/action-menu-icon.svg "Action menu icon") **> Details**. <li>Copy the API user name. </ol> </td>
+   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure user name to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. To retrieve your user name: <ol><li>Log in to the [{{site.data.keyword.Bluemix_notm}} console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com).<li>From the menu bar, select **Manage > Access (IAM)**.<li>Select the **Users** tab and then click on your user name. <li>In the **API keys** pane, find the entry **Classic infrastructure API key** and click the **Action menu** ![Action menu icon](../../icons/action-menu-icon.svg "Action menu icon") **> Details**. <li>Copy the API key and infrastructure user name. </ol> </td>
    <td>n/a</td>
    </tr>
    <tr>
@@ -254,6 +254,11 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    <tr>
    <td><code>master_count</code></td>
    <td>Enter the number of master nodes that you want to create. The master runs the API server, controller manager server, and etcd database instance.</td>
+   <td>n/a</td>
+   </tr>
+   <tr>
+   <td><code>pool_id</code></td>
+   <td>The Red Hat pool ID that is linked to the subscription that you set up with Red Hat. Do not enter this information here. Instead, follow the steps in [Lesson 3](#deploy_openshift) to retrieve your pool ID and provide the pool ID during the OpenShift installation. </td>
    <td>n/a</td>
    </tr>
    <tr>
@@ -318,13 +323,13 @@ Now that you prepared your environment, you can go ahead and provision {{site.da
 Before you begin, make sure that you are logged in to the container that you created in the previous lesson. 
 
 1. Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key.
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.bluemix.net/).
-   2. From the menu ![Menu icon](../../icons/icon_hamburger.svg "Menu icon"), select **Infrastructure**.
-   3. From the menu bar, select **Account** > **Users** > **User List**.
-   4. Find the user whose user name and API key you want to retrieve.
-   5. Click **Generate** to generate an API key or **View** to view your existing API key. In the pop-up window that opens, copy the infrastructure user name and API key.
+   1. Log in to the [{{site.data.keyword.Bluemix_notm}} console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com). 
+   2. From the menu bar, select **Manage > Access (IAM)**. 
+   3. Select the **Users** tab and then click on your user name. 
+   4. In the **API keys** pane, find the entry **Classic infrastructure API key** and click the **Action menu** ![Action menu icon](../../icons/action-menu-icon.svg "Action menu icon") **> Details**. If you do not see a classic infrastructure API key, generate one by clicking **Create an {{site.data.keyword.Bluemix_notm}} API key**. 
+   5. Copy the API key and infrastructure user name.
 
-2. Create the {{site.data.keyword.Bluemix_notm}} infrastructure components for your Red Hat OpenShift cluster. Enter the infrastructure user name and API key that you retrieved earlier when prompted. 
+2. From the OpenShift installation directory `/go/bin/terraform-ibm-openshift` inside your container, create the {{site.data.keyword.Bluemix_notm}} infrastructure components for your Red Hat OpenShift cluster. When you run the command, Terraform evaluates what components must be provisioned and presents an execution plan. You must confirm that you want to provision the infrastructure resources by entering **yes`**. During the provisioning, Terraform creates another execution plan that you must approve to continue. When prompted, enter the infrastructure user name and API key that you retrieved earlier. The provisioning of your resources takes about 40 minutes.  
    ```
    make infrastructure
    ```
@@ -383,7 +388,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    <table>
    <thead>
    <th>Resource</th>
-   <th>DNS name (Openshift DNS)</th>
+   <th>DNS name (OpenShift DNS)</th>
    <th>Assigned instances</th>
    </thead>
    <tbody>
@@ -549,11 +554,12 @@ Before you begin, make sure that you are logged in to the container that you cre
    </tbody>
    </table>
    
-3. Validate your deployment. 
+3. Validate your deployment.  
    ```
    terraform show
    ```
    {: pre}
+   
 
 ## Lesson 3: Deploy the Red Hat OpenShift Container Platform on IBM Cloud
 {: #deploy_openshift}
@@ -569,9 +575,105 @@ During the deployment the following cluster components are set up and configured
 
 For more information about the Red Hat OpenShift Container Platform components, see the [Architecture Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.9/architecture/index.html)
 
-1. Create the Bastion node and register the node with the Red Hat Network. The Bastion node is connected to the public VLAN and serves as the only SSH entry point for incoming requests to the cluster. To protect your cluster, the Bastion node is configured to securely download all the software images and packages that are required to perform a [disconnected installation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.6/install_config/install/disconnected_install.html) of the OpenShift Container Platform on the master, infrastructure, and application nodes during the creation. The software packages are stored in a local repository on the Bastion node that is automatically set up during the Bastion creation. The master, infrastructure, and application nodes can later access this local repository to perform the disconnected OpenShift installation. 
+1. Retrieve the pool ID for your Red Hat account. 
+   1. From the OpenShift installation directory `/go/bin/terraform-ibm-openshift` inside your container, log in to your Bastion node by using a secure shell. 
+      ```
+      ssh root@$(terraform output bastion_public_ip)
+      ```
+      {: pre}
+      
+   2. Enter **yes** to all security questions to proceed. You are now logged in to your Bastion node. 
+   
+      Example output: 
+      ```
+      root@bastion-ose-1a2b3c1234 #
+      ```
+      {: screen}
+      
+   3. Remove any previous registration of the Bastion node. 
+      ```
+      subscription-manager unregister
+      ```
+      {: pre}
+      
+   4. Import RPM gpg public key for Red Hat. 
+      ```
+      rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+      ```
+      {: pre}
+      
+   5. Register your Bastion node with the Red Hat Network. Enter the user name and password for your Red Hat account. 
+      ```
+      subscription-manager register --serverurl subscription.rhsm.redhat.com:443/subscription --baseurl cdn.redhat.com --username <redhat_username> --password <redhat_password>
+      ```
+      {: pre}
+      
+   6. Find your OpenShift **Pool ID**. For example, the pool ID in the following example is `1a2345bcd6789098765abcde43219bc3`.
+      ```
+      subscription-manager list --available --matches '*OpenShift Container Platform*'
+      ```
+      {: pre}
+      
+      Example output: 
+      ```
+      +-------------------------------------------+
+      Available Subscriptions
+      +-------------------------------------------+
+      Subscription Name:   30 Day Self-Supported Red Hat OpenShift Container Platform, 2-Core Evaluation
+      Provides:            Red Hat Ansible Engine
+                           Red Hat Software Collections (for RHEL Server for IBM Power LE)
+                           Red Hat OpenShift Enterprise Infrastructure
+                           Red Hat JBoss Core Services
+                           Red Hat Enterprise Linux Fast Datapath
+                           Red Hat OpenShift Container Platform for Power
+                           JBoss Enterprise Application Platform
+						      :
+                           Red Hat OpenShift Container Platform Client Tools for Power
+                           Red Hat Enterprise Linux Fast Datapath (for RHEL Server for IBM Power LE)
+                           Red Hat OpenShift Enterprise JBoss EAP add-on
+                           Red Hat OpenShift Container Platform
+                           Red Hat Gluster Storage Management Console (for RHEL Server)
+                           Red Hat OpenShift Enterprise JBoss A-MQ add-on
+                           Red Hat Enterprise Linux for Power, little endian Beta
+                           Red Hat OpenShift Enterprise Client Tools
+						      :
+                           Red Hat OpenShift Enterprise Application Node
+						      :
+                           Red Hat OpenShift Service Mesh
+					      	:
+                           Red Hat OpenShift Enterprise JBoss FUSE add-on
+      SKU:                 SER0419
+      Contract:            123456789
+      Pool ID:             1a2345bcd6789098765abcde43219bc3
+      Provides Management: Yes
+      Available:           10
+      Suggested:           1
+      Service Level:       Self-Support
+      Service Type:        L1-L3
+      Subscription Type:   Stackable
+      Starts:              12/03/2018
+      Ends:                01/02/2019
+      System Type:         Physical
+      ```
+      {: screen}
+      
+   7. Exit the secure shell to return to your OpenShift installation directory inside your container. 
+      ```
+      exit
+      ```
+      {: pre}
+      
+      Example output: 
+      ```
+      logout
+      Connection to 169.47.XXX.XX closed.
+      /go/bin/terraform-ibm-openshift #
+      ```
+      {: screen}
+      
+2. Finish setting up and registering the Bastion node with the Red Hat Network. The Bastion node is connected to the public VLAN and serves as the only SSH entry point for incoming requests to the cluster. To protect your cluster, the Bastion node is configured to securely download all the software images and packages that are required to perform a [disconnected installation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.6/install_config/install/disconnected_install.html) of the OpenShift Container Platform on the master, infrastructure, and application nodes during the creation. The software packages are stored in a local repository on the Bastion node that is automatically set up during the Bastion creation. The master, infrastructure, and application nodes can later access this local repository to perform the disconnected OpenShift installation. 
    ```
-   make rhn_username=<rhn_username> rhn_password=<rhn_password> bastion
+   make rhn_username=<rhn_username> rhn_password=<rhn_password> pool_id=<pool_ID> bastion
    ```
    {: pre}
    
@@ -675,7 +777,13 @@ For more information about the Red Hat OpenShift Container Platform components, 
    To show all your resources with the assigned host names and IP addresses, run `terraform show`. 
    {: tip}
    
-4. Add the master node as a host to the `/etc/hosts` file. 
+4. Exit your container. 
+   ```
+   exit
+   ```
+   {: pre}
+   
+4. On your local machine, add the master node as a host to your local `/etc/hosts` file. 
    1. Open the `/etc/hosts` file. 
       ```
       sudo vi /etc/hosts
@@ -688,9 +796,9 @@ For more information about the Red Hat OpenShift Container Platform components, 
       ```
       {: codeblock}
 
-5. Open the OpenShift console.
+5. In your preferred web browser, open the OpenShift console.
    ```
-   open https://<master_public_ip>:8443/console
+   https://<master_public_ip>:8443/console
    ```
    {: pre}
    
