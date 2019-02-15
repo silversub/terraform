@@ -143,5 +143,5 @@ To prepare your credentials:
    ```
    {: codeblock}
   
-Now that you are all set, you can go ahead and start [specifying and provisioning your {{site.data.keyword.Bluemix_notm}} resources](manage_resources.html#manage_resources) with Terraform. 
+Now that you are all set, you can go ahead and start [specifying and provisioning your {{site.data.keyword.Bluemix_notm}} resources](/docs/terraform/manage_resources.html#manage_resources) with Terraform. 
 
