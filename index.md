@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-22"
+lastupdated: "2019-02-22"
 
 ---
 
@@ -28,7 +28,7 @@ Let's say you want to spin up multiple copies of your service that uses a cluste
 The Terraform configuration files describe the components that you need. Based on your configuration, Terraform creates an execution plan and describes the actions that need to be executed to get to the desired state. You can review the execution plan, change it, or simply execute the plan. When you change your configuration, Terraform can determine what changed and create incremental execution plans that you can apply to your {{site.data.keyword.Bluemix_notm}} resources. 
 
 **What do I need to get started?**</br>
-To provision {{site.data.keyword.Bluemix_notm}} infrastructure and platform resources, you must have a [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/registration/). 
+To provision {{site.data.keyword.Bluemix_notm}} infrastructure and platform resources, you must have a [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration/). 
 
 Sounds great? Get started by installing the Terraform CLI and the {{site.data.keyword.Bluemix_notm}} Provider plug-in. Then, configure your desired {{site.data.keyword.Bluemix_notm}} resources and watch Terraform spin them up. 
 
@@ -137,7 +137,7 @@ Terraform uses the {{site.data.keyword.Bluemix_notm}} Provider plug-in to secure
 **What credentials do I need?**</br>
 The credentials that you need depend on the type of resource that you want to provision. For example, to provision infrastructure resources, you must provide your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Other resources, such as Cloud Foundry services, require an {{site.data.keyword.Bluemix_notm}} platform API key and the Cloud Foundry org and space where you want to provision the service. 
 
-Before you begin, [install the {{site.data.keyword.Bluemix_notm}} CLI ![External link icon](../icons/launch-glyph.svg "External link icon")](/docs/cli/index.html#overview). 
+Before you begin, [install the {{site.data.keyword.Bluemix_notm}} CLI ![External link icon](../icons/launch-glyph.svg "External link icon")](/docs/cli?topic=cloud-cli-ibmcloud-cli#overview). 
 
 1. Create a folder on your local machine for your first Terraform project and navigate into the folder. This folder is used to store all configuration files and variable definitions. 
    ```
@@ -145,8 +145,8 @@ Before you begin, [install the {{site.data.keyword.Bluemix_notm}} CLI ![External
    ```
    {: pre}
       
-2. Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key. The example in this Getting Started tutorial shows how to provision a virtual server in {{site.data.keyword.Bluemix_notm}}. To provision this resource, you must configure the {{site.data.keyword.Bluemix_notm}} Provider to use your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Other {{site.data.keyword.Bluemix_notm}} resources might require other credentials to get provisioned successfully. For more information, see [Retrieving your {{site.data.keyword.Bluemix_notm}} credentials](/docs/terraform/configure_provider.html#retrieve_credentials).  
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../icons/launch-glyph.svg "External link icon")](https://control.bluemix.net/).
+2. Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key. The example in this Getting Started tutorial shows how to provision a virtual server in {{site.data.keyword.Bluemix_notm}}. To provision this resource, you must configure the {{site.data.keyword.Bluemix_notm}} Provider to use your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Other {{site.data.keyword.Bluemix_notm}} resources might require other credentials to get provisioned successfully. For more information, see [Retrieving your {{site.data.keyword.Bluemix_notm}} credentials](/docs/terraform?topic=terraform-configure_provider#retrieve_credentials). 
+   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic).
    2. From the menu ![Menu icon](../icons/icon_hamburger.svg "Menu icon"), select **Infrastructure**.
    3. From the menu bar, select **Account** > **Users** > **User List**.
    4. Find the user whose user name and API key you want to retrieve. 
@@ -198,7 +198,7 @@ Now that you are all set, you can start provisioning resources in {{site.data.ke
 
 The following example shows how to specify and provision a virtual server in {{site.data.keyword.Bluemix_notm}}. For specifying different types of resources, see the [{{site.data.keyword.Bluemix_notm}} resource reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/). 
 
-**Important:** The following example shows how you can configure a virtual server in {{site.data.keyword.Bluemix_notm}} by using JSON syntax. A virtual server is an {{site.data.keyword.Bluemix_notm}} infrastructure resource that incurs costs. Be sure to review the [pricing calculator ![External link icon](../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/pricing/configure/iaas/virtual-server-group) before you proceed.
+**Important:** The following example shows how you can configure a virtual server in {{site.data.keyword.Bluemix_notm}} by using JSON syntax. A virtual server is an {{site.data.keyword.Bluemix_notm}} infrastructure resource that incurs costs. Be sure to review the [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) before you proceed.
 
 1. Create a configuration file that is named `sample.tf` with the following content. Store this file in the folder that you created earlier. 
    ```
