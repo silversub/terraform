@@ -3,7 +3,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-22"
+lastupdated: "2019-02-22"
 
 ---
 
@@ -32,11 +32,11 @@ To provision {{site.data.keyword.Bluemix_notm}} resources, you must describe the
 Terraform configuration files are written by using the [HashiCorp Configuration Language (HCL) ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/docs/configuration/syntax.html) or JSON syntax. When you create your configuration file, you must describe the type of resource that you want and the state that you want to achieve for your resource. Terraform reads this configuration and creates an execution plan with the steps that were identified to achieve the specified state. If existing resources are found, Terraform identifies the necessary steps to update them. 
 
 Before you begin: 
-- [Install the Terraform CLI and the {{site.data.keyword.Bluemix_notm}} Provider plug-in](/docs/terraform/setup_cli.html).
-- [Configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in to use your {{site.data.keyword.Bluemix_notm}} credentials](/docs/terraform/configure_provider.html). 
+- [Install the Terraform CLI and the {{site.data.keyword.Bluemix_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#setup_cli).
+- [Configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in to use your {{site.data.keyword.Bluemix_notm}} credentials](/docs/terraform?topic=terraform-configure_provider#configure_provider). 
 </br>
 
-**Important: ** The following example shows how you can configure a virtual server in {{site.data.keyword.Bluemix_notm}} by using JSON syntax. A virtual server is an {{site.data.keyword.Bluemix_notm}} infrastructure resource that incurs costs. Be sure to review the [pricing information ![External link icon](../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/pricing/configure/iaas/virtual-server-group) before you proceed. 
+**Important: ** The following example shows how you can configure a virtual server in {{site.data.keyword.Bluemix_notm}} by using JSON syntax. A virtual server is an {{site.data.keyword.Bluemix_notm}} infrastructure resource that incurs costs. Be sure to review [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) before you proceed. 
 
 Looking for other resource types? Find a complete list of supported resource types in the [{{site.data.keyword.Bluemix_notm}} resource reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/). 
 {: tip}
