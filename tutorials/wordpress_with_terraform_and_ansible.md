@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-22"
+lastupdated: "2019-02-22"
 
 ---
 
@@ -60,7 +60,7 @@ This tutorial intends to demonstrate the capability of building websites on {{si
 ## Objectives
 {: #objectives}
 
-In this tutorial, you use Terraform to deploy {{site.data.keyword.Bluemix_notm}} infrastructure components that you use to set up a WordPress sample app by using Ansible. In particular, you will:
+In this tutorial, you use Terraform to deploy IBM Cloud infrastructure components that you use to set up a WordPress sample app by using Ansible. In particular, you will:
 
 - Set up your environment and all the software that you need for your sample WordPress app, such as Terraform, {{site.data.keyword.Bluemix_notm}} Provider plug-in, and Ansible.
 - Provision {{site.data.keyword.Bluemix_notm}} infrastructure components for your WordPress sample app by using Terraform.
@@ -81,8 +81,8 @@ This tutorial is intended for network administrators and software developers who
 ## Prerequisites
 {: #prerequisites}
 
-- If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/registration/). 
-- [Set up a VPN connection and SSH authentication](/docs/terraform/ansible/ansible.html#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} infrastructure resources over the private network. 
+- If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration/). 
+- [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-deploy_wordpress#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} infrastructure resources over the private network. 
 
 ## Lesson 1: Setting up Terraform 
 {: #setup_terraform}
@@ -207,7 +207,7 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
    Your API key is displayed in the **API Key** section of your CLI output. 
       
 5. Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key. 
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.bluemix.net/).
+   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com).
    2. From the menu ![Menu icon](../../icons/icon_hamburger.svg "Menu icon"), select **Infrastructure**.
    3. From the menu bar, select **Account** > **Users** > **User List**.
    4. Find the user whose user name and API key you want to retrieve. 
