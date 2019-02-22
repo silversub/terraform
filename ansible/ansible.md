@@ -98,7 +98,7 @@ To securely connect to your virtual machines over the private network with Ansib
       ```
       {: screen}
       
-   3. [Add the SSH public key to the {{site.data.keyword.Bluemix_notm}} infrastructure portal](/docs/infrastructure/ssh-keys?topic=ssh-keys-adding-an-ssh-key#adding).  
+   3. [Add the SSH public key to the {{site.data.keyword.Bluemix_notm}} infrastructure portal](/docs/infrastructure/ssh-keys?topic=ssh-keys-adding-an-ssh-key#adding-an-ssh-key).  
 
 
 ## Setting up Ansible on your local machine
