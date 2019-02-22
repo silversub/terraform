@@ -4,7 +4,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-22"
+lastupdated: "2019-02-22"
 
 
 ---
@@ -24,5 +24,5 @@ When you use the public forums to ask a question, tag your question so that it i
 * If you have technical questions about Terraform on {{site.data.keyword.Bluemix_notm}}, post your question on [Stack Overflow ![External link icon](../icons/launch-glyph.svg "External link icon")](http://stackoverflow.com/search?q=ibm-cloud-infrastructure+terraform){:new_window} and tag your question with `ibm-cloud-infrastructure` and `terraform`.
 * Subscribe to the [Terraform channel on Reddit ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.reddit.com/r/Terraform/){:new_window} and browse through this channel to read about user issues and how they resolved them. 
 
-You can also contact IBM Support by opening a case. To learn about opening an IBM support case, or about support levels and case severities, see [Contacting support](/docs/get-support/howtogetsupport.html#getting-customer-support). 
+You can also contact IBM Support by opening a case. To learn about opening an IBM support case, or about support levels and case severities, see [Contacting support](/docs/get-support?topic=get-support-getting-customer-support#getting-customer-support). 
 
