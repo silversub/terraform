@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-22"
+lastupdated: "2019-02-22"
 
 ---
 
@@ -61,7 +61,7 @@ The credentials that you need depend on the type of resource that you want to pr
    {: pre}
       
 3. To provision infrastructure resources such as virtual servers or Kubernetes clusters, retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key. 
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../icons/launch-glyph.svg "External link icon")](https://control.bluemix.net/).
+   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic).
    2. From the menu ![Menu icon](../icons/icon_hamburger.svg "Menu icon"), select **Infrastructure**.
    3. From the menu bar, select **Account** > **Users** > **User List**.
    4. Find the user whose user name and API key you want to retrieve. 
@@ -143,5 +143,5 @@ To prepare your credentials:
    ```
    {: codeblock}
   
-Now that you are all set, you can go ahead and start [specifying and provisioning your {{site.data.keyword.Bluemix_notm}} resources](/docs/terraform/manage_resources.html#manage_resources) with Terraform. 
+Now that you are all set, you can go ahead and start [specifying and provisioning your {{site.data.keyword.Bluemix_notm}} resources](/docs/terraform?topic=terraform-manage_resources#manage_resources) with Terraform. 
 
