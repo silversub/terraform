@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-14"
+lastupdated: "2019-02-22"
 
 ---
 
@@ -59,9 +59,9 @@ This tutorial is intended for network administrators who want to deploy Red Hat 
 ## Prerequisites
 {: #prerequisites}
 
-- If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/registration/). 
+- If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration/). 
 - Make sure that you have an existing [Red Hat account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://sso.redhat.com/auth/realms/redhat-external/protocol/saml?SAMLRequest=fZLLTsMwEEV%2FJTuvXCelr1hJpKgVUqWCUAss2CDXnZBIfgSPQwtfj5Oqomy69Ojec%2BfhDIVWLS87X5stfHaAPioRwfnGmqU12GlwO3BfjYSX7SYntfctcsaElIA4cnCohR9Jq5kWRnyABuNZD2VVY4RqfoBEq0ANjx75B0C0124ROmAOhNLIzmUKJw8uMFjrrLfSqoFLovUqJ%2B9JFUuIZ5KmM5B0Mk6BpkkaU0inYjGphNind0GK2MHaoBfG52QcJwuaxDRePCdzPkn5dP5GoldwOHQ2HsUkOmllkPdBOemc4VZgg9wIDci95LvyYcODkIvLkq4t7W3PZQ5SZL2aD925wtWo6RH2GbuuZufLPAbKevVkVSO%2Fo1Ipe1yGLXnIiXdd2O29dVr427l9pTnQapDytp8XfbgTYcU58%2F8HKH4B&RelayState=https%3A%2F%2Faccess.redhat.com%2Fmanagement%2Fsubscriptions&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=t4s738AUmTxKfEMZkNpOI8e1wz72ftoZ92HQIbqfs%2BShcdv3ShuJ4%2FIGIhuMYA%2BoaFZwaPcamWlo7F0VDtSN%2FHXcXj78e5s%2B99vJ3K39V4CYCmWOO3fFbpRIV5T0jxzwsp45YEeFKZd45zeQ0X2UwCxPw41JVOqq6NqIqMAJ0y%2Bb92nmE9fFMKlBCS4A%2BTHN1ub1YCUEvgKUNEOasyGdGYXHf0fh9NSUAHO8UJAPSnR0YmBLr4oWteeRuu5MkmqWxEx0F2FOIXtgncMjTsHhyqUllYKjK5%2Buf8YgbeU4ptZoniLmQEKzzrd1KJTutc3ce4W7X7h0zteTEqSdou7LLQ%3D%3D#active) that has an [active OpenShift subscription ![External link icon](../icons/launch-glyph.svg "External link icon")](https://access.redhat.com/products/red-hat-openshift-container-platform). 
-- Install [Docker and the {{site.data.keyword.Bluemix_notm}} CLI ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/cli/index.html#overview). 
+- Install [Docker and the {{site.data.keyword.Bluemix_notm}} CLI ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/cli?topic=cloud-cli-ibmcloud-cli#overview). 
 
 ## Lesson 1: Configure your environment
 {: #configure environment}
@@ -70,7 +70,7 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
 {: shortdesc}
 
 1. Create a Docker container that installs Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in. To execute Terraform commands, you must be logged in to the container. 
-   You can also [install Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in](/docs/terraform/setup_cli.html#setup_cli) on your local machine to run Terraform commands without using a Docker container. 
+   You can also [install Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#setup_cli) on your local machine to run Terraform commands without using a Docker container. 
    {: tip}
    1. Download the latest version of the Docker image for Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in to your local machine. 
       ```
@@ -872,7 +872,7 @@ With your OpenShift cluster up and running, you can now deploy your first app in
    {: screen}
    
 8. Expose your app to the public. By default, your `nginx` app is accessible from inside the cluster only. You can expose your cluster to the public by assigning a front-end port to your application node load balancer. 
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://control.bluemix.net/). 
+   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic). 
    2. From the menu, select **Network** > **Load Balancing** > **Local** and find the application node load balancer that you created earlier. 
    3. From the actions menu, click **View details**. 
    4. Select the **Protocols** tab. 
