@@ -28,7 +28,7 @@ Let's say you want to spin up multiple copies of your service that uses a cluste
 The Terraform configuration files describe the components that you need. Based on your configuration, Terraform creates an execution plan and describes the actions that need to be executed to get to the desired state. You can review the execution plan, change it, or simply execute the plan. When you change your configuration, Terraform can determine what changed and create incremental execution plans that you can apply to your {{site.data.keyword.Bluemix_notm}} resources. 
 
 **What do I need to get started?**</br>
-To provision {{site.data.keyword.Bluemix_notm}} infrastructure and platform resources, you must have a [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration/). 
+To provision {{site.data.keyword.Bluemix_notm}} infrastructure and platform resources, you must have a [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
 
 Sounds great? Get started by installing the Terraform CLI and the {{site.data.keyword.Bluemix_notm}} Provider plug-in. Then, configure your desired {{site.data.keyword.Bluemix_notm}} resources and watch Terraform spin them up. 
 
@@ -137,7 +137,7 @@ Terraform uses the {{site.data.keyword.Bluemix_notm}} Provider plug-in to secure
 **What credentials do I need?**</br>
 The credentials that you need depend on the type of resource that you want to provision. For example, to provision infrastructure resources, you must provide your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Other resources, such as Cloud Foundry services, require an {{site.data.keyword.Bluemix_notm}} platform API key and the Cloud Foundry org and space where you want to provision the service. 
 
-Before you begin, [install the {{site.data.keyword.Bluemix_notm}} CLI ![External link icon](../icons/launch-glyph.svg "External link icon")](/docs/cli?topic=cloud-cli-ibmcloud-cli#overview). 
+Before you begin, [install the {{site.data.keyword.Bluemix_notm}} CLI ![External link icon](../icons/launch-glyph.svg "External link icon")](/docs/cli?topic=cloud-cli-ibmcloud-cli#ibmcloud-cli). 
 
 1. Create a folder on your local machine for your first Terraform project and navigate into the folder. This folder is used to store all configuration files and variable definitions. 
    ```
