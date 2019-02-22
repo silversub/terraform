@@ -81,8 +81,8 @@ This tutorial is intended for network administrators and software developers who
 ## Prerequisites
 {: #prerequisites}
 
-- If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration/). 
-- [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-deploy_wordpress#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} infrastructure resources over the private network. 
+- If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
+- [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-ansible#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} infrastructure resources over the private network. 
 
 ## Lesson 1: Setting up Terraform 
 {: #setup_terraform}
