@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-22"
+lastupdated: "2019-02-22"
 
 ---
 
@@ -98,7 +98,7 @@ To securely connect to your virtual machines over the private network with Ansib
       ```
       {: screen}
       
-   3. [Add the SSH public key to the {{site.data.keyword.Bluemix_notm}} infrastructure portal](https://console.cloud.ibm.com/docs/infrastructure/ssh-keys/add-ssh-key.html#adding-an-ssh-key).  
+   3. [Add the SSH public key to the {{site.data.keyword.Bluemix_notm}} infrastructure portal](/docs/infrastructure/ssh-keys?topic=ssh-keys-adding-an-ssh-key#adding).  
 
 
 ## Setting up Ansible on your local machine
@@ -189,7 +189,7 @@ Use Ansible playbooks to connect to your infrastructure resources, run operation
 {: shortdesc}
 
 Before you begin: 
-- [Complete the Terraform getting started tutorial](/docs/terraform/index.html) to install Terraform, configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in and provision a virtual server in {{site.data.keyword.Bluemix_notm}}. 
+- [Complete the Terraform getting started tutorial](/docs/terraform?topic=terraform-index#index) to install Terraform, configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in and provision a virtual server in {{site.data.keyword.Bluemix_notm}}. 
 - [Set up a VPN connection to your {{site.data.keyword.Bluemix_notm}} infrastructure resources and upload SSH keys](#setup_vpn). 
 - [Install Ansible](#install_ansible) on your local machine.
 
