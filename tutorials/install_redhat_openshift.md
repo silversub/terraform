@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-22"
+lastupdated: "2019-03-06"
 
 ---
 
@@ -738,6 +738,11 @@ For more information about the Red Hat OpenShift Container Platform components, 
    make openshift
    ```
    {: pre}
+   
+   If the installation fails with the error `module.post_install.null_resource.post_install: error executing "/tmp/terraform_1700732344.sh": wait: remote command exited without exit status or exit signal`, go to the [{{site.data.keyword.Bluemix_notm}} infrastructure dashboard](https://cloud.ibm.com/classic), and click **Devices** > **Device List**. Then, find the affected virtual server and from the actions menu, perform a soft reboot. 
+   {: tip}
+   
+   1. From the [IBM Cloud infrastructure (SoftLayer) portal External link icon, click Storage.
    
    Example output: 
    ```
