@@ -26,7 +26,7 @@ Use this tutorial to automate the provisioning of infrastructure resources in {{
 [Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and then use Ansible to deploy Wordpress on Apache web servers and Mariadb, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 
 ## Solution overview
-{: #overview}
+{: #overview_single_site_wordpress}
 
 The following image shows the infrastructure and software components that you provision as part of this tutorial. 
 
@@ -58,7 +58,7 @@ This tutorial intends to demonstrate the capability of building websites on {{si
 {: important}
 
 ## Objectives
-{: #objectives}
+{: #objectives_single_site_wordpress}
 
 In this tutorial, you use Terraform to deploy IBM Cloud infrastructure components that you use to set up a WordPress sample app by using Ansible. In particular, you will:
 
@@ -69,23 +69,23 @@ In this tutorial, you use Terraform to deploy IBM Cloud infrastructure component
 - Use Ansible to finalize the setup of your WordPress app. 
 
 ## Time required
-{: #time}
+{: #time_single_site_wordpress}
 
 60 minutes
 
 ## Audience
-{: #audience}
+{: #audience_single_site_wordpress}
 
 This tutorial is intended for network administrators and software developers who want to learn how to use Terraform and Ansible to automate infrastructure and app deployment in {{site.data.keyword.Bluemix_notm}}.
 
 ## Prerequisites
-{: #prerequisites}
+{: #prerequisites_single_site_wordpress}
 
 - If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
 - [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-ansible#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} infrastructure resources over the private network. 
 
 ## Lesson 1: Setting up Terraform 
-{: #setup_terraform}
+{: #setup_terraform_single_site_wordpress}
 
 To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure resources, you must install Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in for Terraform. The {{site.data.keyword.Bluemix_notm}} Provider plug-in is aware of all the {{site.data.keyword.Bluemix_notm}} resources that you can provision with Terraform, including the API and the methods to expose these resources in the cloud.
 {: shortdesc}
@@ -234,10 +234,10 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
       ```
       {: codeblock}
       
-With your Terraform project directory set up, you can continue to set up your [Ansible work environment](#setup_ansible). 
+With your Terraform project directory set up, you can continue to set up your [Ansible work environment](#setup_ansible_single_site_wordpress). 
 
 ## Lesson 2: Setting up Ansible
-{: #setup_ansible}
+{: #setup_ansible_single_site_wordpress}
 
 Set up your Ansible project directory and install Ansible on your local machine to automate the deployment of WordPress on your Terraform-deployed infrastructure. 
 {: shortdesc}
@@ -305,10 +305,10 @@ Set up your Ansible project directory and install Ansible on your local machine 
       echo "<vault_file_password>" > ~/vault_pass.txt
       ```
    
-Great! Now that you completed the setup of Terraform and Ansible, you can start [provisioning the WordPress infrastructure](#provision_terraform_infrastructure) in {{site.data.keyword.Bluemix_notm}} by using Terraform. 
+Great! Now that you completed the setup of Terraform and Ansible, you can start [provisioning the WordPress infrastructure](#provision_terraform_infrastructure_single_site_wordpress) in {{site.data.keyword.Bluemix_notm}} by using Terraform. 
    
 ## Lesson 3: Provisioning the Wordpress infrastructure with Terraform
-{: #provision_terraform_infrastructure}
+{: #provision_terraform_infrastructure_single_site_wordpress}
 
 In this lesson, you deploy the virtual server instances and the {{site.data.keyword.Bluemix_notm}} load balancer that you need for your WordPress app. 
 {: shortdesc}
@@ -396,7 +396,7 @@ In this lesson, you deploy the virtual server instances and the {{site.data.keyw
    {: screen}
    
 ## Lesson 4: Creating an Ansible infrastructure inventory
-{: #create_ansible_inventory}
+{: #create_ansible_inventory_single_site_wordpress}
 
 Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import infrastructure information from your Terraform `terraform.tfstate` file into Ansible. 
 {: shortdesc}
@@ -442,7 +442,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
       {: pre}
 
 ## Lesson 5: Installing and configuring WordPress with Ansible
-{: #install_configure_wordpress}
+{: #install_configure_wordpress_single_site_wordpress}
 
 1. Install WordPress. The installation of WordPress can take up to 10 minutes. 
    ``` 
