@@ -64,7 +64,7 @@ This tutorial intends to demonstrate the capability of building secure, resilien
 {: important}
 
 ## Objectives
-{: #objectives}
+{: #objectives_multi_region}
 
 In this tutorial, you use Terraform to deploy a highly available {{site.data.keyword.Bluemix_notm}} infrastructure setup that you use to deploy a WordPress sample app across {{site.data.keyword.Bluemix_notm}} regions by using Ansible. In particular, you will:
 
@@ -76,17 +76,17 @@ In this tutorial, you use Terraform to deploy a highly available {{site.data.key
 - Explore the high availability capabilities of the multi-region Wordpress architecture.  
 
 ## Time required
-{: #time}
+{: #time_multi_region}
 
 60 minutes
 
 ## Audience
-{: #audience}
+{: #audience_multi_region}
 
 This tutorial is intended for network administrators, software developers, and architects who want to become familiar with {{site.data.keyword.Bluemix_notm}} networking and infrastructure components, learn how to use Terraform and Ansible to automate network configuration, and to deploy web infrastructure and apps on IaaS. 
 
 ## Prerequisites
-{: #prerequisites}
+{: #prerequisites_multi_region}
 - If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic/services/domains). 
 - [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-ansible#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} infrastructure resources over the private network. 
 - If you do not have an existing DNS domain registered with IBM Cloud, register one with the {{site.data.keyword.Bluemix_notm}} Domain Registration service. For more information about how to register a new domain, see [Register a New Domain](/docs/infrastructure/dns?topic=dns-register-a-new-domain#register-a-new-domain). To transfer an existing domain to {{site.data.keyword.Bluemix_notm}}, see [Transfer an Existing Domain to {{site.data.keyword.Bluemix_notm}}](/docs/infrastructure/dns?topic=dns-transfer-an-existing-domain-to-ibm-cloud#transfer-an-existing-domain-to-ibm-cloud). 
@@ -245,7 +245,7 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
 With your Terraform project directory set up, you can continue to set up your Ansible work environment in Lesson 2. 
 
 ## Lesson 2: Setting up Ansible
-{: #setup_ansible}
+{: #setup_ansible_multi_region}
 Set up your Ansible project directory and install Ansible on your local machine to automate the deployment of WordPress on your Terraform-deployed infrastructure. 
 {: shortdesc}
 1. On the same level as your Terraform project directory, create an Ansible project directory and navigate into the directory. 
