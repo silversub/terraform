@@ -26,7 +26,7 @@ Use this tutorial to automate the provisioning of infrastructure resources in {{
 [Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and then use Ansible to deploy Wordpress on Apache web servers and Mariadb, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 
 ## Solution overview
-{: #overview_single_site_wordpress}
+{: #overview_single_site_wordpress} 
 
 The following image shows the infrastructure and software components that you provision as part of this tutorial. 
 
