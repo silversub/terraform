@@ -46,7 +46,7 @@ In this tutorial, you set up Red Hat OpenShift Container Platform version 3.9 on
 - Store the `nginx` image in your internal Docker registry. 
 - Deploy the `nginx` app in your OpenShift cluster and expose this app to the public. 
 
-## Time required
+## Time required 
 {: #time}
 
 4-5 hours
