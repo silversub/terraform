@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-22"
+lastupdated: "2019-03-08"
 
 ---
 
@@ -22,7 +22,7 @@ Before you can automate your {{site.data.keyword.Bluemix_notm}} resource provisi
 {: shortdesc}
 
 ## Installing the Terraform CLI and the IBM Cloud Provider plug-in
-{: #install}
+{: #install_cli}
 
 To use Terraform to manage {{site.data.keyword.Bluemix_notm}} resources, you must install the Terraform CLI and the {{site.data.keyword.Bluemix_notm}} Provider plug-in for Terraform. 
 {: shortdesc}
@@ -115,4 +115,9 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       Please execute the program that consumes these plugins, which will load any plugins automatically
       ```
       {: screen}
-
+      
+## Updating the CLI
+{: #update_cli}
+ 
+## Removing the CLI
+{: #remove_cli}
