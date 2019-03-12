@@ -27,7 +27,7 @@ subcollection: terraform
 Use this tutorial to automate the provisioning of infrastructure resources in {{site.data.keyword.Bluemix_notm}} by using Terraform and the deployment of WordPress on those resources with Ansible.  
 {: shortdesc}
 
-[Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and then use Ansible to deploy WordPress on Apache web servers and Mariadb, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
+[Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and then use Ansible to deploy WordPress on Apache web servers and MariaDB, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 
 ## Solution overview
 {: #overview_single_site_wordpress}
@@ -36,7 +36,7 @@ The following image shows the infrastructure and software components that you pr
 
 <img src="../images/wordpress_infrastructure.png" alt="Infrastructure and app components to deploy WordPress on {{site.data.keyword.Bluemix_notm}} with Terraform and Ansible" width="800" style="width: 800px; border-style: none"/>
 
-For the WordPress sample app, the Ansible playbooks package implements a single site deployment of multiple Apache web servers with a single Mariadb database host that run on {{site.data.keyword.Bluemix_notm}} virtual servers. The private IP addresses of the Apache web servers are added to the {{site.data.keyword.Bluemix_notm}} Load Balancer (CLB) that serves as the public endpoint for your WordPress deployment. 
+For the WordPress sample app, the Ansible playbooks package implements a single site deployment of multiple Apache web servers with a single MariaDB database host that run on {{site.data.keyword.Bluemix_notm}} virtual servers. The private IP addresses of the Apache web servers are added to the {{site.data.keyword.Bluemix_notm}} Load Balancer that serves as the public endpoint for your WordPress deployment. 
 
 Terraform infrastructure components are provisioned by using Terraform configuration files whereas Ansible uses playbooks to automate the deployment of software components. 
 
@@ -53,7 +53,7 @@ Terraform infrastructure components are provisioned by using Terraform configura
 </tr>
 <tr>
 <td>Ansible</td>
-<td><ul><li>Two Apache (HTTPd) app servers</li><li>One Mariadb</li><li>WordPress</li></ul></td>
+<td><ul><li>Two Apache (HTTPD) app servers</li><li>One MariaDB</li><li>WordPress</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -311,7 +311,7 @@ Set up your Ansible project directory and install Ansible on your local machine 
    
 Great! Now that you completed the setup of Terraform and Ansible, you can start [provisioning the WordPress infrastructure](#provision_terraform_infrastructure_single_site_wordpress) in {{site.data.keyword.Bluemix_notm}} by using Terraform. 
    
-## Lesson 3: Provisioning the Wordpress infrastructure with Terraform
+## Lesson 3: Provisioning the WordPress infrastructure with Terraform
 {: #provision_terraform_infrastructure_single_site_wordpress}
 
 In this lesson, you deploy the virtual server instances and the {{site.data.keyword.Bluemix_notm}} load balancer that you need for your WordPress app. 
@@ -471,7 +471,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
    ```
    {: screen}
    
-   If errors occur during the WordPress installation, you can correct the errors that are reported by Ansible and rerun the Ansible playbook again. Ansible playbooks are idempotent and can be executed multiple times. When you execute a playbook multiple times, only changes that bring the environment to the desired state are executed.
+   If errors occur during the WordPress installation, you can correct the errors that are reported by Ansible and rerun the Ansible playbook again. Ansible playbooks are idempotent and can be executed multiple times. When you execute a playbook multiple times, only changes that bring the environment to the required state are executed.
    {: tip}
    
 2. Open WordPress. After the initial installation, WordPress is not accessible via the {{site.data.keyword.Bluemix_notm}} Load Balancer. When you try to access WordPress after the initial installation, a 503 Service unavailable HTTP response code is returned from the load balancer. This behavior is expected. After the installation, WordPress forces the user who administers WordPress to set up WordPress by redirecting the user to the configuration dialog with a 302 Temporary redirect HTTP response code. The {{site.data.keyword.Bluemix_notm}} load balancer does not allow customization of the valid HTTP response codes and does not recognize a 302 HTTP response code as a healthy response code. As a consequence, the load balancer returns the 503 HTTP response code to the user.
@@ -546,7 +546,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
       ```
       {: screen}
    
-4. Access your WordPress site from your preferred browser via the **web_dns_address** of the load balancer. The domain name of the load balancer is returned as the **Wordpress URL** in the CLI output of the previous step. 
+4. Access your WordPress site from your preferred browser via the **web_dns_address** of the load balancer. The domain name of the load balancer is returned as the `Wordpress URL` in the CLI output of the previous step. 
    ```
    http://<web-dns-address>
    ```
