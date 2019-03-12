@@ -5,6 +5,10 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-01-22"
 
+keywords: terraform tutorials 
+
+subcollection: terraform
+
 ---
 
 {:new_window: target="_blank"}
