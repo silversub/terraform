@@ -2,7 +2,11 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-08"
+lastupdated: "2019-01-22"
+
+keywords: install terraform cli, set up terraform cli, ibm cloud provider plugin, ibm cloud for terraform
+
+subcollection: terraform
 
 ---
 
@@ -37,10 +41,10 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       ```
       {: pre}
 
-   2. [Download the Terraform binary to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/downloads.html). 
+   2. [Download the Terraform binary file to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/downloads.html). 
 
-   3. Extract the Terraform package and copy the binary into your `terraform` directory. 
-   4. Point the `$PATH` environment variable to your Terraform binary.
+   3. Extract the Terraform package and copy the binary file into your `terraform` directory. 
+   4. Point the `$PATH` environment variable to your Terraform binary file.
       ```
       export PATH=$PATH:$HOME/terraform
       ```
@@ -116,8 +120,3 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       ```
       {: screen}
       
-## Updating the CLI
-{: #update_cli}
- 
-## Removing the CLI
-{: #remove_cli}
