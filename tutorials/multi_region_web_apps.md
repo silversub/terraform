@@ -121,7 +121,7 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
       {: pre}
       
    2. [Download the Terraform binary file to your local machine ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/downloads.html). Select the version that is provided for the operating system that you use on your local machine.
-   3. Extract the Terraform package and copy the binary fileinto your `terraform` directory. 
+   3. Extract the Terraform package and copy the binary file into your `terraform` directory. 
    4. Point the `$PATH` environment variable to your Terraform binary file.
       ```
       export PATH=$PATH:$HOME/terraform
@@ -315,7 +315,7 @@ Set up your Ansible project directory and install Ansible on your local machine 
    
 Great! Now that you completed the setup of Terraform and Ansible, you can start provisioning the WordPress infrastructure in {{site.data.keyword.Bluemix_notm}} by using Terraform in Lesson 3. 
    
-## Lesson 3: Provisioning the Wordpress infrastructure with Terraform
+## Lesson 3: Provisioning the WordPress infrastructure with Terraform
 {: #provision_terraform_infrastructure}
 In this lesson, you deploy the virtual server instances, the {{site.data.keyword.Bluemix_notm}} load balancers, an {{site.data.keyword.Bluemix_notm}} Internet Services instance, a global load balancer and origin pools that you need for your WordPress app. 
 {: shortdesc}
@@ -488,7 +488,7 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.Bluemix_notm}} in
    ```
    {: screen}
    
-   If errors occur during the WordPress installation, you can correct the errors that are reported by Ansible and rerun the Ansible playbook again. Ansible playbooks are idempotent and can be executed multiple times. When you execute a playbook multiple times, only changes that bring the environment to the desired state are executed.
+   If errors occur during the WordPress installation, you can correct the errors that are reported by Ansible and rerun the Ansible playbook again. Ansible playbooks are idempotent and can be executed multiple times. When you execute a playbook multiple times, only changes that bring the environment to the required state are executed.
    {: tip}
    
 2. Open WordPress. After the initial installation, WordPress is not accessible via the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer. When you try to access WordPress after the initial installation, a `503 Service unavailable` HTTP response code is returned from the {{site.data.keyword.Bluemix_notm}} Load Balancers that are deployed in each region. This behavior is expected. After the installation, WordPress forces the user who administers WordPress to set up the app by redirecting the user to the WordPress configuration dialog with a `302 Temporary redirect` HTTP response code. The {{site.data.keyword.Bluemix_notm}} Load Balancers in each region do not allow to customize the list of valid HTTP response codes and do not recognize a `302` HTTP response code as a healthy response code. As a consequence, the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer returns the `503` HTTP response code to the user.
@@ -563,7 +563,7 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.Bluemix_notm}} in
       ```
       {: screen}
    
-4. Access your WordPress site from your preferred browser via the **web_dns_address** of the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer. The **web_dns_address** is returned as the **Wordpress URL** in the CLI output of the previous step. 
+4. Access your WordPress site from your preferred browser via the **web_dns_address** of the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer. The **web_dns_address** is returned as the `Wordpress URL` in the CLI output of the previous step. 
    ```
    http://<web-dns-address>
    ```
