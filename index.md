@@ -4,6 +4,10 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
+keywords: terraform quickstart, terraform getting started, terraform tutorial
+
+subcollection: terraform
+
 ---
 
 {:new_window: target="_blank"}
@@ -25,12 +29,12 @@ Terraform is an Open Source software that is developed by HashiCorp that enables
 **How does it work?**</br>
 Let's say you want to spin up multiple copies of your service that uses a cluster of virtual servers, a load balancer, and a database server. You could learn how to create each resource, review the API or the commands that you need, and write a bash script to spin up these components. But it's easier, faster, and more orderly to specify the type of resource that you want and let Terraform do it all for you. 
 
-The Terraform configuration files describe the components that you need. Based on your configuration, Terraform creates an execution plan and describes the actions that need to be executed to get to the desired state. You can review the execution plan, change it, or simply execute the plan. When you change your configuration, Terraform can determine what changed and create incremental execution plans that you can apply to your {{site.data.keyword.Bluemix_notm}} resources. 
+The Terraform configuration files describe the components that you need. Based on your configuration, Terraform creates an execution plan and describes the actions that need to be executed to get to the required state. You can review the execution plan, change it, or simply execute the plan. When you change your configuration, Terraform can determine what changed and create incremental execution plans that you can apply to your {{site.data.keyword.Bluemix_notm}} resources. 
 
 **What do I need to get started?**</br>
 To provision {{site.data.keyword.Bluemix_notm}} infrastructure and platform resources, you must have a [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
 
-Sounds great? Get started by installing the Terraform CLI and the {{site.data.keyword.Bluemix_notm}} Provider plug-in. Then, configure your desired {{site.data.keyword.Bluemix_notm}} resources and watch Terraform spin them up. 
+Sounds great? Get started by installing the Terraform CLI and the {{site.data.keyword.Bluemix_notm}} Provider plug-in. Then, configure the {{site.data.keyword.Bluemix_notm}} resources that you want and watch Terraform spin them up. 
 
 ## Installing the Terraform CLI and the IBM Cloud Provider plug-in
 {: #install}
@@ -48,10 +52,10 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       ```
       {: pre}
 
-   2. [Download the Terraform binary to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/downloads.html). 
+   2. [Download the Terraform binary file to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/downloads.html). 
 
-   3. Extract the Terraform package and copy the binary into your `terraform` directory. 
-   4. Point the `$PATH` environment variable to your Terraform binary.
+   3. Extract the Terraform package and copy the binary file into your `terraform` directory. 
+   4. Point the `$PATH` environment variable to your Terraform binary file.
       ```
       export PATH=$PATH:$HOME/terraform
       ```
