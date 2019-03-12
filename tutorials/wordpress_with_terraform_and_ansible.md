@@ -4,6 +4,10 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
+keywords: terraform, ansible, wordpress, automate, automation, iaas, single site, single zone
+
+subcollection: terraform
+
 ---
 
 {:new_window: target="_blank"}
@@ -23,10 +27,10 @@ lastupdated: "2019-02-22"
 Use this tutorial to automate the provisioning of infrastructure resources in {{site.data.keyword.Bluemix_notm}} by using Terraform and the deployment of WordPress on those resources with Ansible.  
 {: shortdesc}
 
-[Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and then use Ansible to deploy Wordpress on Apache web servers and Mariadb, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
+[Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and then use Ansible to deploy WordPress on Apache web servers and Mariadb, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 
 ## Solution overview
-{: #overview_single_site_wordpress} 
+{: #overview_single_site_wordpress}
 
 The following image shows the infrastructure and software components that you provision as part of this tutorial. 
 
@@ -37,7 +41,7 @@ For the WordPress sample app, the Ansible playbooks package implements a single 
 Terraform infrastructure components are provisioned by using Terraform configuration files whereas Ansible uses playbooks to automate the deployment of software components. 
 
 <table>
-<caption>Wordpress sample app infrastructure and software components</caption>
+<caption>WordPress sample app infrastructure and software components</caption>
 <thead>
 <th>Tool</th>
 <th>Resources</th>
@@ -54,7 +58,7 @@ Terraform infrastructure components are provisioned by using Terraform configura
 </tbody>
 </table>
 
-This tutorial intends to demonstrate the capability of building websites on {{site.data.keyword.Bluemix_notm}} infrastructure with secure networking, and does not intend to provide a fully operational Wordpress deployment. To run this tutorial, the infrastructure costs that incur are restricted to the virtual servers and the load balancer that are provisioned as part of this tutorial. No costs are required for DNS domain names or SSL/TLS certificates. All infrastructure resources are provisioned with an hourly billing type. The actual costs for you depend on the type of virtual server that you provision and the number of hours that you use your infrastructure resources. As a result of limiting the costs for this tutorial, the website in WordPress is not configured with HTTPS security.
+This tutorial intends to demonstrate the capability of building websites on {{site.data.keyword.Bluemix_notm}} infrastructure with secure networking, and does not intend to provide a fully operational WordPress deployment. To run this tutorial, the infrastructure costs that incur are restricted to the virtual servers and the load balancer that are provisioned as part of this tutorial. No costs are required for DNS domain names or SSL/TLS certificates. All infrastructure resources are provisioned with an hourly billing type. The actual costs for you depend on the type of virtual server that you provision and the number of hours that you use your infrastructure resources. As a result of limiting the costs for this tutorial, the website in WordPress is not configured with HTTPS security.
 {: important}
 
 ## Objectives
@@ -103,9 +107,9 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
       ```
       {: pre}
 
-   2. [Download the Terraform binary to your local machine ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/downloads.html). Select the version that is provided for the operating system that you use on your local machine.
-   3. Extract the Terraform package and copy the binary into your `terraform` directory. 
-   4. Point the `$PATH` environment variable to your Terraform binary.
+   2. [Download the Terraform binary file to your local machine ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/downloads.html). Select the version that is provided for the operating system that you use on your local machine.
+   3. Extract the Terraform package and copy the binary file into your `terraform` directory. 
+   4. Point the `$PATH` environment variable to your Terraform binary file.
       ```
       export PATH=$PATH:$HOME/terraform
       ```
@@ -426,7 +430,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
       ```
       {: pre}
       
-   2. Add the fully qualifiied path to the `terraform.tfstate` file that holds your Terraform infrastructure information.   
+   2. Add the fully qualified path to the `terraform.tfstate` file that holds your Terraform infrastructure information.   
       ```
       [TFSTATE] 
       TFSTATE_FILE = <terraform_project_path>/terraform.tfstate
@@ -522,7 +526,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
       ```
       {: codeblock}
       
-   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the inital setup dialog by using the WordPress CLI. During the setup, Ansible programatically retrieves the **web_dns_name** of the load balancer by using the Terraform inventory integration and uses the domain name to configure the WordPress site. 
+   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the inital setup dialog by using the WordPress CLI. During the setup, Ansible automatically retrieves the **web_dns_name** of the load balancer by using the Terraform inventory integration and uses the domain name to configure the WordPress site. 
       ```
       ansible-playbook -i inventory wp_site_setup.yml
       ```
