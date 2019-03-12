@@ -4,6 +4,10 @@ copyright:
   years: 2019
 lastupdated: "2019-02-22"
 
+keywords: terraform faqs, softlayer, iaas
+
+subcollection: terraform
+
 ---
 
 {:new_window: target="_blank"}
@@ -28,7 +32,7 @@ The Terraform `ibm_compute_vm_instance` resource includes optional and mandatory
 
 1. Install the [{{site.data.keyword.Bluemix_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli#install-ibmcloud-cli). 
 
-2. List supported configuration options for virtual servers in {{site.data.keyword.Bluemix_notm}}. The listed options include available data centers, machine flavors, cpu, memory, operating systems, local disk and SAN disk sizes, and network interface controllers (nic). {{site.data.keyword.Bluemix_notm}} offers multiple virtual server offerings that each come with a specific configuration. The configuration of an offering is optimized for a specific workload need, such as high input and output performance, or real-time analytics. For more information see [Public Virtual Servers](/docs/vsi?topic=virtual-servers-about-public-virtual-servers#about-public-virtual-servers). 
+2. List supported configuration options for virtual servers in {{site.data.keyword.Bluemix_notm}}. The listed options include available data centers, machine flavors, cpu, memory, operating systems, local disk and SAN disk sizes, and network interface controllers (nic). {{site.data.keyword.Bluemix_notm}} offers multiple virtual server offerings that each come with a specific configuration. The configuration of an offering is optimized for a specific workload need, such as high performance, or real-time analytics. For more information see [Public Virtual Servers](/docs/vsi?topic=virtual-servers-about-public-virtual-servers#about-public-virtual-servers). 
    ```
    ibmcloud sl vs options
    ```
@@ -55,7 +59,7 @@ If the Terraform operation does not complete due to a timeout, wait for the reso
 </thead>
 <tbody>
 <tr>
-<td>{{site.data.keyword.Bluemix_notm}} platform resouces</td>
+<td>{{site.data.keyword.Bluemix_notm}} platform resources</td>
 <td>A few seconds</td>
 <td>A few seconds</td>
 </tr>
