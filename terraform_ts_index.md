@@ -6,6 +6,9 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
+keywords: terraform help, terraform troubleshooting, ansible help, ansible troubleshooting
+
+subcollection: terraform
 
 ---
 
