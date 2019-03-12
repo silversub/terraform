@@ -4,6 +4,10 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-01-22"
 
+keywords: terraform, configuration files, resources, what is terraform, automation, automate
+
+subcollection: terraform
+
 ---
 
 {:new_window: target="_blank"}
