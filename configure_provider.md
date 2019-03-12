@@ -4,6 +4,10 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
+keywords: terraform, ibm cloud terraform, ibm cloud provider plugin for terraform, softlayer, iaas
+
+subcollection: terraform
+
 ---
 
 {:new_window: target="_blank"}
