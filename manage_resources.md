@@ -5,6 +5,10 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
+keywords: add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, terraform, provision resources
+
+subcollection: terraform
+
 ---
 
 {:new_window: target="_blank"}
