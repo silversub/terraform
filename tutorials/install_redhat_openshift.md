@@ -4,6 +4,11 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-06"
 
+keywords: terraform, ansible, red hat, openshift, automate, automation, iaas
+
+subcollection: terraform
+
+
 ---
 
 {:new_window: target="_blank"}
@@ -46,7 +51,7 @@ In this tutorial, you set up Red Hat OpenShift Container Platform version 3.9 on
 - Store the `nginx` image in your internal Docker registry. 
 - Deploy the `nginx` app in your OpenShift cluster and expose this app to the public. 
 
-## Time required 
+## Time required
 {: #time}
 
 4-5 hours
@@ -394,12 +399,12 @@ Before you begin, make sure that you are logged in to the container that you cre
    <tbody>
    <tr>
    <td>Infrastructure node load balancer <code>infra-llb</code></td>
-   <td>openshift-app-XXXXX-XXXXX-<zone>.lb.bluemix.net</td>
+   <td><code>openshift-app-XXXXX-XXXXX-<zone>.lb.bluemix.net</code></td>
    <td>Infrastructure nodes</td>
    </tr>
    <tr>
    <td>Application node load balancer <code>app-llb</code></td>
-   <td>openshift-app-XXXXX-XXXXX-<zone>.lb.bluemix.net</td>
+   <td><code>openshift-app-XXXXX-XXXXX-<zone>.lb.bluemix.net</code></td>
    <td>Application nodes</td>
    </tr>
    </tbody>
@@ -596,7 +601,7 @@ For more information about the Red Hat OpenShift Container Platform components, 
       ```
       {: pre}
       
-   4. Import RPM gpg public key for Red Hat. 
+   4. Import the `gpg` public key for Red Hat by using the Red Hat Package Manager. 
       ```
       rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
       ```
@@ -605,12 +610,14 @@ For more information about the Red Hat OpenShift Container Platform components, 
    5. Register your Bastion node with the Red Hat Network. Enter the user name and password for your Red Hat account. 
       ```
       subscription-manager register --serverurl subscription.rhsm.redhat.com:443/subscription --baseurl cdn.redhat.com --username <redhat_username> --password <redhat_password>
+      
       ```
       {: pre}
       
    6. Find your OpenShift **Pool ID**. For example, the pool ID in the following example is `1a2345bcd6789098765abcde43219bc3`.
       ```
       subscription-manager list --available --matches '*OpenShift Container Platform*'
+      
       ```
       {: pre}
       
@@ -807,7 +814,7 @@ For more information about the Red Hat OpenShift Container Platform components, 
    ```
    {: pre}
    
-6. Set up users and authentication for your OpenShift cluster. The OpenShift Container Platform master includes a built-in `OAuth` server. By default, this `OAuth` server is set up to deny all authentication. To let developers and admins authenticate with the cluster, follow the steps in [Configuring access and authentication ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.6/install_config/configuring_authentication.html#install-config-configuring-authentication) to set up access for your cluster. 
+6. Set up users and authentication for your OpenShift cluster. The OpenShift Container Platform master includes a built-in `OAuth` server. By default, this `OAuth` server is set up to deny all authentication. To let developers and administrators authenticate with the cluster, follow the steps in [Configuring access and authentication ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.6/install_config/configuring_authentication.html#install-config-configuring-authentication) to set up access for your cluster. 
 
 7. Configure your Docker registry. During the creation of your cluster, an internal, integrated Docker registry is automatically set up for you. You can use the registry to build container images from your source code, deploy them, and manage their lifecycle. For more information, see [Registry Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.6/install_config/registry/index.html#install-config-registry-overview). 
 
