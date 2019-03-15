@@ -21,7 +21,7 @@ subcollection: terraform
 
 
 # Getting started with Terraform 
-{: #index}
+{: #getting-started}
 
 Terraform is an Open Source software that is developed by HashiCorp that enables predictable and consistent provisioning of {{site.data.keyword.Bluemix_notm}} resources by using a high-level scripting language. You can use Terraform to automate your {{site.data.keyword.Bluemix_notm}} resource provisioning, rapidly build complex, multi-tier cloud environments, and enable Infrastructure as Code (IaC).  
 {: shortdesc}
