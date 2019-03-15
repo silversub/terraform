@@ -5,7 +5,7 @@
 Automating cloud resource provisioning with Terraform 
 
     {: .navgroup id="learn"}
-    index.md
+    getting-started.md
     about.md
     
     {: .topicgroup}
