@@ -104,7 +104,7 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       {: screen}  
 
 2. Install the {{site.data.keyword.Bluemix_notm}} Provider plug-in. 
-   1. [Download the latest version of the {{site.data.keyword.Bluemix_notm}} Provider binary ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/IBM-Cloud/terraform-provider-ibm/releases). 
+   1. [Download the latest version of the {{site.data.keyword.Bluemix_notm}} Provider binary file ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/IBM-Cloud/terraform-provider-ibm/releases). 
    2. Create a hidden folder for your plug-in. 
       ```
       mkdir $HOME/.terraform.d/plugins
