@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-06"
+lastupdated: "2019-03-19"
 
 keywords: terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -23,38 +23,37 @@ subcollection: terraform
 # Tutorial: Deploying Red Hat OpenShift Container Platform on IBM Cloud
 {: #redhat}
 
-Use this tutorial to create a highly available Red Hat® OpenShift Container Platform 3.9 environment on IBM® Cloud infrastructure. 
+Use this tutorial to create a highly available Red Hat® OpenShift Container Platform 3.10 environment on IBM® Cloud infrastructure. 
 {: shortdesc}
 
 [Red Hat® OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.openshift.com/products/container-platform/) is built around a core of containers, with orchestration and management provided by Kubernetes, on a foundation of Atomic Host and Red Hat® Enterprise Linux. OpenShift Origin is the community distribution of Kubernetes that is optimized for continuous app development and multi-tenant deployment. The community project provides developer and operations-centric tools that are based on Kubernetes to enable rapid app development, deployment, scaling, and long-term app lifecycle maintenance. 
 
-This tutorial shows how you can set up OpenShift Container Platform 3.9 on {{site.data.keyword.Bluemix_notm}} to take advantage of the high availability capabilities of native Kubernetes and {{site.data.keyword.Bluemix_notm}} to create a highly available OpenShift Container Platform 3.9 environment. Review the following image to find an architectural overview of the infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
+This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{site.data.keyword.Bluemix_notm}} to take advantage of the high availability capabilities of native Kubernetes and {{site.data.keyword.Bluemix_notm}} to create a highly available OpenShift Container Platform 3.10 environment. Review the following image to find an architectural overview of the infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
 
 <img src="../images/infra-diagram.png" alt="Infrastructure components for the Red Hat® OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}}" width="800" style="width: 800px; border-style: none"/>
 
 When you complete this tutorial, the following infrastructure components are provisioned for you: 
 - 1 OpenShift Container Platform master node
-- 3 OpenShift Container Platform infrastructure nodes
-- 2 OpenShift Container Platform application nodes
+- 1 OpenShift Container Platform infrastructure node
+- 1 OpenShift Container Platform application node
 - 1 OpenShift Container Platform Bastion node
-- Native {{site.data.keyword.Bluemix_notm}} infrastructure services, such as VLANs, security groups, and network gateways
+- Native {{site.data.keyword.Bluemix_notm}} infrastructure services, such as VLANs and security groups
 
 ## Objectives
 {: #objectives}
 
-In this tutorial, you set up Red Hat OpenShift Container Platform version 3.9 on {{site.data.keyword.Bluemix_notm}} infrastructure and deploy your first `nginx` app in the OpenShift cluster. In particular, you will: 
+In this tutorial, you set up Red Hat OpenShift Container Platform version 3.10 on {{site.data.keyword.Bluemix_notm}} infrastructure and deploy your first `nginx` app in the OpenShift cluster. In particular, you will: 
 
 - Set up your environment and all the software that you need for your Red Hat OpenShift Container Platform installation, such as Terraform, {{site.data.keyword.Bluemix_notm}} Provider plug-in, and the Terraform OpenShift project. 
 - Configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in and define your Red Hat OpenShift Container Platform infrastructure components.
 - Provision {{site.data.keyword.Bluemix_notm}} infrastructure for your Red Hat OpenShift Container Platform components by using Terraform. 
 - Install Red Hat OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}} infrastructure. 
-- Store the `nginx` image in your internal Docker registry. 
 - Deploy the `nginx` app in your OpenShift cluster and expose this app to the public. 
 
 ## Time required
 {: #time}
 
-4-5 hours
+2-3 hours
 
 ## Audience
 {: #audience}
@@ -222,14 +221,9 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    <td>1</td>
    </tr>
    <tr>
-   <td><code>app_lbass_name</code></td>
-   <td>Enter the name of the local load balancer that you want to use to load balance incoming requests for your app nodes. </td>
-   <td><code>openshift-app</code></td>
-   </tr>
-   <tr>
    <td><code>bastion_flavor</code></td>
    <td>Enter the flavor that you want to use for your Bastion virtual machine. The Bastion host is the only ingress point for SSH in the OpenShift cluster from external entities. When you connect to the OpenShift Container Platform infrastructure, the Bastion host forwards the request to the infrastructure or app server. For more information, see [Bastion instance ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://access.redhat.com/documentation/en-us/reference_architectures/2018/html/deploying_and_managing_openshift_3.9_on_google_cloud_platform/components_and_considerations#bastion_instance) </td>
-   <td>B1_4X8X100</td>
+   <td>B1_4X16X100</td>
    </tr>
    <tr>
    <td><code>datacenter</code></td>
@@ -250,11 +244,6 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    <td><code>infra_count</code></td>
    <td>Enter the number of infrastructure nodes that you want to create. Infrastructure nodes are used to run infrastructure-related pods, such as router or registry pods. </td>
    <td>1</td>
-   </tr>
-   <tr>
-   <td><code>infra_lbass_name</code></td>
-   <td>Enter the name of the local load balancer that you want to use to load balance incoming requests for your infrastructure nodes. </td>
-   <td><code>openshift-infra</code></td>
    </tr>
    <tr>
    <td><code>master_count</code></td>
@@ -344,11 +333,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    ```
    ...
 
-   Apply complete! Resources: 47 added, 0 changed, 0 destroyed.
-   module.lbass_infra.ibm_lbass.infra_lbass: Still Creating....
-   module.lbass_app.ibm_lbass.app_lbass: Still Creating....
-   .....
-   Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
+   Apply complete! Resources: 63 added, 0 changed, 0 destroyed.
    ```
    {: screen}
    
@@ -365,7 +350,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    <tbody>
    <tr>
    <td>Master node</td>
-   <td>B1_4X8X100</td>
+   <td>B1_4X16X100</td>
    <td>Three disks that are arranged as SAN with a total capacity of 100 GB <ul><li>Disk 1: 50 GB</li><li>Disk 2: 25 GB</li><li>Disk 3: 25 GB</li></ul></td>
    </tr>
    <tr>
@@ -382,30 +367,6 @@ Before you begin, make sure that you are logged in to the container that you cre
    <td>Bastion node</td>
    <td>B1_2X2X100</td>
    <td>Two disks with the following capacity: <ul><li>Disk 1: 100 GB</li><li>Disk 2: 50 GB</li></ul></td>
-   </tr>
-   </tbody>
-   </table>
-   
-   **Load balancer**:
-   
-   A fully qualified domain name is assigned to your load balancer service instance that you can use to access your infrastructure and application nodes from the internet. 
-   
-   <table>
-   <thead>
-   <th>Resource</th>
-   <th>DNS name (OpenShift DNS)</th>
-   <th>Assigned instances</th>
-   </thead>
-   <tbody>
-   <tr>
-   <td>Infrastructure node load balancer <code>infra-llb</code></td>
-   <td><code>openshift-app-XXXXX-XXXXX-<zone>.lb.bluemix.net</code></td>
-   <td>Infrastructure nodes</td>
-   </tr>
-   <tr>
-   <td>Application node load balancer <code>app-llb</code></td>
-   <td><code>openshift-app-XXXXX-XXXXX-<zone>.lb.bluemix.net</code></td>
-   <td>Application nodes</td>
    </tr>
    </tbody>
    </table>
@@ -678,13 +639,13 @@ For more information about the Red Hat OpenShift Container Platform components, 
       ```
       {: screen}
       
-2. Finish setting up and registering the Bastion node with the Red Hat Network. The Bastion node is connected to the public VLAN and serves as the only SSH entry point for incoming requests to the cluster. To protect your cluster, the Bastion node is configured to securely download all the software images and packages that are required to perform a [disconnected installation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.6/install_config/install/disconnected_install.html) of the OpenShift Container Platform on the master, infrastructure, and application nodes during the creation. The software packages are stored in a local repository on the Bastion node that is automatically set up during the Bastion creation. The master, infrastructure, and application nodes can later access this local repository to perform the disconnected OpenShift installation. 
+2. Finish setting up and registering the nodes with the Red Hat Network. 
    ```
-   make rhn_username=<rhn_username> rhn_password=<rhn_password> pool_id=<pool_ID> bastion
+   make rhn_username=<rhn_username> rhn_password=<rhn_password> pool_id=<pool_ID> rhnregister
    ```
    {: pre}
    
-   When you create the Bastion server, the following software and Red Hat subscriptions are automatically downloaded and installed on the Bastion node for you: 
+   When you create the nodes, the following software and Red Hat subscriptions are automatically downloaded and installed on the nodes for you: 
    
    **Software packages:**
    
@@ -740,7 +701,7 @@ For more information about the Red Hat OpenShift Container Platform components, 
    </tbody>
    </table>
    
-2. Prepare the master, infrastructure, and application nodes for the OpenShift installation and perform the disconnected installation of OpenShift on the nodes.   
+2. Prepare the master, infrastructure, and application nodes for the OpenShift installation.   
    ```
    make openshift
    ```
@@ -749,38 +710,39 @@ For more information about the Red Hat OpenShift Container Platform components, 
    If the installation fails with the error `module.post_install.null_resource.post_install: error executing "/tmp/terraform_1700732344.sh": wait: remote command exited without exit status or exit signal`, go to the [{{site.data.keyword.Bluemix_notm}} infrastructure dashboard](https://cloud.ibm.com/classic), and click **Devices** > **Device List**. Then, find the affected virtual server and from the actions menu, perform a soft reboot. 
    {: tip}
    
-   1. From the [IBM Cloud infrastructure (SoftLayer) portal External link icon, click Storage.
-   
    Example output: 
    ```
    Outputs:
-
+   
    app_hostname = [
-       app-ose-f049f275fb0
+    IBM-OCP-93735f7b3d-app-0
    ]
-   app_lbass_url = openshift-app-test-1204953-mel01.lb.bluemix.net
    app_private_ip = [
-       10.118.138.40
+       10.72.12.13
    ]
-   bastion_domain = ibm.com
-   bastion_hostname = bastion-ose-f049f275fb
-   bastion_private_ip = 10.118.138.49
-   bastion_public_ip = 168.1.139.71
+   app_public_ip = [
+       158.123.12.126
+   ]
+   bastion_hostname = IBM-OCP-93735f7b3d-bastion
+   bastion_private_ip = 10.72.12.14
+   bastion_public_ip = 158.123.12.125
    infra_hostname = [
-       infra-ose-f049f275fb0
+       IBM-OCP-12345a1a2b-infra-0
    ]
-   infra_lbass_url = openshift-infra-1204953-mel01.lb.bluemix.net
    infra_private_ip = [
-       10.118.138.55
+       10.72.12.13
+   ]
+   infra_public_ip = [
+       158.123.12.123
    ]
    master_hostname = [
-       master-ose-f049f275fb
+       IBM-OCP-12345a1a2b-master-0
    ]
    master_private_ip = [
-       10.118.138.41
+       10.72.12.12
    ]
    master_public_ip = [
-    168.1.139.87
+       158.123.12.124
    ]
    ```
    {: screen}
@@ -850,16 +812,13 @@ With your OpenShift cluster up and running, you can now deploy your first app in
    ```
    {: pre}
    
-5. Deploy the app. In this example, `nginx` is deployed to your cluster and the `nginx` image is pushed to your internal Docker registry so that your infrastructure and application nodes can securely access the image over the private network. Enter the IP address and the port of your internal Docker registry.   
+5. Deploy the app. In this example, `nginx` is deployed to your cluster.
    ```
-   oc new-app --name=nginx --docker-image=<registry_ip>:<port>/<project_name>/nginx
+   oc new-app --name=nginx --docker-image=bitnami/nginx
    ```
    {: pre}
-   
-   To access an image in your private registry after the image is stored, see [Accessing the Registry ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.9/install_config/registry/accessing_registry.html). 
-   {: tip}
 
-5. Create a service for your `nginx` app to expose your app inside the cluster. 
+6. Create a service for your `nginx` app to expose your app inside the cluster. 
    ```
    oc expose svc/nginx
    ```
@@ -871,44 +830,30 @@ With your OpenShift cluster up and running, you can now deploy your first app in
    ```
    {: pre}
    
-7. Get the internal **CLUSTER-IP** and the **PORT** of your `nginx` app. 
-   ```
-   oc get services
-   ```
+7. Access your `nginx` app from the internet.  
+   1. Get the public route that was assigned to your `nginx` app. You can find the route in the **HOST/PORT** column of your CLI output. 
+      ```
+      oc get routes
+      ```
+      {: pre} 
+      
+      Example output: 
+      ```
+      NAME            HOST/PORT                                      PATH      SERVICES        PORT      TERMINATION   WILDCARD
+      nginx-example   nginx-example-new.apps.158.123.12.123.xip.io             nginx-example   <all>                   None
+      ```
+      {: screen}
    
-   Example output: 
-   ```
-   NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)              AGE
-   nginx        NodePort    172.30.89.218    <none>        31377/TCP            2h
-   ```
-   {: screen}
-   
-8. Expose your app to the public. By default, your `nginx` app is accessible from inside the cluster only. You can expose your cluster to the public by assigning a front-end port to your application node load balancer. 
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic). 
-   2. From the menu, select **Network** > **Load Balancing** > **Local** and find the application node load balancer that you created earlier. 
-   3. From the actions menu, click **View details**. 
-   4. Select the **Protocols** tab. 
-   5. Click **Add Protocol**. 
-   6. Enter the following values: 
-      - **Front-end protocols**: Select **HTTP**. 
-      - **Front-end port:** Enter the port that you want to use to publicly access your `nginx` app. You can choose any port that you want.
-      - **Back-end protocol:** Select **HTTP**. 
-      - **Back-end port:** Enter the node port of your `nginx` service that you retrieved earlier. 
-      - **Method:** Select **Round Robin**. 
-   7. Click **Save**. 
-   
-   After you save your configuration, the fully qualified domain name that is assigned to your application node load balancer and the front-end port that you entered are exposed to the public. 
-
-8. Access your `nginx` app from the internet.  
-   ```
-   http://<app_lbass_url>:<front-end-port>
-   ```
-   {: pre}
+   2. In your preferred web browser, open your app by using the public route. 
+      ```
+      http://nginx-example-new.apps.158.176.91.200.xip.io
+      ```
+      {: codeblock}
 </br>
 
 **What's next?**</br>
 Great! You successfully installed Red Hat OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}} infrastructure and deployed your first app to your OpenShift cluster. Now you can try out one of the following features:  
 
-- [Explore other features in Red Hat OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.9/welcome/index.html). 
+- [Explore other features in Red Hat OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.10/welcome/index.html). 
 - Remove your OpenShift cluster by running the `make destroy` command. 
 
