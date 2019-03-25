@@ -9,6 +9,6 @@ lastupdated: "2019-03-25"
 
 # Source files for customer-facing documentation
 
-Customer-facing documentation: https://cloud.ibm.com/docs/terraform?
+Customer-facing documentation: https://cloud.ibm.com/docs/terraform
 
 
