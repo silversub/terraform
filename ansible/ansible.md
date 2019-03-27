@@ -193,7 +193,7 @@ Use Ansible playbooks to connect to your infrastructure resources, run operation
 {: shortdesc}
 
 Before you begin: 
-- [Complete the Terraform getting started tutorial](/docs/terraform?topic=terraform-index#index) to install Terraform, configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in and provision a virtual server in {{site.data.keyword.Bluemix_notm}}. 
+- [Complete the Terraform getting started tutorial](/docs/terraform?topic=terraform-getting-started#getting-started) to install Terraform, configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in and provision a virtual server in {{site.data.keyword.Bluemix_notm}}. 
 - [Set up a VPN connection to your {{site.data.keyword.Bluemix_notm}} infrastructure resources and upload SSH keys](#setup_vpn). 
 - [Install Ansible](#install_ansible) on your local machine.
 
