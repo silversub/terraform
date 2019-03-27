@@ -158,7 +158,7 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
       {: screen}  
 
 3. Install the {{site.data.keyword.Bluemix_notm}} Provider plug-in for Terraform. 
-   1. [Download the latest version of the {{site.data.keyword.Bluemix_notm}} Provider binary ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/IBM-Cloud/terraform-provider-ibm/releases). 
+   1. [Download the latest version of the {{site.data.keyword.Bluemix_notm}} Provider binary file ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/IBM-Cloud/terraform-provider-ibm/releases). 
    2. Create a hidden folder for your plug-in. The {{site.data.keyword.Bluemix_notm}} Provider plug-in is used only by the Terraform CLI and is not meant to be accessed by the user.  
       ```
       mkdir $HOME/.terraform.d/plugins
