@@ -10,6 +10,7 @@ Automating cloud resource provisioning with Terraform
     
     {: .topicgroup}
     Tutorials
+        [Tutorial: Provision IBM Cloud resources by using the IBM Cloud Provider for Terraform](https://www.ibm.com/cloud/garage/architectures/public-cloud/public-cloud-infrastructure)
         tutorials/install_redhat_openshift.md
         tutorials/wordpress_with_terraform_and_ansible.md
         tutorials/multi_region_web_apps.md
