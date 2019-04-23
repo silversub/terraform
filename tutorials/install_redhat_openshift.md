@@ -37,6 +37,7 @@ When you complete this tutorial, the following infrastructure components are pro
 - 1 OpenShift Container Platform infrastructure node
 - 1 OpenShift Container Platform application node
 - 1 OpenShift Container Platform Bastion node
+- 3 or more GlusterFS storage nodes if you decide to set up your cluster with GlusterFS
 - Native {{site.data.keyword.Bluemix_notm}} infrastructure services, such as VLANs and security groups
 
 ## Objectives
@@ -222,7 +223,7 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    </tr>
    <tr>
    <td><code>bastion_flavor</code></td>
-   <td>Enter the flavor that you want to use for your Bastion virtual machine. The Bastion host is the only ingress point for SSH in the OpenShift cluster from external entities. When you connect to the OpenShift Container Platform infrastructure, the Bastion host forwards the request to the infrastructure or app server. For more information, see [Bastion instance ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://access.redhat.com/documentation/en-us/reference_architectures/2018/html/deploying_and_managing_openshift_3.9_on_google_cloud_platform/components_and_considerations#bastion_instance) </td>
+   <td>Enter the flavor that you want to use for your Bastion virtual machine. The Bastion host is the only ingress point for SSH in the OpenShift cluster from external entities. When you connect to the OpenShift Container Platform infrastructure, the Bastion host forwards the request to the infrastructure or app server. For more information, see [Bastion instance ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://access.redhat.com/documentation/en-us/reference_architectures/2018/html/deploying_and_managing_openshift_3.9_on_google_cloud_platform/components_and_considerations#bastion_instance). </td>
    <td>B1_4X16X100</td>
    </tr>
    <tr>
@@ -290,6 +291,16 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    <td>Enter the path to the SSH public key that you created earlier. </td>
    <td><code>~/.ssh/id_rsa.pub</code></td>
    </tr>
+   <tr>
+   <td><code>storage_count</code></td>
+   <td>Decide if you want to configure your OpenShift cluster with GlusterFS. Enter 0 to configure your OpenShift cluster without GlusterFS, and 3 or more to set up your OpenShift cluster with GlusterFS. </td>
+   <td>0</td>
+   </tr>
+   <tr>
+   <td><code>storage_flavor</code></td>
+   <td>If you configure your OpenShift cluster with GlusterFS, enter the flavor that you want to use for your storage virtual machine. Each storage node mounts 3 block storage devices that host the Red Hat Gluster Storage. You can use the combination of compute capacity and local Gluster storage to run a hyper-converged deployment where your apps are placed on the same node as the app's persistent storage. </td>
+   <td>B1_4X16X100</td>
+   </tr>   
    <tr>
    <td><code>subnet_size</code></td>
    <td>Enter the number of subnets that you want to be able to create with your public and private VLAN. This value is required only if you decide to create a new private and public VLAN pair. </td>
@@ -368,6 +379,10 @@ Before you begin, make sure that you are logged in to the container that you cre
    <td>B1_2X2X100</td>
    <td>Two disks with the following capacity: <ul><li>Disk 1: 100 GB</li><li>Disk 2: 50 GB</li></ul></td>
    </tr>
+   <tr>
+   <td>Storage nodes</td>
+   <td>B1_4X16X100</td>
+   <td>Two disks with the following capacity: <ul><li>Disk 1: 100GB</li><li>Disk 2: 50GB </li><ul>
    </tbody>
    </table>
    
