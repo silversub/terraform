@@ -219,20 +219,16 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
    
    Your API key is displayed in the **API Key** section of your CLI output. 
       
-5. Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key. 
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic).
-   2. From the menu ![Menu icon](../../icons/icon_hamburger.svg "Menu icon"), select **Infrastructure**.
-   3. From the menu bar, select **Account** > **Users** > **User List**.
-   4. Find the user whose user name and API key you want to retrieve. 
-   5. Click **Generate** to generate an API key or **View** to view your existing API key. A pop-up window opens that shows the infrastructure user name and API key. 
-5. Copy the Terraform configuration files to create your WordPress infrastructure from the {{site.data.keyword.Bluemix_notm}} Terraform Provider package to your Terraform project directory. 
+5. [Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). 
+   
+6. Copy the Terraform configuration files to create your WordPress infrastructure from the {{site.data.keyword.Bluemix_notm}} Terraform Provider package to your Terraform project directory. 
   1. Copy the Terraform configuration files to create your WordPress infrastructure from the {{site.data.keyword.Bluemix_notm}} Terraform Provider package.
    ```
    mv /terraform-provider-ibm/examples/ibm-website-multi-region/* <terraform_project_path>
    ```
    {: pre}
   
-6. Configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in. 
+7. Configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in. 
    1. Navigate into your Terraform project directory and 
       ```
       cd <terraform_project_path> && nano terraform.tfvars
