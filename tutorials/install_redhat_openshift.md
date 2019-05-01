@@ -327,13 +327,8 @@ Now that you prepared your environment, you can go ahead and provision {{site.da
 
 Before you begin, make sure that you are logged in to the container that you created in the previous lesson. 
 
-1. Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key.
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com). 
-   2. From the menu bar, select **Manage > Access (IAM)**. 
-   3. Select the **Users** tab and then click on your user name. 
-   4. In the **API keys** pane, find the entry **Classic infrastructure API key** and click the **Action menu** ![Action menu icon](../../icons/action-menu-icon.svg "Action menu icon") **> Details**. If you do not see a classic infrastructure API key, generate one by clicking **Create an {{site.data.keyword.Bluemix_notm}} API key**. 
-   5. Copy the API key and infrastructure user name.
-
+1. [Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key](/docs/iam?topic=iam-classic_keys).
+  
 2. From the OpenShift installation directory `/go/bin/terraform-ibm-openshift` inside your container, create the {{site.data.keyword.Bluemix_notm}} infrastructure components for your Red Hat OpenShift cluster. When you run the command, Terraform evaluates what components must be provisioned and presents an execution plan. You must confirm that you want to provision the infrastructure resources by entering **yes`**. During the provisioning, Terraform creates another execution plan that you must approve to continue. When prompted, enter the infrastructure user name and API key that you retrieved earlier. The provisioning of your resources takes about 40 minutes.  
    ```
    make infrastructure
