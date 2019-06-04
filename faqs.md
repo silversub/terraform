@@ -32,7 +32,7 @@ The Terraform `ibm_compute_vm_instance` resource includes optional and mandatory
 
 1. Install the [{{site.data.keyword.Bluemix_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli#install-ibmcloud-cli). 
 
-2. List supported configuration options for virtual servers in {{site.data.keyword.Bluemix_notm}}. The listed options include available data centers, machine flavors, cpu, memory, operating systems, local disk and SAN disk sizes, and network interface controllers (nic). {{site.data.keyword.Bluemix_notm}} offers multiple virtual server offerings that each come with a specific configuration. The configuration of an offering is optimized for a specific workload need, such as high performance, or real-time analytics. For more information see [Public Virtual Servers](/docs/vsi?topic=virtual-servers-about-public-virtual-servers#about-public-virtual-servers). 
+2. List supported configuration options for virtual servers in {{site.data.keyword.Bluemix_notm}}. The listed options include available data centers, machine flavors, cpu, memory, operating systems, local disk and SAN disk sizes, and network interface controllers (nic). {{site.data.keyword.Bluemix_notm}} offers multiple virtual server offerings that each come with a specific configuration. The configuration of an offering is optimized for a specific workload need, such as high performance, or real-time analytics. For more information, see [Public Virtual Servers](/docs/vsi?topic=virtual-servers-about-public-virtual-servers#about-public-virtual-servers). 
    ```
    ibmcloud sl vs options
    ```
@@ -43,7 +43,7 @@ The Terraform `ibm_compute_vm_instance` resource includes optional and mandatory
 {: #provisioning_times}
 {: faq}
 
-Most {{site.data.keyword.Bluemix_notm}} platform resources provision within a few seconds. Infrastructure resources, including bare metal servers, virtual servers and {{site.data.keyword.Bluemix_notm}} Load Balancers can take longer. When you run the `terraform apply` or `terraform destroy` command, the command might take a few minutes to complete and you are not able to enter a different command during that time. The `terraform apply` command returns when your resources are fully provisioned, whereas the `terraform destroy` command might return before your resources are deleted from your {{site.data.keyword.Bluemix_notm}} platform or infrastructure portfolio. 
+Most {{site.data.keyword.Bluemix_notm}} platform resources provision within a few seconds. Infrastructure resources, including bare metal servers, virtual servers, and {{site.data.keyword.Bluemix_notm}} Load Balancers can take longer. When you run the `terraform apply` or `terraform destroy` command, the command might take a few minutes to complete and you are not able to enter a different command during that time. The `terraform apply` command returns when your resources are fully provisioned, whereas the `terraform destroy` command might return before your resources are deleted from your {{site.data.keyword.Bluemix_notm}} platform or infrastructure portfolio. 
 
 Use the `terraform apply` and `terraform destroy` times in the following table as a reference for when you can expect your commands to complete. 
 
@@ -75,8 +75,8 @@ If the Terraform operation does not complete due to a timeout, wait for the reso
 </tr>
 <tr>
 <td>Bare metal servers</td>
-<td>Up to a few hours depending on the configuration</td>
-<td>Up to a few hours depending on the configuration</td>
+<td>Up to a few hours</td>
+<td>Up to a few hours</td>
 </tr>
 </tbody>
 </table>
