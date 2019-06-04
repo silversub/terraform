@@ -28,7 +28,7 @@ Use this tutorial to create a highly available Red Hat® OpenShift Container Pla
 
 [Red Hat® OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.openshift.com/products/container-platform/) is built around a core of containers, with orchestration and management provided by Kubernetes, on a foundation of Atomic Host and Red Hat® Enterprise Linux. OpenShift Origin is the community distribution of Kubernetes that is optimized for continuous app development and multi-tenant deployment. The community project provides developer and operations-centric tools that are based on Kubernetes to enable rapid app development, deployment, scaling, and long-term app lifecycle maintenance. 
 
-This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{site.data.keyword.Bluemix_notm}} to take advantage of the high availability capabilities of native Kubernetes and {{site.data.keyword.Bluemix_notm}} to create a highly available OpenShift Container Platform 3.10 environment. Review the following image to find an architectural overview of the infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
+This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{site.data.keyword.Bluemix_notm}} to try out the high availability capabilities of native Kubernetes and {{site.data.keyword.Bluemix_notm}}. Review the following image to find an architectural overview of the infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
 
 <img src="../images/infra-diagram.png" alt="Infrastructure components for the Red Hat® OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}}" width="800" style="width: 800px; border-style: none"/>
 
@@ -54,12 +54,12 @@ In this tutorial, you set up Red Hat OpenShift Container Platform version 3.10 o
 ## Time required
 {: #time}
 
-2-3 hours
+2 - 3 hours
 
 ## Audience
 {: #audience}
 
-This tutorial is intended for network administrators who want to deploy Red Hat OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}} and for software developers who want to create their first app in the OpenShift cluster. 
+This tutorial is intended for network administrators who want to deploy Red Hat OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}}. 
 
 ## Prerequisites
 {: #prerequisites}
@@ -293,12 +293,12 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    </tr>
    <tr>
    <td><code>storage_count</code></td>
-   <td>Decide if you want to configure your OpenShift cluster with GlusterFS. Enter 0 to configure your OpenShift cluster without GlusterFS, and 3 or more to set up your OpenShift cluster with GlusterFS. </td>
+   <td>Decide whether you want to configure your OpenShift cluster with GlusterFS. Enter 0 to configure your OpenShift cluster without GlusterFS, and 3 or more to set up your OpenShift cluster with GlusterFS. </td>
    <td>0</td>
    </tr>
    <tr>
    <td><code>storage_flavor</code></td>
-   <td>If you configure your OpenShift cluster with GlusterFS, enter the flavor that you want to use for your storage virtual machine. Each storage node mounts 3 block storage devices that host the Red Hat Gluster Storage. You can use the combination of compute capacity and local Gluster storage to run a hyper-converged deployment where your apps are placed on the same node as the app's persistent storage. </td>
+   <td>If you configure your OpenShift cluster with GlusterFS, enter the flavor that you want to use for your storage virtual machine. Each storage node mounts three block storage devices that host the Red Hat Gluster Storage. You can use the combination of compute capacity and local Gluster storage to run a hyper-converged deployment where your apps are placed on the same node as the app's persistent storage. </td>
    <td>B1_4X16X100</td>
    </tr>   
    <tr>
@@ -377,7 +377,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    <tr>
    <td>Storage nodes</td>
    <td>B1_4X16X100</td>
-   <td>Two disks with the following capacity: <ul><li>Disk 1: 100GB</li><li>Disk 2: 50GB </li><ul>
+   <td>Two disks with the following capacity: <ul><li>Disk 1: 100 GB</li><li>Disk 2: 50 GB </li><ul>
    </tbody>
    </table>
    
