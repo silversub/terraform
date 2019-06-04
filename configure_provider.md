@@ -90,7 +90,7 @@ To prepare your credentials:
    ```
    {: pre}
 
-2. Create a Terraform configuration file that is named `terraform.tfvars` to store the credentials that you retrieved. Variables defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized. 
+2. Create a Terraform configuration file that is named `terraform.tfvars` to store the credentials that you retrieved. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized. 
    ```
    softlayer_username = "<infrastructure_username>"
    softlayer_api_key = "<infrasturcture_apikey>"
