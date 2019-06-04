@@ -25,11 +25,12 @@ Automating cloud resource provisioning with Terraform
     
     {: .navgroup id="reference"}
     [IBM Cloud Provider reference](https://ibm-cloud.github.io/tf-ibm-docs/)
+    [Terraform documentation](https://www.terraform.io/docs/)
     [Terraform CLI reference](https://www.terraform.io/docs/commands/index.html)
+    [Architecture reference: Highly available, secured, and managed Kubernetes environment](https://github.com/ibm-cloud-architecture/refarch-public-iaas-iks)
     {: .navgroup-end}
     
     {: .navgroup id="help"}
     faqs.md
     terraform_ts_index.md
-    rellinks.md
     {: .navgroup-end}
