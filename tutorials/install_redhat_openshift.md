@@ -389,8 +389,8 @@ Before you begin, make sure that you are logged in to the container that you cre
    - The Bastion server is connected to both the public and the private VLAN.
    - All OpenShift nodes (master, infrastructure, and app nodes) are connected to a private VLAN only. 
    
-   |---|---|---|---|---|
    |VLAN|Inbound/ outbound|Port|From|To|
+   |---|---|---|---|---|
    |Public|Inbound|22/ TCP|Internet gateway|-|
    |Private|Outbound|All|-|All|
    {: caption="Table 1. Settings for security group `ose_bastion_sg`" caption-side="top"}
@@ -398,8 +398,8 @@ Before you begin, make sure that you are logged in to the container that you cre
    {: #ose-bastion-sg} 
    {: tab-title="`ose_bastion_sg"}
    
-   |---|---|---|---|---|
    |VLAN|Inbound/ outbound|Port|From|To|
+   |---|---|---|---|---|
    |Private|Inbound|443/ TCP|Internet gateway|-|
    |Private|Inbound|80|Internet gateway|-|
    |Private|Inbound|22/ TCP|`ose_bastion_sg`|-|
@@ -414,8 +414,8 @@ Before you begin, make sure that you are logged in to the container that you cre
    {: #ose-master-sg} 
    {: tab-title="`ose_master_sg"}
    
-   |---|---|---|---|---|
    |VLAN|Inbound/ outbound|Port|From|To|
+   |---|---|---|---|---|
    |Private|Inbound|443/ TCP|`ose_bastion_sg`|-|
    |Private|Inbound|22/ TCP|`ose_bastion_sg`|-|
    |Private|Inbound|10250/ TCP|`ose_master_sg` and `ose_node_sg`|-|
