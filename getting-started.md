@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
-keywords: terraform quickstart, terraform getting started, terraform tutorial
+keywords: Terraform quickstart, Terraform getting started, Terraform tutorial
 
 subcollection: terraform
 
