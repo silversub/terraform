@@ -389,146 +389,42 @@ Before you begin, make sure that you are logged in to the container that you cre
    - The Bastion server is connected to both the public and the private VLAN.
    - All OpenShift nodes (master, infrastructure, and app nodes) are connected to a private VLAN only. 
    
-   <table>
-   <thead>
-   <th>Group</th>
-   <th>VLAN</th>
-   <th>Inbound/ outbound</th>
-   <th>Port</th>
-   <th>From</th>
-   <th>To</th>
-   </thead>
-   <tbody>
-   <tr>
-   <td><code>ose_bastion_sq</code></td>
-   <td>Public</td>
-   <td>Inbound</td>
-   <td>22/ TCP</td>
-   <td>Internet gateway</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_bastion_sq</code></td>
-   <td>Private</td>
-   <td>Outbound</td>
-   <td>All</td>
-   <td>-</td>
-   <td>All</td>
-   </tr>
-   <tr>
-   <td><code>ose_master_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>443/ TCP</td>
-   <td>Internet gateway</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_master_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>80/ TCP</td>
-   <td>Internet gateway</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_master_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>22/ TCP</td>
-   <td>ose_bastion_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_master_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>443/ TCP</td>
-   <td>ose_master_sg & ose_node_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_master_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>8053/ TCP</td>
-   <td>ose_node_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_master_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>8053/ UDP</td>
-   <td>ose_node_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_master_sg</code></td>
-   <td>Private</td>
-   <td>Outbound</td>
-   <td>All</td>
-   <td>-</td>
-   <td>All</td>
-   </tr>
-   <tr>
-   <td><code>ose_master_sg (for etcd)</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>2379/ TCP</td>
-   <td>ose_master_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_master_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>2380/ TCP</td>
-   <td>ose_master_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_node_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>443/ TCP</td>
-   <td>ose_bastion_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_node_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>22/ TCP</td>
-   <td>ose_bastion_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_node_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>10250/ TCP</td>
-   <td>ose_master_sg & ose_node_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_node_sg</code></td>
-   <td>Private</td>
-   <td>Inbound</td>
-   <td>4789/ TCP</td>
-   <td>ose_node_sg</td>
-   <td>-</td>
-   </tr>
-   <tr>
-   <td><code>ose_node_sg</code></td>
-   <td>Private</td>
-   <td>Outbound</td>
-   <td>All</td>
-   <td>-</td>
-   <td>All</td>
-   </tr>
-   </tbody>
-   </table>
+   |---|---|---|---|---|
+   |VLAN|Inbound/ outbound|Port|From|To|
+   |Public|Inbound|22/ TCP|Internet gateway|-|
+   |Private|Outbound|All|-|All|
+   {: caption="Table 1. Settings for security group `ose_bastion_sg`" caption-side="top"}
+   {: tab-group="terraform-os-securitygroup"}
+   {: #ose-bastion-sg} 
+   {: tab-title="`ose_bastion_sg"}
+   
+   |---|---|---|---|---|
+   |VLAN|Inbound/ outbound|Port|From|To|
+   |Private|Inbound|443/ TCP|Internet gateway|-|
+   |Private|Inbound|80|Internet gateway|-|
+   |Private|Inbound|22/ TCP|`ose_bastion_sg`|-|
+   |Private|Inbound|443/ TCP|`ose_master_sg` and `ose_node_sg`|-|
+   |Private|Inbound|8053/ TCP|`ose_node_sg`|-|
+   |Private|Inbound|8053/ UDP|`ose_node_sg`|-|
+   |Private|Outbound|All|-|All|
+   |Private|Inbound|2379/ TCP|`ose_master_sg`|-|
+   |Private|Inbound|2380/ TCP|`ose_master_sg`|-|
+   {: caption="Table 1. Settings for security group `ose_master_sg`" caption-side="top"}
+   {: tab-group="terraform-os-securitygroup"}
+   {: #ose-master-sg} 
+   {: tab-title="`ose_master_sg"}
+   
+   |---|---|---|---|---|
+   |VLAN|Inbound/ outbound|Port|From|To|
+   |Private|Inbound|443/ TCP|`ose_bastion_sg`|-|
+   |Private|Inbound|22/ TCP|`ose_bastion_sg`|-|
+   |Private|Inbound|10250/ TCP|`ose_master_sg` and `ose_node_sg`|-|
+   |Private|Inbound|4789/ TCP|`ose_node_sg`|-|
+   |Private|Outbound|All|-|All|
+   {: caption="Table 1. Settings for security group `ose_node_sg`" caption-side="top"}
+   {: tab-group="terraform-os-securitygroup"}
+   {: #ose-bnode-sg} 
+   {: tab-title="`ose_node_sg"}
    
 3. Validate your deployment.  
    ```
