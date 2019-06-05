@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-19"
 
-keywords: terraform, ansible, red hat, openshift, automate, automation, iaas
+keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
 subcollection: terraform
 
@@ -33,7 +33,7 @@ This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{si
 <img src="../images/infra-diagram.png" alt="Infrastructure components for the Red Hat® OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}}" width="800" style="width: 800px; border-style: none"/>
 
 When you complete this tutorial, the following infrastructure components are provisioned for you: 
-- 1 OpenShift Container Platform master node
+- 1 OpenShift Container Platform master node 
 - 1 OpenShift Container Platform infrastructure node
 - 1 OpenShift Container Platform application node
 - 1 OpenShift Container Platform Bastion node

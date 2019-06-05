@@ -3,7 +3,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
-keywords: terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
+keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
 subcollection: terraform
 
@@ -22,16 +22,16 @@ subcollection: terraform
 # Tutorial: Deploying WordPress in a highly available, cross-region web site architecture with Terraform and Ansible  
 {: #multi_region}
 
-Use this tutorial to provision a highly available web site architecture across multiple regions on {{site.data.keyword.Bluemix}} with Terraform. Then, deploy a single instance of WordPress and replicate WordPress across the two regions to explore the security and resiliency features of {{site.data.keyword.Bluemix_notm}} Security Groups, DNS, Web Application Firewall (WAF), global and local load balancers. With this setup, you can create a resilient, secure and scalable web environment with highly available web sites that use custom DNS domain names. Terraform and Ansible are loosely integrated through the sharing of inventory information.
+Use this tutorial to provision a highly available web site architecture across multiple regions on {{site.data.keyword.Bluemix}} with Terraform. Then, deploy a single instance of WordPress and replicate WordPress across the two regions to explore the security and resiliency features of {{site.data.keyword.Bluemix_notm}} Security Groups, DNS, Web Application Firewall (WAF), global and local load balancers. With this setup, you can create a resilient, secure, and scalable web environment with highly available web sites that use custom DNS domain names. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 {: shortdesc}
  
 ## Solution overview
 {: #overview}
 
 The following image shows the infrastructure and software components of the highly available web site architecture that you provision as part of this tutorial. 
-The basic web site architecture that is used in [Tutorial: Deploying WordPress on {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and Ansible](/docs/terraform/tutorials?topic=terraform-deploy_wordpress#deploy_wordpress) is deployed into each {{site.data.keyword.Bluemix_notm}} region. To balance the workload between the two regions, an {{site.data.keyword.Bluemix_notm}} Internet Services Load Balancer with a user-specified domain is deployed into your {{site.data.keyword.Bluemix_notm}} account and configured with a health check. The health check performs tests for each region to determine if a region is available to receive network traffic. If one region becomes unavailable due to a network, app, or infrastructure failure, the health check determines this event and stops sending network traffic to the unavailable region.
+The basic web site architecture that is used in [Tutorial: Deploying WordPress on {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and Ansible](/docs/terraform/tutorials?topic=terraform-deploy_wordpress#deploy_wordpress) is deployed into each {{site.data.keyword.Bluemix_notm}} region. To balance the workload between the two regions, an {{site.data.keyword.Bluemix_notm}} Internet Services Load Balancer with a user-specified domain is deployed into your {{site.data.keyword.Bluemix_notm}} account and configured with a health check. The health check performs tests for each region to determine whether a region is available to receive network traffic. If one region becomes unavailable due to a network, app, or infrastructure failure, the health check determines this event and stops sending network traffic to the unavailable region.
 
-{{site.data.keyword.Bluemix_notm}} Security Groups extend across regions and are used to secure all Apache web servers and the two MariaDB instances. The security groups provide secure outbound access to the open source repositories for Apache, MariaDB and WordPress. At the same time, the security groups deny all inbound internet traffic except via the {{site.data.keyword.Bluemix_notm}} Load Balancers. To secure your environment, the communication between the WordPress instances and the MariaDB databases is limited to the private network and is allowed on the MariaDB ports only.
+{{site.data.keyword.Bluemix_notm}} Security Groups extend across regions and are used to secure all Apache web servers and the two MariaDB instances. The security groups provide secure outbound access to the open source repositories for Apache, MariaDB, and WordPress. At the same time, the security groups deny all inbound internet traffic except via the {{site.data.keyword.Bluemix_notm}} Load Balancers. To secure your environment, the communication between the WordPress instances and the MariaDB databases is limited to the private network and is allowed on the MariaDB ports only.
 
 The Ansible playbooks install multiple WordPress instances on Apache web servers and set up a replicated MariaDB database on {{site.data.keyword.Bluemix_notm}} Virtual Servers. To keep both MariaDB database instances in sync, a master-master replication between the two regions is set up on the private {{site.data.keyword.Bluemix_notm}} network. 
 
@@ -49,7 +49,7 @@ The following {{site.data.keyword.Bluemix_notm}} resources are provisioned for y
 <tr>
 <td>Terraform</td>
 <td><ul>
-  <li>6 {{site.data.keyword.Bluemix_notm}} Virtual Servers that run CentOS 7.x; 4 {{site.data.keyword.Bluemix_notm}} Virtual Servers are used for the WordPress Apache web servers, 2 are used for the WordPress MariaDB database</li><li>2 {{site.data.keyword.Bluemix_notm}} Security Groups to secure your WordPress Apache web servers and the MariaDB instances</li><li>2 {{site.data.keyword.Bluemix_notm}} CloudInit templates</li><li>2 {{site.data.keyword.Bluemix_notm}} Load Balancers, one load balancer for each data center to balance workload between the WordPress Apache web servers</li><li>1 {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer to connect the two regions</li><li>2 {{site.data.keyword.Bluemix_notm}} Internet Services origin pools</li><li>1 {{site.data.keyword.Bluemix_notm}} Internet Services health check to check if the regions are available to receive workloads</li><li>{{site.data.keyword.Bluemix_notm}} DNS Registration and domain name servers for your custom domain</li><li>1 {{site.data.keyword.Bluemix_notm}} Internet Services DNS record</li><li>1 {{site.data.keyword.Bluemix_notm}} Internet Services Web Application Firewall with DDoS protection</li></ul></td>
+  <li>6 {{site.data.keyword.Bluemix_notm}} Virtual Servers that run CentOS 7.x; 4 {{site.data.keyword.Bluemix_notm}} Virtual Servers are used for the WordPress Apache web servers, 2 are used for the WordPress MariaDB database</li><li>2 {{site.data.keyword.Bluemix_notm}} Security Groups to secure your WordPress Apache web servers and the MariaDB instances</li><li>2 {{site.data.keyword.Bluemix_notm}} CloudInit templates</li><li>2 {{site.data.keyword.Bluemix_notm}} Load Balancers, one load balancer for each data center to balance workload between the WordPress Apache web servers</li><li>1 {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer to connect the two regions</li><li>2 {{site.data.keyword.Bluemix_notm}} Internet Services origin pools</li><li>1 {{site.data.keyword.Bluemix_notm}} Internet Services health check to check whether the regions are available to receive workloads</li><li>{{site.data.keyword.Bluemix_notm}} DNS Registration and domain name servers for your custom domain</li><li>1 {{site.data.keyword.Bluemix_notm}} Internet Services DNS record</li><li>1 {{site.data.keyword.Bluemix_notm}} Internet Services Web Application Firewall with DDoS protection</li></ul></td>
 </tr>
 <tr>
 <td>Ansible</td>
@@ -57,7 +57,7 @@ The following {{site.data.keyword.Bluemix_notm}} resources are provisioned for y
   <li>4 Apache (HTTPD) app servers for your WordPress instances</li>
   <li>4 WordPress installations</li>
   <li>2 MariaDB database servers for your WordPress database and the database replication</li>
-  <li>1 MariaDB master-master database replication to keep the databases in both data centers in sync at all times</li>
+  <li>1 MariaDB master-master database replication to keep the databases in both data centers in sync</li>
   <li>1 WordPress database instance</li>
   <li>Automated WordPress configuration via CLI</li>
 </ul></td>
@@ -65,7 +65,7 @@ The following {{site.data.keyword.Bluemix_notm}} resources are provisioned for y
 </tbody>
 </table>
 
-This tutorial intends to demonstrate the capability of building secure, resilient, highly available and scalable websites on {{site.data.keyword.Bluemix_notm}} infrastructure with cross-region networking. However, the tutorial does not intend to provide a fully operational WordPress deployment. To run this tutorial, infrastructure costs incur for the virtual servers, load balancers, and the custom DNS domain name. The cost for the DNS domain name is fixed and depends on the domain name that you register and the duration that you request. The costs for your infrastructure resources depend on the number of hours or days that the infrastructure resources are provisioned for you. To cancel the billing for your resources, you must remove your infrastructure resources. 
+This tutorial intends to demonstrate the capability of building secure, resilient, highly available, and scalable websites on {{site.data.keyword.Bluemix_notm}} infrastructure with cross-region networking. However, the tutorial does not intend to provide a fully operational WordPress deployment. To run this tutorial, infrastructure costs incur for the virtual servers, load balancers, and the custom DNS domain name. The cost for the DNS domain name is fixed and depends on the domain name that you register and the duration that you request. The costs for your infrastructure resources depend on the number of hours or days that the infrastructure resources are provisioned for you. To cancel the billing for your resources, you must remove your infrastructure resources. 
 {: important}
 
 ## Objectives
@@ -94,8 +94,8 @@ This tutorial is intended for network administrators, software developers, and a
 {: #prerequisites_multi_region}
 - If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic/services/domains). 
 - [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-ansible#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} infrastructure resources over the private network. 
-- If you do not have an existing DNS domain registered with IBM Cloud, register one with the {{site.data.keyword.Bluemix_notm}} Domain Registration service. For more information about how to register a new domain, see [Register a New Domain](/docs/infrastructure/dns?topic=dns-register-a-new-domain#register-a-new-domain). To transfer an existing domain to {{site.data.keyword.Bluemix_notm}}, see [Transfer an Existing Domain to {{site.data.keyword.Bluemix_notm}}](/docs/infrastructure/dns?topic=dns-transfer-an-existing-domain-to-ibm-cloud#transfer-an-existing-domain-to-ibm-cloud). 
-- If you already completed the [Tutorial: Deploying WordPress on {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and Ansible](/docs/terraform/tutorials?topic=terraform-deploy_wordpress#deploy_wordpress), you can re-use the Terraform and Ansible installations. 
+- If you do not have an existing DNS domain that is registered with IBM Cloud, register one with the {{site.data.keyword.Bluemix_notm}} Domain Registration service. For more information about how to register a new domain, see [Register a New Domain](/docs/infrastructure/dns?topic=dns-register-a-new-domain#register-a-new-domain). To transfer an existing domain to {{site.data.keyword.Bluemix_notm}}, see [Transfer an Existing Domain to {{site.data.keyword.Bluemix_notm}}](/docs/infrastructure/dns?topic=dns-transfer-an-existing-domain-to-ibm-cloud#transfer-an-existing-domain-to-ibm-cloud). 
+- If you already completed the [Tutorial: Deploying WordPress on {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and Ansible](/docs/terraform/tutorials?topic=terraform-deploy_wordpress#deploy_wordpress), you can reuse the Terraform and Ansible installations. 
   1. Remove the old Terraform `tf` configuration files from your Terraform project directory and follow step 1 and 6 in [Lesson 1](#setup_terraform) to copy the new Terraform configuration files into your project directory.
   2. Follow [Lesson 3](#provision_terraform_infrastructure) to provision the {{site.data.keyword.Bluemix_notm}} infrastructure. 
   3. After the infrastructure is deployed, follow step 5 in [Lesson 4](#create_ansible_inventory) to update your Ansible infrastructure inventory. 
@@ -313,7 +313,7 @@ Great! Now that you completed the setup of Terraform and Ansible, you can start 
    
 ## Lesson 3: Provisioning the WordPress infrastructure with Terraform
 {: #provision_terraform_infrastructure}
-In this lesson, you deploy the virtual server instances, the {{site.data.keyword.Bluemix_notm}} load balancers, an {{site.data.keyword.Bluemix_notm}} Internet Services instance, a global load balancer and origin pools that you need for your WordPress app. 
+In this lesson, you deploy the virtual server instances, the {{site.data.keyword.Bluemix_notm}} load balancers, an {{site.data.keyword.Bluemix_notm}} Internet Services instance, a global load balancer, and origin pools that you need for your WordPress app. 
 {: shortdesc}
 1. In your Terraform project directory, update the `variables.tf` file. 
    1. Navigate into your Terraform project directory and edit the `variables.tf` file.
@@ -350,7 +350,7 @@ In this lesson, you deploy the virtual server instances, the {{site.data.keyword
       ```
       {: codeblock}
       
-2. Review the content of the Terraform `tf` files. The resources that are deployed in this tutorial are spread across a number of files depending on the function that they perform. You can find the {{site.data.keyword.Bluemix_notm}} Internet Services resources in the `dns.tf` file. Information about {{site.data.keyword.Bluemix_notm}} Security Groups are found in the `network.tf` file and the {{site.data.keyword.Bluemix_notm}} Virtual Server and CloudInit resources are included in the `main.tf`file. For more information about each resource and the resource configuration, see the [{{site.data.keyword.Bluemix_notm}} Provider documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
+2. Review the content of the Terraform `tf` files. The resources that are deployed in this tutorial are spread across a number of files depending on the function that they perform. You can find the {{site.data.keyword.Bluemix_notm}} Internet Services resources in the `dns.tf` file. Information about {{site.data.keyword.Bluemix_notm}} Security Groups is found in the `network.tf` file and the {{site.data.keyword.Bluemix_notm}} Virtual Server and CloudInit resources are included in the `main.tf`file. For more information about each resource and the resource configuration, see the [{{site.data.keyword.Bluemix_notm}} Provider documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
 
 3. Deploy the {{site.data.keyword.Bluemix_notm}} infrastructure. 
    1. Instruct Terraform to deploy the infrastructure. Terraform parses the configuration files, creates an execution plan, and lists a summary of the resources that must be created. 
@@ -539,7 +539,7 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.Bluemix_notm}} in
       ```
       {: codeblock}
       
-   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the inital setup dialog by using the WordPress CLI. During the setup, Ansible automatically retrieves the **web_dns_name** of the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer using the Terraform inventory integration and uses the domain name to configure the WordPress site. 
+   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the initial setup dialog by using the WordPress CLI. During the setup, Ansible automatically retrieves the **web_dns_name** of the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer by using the Terraform inventory integration and uses the domain name to configure the WordPress site. 
       ```
       ansible-playbook -i inventory wp_site_setup.yml
       ```
@@ -584,7 +584,7 @@ With your WordPress app up and running, explore the failover capabilities of you
 With your WordPress app up and running, you can now experiment with what happens if one or more {{site.data.keyword.Bluemix_notm}} Virtual Server instances become unavailable. 
 {: shortdesc}
 
-1. Shutdown one {{site.data.keyword.Bluemix_notm}} Virtual Server instance where WordPress is deployed and observe the status change of the  {{site.data.keyword.Bluemix_notm}} Load Balancers and the availability of the web site. 
+1. Shut down one {{site.data.keyword.Bluemix_notm}} Virtual Server instance where WordPress is deployed and observe the status change of the  {{site.data.keyword.Bluemix_notm}} Load Balancers and the availability of the web site. 
    1. Open the [Infrastructure console](https://cloud.ibm.com/classic/devices). 
    2. Select **Devices** > **Device List**. A list of your {{site.data.keyword.Bluemix_notm}} Virtual Server instances is shown. 
    3. Find the `app101` {{site.data.keyword.Bluemix_notm}} Virtual Server instance and select **Power On/Off** from the **Actions** menu.
@@ -604,7 +604,7 @@ With your WordPress app up and running, you can now experiment with what happens
    ```
    {: codeblock}
    
-5. Shutdown a second {{site.data.keyword.Bluemix_notm}} Virtual Server instance where WordPress is deployed and observe the status change of the {{site.data.keyword.Bluemix_notm}} Load Balancers and the availability of the web site.
+5. Shut down a second {{site.data.keyword.Bluemix_notm}} Virtual Server instance where WordPress is deployed and observe the status change of the {{site.data.keyword.Bluemix_notm}} Load Balancers and the availability of the web site.
    1. From the [Infrastructure console](https://cloud.ibm.com/classic/devices), select **Devices** > **Device List**. A list of your {{site.data.keyword.Bluemix_notm}} Virtual Server instances is shown. 
    3. Find the `app102` {{site.data.keyword.Bluemix_notm}} Virtual Server instance and select **Power On/Off** from the **Actions** menu.
 
@@ -623,7 +623,7 @@ With your WordPress app up and running, you can now experiment with what happens
    ```
    {: codeblock}  
 
-9. Shutdown the {{site.data.keyword.Bluemix_notm}} Virtual Server instance in the second data center where MariaDB is deployed and observe the status change of the {{site.data.keyword.Bluemix_notm}} Load Balancers and the availability of the web site. 
+9. Shut down the {{site.data.keyword.Bluemix_notm}} Virtual Server instance in the second data center where MariaDB is deployed and observe the status change of the {{site.data.keyword.Bluemix_notm}} Load Balancers and the availability of the web site. 
    1. From the [Infrastructure console](https://cloud.ibm.com/classic/devices), select **Devices** > **Device List**. A list of your {{site.data.keyword.Bluemix_notm}} Virtual Server instances is shown. 
    3. Find the `db201` {{site.data.keyword.Bluemix_notm}} Virtual Server instance and select **Power On/Off** from the **Actions** menu.
 

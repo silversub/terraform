@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
-keywords: terraform, ibm cloud terraform, ibm cloud provider plugin for terraform, softlayer, iaas
+keywords: Terraform, ibm cloud Terraform, ibm cloud provider plugin for Terraform, softlayer, iaas
 
 subcollection: terraform
 
@@ -24,7 +24,7 @@ subcollection: terraform
 
 Terraform uses the {{site.data.keyword.Bluemix_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.Bluemix_notm}} REST API. To securely access {{site.data.keyword.Bluemix_notm}}, you must configure your {{site.data.keyword.Bluemix_notm}} Provider plug-in to use your {{site.data.keyword.Bluemix_notm}} credentials for authentication.
 
-## Retrieving your IBM Cloud credentials
+## Retrieving your IBM Cloud credentials 
 {: #retrieve_credentials}
 
 Before you can configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in, you must retrieve your {{site.data.keyword.Bluemix_notm}} platform and infrastructure credentials. 
@@ -64,12 +64,7 @@ The credentials that you need depend on the type of resource that you want to pr
    ```
    {: pre}
       
-3. To provision infrastructure resources such as virtual servers or Kubernetes clusters, retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key. 
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic).
-   2. From the menu ![Menu icon](../icons/icon_hamburger.svg "Menu icon"), select **Infrastructure**.
-   3. From the menu bar, select **Account** > **Users** > **User List**.
-   4. Find the user whose user name and API key you want to retrieve. 
-   5. Click **Generate** to generate an API key or **View** to view your existing API key. A pop-up window opens that shows the infrastructure user name and API key. 
+3. To provision infrastructure resources such as virtual servers or Kubernetes clusters, [retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). 
    
 ## Preparing the credentials for Terraform
 {: prepare_credentials}
