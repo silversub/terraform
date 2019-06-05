@@ -3,7 +3,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
-keywords: terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
+keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
 subcollection: terraform
 
@@ -539,7 +539,7 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.Bluemix_notm}} in
       ```
       {: codeblock}
       
-   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the inital setup dialog by using the WordPress CLI. During the setup, Ansible automatically retrieves the **web_dns_name** of the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer using the Terraform inventory integration and uses the domain name to configure the WordPress site. 
+   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the initial setup dialog by using the WordPress CLI. During the setup, Ansible automatically retrieves the **web_dns_name** of the {{site.data.keyword.Bluemix_notm}} Internet Services Global Load Balancer using the Terraform inventory integration and uses the domain name to configure the WordPress site. 
       ```
       ansible-playbook -i inventory wp_site_setup.yml
       ```
