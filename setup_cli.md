@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-01-22"
 
-keywords: install terraform cli, set up terraform cli, ibm cloud provider plugin, ibm cloud for terraform
+keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
 subcollection: terraform
 
