@@ -5,7 +5,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
-keywords: add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, terraform, provision resources
+keywords: Add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, Terraform, provision resources
 
 subcollection: terraform
 
@@ -30,7 +30,7 @@ Use the Terraform CLI to create your platform and infrastructure resources in {{
 ## Provisioning IBM Cloud resources
 {: #provision_resources}
 
-To provision {{site.data.keyword.Bluemix_notm}} resources, you must describe the state of your resources that you want to achieve in a configuration file. 
+To provision {{site.data.keyword.Bluemix_notm}} resources, you must describe the state of your resources that you want to achieve in a configuration file.  
 {: shortdesc}
 
 Terraform configuration files are written by using the [HashiCorp Configuration Language (HCL) ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/docs/configuration/syntax.html) or JSON syntax. When you create your configuration file, you must describe the type of resource that you want and the state that you want to achieve for your resource. Terraform reads this configuration and creates an execution plan with the steps that were identified to achieve the specified state. If existing resources are found, Terraform identifies the necessary steps to update them. 
