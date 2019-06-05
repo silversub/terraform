@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-02-22"
 
-keywords: terraform, ibm cloud terraform, ibm cloud provider plugin for terraform, softlayer, iaas
+keywords: Terraform, ibm cloud Terraform, ibm cloud provider plugin for Terraform, softlayer, iaas
 
 subcollection: terraform
 
@@ -24,7 +24,7 @@ subcollection: terraform
 
 Terraform uses the {{site.data.keyword.Bluemix_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.Bluemix_notm}} REST API. To securely access {{site.data.keyword.Bluemix_notm}}, you must configure your {{site.data.keyword.Bluemix_notm}} Provider plug-in to use your {{site.data.keyword.Bluemix_notm}} credentials for authentication.
 
-## Retrieving your IBM Cloud credentials
+## Retrieving your IBM Cloud credentials 
 {: #retrieve_credentials}
 
 Before you can configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in, you must retrieve your {{site.data.keyword.Bluemix_notm}} platform and infrastructure credentials. 
