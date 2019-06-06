@@ -396,7 +396,8 @@ Before you begin, make sure that you are logged in to the container that you cre
    {: caption="Table 1. Settings for security group `ose_bastion_sg`" caption-side="top"}
    {: tab-group="terraform-os-securitygroup"}
    {: #ose-bastion-sg} 
-   {: tab-title="`ose_bastion_sg"}
+   {: tab-title="`Bastion"}
+   {: class="simple-tab-table"}
    
    |VLAN|Inbound/ outbound|Port|From|To|
    |---|---|---|---|---|
@@ -412,7 +413,8 @@ Before you begin, make sure that you are logged in to the container that you cre
    {: caption="Table 1. Settings for security group `ose_master_sg`" caption-side="top"}
    {: tab-group="terraform-os-securitygroup"}
    {: #ose-master-sg} 
-   {: tab-title="`ose_master_sg"}
+   {: tab-title="`Cluster master"}
+   {: class="simple-tab-table"}
    
    |VLAN|Inbound/ outbound|Port|From|To|
    |---|---|---|---|---|
@@ -423,8 +425,9 @@ Before you begin, make sure that you are logged in to the container that you cre
    |Private|Outbound|All|-|All|
    {: caption="Table 1. Settings for security group `ose_node_sg`" caption-side="top"}
    {: tab-group="terraform-os-securitygroup"}
-   {: #ose-bnode-sg} 
-   {: tab-title="`ose_node_sg"}
+   {: #ose-node-sg} 
+   {: tab-title="`Worker node"}
+   {: class="simple-tab-table"}
    
 3. Validate your deployment.  
    ```
