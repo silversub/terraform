@@ -488,21 +488,56 @@ Before you begin, make sure that you are logged in to the container that you cre
               </tr>
 		  </tbody>
           </table>
-
-   
-   |VLAN|Inbound/ outbound|Port|From|To|
-   |---|---|---|---|---|
-   |Private|Inbound|443/ TCP|`ose_bastion_sg`|-|
-   |Private|Inbound|22/ TCP|`ose_bastion_sg`|-|
-   |Private|Inbound|10250/ TCP|`ose_master_sg` and `ose_node_sg`|-|
-   |Private|Inbound|4789/ TCP|`ose_node_sg`|-|
-   |Private|Outbound|All|-|All|
-   {: caption="Table 3. Settings for the worker node security group `ose_node_sg`" caption-side="top"}
-   {: tab-group="terraform-os-securitygroup"}
-   {: #ose-node-sg} 
-   {: tab-title="`Worker node"}
-   {: class="simple-tab-table"}
-   
+	  <table id="ose-node-sg" tab-title="Worker node" tab-group="terraform-os-securitygroup" class="simple-tab-table">
+   <caption caption-side="top">Table 3. Settings for the worker node security group <code>ose_node_sg</code></caption>
+   <thead>
+   <tr>
+   <th>VLAN</th>
+   <th>Inbound/ outbound</th>
+	   <th>Port</th>
+	   <th>From</th>
+	   <th>To</th>
+	   </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Private</td>
+                <td>Inbound</td>
+		      <td>443/ TCP</td>
+		      <td>Bastion node security group <code>ose_bastion_sg</code></td>
+		      <td>-</td>
+              </tr>
+              <tr>
+                <td>Private</td>
+                <td>Inbound</td>
+		      <td>22/ TCP</td>
+		      <td>Bastion node security group <code>ose_bastion_sg</code></td>
+		      <td>-</td>
+              </tr>
+		    <tr>
+                <td>Private</td>
+                <td>Inbound</td>
+		      <td>10250/ TCP</td>
+		      <td>Cluster master security group <code>ose_master_sg</code> and worker node security group <code>ose_node_sg</code></td>
+		      <td>-</td>
+              </tr>
+		    <tr>
+                <td>Private</td>
+                <td>Inbound</td>
+		      <td>4789/ TCP</td>
+		      <td>Worker node security group <code>ose_node_sg</code></td>
+		      <td>-</td>
+              </tr>
+		    <tr>
+                <td>Private</td>
+                <td>Outbound</td>
+		      <td>All</td>
+		      <td>-</td>
+		      <td>All</td>
+              </tr>
+            </tbody>
+          </table>
+	  
 3. Validate your deployment.  
    ```
    terraform show
