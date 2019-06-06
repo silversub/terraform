@@ -388,6 +388,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    - The Bastion server is the only node that allows inbound SSH access. 
    - The Bastion server is connected to both the public and the private VLAN.
    - All OpenShift nodes (master, infrastructure, and app nodes) are connected to a private VLAN only. 
+   <br>
    
    |VLAN|Inbound/ outbound|Port|From|To|
    |---|---|---|---|---|
@@ -410,7 +411,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    |Private|Outbound|All|-|All|
    |Private|Inbound|2379/ TCP|`ose_master_sg`|-|
    |Private|Inbound|2380/ TCP|`ose_master_sg`|-|
-   {: caption="Table 1. Settings for security group `ose_master_sg`" caption-side="top"}
+   {: caption="Table 2. Settings for security group `ose_master_sg`" caption-side="top"}
    {: tab-group="terraform-os-securitygroup"}
    {: #ose-master-sg} 
    {: tab-title="`Cluster master"}
@@ -423,7 +424,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    |Private|Inbound|10250/ TCP|`ose_master_sg` and `ose_node_sg`|-|
    |Private|Inbound|4789/ TCP|`ose_node_sg`|-|
    |Private|Outbound|All|-|All|
-   {: caption="Table 1. Settings for security group `ose_node_sg`" caption-side="top"}
+   {: caption="Table 3. Settings for security group `ose_node_sg`" caption-side="top"}
    {: tab-group="terraform-os-securitygroup"}
    {: #ose-node-sg} 
    {: tab-title="`Worker node"}
