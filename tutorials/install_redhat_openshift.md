@@ -394,7 +394,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    |---|---|---|---|---|
    |Public|Inbound|22/ TCP|Internet gateway|-|
    |Private|Outbound|All|-|All|
-   {: caption="Table 1. Settings for security group `ose_bastion_sg`" caption-side="top"}
+   {: caption="Table 1. Settings for the Bastion node security group `ose_bastion_sg`" caption-side="top"}
    {: tab-group="terraform-os-securitygroup"}
    {: #ose-bastion-sg} 
    {: tab-title="`Bastion"}
@@ -411,7 +411,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    |Private|Outbound|All|-|All|
    |Private|Inbound|2379/ TCP|`ose_master_sg`|-|
    |Private|Inbound|2380/ TCP|`ose_master_sg`|-|
-   {: caption="Table 2. Settings for security group `ose_master_sg`" caption-side="top"}
+   {: caption="Table 2. Settings for the cluster master security group `ose_master_sg`" caption-side="top"}
    {: tab-group="terraform-os-securitygroup"}
    {: #ose-master-sg} 
    {: tab-title="`Cluster master"}
@@ -424,7 +424,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    |Private|Inbound|10250/ TCP|`ose_master_sg` and `ose_node_sg`|-|
    |Private|Inbound|4789/ TCP|`ose_node_sg`|-|
    |Private|Outbound|All|-|All|
-   {: caption="Table 3. Settings for security group `ose_node_sg`" caption-side="top"}
+   {: caption="Table 3. Settings for the worker node security group `ose_node_sg`" caption-side="top"}
    {: tab-group="terraform-os-securitygroup"}
    {: #ose-node-sg} 
    {: tab-title="`Worker node"}
