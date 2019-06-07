@@ -390,153 +390,44 @@ Before you begin, make sure that you are logged in to the container that you cre
    - All OpenShift nodes (master, infrastructure, and app nodes) are connected to a private VLAN only. 
    <br>
    
-   <table id="ose-bastion-sg" tab-title="Bastion node" tab-group="terraform-os-securitygroup" class="simple-tab-table">
-   <caption caption-side="top">Table 1. Settings for the Bastion node security group <code>ose_bastion_sg</code></caption>
-   <thead>
-   <tr>
-   <th>VLAN</th>
-   <th>Inbound/ outbound</th>
-	   <th>Port</th>
-	   <th>From</th>
-	   <th>To</th>
-	   </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Public</td>
-                <td>Inbound</td>
-		      <td>22/ TCP</td>
-		      <td>Internet gateway</td>
-		      <td>-</td>
-              </tr>
-              <tr>
-                <td>Private</td>
-                <td>Outbound</td>
-		      <td>All</td>
-		      <td>-</td>
-		      <td>All</td>
-              </tr>
-            </tbody>
-          </table>
-          <table id="ose-master-sg" tab-title="Cluster master" tab-group="terraform-os-securitygroup" class="simple-tab-table">
-            <caption caption-side="top">Table 2. Settings for the cluster master security group <code>ose_master_sg</code></caption>
-            <thead>
-   <tr>
-   <th>VLAN</th>
-   <th>Inbound/ outbound</th>
-	   <th>Port</th>
-	   <th>From</th>
-	   <th>To</th>
-	   </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>443/ TCP</td>
-		      <td>Internet gateway</td>
-		      <td>-</td>
-              </tr>
-		     <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>80/ TCP</td>
-		      <td>Internet gateway</td>
-		      <td>-</td>
-              </tr>
-		     <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>22/ TCP</td>
-			     <td>Bastion node security group <code>ose_bastion_sg</code></td>
-		      <td>-</td>
-              </tr>
-		    <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>443/ TCP</td>
-			     <td>Master security group <code>ose_master_sg</code> and worker node security group <code>ose_node_sg</code></td>
-		      <td>-</td>
-              </tr>
-		    <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>8053/ TCP</td>
-			     <td>Worker node security group <code>ose_node_sg</code></td>
-		      <td>-</td>
-              </tr>
-		    <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>8053/ UDP</td>
-			     <td>Worker node security group <code>ose_node_sg</code></td>
-		      <td>-</td>
-              </tr>
-		    <tr>
-                <td>Private</td>
-                <td>Outbound</td>
-		      <td>All</td>
-			     <td>-</td>
-		      <td>All</td>
-              </tr>
-		    <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>2380/ TCP</td>
-			     <td>Cluster master security group <code>ose_master_sg</code></td>
-		      <td>-</td>
-              </tr>
-		  </tbody>
-          </table>
-	  <table id="ose-node-sg" tab-title="Worker node" tab-group="terraform-os-securitygroup" class="simple-tab-table">
-   <caption caption-side="top">Table 3. Settings for the worker node security group <code>ose_node_sg</code></caption>
-   <thead>
-   <tr>
-   <th>VLAN</th>
-   <th>Inbound/ outbound</th>
-	   <th>Port</th>
-	   <th>From</th>
-	   <th>To</th>
-	   </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>443/ TCP</td>
-		      <td>Bastion node security group <code>ose_bastion_sg</code></td>
-		      <td>-</td>
-              </tr>
-              <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>22/ TCP</td>
-		      <td>Bastion node security group <code>ose_bastion_sg</code></td>
-		      <td>-</td>
-              </tr>
-		    <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>10250/ TCP</td>
-		      <td>Cluster master security group <code>ose_master_sg</code> and worker node security group <code>ose_node_sg</code></td>
-		      <td>-</td>
-              </tr>
-		    <tr>
-                <td>Private</td>
-                <td>Inbound</td>
-		      <td>4789/ TCP</td>
-		      <td>Worker node security group <code>ose_node_sg</code></td>
-		      <td>-</td>
-              </tr>
-		    <tr>
-                <td>Private</td>
-                <td>Outbound</td>
-		      <td>All</td>
-		      <td>-</td>
-		      <td>All</td>
-              </tr>
-            </tbody>
-          </table>
+   | VLAN | Inbound/ outbound | Port | From | To |
+   |------|-----------------|------|-----|-----|
+   | Public | Inbound | 22/ TCP | Internet gateway | - |
+   | Private | Outbound | All | - | All |
+   {: caption="Table 1. Settings for the Bastion node security group `ose_bastion_sg`" caption-side="top"}
+   {: #ose-bastion-sg}
+   {: tab-title="Bastion node"}
+   {: tab-group="terraform-os-securitygroup"}
+   {: class="simple-tab-table"}
+  
+   | VLAN | Inbound/ outbound | Port | From | To |
+   |------|-----------------|------|-----|-----|
+   | Public | Inbound | 443/ TCP | Internet gateway | - |
+   | Private | Inbound | 80/ TCP | Internet gateway | - |
+   | Private| Inbound | 22/ TCP | Bastion node security group `ose_bastion_sg` | - |
+   | Private | Inbound | 443/ TCP | Master security group `ose_master_sg` and worker node security group `ose_node_sg` | - |
+   | Private | Inbound | 8053/ TCP | Worker node security group `ose_node_sg` | - |
+   | Private | Inbound | 8053/ UDP | Worker node security group `ose_node_sg` | - |
+   | Private | Inbound | 2380/ TCP | Cluster master security group `ose_master_sg` | - |
+   | Private | Outbound | All | - | All |
+   {: caption="Table 2. Settings for the cluster master security group `ose_master_sg`" caption-side="top"}
+   {: #ose-master-sg}
+   {: tab-title="Cluster master"}
+   {: tab-group="terraform-os-securitygroup"}
+   {: class="simple-tab-table"}
+   
+   | VLAN | Inbound/ outbound | Port | From | To |
+   |------|-----------------|------|-----|-----|
+   | Private| Inbound | 443/ TCP | Bastion node security group `ose_bastion_sg` | - |
+   | Private| Inbound | 22/ TCP | Bastion node security group `ose_bastion_sg` | - |
+   | Private| Inbound | 10250/ TCP | Cluster master security group `ose_master_sg` and worker node security group `ose_node_sg` | - |
+   | Private | Inbound | 4789/ TCP | Worker node security group `ose_node_sg` | - |
+   | Private | Outbound | All | - | All |
+   {: caption="Table 3. Settings for the worker node security group `ose_node_sg`" caption-side="top"}
+   {: #ose-master-sg}
+   {: tab-title="Worker node"}
+   {: tab-group="terraform-os-securitygroup"}
+   {: class="simple-tab-table"}
 	  
 3. Validate your deployment.  
    ```
