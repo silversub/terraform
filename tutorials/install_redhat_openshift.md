@@ -392,31 +392,31 @@ Before you begin, make sure that you are logged in to the container that you cre
    
    Review the details of each security group: 
    
-   | VLAN | Inbound/ outbound | Port | From | To |
-   |------|-----------------|------|-----|-----|
-   | Public | Inbound | 22/ TCP | Internet gateway | - |
-   | Private | Outbound | All | - | All |
-   {: caption="Table 1. Settings for the Bastion node security group `ose_bastion_sg`" caption-side="top"}
-   {: #ose-bastion-sg}
-   {: tab-title="Bastion node"}
-   {: tab-group="terraform-os-securitygroup"}
-   {: class="simple-tab-table"}
+| VLAN | Inbound/ outbound | Port | From | To |
+|------|-----------------|------|-----|-----|
+| Public | Inbound | 22/ TCP | Internet gateway | - |
+| Private | Outbound | All | - | All |
+{: caption="Table 1. Settings for the Bastion node security group `ose_bastion_sg`" caption-side="top"}
+{: #ose-bastion-sg}
+{: tab-title="Bastion node"}
+{: tab-group="terraform-os-securitygroup"}
+{: class="simple-tab-table"}
   
-   | VLAN | Inbound/ outbound | Port | From | To |
-   |------|-----------------|------|-----|-----|
-   | Public | Inbound | 443/ TCP | Internet gateway | - |
-   | Private | Inbound | 80/ TCP | Internet gateway | - |
-   | Private| Inbound | 22/ TCP | Bastion node security group `ose_bastion_sg` | - |
-   | Private | Inbound | 443/ TCP | Master security group `ose_master_sg` and worker node security group `ose_node_sg` | - |
-   | Private | Inbound | 8053/ TCP | Worker node security group `ose_node_sg` | - |
-   | Private | Inbound | 8053/ UDP | Worker node security group `ose_node_sg` | - |
-   | Private | Inbound | 2380/ TCP | Cluster master security group `ose_master_sg` | - |
-   | Private | Outbound | All | - | All |
-   {: caption="Table 2. Settings for the cluster master security group `ose_master_sg`" caption-side="top"}
-   {: #ose-master-sg}
-   {: tab-title="Cluster master"}
-   {: tab-group="terraform-os-securitygroup"}
-   {: class="simple-tab-table"}
+| VLAN | Inbound/ outbound | Port | From | To |
+|------|-----------------|------|-----|-----|
+| Public | Inbound | 443/ TCP | Internet gateway | - |
+| Private | Inbound | 80/ TCP | Internet gateway | - |
+| Private| Inbound | 22/ TCP | Bastion node security group `ose_bastion_sg` | - |
+| Private | Inbound | 443/ TCP | Master security group `ose_master_sg` and worker node security group `ose_node_sg` | - |
+| Private | Inbound | 8053/ TCP | Worker node security group `ose_node_sg` | - |
+| Private | Inbound | 8053/ UDP | Worker node security group `ose_node_sg` | - |
+| Private | Inbound | 2380/ TCP | Cluster master security group `ose_master_sg` | - |
+| Private | Outbound | All | - | All |
+{: caption="Table 2. Settings for the cluster master security group `ose_master_sg`" caption-side="top"}
+{: #ose-master-sg}
+{: tab-title="Cluster master"}
+{: tab-group="terraform-os-securitygroup"}
+{: class="simple-tab-table"}
    
    | VLAN | Inbound/ outbound | Port | From | To |
    |------|-----------------|------|-----|-----|
