@@ -388,7 +388,9 @@ Before you begin, make sure that you are logged in to the container that you cre
    - The Bastion server is the only node that allows inbound SSH access. 
    - The Bastion server is connected to both the public and the private VLAN.
    - All OpenShift nodes (master, infrastructure, and app nodes) are connected to a private VLAN only. 
-   <br>
+   </br>
+   
+   Review the details of each security group: 
    
    | VLAN | Inbound/ outbound | Port | From | To |
    |------|-----------------|------|-----|-----|
