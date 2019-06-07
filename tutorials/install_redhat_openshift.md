@@ -426,7 +426,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    | Private | Inbound | 4789/ TCP | Worker node security group `ose_node_sg` | - |
    | Private | Outbound | All | - | All |
    {: caption="Table 3. Settings for the worker node security group `ose_node_sg`" caption-side="top"}
-   {: #ose-master-sg}
+   {: #ose-node-sg}
    {: tab-title="Worker node"}
    {: tab-group="terraform-os-securitygroup"}
    {: class="simple-tab-table"}
