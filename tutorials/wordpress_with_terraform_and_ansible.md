@@ -229,7 +229,7 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
       ```
       softlayer_username = "<infrastructure_username>"
       softlayer_api_key = "<infrastructure_api_key>"
-      bluemix_api_key = "<ibmcloud_api_key>"
+      ibmcloud_api_key = "<ibmcloud_api_key>"
       ```
       {: codeblock}
       
