@@ -2,12 +2,11 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-19"
+lastupdated: "2019-06-13"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
 subcollection: terraform
-
 
 ---
 
@@ -40,7 +39,7 @@ When you complete this tutorial, the following infrastructure components are pro
 - 3 or more GlusterFS storage nodes if you decide to set up your cluster with GlusterFS
 - Native {{site.data.keyword.Bluemix_notm}} infrastructure services, such as VLANs and security groups
 
-## Objectives
+## Objectives 
 {: #objectives}
 
 In this tutorial, you set up Red Hat OpenShift Container Platform version 3.10 on {{site.data.keyword.Bluemix_notm}} infrastructure and deploy your first `nginx` app in the OpenShift cluster. In particular, you will: 
@@ -66,7 +65,7 @@ This tutorial is intended for network administrators who want to deploy Red Hat 
 
 - If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
 - Make sure that you have an existing [Red Hat account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://sso.redhat.com/auth/realms/redhat-external/protocol/saml?SAMLRequest=fZLLTsMwEEV%2FJTuvXCelr1hJpKgVUqWCUAss2CDXnZBIfgSPQwtfj5Oqomy69Ojec%2BfhDIVWLS87X5stfHaAPioRwfnGmqU12GlwO3BfjYSX7SYntfctcsaElIA4cnCohR9Jq5kWRnyABuNZD2VVY4RqfoBEq0ANjx75B0C0124ROmAOhNLIzmUKJw8uMFjrrLfSqoFLovUqJ%2B9JFUuIZ5KmM5B0Mk6BpkkaU0inYjGphNind0GK2MHaoBfG52QcJwuaxDRePCdzPkn5dP5GoldwOHQ2HsUkOmllkPdBOemc4VZgg9wIDci95LvyYcODkIvLkq4t7W3PZQ5SZL2aD925wtWo6RH2GbuuZufLPAbKevVkVSO%2Fo1Ipe1yGLXnIiXdd2O29dVr427l9pTnQapDytp8XfbgTYcU58%2F8HKH4B&RelayState=https%3A%2F%2Faccess.redhat.com%2Fmanagement%2Fsubscriptions&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=t4s738AUmTxKfEMZkNpOI8e1wz72ftoZ92HQIbqfs%2BShcdv3ShuJ4%2FIGIhuMYA%2BoaFZwaPcamWlo7F0VDtSN%2FHXcXj78e5s%2B99vJ3K39V4CYCmWOO3fFbpRIV5T0jxzwsp45YEeFKZd45zeQ0X2UwCxPw41JVOqq6NqIqMAJ0y%2Bb92nmE9fFMKlBCS4A%2BTHN1ub1YCUEvgKUNEOasyGdGYXHf0fh9NSUAHO8UJAPSnR0YmBLr4oWteeRuu5MkmqWxEx0F2FOIXtgncMjTsHhyqUllYKjK5%2Buf8YgbeU4ptZoniLmQEKzzrd1KJTutc3ce4W7X7h0zteTEqSdou7LLQ%3D%3D#active) that has an [active OpenShift subscription ![External link icon](../icons/launch-glyph.svg "External link icon")](https://access.redhat.com/products/red-hat-openshift-container-platform). 
-- Install [Docker and the {{site.data.keyword.Bluemix_notm}} CLI ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/cli?topic=cloud-cli-ibmcloud-cli#ibmcloud-cli). 
+- Install [Docker and the {{site.data.keyword.Bluemix_notm}} CLI ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/cli?topic=cloud-cli-getting-started). 
 
 ## Lesson 1: Configure your environment
 {: #configure environment}
@@ -367,7 +366,7 @@ Before you begin, make sure that you are logged in to the container that you cre
    <tr>
    <td>App nodes</td>
    <td>B1_2X4X100</td>
-   <td>Three disks that are arranged as SAN with a total capacity of 100 GB <ul><li>Disk 1: 50 GB</li><li>Disk 2: 25 GB</li><li>Disk 3: 25 GB</li></ul></td>
+   <td>Three disks that are arranged as SAN with a total capacity of 100 GB <ul><li>Disk 1: 50 GB</li><li>Disk 2: 25 GB</li><li>Disk 3: 25 GB</li></ul></td> 
    </tr>
    <tr>
    <td>Bastion node</td>
@@ -390,47 +389,147 @@ Before you begin, make sure that you are logged in to the container that you cre
    - All OpenShift nodes (master, infrastructure, and app nodes) are connected to a private VLAN only. 
    </br>
    
-   Review the details of each security group: 
-   
-   | VLAN | Inbound/ outbound | Port | From | To |
-   |------|-----------------|------|-----|-----|
-   | Public | Inbound | 22/ TCP | Internet gateway | - |
-   | Private | Outbound | All | - | All |
-   {: caption="Table 1. Settings for the Bastion node security group <code>ose_bastion_sg</code>" caption-side="top"}
-   {: #ose-bastion-sg}
-   {: tab-title="Bastion node"}
-   {: tab-group="terraform-os-securitygroup"}
-   {: class="simple-tab-table"}
-  
-   | VLAN | Inbound/ outbound | Port | From | To |
-   |------|-----------------|------|-----|-----|
-   | Public | Inbound | 443/ TCP | Internet gateway | - |
-   | Private | Inbound | 80/ TCP | Internet gateway | - |
-   | Private| Inbound | 22/ TCP | Bastion node security group `ose_bastion_sg` | - |
-   | Private | Inbound | 443/ TCP | Master security group `ose_master_sg` and worker node security group `ose_node_sg` | - |
-   | Private | Inbound | 8053/ TCP | Worker node security group `ose_node_sg` | - |
-   | Private | Inbound | 8053/ UDP | Worker node security group `ose_node_sg` | - |
-   | Private | Inbound | 2380/ TCP | Cluster master security group `ose_master_sg` | - |
-   | Private | Outbound | All | - | All |
-   {: caption="Table 2. Settings for the cluster master security group <code>ose_master_sg</code>" caption-side="top"}
-   {: #ose-master-sg}
-   {: tab-title="Cluster master"}
-   {: tab-group="terraform-os-securitygroup"}
-   {: class="simple-tab-table"}
-   
-   | VLAN | Inbound/ outbound | Port | From | To |
-   |------|-----------------|------|-----|-----|
-   | Private| Inbound | 443/ TCP | Bastion node security group `ose_bastion_sg` | - |
-   | Private| Inbound | 22/ TCP | Bastion node security group `ose_bastion_sg` | - |
-   | Private| Inbound | 10250/ TCP | Cluster master security group `ose_master_sg` and worker node security group `ose_node_sg` | - |
-   | Private | Inbound | 4789/ TCP | Worker node security group `ose_node_sg` | - |
-   | Private | Outbound | All | - | All |
-   {: caption="Table 3. Settings for the worker node security group <code>ose_node_sg</code>" caption-side="top"}
-   {: #ose-node-sg}
-   {: tab-title="Worker node"}
-   {: tab-group="terraform-os-securitygroup"}
-   {: class="simple-tab-table"}
-	  
+   <table>
+   <thead>
+   <th>Group</th>
+   <th>VLAN</th>
+   <th>Inbound/ outbound</th>
+   <th>Port</th>
+   <th>From</th>
+   <th>To</th>
+   </thead>
+   <tbody>
+   <tr>
+   <td><code>ose_bastion_sq</code></td>
+   <td>Public</td>
+   <td>Inbound</td>
+   <td>22/ TCP</td>
+   <td>Internet gateway</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_bastion_sq</code></td>
+   <td>Private</td>
+   <td>Outbound</td>
+   <td>All</td>
+   <td>-</td>
+   <td>All</td>
+   </tr>
+   <tr>
+   <td><code>ose_master_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>443/ TCP</td>
+   <td>Internet gateway</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_master_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>80/ TCP</td>
+   <td>Internet gateway</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_master_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>22/ TCP</td>
+   <td>ose_bastion_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_master_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>443/ TCP</td>
+   <td>ose_master_sg & ose_node_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_master_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>8053/ TCP</td>
+   <td>ose_node_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_master_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>8053/ UDP</td>
+   <td>ose_node_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_master_sg</code></td>
+   <td>Private</td>
+   <td>Outbound</td>
+   <td>All</td>
+   <td>-</td>
+   <td>All</td>
+   </tr>
+   <tr>
+   <td><code>ose_master_sg (for etcd)</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>2379/ TCP</td>
+   <td>ose_master_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_master_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>2380/ TCP</td>
+   <td>ose_master_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_node_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>443/ TCP</td>
+   <td>ose_bastion_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_node_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>22/ TCP</td>
+   <td>ose_bastion_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_node_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>10250/ TCP</td>
+   <td>ose_master_sg & ose_node_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_node_sg</code></td>
+   <td>Private</td>
+   <td>Inbound</td>
+   <td>4789/ TCP</td>
+   <td>ose_node_sg</td>
+   <td>-</td>
+   </tr>
+   <tr>
+   <td><code>ose_node_sg</code></td>
+   <td>Private</td>
+   <td>Outbound</td>
+   <td>All</td>
+   <td>-</td>
+   <td>All</td>
+   </tr>
+   </tbody>
+   </table>
+
 3. Validate your deployment.  
    ```
    terraform show
