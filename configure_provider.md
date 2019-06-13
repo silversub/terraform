@@ -89,7 +89,7 @@ To prepare your credentials:
    ```
    softlayer_username = "<infrastructure_username>"
    softlayer_api_key = "<infrasturcture_apikey>"
-   bluemix_api_key = "<platform_api_key>"
+   ibmcloud_api_key = "<platform_api_key>"
    org_name = "<cf_org>"
    space_name = "<cf_space>"
    ```
@@ -110,7 +110,7 @@ To prepare your credentials:
    <td>Enter the infrastructure API key that you retrieved earlier. </td>
    </tr>
    <tr>
-   <td><code>bluemix_api_key</code></td>
+   <td><code>ibmcloud_api_key</code></td>
    <td>Enter the {{site.data.keyword.Bluemix_notm}} platform API key that you retrieved earlier. </td>
    </tr>
    <tr>
@@ -128,12 +128,12 @@ To prepare your credentials:
    ```
    variable "softlayer_username" {}
    variable "softlayer_api_key" {}
-   variable "bluemix_api_key" {}
+   variable "ibmcloud_api_key" {}
    variable "org_name" {}
    variable "space_name" {}
    
    provider "ibm" {
-   bluemix_api_key    = "${var.bluemix_api_key}"
+   ibmcloud_api_key    = "${var.ibmcloud_api_key}"
    softlayer_username = "${var.softlayer_username}"
    softlayer_api_key  = "${var.softlayer_api_key}"
    org_name = "${var.org_name}"
