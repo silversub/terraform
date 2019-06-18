@@ -1,13 +1,15 @@
 ---
+
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-22"
+lastupdated: "2019-06-18"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
 subcollection: terraform
 
 ---
+
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
@@ -120,7 +122,11 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
       ```
       {: pre}
       
-   2. [Download the Terraform binary file to your local machine ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/downloads.html). Select the version that is provided for the operating system that you use on your local machine.
+   2. [Download the Terraform CLI version 0.11.x to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://releases.hashicorp.com/terraform/). 
+   
+      The {{site.data.keyword.Bluemix_notm}} Provider plug-in is not yet verified to work with Terraform version 0.12.x. To use the {{site.data.keyword.Bluemix_notm}} Provider plug-in, install Terraform version 0.11.x. 
+      {: important} 
+      
    3. Extract the Terraform package and copy the binary file into your `terraform` directory. 
    4. Point the `$PATH` environment variable to your Terraform binary file.
       ```
