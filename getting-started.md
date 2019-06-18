@@ -17,7 +17,11 @@ subcollection: terraform
 {:table: .aria-labeledby="caption"}
 {:codeblock: .codeblock}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:download: .download}
+{:preview: .preview}
 
 
 # Getting started tutorial 
