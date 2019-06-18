@@ -9,7 +9,6 @@ keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin
 subcollection: terraform
 
 ---
-
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
@@ -17,7 +16,11 @@ subcollection: terraform
 {:table: .aria-labeledby="caption"}
 {:codeblock: .codeblock}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:download: .download}
+{:preview: .preview}
 
 # Setting up the Terraform CLI and the IBM Cloud Provider plug-in
 {: #setup_cli}
