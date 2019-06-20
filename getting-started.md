@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-18"
+lastupdated: "2019-06-20"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -156,12 +156,7 @@ Before you begin, [install the {{site.data.keyword.Bluemix_notm}} CLI ![External
    ```
    {: pre}
       
-2. Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key. The example in this Getting Started tutorial shows how to provision a virtual server in {{site.data.keyword.Bluemix_notm}}. To provision this resource, you must configure the {{site.data.keyword.Bluemix_notm}} Provider to use your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Other {{site.data.keyword.Bluemix_notm}} resources might require other credentials to get provisioned successfully. For more information, see [Retrieving your {{site.data.keyword.Bluemix_notm}} credentials](/docs/terraform?topic=terraform-configure_provider#retrieve_credentials). 
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure portal ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic).
-   2. From the menu ![Menu icon](../icons/icon_hamburger.svg "Menu icon"), select **Infrastructure**.
-   3. From the menu bar, select **Account** > **Users** > **User List**.
-   4. Find the user whose user name and API key you want to retrieve. 
-   5. Click **Generate** to generate an API key or **View** to view your existing API key. A pop-up window opens that shows the infrastructure user name and API key. 
+2. [Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). The example in this Getting Started tutorial shows how to provision a virtual server in {{site.data.keyword.Bluemix_notm}}. To provision this resource, you must configure the {{site.data.keyword.Bluemix_notm}} Provider to use your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Other {{site.data.keyword.Bluemix_notm}} resources might require other credentials to get provisioned successfully. For more information, see [Retrieving your {{site.data.keyword.Bluemix_notm}} credentials](/docs/terraform?topic=terraform-configure_provider#retrieve_credentials). 
    
 3. Create a Terraform configuration file that is named `terraform.tfvars` to store your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Make sure to save this file in the folder that you created for your first Terraform project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized. 
    ```
