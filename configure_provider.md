@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-22"
+lastupdated: "2019-06-24"
 
 keywords: Terraform, ibm cloud Terraform, ibm cloud provider plugin for Terraform, softlayer, iaas
 
@@ -22,49 +22,36 @@ subcollection: terraform
 # Configuring the IBM Cloud Provider plug-in
 {: #configure_provider}
 
-Terraform uses the {{site.data.keyword.Bluemix_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.Bluemix_notm}} REST API. To securely access {{site.data.keyword.Bluemix_notm}}, you must configure your {{site.data.keyword.Bluemix_notm}} Provider plug-in to use your {{site.data.keyword.Bluemix_notm}} credentials for authentication.
+Terraform uses the {{site.data.keyword.Bluemix_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.Bluemix_notm}} REST API. To provision and work with {{site.data.keyword.Bluemix_notm}} resources, you must configure your {{site.data.keyword.Bluemix_notm}} Provider plug-in to use the credentials that are required to access your resource.
 
-## Retrieving your IBM Cloud credentials 
+## Determining the credentials that you need
+{: #determine_credentials}
+
+The credentials that you need depend on the type of {{site.data.keyword.Bluemix_notm}} resource that you want to provision. You can decide to provision {{site.data.keyword.Bluemix_notm}} Platform services, {{site.data.keyword.Bluemix_notm}} Classic infrastructure, {{site.data.keyword.Bluemix_notm}} Virtual Private Cloud (VPC), and {{site.data.keyword.containerlong_notm}} and {{site.data.keyword.Bluemix_notm}} Functions resources. Review the following table to see what credentials are required for each of the available resources. 
+
+Looking for a full list of {{site.data.keyword.Bluemix_notm}} resources that you can provision with the {{site.data.keyword.Bluemix_notm}} Provider plug-in? See the [{{site.data.keyword.Bluemix_notm}} Provider reference](https://ibm-cloud.github.io/tf-ibm-docs/) for more information. 
+{: tip}
+
+|Resource|Description|Required credentials|
+|---|----|---------|
+|<ul><li>Cloud Foundry data sources</li><li>Cloud Foundry resources</li></ul>|Retrieve information or create, update, or delete Cloud Foundry services, organizations, and spaces.|<ul><li>{{site.data.keyword.Bluemix_notm}} API key</li><li>Cloud Foundry organization</li><li>Cloud Foundry space</li></ul>|
+|<ul><li>Container data sources</li><li>Container resources</li></ul>|Retrieve information or create, update, or delete a Kubernetes cluster and worker nodes in {{site.data.keyword.containerlong_notm}}.|<ul><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name</li><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure API key</li><li>{{site.data.keyword.Bluemix_notm}} API key</li></ul>|
+|<ul><li>Infrastructure data sources</li><li>Infrastructure resources</li></ul>|Retrieve information, or create, update, or delete {{site.data.keyword.Bluemix_notm}} Classic infrastructure instances. |<ul><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name</li><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure API key</li></ul>|
+|<ul><li>VPC Services data sources</li><li>VPC Services resources</li></ul>|Retrieve information, or create, update, or delete a Virtual Private Cloud (VPC) and Classic infrastructure instances that are provisioned in the VPC.|<ul><li>{{site.data.keyword.Bluemix_notm}} API key</li></ul>|
+|<ul><li>Identity and Access data sources</li><li>Identity and Access resources</li></ul>|Retrieve information, or create, update, or delete {{site.data.keyword.Bluemix_notm}} account settings and service IDs. |{{site.data.keyword.Bluemix_notm}} API key|
+|<ul><li>Functions data sources</li><li>Functions resources</li></ul>|Retrieve information, or create, update, or delete {{site.data.keyword.Bluemix_notm}} Functions resources.|{{site.data.keyword.Bluemix_notm}} API key|
+
+## Retrieving your credentials 
 {: #retrieve_credentials}
 
-Before you can configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in, you must retrieve your {{site.data.keyword.Bluemix_notm}} platform and infrastructure credentials. 
+Before you can configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in, you must retrieve the credentials that are required for the {{site.data.keyword.Bluemix_notm}} resource that you want to work with. 
 {: shortdesc}
 
-**What credentials do I need?**</br>
-The credentials that you need depend on the type of resource that you want to provision. For example, to provision infrastructure resources, you must provide your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Other resources, such as Cloud Foundry services, require an {{site.data.keyword.Bluemix_notm}} platform API key and the Cloud Foundry org and space where you want to provision the service. 
-
-1. To provision {{site.data.keyword.Bluemix_notm}} platform services, create an {{site.data.keyword.Bluemix_notm}} platform API key. Note the **API Key** that is created for you. 
-   ```
-   ibmcloud iam api-key-create <apikey_name>
-   ```
-   {: pre}
-   
-   Example output: 
-   ```
-   Creating API key mykey as user@company.com...
-   OK
-   API key mykey was created
-
-   Please preserve the API key! It cannot be retrieved after it's created.
-                 
-   Name          mykey   
-   Description      
-   Created At    2018-09-27T20:22+0000   
-   API Key       a1BcdEfghIJkLmNopqrSTUV45W-ABC12DefGH3ij2klm   
-   Locked        false   
-   UUID          ApiKey-1a2v3c45-ab1c-1a2b-1234-a123b456712
-   ```
-   {: screen}
-   
-   Your API key is displayed in the **API Key** section of your CLI output. 
-   
-2. To provision Cloud Foundry services, retrieve the Cloud Foundry org and space where you want to create your service.
-   ```
-   ibmcloud target --cf
-   ```
-   {: pre}
-      
-3. To provision infrastructure resources such as virtual servers or Kubernetes clusters, [retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). 
+|Type of credential|Documentation link|
+|----|--------|
+|{{site.data.keyword.Bluemix_notm}} API key|[Creating an API key](/docs/iam?topic=iam-userapikey#create_user_key)|
+|{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name and API key|[Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys)|
+|Cloud Foundry org and spaces|Open the [Cloud Foundry account settings](https://cloud.ibm.com/account/cloud-foundry) and review your Cloud Foundry org and space.| 
    
 ## Preparing the credentials for Terraform
 {: prepare_credentials}
@@ -75,7 +62,7 @@ Choose an option for how to provide your {{site.data.keyword.Bluemix_notm}} cred
 Want to set up a cloud environment that includes multiple cloud providers? Include the required credentials for each cloud provider. 
 {: tip}
 
-Before you begin, [retrieve your {{site.data.keyword.Bluemix_notm}} credentials](#retrieve_credentials). 
+Before you begin, [retrieve your credentials](#retrieve_credentials). 
 
 To prepare your credentials: 
 
@@ -103,11 +90,11 @@ To prepare your credentials:
    <tbody>
    <tr>
    <td><code>softlayer_username</code></td>
-   <td>Enter the infrastructure user name that you retrieved earlier.  </td>
+   <td>Enter the {{site.data.keyword.Bluemix_notm}} Classic infrastructure user name that you retrieved earlier.  </td>
    </tr>
    <tr>
    <td><code>softlayer_api_key</code></td>
-   <td>Enter the infrastructure API key that you retrieved earlier. </td>
+   <td>Enter the {{site.data.keyword.Bluemix_notm}} Classic infrastructure API key that you retrieved earlier. </td>
    </tr>
    <tr>
    <td><code>ibmcloud_api_key</code></td>
