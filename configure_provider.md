@@ -41,17 +41,6 @@ Looking for a full list of {{site.data.keyword.Bluemix_notm}} resources that you
 |Cloud Foundry data sources and resources|Retrieve information or create, update, or delete Cloud Foundry services, organizations, and spaces.|{{site.data.keyword.Bluemix_notm}} API key|
 |Functions data sources and resources|Retrieve information, or create, update, or delete {{site.data.keyword.Bluemix_notm}} Functions resources.|{{site.data.keyword.Bluemix_notm}} API key|
 
-## Retrieving your credentials 
-{: #retrieve_credentials}
-
-Before you can configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in, you must retrieve the credentials that are required for the {{site.data.keyword.Bluemix_notm}} resource that you want to work with. 
-{: shortdesc}
-
-|Type of credential|Documentation link|
-|----|--------|
-|{{site.data.keyword.Bluemix_notm}} API key|[Creating an API key](/docs/iam?topic=iam-userapikey#create_user_key)|
-|{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name and API key|[Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys)|
-   
 ## Preparing the credentials for Terraform
 {: prepare_credentials}
 
@@ -61,17 +50,34 @@ Choose an option for how to provide your {{site.data.keyword.Bluemix_notm}} cred
 Want to set up a cloud environment that includes multiple cloud providers? Include the required credentials for each cloud provider. 
 {: tip}
 
-Before you begin, [retrieve your credentials](#retrieve_credentials). 
-
 To prepare your credentials: 
 
-1. Create a folder on your local machine for your Terraform project and navigate into the folder. This folder is used to store all configuration files and variable definitions.
+1. Retrieve the credentials that you need to provision your resource. To determine the credentials that you need, see [Determining required credentials](#determine_credentials). 
+   
+   <table>
+   <thead>
+     <th>Type of credential</th>
+     <th>Documentation link</th>
+   </thead>
+   <tbody>
+    <tr>
+      <td>{{site.data.keyword.Bluemix_notm}} API key</td>
+      <td>[Creating an API key](/docs/iam?topic=iam-userapikey#create_user_key)</td>
+    </tr>
+    <tr>
+      <td>{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name and API key</td>
+      <td>[Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys)</td>
+    </tr>
+   </tbody>
+   </table>
+
+2. Create a folder on your local machine for your Terraform project and navigate into the folder. This folder is used to store all configuration files and variable definitions.
    ```
    mkdir myproject && cd myproject
    ```
    {: pre}
 
-2. Create a Terraform configuration file that is named `terraform.tfvars` to store the credentials that you retrieved. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized. 
+3. Create a Terraform configuration file that is named `terraform.tfvars` to store the credentials that you retrieved. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized. 
    ```
    softlayer_username = "<infrastructure_username>"
    softlayer_api_key = "<infrasturcture_apikey>"
@@ -100,7 +106,7 @@ To prepare your credentials:
    </tbody>
    </table>
    
-3. Create a Terraform provider configuration file that is named `provider.tf`. Use this file to specify the {{site.data.keyword.Bluemix_notm}} provider and reference the credentials from your `terraform.tfvars` file that you want to provide to Terraform.
+4. Create a Terraform provider configuration file that is named `provider.tf`. Use this file to specify the {{site.data.keyword.Bluemix_notm}} provider and reference the credentials from your `terraform.tfvars` file that you want to provide to Terraform.
    ```
    variable "softlayer_username" {}
    variable "softlayer_api_key" {}
