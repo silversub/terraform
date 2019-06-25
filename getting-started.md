@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-06-25"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -27,7 +27,7 @@ subcollection: terraform
 # Getting started tutorial 
 {: #getting-started}
 
-Terraform is an Open Source software that is developed by HashiCorp that enables predictable and consistent provisioning of {{site.data.keyword.Bluemix_notm}} resources by using a high-level scripting language. You can use Terraform to automate your {{site.data.keyword.Bluemix_notm}} resource provisioning, rapidly build complex, multi-tier cloud environments, and enable Infrastructure as Code (IaC).  
+Terraform is an Open Source software that is developed by HashiCorp that enables predictable and consistent provisioning of {{site.data.keyword.Bluemix_notm}} platform and infrastructure resources by using a high-level scripting language. You can use Terraform to automate your {{site.data.keyword.Bluemix_notm}} resource provisioning, rapidly build complex, multi-tier cloud environments, and enable Infrastructure as Code (IaC).  
 {: shortdesc}
 
 **How does it work?**</br>
@@ -142,11 +142,14 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
 ## Configuring the IBM Cloud Provider plug-in
 {: #cloud_provider_config}
 
-Terraform uses the {{site.data.keyword.Bluemix_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.Bluemix_notm}} REST API. To securely access {{site.data.keyword.Bluemix_notm}}, you must configure your {{site.data.keyword.Bluemix_notm}} Provider plug-in to use your {{site.data.keyword.Bluemix_notm}} credentials for authentication. 
+Terraform uses the {{site.data.keyword.Bluemix_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.Bluemix_notm}} REST API. To provision and work with {{site.data.keyword.Bluemix_notm}} resources, you must configure your {{site.data.keyword.Bluemix_notm}} Provider plug-in to use the {{site.data.keyword.Bluemix_notm}} credentials that are required to access your resource. 
 {: shortdesc}
 
 **What credentials do I need?**</br>
-The credentials that you need depend on the type of resource that you want to provision. For example, to provision infrastructure resources, you must provide your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Other resources, such as Cloud Foundry services, require an {{site.data.keyword.Bluemix_notm}} platform API key and the Cloud Foundry org and space where you want to provision the service. 
+The credentials that you need depend on the type of resource that you want to provision. For example, to provision Classic infrastructure resources, you must provide your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key. Other resources, such as Cloud Foundry services, require an {{site.data.keyword.Bluemix_notm}} API key to provision the service. For more information about what credentials you need for a specific type of {{site.data.keyword.Bluemix_notm}} resource, see [Determining required credentials](/docs/terraform?topic=terraform-configure_provider#determine_credentials).
+
+**Where can I find an overview of available resources?**</br>
+To find a full list of {{site.data.keyword.Bluemix_notm}} resources that you can provision with the {{site.data.keyword.Bluemix_notm}} Provider plug-in, see the [{{site.data.keyword.Bluemix_notm}} Provider reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
 
 1. Create a folder on your local machine for your first Terraform project and navigate into the folder. This folder is used to store all configuration files and variable definitions. 
    ```
@@ -154,12 +157,12 @@ The credentials that you need depend on the type of resource that you want to pr
    ```
    {: pre}
       
-2. [Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). The example in this Getting Started tutorial shows how to provision a virtual server in {{site.data.keyword.Bluemix_notm}}. To provision this resource, you must configure the {{site.data.keyword.Bluemix_notm}} Provider to use your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Other {{site.data.keyword.Bluemix_notm}} resources might require other credentials to get provisioned successfully. For more information, see [Retrieving your {{site.data.keyword.Bluemix_notm}} credentials](/docs/terraform?topic=terraform-configure_provider#retrieve_credentials). 
+2. [Retrieve your {{site.data.keyword.Bluemix_notm}} Classic infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). The example in this getting started tutorial shows how to provision a Classic virtual server in {{site.data.keyword.Bluemix_notm}}. To provision this resource, you must configure the {{site.data.keyword.Bluemix_notm}} Provider to use your {{site.data.keyword.Bluemix_notm}} Classic infrastructure credentials. Other {{site.data.keyword.Bluemix_notm}} resources might require other credentials to get provisioned successfully. For more information, see [Determining required credentials](/docs/terraform?topic=terraform-configure_provider#determine_credentials). 
    
-3. Create a Terraform configuration file that is named `terraform.tfvars` to store your {{site.data.keyword.Bluemix_notm}} infrastructure credentials. Make sure to save this file in the folder that you created for your first Terraform project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized. 
+3. Create a Terraform configuration file that is named `terraform.tfvars` to store your {{site.data.keyword.Bluemix_notm}} Classic infrastructure credentials. Make sure to save this file in the folder that you created for your first Terraform project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized. 
    ```
-   softlayer_username = "<infrastructure_username>"
-   softlayer_api_key = "<infrastructure_apikey>"
+   softlayer_username = "<classic_infrastructure_username>"
+   softlayer_api_key = "<classic_infrastructure_apikey>"
    ```
    {: codeblock}
    
@@ -171,11 +174,11 @@ The credentials that you need depend on the type of resource that you want to pr
    <tbody>
    <tr>
    <td><code>softlayer_username</code></td>
-   <td>Enter the infrastructure user name that you retrieved earlier.  </td>
+   <td>Enter the Classic infrastructure user name that you retrieved earlier.  </td>
    </tr>
    <tr>
    <td><code>softlayer_api_key</code></td>
-   <td>Enter the infrastructure api key that you retrieved earlier. </td>
+   <td>Enter the Classic infrastructure API key that you retrieved earlier. </td>
    </tr>
    </tbody>
    </table>
@@ -194,15 +197,16 @@ The credentials that you need depend on the type of resource that you want to pr
    {: codeblock}
    
 
-## Using a configuration file to provision a virtual server in IBM Cloud
+## Using a configuration file to provision a Classic virtual server in IBM Cloud
 {: #sample_infrastructure_config}
 
 Now that you are all set, you can start provisioning resources in {{site.data.keyword.Bluemix_notm}}.
 {: shortdesc}
 
-The following example shows how to specify and provision a virtual server in {{site.data.keyword.Bluemix_notm}}. For specifying different types of resources, see the [{{site.data.keyword.Bluemix_notm}} resource reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/). 
+The following example shows how to specify and provision a Classic virtual server in {{site.data.keyword.Bluemix_notm}}. For specifying different types of resources, see the [{{site.data.keyword.Bluemix_notm}} resource reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/). 
 
-**Important:** The following example shows how you can configure a virtual server in {{site.data.keyword.Bluemix_notm}} by using JSON syntax. A virtual server is an {{site.data.keyword.Bluemix_notm}} infrastructure resource that incurs costs. Be sure to review the [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) before you proceed.
+The following example shows how you can configure a Classic virtual server in {{site.data.keyword.Bluemix_notm}} by using JSON syntax. A virtual server is an {{site.data.keyword.Bluemix_notm}} Classic infrastructure resource that incurs costs. Be sure to review the [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) before you proceed.
+{: important}
 
 1. Create a configuration file that is named `sample.tf` with the following content. Store this file in the folder that you created earlier. 
    ```
@@ -210,7 +214,7 @@ The following example shows how to specify and provision a virtual server in {{s
    hostname = "vm1"
    domain = "example.com"
    os_reference_code = "DEBIAN_8_64"
-   datacenter = "dal09"
+   datacenter = "dal10"
    network_speed = 10
    hourly_billing = true
    private_network_only = false
@@ -267,7 +271,7 @@ The following example shows how to specify and provision a virtual server in {{s
          id:                           <computed>
          block_storage_ids.#:          <computed>
          cores:                        "1"
-         datacenter:                   "dal09"
+         datacenter:                   "dal10"
          disks.#:                      "1"
          disks.0:                      "25"
          domain:                       "example.com"
@@ -312,7 +316,7 @@ The following example shows how to specify and provision a virtual server in {{s
    
 4. Review the execution plan to verify the type of resource that is planned to be provisioned by Terraform.
 
-5. Create your virtual server. Confirm the creation by entering **yes** when prompted. 
+5. Create your Classic infrastructure virtual server. Confirm the creation by entering **yes** when prompted. 
    ```
    terraform apply
    ```
@@ -323,7 +327,7 @@ The following example shows how to specify and provision a virtual server in {{s
    Creating...
      block_storage_ids.#:        "" => "<computed>"
      cores:                      "" => "1"
-     datacenter:                 "" => "dal09"
+     datacenter:                 "" => "dal10"
      disks.#:                    "" => "1"
      disks.0:                    "" => "25"
      domain:                     "" => "example.com"
@@ -363,7 +367,7 @@ The following example shows how to specify and provision a virtual server in {{s
    ```
    {: screen}
    
-6. List the virtual server that is provisioned. 
+6. List the Classic infrastructure virtual server that is provisioned. 
    ```
    terraform show
    ```
@@ -375,7 +379,7 @@ The following example shows how to specify and provision a virtual server in {{s
      id = 62364997
      block_storage_ids.# = 0
      cores = 1
-     datacenter = dal09
+     datacenter = dal10
      dedicated_acct_host_only = false
      disks.# = 1
      disks.0 = 25
@@ -406,4 +410,4 @@ The following example shows how to specify and provision a virtual server in {{s
    
 
 **What's next?** </br>
-Now that you provisioned your first virtual server, [explore other {{site.data.keyword.Bluemix_notm}} resources ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/) that you can provision with Terraform. 
+Now that you provisioned your first Classic virtual server, [explore other {{site.data.keyword.Bluemix_notm}} resources ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/) that you can provision with Terraform. 
