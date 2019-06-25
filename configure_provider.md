@@ -32,9 +32,50 @@ The credentials that you need depend on the type of {{site.data.keyword.Bluemix_
 Looking for a full list of {{site.data.keyword.Bluemix_notm}} resources that you can provision with the {{site.data.keyword.Bluemix_notm}} Provider plug-in? See the [{{site.data.keyword.Bluemix_notm}} Provider reference](https://ibm-cloud.github.io/tf-ibm-docs/) for more information. 
 {: tip}
 
+<table>
+  <thead>
+    <th>Resource</th>
+    <th>Description</th>
+    <th>Required credentials</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Container data sources and resources</td>
+      <td>Retrieve information or create, update, or delete a Kubernetes cluster and worker nodes in {{site.data.keyword.containerlong_notm}}.</td>
+      <td><ul><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name</li><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure API key</li><li>{{site.data.keyword.Bluemix_notm}} API key</li></ul></td>
+    </tr>
+    <tr>
+      <td>Infrastructure data sources and resources</td>
+      <td>Retrieve information, or create, update, or delete {{site.data.keyword.Bluemix_notm}} Classic infrastructure instances. </td>
+      <td><ul><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name</li><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure API key</li></ul></td>
+    </tr>
+    <tr>
+      <td>VPC Services data sources and resources</td>
+      <td>Retrieve information, or create, update, or delete a Virtual Private Cloud (VPC) and Classic infrastructure instances that are provisioned in the VPC.</td>
+      <td>{{site.data.keyword.Bluemix_notm}} API key</td>
+    </tr>
+    <tr>
+      <td>Identity and Access data sources and resources</td>
+      <td>Retrieve information, or create, update, or delete {{site.data.keyword.Bluemix_notm}} account settings and service IDs.</td>
+      <td>{{site.data.keyword.Bluemix_notm}} API key</td>
+    </tr>
+    <tr>
+      <td>Cloud Foundry data sources and resources</td>
+      <td>Retrieve information or create, update, or delete Cloud Foundry services, organizations, and spaces.</td>
+      <td>{{site.data.keyword.Bluemix_notm}} API key</td>
+    </tr>
+    <tr>
+      <td>Functions data sources and resources</td>
+      <td>Retrieve information, or create, update, or delete {{site.data.keyword.Bluemix_notm}} Functions resources.</td>
+      <td>{{site.data.keyword.Bluemix_notm}} API key</td>
+    </tr>
+  </tbody>
+  </table>
+  
+  
 |Resource|Description|Required credentials|
 |---|----|---------|
-|Container data sources and resources</li></ul>|Retrieve information or create, update, or delete a Kubernetes cluster and worker nodes in {{site.data.keyword.containerlong_notm}}.|<ul><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name</li><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure API key</li><li>{{site.data.keyword.Bluemix_notm}} API key</li></ul>|
+|Container data sources and resources|Retrieve information or create, update, or delete a Kubernetes cluster and worker nodes in {{site.data.keyword.containerlong_notm}}.|<ul><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name</li><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure API key</li><li>{{site.data.keyword.Bluemix_notm}} API key</li></ul>|
 |Infrastructure data sources and resources|Retrieve information, or create, update, or delete {{site.data.keyword.Bluemix_notm}} Classic infrastructure instances. |<ul><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure user name</li><li>{{site.data.keyword.Bluemix_notm}} Classic infrastructure API key</li></ul>|
 |VPC Services data sources and resources|Retrieve information, or create, update, or delete a Virtual Private Cloud (VPC) and Classic infrastructure instances that are provisioned in the VPC.|{{site.data.keyword.Bluemix_notm}} API key|
 |Identity and Access data sources and resources|Retrieve information, or create, update, or delete {{site.data.keyword.Bluemix_notm}} account settings and service IDs. |{{site.data.keyword.Bluemix_notm}} API key|
