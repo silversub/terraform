@@ -29,7 +29,7 @@ Use this tutorial to create a highly available Red Hat® OpenShift Container Pla
 
 This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{site.data.keyword.cloud_notm}} classic infrastructure to try out the high availability capabilities of native Kubernetes and {{site.data.keyword.cloud_notm}}. Review the following image to find an architectural overview of the classic infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
 
-<img src="../images/infra-diagram.png" alt="Infrastructure components for the Red Hat® OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}}" width="800" style="width: 800px; border-style: none"/>
+<img src="../images/infra-diagram.png" alt="Infrastructure components for the Red Hat® OpenShift Container Platform on {{site.data.keyword.cloud_notm}}" width="800" style="width: 800px; border-style: none"/>
 
 When you complete this tutorial, the following classic infrastructure components are provisioned for you: 
 - 1 OpenShift Container Platform master node 
@@ -63,7 +63,7 @@ This tutorial is intended for network administrators who want to deploy Red Hat 
 ## Prerequisites
 {: #prerequisites}
 
-- If you do not have one, create an {{site.data.keyword.cloud_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
+- If you do not have one, create an {{site.data.keyword.cloud_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
 - Make sure that you have an existing [Red Hat account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://sso.redhat.com/auth/realms/redhat-external/protocol/saml?SAMLRequest=fZLLTsMwEEV%2FJTuvXCelr1hJpKgVUqWCUAss2CDXnZBIfgSPQwtfj5Oqomy69Ojec%2BfhDIVWLS87X5stfHaAPioRwfnGmqU12GlwO3BfjYSX7SYntfctcsaElIA4cnCohR9Jq5kWRnyABuNZD2VVY4RqfoBEq0ANjx75B0C0124ROmAOhNLIzmUKJw8uMFjrrLfSqoFLovUqJ%2B9JFUuIZ5KmM5B0Mk6BpkkaU0inYjGphNind0GK2MHaoBfG52QcJwuaxDRePCdzPkn5dP5GoldwOHQ2HsUkOmllkPdBOemc4VZgg9wIDci95LvyYcODkIvLkq4t7W3PZQ5SZL2aD925wtWo6RH2GbuuZufLPAbKevVkVSO%2Fo1Ipe1yGLXnIiXdd2O29dVr427l9pTnQapDytp8XfbgTYcU58%2F8HKH4B&RelayState=https%3A%2F%2Faccess.redhat.com%2Fmanagement%2Fsubscriptions&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=t4s738AUmTxKfEMZkNpOI8e1wz72ftoZ92HQIbqfs%2BShcdv3ShuJ4%2FIGIhuMYA%2BoaFZwaPcamWlo7F0VDtSN%2FHXcXj78e5s%2B99vJ3K39V4CYCmWOO3fFbpRIV5T0jxzwsp45YEeFKZd45zeQ0X2UwCxPw41JVOqq6NqIqMAJ0y%2Bb92nmE9fFMKlBCS4A%2BTHN1ub1YCUEvgKUNEOasyGdGYXHf0fh9NSUAHO8UJAPSnR0YmBLr4oWteeRuu5MkmqWxEx0F2FOIXtgncMjTsHhyqUllYKjK5%2Buf8YgbeU4ptZoniLmQEKzzrd1KJTutc3ce4W7X7h0zteTEqSdou7LLQ%3D%3D#active) that has an [active OpenShift subscription ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://access.redhat.com/products/red-hat-openshift-container-platform). 
 - Install [Docker and the {{site.data.keyword.cloud_notm}} CLI ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/cli?topic=cloud-cli-getting-started). 
 
