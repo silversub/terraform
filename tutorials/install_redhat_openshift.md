@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-18"
+lastupdated: "2019-06-30"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -19,35 +19,35 @@ subcollection: terraform
 {:tip: .tip}
 {:download: .download}
 
-# Tutorial: Deploying Red Hat OpenShift Container Platform on IBM Cloud
+# Tutorial: Deploying Red Hat OpenShift Container Platform on IBM Cloud classic infrastructure
 {: #redhat}
 
-Use this tutorial to create a highly available Red Hat® OpenShift Container Platform 3.10 environment on IBM® Cloud infrastructure. 
+Use this tutorial to create a highly available Red Hat® OpenShift Container Platform 3.10 environment on IBM® Cloud classic infrastructure. 
 {: shortdesc}
 
 [Red Hat® OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.openshift.com/products/container-platform/) is built around a core of containers, with orchestration and management provided by Kubernetes, on a foundation of Atomic Host and Red Hat® Enterprise Linux. OpenShift Origin is the community distribution of Kubernetes that is optimized for continuous app development and multi-tenant deployment. The community project provides developer and operations-centric tools that are based on Kubernetes to enable rapid app development, deployment, scaling, and long-term app lifecycle maintenance. 
 
-This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{site.data.keyword.Bluemix_notm}} to try out the high availability capabilities of native Kubernetes and {{site.data.keyword.Bluemix_notm}}. Review the following image to find an architectural overview of the infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
+This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{site.data.keyword.cloud_notm}} classic infrastructure to try out the high availability capabilities of native Kubernetes and {{site.data.keyword.cloud_notm}}. Review the following image to find an architectural overview of the classic infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
 
 <img src="../images/infra-diagram.png" alt="Infrastructure components for the Red Hat® OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}}" width="800" style="width: 800px; border-style: none"/>
 
-When you complete this tutorial, the following infrastructure components are provisioned for you: 
+When you complete this tutorial, the following classic infrastructure components are provisioned for you: 
 - 1 OpenShift Container Platform master node 
 - 1 OpenShift Container Platform infrastructure node
 - 1 OpenShift Container Platform application node
 - 1 OpenShift Container Platform Bastion node
 - 3 or more GlusterFS storage nodes if you decide to set up your cluster with GlusterFS
-- Native {{site.data.keyword.Bluemix_notm}} infrastructure services, such as VLANs and security groups
+- Native {{site.data.keyword.cloud_notm}} classic infrastructure services, such as VLANs and security groups
 
 ## Objectives 
 {: #objectives}
 
-In this tutorial, you set up Red Hat OpenShift Container Platform version 3.10 on {{site.data.keyword.Bluemix_notm}} infrastructure and deploy your first `nginx` app in the OpenShift cluster. In particular, you will: 
+In this tutorial, you set up Red Hat OpenShift Container Platform version 3.10 on {{site.data.keyword.cloud_notm}} classic infrastructure and deploy your first `nginx` app in the OpenShift cluster. In particular, you will: 
 
-- Set up your environment and all the software that you need for your Red Hat OpenShift Container Platform installation, such as Terraform, {{site.data.keyword.Bluemix_notm}} Provider plug-in, and the Terraform OpenShift project. 
-- Configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in and define your Red Hat OpenShift Container Platform infrastructure components.
-- Provision {{site.data.keyword.Bluemix_notm}} infrastructure for your Red Hat OpenShift Container Platform components by using Terraform. 
-- Install Red Hat OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}} infrastructure. 
+- Set up your environment and all the software that you need for your Red Hat OpenShift Container Platform installation, such as Terraform, {{site.data.keyword.cloud_notm}} Provider plug-in, and the Terraform OpenShift project. 
+- Retrieve {{site.data.keyword.cloud_notm}} credentials, configure the {{site.data.keyword.cloud_notm}} Provider plug-in, and define your Red Hat OpenShift Container Platform classic infrastructure components.
+- Provision {{site.data.keyword.cloud_notm}} classic infrastructure for your Red Hat OpenShift Container Platform components by using Terraform. 
+- Install Red Hat OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure. 
 - Deploy the `nginx` app in your OpenShift cluster and expose this app to the public. 
 
 ## Time required
@@ -58,25 +58,25 @@ In this tutorial, you set up Red Hat OpenShift Container Platform version 3.10 o
 ## Audience
 {: #audience}
 
-This tutorial is intended for network administrators who want to deploy Red Hat OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}}. 
+This tutorial is intended for network administrators who want to deploy Red Hat OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure. 
 
 ## Prerequisites
 {: #prerequisites}
 
-- If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
+- If you do not have one, create an {{site.data.keyword.cloud_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
 - Make sure that you have an existing [Red Hat account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://sso.redhat.com/auth/realms/redhat-external/protocol/saml?SAMLRequest=fZLLTsMwEEV%2FJTuvXCelr1hJpKgVUqWCUAss2CDXnZBIfgSPQwtfj5Oqomy69Ojec%2BfhDIVWLS87X5stfHaAPioRwfnGmqU12GlwO3BfjYSX7SYntfctcsaElIA4cnCohR9Jq5kWRnyABuNZD2VVY4RqfoBEq0ANjx75B0C0124ROmAOhNLIzmUKJw8uMFjrrLfSqoFLovUqJ%2B9JFUuIZ5KmM5B0Mk6BpkkaU0inYjGphNind0GK2MHaoBfG52QcJwuaxDRePCdzPkn5dP5GoldwOHQ2HsUkOmllkPdBOemc4VZgg9wIDci95LvyYcODkIvLkq4t7W3PZQ5SZL2aD925wtWo6RH2GbuuZufLPAbKevVkVSO%2Fo1Ipe1yGLXnIiXdd2O29dVr427l9pTnQapDytp8XfbgTYcU58%2F8HKH4B&RelayState=https%3A%2F%2Faccess.redhat.com%2Fmanagement%2Fsubscriptions&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=t4s738AUmTxKfEMZkNpOI8e1wz72ftoZ92HQIbqfs%2BShcdv3ShuJ4%2FIGIhuMYA%2BoaFZwaPcamWlo7F0VDtSN%2FHXcXj78e5s%2B99vJ3K39V4CYCmWOO3fFbpRIV5T0jxzwsp45YEeFKZd45zeQ0X2UwCxPw41JVOqq6NqIqMAJ0y%2Bb92nmE9fFMKlBCS4A%2BTHN1ub1YCUEvgKUNEOasyGdGYXHf0fh9NSUAHO8UJAPSnR0YmBLr4oWteeRuu5MkmqWxEx0F2FOIXtgncMjTsHhyqUllYKjK5%2Buf8YgbeU4ptZoniLmQEKzzrd1KJTutc3ce4W7X7h0zteTEqSdou7LLQ%3D%3D#active) that has an [active OpenShift subscription ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://access.redhat.com/products/red-hat-openshift-container-platform). 
-- Install [Docker and the {{site.data.keyword.Bluemix_notm}} CLI ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/cli?topic=cloud-cli-getting-started). 
+- Install [Docker and the {{site.data.keyword.cloud_notm}} CLI ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/cli?topic=cloud-cli-getting-started). 
 
 ## Lesson 1: Configure your environment
 {: #configure environment}
 
-In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructure for the Red Hat OpenShift Container Platform by using Terraform. Before you can start the infrastructure provisioning process, you must ensure that you set up Terraform, the {{site.data.keyword.Bluemix_notm}} Provider plug-in, and the Terraform OpenShift project. 
+In this tutorial, you provision {{site.data.keyword.cloud_notm}} classic infrastructure for the Red Hat OpenShift Container Platform by using Terraform. Before you can start the classic infrastructure provisioning process, you must ensure that you set up Terraform, the {{site.data.keyword.cloud_notm}} Provider plug-in, and the Terraform OpenShift project. 
 {: shortdesc}
 
-1. Create a Docker container that installs Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in. To execute Terraform commands, you must be logged in to the container. 
-   You can also [install Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#setup_cli) on your local machine to run Terraform commands without using a Docker container. 
+1. Create a Docker container that installs Terraform and the {{site.data.keyword.cloud_notm}} Provider plug-in. To execute Terraform commands, you must be logged in to the container. 
+   You can also [install Terraform and the {{site.data.keyword.cloud_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#setup_cli) on your local machine to run Terraform commands without using a Docker container. 
    {: tip}
-   1. Download the latest version of the Docker image for Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in to your local machine. 
+   1. Download the latest version of the Docker image for Terraform and the {{site.data.keyword.cloud_notm}} Provider plug-in to your local machine. 
       ```
       docker pull ibmterraform/terraform-provider-ibm-docker
       ```
@@ -101,7 +101,7 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
       ```
       {: screen}
    
-   2. Create a container from your image and log in to your container. When the container is created, Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in are automatically installed and you are automatically logged in to the container. The working directory is set to `/go/bin`. 
+   2. Create a container from your image and log in to your container. When the container is created, Terraform and the {{site.data.keyword.cloud_notm}} Provider plug-in are automatically installed and you are automatically logged in to the container. The working directory is set to `/go/bin`. 
       ```
       docker run -it ibmterraform/terraform-provider-ibm-docker:latest
       ```
@@ -151,7 +151,7 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
       ```
       {: pre}
 
-3. Generate an SSH key. The SSH key is used to access {{site.data.keyword.Bluemix_notm}} infrastructure resources during provisioning.  
+3. Generate an SSH key. The SSH key is used to access {{site.data.keyword.cloud_notm}} classic infrastructure resources during provisioning.  
    1. Create an SSH key inside the container that you created earlier. Enter the email address that you want to associate with your SSH key. Make sure to accept the default file name, file location, and missing passphrase by pressing **Enter**.
       ```
       ssh-keygen -t rsa -b 4096 -C "<email_address>"
@@ -227,17 +227,17 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    </tr>
    <tr>
    <td><code>datacenter</code></td>
-   <td>Enter the zone where you want to provision your {{site.data.keyword.Bluemix_notm}} infrastructure. To find existing zones, run <code>ibmcloud ks zones</code>. </td>
+   <td>Enter the zone where you want to provision your {{site.data.keyword.cloud_notm}} classic infrastructure. To find existing zones, run <code>ibmcloud ks zones</code>. </td>
    <td>dal12</td>
    </tr>
    <tr>
    <td><code>ibm_sl_api_key</code></td>
-   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure API key to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. To retrieve your API key, see [Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys).</td>
+   <td>The {{site.data.keyword.cloud_notm}} classic infrastructure API key to access classic infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the classic infrastructure resources. To retrieve your API key, see [Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys).</td>
    <td>n/a</td>
    </tr>
    <tr>
    <td><code>ibm_sl_username</code></td>
-   <td>The {{site.data.keyword.Bluemix_notm}} infrastructure user name to access infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the infrastructure resources. To retrieve your user name, see [Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys).</td>
+   <td>The {{site.data.keyword.cloud_notm}} classic infrastructure user name to access classic infrastructure resources. Do not enter this information in this file. Instead, you are prompted to enter this information when you create the classic infrastructure resources. To retrieve your user name, see [Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys).</td>
    <td>n/a</td>
    </tr>
    <tr>
@@ -307,7 +307,7 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    </tr>
    <tr>
    <td><code>vlan_count</code></td>
-   <td>Enter <code>1</code> to automatically create a new private and public VLAN with your infrastructure, or `0` if you want to use existing VLANs. To find existing VLANs, run <code>ibmcloud sl vlan list</code>. The zone where your existing VLAN routers are provisioned is included in the <strong>primary_router</strong> column of your CLI output. </td>
+   <td>Enter <code>1</code> to automatically create a new private and public VLAN, or `0` if you want to use existing VLANs. To find existing VLANs, run <code>ibmcloud sl vlan list</code>. The zone where your existing VLAN routers are provisioned is included in the <strong>primary_router</strong> column of your CLI output. </td>
    <td>1</td>
    </tr>
    <tr>
@@ -318,17 +318,17 @@ In this tutorial, you provision {{site.data.keyword.Bluemix_notm}} infrastructur
    </tbody>
    </table>
    
-## Lesson 2: Provision the IBM Cloud infrastructure for your Red Hat OpenShift cluster 
+## Lesson 2: Provision the IBM Cloud classic infrastructure for your Red Hat OpenShift cluster 
 {: #provision_infrastructure}
 
-Now that you prepared your environment, you can go ahead and provision {{site.data.keyword.Bluemix_notm}} infrastructure resources by using Terraform. 
+Now that you prepared your environment, you can go ahead and provision {{site.data.keyword.cloud_notm}} classic infrastructure resources by using Terraform. 
 {: shortdesc}
 
 Before you begin, make sure that you are logged in to the container that you created in the previous lesson. 
 
-1. [Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key](/docs/iam?topic=iam-classic_keys).
+1. [Retrieve your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key](/docs/iam?topic=iam-classic_keys).
   
-2. From the OpenShift installation directory `/go/bin/terraform-ibm-openshift` inside your container, create the {{site.data.keyword.Bluemix_notm}} infrastructure components for your Red Hat OpenShift cluster. When you run the command, Terraform evaluates what components must be provisioned and presents an execution plan. You must confirm that you want to provision the infrastructure resources by entering **yes`**. During the provisioning, Terraform creates another execution plan that you must approve to continue. When prompted, enter the infrastructure user name and API key that you retrieved earlier. The provisioning of your resources takes about 40 minutes.  
+2. From the OpenShift installation directory `/go/bin/terraform-ibm-openshift` inside your container, create the {{site.data.keyword.cloud_notm}} classic infrastructure components for your Red Hat OpenShift cluster. When you run the command, Terraform evaluates what components must be provisioned and presents an execution plan. You must confirm that you want to provision the classic infrastructure resources by entering **yes**. During the provisioning, Terraform creates another execution plan that you must approve to continue. When prompted, enter the classic infrastructure user name and API key that you retrieved earlier. The provisioning of your resources takes about 40 minutes.  
    ```
    make infrastructure
    ```
@@ -537,10 +537,10 @@ Before you begin, make sure that you are logged in to the container that you cre
    {: pre}
    
 
-## Lesson 3: Deploy the Red Hat OpenShift Container Platform on IBM Cloud
+## Lesson 3: Deploy Red Hat OpenShift Container Platform on your classic infrastructure
 {: #deploy_openshift}
 
-Deploy the Red Hat OpenShift Container Platform on the {{site.data.keyword.Bluemix_notm}} infrastructure that you created earlier.
+Deploy Red Hat OpenShift Container Platform on the {{site.data.keyword.cloud_notm}} classic infrastructure resources that you created earlier.
 {: shortdesc}
 
 During the deployment the following cluster components are set up and configured: 
@@ -549,7 +549,7 @@ During the deployment the following cluster components are set up and configured
 - 2 OpenShift Container Platform application nodes
 - 1 OpenShift Container Platform Bastion node
 
-For more information about the Red Hat OpenShift Container Platform components, see the [Architecture Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.9/architecture/index.html)
+For more information about Red Hat OpenShift Container Platform components, see the [Architecture Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.9/architecture/index.html).
 
 1. Retrieve the pool ID for your Red Hat account. 
    1. From the OpenShift installation directory `/go/bin/terraform-ibm-openshift` inside your container, log in to your Bastion node by using a secure shell. 
@@ -717,7 +717,7 @@ For more information about the Red Hat OpenShift Container Platform components, 
    ```
    {: pre}
    
-   If the installation fails with the error `module.post_install.null_resource.post_install: error executing "/tmp/terraform_1700732344.sh": wait: remote command exited without exit status or exit signal`, go to the [{{site.data.keyword.Bluemix_notm}} infrastructure dashboard](https://cloud.ibm.com/classic), and click **Devices** > **Device List**. Then, find the affected virtual server and from the actions menu, perform a soft reboot. 
+   If the installation fails with the error `module.post_install.null_resource.post_install: error executing "/tmp/terraform_1700732344.sh": wait: remote command exited without exit status or exit signal`, go to the [{{site.data.keyword.cloud_notm}} classic infrastructure console](https://cloud.ibm.com/classic), and click **Devices** > **Device List**. Then, find the affected virtual server and from the actions menu, perform a soft reboot. 
    {: tip}
    
    Example output: 
@@ -798,7 +798,7 @@ For more information about the Red Hat OpenShift Container Platform components, 
 With your OpenShift cluster up and running, you can now deploy your first app in the cluster. 
 {: shortdesc}
 
-1. List all your infrastructure resources with their IP addresses and host names. Note the following values: `bastion_public_ip`, `master_private_ip`, and `app_lbass_url`. 
+1. List all your classic infrastructure resources with their IP addresses and host names. Note the following values: `bastion_public_ip`, `master_private_ip`, and `app_lbass_url`. 
    ```
    terraform show
    ```
@@ -862,7 +862,7 @@ With your OpenShift cluster up and running, you can now deploy your first app in
 </br>
 
 **What's next?**</br>
-Great! You successfully installed Red Hat OpenShift Container Platform on {{site.data.keyword.Bluemix_notm}} infrastructure and deployed your first app to your OpenShift cluster. Now you can try out one of the following features:  
+Great! You successfully installed Red Hat OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure and deployed your first app to your OpenShift cluster. Now you can try out one of the following features:  
 
 - [Explore other features in Red Hat OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.10/welcome/index.html). 
 - Remove your OpenShift cluster by running the `make destroy` command. 
