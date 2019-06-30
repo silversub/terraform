@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-28"
+lastupdated: "2019-06-30"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -132,17 +132,15 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
 Terraform uses the {{site.data.keyword.cloud_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.cloud_notm}} REST API. To provision and work with {{site.data.keyword.cloud_notm}} resources, you must configure your {{site.data.keyword.cloud_notm}} Provider plug-in to use the credentials that are required to access your resource.
 {: shortdesc}
 
-The credentials that you need depend on the type of {{site.data.keyword.cloud_notm}} resource that you want to provision. You can decide to provision {{site.data.keyword.cloud_notm}} platform services, {{site.data.keyword.cloud_notm}} classic infrastructure and {{site.data.keyword.cloud_notm}} Virtual Private Cloud (VPC) infrastructure resouces, and {{site.data.keyword.containerlong_notm}} and {{site.data.keyword.cloud_notm}} Functions service components. Review the following table to see what credentials are required for each of the available resources. 
-
-Looking for a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in? See the [{{site.data.keyword.cloud_notm}} Provider reference](https://ibm-cloud.github.io/tf-ibm-docs/) for more information. 
-{: tip}
+The credentials that you need depend on the type of {{site.data.keyword.cloud_notm}} resource that you want to provision. You can decide to provision {{site.data.keyword.cloud_notm}} platform services, {{site.data.keyword.cloud_notm}} classic infrastructure and {{site.data.keyword.cloud_notm}} Virtual Private Cloud (VPC) infrastructure resources, and {{site.data.keyword.containerlong_notm}} and {{site.data.keyword.cloud_notm}} Functions components. 
   
 To retrieve the credentials: 
 
-1. Review the following table to determine the required credentials for your resource.
+1. Review the following table to determine the required credentials for your resource. To retrieve the category that your resource belongs to, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference](https://ibm-cloud.github.io/tf-ibm-docs/) for more information. 
+
    <table>
    <thead>
-     <th>Provider plug-in resource group</th>
+     <th>Provider plug-in resource category</th>
      <th>Description</th>
      <th>Required credentials</th>
   </thead>
@@ -160,7 +158,7 @@ To retrieve the credentials:
     <tr>
       <td>VPC Services data sources and resources</td>
       <td>Retrieve information, or create, update, or delete a Virtual Private Cloud (VPC) instance and infrastructure resources in your VPC.</td>
-      <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>SSH key</li></ul></td>
+      <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>SSH key (for VPC virtual servers)</li></ul></td>
     </tr>
     <tr>
       <td>Identity and Access data sources and resources</td>
@@ -191,7 +189,7 @@ To retrieve the credentials:
    6. Copy the public SSH key value in the **Public key** field. 
    7. Click **Add SSH key** to save your SSH key. 
    
-4. To provision {{site.data.keyword.cloud_notm}} classic infrastructure resource, retrieve the classic infrastructure user name and API key. For more information, see [Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys)
+4. To provision {{site.data.keyword.cloud_notm}} classic infrastructure resources, retrieve the classic infrastructure user name and API key. For more information, see [Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys)
 
 ## Storing your credentials in a local Terraform variables file
 {: #store_credentials}
@@ -212,10 +210,10 @@ Because the `terraform.tfvars` file contains confidential information, do not pu
 
 2. Create a Terraform configuration file that is named `terraform.tfvars` to store the credentials that you retrieved. Make sure that you include the credentials that are required to provision your resource. To determine what credentials you need, see [Retrieving required credentials for your resources](#retrieve_credentials).
    ```
-   ibmcloud_api_key = "<platform_api_key>"
+   ibmcloud_api_key = "<ibmcloud_api_key>"
    ssh_key = "<ssh_key_name>"
-   softlayer_username = "<infrastructure_username>"
-   softlayer_api_key = "<infrasturcture_apikey>"
+   softlayer_username = "<classic_infrastructure_username>"
+   softlayer_api_key = "<classic_infrasturcture_apikey>"
    ```
    {: codeblock}
    
@@ -227,7 +225,7 @@ Because the `terraform.tfvars` file contains confidential information, do not pu
    <tbody>
    <tr>
    <td><code>ibmcloud_api_key</code></td>
-   <td>Enter the {{site.data.keyword.cloud_notm}} API key that you retrieved earlier. </td>
+   <td>Enter your {{site.data.keyword.cloud_notm}} API key. </td>
    </tr>
    <tr>
    <td><code>ssh_key</code></td>
@@ -235,11 +233,11 @@ Because the `terraform.tfvars` file contains confidential information, do not pu
    </tr>
    <tr>
    <td><code>softlayer_username</code></td>
-   <td>Enter the {{site.data.keyword.cloud_notm}} classic infrastructure user name that you retrieved earlier.  </td>
+   <td>Enter your {{site.data.keyword.cloud_notm}} classic infrastructure user name.  </td>
    </tr>
    <tr>
    <td><code>softlayer_api_key</code></td>
-   <td>Enter the {{site.data.keyword.cloud_notm}} classic infrastructure API key that you retrieved earlier. </td>
+   <td>Enter your {{site.data.keyword.cloud_notm}} classic infrastructure API key. </td>
    </tr>
    </tbody>
    </table>
@@ -247,7 +245,7 @@ Because the `terraform.tfvars` file contains confidential information, do not pu
 ## Configuring the provider plug-in
 {: #configure_provider}
 
-Because Terraform supports multiple cloud provider, you must specify the cloud provider that you want to use to provision your resources. 
+Because Terraform supports multiple cloud providers, you must specify the cloud provider that you want to use to provision your resources. 
 {: shortdesc}
 
 The cloud provider configuration file is named `provider.tf`. Terraform automatically loads the cloud provider configuration when you want to provision resources to determines what cloud provider plug-in to call. To provision {{site.data.keyword.cloud_notm}} resources, you must specify `IBM` as your cloud provider and provide the credentials that the {{site.data.keyword.cloud_notm}} Provider plug-in needs to successfully provision your resources. 
@@ -307,7 +305,7 @@ The cloud provider configuration file is named `provider.tf`. Terraform automati
    </tr>
    <tr>
    <td><code>generation</code></td>
-   <td>Enter <strong>1</strong> to configure the {{site.data.keyword.cloud_notm}} provider plug-in to provision VPC on Classic infrastructure resources. This value is used for all VPC resources that you specify in your Terraform configuration files. You can remove this parameter if you want to provision classic infrastructure resources only. </td>
+   <td>Enter <strong>1</strong> to configure the {{site.data.keyword.cloud_notm}} provider plug-in to provision your VPC resources on {{site.data.keyword.cloud_notm}} classic infrastructure (VPC on Classic). You can remove this parameter if you want to provision only classic infrastructure resources that are not in a VPC. </td>
    </tr>
    <tr>
    <td><code>region</code></td>
@@ -315,11 +313,11 @@ The cloud provider configuration file is named `provider.tf`. Terraform automati
    </tr>
    <tr>
    <td><code>softlayer_username</code></td>
-   <td>Reference the classic infrastructure user name that you stored in your <code>terraform.tfvars</code> file. This user name is required to provision classic infrastructure resources. You can remove this credential if you want to provision {{site.data.keyword.cloud_notm}} platform or VPC infrastructure resources only. </td>
+   <td>Reference the {{site.data.keyword.cloud_notm}} classic infrastructure user name that you stored in your <code>terraform.tfvars</code> file. This user name is required to provision {{site.data.keyword.cloud_notm}} classic infrastructure resources. You can remove this credential if you want to provision {{site.data.keyword.cloud_notm}} platform or VPC infrastructure resources only. </td>
    </tr>
    <tr>
    <td><code>softlayer_api_key</code></td>
-   <td>Reference the classic infrastructure API key that you stored in your <code>terraform.tfvars</code> file. This API key is required to provision classic infrastructure resources. You can remove this credential if you want to provision {{site.data.keyword.cloud_notm}} platform or VPC infrastructure resources only.   </td>
+   <td>Reference the {{site.data.keyword.cloud_notm}} classic infrastructure API key that you stored in your <code>terraform.tfvars</code> file. This API key is required to provision {{site.data.keyword.cloud_notm}} classic infrastructure resources. You can remove this credential if you want to provision {{site.data.keyword.cloud_notm}} platform or VPC infrastructure resources only.   </td>
    </tr>
    </tbody>
    </table>
