@@ -1,9 +1,8 @@
-
 ---
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-22"
+lastupdated: "2019-06-30"
 
 keywords: Add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, Terraform, provision resources
 
@@ -24,28 +23,30 @@ subcollection: terraform
 # Managing IBM Cloud resources with Terraform
 {: #manage_resources}
 
-Use the Terraform CLI to create your platform and infrastructure resources in {{site.data.keyword.Bluemix_notm}}. 
+Use the Terraform CLI to create your platform and infrastructure resources in {{site.data.keyword.cloud_notm}}. 
 {: shortdesc}
 
 ## Provisioning IBM Cloud resources
 {: #provision_resources}
 
-To provision {{site.data.keyword.Bluemix_notm}} resources, you must describe the state of your resources that you want to achieve in a configuration file.  
+To provision {{site.data.keyword.cloud_notm}} resources, you must describe the state of your resources that you want to achieve in a configuration file.  
 {: shortdesc}
 
 Terraform configuration files are written by using the [HashiCorp Configuration Language (HCL) ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.terraform.io/docs/configuration/syntax.html) or JSON syntax. When you create your configuration file, you must describe the type of resource that you want and the state that you want to achieve for your resource. Terraform reads this configuration and creates an execution plan with the steps that were identified to achieve the specified state. If existing resources are found, Terraform identifies the necessary steps to update them. 
 
 Before you begin: 
-- [Install the Terraform CLI and the {{site.data.keyword.Bluemix_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#setup_cli).
-- [Configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in to use your {{site.data.keyword.Bluemix_notm}} credentials](/docs/terraform?topic=terraform-configure_provider#configure_provider). 
+- [Install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#setup_cli).
+- [Retrieve required credentials](/docs/terraform?topic=terraform-setup_cli#retrieve_credentials) and store these credentials in a [`terraform.tfvars` file](/docs/terraform?topic=terraform-setup_cli#store_credentials). 
+- [Configure the {{site.data.keyword.cloud_notm}} Provider plug-in to use your {{site.data.keyword.cloud_notm}} credentials](/docs/terraform?topic=terraform-configure_provider#configure_provider). 
 </br>
 
-**Important: ** The following example shows how you can configure a virtual server in {{site.data.keyword.Bluemix_notm}} by using JSON syntax. A virtual server is an {{site.data.keyword.Bluemix_notm}} infrastructure resource that incurs costs. Be sure to review [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) before you proceed. 
+The following example shows how you can configure a virtual server in {{site.data.keyword.cloud_notm}} by using JSON syntax. A virtual server is an {{site.data.keyword.cloud_notm}} infrastructure resource that incurs costs. Be sure to review [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) before you proceed. 
+{: important}
 
-Looking for other resource types? Find a complete list of supported resource types in the [{{site.data.keyword.Bluemix_notm}} resource reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/). 
+Looking for other resource types? Find a complete list of supported resource types in the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/). 
 {: tip}
 
-1. Create a configuration file that is named `sample.tf` with the following content. Configuration file names must have the `.tf` extension to be found by Terraform. Store this file in the same folder that you used to store your {{site.data.keyword.Bluemix_notm}} credentials. 
+1. Create a configuration file that is named `sample.tf` with the following content. Configuration file names must have the `.tf` extension to be found by Terraform. Store this file in the same folder that you used to store your {{site.data.keyword.cloud_notm}} credentials. 
    ```
    resource "ibm_compute_vm_instance" "vm1" {
     hostname = "vm1"
@@ -87,7 +88,7 @@ Looking for other resource types? Find a complete list of supported resource typ
    ```
    {: screen}
    
-3. Generate a Terraform execution plan. When you execute this command, Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.Bluemix_notm}} Provider plug-in. 
+3. Generate a Terraform execution plan. When you execute this command, Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
    ```
    terraform plan
    ```
@@ -213,7 +214,7 @@ Looking for other resource types? Find a complete list of supported resource typ
 You can update your resources by changing your Terraform configuration file and applying these changes in your environment. 
 {: shortdesc}
 
-1. List your {{site.data.keyword.Bluemix_notm}} resources. 
+1. List your {{site.data.keyword.cloud_notm}} resources. 
    ```
    terraform show
    ```
@@ -261,7 +262,7 @@ You can update your resources by changing your Terraform configuration file and 
    ```
    {: screen}
    
-2. Open your `sample.tf` configuration file and change a value. For example, you can change the **network_speed** to **100**. To find an overview of parameters that you can change, see the [{{site.data.keyword.Bluemix_notm}} resource reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
+2. Open your `sample.tf` configuration file and change a value. For example, you can change the **network_speed** to **100**. To find an overview of parameters that you can change, see the [{{site.data.keyword.cloud_notm}} resource reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
    
 3. Create a Terraform execution plan. 
    ```
@@ -291,13 +292,13 @@ You can update your resources by changing your Terraform configuration file and 
    ```
    {: screen}
    
-4. Apply the changes to your {{site.data.keyword.Bluemix_notm}} resources. 
+4. Apply the changes to your {{site.data.keyword.cloud_notm}} resources. 
    ```
    terraform apply
    ```
    {: pre}
    
-5. Verify that your {{site.data.keyword.Bluemix_notm}} resources are updated. 
+5. Verify that your {{site.data.keyword.cloud_notm}} resources are updated. 
    ```
    terraform show
    ```
@@ -306,17 +307,17 @@ You can update your resources by changing your Terraform configuration file and 
 ## Removing IBM Cloud resources 
 {: #remove_resources}
 
-You can use Terraform to remove {{site.data.keyword.Bluemix_notm}} resources if you do not want them anymore. 
+You can use Terraform to remove {{site.data.keyword.cloud_notm}} resources if you do not want them anymore. 
 {: shortdesc}
 
-1. Show the summary of steps that Terraform identified to remove your {{site.data.keyword.Bluemix_notm}} resources. 
+1. Show the summary of steps that Terraform identified to remove your {{site.data.keyword.cloud_notm}} resources. 
    ```
    terraform plan -destroy
    ```
    {: pre}
    
 2. Verify the Terraform execution plan. 
-3. Remove your {{site.data.keyword.Bluemix_notm}} resources. 
+3. Remove your {{site.data.keyword.cloud_notm}} resources. 
    ```
    terraform destroy
    ```
@@ -348,7 +349,7 @@ You can use Terraform to remove {{site.data.keyword.Bluemix_notm}} resources if 
    ```
    {: screen}
    
-4. Verify that your {{site.data.keyword.Bluemix_notm}} resources are removed. 
+4. Verify that your {{site.data.keyword.cloud_notm}} resources are removed. 
    ```
    terraform show
    ```
