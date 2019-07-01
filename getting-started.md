@@ -628,7 +628,6 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
          resource_group:                                   <computed>
          status:                                           <computed>
 
-
    Plan: 6 to add, 0 to change, 0 to destroy.
 
    Note: You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions will be performed if "terraform apply" is subsequently run.
