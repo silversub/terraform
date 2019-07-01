@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-30"
+lastupdated: "2019-07-01"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -182,13 +182,8 @@ To retrieve the credentials:
 
 3. To connect to a VPC infrastructure virtual server via SSH, create an SSH key. 
    1. [Create the SSH key](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-ssh-keys). 
-   2. To upload the SSH key to {{site.data.keyword.cloud_notm}} account, open the [{{site.data.keyword.cloud_notm}} VPC console](https://cloud.ibm.com/vpc/compute/sshKeys). 
-   3. From the navigation, click **Compute** > **SSH key**. 
-   4. Click **Add SSH key**. 
-   5. Enter a name for your SSH key, and select the resource group and the region, for which you want to use the SSH key. 
-   6. Copy the public SSH key value in the **Public key** field. 
-   7. Click **Add SSH key** to save your SSH key. 
-   
+   2. [Upload the SSH key to your {{site.data.keyword.cloud_notm}} account](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-managing-ssh-keys). 
+
 4. To provision {{site.data.keyword.cloud_notm}} classic infrastructure resources, retrieve the classic infrastructure user name and API key. For more information, see [Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys)
 
 ## Storing your credentials in a local Terraform variables file
