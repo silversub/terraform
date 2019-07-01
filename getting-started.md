@@ -489,7 +489,7 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
        <td>Enter the ID of the subnet that you want to use for your {{site.data.keyword.vsi_is_short}} instance. In this example, you use the <code>ibm_is_subnet</code> resource in this configuration file to retrieve the ID of the subnet.   </td>
      </tr>
      <tr>
-       <td><code>resource.ibm_is_instance.</code></br><code<primary_network_interface.security_groups</code></td>
+       <td><code>resource.ibm_is_instance.</code></br><code><primary_network_interface.security_groups</code></td>
        <td>Enter the ID of the security group that you want to apply to your {{site.data.keyword.vsi_is_short}} instance. In this example, you use the <code>ibm_is_security_group</code> resource in this configuration file to retrieve the ID of the security group.   </td>
      </tr>
      <tr>
@@ -794,7 +794,8 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    local_disk = false
    }
    ```
-   {: codeblock}  
+   {: codeblock}
+   
    <table>
    <caption>Understanding the configuration file components</caption>
    <thead>
