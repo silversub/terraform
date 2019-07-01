@@ -802,8 +802,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    local_disk = false
    }
    ```
-   {: codeblock}
-   
+   {: codeblock}  
    <table>
    <caption>Understanding the configuration file components</caption>
    <thead>
