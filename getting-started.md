@@ -193,12 +193,14 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
       |    .  ..        |
       |                 |
       +----[SHA256]-----+
+      ```
       {: screen}
       
    2. Verify that the SSH key is created successfully. The creation is successful if you can see one `id_rsa` and one `id_rsa.pub` file.
       ```
       cd ~/.ssh && ls
       ```
+      {: pre}
       
       Example output:
       ```
@@ -212,13 +214,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
       ```
       {: pre}
       
-5. Upload your SSH key to {{site.data.keyword.cloud_notm}}. 
-   1. Open the [{{site.data.keyword.cloud_notm}} VPC console](https://cloud.ibm.com/vpc/compute/sshKeys). 
-   2. From the navigation, click **Compute** > **SSH key**. 
-   3. Click **Add SSH key**. 
-   4. Enter a name for your SSH key, and select the resource group and the region, for which you want to use the SSH key. 
-   5. Copy the public SSH key value in the **Public key** field. 
-   6. Click **Add SSH key** to save your SSH key. 
+5. [Upload your SSH key to your {{site.data.keyword.cloud_notm}} account](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-managing-ssh-keys). 
         
 6. Create a Terraform configuration file that is named `terraform.tfvars` to store your {{site.data.keyword.cloud_notm}} classic infrastructure credentials and the {{site.data.keyword.cloud_notm}} API key. Make sure to save this file in the folder that you created for your first Terraform project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized and you can reference them in every Terraform configuration file that you use. 
 
@@ -306,13 +302,13 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
 ## Provisioning a Virtual Servers for VPC instance in {{site.data.keyword.cloud_notm}}
 {: #sample_vpc_config}
 
-Create a Virtual Private Cloud (VPC) with a {{site.data.keyword.vsi_is_short}} instance, and set up networking for your VPC in your {{site.data.keyword.cloud_notm}} account. 
+Use Terraform to create a Virtual Private Cloud (VPC) with a {{site.data.keyword.vsi_is_short}} instance, and set up networking for your VPC in your {{site.data.keyword.cloud_notm}} account. 
 {: shortdesc}
 
-A VPC allows you to create your own space in {{site.data.keyword.cloud_notm}} so that you can run your own isolated environment in the public cloud with your own custom network policies. The example in this topic provision the following infrastructure resources for you: 
-- 1 VPC that you use to provision your {{site.data.keyword.vsi_is_short}} instance
-- 1 security group and a rule for this security group to allow SSH connection to your VPC environment
-- 1 subnet to enable networking in your VPC and assign IP addresses to your VPC infrastructure resources
+A VPC allows you to create your own space in {{site.data.keyword.cloud_notm}} so that you can run your own isolated environment in the public cloud with your own custom network policies. The example in this topic provisions the following infrastructure resources for you: 
+- 1 VPC where you provision your {{site.data.keyword.vsi_is_short}} instance
+- 1 security group and a rule for this security group to allow SSH connection to your virtual server instance
+- 1 subnet to enable networking in your VPC
 - 1 {{site.data.keyword.vsi_is_short}} instance 
 - 1 floating IP address that you use to access your {{site.data.keyword.vsi_is_short}} instance over the public network
 
@@ -324,7 +320,7 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
 2. Create your Terraform configuration file and name it `vpc.tf`. The configuration file includes the following definition blocks: 
    - **locals**: Use this block to specify variables that you want to use multiple times throughout this configuration file. 
    - **resource**: Every resource block specifies the {{site.data.keyword.cloud_notm}} resource that you want to provision. To find more information about supported configurations for each resource, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/]).
-   - **data**: Use this block to retrieve information about an existing resource in your {{site.data.keyword.cloud_notm}} account. 
+   - **data**: Use this block to retrieve information for an existing resource in your {{site.data.keyword.cloud_notm}} account. 
    - **output**: This block specifies commands that you want to run after your resources are provisioned. 
    
    Example configuration file: 
@@ -406,15 +402,11 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
    <tbody>
    <tr>
    <td><code>locals.BASENAME</code></td>
-   <td>Enter a name that you want to append to the name of all VPC infrastructure resources that you create. </td>
-   </tr>
-   <tr>
-   <td><code>locals.REGION</code></td>
-   <td>Enter a supported VPC region. To find supported regions, see [Creating a VPC in a different region](/docs/vpc-on-classic?topic=vpc-on-classic-creating-a-vpc-in-a-different-region). </td>
+   <td>Enter a name that you want to append to the name of all VPC infrastructure resources that you create with this configuration file. </td>
    </tr>
      <tr>
        <td><code>locals.ZONE</code></td>
-       <td>Enter a supported zone for the region that you selected in <code>locals.REGION</code>.  </td>
+       <td>Enter a supported VPC zone where you want to create your resources. To find available zones, run <code>ibmcloud is zones</code>.  </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_vpc.name</code></td>
@@ -430,7 +422,7 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
      </tr>
      <tr>
        <td><code>resource.ibm_is_security_group_rule.group</code></td>
-       <td>Enter the ID of the security group, for which you want to create security group rule. In this example, you reference the ID of the <code>ibm_is_security_group</code> resource that you specified in the same configuration file.  </td>
+       <td>Enter the ID of the security group, for which you want to create a security group rule. In this example, you reference the ID of the <code>ibm_is_security_group</code> resource that you specified in the same configuration file.  </td>
      </tr>
       <tr>
        <td><code>resource.ibm_is_security_group_rule.direction</code></td>
@@ -438,11 +430,11 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
      </tr>
      <tr>
        <td><code>resource.ibm_is_security_group_rule.remote</code></td>
-       <td>Enter the IP address range, for which the security group rule is applied. In this example, <code>0.0.0.0/0</codes> allows network traffic from all IP addresses. </td>
+       <td>Enter the IP address range, for which the security group rule is applied. In this example, <code>0.0.0.0/0</code> allows network traffic from all IP addresses. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_security_group_rule.tcp</code></td>
-       <td>Enter the port range that you want to open in your security group rule. If you want to open up a single port, enter the same port number in <code>port_min</code> and <code>port_max</code>. </td>
+       <td>Enter the TCP port range that you want to open in your security group rule. If you want to open up a single port, enter the same port number in <code>port_min</code> and <code>port_max</code>. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_subnet.name</code></td>
@@ -450,14 +442,14 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
      </tr>
       <tr>
        <td><code>resource.ibm_is_subnet.vpc</code></td>
-       <td>Enter the ID of the VPC, for which you want to create the security group. In this example, you reference the ID of the <code>ibm_is_vpc</code> resource that you specified in the same configuration file. </td>
+       <td>Enter the ID of the VPC, for which you want to create the subnet. In this example, you reference the ID of the <code>ibm_is_vpc</code> resource that you specified in the same configuration file. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_subnet.zone</code></td>
        <td>Enter the zone, in which you want to create the subnet. In this example, you use <code>locals.ZONE</code> as the name for your zone. </td>
      </tr>
      <tr>
-       <td><code>resource.ibm_is_subnet.total_ipv4_address_count</code></td>
+       <td><code>resource.ibm_is_subnet.</code></br><code>total_ipv4_address_count</code></td>
        <td>Enter the number of IPv4 IP addresses that you want to have in your subnet. </td>
      </tr>
      <tr>
@@ -493,16 +485,16 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
        <td>Enter the name of the profile that you want to use for your {{site.data.keyword.vsi_is_short}} instance. For supported profiles, run <code>ibmcloud is instance-profiles</code>. </td>
      </tr>
      <tr>
-       <td><code>resource.ibm_is_instance.primary_network_interface.subnet</code></td>
-       <td>Enter the ID of the subnet that you want to use for your VPC. In this example, you use the <code>ibm_is_subnet</code> resource in this configuration file to retrieve the ID of the subnet.   </td>
+       <td><code>resource.ibm_is_instance.</code></br><code>primary_network_interface.subnet</code></td>
+       <td>Enter the ID of the subnet that you want to use for your {{site.data.keyword.vsi_is_short}} instance. In this example, you use the <code>ibm_is_subnet</code> resource in this configuration file to retrieve the ID of the subnet.   </td>
      </tr>
      <tr>
-       <td><code>resource.ibm_is_instance.primary_network_interface.security_groups</code></td>
-       <td>Enter the ID of the security group that you want to apply for your VPC. In this example, you use the <code>ibm_is_security_group</code> resource in this configuration file to retrieve the ID of the security group.   </td>
+       <td><code>resource.ibm_is_instance.</code></br><code<primary_network_interface.security_groups</code></td>
+       <td>Enter the ID of the security group that you want to apply to your {{site.data.keyword.vsi_is_short}} instance. In this example, you use the <code>ibm_is_security_group</code> resource in this configuration file to retrieve the ID of the security group.   </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_floating_ip.name</code></td>
-       <td>Enter the name for your floating IP resource. In this example, you use <code>locals.BASENAME</code> to create part of the name. For example, if your base name is `test`, the name of your floating IP resource is set to `test-fip1`.   </td>
+       <td>Enter a name for your floating IP resource. In this example, you use <code>locals.BASENAME</code> to create part of the name. For example, if your base name is `test`, the name of your floating IP resource is set to `test-fip1`.   </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_floating_ip.target</code></td>
@@ -510,7 +502,7 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
      </tr>
      <tr>
        <td><code>output.ssh_command.value</code></td>
-       <td>Enter a command that you want to run after all your resources are provisioned. In this example, you  </td>
+       <td>Build the SSH command that you need to run to connect to your {{site.data.keyword.vsi_is_short}} instance. In this example, you use the <code>ibm_is_floating_ip</code> resource to retrieve the floating IP address that is assigned to your {{site.data.keyword.vsi_is_short}} instance.  </td>
      </tr>
    </tbody>
    </table>
