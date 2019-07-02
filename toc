@@ -19,7 +19,6 @@ Automating cloud resource provisioning with Terraform
     
     {: .navgroup id="howto"}
     setup_cli.md
-    configure_provider.md
     manage_resources.md
     ansible/ansible.md
     {: .navgroup-end}
@@ -35,3 +34,5 @@ Automating cloud resource provisioning with Terraform
     faqs.md
     terraform_ts_index.md
     {: .navgroup-end}
+    
+    configure_provider.md
