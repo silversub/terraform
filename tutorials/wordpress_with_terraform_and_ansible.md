@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-18"
+lastupdated: "2019-07-02"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, single site, single zone
 
@@ -21,24 +21,24 @@ subcollection: terraform
 {:important: .important}
 {:download: .download}
 
-# Tutorial: Deploying WordPress on IBM Cloud infrastructure with Terraform and Ansible
+# Tutorial: Deploying WordPress on IBM Cloud classic infrastructure with Terraform and Ansible
 {: #deploy_wordpress}
 
-Use this tutorial to automate the provisioning of infrastructure resources in {{site.data.keyword.Bluemix_notm}} by using Terraform and the deployment of WordPress on those resources with Ansible.  
+Use this tutorial to automate the provisioning of classic infrastructure resources in {{site.data.keyword.Bluemix_notm}} by using Terraform and the deployment of WordPress on those resources with Ansible.  
 {: shortdesc}
 
-[Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform and then use Ansible to deploy WordPress on Apache web servers and MariaDB, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
+[Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} classic infrastructure with Terraform and then use Ansible to deploy WordPress on Apache web servers and MariaDB, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 
 ## Solution overview
 {: #overview_single_site_wordpress}
 
-The following image shows the infrastructure and software components that you provision as part of this tutorial. 
+The following image shows the classic infrastructure and software components that you provision as part of this tutorial. 
 
 <img src="../images/wordpress_infrastructure.png" alt="Infrastructure and app components to deploy WordPress on {{site.data.keyword.Bluemix_notm}} with Terraform and Ansible" width="800" style="width: 800px; border-style: none"/>
 
-For the WordPress sample app, the Ansible playbooks package implements a single site deployment of multiple Apache web servers with a single MariaDB database host that run on {{site.data.keyword.Bluemix_notm}} virtual servers. The private IP addresses of the Apache web servers are added to the {{site.data.keyword.Bluemix_notm}} Load Balancer that serves as the public endpoint for your WordPress deployment. 
+For the WordPress sample app, the Ansible playbooks package implements a single site deployment of multiple Apache web servers with a single MariaDB database host that run on {{site.data.keyword.Bluemix_notm}} classic virtual servers. The private IP addresses of the Apache web servers are added to the {{site.data.keyword.Bluemix_notm}} Load Balancer that serves as the public endpoint for your WordPress deployment. 
 
-Terraform infrastructure components are provisioned by using Terraform configuration files whereas Ansible uses playbooks to automate the deployment of software components. 
+Terraform classic infrastructure components are provisioned by using Terraform configuration files whereas Ansible uses playbooks to automate the deployment of software components. 
 
 <table>
 <caption>WordPress sample app infrastructure and software components</caption>
@@ -49,7 +49,7 @@ Terraform infrastructure components are provisioned by using Terraform configura
 <tbody>
 <tr>
 <td>Terraform</td>
-<td><ul><li>Three {{site.data.keyword.Bluemix_notm}} virtual servers that run Centos 7.x</li><li>One {{site.data.keyword.Bluemix_notm}} load balancer</li></ul></td>
+<td><ul><li>Three {{site.data.keyword.Bluemix_notm}} classic virtual servers that run Centos 7.x</li><li>One {{site.data.keyword.Bluemix_notm}} classic load balancer</li></ul></td>
 </tr>
 <tr>
 <td>Ansible</td>
@@ -58,18 +58,18 @@ Terraform infrastructure components are provisioned by using Terraform configura
 </tbody>
 </table>
 
-This tutorial intends to demonstrate the capability of building websites on {{site.data.keyword.Bluemix_notm}} infrastructure with secure networking, and does not intend to provide a fully operational WordPress deployment. To run this tutorial, the infrastructure costs that incur are restricted to the virtual servers and the load balancer that are provisioned as part of this tutorial. No costs are required for DNS domain names or SSL/TLS certificates. All infrastructure resources are provisioned with an hourly billing type. The actual costs for you depend on the type of virtual server that you provision and the number of hours that you use your infrastructure resources. As a result of limiting the costs for this tutorial, the website in WordPress is not configured with HTTPS security.
+This tutorial intends to demonstrate the capability of building websites on {{site.data.keyword.Bluemix_notm}} classic infrastructure with secure networking, and does not intend to provide a fully operational WordPress deployment. To run this tutorial, the classic infrastructure costs that incur are restricted to the virtual servers and the load balancer that are provisioned as part of this tutorial. No costs are required for DNS domain names or SSL/TLS certificates. All classic infrastructure resources are provisioned with an hourly billing type. The actual costs for you depend on the type of classic virtual server that you provision and the number of hours that you use your classic infrastructure resources. As a result of limiting the costs for this tutorial, the website in WordPress is not configured with HTTPS security.
 {: important}
 
 ## Objectives
 {: #objectives_single_site_wordpress}
 
-In this tutorial, you use Terraform to deploy IBM Cloud infrastructure components that you use to set up a WordPress sample app by using Ansible. In particular, you will:
+In this tutorial, you use Terraform to deploy {{site.data.keyword.Bluemix_notm}} classic infrastructure components that you use to set up a WordPress sample app by using Ansible. In particular, you will:
 
 - Set up your environment and all the software that you need for your sample WordPress app, such as Terraform, {{site.data.keyword.Bluemix_notm}} Provider plug-in, and Ansible.
-- Provision {{site.data.keyword.Bluemix_notm}} infrastructure components for your WordPress sample app by using Terraform.
-- Import infrastructure resource information from Terraform to Ansible. 
-- Deploy a sample WordPress app on your {{site.data.keyword.Bluemix_notm}} infrastructure with Ansible. 
+- Provision {{site.data.keyword.Bluemix_notm}} classoc infrastructure components for your WordPress sample app by using Terraform.
+- Import classic infrastructure resource information from Terraform to Ansible. 
+- Deploy a sample WordPress app on your {{site.data.keyword.Bluemix_notm}} classic infrastructure with Ansible. 
 - Use Ansible to finalize the setup of your WordPress app. 
 
 ## Time required
@@ -80,18 +80,18 @@ In this tutorial, you use Terraform to deploy IBM Cloud infrastructure component
 ## Audience
 {: #audience_single_site_wordpress}
 
-This tutorial is intended for network administrators and software developers who want to learn how to use Terraform and Ansible to automate infrastructure and app deployment in {{site.data.keyword.Bluemix_notm}}.
+This tutorial is intended for network administrators and software developers who want to learn how to use Terraform and Ansible to automate classic infrastructure and app deployment in {{site.data.keyword.Bluemix_notm}}.
 
 ## Prerequisites
 {: #prerequisites_single_site_wordpress}
 
 - If you do not have one, create an {{site.data.keyword.Bluemix_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.Bluemix_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration). 
-- [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-ansible#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} infrastructure resources over the private network. 
+- [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-ansible#setup_vpn) to access {{site.data.keyword.Bluemix_notm}} classic infrastructure resources over the private network. 
 
 ## Lesson 1: Setting up Terraform 
 {: #setup_terraform_single_site_wordpress}
 
-To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure resources, you must install Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in for Terraform. The {{site.data.keyword.Bluemix_notm}} Provider plug-in is aware of all the {{site.data.keyword.Bluemix_notm}} resources that you can provision with Terraform, including the API and the methods to expose these resources in the cloud.
+To use Terraform to provision {{site.data.keyword.Bluemix_notm}} classic infrastructure resources, you must install Terraform and the {{site.data.keyword.Bluemix_notm}} Provider plug-in for Terraform. The {{site.data.keyword.Bluemix_notm}} Provider plug-in is aware of all the {{site.data.keyword.Bluemix_notm}} resources that you can provision with Terraform, including the API and the methods to expose these resources in the cloud.
 {: shortdesc}
 
 1. Download the {{site.data.keyword.Bluemix_notm}} Terraform Provider project. 
@@ -214,7 +214,7 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
    
    Your API key is displayed in the **API Key** section of your CLI output. 
       
-5. [Retrieve your {{site.data.keyword.Bluemix_notm}} infrastructure user name and API key](/docs/iam?topic=iam-classic_keys).
+5. [Retrieve your {{site.data.keyword.Bluemix_notm}} classic infrastructure user name and API key](/docs/iam?topic=iam-classic_keys).
 
 6. Copy the Terraform configuration files to create your WordPress infrastructure from the {{site.data.keyword.Bluemix_notm}} Terraform Provider package to your Terraform project directory. 
    ```
@@ -229,10 +229,10 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} infrastructure 
       ```
       {: pre}
       
-   2. Add your infrastructure credentials and the {{site.data.keyword.Bluemix_notm}} API key to the `terraform.tfvars` file. 
+   2. Add your classic infrastructure credentials and the {{site.data.keyword.Bluemix_notm}} API key to the `terraform.tfvars` file. 
       ```
-      softlayer_username = "<infrastructure_username>"
-      softlayer_api_key = "<infrastructure_api_key>"
+      softlayer_username = "<classic_infrastructure_username>"
+      softlayer_api_key = "<classic_infrastructure_api_key>"
       ibmcloud_api_key = "<ibmcloud_api_key>"
       ```
       {: codeblock}
@@ -313,13 +313,13 @@ Great! Now that you completed the setup of Terraform and Ansible, you can start 
 ## Lesson 3: Provisioning the WordPress infrastructure with Terraform
 {: #provision_terraform_infrastructure_single_site_wordpress}
 
-In this lesson, you deploy the virtual server instances and the {{site.data.keyword.Bluemix_notm}} load balancer that you need for your WordPress app. 
+In this lesson, you deploy the classic virtual server instances and the {{site.data.keyword.Bluemix_notm}} classic load balancer that you need for your WordPress app. 
 {: shortdesc}
 
-1. In your Terraform project directory, update the `variables.tf` with values for your target datacenter, ssh_label and ssh_key for your environment.
+1. In your Terraform project directory, update the `variables.tf` with values for your target `datacenter`, `ssh_label` and `ssh_key` for your environment.
 
-2. Deploy the infrastructure. 
-   1. Instruct Terraform to deploy the infrastructure. Terraform parses the configuration files, creates an execution plan, and lists a summary of the resources that must be created. 
+2. Deploy the classic infrastructure. 
+   1. Instruct Terraform to deploy the classic infrastructure. Terraform parses the configuration files, creates an execution plan, and lists a summary of the resources that must be created. 
       ```
       terraform apply
       ```
@@ -352,7 +352,7 @@ In this lesson, you deploy the virtual server instances and the {{site.data.keyw
       ```
       {: screen}
       
-   2. Confirm the creation of the infrastructure resources by entering **yes**. </br>
+   2. Confirm the creation of the classic infrastructure resources by entering **yes**. </br>
      
       Example output: 
       ```
@@ -362,9 +362,9 @@ In this lesson, you deploy the virtual server instances and the {{site.data.keyw
       ```
       {: screen}
       
-   3. Note the domain name **web_dns_name** that is assigned to your {{site.data.keyword.Bluemix_notm}} Load Balancer. 
+   3. Note the domain name **web_dns_name** that is assigned to your {{site.data.keyword.Bluemix_notm}} classic Load Balancer. 
       
-4. Verify that the domain name of your {{site.data.keyword.Bluemix_notm}} load balancer is successfully registered with a domain name server. DNS name updates for the load balancer can take 10 - 30 minutes to propagate to public global domain name servers after you deployed your infrastructure resources. However, the domain name and the public IP address of your load balancer are registered with the IBM domain name servers that you can access at `ns1.softlayer.com` and `ns2.softlayer.com` after a few minutes. You can use these domain name servers to validate the setup of your load balancer.  
+4. Verify that the domain name of your {{site.data.keyword.Bluemix_notm}} classic load balancer is successfully registered with a domain name server. DNS name updates for the load balancer can take 10 - 30 minutes to propagate to public global domain name servers after you deployed your classic infrastructure resources. However, the domain name and the public IP address of your load balancer are registered with the IBM domain name servers that you can access at `ns1.softlayer.com` and `ns2.softlayer.com` after a few minutes. You can use these domain name servers to validate the setup of your load balancer.  
    ```
    nslookup <web_dns_name> ns1.softlayer.com
    ```
@@ -383,7 +383,7 @@ In this lesson, you deploy the virtual server instances and the {{site.data.keyw
    ```
    {: screen}
     
-5. Verify that you can access one of the virtual server instances behind your {{site.data.keyword.Bluemix_notm}} load balancer. To test access via the load balancer, the Terraform sample configuration deploys a sample Apache web server on the virtual servers by using CloudInit. This Apache web server is accessible by using any of the public IP addresses for your load balancer that were returned in the previous step.
+5. Verify that you can access one of the classic virtual server instances behind your {{site.data.keyword.Bluemix_notm}} classic load balancer. To test access via the classic load balancer, the Terraform sample configuration deploys a sample Apache web server on the classic virtual servers by using CloudInit. This Apache web server is accessible by using any of the public IP addresses for your load balancer that were returned in the previous step.
    ```
    curl <lb_ip_address>
    ```
@@ -401,7 +401,7 @@ In this lesson, you deploy the virtual server instances and the {{site.data.keyw
 ## Lesson 4: Creating an Ansible infrastructure inventory
 {: #create_ansible_inventory_single_site_wordpress}
 
-Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import infrastructure information from your Terraform `terraform.tfstate` file into Ansible. 
+Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import classic infrastructure information from your Terraform `terraform.tfstate` file into Ansible. 
 {: shortdesc}
 
 1. In your existing Ansible project directory, create a directory that is named `inventory`.
@@ -422,23 +422,23 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
    ```
    {: pre}
       
-4. Specify the location of the `terraform.tfstate` file that was created after you provisioned the {{site.data.keyword.Bluemix_notm}} infrastructure with Terraform in Lesson 3. The `terraform.tfstate` file is the source for information about the deployed infrastructure that you want to target with Ansible. By specifying the location of the file in a `terraform_inv.ini` file and storing it in the same directory as the {{site.data.keyword.Bluemix_notm}} Terraform inventory script, Ansible can import the Terraform infrastructure information directly.
+4. Specify the location of the `terraform.tfstate` file that was created after you provisioned the {{site.data.keyword.Bluemix_notm}} classic infrastructure with Terraform in Lesson 3. The `terraform.tfstate` file is the source for information about the deployed classic infrastructure that you want to target with Ansible. By specifying the location of the file in a `terraform_inv.ini` file and storing it in the same directory as the {{site.data.keyword.Bluemix_notm}} Terraform inventory script, Ansible can import the Terraform classic infrastructure information directly.
    1. In your Ansible `inventory` directory, open the `terraform_inv.ini` file. 
       ```
       nano terraform_inv.ini
       ```
       {: pre}
       
-   2. Add the fully qualified path to the `terraform.tfstate` file that holds your Terraform infrastructure information.   
+   2. Add the fully qualified path to the `terraform.tfstate` file that holds your Terraform classic infrastructure information.   
       ```
       [TFSTATE] 
       TFSTATE_FILE = <terraform_project_path>/terraform.tfstate
       ```
       {: codeblock}
    
-6. Verify that the {{site.data.keyword.Bluemix_notm}} Terraform inventory script can import the Terraform infrastructure that is defined in the `terraform.tfstate` file. 
+6. Verify that the {{site.data.keyword.Bluemix_notm}} Terraform inventory script can import the Terraform classic infrastructure that is defined in the `terraform.tfstate` file. 
    1. Navigate to your Ansible project parent directory.  
-   2. Import the Terraform infrastructure information from the `terraform.tfstate` file to create the Ansible infrastructure inventory. 
+   2. Import the Terraform classic infrastructure information from the `terraform.tfstate` file to create the Ansible infrastructure inventory. 
       ```
       ansible-inventory -i ./inventory --list
       ```
