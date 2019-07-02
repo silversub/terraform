@@ -20,7 +20,7 @@ subcollection: terraform
 {:download: .download}
 
 # Configuring the IBM Cloud Provider plug-in
-{: #configure_provider}
+{: #configure_provider-old}
 
 Terraform uses the {{site.data.keyword.Bluemix_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.Bluemix_notm}} REST API. To provision and work with {{site.data.keyword.Bluemix_notm}} resources, you must configure your {{site.data.keyword.Bluemix_notm}} Provider plug-in to use the credentials that are required to access your resource.
 
