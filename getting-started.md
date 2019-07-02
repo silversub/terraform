@@ -39,7 +39,7 @@ The Terraform configuration files describe the resources that you need and how y
 To provision {{site.data.keyword.cloud_notm}} infrastructure and platform resources, you must have a [Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration).  
 
 **What will I provision as part of this tutorial?** </br>
-This getting started tutorial walks you through how to provision a [classic infrastructure virtual server](/docs/vsi?topic=virtual-servers-about-public-virtual-servers) and a [{{site.data.keyword.vsi_is_short}} instance](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-getting-started). Both virtual server instances incur costs. Be sure to review the available plans for [classic infrastructure virtual servers ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) and [{{site.data.keyword.vsi_is_short}}](https://cloud.ibm.com/vpc/provision/vs) before you proceed.
+This getting started tutorial walks you through how to provision a [classic infrastructure virtual server](/docs/vsi?topic=virtual-servers-about-public-virtual-servers) and a [VPC infrastructure virtual server instance](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-getting-started). Both virtual server instances incur costs. Be sure to review the available plans for [classic infrastructure virtual servers ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) and [VPC infrastructure virtual servers](https://cloud.ibm.com/vpc/provision/vs) before you proceed.
 
 Sounds great? Get started by installing the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in. Then, configure the {{site.data.keyword.cloud_notm}} resources that you want and watch Terraform spin them up. 
 
@@ -299,7 +299,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    </tbody>
    </table>
    
-## Provisioning a Virtual Servers for VPC instance in {{site.data.keyword.cloud_notm}}
+## Provisioning a virtual server instance in a VPC in {{site.data.keyword.cloud_notm}}
 {: #sample_vpc_config}
 
 Use Terraform to create a Virtual Private Cloud (VPC) with a {{site.data.keyword.vsi_is_short}} instance, and set up networking for your VPC in your {{site.data.keyword.cloud_notm}} account. 
