@@ -796,67 +796,6 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    ```
    {: codeblock}
    
-   <table>
-   <caption>Understanding the configuration file components</caption>
-   <thead>
-   <th colspan=2><img src="images/idea.png" alt="Idea icon"/> Understanding the configuration file components</th>
-   </thead>
-   <tbody>
-   <tr>
-   <td><code>resource</code></td>
-   <td>The name of the {{site.data.keyword.cloud_notm}} resource that you want to provision. To provision a classic infrastructure virtual server instance, use <code>ibm_compute_vm_instance</code>. To find a list of other resources that you can provision, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).</td>
-   </tr>
-   <tr>
-   <td><code>vm1</code></td>
-   <td>Enter a name for your {{site.data.keyword.cloud_notm}} resource.  </td>
-   </tr>
-   <tr>
-   <td><code>hostname</code></td>
-   <td>Optional. Enter a name host name for your virtual server instance. This host name is used with the <code>domain</code> to create the full URL for your virtual server instance. </td>
-   </tr>
-   <tr>
-   <td><code>domain</code></td>
-   <td>Optional. Enter the domain name that you want to assign to your virtual server instance. This domain name is used with the <code>hostname</code> to create the full URL for your virtual server instance.  </td>
-   </tr>
-   <tr>
-   <td><code>os_reference_code</code></td>
-   <td>Optional. Enter the reference code of the operating system that you want to install on your classic virtual server instance. To find available reference codes, log in to the [{{site.data.keyword.cloud_notm}} classic infrastructure API ![External link icon](../icons/launch-glyph.svg "External link icon")](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode).</td>
-   </tr>  
-   <tr>
-   <td><code>datacenter</code></td>
-   <td>Required. Enter the location where you want to provision your classic virtual server instance.  that you want to assign to your virtual server instance. This domain name is used with the <code>hostname</code> to create the full URL for your virtual server instance. For available locations, see the [{{site.data.keyword.cloud_notm}} classic infrastructure API ![External link icon](../icons/launch-glyph.svg "External link icon")](https://api.softlayer.com/rest/v3/SoftLayer_Location/getDatacenters.json?objectMask=name). </td>
-   </tr>
-   <tr>
-   <td><code>network_speed</code></td>
-   <td>Optional. Enter the network speed in Mbps for your classic virtual server instance. Supported values are 10, 100, and 1000. If you do not specify this value, 100 Mbps is used.  </td>
-   </tr>  
-   <tr>
-   <td><code>hourly_billing</code></td>
-   <td>Optional. Specify how you want to get billed for your classic virtual server instance. Enter <code>true</code> for hourly billing, and <code>false</code> for monthly billing. If you do not specify a billing type, hourly billing is used by default.  </td>
-   </tr>  
-   <tr>
-   <td><code>private_network_only</code></td>
-   <td>Optional. Decide if you want to connect your classic virtual server instance to a private VLAN only. Enter <code>true</code> to connect it to a private VLAN only, and <code>false</code> to connect it to a public and private VLAN. If you do not specify this option, your virtual server instance is automatically connected to a private and public VLAN. </td>
-   </tr> 
-   <tr>
-   <td><code>cores</code></td>
-   <td>Optional. Enter the number of CPU cores that you want to allocate to your classic virtual server instance. </td>
-   </tr>   
-   <tr>
-   <td><code>memory</code></td>
-   <td>Optional. The amount of memory in megabytes that you want to allocate to your classic virtual server instance.</td>
-   </tr>   
-   <tr>
-   <td><code>[disks]</code></td>
-   <td>Optional. Enter the numeric disk sizes in gigabytes that you want to allocate to your classic virtual server instance. To specify multiple disk sizes, separate each value with a comma {`,`). By default, the smallest disk size that is available for the type of virtual server is used. </td>
-   </tr>   
-   <tr>
-   <td><code>local_disks</code></td>
-     <td>Optional. Specify the type of disk that you want to provision. Enter <code>true</code> to provision the disks on the host that the virtual server instance runs on. When you enter <code>false</code>, SAN disks are provisioned. If you do not specify this option, disks are provisioned on the host by default.</td>
-   </tr> 
-   </tbody>
-   </table>
-   
 2. Initialize Terraform. 
    ```
    terraform init
