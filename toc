@@ -23,6 +23,12 @@ Automating cloud resource provisioning with Terraform
     ansible/ansible.md
     {: .navgroup-end}
     
+    {: .navgroup id="test"}
+    setup_cli.md
+    manage_resources.md
+    ansible/ansible.md
+    {: .navgroup-end}
+    
     {: .navgroup id="reference"}
     [IBM Cloud Provider reference](https://ibm-cloud.github.io/tf-ibm-docs/)
     [Terraform documentation](https://www.terraform.io/docs/)
