@@ -804,21 +804,30 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    <tbody>
    <tr>
    <td><code>resource</code></td>
-   <td>The name of the {{site.data.keyword.cloud_notm}} resource that you want to provision. To provision a classic infrastructure virtual server instance, use <code>ibm_compute_vm_instance</code>. To find a list of other resources that you can provision, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).</td>
+   <td>The name of the {{site.data.keyword.cloud_notm}} resource that you want to provision. To provision a classic infrastructure virtual server instance, use <code>ibm_compute_vm_instance</code>. To find a list of other resources that you can provision, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).  </td>
    </tr>
    <tr>
    <td><code>vm1</code></td>
    <td>Enter a name for your {{site.data.keyword.cloud_notm}} resource.  </td>
    </tr>
-   <tr>
-   <td><code>hostname</code></td>
-   <td>Optional. Enter a name host name for your virtual server instance. This host name is used with the <code>domain</code> to create the full URL for your virtual server instance. </td>
-   </tr>
-   <tr>
-   <td><code>domain</code></td>
-   <td>Optional. Enter the domain name that you want to assign to your virtual server instance. This domain name is used with the <code>hostname</code> to create the full URL for your virtual server instance.  </td>
-   </tr>
-   <tr>
+     <tr>
+       <td><code>hostname</code></td>
+       <td>Optional. Enter a name host name for your virtual server instance. This host name is used with the <code>domain</code> to create the full URL for your virtual server instance.</td>
+     </tr>
+     <tr>
+       <td><code>domain</code></td>
+       <td>Optional. Enter the domain name that you want to assign to your virtual server instance. This domain name is used with the <code>hostname</code> to create the full URL for your virtual server instance.</td>
+     </tr>
+   </tbody>
+   </table>
+   
+   <table>
+   <caption>Understanding the configuration file components</caption>
+   <thead>
+   <th colspan=2><img src="images/idea.png" alt="Idea icon"/> Understanding the configuration file components</th>
+   </thead>
+   <tbody>
+     <tr>
    <td><code>os_reference_code</code></td>
    <td>Optional. Enter the reference code of the operating system that you want to install on your classic virtual server instance. To find available reference codes, log in to the [{{site.data.keyword.cloud_notm}} classic infrastructure API ![External link icon](../icons/launch-glyph.svg "External link icon")](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode).</td>
    </tr>  
