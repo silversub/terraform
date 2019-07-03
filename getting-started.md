@@ -159,62 +159,11 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    ```
    {: pre}
       
-2. [Retrieve your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). You use this user name and API key to provision the classic infrastructure virtual server in your {{site.data.keyword.cloud_notm}} account. 
+2. [Create an {{site.data.keyword.cloud_notm}} API key](/docs/iam?topic=iam-classic_keys) to provision the VPC virtual server instance. 
 
-3. [Create an {{site.data.keyword.cloud_notm}} API key](/docs/iam?topic=iam-classic_keys) to provision the {{site.data.keyword.vsi_is_short}} instance. 
+3. [Generate an SSH key](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-ssh-keys). The SSH key is required to provision the VPC virtual server instance and you can use the SSH key to access your instance via SSH. After you created your SSH key, make sure to [upload this SSH key to your {{site.data.keyword.cloud_notm}} account](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-managing-ssh-keys#managing-ssh-keys-with-ibm-cloud-console). 
 
-4. Generate an SSH key. The SSH key is required to provision VPC virtual server instances and you can use the SSH key to access your instance via SSH.
-   1. Create an SSH key on your local machine. Enter the email address that you want to associate with your SSH key. Make sure to accept the default file name, file location, and missing passphrase by pressing **Enter**.
-      ```
-      ssh-keygen -t rsa -C "<email_address>"
-      ```
-      {: pre}
-
-      Example output:
-      ```
-      Generating public/private rsa key pair.
-      Enter file in which to save the key (/Users/ibm/.ssh/id_rsa): 
-      Created directory '/Users/ibm/.ssh'.
-      Enter passphrase (empty for no passphrase): 
-      Enter same passphrase again: 
-      Your identification has been saved in /Users/ibm/.ssh/id_rsa.
-      Your public key has been saved in /Users/ibm/.ssh/id_rsa.pub.
-      The key fingerprint is:
-      SHA256:U5a6yRJkFesYcPRqUGmnrF5Cw0qepdec/EVGKRJlmDQ nspies@us.ibm.com
-      The key's randomart image is:
-      +---[RSA 2048]----+
-      |    .oE*=. .     |
-      |     +*=o.o.     |
-      |   ..o++oo+      |
-      |  . =+o= +o      |
-      | o * *=.So       |
-      |  = +.*o +.      |
-      |   o o..+.       |
-      |    .  ..        |
-      |                 |
-      +----[SHA256]-----+
-      ```
-      {: screen}
-      
-   2. Verify that the SSH key is created successfully. The creation is successful if you can see one `id_rsa` and one `id_rsa.pub` file.
-      ```
-      cd ~/.ssh && ls
-      ```
-      {: pre}
-      
-      Example output:
-      ```
-      id_rsa      id_rsa.pub
-      ```
-      {: screen}
-      
-   3. Retrieve your public SSH key. 
-      ```
-      cat id_rsa.pub
-      ```
-      {: pre}
-      
-   4. [Upload your SSH key to your {{site.data.keyword.cloud_notm}} account](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-managing-ssh-keys). 
+4. [Retrieve your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). You use this user name and API key to provision the classic infrastructure virtual server in your {{site.data.keyword.cloud_notm}} account. 
         
 6. Create a Terraform configuration file that is named `terraform.tfvars` to store your {{site.data.keyword.cloud_notm}} classic infrastructure credentials and the {{site.data.keyword.cloud_notm}} API key. Make sure to save this file in the folder that you created for your first Terraform project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized and you can reference them in every Terraform configuration file that you use. 
 
@@ -222,10 +171,10 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    {: important}
    
    ```
-   softlayer_username = "<classic_infrastructure_username>"
-   softlayer_api_key = "<classic_infrastructure_apikey>"
    ibmcloud_api_key = "<ibmcloud_api_key>"
    ssh_key = "<ssh_key_name>"
+   softlayer_username = "<classic_infrastructure_username>"
+   softlayer_api_key = "<classic_infrastructure_apikey>"
    ```
    {: codeblock}
    
@@ -236,6 +185,14 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    </thead>
    <tbody>
    <tr>
+   <td><code>ibmcloud_api_key</code></td>
+   <td>Enter the {{site.data.keyword.cloud_notm}} API key that you retrieved earlier.</td>
+   </tr>
+   <tr>
+   <td><code>ssh_key</code></td>
+   <td>Enter the name of the SSH key that you chose when you uploaded the SSH key to your {{site.data.keyword.cloud_notm}} account.</td>
+   </tr>
+   <tr>
    <td><code>softlayer_username</code></td>
    <td>Enter the classic infrastructure user name that you retrieved earlier.  </td>
    </tr>
@@ -243,14 +200,6 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    <td><code>softlayer_api_key</code></td>
    <td>Enter the classic infrastructure API key that you retrieved earlier. </td>
    </tr>
-     <tr>
-       <td><code>ibmcloud_api_key</code></td>
-       <td>Enter the {{site.data.keyword.cloud_notm}} API key that you retrieved earlier.</td>
-     </tr>
-     <tr>
-       <td><code>ssh_key</code></td>
-       <td>Enter the name of the SSH key that you chose when you uploaded the SSH key to your {{site.data.keyword.cloud_notm}} account.</td>
-     </tr>
    </tbody>
    </table>
    
