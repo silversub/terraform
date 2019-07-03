@@ -148,7 +148,7 @@ Terraform uses the {{site.data.keyword.cloud_notm}} Provider plug-in to securely
 {: shortdesc}
 
 **What credentials do I need?**</br>
-The credentials that you need depend on the type of resource that you want to provision. For example, to provision classic infrastructure resources, you must provide your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key. To provision VPC infrastructure, you need an {{site.data.keyword.cloud_notm}} API key. For more information about what credentials you need for a specific {{site.data.keyword.cloud_notm}} resource, see [Determining required credentials](/docs/terraform?topic=terraform-configure_provider#determine_credentials).
+The credentials that you need depend on the type of resource that you want to provision. For example, to provision classic infrastructure resources, you must provide your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key. To provision VPC infrastructure, you need an {{site.data.keyword.cloud_notm}} API key. For more information about what credentials you need for a specific {{site.data.keyword.cloud_notm}} resource, see [Retrieving required credentials for your resources](/docs/terraform?topic=terraform-setup_cli#retrieve_credentials).
 
 **Where can I find an overview of available resources?**</br>
 To find a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in, see the [{{site.data.keyword.cloud_notm}} Provider reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
