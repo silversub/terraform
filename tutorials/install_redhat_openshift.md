@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-07-02"
+lastupdated: "2019-07-03"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -25,7 +25,7 @@ subcollection: terraform
 Use this tutorial to create your own highly available Red Hat® OpenShift Container Platform 3.10 environment on IBM® Cloud classic infrastructure by using Terraform. 
 {: shortdesc}
  
-Instead of manually installing Red Hat® OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure, check out [Red Hat OpenShift Kubernetes Service](/docs/containers?topic=containers-openshift_tutorial). This offering lets you create an {{site.data.keyword.containerlong_notm}} cluster with worker nodes that come installed with the OpenShift Container Platform software. You get all the advantages of managed {{site.data.keyword.containerlong_notm}} for your cluster infrastructure environment, while using the OpenShift tooling and catalog that runs on Red Hat Enterprise Linux for your app deployments.
+Instead of manually installing Red Hat® OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure, check out [Red Hat OpenShift on {{site.data.keyword.cloud_notm}}](/docs/containers?topic=containers-openshift_tutorial). This offering lets you create an {{site.data.keyword.containerlong_notm}} cluster with worker nodes that come installed with the OpenShift Container Platform software. You get all the advantages of managed {{site.data.keyword.containerlong_notm}} for your cluster infrastructure environment, while using the OpenShift tooling and catalog that runs on Red Hat Enterprise Linux for your app deployments.
 {: tip}
 
 [Red Hat® OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.openshift.com/products/container-platform/) is built around a core of containers, with orchestration and management provided by Kubernetes, on a foundation of Atomic Host and Red Hat® Enterprise Linux. OpenShift Origin is the community distribution of Kubernetes that is optimized for continuous app development and multi-tenant deployment. The community project provides developer and operations-centric tools that are based on Kubernetes to enable rapid app development, deployment, scaling, and long-term app lifecycle maintenance. 
