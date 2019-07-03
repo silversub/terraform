@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-30"
+lastupdated: "2019-07-02"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -22,12 +22,15 @@ subcollection: terraform
 # Tutorial: Deploying Red Hat OpenShift Container Platform on IBM Cloud classic infrastructure
 {: #redhat}
 
-Use this tutorial to create a highly available Red Hat® OpenShift Container Platform 3.10 environment on IBM® Cloud classic infrastructure. 
+Use this tutorial to create your own highly available Red Hat® OpenShift Container Platform 3.10 environment on IBM® Cloud classic infrastructure by using Terraform. 
 {: shortdesc}
+ 
+Instead of manually installing Red Hat® OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure, check out [Red Hat OpenShift Kubernetes Service](/docs/containers?topic=containers-openshift_tutorial). This offering lets you create an {{site.data.keyword.containerlong_notm}} cluster with worker nodes that come installed with the OpenShift Container Platform software. You get all the advantages of managed {{site.data.keyword.containerlong_notm}} for your cluster infrastructure environment, while using the OpenShift tooling and catalog that runs on Red Hat Enterprise Linux for your app deployments.
+{: tip}
 
 [Red Hat® OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.openshift.com/products/container-platform/) is built around a core of containers, with orchestration and management provided by Kubernetes, on a foundation of Atomic Host and Red Hat® Enterprise Linux. OpenShift Origin is the community distribution of Kubernetes that is optimized for continuous app development and multi-tenant deployment. The community project provides developer and operations-centric tools that are based on Kubernetes to enable rapid app development, deployment, scaling, and long-term app lifecycle maintenance. 
 
-This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{site.data.keyword.cloud_notm}} classic infrastructure to try out the high availability capabilities of native Kubernetes and {{site.data.keyword.cloud_notm}}. Review the following image to find an architectural overview of the classic infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
+This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform to try out the high availability capabilities of native Kubernetes and {{site.data.keyword.cloud_notm}}. Review the following image to find an architectural overview of the classic infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
 
 <img src="../images/infra-diagram.png" alt="Infrastructure components for the Red Hat® OpenShift Container Platform on {{site.data.keyword.cloud_notm}}" width="800" style="width: 800px; border-style: none"/>
 

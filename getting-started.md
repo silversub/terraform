@@ -38,8 +38,8 @@ The Terraform configuration files describe the resources that you need and how y
 **What do I need to get started?**</br>
 To provision {{site.data.keyword.cloud_notm}} infrastructure and platform resources, you must have a [Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration).  
 
-**What will I provision as part of this tutorial?** </br>
-This getting started tutorial walks you through how to provision a [classic infrastructure virtual server](/docs/vsi?topic=virtual-servers-about-public-virtual-servers) and a [VPC infrastructure virtual server instance](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-getting-started). Both virtual server instances incur costs. Be sure to review the available plans for [classic infrastructure virtual servers ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) and [VPC infrastructure virtual servers](https://cloud.ibm.com/vpc/provision/vs) before you proceed.
+**What do I provision as part of this tutorial?** </br>
+In this getting started tutorial, you provision a [classic infrastructure virtual server](/docs/vsi?topic=virtual-servers-about-public-virtual-servers) and a [VPC virtual server instance](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-getting-started). Both virtual server instances incur costs. Be sure to review the available plans for [classic infrastructure virtual servers ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) and [VPC virtual server instances](https://cloud.ibm.com/vpc/provision/vs) before you proceed.
 
 Sounds great? Get started by installing the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in. Then, configure the {{site.data.keyword.cloud_notm}} resources that you want and watch Terraform spin them up. 
 
@@ -163,7 +163,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
 
 3. [Create an {{site.data.keyword.cloud_notm}} API key](/docs/iam?topic=iam-classic_keys) to provision the {{site.data.keyword.vsi_is_short}} instance. 
 
-4. Generate an SSH key. The SSH key is required to provision {{site.data.keyword.cloud_notm}} VPC infrastructure virtual server instances and you can use the SSH key to access your instance via SSH.
+4. Generate an SSH key. The SSH key is required to provision VPC virtual server instances and you can use the SSH key to access your instance via SSH.
    1. Create an SSH key on your local machine. Enter the email address that you want to associate with your SSH key. Make sure to accept the default file name, file location, and missing passphrase by pressing **Enter**.
       ```
       ssh-keygen -t rsa -C "<email_address>"
@@ -214,7 +214,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
       ```
       {: pre}
       
-5. [Upload your SSH key to your {{site.data.keyword.cloud_notm}} account](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-managing-ssh-keys). 
+   4. [Upload your SSH key to your {{site.data.keyword.cloud_notm}} account](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-managing-ssh-keys). 
         
 6. Create a Terraform configuration file that is named `terraform.tfvars` to store your {{site.data.keyword.cloud_notm}} classic infrastructure credentials and the {{site.data.keyword.cloud_notm}} API key. Make sure to save this file in the folder that you created for your first Terraform project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized and you can reference them in every Terraform configuration file that you use. 
 
@@ -302,24 +302,26 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
 ## Provisioning a virtual server instance in a VPC in {{site.data.keyword.cloud_notm}}
 {: #sample_vpc_config}
 
-Use Terraform to create a Virtual Private Cloud (VPC) with a {{site.data.keyword.vsi_is_short}} instance, and set up networking for your VPC in your {{site.data.keyword.cloud_notm}} account. 
+Use Terraform to create a virtual server instance in a VPC, and set up networking for your VPC in your {{site.data.keyword.cloud_notm}} account. 
 {: shortdesc}
 
-A VPC allows you to create your own space in {{site.data.keyword.cloud_notm}} so that you can run your own isolated environment in the public cloud with your own custom network policies. The example in this topic provisions the following infrastructure resources for you: 
-- 1 VPC where you provision your {{site.data.keyword.vsi_is_short}} instance
+A VPC allows you to create your own space in {{site.data.keyword.cloud_notm}} so that you can run an isolated environment in the public cloud with custom network policies. The example in this topic provisions the following VPC infrastructure resources for you: 
+- 1 VPC where you provision your VPC virtual server instance
 - 1 security group and a rule for this security group to allow SSH connection to your virtual server instance
 - 1 subnet to enable networking in your VPC
-- 1 {{site.data.keyword.vsi_is_short}} instance 
-- 1 floating IP address that you use to access your {{site.data.keyword.vsi_is_short}} instance over the public network
+- 1 VPC virtual server instance 
+- 1 floating IP address that you use to access your VPC virtual server instance over the public network
 
-Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.data.keyword.cloud_notm}} VPC infrastructure resource that incurs costs. Be sure to review the [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/vpc/provision/vs) before you proceed.
+Keep in mind that a VPC virtual server instance is an {{site.data.keyword.cloud_notm}} VPC infrastructure resource that incurs costs. Be sure to review the [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/vpc/provision/vs) before you proceed.
 {: important}
+
+To create a VPC and a virtual server instance: 
 
 1. Make sure that you have the [required permissions](/docs/vpc-on-classic?topic=vpc-on-classic-managing-user-permissions-for-vpc-resources) to create and work with VPC infrastructure. 
 
-2. Create your Terraform configuration file and name it `vpc.tf`. The configuration file includes the following definition blocks: 
+2. In the same directory where you stored the `terraform.tfvars` and `provider.tf` files, create a Terraform configuration file and name it `vpc.tf`. The configuration file includes the following definition blocks: 
    - **locals**: Use this block to specify variables that you want to use multiple times throughout this configuration file. 
-   - **resource**: Every resource block specifies the {{site.data.keyword.cloud_notm}} resource that you want to provision. To find more information about supported configurations for each resource, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
+   - **resource**: Every resource block specifies the {{site.data.keyword.cloud_notm}} resource that you want to provision. To find more information about supported configurations for each resource, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/]).
    - **data**: Use this block to retrieve information for an existing resource in your {{site.data.keyword.cloud_notm}} account. 
    - **output**: This block specifies commands that you want to run after your resources are provisioned. 
    
@@ -418,11 +420,11 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
      </tr>
      <tr>
        <td><code>resource.ibm_is_security_group.vpc</code></td>
-       <td>Enter the ID of the VPC, for which you want to create the security group. In this example, you reference the ID of the <code>ibm_is_vpc</code> resource that you specified in the same configuration file.  </td>
+       <td>Enter the ID of the VPC for which you want to create the security group. In this example, you reference the ID of the VPC that you create with the <code>ibm_is_vpc</code> resource in the same configuration file.  </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_security_group_rule.group</code></td>
-       <td>Enter the ID of the security group, for which you want to create a security group rule. In this example, you reference the ID of the <code>ibm_is_security_group</code> resource that you specified in the same configuration file.  </td>
+       <td>Enter the ID of the security group for which you want to create a security group rule. In this example, you reference the ID of the security group that you create with the <code>ibm_is_security_group</code> resource in the same configuration file.  </td>
      </tr>
       <tr>
        <td><code>resource.ibm_is_security_group_rule.direction</code></td>
@@ -442,11 +444,11 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
      </tr>
       <tr>
        <td><code>resource.ibm_is_subnet.vpc</code></td>
-       <td>Enter the ID of the VPC, for which you want to create the subnet. In this example, you reference the ID of the <code>ibm_is_vpc</code> resource that you specified in the same configuration file. </td>
+       <td>Enter the ID of the VPC for which you want to create the subnet. In this example, you reference the ID of the VPC that you create with the <code>ibm_is_vpc</code> resource in the same configuration file. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_subnet.zone</code></td>
-       <td>Enter the zone, in which you want to create the subnet. In this example, you use <code>locals.ZONE</code> as the name for your zone. </td>
+       <td>Enter the zone in which you want to create the subnet. In this example, you use <code>locals.ZONE</code> as the name for your zone. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_subnet.</code></br><code>total_ipv4_address_count</code></td>
@@ -454,23 +456,23 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
      </tr>
      <tr>
        <td><code>data.ibm_is_image.name</code></td>
-       <td>Enter the name of the operating system that you want to install on your {{site.data.keyword.vsi_is_short}} instance. You use this Terraform resource to retrieve the ID of the operating system when you specify the {{site.data.keyword.vsi_is_short}} instance. For supported image names, run <code>ibmcloud is images</code>. </td>
+       <td>Enter the name of the operating system that you want to install on your VPC virtual server instance. You use this Terraform resource to retrieve the ID of the operating system when you specify the VPC virtual server instance. For supported image names, run <code>ibmcloud is images</code>. </td>
      </tr>
      <tr>
        <td><code>data.ibm_is_ssh_key.name</code></td>
-       <td>Enter the name of the SSH key that you uploaded to your {{site.data.keyword.cloud_notm}} account. You use this Terraform resource to retrieve the ID of your SSH key when you specify the {{site.data.keyword.vsi_is_short}} instance. </td>
+       <td>Enter the name of the SSH key that you uploaded to your {{site.data.keyword.cloud_notm}} account. You use this Terraform resource to retrieve the ID of your SSH key when you specify the VPC virtual server instance. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.name</code></td>
-       <td>Enter the name of the {{site.data.keyword.vsi_is_short}} instance that you want to create. In this example, you use <code>locals.BASENAME</code> to create part of the name. For example, if your base name is `test`, the name of your {{site.data.keyword.vsi_is_short}} instance is set to `test-vsi1`.  </td>
+       <td>Enter the name of the VPC virtual server instance that you want to create. In this example, you use <code>locals.BASENAME</code> to create part of the name. For example, if your base name is `test`, the name of your VPC virtual server instance is set to `test-vsi1`.  </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.vpc</code></td>
-       <td>Enter the ID of the VPC, in which you want to create the {{site.data.keyword.vsi_is_short}} instance. In this example, you reference the ID of the <code>ibm_is_vpc</code> resource that you specified in the same configuration file. </td>
+       <td>Enter the ID of the VPC in which you want to create the VPC virtual server instance. In this example, you reference the ID of the VPC that you create with the <code>ibm_is_vpc</code> resource in the same configuration file.  </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.zone</code></td>
-       <td>Enter the zone, in which you want to create the {{site.data.keyword.vsi_is_short}} instance. In this example, you use <code>locals.ZONE</code> as the name for your zone. </td>
+       <td>Enter the zone in which you want to create the VPC virtual server instance. In this example, you use <code>locals.ZONE</code> as the name for your zone. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.keys</code></td>
@@ -478,19 +480,19 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.image</code></td>
-       <td>Enter the ID of the image that represents the operating system that you want to install on your {{site.data.keyword.vsi_is_short}} instance. In this example, you retrieve the ID from the <code>ibm_is_image</code> data source of this configuration file. Terraform uses the name of the image that you define in your data source object to look up information about the image in the {{site.data.keyword.cloud_notm}} infrastructure portfolio. </td>
+       <td>Enter the ID of the image that represents the operating system that you want to install on your VPC virtual server instance. In this example, you retrieve the ID from the <code>ibm_is_image</code> data source of this configuration file. Terraform uses the name of the image that you define in your data source object to look up information about the image in the {{site.data.keyword.cloud_notm}} infrastructure portfolio. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.profile</code></td>
-       <td>Enter the name of the profile that you want to use for your {{site.data.keyword.vsi_is_short}} instance. For supported profiles, run <code>ibmcloud is instance-profiles</code>. </td>
+       <td>Enter the name of the profile that you want to use for your VPC virtual server instance. For supported profiles, run <code>ibmcloud is instance-profiles</code>. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.</code></br><code>primary_network_interface.subnet</code></td>
-       <td>Enter the ID of the subnet that you want to use for your {{site.data.keyword.vsi_is_short}} instance. In this example, you use the <code>ibm_is_subnet</code> resource in this configuration file to retrieve the ID of the subnet.   </td>
+       <td>Enter the ID of the subnet that you want to use for your VPC virtual server instance. In this example, you use the <code>ibm_is_subnet</code> resource in this configuration file to retrieve the ID of the subnet.   </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.</code></br><code><primary_network_interface.security_groups</code></td>
-       <td>Enter the ID of the security group that you want to apply to your {{site.data.keyword.vsi_is_short}} instance. In this example, you use the <code>ibm_is_security_group</code> resource in this configuration file to retrieve the ID of the security group.   </td>
+       <td>Enter the ID of the security group that you want to apply to your VPC virtual server instance. In this example, you use the <code>ibm_is_security_group</code> resource in this configuration file to retrieve the ID of the security group.   </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_floating_ip.name</code></td>
@@ -502,7 +504,7 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
      </tr>
      <tr>
        <td><code>output.ssh_command.value</code></td>
-       <td>Build the SSH command that you need to run to connect to your {{site.data.keyword.vsi_is_short}} instance. In this example, you use the <code>ibm_is_floating_ip</code> resource to retrieve the floating IP address that is assigned to your {{site.data.keyword.vsi_is_short}} instance.  </td>
+       <td>Build the SSH command that you need to run to connect to your VPC virtual server instance. In this example, you use the <code>ibm_is_floating_ip</code> resource to retrieve the floating IP address that is assigned to your VPC virtual server instance.  </td>
      </tr>
    </tbody>
    </table>
@@ -724,7 +726,7 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
    ```
    {: screen}
    
-6. Log in to your {{site.data.keyword.vsi_is_short}} instance by using the `ssh` command that is listed at the end of your CLI output of the previous step. 
+6. Log in to your VPC virtual server instance by using the `ssh` command that is listed at the end of your CLI output of the previous step. 
    ```
    ssh root@169.61.123.231
    ```
@@ -763,7 +765,7 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
    ```
    {: screen}
 
-7. Optional. If you don't want to work with your VPC infrastructure resources anymore, remove them. 
+7. Optional: If you don't want to work with your VPC infrastructure resources anymore, remove them. 
    ```
    terraform destroy
    ```
@@ -772,7 +774,7 @@ Keep in mind that a {{site.data.keyword.vsi_is_short}} instance is an {{site.dat
 ## Provisioning a classic infrastructure virtual server instance in {{site.data.keyword.cloud_notm}}
 {: #sample_infrastructure_config}
 
-Create your a classic infrastructure virtual service instance with Terraform. Similar to the {{site.data.keyword.vsi_is_short}} instance that you provisioned earlier, you create another configuration file with the specification for your classic infrastructure virtual server instance. 
+Create your a classic infrastructure virtual service instance with Terraform. Similar to the VPC virtual server instance that you provisioned earlier, you create another configuration file with the specification for your classic infrastructure virtual server instance. 
 {: shortdesc}
 
 Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classic infrastructure resource that incurs costs. Be sure to review the [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) before you proceed.
@@ -804,55 +806,55 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    <tbody>
    <tr>
    <td><code>resource</code></td>
-   <td>The name of the {{site.data.keyword.cloud_notm}} resource that you want to provision. To provision a classic infrastructure virtual server instance, use <code>ibm_compute_vm_instance</code>. To find a list of other resources that you can provision, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).  </td>
+   <td>Required: The name of the {{site.data.keyword.cloud_notm}} resource that you want to provision. To provision a classic infrastructure virtual server instance, use <code>ibm_compute_vm_instance</code>. To find a list of other resources that you can provision, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).  </td>
    </tr>
    <tr>
    <td><code>vm1</code></td>
-   <td>Enter a name for your classic infrastructure virtual server instance.  </td>
+   <td>Required: Enter a name for your classic infrastructure virtual server instance.  </td>
    </tr>
      <tr>
        <td><code>hostname</code></td>
-       <td>Optional. Enter a host name for your classic infrastructure virtual server instance. This host name is used with the <code>domain</code> to create the full URL for your classic infrastructure virtual server instance.</td>
+       <td>Optional: Enter a host name for your classic infrastructure virtual server instance. This host name is used with the <code>domain</code> to create the full URL for your classic infrastructure virtual server instance.</td>
      </tr>
      <tr>
        <td><code>domain</code></td>
-       <td>Optional. Enter the domain name that you want to assign to your classic infrastructure virtual server instance. This domain name is used with the <code>hostname</code> to create the full URL for your classic infrastructure virtual server instance.</td>
+       <td>Optional: Enter the domain name that you want to assign to your classic infrastructure virtual server instance. This domain name is used with the <code>hostname</code> to create the full URL for your classic infrastructure virtual server instance.</td>
      </tr>
       <tr>
        <td><code>os_reference_code</code></td>
-       <td>Optional. Enter the reference code of the operating system that you want to install on your classic infrastructure virtual server instance. To find available reference codes, log in to the [{{site.data.keyword.cloud_notm}} classic infrastructure API ![External link icon](../icons/launch-glyph.svg "External link icon")](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode).</td>
+       <td>Optional: Enter the reference code of the operating system that you want to install on your classic infrastructure virtual server instance. To find available reference codes, log in to the [{{site.data.keyword.cloud_notm}} classic infrastructure API ![External link icon](../icons/launch-glyph.svg "External link icon")](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode).</td>
      </tr>
      <tr>
        <td><code>datacenter</code></td>
-       <td>Required. Enter the location where you want to provision your classic infrastructure virtual server instance. For available locations, see the [{{site.data.keyword.cloud_notm}} classic infrastructure API ![External link icon](../icons/launch-glyph.svg "External link icon")](https://api.softlayer.com/rest/v3/SoftLayer_Location/getDatacenters.json?objectMask=name).</td>
+       <td>Required: Enter the location where you want to provision your classic infrastructure virtual server instance. For available locations, see the [{{site.data.keyword.cloud_notm}} classic infrastructure API ![External link icon](../icons/launch-glyph.svg "External link icon")](https://api.softlayer.com/rest/v3/SoftLayer_Location/getDatacenters.json?objectMask=name).</td>
      </tr>
      <tr>
        <td><code>network_speed</code></td>
-       <td>Optional. Enter the network speed in Mbps for your classic infrastructure virtual server instance. Supported values are 10, 100, and 1000. If you do not specify this value, 100 Mbps is used by default. </td>
+       <td>Optional: Enter the network speed in Mbps for your classic infrastructure virtual server instance. Supported values are 10, 100, and 1000. If you do not specify this value, 100 Mbps is used by default. </td>
      </tr>
      <tr>
        <td><code>hourly_billing</code></td>
-       <td>Optional. Specify how you want to get billed for your classic infrastructure virtual server instance. Enter <code>true</code> for hourly billing, and <code>false</code> for monthly billing. If you do not specify a billing type, hourly billing is used by default.</td>
+       <td>Optional: Specify how you want to get billed for your classic infrastructure virtual server instance. Enter <code>true</code> for hourly billing, and <code>false</code> for monthly billing. If you do not specify a billing type, hourly billing is used by default.</td>
      </tr>
       <tr>
        <td><code>private_network_only</code></td>
-       <td>Optional. Decide if you want to connect your classic infrastructure virtual server instance to a private VLAN only. Enter <code>true</code> to connect it to a private VLAN only, and <code>false</code> to connect it to a public and a private VLAN. If you do not specify this option, your virtual server instance is automatically connected to a private and public VLAN by default. </td>
+       <td>Optional: Decide if you want to connect your classic infrastructure virtual server instance to a private VLAN only. Enter <code>true</code> to connect it to a private VLAN only, and <code>false</code> to connect it to a public and a private VLAN. If you do not specify this option, your virtual server instance is automatically connected to a private and public VLAN by default. </td>
      </tr>
       <tr>
        <td><code>cores</code></td>
-       <td>Optional. Enter the number of CPU cores that you want to allocate to your classic infrastructure virtual server instance.</td>
+       <td>Optional: Enter the number of CPU cores that you want to allocate to your classic infrastructure virtual server instance.</td>
      </tr>
      <tr>
        <td><code>memory</code></td>
-       <td>Optional. The amount of memory in megabytes that you want to allocate to your classic infrastructure virtual server instance.</td>
+       <td>Optional: The amount of memory in megabytes that you want to allocate to your classic infrastructure virtual server instance.</td>
      </tr>
      <tr>
        <td><code>[disks]</code></td>
-       <td>Optional. Enter the numeric disk sizes in gigabytes that you want to allocate to your classic infrastructure virtual server instance. To specify multiple disk sizes, separate each value with a comma {`,`). By default, the smallest disk size that is available for the type of virtual server is used.</td>
+       <td>Optional: Enter the numeric disk sizes in gigabytes that you want to allocate to your classic infrastructure virtual server instance. To specify multiple disk sizes, separate each value with a comma {`,`). By default, the smallest disk size that is available for the type of virtual server is used.</td>
      </tr>
       <tr>
        <td><code>local_disks</code></td>
-       <td>Optional. Specify the type of disk that you want to provision. Enter <code>true</code> to provision the disks on the host that the virtual server instance runs on, or <code>false</code> to provision SAN disks. If you do not specify this option, disks are provisioned on the host by default.</td>
+       <td>Optional: Specify the type of disk that you want to provision. Enter <code>true</code> to provision the disks on the host that the virtual server instance runs on, or <code>false</code> to provision SAN disks. If you do not specify this option, disks are provisioned on the host by default.</td>
      </tr>
    </tbody>
    </table>
@@ -1039,9 +1041,9 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    ```
    {: screen}
 
-7. Optional. Review your classic virtual server instance in the [{{site.data.keyword.cloud_notm}} console ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic/devices). 
+7. Optional: Review your classic virtual server instance in the [{{site.data.keyword.cloud_notm}} console ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic/devices). 
 
-8. Optional. Remove your classic infrastructure virtual server. 
+8. Optional: Remove your classic infrastructure virtual server. 
    ```
    terraform destroy
    ```
