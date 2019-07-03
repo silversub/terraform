@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-07-02"
+lastupdated: "2019-07-03"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -321,7 +321,7 @@ To create a VPC and a virtual server instance:
 
 2. In the same directory where you stored the `terraform.tfvars` and `provider.tf` files, create a Terraform configuration file and name it `vpc.tf`. The configuration file includes the following definition blocks: 
    - **locals**: Use this block to specify variables that you want to use multiple times throughout this configuration file. 
-   - **resource**: Every resource block specifies the {{site.data.keyword.cloud_notm}} resource that you want to provision. To find more information about supported configurations for each resource, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/]).
+   - **resource**: Every resource block specifies the {{site.data.keyword.cloud_notm}} resource that you want to provision. To find more information about supported configurations for each resource, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
    - **data**: Use this block to retrieve information for an existing resource in your {{site.data.keyword.cloud_notm}} account. 
    - **output**: This block specifies commands that you want to run after your resources are provisioned. 
    
