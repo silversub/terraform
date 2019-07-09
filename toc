@@ -34,5 +34,3 @@ Automating cloud resource provisioning with Terraform
     faqs.md
     terraform_ts_index.md
     {: .navgroup-end}
-    
-    configure_provider.md
