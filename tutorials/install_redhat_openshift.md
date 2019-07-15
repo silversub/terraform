@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-07-03"
+lastupdated: "2019-07-15"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -19,7 +19,7 @@ subcollection: terraform
 {:tip: .tip}
 {:download: .download}
 
-# Tutorial: Deploying Red Hat OpenShift Container Platform on IBM Cloud classic infrastructure
+# Tutorial: Using Terraform to manage your own Red Hat OpenShift Container Platform on IBM Cloud classic infrastructure
 {: #redhat}
 
 Use this tutorial to create your own highly available Red Hat® OpenShift Container Platform 3.10 environment on IBM® Cloud classic infrastructure by using Terraform. 
