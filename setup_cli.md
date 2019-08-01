@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-07-01"
+lastupdated: "2019-08-01"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -146,11 +146,6 @@ To retrieve the credentials:
   </thead>
   <tbody>
     <tr>
-      <td>Container data sources and resources</td>
-      <td>Retrieve information or create, update, or delete a Kubernetes cluster and worker nodes in {{site.data.keyword.containerlong_notm}}.</td>
-      <td><ul><li>{{site.data.keyword.cloud_notm}} classic infrastructure user name</li><li>{{site.data.keyword.cloud_notm}} classic infrastructure API key</li><li>{{site.data.keyword.cloud_notm}} API key</li></ul></td>
-    </tr>
-    <tr>
       <td>Infrastructure data sources and resources</td>
       <td>Retrieve information, or create, update, or delete {{site.data.keyword.cloud_notm}} classic infrastructure resources.</td>
       <td><ul><li>{{site.data.keyword.cloud_notm}} classic infrastructure user name</li><li>{{site.data.keyword.cloud_notm}} classic infrastructure API key</li></ul></td>
@@ -159,6 +154,11 @@ To retrieve the credentials:
       <td>VPC Services data sources and resources</td>
       <td>Retrieve information, or create, update, or delete a Virtual Private Cloud (VPC) instance and infrastructure resources in your VPC.</td>
       <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>SSH key (for VPC virtual servers)</li></ul></td>
+    </tr>
+      <tr>
+      <td>Container data sources and resources</td>
+      <td>Retrieve information or create, update, or delete a Kubernetes cluster and worker nodes in {{site.data.keyword.containerlong_notm}}.</td>
+      <td>{{site.data.keyword.cloud_notm}} API key</td>
     </tr>
     <tr>
       <td>Identity and Access data sources and resources</td>
@@ -255,7 +255,7 @@ The cloud provider configuration file is named `provider.tf`. Terraform automati
   <tbody>
     <tr>
       <td>VPC infrastructure resources</td>
-      <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>Generation of {{site.data.keyword.cloud_notm}} VPC infrastructure</li><li>{{site.data.keyword.cloud_notm}} region</li></ul></td>
+      <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>Generation of {{site.data.keyword.cloud_notm}} VPC infrastructure</li></ul></td>
     </tr>
     <tr> 
       <td>Classic infrastructure resources</li>
@@ -263,7 +263,7 @@ The cloud provider configuration file is named `provider.tf`. Terraform automati
     </tr>
     <tr>
   <td>{{site.data.keyword.containerlong_notm}} resources</td>
-  <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>{{site.data.keyword.cloud_notm}} classic infrastructure user name</li><li>{{site.data.keyword.cloud_notm}} classic infrastructure API key</li><li>{{site.data.keyword.cloud_notm}} region</li></ul></td>
+  <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>{{site.data.keyword.cloud_notm}} region</li></ul></td>
   </tr>
   <tr>
   <td>All other resources</td>
