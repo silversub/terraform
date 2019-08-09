@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-08-02"
+lastupdated: "2019-08-09"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -853,7 +853,7 @@ With your OpenShift cluster up and running, you can now deploy your first app in
       Example output: 
       ```
       NAME            HOST/PORT                                      PATH      SERVICES        PORT      TERMINATION   WILDCARD
-      nginx-example   nginx-example-new.apps.158.123.12.123.xip.io             nginx-example   <all>                   None
+      nginx-example   nginx-example-new.apps.158.123.12.123.xip.io             nginx-example   all                   None
       ```
       {: screen}
    
