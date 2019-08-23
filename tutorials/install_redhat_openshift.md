@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-07-15"
+lastupdated: "2019-08-23"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -25,7 +25,7 @@ subcollection: terraform
 Use this tutorial to create your own highly available Red Hat® OpenShift Container Platform 3.10 environment on IBM® Cloud classic infrastructure by using Terraform. 
 {: shortdesc}
  
-Instead of manually installing Red Hat® OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure, check out [Red Hat OpenShift on {{site.data.keyword.cloud_notm}}](/docs/containers?topic=containers-openshift_tutorial). This offering lets you create an {{site.data.keyword.containerlong_notm}} cluster with worker nodes that come installed with the OpenShift Container Platform software. You get all the advantages of managed {{site.data.keyword.containerlong_notm}} for your cluster infrastructure environment, while using the OpenShift tooling and catalog that runs on Red Hat Enterprise Linux for your app deployments.
+Instead of manually installing Red Hat® OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure, check out [Red Hat OpenShift on {{site.data.keyword.cloud_notm}}](/docs/openshift?topic=openshift-openshift_tutorial). This offering lets you create an {{site.data.keyword.containerlong_notm}} cluster with worker nodes that come installed with the OpenShift Container Platform software. You get all the advantages of managed {{site.data.keyword.containerlong_notm}} for your cluster infrastructure environment, while using the OpenShift tooling and catalog that runs on Red Hat Enterprise Linux for your app deployments.
 {: tip}
 
 [Red Hat® OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.openshift.com/products/container-platform/) is built around a core of containers, with orchestration and management provided by Kubernetes, on a foundation of Atomic Host and Red Hat® Enterprise Linux. OpenShift Origin is the community distribution of Kubernetes that is optimized for continuous app development and multi-tenant deployment. The community project provides developer and operations-centric tools that are based on Kubernetes to enable rapid app development, deployment, scaling, and long-term app lifecycle maintenance. 
@@ -674,7 +674,7 @@ For more information about Red Hat OpenShift Container Platform components, see 
    </tr>
    <tr>
    <td>Atomic-OpenShift (`master/clients/node/sdn-ovs/utils`)</td>
-   <td>3.6.x.x</td>
+   <td>3.10.x.x</td>
    </tr>
    <tr>
    <td>Docker</td>
@@ -700,8 +700,8 @@ For more information about Red Hat OpenShift Container Platform components, see 
    <td>rhel-7-server-rpms</td>
    </tr>
    <tr>
-   <td>Red Hat® OpenShift Enterprise 3.6 (RPMs)</td>
-   <td>rhel-7-server-ose-3.6-rpms</td>
+   <td>Red Hat® OpenShift Enterprise 3.10 (RPMs)</td>
+   <td>rhel-7-server-ose-3.10-rpms</td>
    </tr>
    <tr>
    <td>Red Hat® Enterprise Linux 7 Server - Extras (RPMs)</td>
@@ -789,11 +789,11 @@ For more information about Red Hat OpenShift Container Platform components, see 
    ```
    {: pre}
    
-6. Set up users and authentication for your OpenShift cluster. The OpenShift Container Platform master includes a built-in `OAuth` server. By default, this `OAuth` server is set up to deny all authentication. To let developers and administrators authenticate with the cluster, follow the steps in [Configuring access and authentication ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.6/install_config/configuring_authentication.html#install-config-configuring-authentication) to set up access for your cluster. 
+6. Set up users and authentication for your OpenShift cluster. The OpenShift Container Platform master includes a built-in `OAuth` server. By default, this `OAuth` server is set up to deny all authentication. To let developers and administrators authenticate with the cluster, follow the steps in [Configuring access and authentication ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.10/install_config/configuring_authentication.html#install-config-configuring-authentication) to set up access for your cluster. 
 
-7. Configure your Docker registry. During the creation of your cluster, an internal, integrated Docker registry is automatically set up for you. You can use the registry to build container images from your source code, deploy them, and manage their lifecycle. For more information, see [Registry Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.6/install_config/registry/index.html#install-config-registry-overview). 
+7. Configure your Docker registry. During the creation of your cluster, an internal, integrated Docker registry is automatically set up for you. You can use the registry to build container images from your source code, deploy them, and manage their lifecycle. For more information, see [Registry Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.10/install_config/registry/index.html#install-config-registry-overview). 
 
-8. Configure your cluster router to enable incoming non-SSH network traffic for your cluster. For more information, see [Router Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.6/install_config/router/index.html#install-config-router-overview). 
+8. Configure your cluster router to enable incoming non-SSH network traffic for your cluster. For more information, see [Router Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.10/install_config/router/index.html#install-config-router-overview). 
    
 ## Lesson 4: Deploy an app in your Red Hat OpenShift cluster
 {: #deploy_app}
@@ -853,7 +853,7 @@ With your OpenShift cluster up and running, you can now deploy your first app in
       Example output: 
       ```
       NAME            HOST/PORT                                      PATH      SERVICES        PORT      TERMINATION   WILDCARD
-      nginx-example   nginx-example-new.apps.158.123.12.123.xip.io             nginx-example   <all>                   None
+      nginx-example   nginx-example-new.apps.158.123.12.123.xip.io             nginx-example   all                   None
       ```
       {: screen}
    
