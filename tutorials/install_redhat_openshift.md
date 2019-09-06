@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-08-23"
+lastupdated: "2019-09-06"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -22,7 +22,7 @@ subcollection: terraform
 # Tutorial: Using Terraform to manage your own Red Hat OpenShift Container Platform on IBM Cloud classic infrastructure
 {: #redhat}
 
-Use this tutorial to create your own highly available Red Hat® OpenShift Container Platform 3.10 environment on IBM® Cloud classic infrastructure by using Terraform. 
+Use this tutorial to create your own highly available Red Hat® OpenShift Container Platform 3.11 environment on IBM® Cloud classic infrastructure by using Terraform. 
 {: shortdesc}
  
 Instead of manually installing Red Hat® OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure, check out [Red Hat OpenShift on {{site.data.keyword.cloud_notm}}](/docs/openshift?topic=openshift-openshift_tutorial). This offering lets you create an {{site.data.keyword.containerlong_notm}} cluster with worker nodes that come installed with the OpenShift Container Platform software. You get all the advantages of managed {{site.data.keyword.containerlong_notm}} for your cluster infrastructure environment, while using the OpenShift tooling and catalog that runs on Red Hat Enterprise Linux for your app deployments.
@@ -30,7 +30,7 @@ Instead of manually installing Red Hat® OpenShift Container Platform on {{site.
 
 [Red Hat® OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.openshift.com/products/container-platform/) is built around a core of containers, with orchestration and management provided by Kubernetes, on a foundation of Atomic Host and Red Hat® Enterprise Linux. OpenShift Origin is the community distribution of Kubernetes that is optimized for continuous app development and multi-tenant deployment. The community project provides developer and operations-centric tools that are based on Kubernetes to enable rapid app development, deployment, scaling, and long-term app lifecycle maintenance. 
 
-This tutorial shows how you can set up OpenShift Container Platform 3.10 on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform to try out the high availability capabilities of native Kubernetes and {{site.data.keyword.cloud_notm}}. Review the following image to find an architectural overview of the classic infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
+This tutorial shows how you can set up OpenShift Container Platform 3.11 on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform to try out the high availability capabilities of native Kubernetes and {{site.data.keyword.cloud_notm}}. Review the following image to find an architectural overview of the classic infrastructure components that are needed for the Red Hat OpenShift Container Platform to work properly.
 
 <img src="../images/infra-diagram.png" alt="Infrastructure components for the Red Hat® OpenShift Container Platform on {{site.data.keyword.cloud_notm}}" width="800" style="width: 800px; border-style: none"/>
 
@@ -45,7 +45,7 @@ When you complete this tutorial, the following classic infrastructure components
 ## Objectives 
 {: #objectives}
 
-In this tutorial, you set up Red Hat OpenShift Container Platform version 3.10 on {{site.data.keyword.cloud_notm}} classic infrastructure and deploy your first `nginx` app in the OpenShift cluster. In particular, you will: 
+In this tutorial, you set up Red Hat OpenShift Container Platform version 3.11 on {{site.data.keyword.cloud_notm}} classic infrastructure and deploy your first `nginx` app in the OpenShift cluster. In particular, you will: 
 
 - Set up your environment and all the software that you need for your Red Hat OpenShift Container Platform installation, such as Terraform, {{site.data.keyword.cloud_notm}} Provider plug-in, and the Terraform OpenShift project. 
 - Retrieve {{site.data.keyword.cloud_notm}} credentials, configure the {{site.data.keyword.cloud_notm}} Provider plug-in, and define your Red Hat OpenShift Container Platform classic infrastructure components.
@@ -333,7 +333,7 @@ Before you begin, make sure that you are logged in to the container that you cre
   
 2. From the OpenShift installation directory `/go/bin/terraform-ibm-openshift` inside your container, create the {{site.data.keyword.cloud_notm}} classic infrastructure components for your Red Hat OpenShift cluster. When you run the command, Terraform evaluates what components must be provisioned and presents an execution plan. You must confirm that you want to provision the classic infrastructure resources by entering **yes**. During the provisioning, Terraform creates another execution plan that you must approve to continue. When prompted, enter the classic infrastructure user name and API key that you retrieved earlier. The provisioning of your resources takes about 40 minutes.  
    ```
-   make infrastructure
+   make rhn_username=<rhn_username> rhn_password=<rhn_password> infrastructure
    ```
    {: pre}
    
@@ -670,11 +670,11 @@ For more information about Red Hat OpenShift Container Platform components, see 
    <tbody>
    <tr>
    <td>Red Hat® Enterprise Linux 7.4 x86_64</td>
-   <td>kernel-3.10.0.x</td>
+   <td>kernel-3.11.0.x</td>
    </tr>
    <tr>
    <td>Atomic-OpenShift (`master/clients/node/sdn-ovs/utils`)</td>
-   <td>3.10.x.x</td>
+   <td>3.11.x.x</td>
    </tr>
    <tr>
    <td>Docker</td>
@@ -700,8 +700,8 @@ For more information about Red Hat OpenShift Container Platform components, see 
    <td>rhel-7-server-rpms</td>
    </tr>
    <tr>
-   <td>Red Hat® OpenShift Enterprise 3.10 (RPMs)</td>
-   <td>rhel-7-server-ose-3.10-rpms</td>
+   <td>Red Hat® OpenShift Enterprise 3.11 (RPMs)</td>
+   <td>rhel-7-server-ose-3.11-rpms</td>
    </tr>
    <tr>
    <td>Red Hat® Enterprise Linux 7 Server - Extras (RPMs)</td>
@@ -783,17 +783,17 @@ For more information about Red Hat OpenShift Container Platform components, see 
       ```
       {: codeblock}
 
-5. In your preferred web browser, open the OpenShift console.
+5. Open the OpenShift console.
    ```
-   https://<master_public_ip>:8443/console
+   open https://$(terraform output master_public_ip):8443/console
    ```
    {: pre}
    
-6. Set up users and authentication for your OpenShift cluster. The OpenShift Container Platform master includes a built-in `OAuth` server. By default, this `OAuth` server is set up to deny all authentication. To let developers and administrators authenticate with the cluster, follow the steps in [Configuring access and authentication ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.10/install_config/configuring_authentication.html#install-config-configuring-authentication) to set up access for your cluster. 
+6. Set up users and authentication for your OpenShift cluster. The OpenShift Container Platform master includes a built-in `OAuth` server. By default, this `OAuth` server is set up to deny all authentication. To let developers and administrators authenticate with the cluster, follow the steps in [Configuring access and authentication ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.11/install_config/configuring_authentication.html#install-config-configuring-authentication) to set up access for your cluster. 
 
-7. Configure your Docker registry. During the creation of your cluster, an internal, integrated Docker registry is automatically set up for you. You can use the registry to build container images from your source code, deploy them, and manage their lifecycle. For more information, see [Registry Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.10/install_config/registry/index.html#install-config-registry-overview). 
+7. Configure your Docker registry. During the creation of your cluster, an internal, integrated Docker registry is automatically set up for you. You can use the registry to build container images from your source code, deploy them, and manage their lifecycle. For more information, see [Registry Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.11/install_config/registry/index.html#install-config-registry-overview). 
 
-8. Configure your cluster router to enable incoming non-SSH network traffic for your cluster. For more information, see [Router Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.10/install_config/router/index.html#install-config-router-overview). 
+8. Configure your cluster router to enable incoming non-SSH network traffic for your cluster. For more information, see [Router Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.11/install_config/router/index.html#install-config-router-overview). 
    
 ## Lesson 4: Deploy an app in your Red Hat OpenShift cluster
 {: #deploy_app}
@@ -801,37 +801,31 @@ For more information about Red Hat OpenShift Container Platform components, see 
 With your OpenShift cluster up and running, you can now deploy your first app in the cluster. 
 {: shortdesc}
 
-1. List all your classic infrastructure resources with their IP addresses and host names. Note the following values: `bastion_public_ip`, `master_private_ip`, and `app_lbass_url`. 
+1. Log in to the master node. 
    ```
-   terraform show
-   ```
-   {: pre}
-
-2. Log in to the master node. 
-   ```
-   ssh -t -A root@<bastion_public_ip> ssh root@<master_private_ip>
+   ssh -t -A root@$(terraform output master_public_ip)
    ```
    {: pre}
 
-3. Log in to the OpenShift client. Enter **admin** as your user name and **test123** as your password, or use any other user name and password that you set up earlier. 
+2. Log in to the OpenShift client. Enter **admin** as your user name and **test123** as your password, or use any other user name and password that you set up earlier. 
    ```
-   oc login https://<master_private_ip>:8443
+   oc login https://$(terraform output master_public_ip):8443
    ```
    {: pre} 
 
-4. Create a project directory where you can store all your app files and configurations. 
+3. Create a project directory where you can store all your app files and configurations. 
    ```
    oc new-project <project_name>
    ```
    {: pre}
    
-5. Deploy the app. In this example, `nginx` is deployed to your cluster.
+4. Deploy the app. In this example, `nginx` is deployed to your cluster.
    ```
    oc new-app --name=nginx --docker-image=bitnami/nginx
    ```
    {: pre}
 
-6. Create a service for your `nginx` app to expose your app inside the cluster. 
+5. Create a service for your `nginx` app to expose your app inside the cluster. 
    ```
    oc expose svc/nginx
    ```
@@ -867,6 +861,6 @@ With your OpenShift cluster up and running, you can now deploy your first app in
 **What's next?**</br>
 Great! You successfully installed Red Hat OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure and deployed your first app to your OpenShift cluster. Now you can try out one of the following features:  
 
-- [Explore other features in Red Hat OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.10/welcome/index.html). 
+- [Explore other features in Red Hat OpenShift Container Platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.11/welcome/index.html). 
 - Remove your OpenShift cluster by running the `make destroy` command. 
 
