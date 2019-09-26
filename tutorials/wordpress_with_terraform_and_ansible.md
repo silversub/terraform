@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-07-02"
+lastupdated: "2019-09-26"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, single site, single zone
 
@@ -67,7 +67,7 @@ This tutorial intends to demonstrate the capability of building websites on {{si
 In this tutorial, you use Terraform to deploy {{site.data.keyword.Bluemix_notm}} classic infrastructure components that you use to set up a WordPress sample app by using Ansible. In particular, you will:
 
 - Set up your environment and all the software that you need for your sample WordPress app, such as Terraform, {{site.data.keyword.Bluemix_notm}} Provider plug-in, and Ansible.
-- Provision {{site.data.keyword.Bluemix_notm}} classoc infrastructure components for your WordPress sample app by using Terraform.
+- Provision {{site.data.keyword.Bluemix_notm}} classic infrastructure components for your WordPress sample app by using Terraform.
 - Import classic infrastructure resource information from Terraform to Ansible. 
 - Deploy a sample WordPress app on your {{site.data.keyword.Bluemix_notm}} classic infrastructure with Ansible. 
 - Use Ansible to finalize the setup of your WordPress app. 
