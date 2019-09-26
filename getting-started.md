@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-07-03"
+lastupdated: "2019-09-26"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -377,7 +377,7 @@ To create a VPC and a virtual server instance:
      </tr>
       <tr>
        <td><code>resource.ibm_is_security_group_rule.direction</code></td>
-       <td>Specify if the security group rule is applied to incoming or outgoing network traffic. Choose <strong>ingress</strong> to specify a rule for incoming network traffice, and <strong>egress</strong> to specify a rule for outgoing network traffic. </td>
+       <td>Specify if the security group rule is applied to incoming or outgoing network traffic. Choose <strong>ingress</strong> to specify a rule for incoming network traffic, and <strong>egress</strong> to specify a rule for outgoing network traffic. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_security_group_rule.remote</code></td>
