@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-09-26"
+lastupdated: "2019-10-03"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -264,6 +264,11 @@ A VPC allows you to create your own space in {{site.data.keyword.cloud_notm}} so
 Keep in mind that a VPC virtual server instance is an {{site.data.keyword.cloud_notm}} VPC infrastructure resource that incurs costs. Be sure to review the [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/vpc/provision/vs) before you proceed.
 {: important}
 
+Before you begin: 
+- [Install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform](#install). 
+- [Install the {{site.data.keyword.cloud_notm}} CLI and the CLI plug-in to work with Virtual Private Cloud (VPC) infrastructure](/docs/vpc-on-classic?topic=vpc-on-classic-creating-a-vpc-using-the-ibm-cloud-cli). 
+- [Retrieve your {{site.data.keyword.cloud_notm}} credentials, upload an SSH key, and configure the Terraform provider plug-in](/docs/terraform?topic=terraform-getting-started#cloud_provider_config). 
+
 To create a VPC and a virtual server instance: 
 
 1. Make sure that you have the [required permissions](/docs/vpc-on-classic?topic=vpc-on-classic-managing-user-permissions-for-vpc-resources) to create and work with VPC infrastructure. 
@@ -296,7 +301,7 @@ To create a VPC and a virtual server instance:
    # allow all incoming network traffic on port 22
    resource "ibm_is_security_group_rule" "ingress_ssh_all" {
      group     = "${ibm_is_security_group.sg1.id}"
-     direction = "ingress"
+     direction = "inbound"
      remote    = "0.0.0.0/0"                       
      
      tcp = {
@@ -304,7 +309,7 @@ To create a VPC and a virtual server instance:
        port_max = 22
      }
    }
-
+   
    resource ibm_is_subnet "subnet1" {
      name = "${local.BASENAME}-subnet1"
      vpc  = "${ibm_is_vpc.vpc.id}"
@@ -377,7 +382,7 @@ To create a VPC and a virtual server instance:
      </tr>
       <tr>
        <td><code>resource.ibm_is_security_group_rule.direction</code></td>
-       <td>Specify if the security group rule is applied to incoming or outgoing network traffic. Choose <strong>ingress</strong> to specify a rule for incoming network traffic, and <strong>egress</strong> to specify a rule for outgoing network traffic. </td>
+       <td>Specify if the security group rule is applied to incoming or outgoing network traffic. Choose <strong>inbound</strong> to specify a rule for incoming network traffic, and <strong>outbound</strong> to specify a rule for outgoing network traffic. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_security_group_rule.remote</code></td>
