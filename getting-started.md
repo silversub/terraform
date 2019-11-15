@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-10-03"
+lastupdated: "2019-11-15"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -29,6 +29,9 @@ subcollection: terraform
 
 Terraform is an Open Source software that is developed by HashiCorp that enables predictable and consistent provisioning of {{site.data.keyword.cloud_notm}} platform, classic infrastructure, and VPC infrastructure resources by using a high-level scripting language. You can use Terraform to automate your {{site.data.keyword.cloud_notm}} resource provisioning, rapidly build complex, multi-tier cloud environments, and enable Infrastructure as Code (IaC).  
 {: shortdesc}
+
+Looking for a managed Terraform solution? Try out [{{site.data.keyword.bplong_notm}}](/docs/schematics?topic=schematics-getting-started). With {{site.data.keyword.bpshort_notm}}, you can use the Terraform scripting language that you are familiar with, but you don't have to worry about setting up and maintaing the Terraform CLI and {{site.data.keyword.cloud_notm}} Provider plug-in. {{site.data.keyword.bpshort_notm}} also provides pre-defined Terraform templates that you can easily install from the {{site.data.keyword.cloud_notm}} catalog.
+{: tip}
 
 **How does it work?**</br>
 Let's say you want to spin up multiple copies of your service that uses a cluster of virtual servers, a load balancer, and a database server. You could learn how to create each resource, review the API or the commands that you need, and write a bash script to spin up these components. But it's easier, faster, and more orderly to specify the type of resource that you want and let Terraform do it all for you. 
