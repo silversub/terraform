@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-08-01"
+  years: 2017, 2020
+lastupdated: "2020-01-08"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -44,11 +44,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       ```
       {: pre}
 
-   2. [Download the Terraform CLI version 0.11.x to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://releases.hashicorp.com/terraform/). 
-   
-      The {{site.data.keyword.cloud_notm}} Provider plug-in is not yet verified to work with Terraform version 0.12.x. To use the {{site.data.keyword.cloud_notm}} Provider plug-in, install Terraform version 0.11.x. 
-      {: important}
-
+   2. [Download the Terraform CLI version 0.12.x to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://releases.hashicorp.com/terraform/). 
    3. Extract the Terraform package and copy the binary file into your `terraform` directory. 
    4. Point the `$PATH` environment variable to your Terraform binary file.
       ```
