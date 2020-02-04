@@ -23,9 +23,10 @@ subcollection: terraform
 {:preview: .preview}
 
 Setting up the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in
-{: #setup_cli}
+{: #tf-provider}
 
-Before you can automate your {{site.data.keyword.cloud_notm}} resource provisioning, you must install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in. {: shortdesc}
+Before you can automate your {{site.data.keyword.cloud_notm}} resource provisioning, you must install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in. 
+{: shortdesc}
 
 ## Version information
 {: #versions}
