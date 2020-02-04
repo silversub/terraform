@@ -22,11 +22,19 @@ subcollection: terraform
 {:download: .download}
 {:preview: .preview}
 
-Setting up the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in
+# Setting up the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in
 {: #tf-provider}
 
 Before you can automate your {{site.data.keyword.cloud_notm}} resource provisioning, you must install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in. 
 {: shortdesc}
+
+## Version information
+{: #versions}
+
+The resources and data sources in this documentation are based on the following versions:
+
+- **IBM Cloud Provider plug-in for Terraform version**: 1.1.0
+- **Terraform version**: 1.12
 
 ## Installing the Terraform CLI and the IBM Cloud Provider plug-in
 {: #install_cli}
