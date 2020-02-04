@@ -29,6 +29,7 @@ Before you can automate your {{site.data.keyword.cloud_notm}} resource provision
 {: shortdesc}
 
 ## Version information
+{: #versions}
 
 The resources and data sources in this documentation are based on the following versions:
 
@@ -319,3 +320,4 @@ The cloud provider configuration file is named `provider.tf`. Terraform automati
    </tr>
    </tbody>
    </table>
+
