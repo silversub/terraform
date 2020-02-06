@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-01-08"
+lastupdated: "2020-02-06"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -203,8 +203,8 @@ Because the `terraform.tfvars` file contains confidential information, do not pu
    ```
    ibmcloud_api_key = "<ibmcloud_api_key>"
    ssh_key = "<ssh_key_name>"
-   softlayer_username = "<classic_infrastructure_username>"
-   softlayer_api_key = "<classic_infrasturcture_apikey>"
+   iaas_classic_username = "<classic_infrastructure_username>"
+   iaas_classic_api_key = "<classic_infrasturcture_apikey>"
    ```
    {: codeblock}
    
@@ -223,11 +223,11 @@ Because the `terraform.tfvars` file contains confidential information, do not pu
    <td>Enter the name of the SSH key that you uploaded to your {{site.data.keyword.cloud_notm}} account. </td>
    </tr>
    <tr>
-   <td><code>softlayer_username</code></td>
+   <td><code>iaas_classic_username</code></td>
    <td>Enter your {{site.data.keyword.cloud_notm}} classic infrastructure user name.  </td>
    </tr>
    <tr>
-   <td><code>softlayer_api_key</code></td>
+   <td><code>iaas_classic_api_key</code></td>
    <td>Enter your {{site.data.keyword.cloud_notm}} classic infrastructure API key. </td>
    </tr>
    </tbody>
@@ -271,15 +271,15 @@ The cloud provider configuration file is named `provider.tf`. Terraform automati
 2. Create a Terraform provider configuration file that is named `provider.tf`. Use this file to specify IBM as your cloud provider and reference the credentials from your `terraform.tfvars` file. To reference a variable, declare the variable first, and then retrieve the value of the variable by using the `${var.<variable_name>}` syntax. You can specify additional variables in this file that are required by the {{site.data.keyword.cloud_notm}} Provider plug-in to successfully provision your resources. Make sure that you store this file in the same folder as your `terraform.tfvars` file. 
    ```
    variable "ibmcloud_api_key" {}
-   variable "softlayer_username" {}
-   variable "softlayer_api_key" {}
+   variable "iaas_classic_username" {}
+   variable "iaas_classic_api_key" {}
    
    provider "ibm" {
    ibmcloud_api_key    = "${var.ibmcloud_api_key}"
    generation = 1
    region = "us-south"
-   softlayer_username = "${var.softlayer_username}"
-   softlayer_api_key  = "${var.softlayer_api_key}"
+   iaas_classic_username = "${var.iaas_classic_username}"
+   iaas_classic_api_key  = "${var.iaas_classic_api_key}"
    }
    ```
    {: codeblock}
@@ -303,12 +303,14 @@ The cloud provider configuration file is named `provider.tf`. Terraform automati
    <td>Specify the {{site.data.keyword.cloud_notm}} region where you want to provision your resources. Run <code>ibmcloud is regions</code> to find supported regions.  </td>
    </tr>
    <tr>
-   <td><code>softlayer_username</code></td>
+   <td><code>iaas_classic_username</code></td>
    <td>Reference the {{site.data.keyword.cloud_notm}} classic infrastructure user name that you stored in your <code>terraform.tfvars</code> file. This user name is required to provision {{site.data.keyword.cloud_notm}} classic infrastructure resources. You can remove this credential if you want to provision {{site.data.keyword.cloud_notm}} platform or VPC infrastructure resources only. </td>
    </tr>
    <tr>
-   <td><code>softlayer_api_key</code></td>
+   <td><code>iaas_classic_api_key</code></td>
    <td>Reference the {{site.data.keyword.cloud_notm}} classic infrastructure API key that you stored in your <code>terraform.tfvars</code> file. This API key is required to provision {{site.data.keyword.cloud_notm}} classic infrastructure resources. You can remove this credential if you want to provision {{site.data.keyword.cloud_notm}} platform or VPC infrastructure resources only.   </td>
    </tr>
    </tbody>
    </table>
+   
+
