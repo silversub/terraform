@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-06"
+lastupdated: "2020-02-18"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -132,7 +132,7 @@ The credentials that you need depend on the type of {{site.data.keyword.cloud_no
   
 To retrieve the credentials: 
 
-1. Review the following table to determine the required credentials for your resource. To retrieve the category that your resource belongs to, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference](https://ibm-cloud.github.io/tf-ibm-docs/) for more information. 
+1. Review the following table to determine the required credentials for your resource. To retrieve the category that your resource belongs to, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference](/docs/terraform?topic=terraform-tf-provider) for more information. 
 
    <table>
    <thead>
