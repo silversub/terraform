@@ -205,7 +205,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about supported Kubernetes versions in {{site.data.keyword.containerlong_notm}} clusters. 
 {: shortdesc}
 
-Get the list of supported Kubernetes versions on IBM Cloud. Refer to https://cloud.ibm.com/docs/containers/cs_versions.html#cs_versions for detailed instructions.
+To find a list of supported Kubernetes versions, see the [{{site.data.keyword.containerlong_notm}} documentation](/docs/containers/cs_versions.html#cs_versions).
 
 ### Sample Terraform code
 {: #container-cluster-versions-sample}
