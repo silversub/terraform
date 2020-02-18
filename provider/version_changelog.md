@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2020
-lastupdated: "2020-02-17"
+lastupdated: "2020-02-18"
 
 keywords: terraform, terraform provider release, terraform provider versions
 subcollection: containers
@@ -37,5 +37,5 @@ The following table shows the changes that are included in version 1.2.1 of the 
 
 | Previous | Current | Description |
 | -------- | ------- | ----------- |
-| 0.24.1 | 1.2.1 | [See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.2.1](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.2.1){: external}.
+| 1.2.0 | 1.2.1 | [See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.2.1](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.2.1){: external}.
 {: caption="Knative 0.12.1" caption-side="top"}
