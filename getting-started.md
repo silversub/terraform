@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-11-19"
+  years: 2017, 2020
+lastupdated: "2020-02-18"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -61,11 +61,7 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       ```
       {: pre}
 
-   2. [Download the Terraform CLI version 0.11.x to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://releases.hashicorp.com/terraform/). 
-   
-      The {{site.data.keyword.cloud_notm}} Provider plug-in is not yet verified to work with Terraform version 0.12.x. To use the {{site.data.keyword.cloud_notm}} Provider plug-in, install Terraform version 0.11.x. 
-      {: important}
-
+   2. [Download the Terraform CLI version 0.12.x to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://releases.hashicorp.com/terraform/). 
    3. Extract the Terraform package and copy the binary file into your `terraform` directory. 
    4. Point the `$PATH` environment variable to your Terraform binary file.
       ```
@@ -154,7 +150,7 @@ Terraform uses the {{site.data.keyword.cloud_notm}} Provider plug-in to securely
 The credentials that you need depend on the type of resource that you want to provision. For example, to provision classic infrastructure resources, you must provide your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key. To provision VPC infrastructure, you need an {{site.data.keyword.cloud_notm}} API key. For more information about what credentials you need for a specific {{site.data.keyword.cloud_notm}} resource, see [Retrieving required credentials for your resources](/docs/terraform?topic=terraform-setup_cli#retrieve_credentials).
 
 **Where can I find an overview of available resources?**</br>
-To find a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in, see the [{{site.data.keyword.cloud_notm}} Provider reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
+To find a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in, see the [{{site.data.keyword.cloud_notm}} Provider reference](/docs/terraform?topic=terraform-tf-provider).
 
 1. Create a folder on your local machine for your first Terraform project and navigate into the folder. This folder is used to store all configuration files and variable definitions. 
    ```
@@ -278,7 +274,7 @@ To create a VPC and a virtual server instance:
 
 2. In the same directory where you stored the `terraform.tfvars` and `provider.tf` files, create a Terraform configuration file and name it `vpc.tf`. The configuration file includes the following definition blocks: 
    - **locals**: Use this block to specify variables that you want to use multiple times throughout this configuration file. 
-   - **resource**: Every resource block specifies the {{site.data.keyword.cloud_notm}} resource that you want to provision. To find more information about supported configurations for each resource, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).
+   - **resource**: Every resource block specifies the {{site.data.keyword.cloud_notm}} resource that you want to provision. To find more information about supported configurations for each resource, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference](/docs/terraform?topic=terraform-tf-provider).
    - **data**: Use this block to retrieve information for an existing resource in your {{site.data.keyword.cloud_notm}} account. 
    - **output**: This block specifies commands that you want to run after your resources are provisioned. 
    
@@ -763,7 +759,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    <tbody>
    <tr>
    <td><code>resource</code></td>
-   <td>Required: The name of the {{site.data.keyword.cloud_notm}} resource that you want to provision. To provision a classic infrastructure virtual server instance, use <code>ibm_compute_vm_instance</code>. To find a list of other resources that you can provision, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/).  </td>
+   <td>Required: The name of the {{site.data.keyword.cloud_notm}} resource that you want to provision. To provision a classic infrastructure virtual server instance, use <code>ibm_compute_vm_instance</code>. To find a list of other resources that you can provision, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference](/docs/terraform?topic=terraform-tf-provider).  </td>
    </tr>
    <tr>
    <td><code>vm1</code></td>
@@ -1007,4 +1003,4 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    {: pre}
 
 **What's next?** </br>
-[Explore other {{site.data.keyword.cloud_notm}} resources ![External link icon](../icons/launch-glyph.svg "External link icon")](https://ibm-cloud.github.io/tf-ibm-docs/) that you can provision with Terraform. 
+[Explore other {{site.data.keyword.cloud_notm}} resources](/docs/terraform?topic=terraform-tf-provider) that you can provision with Terraform. 

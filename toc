@@ -24,7 +24,39 @@ Automating cloud resource provisioning with Terraform
     {: .navgroup-end}
     
     {: .navgroup id="reference"}
-    [IBM Cloud Provider reference](https://ibm-cloud.github.io/tf-ibm-docs/) 
+    {: .topicgroup}
+    IBM Cloud provider for Terraform
+         provider/version_changelog.md
+         tf-provider.md
+         provider/certificate-manager-resources.md
+         provider/classic-infrastructure-resources.md
+         provider/classic-infrastructure-data-sources.md
+         provider/databases-resources.md
+         provider/databases-data-sources.md
+         provider/cloud-foundry-resources.md
+         provider/cloud-foundry-data-sources.md
+         provider/function-resources.md
+         provider/function-data-sources.md
+         provider/internet-services-resources.md
+         provider/internet-service-data-sources.md
+         provider/keyprotect-resources.md
+         provider/key-protect-data-sources.md
+         provider/iam-resources.md
+         provider/iam-data-sources.md
+         provider/container-resources.md
+         provider/container-data-sources.md
+         provider/object-storage-resources.md
+         provider/object-storage-data-sources.md
+         provider/power-vsi-resources.md
+         provider/power-vsi-data-sources.md
+         provider/resource-management-resources.md
+         provider/resource-management-data-sources.md
+         provider/schemastics-data-sources.md
+         provider/vpc-infrastructure-resources.md
+         provider/vpc-infrastructure-data-sources.md
+         provider/vpc-gen2-resources.md
+         provider/vpc-gen2-data-sources.md 
+   
     [Terraform documentation](https://www.terraform.io/docs/)
     [Terraform CLI reference](https://www.terraform.io/docs/commands/index.html)
     [Architecture reference: Highly available, secured, and managed Kubernetes environment](https://github.com/ibm-cloud-architecture/refarch-public-iaas-iks)
