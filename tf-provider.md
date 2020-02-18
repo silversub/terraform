@@ -33,7 +33,7 @@ Before you can automate your {{site.data.keyword.cloud_notm}} resource provision
 
 The resources and data sources in this documentation are based on the following versions:
 
-- **IBM Cloud Provider plug-in for Terraform version**: 1.1.0
+- **IBM Cloud Provider plug-in for Terraform version**: 1.2.1
 - **Terraform version**: 1.12
 
 ## Installing the Terraform CLI and the IBM Cloud Provider plug-in
