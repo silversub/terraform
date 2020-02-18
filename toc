@@ -24,7 +24,6 @@ Automating cloud resource provisioning with Terraform
     {: .navgroup-end}
     
     {: .navgroup id="reference"}
-    
     {: .topicgroup}
     IBM Cloud provider for Terraform
          provider/version_changelog.md
