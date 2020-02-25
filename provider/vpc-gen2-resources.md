@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-02-25" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -26,8 +26,6 @@ subcollection: terraform
 
 # VPC infrastructure resources (Gen 2 compute)
 {: #vpc-gen2-resources}
-
-Placeholder for PROVIDER BLOCK CONFIGURATION
 
 ## `ibm_is_floating_ip`
 {: #provider-floating-ip}
@@ -77,6 +75,7 @@ Review the input parameters that you can specify for your resource.
 | `target` | String | Optional | Enter the ID of the network interface that you want to use to allocate the IP address. If you specify this option, do not specify `zone` at the same time. | 
 | `zone` | String | Optional | Enter the name of the zone where you want to create the floating IP address. To list available zones, run `ibmcloud is zones`. If you specify this option, do not specify `target` at the same time. | 
 | `resource_group`|String|Optional| The resource group ID where you want to create the floating IP.|
+| `tags`|Array of strings|Optional|Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). |
 
 ### Output parameters
 {: #floating-ip-output}
@@ -252,7 +251,7 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|The name of the network ACL.|
 |`vpc`|String|Required|The VPC ID. This parameter is note required if you want to create a network ACL for a Gen 1 VPC.|
-|`rules`|List of rules|Optional|The rules for a network ACL. |
+|`rules`|List of rules|Optional|A list of rules for a network ACL. The order in which the rules are added to the list determines the priority of the rules. For example, the first rule that you want to enforce must be specified as the first rule in this list. |
 |`rules.name`|String|Required|The user-defined name for this rule.|
 |`rules.action`|String|Required|`Allow` or `deny` matching network traffic. |
 |`rules.source`|String|Required|The source IP address or CIDR block.|
@@ -339,6 +338,8 @@ Review the input parameters that you can specify for your resource.
 | `name` | String| Required | Enter a name for your public gateway. |
 | `vpc` | String | Required | Enter the ID of the VPC, for which you want to create a public gateway. To list available VPCs, run `ibmcloud is vpcs`.  | 
 | `zone` | String | Required | Enter the zone where you want to create the public gateway. To list available zones, run `ibmcloud is zones`. |
+| `resource_group`|String|Optional|Enter the ID of the resource group where you want to create the public gatewat. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the public gateway is created in the `default` resource group. |
+| `tags`|Array of strings|Optional|Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). |
 
 ### Output parameters
 {: #public-gateway-output}
