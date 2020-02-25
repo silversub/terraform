@@ -24,7 +24,7 @@ subcollection: terraform
 {:preview: .preview}
 {:external: target="_blank" .external}
 
-# Identity & Access (IAM) resources
+# Identity & Access (IAM) resources 
 {: #iam-resources}
 
 Create, modify, or delete [{{site.data.keyword.cloud_notm}} Identity and Access Management (IAM)](/docs/iam?topic=iam-iamoverview) resources. 
