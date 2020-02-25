@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-02-25"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -24,7 +24,7 @@ subcollection: terraform
 {:preview: .preview}
 {:external: target="_blank" .external}
 
-# {{site.data.keyword.databases-for}} data sources
+# {{site.data.keyword.databases-for}} data sources 
 {: #databases-data-sources}
 
 You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
@@ -84,7 +84,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`adminuser`|String| The user ID of the default administration user for the database, such as `admin` or `root`. |
 |`version`|String|The database version.|
 |`connectionstrings` |List| List of connection strings by userid for the database. For information about how to use connection strings, see the [documentation](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings). The results are returned in pairs of the userid and string: connectionstrings.1.name = admin connectionstrings.1.string = postgres://admin:$PASSWORD@12345aa1-1111-1111-a1aa-a1aaa11aa1a1.a1a1a111a1a11a1a111a111a1a111a111.databases.appdomain.cloud:32554/ibmclouddb?sslmode=verify-full
-|`whitelist`|List| A cist of whitelisted IP addresses or ranges.|
+|`whitelist`|List| A list of whitelisted IP addresses or ranges.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 The provider only exports the admin userid and associated connectionstring. It does not export any userids additionally configured for the instance. 
