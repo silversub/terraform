@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-02-25"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -16,7 +16,7 @@ subcollection: terraform
 {:pre: .pre}
 {:table: .aria-labeledby="caption"}
 {:codeblock: .codeblock}
-{:tip: .tip}
+{:tip: .tip} 
 {:note: .note}
 {:important: .important}
 {:deprecated: .deprecated}
@@ -24,7 +24,7 @@ subcollection: terraform
 {:preview: .preview}
 {:external: target="_blank" .external}
 
-# Identity & Access (IAM) resources
+# Identity & Access (IAM) resources 
 {: #iam-resources}
 
 Create, modify, or delete [{{site.data.keyword.cloud_notm}} Identity and Access Management (IAM)](/docs/iam?topic=iam-iamoverview) resources. 
@@ -1068,7 +1068,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`users`|List|Required|A comma separated list of user email IDs.|
 |`access_groups`|List|Optional|A comma seperated list of access group IDs.|
-|`classic_infra_roles`|Map|Optional|A nested block describing the classic infrastrucre roles for the inviting users. 
+|`classic_infra_roles`|Map|Optional|A nested block describing the classic infrastrucre roles for the inviting users. </br></br>**Note**: If you have an IBM Cloud Lite account, you cannot set classic infrastructure roles. For more information about Lite accounts, see [What's available?](/docs/account?topic=account-accounts#lite-account-features).|
 |`classic_infra_roles.permissions`|List|Optional|A comma seperated list of classic infrastructure permissions.|
 |`classic_infra_roles.permission_set`|String|Optional|The permission set to be applied. The valid permission sets are `noacess`, `viewonly`, `basicuser`, and `superuser`.|
 |`iam_policy`|List|Optional|A nested block describing the IAM Polocies for invited users. |
@@ -1094,4 +1094,3 @@ Review the input parameters that you can specify for your resource.
 
 No output parameters are supported for this resource. 
 {: shortdesc}
-

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-02-25" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -171,17 +171,49 @@ Create, update, or delete service credentials for an IAM-enabled service.
 ### Sample Terraform code
 {: #resource-key-sample}
 
+#### Creating credentials for a resource without using a service ID
+
 ```hcl
 data "ibm_resource_instance" "resource_instance" {
   name = "myobjectsotrage"
 }
 
 resource "ibm_resource_key" "resourceKey" {
+  name                 = "mykey"
+  role                 = "Viewer"
+  resource_instance_id = data.ibm_resource_instance.resource_instance.id
+
+  //User can increase timeouts
+  timeouts {
+    create = "15m"
+    delete = "15m"
+  }
+}
+```
+
+#### Creating credentials for a service ID
+
+The `ibm_resource_instance` resource does not support creating service credentials for a service ID. However, you can pass in a service ID as an additional parameter to create credentials for a service ID. 
+
+```hcl
+data "ibm_resource_instance" "resource_instance" {
+  name = "myobjectsotrage"
+}
+
+resource "ibm_iam_service_id" "serviceID" {
+  name        = "test"
+  description = "New ServiceID"
+}
+
+resource "ibm_resource_key" "resourceKey" {
   name                 = "myobjectkey"
   role                 = "Viewer"
-  resource_instance_id = "${data.ibm_resource_instance.resource_instance.id}"
+  resource_instance_id = data.ibm_resource_instance.resource_instance.id
+  parameters = {
+    "serviceid_crn" = ibm_iam_service_id.serviceID.crn
+  }
 
-  //User can increase timeouts 
+  //User can increase timeouts
   timeouts {
     create = "15m"
     delete = "15m"

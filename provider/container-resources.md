@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-02-25" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -262,11 +262,11 @@ Review the input parameters that you can specify for your resource.
 
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `billing` | String | Optional | The billing type for your worker nodes. Supported values are `hourly` and `monthly`. Note that virtual machine worker nodes are created with an hourly billing type, and bare metal worker nodes are billed monthly by default |
 | `datacenter` | String | Required | The datacenter where you want to provision the worker nodes. The zone that you choose must be supported in the region where you want to create the cluster. To find supported zones, run `ibmcloud ks zones`. |
 | `default_pool_size` | Integer | Optional | The number of worker nodes that you want to add to the default worker pool. |
 | `disk_encryption` | Boolean | Optional | If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks](docs/containers?topic=containers-security#encrypted_disk).|
 | `hardware` | String | Optional | The level of hardware isolation for your worker node. Use `dedicated` to have available physical resources dedicated to you only, or `shared` to allow physical resources to be shared with other IBM customers. This option is available for virtual machine worker node flavors only. |
+| `gateway_enabled`|Boolean|Optional|Set to **true** if you want to automatically create a gateway-enabled cluster. If `gateway_enabled` is set to **true**, then `private_service_endpoint` must be set to **true** at the same time.|
 | `kube_version` | String | Optional | The Kubernetes version that you want to set up in your cluster. If the version is not specified, the [default version in {{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-cs_versions) is used. |
 | `machine_type` | String | Optional | The machine type for your worker node. The machine type determines the amount of memory, CPU, and disk space that is available to the worker node. For an overview of supported machine types, see [Planning your worker node setup](/docs/containers?topic=containers-planning_worker_nodes). |
 | `name` | String | Required | The name of the cluster. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions. The cluster name and the region in which the cluster is deployed form the fully qualified domain name for the Ingress subdomain. To ensure that the Ingress subdomain is unique within a region, the cluster name might be truncated and appended with a random value within the Ingress domain name. | 
@@ -284,6 +284,7 @@ Review the input parameters that you can specify for your resource.
 | `workers_info` | Array of objects | Optional | The worker nodes that you want to update. | 
 | `workers_info.id` | String | Optional | The ID of the worker node that you want to update. | 
 | `workers_info.version` | String | Optional | The Kubernetes version that you want to update your worker nodes to. | 
+| `worker_num`| Integer|Optional|The number of worker nodes in your cluster. This attribute creates a standalone worker node that is not associated with a worker pool.|
 
 
 ### Output parameters

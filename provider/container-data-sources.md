@@ -2,8 +2,8 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
-
+lastupdated: "2020-02-25"
+ 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
 subcollection: terraform
@@ -123,8 +123,94 @@ Download the Kubernetes configuration files and certificates to access your clus
 
 ```hcl
 data "ibm_container_cluster_config" "cluster_foo" {
-  cluster_name_id = "FOO"
-  config_dir      = "/home/foo_config"
+  cluster_name_id = "mycluster"
+  config_dir      = "/home/mycluster_config"
+}
+```
+
+#### Example for downloading the TLS certificates and permission files for the cluster administrator in a classic or VPC  {{site.data.keyword.containerlong_notm}} cluster
+
+```hcl
+data "ibm_container_cluster_config" "mycluster" {
+  cluster_name_id = "mycluster"
+  admin           = true
+}
+
+provider "kubernetes" {
+  load_config_file       = "false"
+  host                   = data.ibm_container_cluster_config.mycluster.host
+  client_certificate     = data.ibm_container_cluster_config.mycluster.admin_certificate
+  client_key             = data.ibm_container_cluster_config.mycluster.admin_key
+  cluster_ca_certificate = data.ibm_container_cluster_config.mycluster.ca_certificate
+}
+
+resource "kubernetes_namespace" "example" {
+  metadata {
+    name = "terraform-example-namespace"
+  }
+}
+```
+
+#### Example for connecting to the cluster by using the cluster host and token in a classic or VPC  {{site.data.keyword.containerlong_notm}} cluster
+
+```hcl
+data "ibm_container_cluster_config" "mycluster" {
+  cluster_name_id = "mycluster"
+}
+
+provider "kubernetes" {
+  load_config_file       = "false"
+  host                   = data.ibm_container_cluster_config.mycluster.host
+  token                  = data.ibm_container_cluster_config.mycluster.token
+  cluster_ca_certificate = data.ibm_container_cluster_config.mycluster.ca_certificate
+}
+
+resource "kubernetes_namespace" "example" {
+  metadata {
+    name = "terraform-example-namespace"
+  }
+}
+```
+
+#### Example for downloading the TLS certificates and permission files for the cluster administrator in a classic {{site.data.keyword.openshiftlong_notm}} cluster
+
+```hcl
+data "ibm_container_cluster_config" "mycluster" {
+  cluster_name_id = "mycluster"
+  admin           = true
+}
+
+provider "kubernetes" {
+  load_config_file       = "false"
+  host                   = data.ibm_container_cluster_config.mycluster.host
+  client_certificate     = data.ibm_container_cluster_config.mycluster.admin_certificate
+  client_key             = data.ibm_container_cluster_config.mycluster.admin_key
+}
+
+resource "kubernetes_namespace" "example" {
+  metadata {
+    name = "terraform-example-namespace"
+  }
+}
+```
+
+#### Example for connecting to the cluster by using the cluster host and token in a classic {{site.data.keyword.openshiftlong_notm}} cluster
+
+```hcl
+data "ibm_container_cluster_config" "mycluster" {
+  cluster_name_id = "mycluster"
+}
+
+provider "kubernetes" {
+  load_config_file       = "false"
+  host                   = data.ibm_container_cluster_config.mycluster.host
+  token                  = data.ibm_container_cluster_config.mycluster.token
+}
+
+resource "kubernetes_namespace" "example" {
+  metadata {
+    name = "terraform-example-namespace"
+  }
 }
 ```
 
@@ -139,9 +225,10 @@ Review the input parameters that you can specify for your data source.
 | `admin` | Boolean | Optional | If set to **true**, the Kubernetes configuration for cluster administrators is downloaded. The default is **false**. |
 | `cluster_name_id` | String | Required | The name or ID of the cluster that you want to log in to. | 
 | `config_dir` | String | Required | The directory on your local machine where you want to download the Kubernetes config files and certificates. |
-| `download` | Boolean | Optional | Set the value to **false** to skip downloading the configuration for the administrator. The default value is **true**. The configuration files and certificates are downloaded to the directory that you specified in `config_dir`.|
+| `download` | Boolean | Optional | Set the value to **false** to skip downloading the configuration for the administrator. The default value is **true**. The configuration files and certificates are downloaded to the directory that you specified in `config_dir` every time that you run your infrastructure code.|
 | `network` | Boolean | Optional | If set to **true**, the Calico configuration file, TLS certificates, and permission files that are required to run `calicoctl` commands in your cluster are downloaded in addition to the configuration files for the administrator. The default value is **false**. | 
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To find the resource group, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. If this parameter is not provided, the `default` resource group is used. |
+
 
 ### Output parameters
 {: #container-cluster-output}
@@ -153,7 +240,13 @@ Review the output parameters that you can access after you retrieved your data s
 | ------------- |-------------| -------------- |
 | `calico_config_file_path` | String | The path on your local machine where your Calico configuration files and certificates are downloaded to. |
 | `config_file_path` | String | The path on your local machine where the cluster configuration file and certificates are downloaded to.| 
-| `id` | String | The unique identifier of the cluster. |
+| `id` | String | The unique identifier of the cluster configuration. |
+| `admin_key`|String|The admin key of the cluster configuration. Note that this key is case sensitive. |
+|`admin_certificate`|String|The admin certificate of the cluster configuration.|
+|`ca_certificate`|String|The cluster CA certificate of the cluster configuration.|
+|`host`|String|The host name of the cluster configuration.|
+|`token`|String|The token of the cluster configuration.|
+
 
 ## `ibm_container_cluster_worker`
 {: #container-worker}
