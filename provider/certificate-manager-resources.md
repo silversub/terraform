@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-02-28"
 
 keywords: terraform provider plugin, terraform certificate manager, terraform cert manager, terraform certificate
 
@@ -128,7 +128,7 @@ Review the input parameters that you can specify for your resource.
 |`domain_validation_method`|String|Optional|The domain validation method that you want to use for your domain. The validation method is applied to analyze DNS parameters for your domain and determine the domain health and quality standards that your domain meets. Supported parameters are `dns-01`. |
 |`dns_provider_instance_crn`|String|Optional|The CRN-based instance ID of the IBM Cloud Internet Services instance that manages the domains. If not present, Certificate Manager assumes that a `v4` or above Callback URL notifications channel with domain validation exists.|
 
-## Output parameters
+### Output parameters
 {: #certmanager-order-output}
 
 Review the output parameters that you can access after your resource is created. 
@@ -147,7 +147,7 @@ Review the output parameters that you can access after your resource is created.
 |`algorithm`|String|The encryption algorithm. Valid values are `sha256WithRSAEncryption`. |
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
-## Timeouts
+### Timeouts
 {: #certmanager-order-timeout}
 
 The following timeouts are defined for this resource. 
