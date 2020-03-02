@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-02"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -91,7 +91,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`redundant_power_supply`| Boolean|When the value is `true`, it indicates additional power supply is provided.|
 |`redundant_network`|Boolean|When the value is `true`, two physical network interfaces are provided with a bonding configuration.|
 |`unbonded_network`|Boolean|When the value is `true`, two physical network interfaces are provided without a bonding configuration.|
-|`os_reference_code`|String|An operating system reference code that provisioned the computing server.*  
+|`os_reference_code`|String|An operating system reference code that provisioned the computing server.| 
 |`tags`|List of Strings|Tags associated with this bare metal server.|
 |`block_storage_ids`|List of Strings|Block storage to which this computing server have access.|
 |`file_storage_ids`|List of Strings|File storage to which this computing server have access.|
@@ -144,7 +144,7 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|---------|
-|`id`|The unique identifier of the image template.|
+|`id`|String|The unique identifier of the image template.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -477,9 +477,9 @@ Review the output parameters that you can access after you retrieved your data s
 |`health_monitors.port`|String| The backend port.  |
 |`health_monitors.interval`|Integer|The interval in seconds to perform the health check.    |
 |`health_monitors.max_retries`|Integer| The maximum retries before the load balancer is considered unhealthy.  |
-|`health_monitor.timeout`|String| The health check method.  |
-|`health_monitor.url_path`|String| If monitor is "HTTP", this specifies URL path.  |
-|`health_monitor.monitor_id`|String| The health monitor UUID.|
+|`health_monitors.timeout`|String| The health check method.  |
+|`health_monitors.url_path`|String| If monitor is "HTTP", this specifies URL path.  |
+|`health_monitors.monitor_id`|String| The health monitor UUID.|
 |`type`|String|Specifies whether a load balancer is public or private.|
 |`status`|String|Specifies the operation status of the load balancer as 'ONLINE' or 'OFFLINE'.|
 |`vip`|String|The virtual IP address of the load balancer.|
@@ -528,11 +528,11 @@ Review the output parameters that you can access after you retrieved your data s
 |`id`|String|The unique identifier of the VLAN.|
 |`subnets`|List of objects|The collection of subnets associated with the VLAN.    |
 |`subnets.id`|String|The ID of the subnet.      |
-|`subnet.subnet`|String|The subnet for the vlan.    |
-|`subnet.subnet-type`|String|A subnet can be one of several types. `PRIMARY, ADDITIONAL_PRIMARY, SECONDARY, ROUTED_TO_VLAN, SECONDARY_ON_VLAN, STORAGE_NETWORK, and STATIC_IP_ROUTED`. A `PRIMARY` subnet is the primary network bound to a VLAN within the IBM Cloud network. An `ADDITIONAL_PRIMARY` subnet is bound to a network VLAN to augment the pool of available primary IP addresses that may be assigned to a server. A `SECONDARY` subnet is any of the secondary subnet's bound to a VLAN interface. A `ROUTED_TO_VLAN` subnet is a portable subnet that can be routed to any server on a vlan. A `SECONDARY_ON_VLAN` subnet also doesn't exist as a VLAN interface, but is routed directly to a VLAN instead of a single IP address.    |
-|`subnet.subnet-size`|String|The size of the subnet for the VLAN.    |
-|`subnet.gateway`|String|A subnet's gateway address.    |
-|`subnet.cidr`|Integer| A subnet's Classless Inter-Domain Routing prefix. This is a number between 0 and 32 signifying the number of bits in a subnet's netmask. |
+|`subnets.subnet`|String|The subnet for the vlan.    |
+|`subnets.subnet-type`|String|A subnet can be one of several types. `PRIMARY, ADDITIONAL_PRIMARY, SECONDARY, ROUTED_TO_VLAN, SECONDARY_ON_VLAN, STORAGE_NETWORK, and STATIC_IP_ROUTED`. A `PRIMARY` subnet is the primary network bound to a VLAN within the IBM Cloud network. An `ADDITIONAL_PRIMARY` subnet is bound to a network VLAN to augment the pool of available primary IP addresses that may be assigned to a server. A `SECONDARY` subnet is any of the secondary subnet's bound to a VLAN interface. A `ROUTED_TO_VLAN` subnet is a portable subnet that can be routed to any server on a vlan. A `SECONDARY_ON_VLAN` subnet also doesn't exist as a VLAN interface, but is routed directly to a VLAN instead of a single IP address.    |
+|`subnets.subnet-size`|String|The size of the subnet for the VLAN.    |
+|`subnets.gateway`|String|A subnet's gateway address.    |
+|`subnets.cidr`|Integer| A subnet's Classless Inter-Domain Routing prefix. This is a number between 0 and 32 signifying the number of bits in a subnet's netmask. |
 |`virtual_guests`|List of objects|A nested block describing the VSIs attached to the VLAN. |
 |`virtual_guests.id`|String|The ID of the virtual guest.  |
 |`virtual_guests.domain`|String|The domain of the virtual guest.  |

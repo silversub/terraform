@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-03-02"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -683,7 +683,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`iam_service_id`|String|Required|The UUID of the service ID.|
 |`roles`|List|Required|A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.|
-|`resources`|List of objects|Optional| A nested block describing the resource of this policy.
+|`resources`|List of objects|Optional| A nested block describing the resource of this policy.|
 |`resources.service` |String|Optional|The service name of the policy definition. You can retrieve the value by running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search`.|
 |`resources.resource_instance_id`|String|Optional| The ID of the resource instance of the policy definition.|
 |`resources.region` |String|Optional|The region of the policy definition.|
@@ -842,7 +842,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`ibm_id`|String|Required| The IBMid or email address of the user.|
 |`roles`|List|Required| A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.|
-|`resources`|List of objects|Optional| A nested block describing the resource of this policy.
+|`resources`|List of objects|Optional| A nested block describing the resource of this policy.|
 |`resources.service` |String|Optional|The service name of the policy definition. You can retrieve the value by running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search`.|
 |`resources.resource_instance_id`|String|Optional| The ID of the resource instance of the policy definition.|
 |`resources.region` |String|Optional|The region of the policy definition.|
@@ -1073,7 +1073,7 @@ Review the input parameters that you can specify for your resource.
 |`classic_infra_roles.permission_set`|String|Optional|The permission set to be applied. The valid permission sets are `noacess`, `viewonly`, `basicuser`, and `superuser`.|
 |`iam_policy`|List|Optional|A nested block describing the IAM Polocies for invited users. |
 |`iam_policy_roles`|List|Required|A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.|
-|`iam_policy.resources`|List of objects|Optional| A nested block describing the resource of this policy.
+|`iam_policy.resources`|List of objects|Optional| A nested block describing the resource of this policy.|
 |`iam_policy.resources.service` |String|Optional|The service name of the policy definition. You can retrieve the value by running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search`.|
 |`iam_policy.resources.resource_instance_id`|String|Optional| The ID of the resource instance of the policy definition.|
 |`iam_policy.resources.region` |String|Optional|The region of the policy definition.|
@@ -1083,8 +1083,8 @@ Review the input parameters that you can specify for your resource.
 |`iam_policy.resources.attributes`|Map|Optional| A set of resource attributes in the format `name=value,name=value`. If you set this option, do not specify `account_management` at the same time.|
 |`iam_policy.account_management`|Boolean|Optional|Gives access to all account management services if set to `true`. Default value `false`. If you set this option, do not set `resources` at the same time. |
 |`cloud_foundry_roles`|List|Optional|A nested block describing the cloud foundry roles of inviting user. |
-|`cloud_foundry_rolesorganization_guid`|String|Required|The ID of the Cloud Foundry organization.|
-|`cloud_foundry_roles.org_roles`|List|Required|The orgnization roles that are assigned to invited user. The supported roles are `Manager`, `Auditor`, `BillingManager`.|
+|`cloud_foundry_roles.organization_guid`|String|Required|The ID of the Cloud Foundry organization.|
+|`cloud_foundry_roles.org_roles`|List|Required|The organization roles that are assigned to invited user. The supported roles are `Manager`, `Auditor`, `BillingManager`.|
 |`cloud_foundry_roles.spaces`|List|Optional|A nested block describing the Cloud Foundry space roles and space details.
 |`cloud_foundry_roles.spaces.space_guid`|String|Required|The ID of the Cloud Foundry space.|
 |`cloud_foundry_roles.spaces.space_roles`|List|Required|The space roles that you want to assign to the invited user. The supported space roles are `Manager`, `Developer`, `Auditor`.|

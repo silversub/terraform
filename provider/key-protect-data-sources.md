@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-02"
 
 keywords: terraform provider plugin, terraform key protect, terraform kp, terraform root key 
 
@@ -60,7 +60,7 @@ Review the input parameters that you can specify for your data source.
 |Name|Data type|Required/optional|Description|
 |----|-----------|------|--------|
 | `key_protect_id`|String|Required|The ID of the Key Protect service instance.|
-| `key_name`| String|Optional| The name of the key. Only the keys with matching name will be retrieved.
+| `key_name`| String|Optional| The name of the key. Only the keys with matching name will be retrieved.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 
@@ -72,7 +72,7 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|----------|
-| `keys` | List of objects | A list of all keys in your Key Protect service instance.
+| `keys` | List of objects | A list of all keys in your Key Protect service instance.|
 | `keys.name`|String| The name of the key.|
 | `keys.id`|String| The unique identifier of the key.|
 | `keys.crn`|String| The CRN of the key.|

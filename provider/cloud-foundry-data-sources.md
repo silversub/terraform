@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-02"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -74,10 +74,10 @@ Review the output parameters that you can access after you retrieved your data s
 |----|-----------|----------|
 |`id`|String|The unique identifier of the {{site.data.keyword.cloud_notm}} account.  |
 |`account_users`|List of objects|The list of account user's in the account. |
-|`account.id`| String| The user ID of the account user.  |
-|`account.email`|String|The email address of the account user.  |
-|`account.state`|String| The state of the account user.  |
-|`account.role`| String | The Cloud Foundry account role that is assigned to the account user.|
+|`account_users.id`| String| The user ID of the account user.  |
+|`account_users.email`|String|The email address of the account user.  |
+|`account_users.state`|String| The state of the account user.  |
+|`account_users.role`| String | The Cloud Foundry account role that is assigned to the account user.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
