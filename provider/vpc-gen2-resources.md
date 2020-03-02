@@ -30,7 +30,7 @@ subcollection: terraform
 ## `ibm_is_floating_ip`
 {: #provider-floating-ip}
 
-Create a floating IP address that you can associate with a {{site.data.keyword.vsi_is_short_notm}} instance. You can use the floating IP address to access your instance from the public network, independent of whether the subnet is attached to a public gateway. 
+Create a floating IP address that you can associate with a {{site.data.keyword.vsi_is_short}} instance. You can use the floating IP address to access your instance from the public network, independent of whether the subnet is attached to a public gateway. 
 {: shortdesc}
 
 For more information, see [About Networking for VPC](/docs/vpc-on-classic-network?topic=vpc-on-classic-network-about-networking-for-vpc). 
@@ -38,7 +38,7 @@ For more information, see [About Networking for VPC](/docs/vpc-on-classic-networ
 ### Sample Terraform code
 {: #floating-ip-sample}
 
-The following example shows how to create a {{site.data.keyword.vsi_is_short_notm}} instance and associate a floating IP address to the primary network interface of the virtual server instance. 
+The following example shows how to create a {{site.data.keyword.vsi_is_short}} instance and associate a floating IP address to the primary network interface of the virtual server instance. 
 
 ```
 resource "ibm_is_instance" "testacc_instance" {
