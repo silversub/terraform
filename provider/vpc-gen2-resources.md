@@ -247,7 +247,7 @@ Review the output parameters that you can access after your resource is created.
 |`vcpu`|List of VCPUs|A list of virtual CPUs that are allocated to the instance.|
 |`vcpu.architecture`|String|The architecture of the CPU.|
 |`vcpu.count`|Integer|The number of virtual CPUS that are assigned to the instance.|
-|`gpu`|String|List of GPUs|A list of GPUs that are assigned to the instance.|
+|`gpu`|List of GPUs|A list of GPUs that are assigned to the instance.|
 |`gpu.cores`|Integer|The number of cores of the GPU.|
 |`gpu.count`|Integer|The count of the GPU.|
 |`gpu.manufacture`|String|The manufacturer of the GPU.|
