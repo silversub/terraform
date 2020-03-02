@@ -151,6 +151,152 @@ Review the output parameters that you can access after your resource is created.
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the IKE policy. | 
 | `vpn_connections`| List | A collection of VPN connections that use the IKE policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
 
+## `ibm_is_instance`
+{: #provider-instance}
+
+Create, update, or delete a {{site.data.keyword.vsi_is_short}} instance. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #instance-sample}
+
+```hcl
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "testvpc"
+}
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "testsubnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "10.240.0.0/24"
+}
+
+resource "ibm_is_ssh_key" "testacc_sshkey" {
+  name       = "testssh"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCKVmnMOlHKcZK8tpt3MP1lqOLAcqcJzhsvJcjscgVERRN7/9484SOBJ3HSKxxNG5JN8owAjy5f9yYwcUg+JaUVuytn5Pv3aeYROHGGg+5G346xaq3DAwX6Y5ykr2fvjObgncQBnuU5KHWCECO/4h8uWuwh/kfniXPVjFToc+gnkqA+3RKpAecZhFXwfalQ9mMuYGFxn+fwn8cYEApsJbsEmb0iJwPiZ5hjFC8wREuiTlhPHDgkBLOiycd20op2nXzDbHfCHInquEe/gYxEitALONxm0swBOwJZwlTDOB7C6y2dzlrtxr1L59m7pCkWI4EtTRLvleehBoj3u7jB4usR"
+}
+
+resource "ibm_is_instance" "testacc_instance" {
+  name    = "testinstance"
+  image   = "7eb4e35b-4257-56f8-d7da-326d85452591"
+  profile = "b-2x8"
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.testacc_subnet.id
+  }
+
+  network_interfaces {
+    name   = "eth1"
+    subnet = ibm_is_subnet.testacc_subnet.id
+  }
+
+  vpc  = ibm_is_vpc.testacc_vpc.id
+  zone = "us-south-1"
+  keys = [ibm_is_ssh_key.testacc_sshkey.id]
+
+  //User can configure timeouts
+  timeouts {
+    create = "90m"
+    delete = "30m"
+  }
+}
+```
+
+### Input parameters
+{: #instance-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`name`|String|Optional|The instance name.|
+|`vpc`|String|Required|The ID of the VPC where you want to create the instance.|
+|`zone`|String|Required|The name of the VPC zone where you want to create the instance.|
+|`profile`|String|Required|The name of the profile that you want to use for your instance. To list supported profiles, run `ibmcloud is instance-profiles`.|
+|`image`|String|Required|The ID of the virtual server image that you want to use. To list supported images, run `ibmcloud is images`.|
+|`boot_volume`|List|Optional|A list of boot volumes for an instance.|
+|`boot_volume.name`|String|Optional|The name of the boot volume.|
+|`boot_volume.encryption`|String|Optional|The type of encryption to use for the boot volume.|
+|`keys`|List|Required|A comma separated list of SSH keys that you want to add to your instance.|
+|`primary_network_interface`|List|Required|A nested block describing the primary network interface of this instance. Only one primary network interface can be specified for an instance.|
+|`primary_network_interface.name`|String|Optional|The name of the network interface.|
+|`primary_network_interface.subnet`|String|Required|The ID of the subnet.|
+|`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.|
+|`network_interfaces`|List|Optional|A list of additional network interfaces that are set up for the instance.|
+|`network_interfaces.name`|String|Optional|The name of the network interface.|
+|`network_interfaces.subnet`|String|Required|The ID of the subnet.|
+|`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.|
+|`volumes`|List|Optional|A comma separated list of volume IDs to attach to the instance.|
+|`user_data`|String|Optional|User data to transfer to the instance.|
+|`resource_group`|String|Optional|The ID of the resource gorup where you want to create the instance.|
+|`tags`|Array of strings|Optional|A list of tags that you want to add to your instance. Tags can help you find your instance more easily later.|
+
+### Output parameters
+{: #instance-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of the instance.|
+|`memory`|Interger|The amount of memory that is allocated to the instance in gigabytes.|
+|`status`|String|The status of the instance.|
+|`vcpu`|List of VCPUs|A list of virtual CPUs that are allocated to the instance.|
+|`vcpu.architecture`|String|The architecture of the CPU.|
+|`vcpu.count`|Integer|The number of virtual CPUS that are assigned to the instance.|
+|`gpu`|String|List of GPUs|A list of GPUs that are assigned to the instance.|
+|`gpu.cores`|Integer|The number of cores of the GPU.|
+|`gpu.count`|Integer|The count of the GPU.|
+|`gpu.manufacture`|String|The manufacturer of the GPU.|
+|`gpu.memory`|Integer|The amount of memory of the GPU in gigabytes.|
+|`gpu.model`|String|The model of the GPU.|
+|`primary_network_interface`|List of primary network interfaces|A list of primary network interfaces that are attached to the instance.|
+|`primary_network_interface.id`|String|The ID of the primary network interface.|
+|`primary_network_interface.name`|String|The name of the primary network interface.|
+|`primary_network_interface.subnet`|String|The ID of the subnet that the primary network interface is attached to.
+|`primary_network_interface.security_groups`|List of strings|A list of security groups that are used in the primary network interface.|
+|`primary_network_interface.primary_ipv4_address`|String|The primary IPv4 address.|
+|`network_interfaces`|List of additional network interfaces|A list of additional network interfaces that are attached to the instance.|
+|`network_interfaces.id`|String|The ID of the network interface.|
+|`network_interfaces.name`|String|The name of the network interface.|
+|`network_interfaces.subnet`|String|The ID of the subnet.|
+|`network_interfaces.security_groups`|List of strings|A list of security groups that are used in the network interface.|
+|`network_interfaces.primary_ipv4_address`|String|The primary IPv4 address.|
+|`boot_volume`|List of boot volumes|A list of boot volumes that the instance uses.|
+|`boot_volume.name`|String|The name of the boot volume.|
+|`boot_volume.size`|Integer|The capacity of the volume in gigabytes.|
+|`boot_volume.iops`|Integer|The number of input and output operations per second of the volume.|
+|`boot_volume.profile`|String|The profile of the volume.|
+|`boot_volume.encryption`|String|The type of encryption that is used for the boot volume.|
+|`volume_attachments`|List of volume attachments|A list of volume attachments for the instance.|
+|`volume_attachments.id`|String|The ID of the volume attachment.|
+|`volume_attachments.name`|String|The name of the volume attachment.|
+|`volume_attachments.volume_id`|String|The ID of the volume that is used in the volume attachment.|
+|`volume_attachments.volume_name`|String|The name of the volume that is used in the volume attachment.|
+|`volume_attachments.volume_crn`|String|The CRN of the volume that is used in the volume attachment.|
+|`resource_controller_url`|String|The URL of the {{site.data.keyword.cloud_notm}} dashboard that can be used to explore and view details about this instance.|
+
+### Timeout
+{: #instance-timeout}
+
+The following timeouts are defined for the instance: 
+
+- **create**: The creation of the instance is considered failed when no response is received for 60 minutes. 
+- **delete**: The deletion of the instance is considered failed when no response is received for 60 minutes. 
+
+### Import
+{: #instance-import}
+
+`ibm_is_instance` can be imported by using the instance ID
+
+```
+terraform import ibm_is_instance.example a1aaa111-1111-111a-1a11-a11a1a11a11a
+```
+{: pre}
+
 ## `ibm_is_ipsec_policy`
 {: #provider-ipsec}
 
@@ -362,6 +508,64 @@ The following timeouts are defined for this resource.
 
 - **create**: The creation of the public gatway is considered `failed` when no response is received for 60 minutes. 
 - **delete**: The deletion of the public gatway is considered `failed` when no response is received for 60 minutes.
+
+## `ibm_is_route`
+{: #provider-route}
+
+Create, update, or delete a route for your VPC. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #route-sample}
+
+```hcl
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "testvpc"
+}
+
+resource "ibm_is_vpc_route" "testacc_vpc_route" {
+  name        = "routetest"
+  vpc         = ibm_is_vpc.testacc_vpc.id
+  zone        = "us-south-1"
+  destination = "192.168.4.0/24"
+  next_hop    = "10.0.0.4"
+}
+```
+
+### Input parameters 
+{: #route-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`name`|String|Required|The name of the route.|
+|`vpc`|String|Required|The ID of the VPC.|
+|`zone`|String|Required|The name of the VPC zone where you want to create the route.| 
+|`destination`|String|Required|The destionation IP address of the route.|
+|`next_hop`|String|Required|The next hop of the route.|
+
+### Output parametesr
+{: #route-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of the route. The id is composed of `<vpc_id>/<vpc_route_id>`.|
+|`status`|String|The status of the VPC route.|
+
+### Import
+{: #route-import}
+
+`ibm_is_vpc_route` can be imported by using the VPC ID and VPC route ID. 
+
+```
+terraform import ibm_is_vpc_route.example <vpc_id>/<vpc_route_id>
+```
+{: pre}
 
 ## `ibm_is_vpc` 
 {: #provider-vps}
