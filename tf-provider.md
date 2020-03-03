@@ -36,6 +36,8 @@ The resources and data sources in this documentation are based on the following 
 - **IBM Cloud Provider plug-in for Terraform version**: 1.2.3
 - **Terraform version**: 0.12
 
+
+
 ## Installing the Terraform CLI and the IBM Cloud Provider plug-in
 {: #install_cli}
 
