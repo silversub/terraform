@@ -29,7 +29,7 @@ subcollection: containers
 View information for updates to the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {:shortdesc}
 
-## Changelog for 1.2.3, released 2 March 2020
+## Changelog for 1.2.3, released 3 March 2020
 
 The following table shows the changes that are included in version 1.2.3 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
