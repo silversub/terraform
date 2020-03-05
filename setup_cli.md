@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-05"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -121,6 +121,8 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       Please execute the program that consumes these plugins, which will load any plugins automatically
       ```
       {: screen}
+      
+
 
 ## Retrieving required credentials for your resources
 {: #retrieve_credentials}
