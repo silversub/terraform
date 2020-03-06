@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-06"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -214,7 +214,7 @@ data "ibm_is_region" "ds_region" {
 ```
 
 ### Input parameters
-{: #vpc-instance-profiles-input}
+{: #vpc-region-input}
 
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
@@ -225,7 +225,7 @@ Review the input parameters that you can specify for your data source.
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
-{: #vpc-instance-profiles-output}
+{: #vpc-region-output}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
