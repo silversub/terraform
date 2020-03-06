@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-06"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -58,7 +58,7 @@ Review the input parameters that you can specify for your data source.
 | `name` | String | Required | The name of your {{site.data.keyword.cis_full_notm}} instance. |
 
 ### Output parameters
-{: #cf-account-output}
+{: #cis-output}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
@@ -125,7 +125,7 @@ Retrieve information about the IP addresses that {{site.data.keyword.cis_full_no
 {: shortdesc}
 
 ### Sample Terraform code
-{: #cis-domain-sample}
+{: #cis-ip-sample}
 
 The following example retrieves information about IP addresses that {{site.data.keyword.cis_full_notm}} uses for name servers. 
 {: shortdesc}
@@ -136,12 +136,12 @@ data "ibm_cis_ip_addresses" "cisname" {
 ```
 
 ### Input parameters
-{: #cis-domain-input}
+{: #cis-ip-input}
 
 No input parameters are required for this data source. 
 
 ### Output parameters
-{: #cis-domain-output}
+{: #cis-ip-output}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
