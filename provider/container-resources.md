@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-25" 
+lastupdated: "2020-03-06" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -135,6 +135,7 @@ Review the output parameters that you can access after your resource is created.
 | `expires_on` | Date | The date the certificate expires. |  
 
 ### Import
+{: #container-alb-cert-import}
 
 ibm_container_alb_cert can be imported using cluster_id, secret_name eg
 
@@ -204,6 +205,7 @@ Review the output parameters that you can access after your resource is created.
 | `secret_name` | String | The name of the Kubernetes secret that holds the credentials to access your {{site.data.keyword.cloud_notm}} service instance. |
 
 ### Import
+{: #container-bind-import}
 
 ibm_container_bind_service can be imported using cluster_name_id, service_instance_name or service_instance_id and namespace_id, eg
 
