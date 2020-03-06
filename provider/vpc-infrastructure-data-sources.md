@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-06"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -61,6 +61,7 @@ Review the input parameters that you can specify for your data source.
 
 
 ### Output parameters
+{: #image-output}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
@@ -372,6 +373,7 @@ Review the input parameters that you can specify for your data source.
 | `name` | String | Required | The name of the VPC. To list available VPCs, run the `ibmcloud is vpcs` command. |
 
 ### Output parameters
+{: #vpc-output}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
