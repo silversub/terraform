@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-06"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -178,6 +178,7 @@ Review the output parameters that you can access after your resource is created.
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
+{: #fn-action-import}
 
 `ibm_function_action` can be imported using the ID.
 
@@ -376,6 +377,7 @@ Review the output parameters that you can access after your resource is created.
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
+{: #fn_rule-import}
 
 `ibm_function_rule` can be imported using the ID.
 
@@ -494,6 +496,7 @@ Review the output parameters that you can access after your resource is created.
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
+{: #fn-trigger-import}
 
 `ibm_function_trigger` can be imported using the ID.
 
