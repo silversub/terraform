@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-06"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -452,12 +452,14 @@ Review the output parameters that you can access after your resource is created.
 
 
 ## `ibm_compute_dedicated_host`
+{: #dedicated-host}
 
 Provides a Dedicated Host resource. This allows dedicated host to be created, updated, and canceled.
 
 For additional details please refer to the [SoftLayer API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Virtual_DedicatedHost).
 
 ### Sample Terraform code
+{: #dedicated-host-sample}
 
 In the following example, you can create a dedicated host:
 
@@ -472,6 +474,7 @@ resource "ibm_compute_dedicated_host" "dedicatedhost" {
 ```
 
 ### Input parameters
+{: #dedicated-host-input}
 
 The following arguments are supported:
 
@@ -488,6 +491,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #dedicated-host-output}
 
 The following attributes are exported:
 
@@ -504,12 +508,14 @@ The following attributes are exported:
 
 
 ## `ibm_compute_monitor`
+{: #compute-monitor}
 
 Provides a monitoring instance resource. This allows monitoring instances to be created, updated, and deleted.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Monitor_Version1_Query_Host).
 
 ### Sample Terraform code
+{: #compute-monitor-sample}
 
 In the following example, you can create a monitor:
 
@@ -525,6 +531,7 @@ resource "ibm_compute_monitor" "test_monitor" {
 ```
 
 ### Input parameters
+{: #compute-monitor-input}
 
 The following arguments are supported:
 
@@ -540,6 +547,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #compute-monitor-output}
 
 The following attributes are exported:
 
@@ -608,12 +616,14 @@ The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/d
 
 
 ## `ibm_compute_provisioning_hook`
+{: #provision-hook}
 
 Provides provisioning hooks containing all the information needed to add a hook into a server or virtual provision and OS reload. This allows provisioning hooks to be created, updated, and deleted.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Provisioning_Hook).
 
 ### Sample Terraform code
+{: #provision-hook-sample}
 
 ```hcl
 resource "ibm_compute_provisioning_hook" "test_provisioning_hook" {
@@ -623,6 +633,7 @@ resource "ibm_compute_provisioning_hook" "test_provisioning_hook" {
 ```
 
 ### Input parameters
+{: #provision-hook-input}
 
 The following arguments are supported:
 
@@ -634,6 +645,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #provision-hook-output}
 
 The following attributes are exported:
 
@@ -645,13 +657,15 @@ The following attributes are exported:
 
 
 
-## ibm_compute_ssh_key
+## `ibm_compute_ssh_key`
+{: #ssh-key}
 
 Provide an SSH key resource. This allows SSH keys to be created, updated, and deleted.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Security_Ssh_Key).
 
 ### Sample Terraform code
+{: #ssh-key-sample}
 
 ```
 resource "ibm_compute_ssh_key" "test_ssh_key" {
@@ -662,6 +676,7 @@ resource "ibm_compute_ssh_key" "test_ssh_key" {
 ```
 
 ### Input parameters
+{: #ssh-key-input}
 
 The following arguments are supported:
 
@@ -674,6 +689,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #ssh-key-output}
 
 The following attributes are exported:
 
@@ -687,12 +703,14 @@ The following attributes are exported:
 
 
 ## `ibm_compute_ssl_certificate`
+{: #ssl-cert}
 
 Provides an SSL certificate resource. This allows SSL certificates to be created, updated, and deleted.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) security certificates docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Security_Certificate).
 
 ### Sample Terraform code
+{: #ssl-cert-sample}
 
 In the following example, you can use a certificate on file:
 
@@ -721,6 +739,7 @@ resource "ibm_compute_ssl_certificate" "test_cert" {
 ```
 
 ### Input parameters
+{: #ssl-cert-input}
 
 The following arguments are supported:
 
@@ -733,6 +752,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #ssl-cert-output}
 
 The following attributes are exported:
 
@@ -1123,6 +1143,7 @@ Review the output parameters that you can access after your resource is created.
 
 
 ## `ibm_dns_domain`
+{: #dns-domain}
 
 Provides a single DNS domain managed on IBM Cloud Classic Infrastructure (SoftLayer). Domains contain general information about the domain name, such as the name and serial number.
 
@@ -1130,6 +1151,7 @@ Individual records, such as `A`, `AAAA`, `CTYPE`, and `MX` records, are stored i
 
 
 ### Sample Terraform code
+{: #dns-domain-sample}
 
 ```hcl
 resource "ibm_dns_domain" "dns-domain-test" {
@@ -1139,6 +1161,7 @@ resource "ibm_dns_domain" "dns-domain-test" {
 ```
 
 ### Input parameters
+{: #dns-domain-input}
 
 The following arguments are supported:
 
@@ -1150,6 +1173,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #dns-domain-output}
 
 The following attributes are exported:
 
@@ -1164,6 +1188,7 @@ The following attributes are exported:
 
 
 ## `ibm_dns_domain_registration_nameservers`
+{: #dns-register}
 
 Configures the (custom) name servers associated with a DNS domain registration managed by the IBM Cloud DNS Registration Service. The default IBM Cloud name servers specified when the domain was initially registered are replaced with the values passed when this resource is created. 
 
@@ -1171,6 +1196,7 @@ This resource is typically used in conjunction with IBM Cloud Internet Services 
 
 
 ### Sample Terraform code
+{: #dns-register-sample}
 
 ```hcl
 resource "ibm_dns_domain_registration_nameservers" "dnstestdomain" {
@@ -1199,6 +1225,7 @@ data "ibm_dns_domain_registration" "dns-domain-test" {
 
 
 ### Input parameters
+{: #dns-register-input}
 
 The following arguments are supported:
 
@@ -1209,6 +1236,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #dns-register-output}
 
 The following attributes are exported:
 
@@ -1223,10 +1251,12 @@ The following attributes are exported:
 
 
 ## `ibm_dns_secondary`
+{: #dns-second}
 
 The `ibm_dns_secondary` resource represents a single secondary DNS zone managed on SoftLayer. Each record created within the secondary DNS service defines which zone is transferred, what server it is transferred from, and the frequency that zone transfers occur at. Zone transfers are performed automatically based on the transfer frequency set on the secondary DNS record.
 
 ### Sample Terraform code
+{: #dns-second-sample}
 
 ```hcl
 resource "ibm_dns_secondary" "dns-secondary-test" {
@@ -1237,6 +1267,7 @@ resource "ibm_dns_secondary" "dns-secondary-test" {
 ```
 
 ### Input parameters
+{: #dns-second-input}
 
 The following arguments are supported:
 
@@ -1249,6 +1280,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #dns-second-output}
 
 The following attributes are exported:
 
@@ -1263,12 +1295,14 @@ The following attributes are exported:
 
 
 ## `ibm_dns_reverse_record`
+{: #dns-rev-rec}
 
 Provides a single DNS reverse record managed on IBM Cloud Classic Infrastructure (SoftLayer). Record contain general information about the reverse record, such as the hostname, ip address and time to leave(ttl).
 
 The IBM Cloud Classic Infrastructure (SoftLayer) object  [SoftLayer_Dns_Domain_ResourceRecord](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord) is used for most create-retrieve-update-delete (CRUD) operations.
 
 ### Sample Terraform code
+{: #dns-rev-rec-sample}
 ```hcl
 resource "ibm_dns_reverse_record" "testreverserecord" {
     ipaddress="123.123.123.123"
@@ -1278,6 +1312,7 @@ resource "ibm_dns_reverse_record" "testreverserecord" {
 ```
 
 ### Input parameters
+{: #dns-rev-rec-input}
 
 The following arguments are supported:
 
@@ -1289,6 +1324,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #dns-rev-rec-output}
 
 The following attributes are exported:
 
@@ -1699,6 +1735,7 @@ The following arguments are supported:
 
 
 ## `ibm_hardware_firewall_shared`
+{: #shared-fw}
 
 Provides a firewall in IBM. One firewall protects one public VLAN and provides in-bound network packet filtering. 
 
@@ -1707,6 +1744,7 @@ Provides a firewall in IBM. One firewall protects one public VLAN and provides i
 For more information about how to configure a firewall, see the [docs](https://knowledgelayer.softlayer.com/procedure/configure-hardware-firewall).
 
 ### Sample Terraform code
+{: #shared-fw-sample}
 
 ```hcl
 resource "ibm_hardware_firewall_shared" "test_firewall" {
@@ -1716,6 +1754,7 @@ resource "ibm_hardware_firewall_shared" "test_firewall" {
 ```
 
 ### Input parameters
+{: #shared-fw-input}
 
 The following arguments are supported:
 
@@ -1727,6 +1766,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #shared-fw-output}
 
 The following attributes are exported:
 
@@ -1791,10 +1831,12 @@ Review the output parameters that you can access after your resource is created.
  
 
 ## `ibm_lb`
+{: #lb}
 
 Provides a resource for local load balancers. This allows local load balancers to be created, updated, and deleted.
 
 ### Sample Terraform code
+{: #lb-sample}
 
 In the following example, you can create a local load balancer:
 
@@ -1813,6 +1855,7 @@ resource "ibm_lb" "test_lb_local" {
 ```
 
 ### Input parameters
+{: #lb-input}
 
 The following arguments are supported:
 
@@ -1828,6 +1871,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #lb-output}
 
 The following attributes are exported:
 
@@ -1842,6 +1886,7 @@ The following attributes are exported:
 
 
 ### Timeouts
+{: #lb-timeout}
 
 ibm_subnet provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
 
@@ -1917,6 +1962,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #lbaas-output}
 
 The following attributes are exported:
 
@@ -1941,10 +1987,12 @@ The following attributes are exported:
 
 
 ## `ibm_lbaas_health_monitor`
+{: #health-monitor}
 
 Provides a resource for the health monitors of IBM Lbaas. This allows to update a health monitor configuration of the load balancer. Health monitors are created and deleted by the creation and deletion of lbaas protocols.
  
 ### Sample Terraform code
+{: #health-monitor-sample}
 
 ```hcl
 
@@ -1985,6 +2033,7 @@ resource "ibm_lbaas_health_monitor" "lbaas_hm" {
 ```
 
 ### Input parameters
+{: #health-monitor-input}
 
 The following arguments are supported:
 
@@ -2001,6 +2050,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #health-monitor-output}
 
 The following attributes are exported:
 
@@ -2013,12 +2063,14 @@ The following attributes are exported:
 
 
 ## `ibm_lbaas_server_instance_attachment`
+{: #instance-attachment}
 
 Provides a resource for attaching the server instance to IBM cloud load balancer. This allows to attach, detach and update server instances as loadbalancer members to IBM cloud load balancer. A `depends_on` statement is required for the associated load balancer to ensure that attach and detach only occur after and before load balancer creation and deletion. If you do not specify the `depends_on` parameter, intermittent attach failures will occur on creation and load balancer deletion will fail. Typically when apply or destroy is rerun the operation will be successful. 
 
 
  
 ### Sample Terraform code
+{: #instance-attachment-sample}
 
 ```hcl
 
@@ -2061,6 +2113,7 @@ resource "ibm_lbaas_server_instance_attachment" "lbaas_member" {
 ```
 
 ### Input parameters
+{: #instance-attachment-input}
 
 The following arguments are supported:
 
@@ -2073,6 +2126,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #instance-attachment-output}
 
 The following attributes are exported:
 
@@ -2085,12 +2139,14 @@ The following attributes are exported:
 
 
 ## `ibm_lb_service`
+{: #lb-service}
 
 Provides a resource for local load balancer services. This allows local load balancer services to be created, updated, and deleted.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_Service).
 
 ### Sample Terraform code
+{: #lb-service-sample}
 
 In the following example, you can create a local load balancer service:
 
@@ -2107,6 +2163,7 @@ resource "ibm_lb_service" "test_lb_local_service" {
 ```
 
 ### Input parameters
+{: #lb-service-input}
 
 The following arguments are supported:
 
@@ -2125,12 +2182,14 @@ The following arguments are supported:
 
 
 ## `ibm_lb_service_group`
+{: #service-group}
 
 Provides a resource for local load balancer service groups. This allows local load balancer service groups to be created, updated, and deleted.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_Service_Group).
 
 ### Sample Terraform code
+{: #service-group-sample}
 
 In the following example, you can create a local load balancer service group:
 
@@ -2145,6 +2204,7 @@ resource "ibm_lb_service_group" "test_service_group" {
 ```
 
 ### Input parameters
+{: #service-group-input}
 
 The following arguments are supported:
 
@@ -2160,6 +2220,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #service-group-output}
 
 The following attributes are exported:
 
@@ -2173,6 +2234,7 @@ The following attributes are exported:
 
 
 ## `ibm_lb_vpx`
+{: #lb-vpx}
 
 Provides a resource for VPX load balancers. This allows VPX load balancers to be created, updated, and deleted.  
 
@@ -2185,6 +2247,7 @@ https://<userName>:<apiKey>@api.softlayer.com/rest/v3/SoftLayer_Product_Package/
 ```
 
 ### Sample Terraform code
+{: #lb-vpx-sample}
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller) for more information.
 
@@ -2203,6 +2266,7 @@ resource "ibm_lb_vpx" "test_vpx" {
 ```
 
 ### Input parameters
+{: #lb-vpx-input}
 
 The following arguments are supported:
 
@@ -2221,6 +2285,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #lb-vpx-output}
 
 The following attributes are exported:
 
@@ -2236,6 +2301,7 @@ The following attributes are exported:
 
 
 ## `ibm_lb_vpx_ha`
+{: #lb-vpx-ha}
 
 Configure a high availability (HA) pair with two NetScaler VPX devices. The two NetScaler VPXs must be version 10.5 and located in the same subnet. A primary NetScaler VPX provides load balancing services in active mode, and a secondary NetScaler VPX provides load balancing services when the primary NetScaler VPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748) and the [KnowledgeLayer NetScaler docs](http://knowledgelayer.softlayer.com/articles/netscaler-vpx-10-high-availability-setup).
 
@@ -2244,6 +2310,7 @@ Configure a high availability (HA) pair with two NetScaler VPX devices. The two 
 The two NetScaler VPXs use the same password in HA mode. When you create this resource, Terraform changes the password of the secondary NetScaler VPX to the password of the primary NetScaler VPX. When you destroy this resource, Terraform restores the original password of the secondary NetScaler VPX.
 
 ### Sample Terraform code
+{: #lb-vpx-ha-sample}
 
 ```hcl
 
@@ -2280,6 +2347,7 @@ resource "ibm_lb_vpx_ha" "test_ha" {
 ```
 
 ### Input parameters
+{: #lb-vpx-ha-input}
 
 The following arguments are supported:
 
@@ -2292,6 +2360,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #lb-vpx-ha-output}
 
 The following attributes are exported:
 
@@ -2360,12 +2429,14 @@ The following attributes are exported:
 
 
 ## `ibm_lb_vpx_vip`
+{: #lb-vpx-vip}
 
 Provides a resource for VPX load balancer virtual IP addresses. This allows VPX load balancer virtual IP addresses to be created, updated, and deleted.  
 
 **NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](http://www.softlayer.com/VPN-Access) to access a private network connection.
 
 ### Sample Terraform code
+{: #lb-vpx-vip-sample}
 
 The following example configuration supports NetScaler VPX 10.1 and 10.5:
 
@@ -2435,6 +2506,7 @@ resource "ibm_lb_vpx_service" "testacc_service1" {
 ```
 
 ### Input parameters
+{: #lb-vpx-vip-input}
 
 The following arguments are supported:
 
@@ -2452,6 +2524,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #lb-vpx-vip-output}
 
 The following attributes are exported:
 
@@ -2620,6 +2693,7 @@ The following attributes are exported:
 
 
 ## `ibm_network_gateway_vlan_association`
+{: #network-vlan-associate}
 
 Provide a resource to associate a VLAN with a network gateway. The VLANs can be disassociated or updated later to be bypassed or routed.
 
@@ -2628,6 +2702,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) AP
 For more information about getting started, see the [IBM Virtual Router Appliance docs](/docs/infrastructure/gateway-appliance?topic=gateway-appliance-getting-started).
 
 ### Sample Terraform code
+{: #network-vlan-associate-sample}
 
 ```hcl
 resource "ibm_network_gateway" "gateway" {
@@ -2658,6 +2733,7 @@ resource "ibm_network_gateway_vlan_association" "gateway_vlan_association" {
 ```
 
 ### Input parameters
+{: #network-vlan-associate-input}
 
 The following arguments are supported:
 
@@ -2669,6 +2745,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #network-vlan-associate-output}
 
 The following attributes are exported:
 
@@ -2681,12 +2758,14 @@ The following attributes are exported:
 
 
 ## `ibm_network_interface_sg_attachment`
+{: #network-sq-attachment}
 
 Provide a resource to attach security group to a network interface. This allows attachments to be created and deleted.
 
 For additional details, see the [IBM Cloud Classic Infrastructure  (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Virtual_Network_SecurityGroup_NetworkComponentBinding).
 
 ### Sample Terraform code
+{: #network-sq-attachment-sample}
 
 ```
 data "ibm_security_group" "allowssh" {
@@ -2707,6 +2786,7 @@ resource "ibm_network_interface_sg_attachment" "sg1" {
 ```
 
 ### Input parameters
+{: #network-sq-attachment-input}
 
 The following arguments are supported:
 
@@ -2719,6 +2799,7 @@ The following arguments are supported:
 
 
 ### Timeouts
+{: #network-sq-attachment-timeouts}
 
 ibm_network_interface_sg_attachment provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
 
@@ -2731,12 +2812,14 @@ ibm_network_interface_sg_attachment provides the following [Timeouts](https://ww
 
 
 ## `ibm_network_public_ip`
+{: #public-ip}
 
 Provides a public IP resource to route between servers. This allows public IPs to be created, updated, and deleted. Public IPs are not restricted to routing within the same data center.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Subnet_IpAddress_Global) and [public IP address overview](https://knowledgelayer.softlayer.com/learning/global-ip-addresses).
 
 ### Sample Terraform code
+{: #public-ip-sample}
 
 ```hcl
 resource "ibm_network_public_ip" "test_public_ip " {
@@ -2746,6 +2829,7 @@ resource "ibm_network_public_ip" "test_public_ip " {
 ```
 
 ### Input parameters
+{: #public-ip-input}
 
 The following arguments are supported:
 
@@ -2757,6 +2841,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #public-ip-output}
 
 The following attributes are exported:
 
@@ -2768,6 +2853,7 @@ The following attributes are exported:
 
 
 ### Timeouts
+{: #public-ip-timeout}
 ibm_network_public_ip provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
 
 |Name|Description|
@@ -2852,6 +2938,7 @@ The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/d
 
 
 ## `ibm_network_vlan_spanning`
+{: #vlan-spanning}
 
 This resource configures the VLAN spanning attribute for an IaaS account. By default VLAN spanning on the private network is disabled (off) and servers provisioned on separate private VLANs will not be able to communicate with each other over the private network. When enabled, the private network VLAN spanning service allows all private network VLANs to communicate with one another and hence all servers in the account to communicate with each other. Future servers will be added as they are provisioned. VLAN spanning enables servers to communicate across VLANs in the same data center and across data centers. 
 
@@ -2862,6 +2949,7 @@ VRF at an IaaS account level can be used as an alternative to VLAN Spanning and 
 
 
 ### Sample Terraform code
+{: #vlan-spanning-sample}
 
 ```hcl
 resource "ibm_network_vlan_spanning" "spanning" {
@@ -2871,6 +2959,7 @@ resource "ibm_network_vlan_spanning" "spanning" {
 
 
 ### Input parameters
+{: #vlan-spanning-input}
 
 The following arguments are supported:
 
@@ -2880,6 +2969,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #vlan-spanning-output}
 
 The following attributes are exported:
 
@@ -2928,12 +3018,14 @@ The following attributes are exported:
 
 
 ## `ibm_security_group`
+{: #sec-group}
 
 Provides a networking security group resource that controls access to the public and private interfaces of a virtual server instance. This resource allows security groups to be created, updated, and deleted. To create rules for the security group, use the `security_group_rule` resource.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_SecurityGroup).
 
 ### Sample Terraform code
+{: #sec-group-sample}
 
 ```
 resource "ibm_security_group" "sg1" {
@@ -2943,6 +3035,7 @@ resource "ibm_security_group" "sg1" {
 ```
 
 ### Input parameters
+{: #sec-group-input}
 
 The following arguments are supported:
 
@@ -2953,6 +3046,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #sec-group-output}
 
 The following attributes are exported:
 
@@ -2965,12 +3059,14 @@ The following attributes are exported:
 
 
 ## `ibm_security_group_rule`
+{: #sec-group-rule}
 
 Provide a rule for a security group. You can set the IP range to manage incoming (ingress) and outgoing (egress) traffic to a virtual server instance. This resources allows rules for security groups to be created, updated, and deleted. To create the security group, use the `security_group` resource.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_SecurityGroup_Rule).
 
 ### Sample Terraform code
+{: #sec-group-rule-sample}
 
 ```
 resource "ibm_security_group_rule" "allow_port_8080" {
@@ -2984,6 +3080,7 @@ resource "ibm_security_group_rule" "allow_port_8080" {
 ```
 
 ### Input parameters
+{: #sec-group-rule-input}
 
 The following arguments are supported:
 
@@ -3000,6 +3097,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #sec-group-rule-output}
 
 The following attributes are exported:
 
@@ -3011,6 +3109,7 @@ The following attributes are exported:
 
 
 ## `ibm_storage_block`
+{: #storage-block}
 
 Provides a block storage resource. This allows iSCSI-based [Endurance](https://knowledgelayer.softlayer.com/topic/endurance-storage) and [Performance](https://knowledgelayer.softlayer.com/topic/performance-storage) block storage to be created, updated, and deleted.
 
@@ -3019,6 +3118,7 @@ Block storage can be accessed and mounted through a Multipath I/O (MPIO) Interne
 To access block storage, see the KnowledgeLayer docs [for Linux](https://knowledgelayer.softlayer.com/procedure/block-storage-linux) or [for Windows](https://knowledgelayer.softlayer.com/procedure/accessing-block-storage-microsoft-windows).
 
 ### Sample Terraform code
+{: #storage-block-sample}
 
 In the following example, you can create 20G of Endurance block storage with 10G snapshot capacity and 0.25 IOPS/GB.
 
@@ -3056,6 +3156,7 @@ resource "ibm_storage_block" "test2" {
 ```
 
 ### Input parameters
+{: #storage-block-input}
 
 The following arguments are supported:
 
@@ -3076,6 +3177,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #storage-block-output}
 
 The following attributes are exported:
 
@@ -3092,10 +3194,12 @@ The following attributes are exported:
 
 
 ## `ibm_storage_evault`
+{: #storage-evault}
 
 Provides an  evault storage resource. This allows [IBM Cloud Backup](/docs/infrastructure/Backup?topic=Backup-getting-started#getting-started) storage to be created, updated, and deleted.
 
 ### Sample Terraform code
+{: #storage-evault-sample}
 
 In the following example, you can create 20G of evault storage 
 
@@ -3107,7 +3211,8 @@ resource "ibm_storage_evault" "test" {
 }
 ```
 
-
+### Input parameters
+{: #storage-evault-input}
 
 The following arguments are supported:
 
@@ -3121,6 +3226,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #storage-evault-output}
 
 The following attributes are exported:
 
@@ -3134,6 +3240,7 @@ The following attributes are exported:
 
 
 ### Timeouts
+{: #storage-evault-timeout}
 
 ibm_storage_evault provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
 
@@ -3147,6 +3254,7 @@ ibm_storage_evault provides the following [Timeouts](https://www.terraform.io/do
 
 
 ## `ibm_storage_file`
+{: #storage-file}
 
 ibm_storage_file resource provides a file storage resource. This allows NFS-based Endurance and Performance [file storage](/docs/infrastructure/FileStorage?topic=FileStorage-about) to be created, updated, and deleted.
 
@@ -3155,6 +3263,7 @@ File storage is mounted using the NFS protocol. For example, a file storage reso
 See [Mounting File Storage](/docs/infrastructure/FileStorage?topic=FileStorage-mountingLinux) for NFS configuration.
 
 ### Sample Terraform code
+{: #storage-file-sample}
 
 In the following example, you can create 20G of Endurance file storage with a 10G snapshot capacity and 0.25 IOPS/GB.
 
@@ -3210,6 +3319,7 @@ resource "ibm_storage_file" "fs_performance" {
 ```
 
 ### Input parameters
+{: #storage-file-input}
 
 The following arguments are supported:
 
@@ -3237,6 +3347,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #storage-file-output}
 
 The following attributes are exported:
 
@@ -3252,6 +3363,7 @@ The following attributes are exported:
 
 
 ## `ibm_subnet`
+{: #subnet}
 
 This resource provides portable and static subnets that consist of either IPv4 and IPv6 addresses. Users are able to create 
 public portable subnets, private portable subnets, and public static subnets with an IPv4 option, and public portable subnets and public static subnets with an IPv6 option. 
@@ -3264,6 +3376,7 @@ The static IPv4 subnet provides secondary IP addresses for primary IP addresses.
 Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](http://blog.softlayer.com/tag/ipv6)
 
 ### Sample Terraform code of portable subnet
+{: #subnet-sample}
 The following example creates a private portable subnet which has one available IPv4 address:
 
 ```hcl
@@ -3334,6 +3447,7 @@ output "first_ip_address" {
 ```
 
 ### Input parameters
+{: #subnet-input}
 
 The following arguments are supported:
 
@@ -3350,6 +3464,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
+{: #subnet-output}
 
 The following attributes are exported:
 
@@ -3361,6 +3476,7 @@ The following attributes are exported:
 
 
 ### Timeouts
+{: #subnet-timeout}
 
 ibm_subnet provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
 
