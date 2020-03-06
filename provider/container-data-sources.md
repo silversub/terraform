@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-03-06"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -119,7 +119,7 @@ Download the Kubernetes configuration files and certificates to access your clus
 {: shortdesc}
 
 ### Sample Terraform code
-{: #container-cluster-sample}
+{: #container-cluster-config-sample}
 
 ```hcl
 data "ibm_container_cluster_config" "cluster_foo" {
@@ -215,7 +215,7 @@ resource "kubernetes_namespace" "example" {
 ```
 
 ### Input parameters
-{: #container-cluster-input}
+{: #container-cluster-config-input}
 
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
