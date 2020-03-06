@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-02"
+lastupdated: "2020-03-06"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -150,7 +150,7 @@ Create, update, or delete an IAM policy for an IAM access group.
 {: shortdesc}
 
 ### Sample Terraform code
-{: #iam-access-group-policy}
+{: #iam-access-group-policy-sample}
 
 #### Create a policy for all IAM-enabled resources
 {: #all-iam-services}
