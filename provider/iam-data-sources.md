@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-06"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -50,6 +50,7 @@ No input parameters are required for this resource.
 {: shortdesc}
 
 ### Output parameters
+{: #iam-token-output}
 
 Review the output parameters that you can access after you retrieved your data source.
 
@@ -189,6 +190,7 @@ data "ibm_iam_user_policy" "testacc_ds_user_policy" {
 ```
 
 ### Input parameters
+{: #iam-user-policy-input}
 
 Review the input parameters that you can specify for your data source.
 
@@ -197,7 +199,9 @@ Review the input parameters that you can specify for your data source.
 |`ibm_id`|String|Required| The IBMid or email address of the user.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
+
 ### Output parameters
+{: #iam-user-policy-output}
 
 The following attributes are exported:
 
