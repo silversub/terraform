@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-02" 
+lastupdated: "2020-03-06" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -1029,7 +1029,7 @@ Review the input parameters that you can specify for your resource.
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
-{: #subnet-output}
+{: #ssh-key-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}

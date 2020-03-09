@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-25" 
+lastupdated: "2020-03-09" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -135,6 +135,7 @@ Review the output parameters that you can access after your resource is created.
 | `expires_on` | Date | The date the certificate expires. |  
 
 ### Import
+{: #container-alb-cert-import}
 
 ibm_container_alb_cert can be imported using cluster_id, secret_name eg
 
@@ -204,6 +205,7 @@ Review the output parameters that you can access after your resource is created.
 | `secret_name` | String | The name of the Kubernetes secret that holds the credentials to access your {{site.data.keyword.cloud_notm}} service instance. |
 
 ### Import
+{: #container-bind-import}
 
 ibm_container_bind_service can be imported using cluster_name_id, service_instance_name or service_instance_id and namespace_id, eg
 
@@ -215,11 +217,11 @@ $ terraform import ibm_container_bind_service.example mycluster/myservice/defaul
 ## `ibm_container_cluster`
 {: #container-cluster}
 
-Create, update, or delete an {{site.data.keyword.containerlong_notm}} single zone cluster. Every cluster is set up with a worker pools that is named `default` and that holds worker nodes with the same configuration, such as machine type, CPU, and memory.
+Create, update, or delete an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} single zone cluster. Every cluster is set up with a worker pools that is named `default` and that holds worker nodes with the same configuration, such as machine type, CPU, and memory.
 {: shortdesc}
 
-An existing subnet can be attached to the cluster by passing the subnet ID. A webhook can be registered to a cluster. By default, your single zone cluster is set up with a worker pool that is named default.
-During the creation of cluster the workers are created with the kube version by default. 
+An existing subnet can be attached to the cluster by passing the subnet ID. A webhook can be registered to a cluster. 
+During the creation of the cluster, the workers are created with the default Kubernetes or OpenShift version.
 
 If you want to use this resource to update a cluster, make sure that you review the [version changelog](/docs/containers?topic=containers-changelog) for patch updates and the [version information and update information](/docs/containers?topic=containers-cs_versions) for major and minor changes. 
 {: important}
@@ -230,10 +232,12 @@ To create a worker pool or add worker nodes and zones to a worker pool, use the 
 ### Sample Terraform code
 {: #container-cluster-sample}
 
-The following example creates a single zone cluster that is named `mycluster` with one worker node in the default worker pool. 
+### Classic {{site.data.keyword.containerlong_notm}} cluster
+
+The following example creates a single zone {{site.data.keyword.containerlong_notm}} cluster that is named `mycluster` with one worker node in the default worker pool. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_container_cluster" "testacc_cluster" {
   name            = "mycluster"
   datacenter      = "dal10"
@@ -253,6 +257,82 @@ resource "ibm_container_cluster" "testacc_cluster" {
 
 }
 ```
+{: codeblock}
+
+### VPC {{site.data.keyword.containerlong_notm}} cluster
+
+The following example creates a VPC cluster that is spread across two zones.
+{: shortdesc}
+
+```
+resource "ibm_is_vpc" "vpc1" {
+  name = "myvpc"
+}
+
+resource "ibm_is_subnet" "subnet1" {
+  name                     = "mysubnet1"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us_south-1"
+  total_ipv4_address_count = 256
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name                     = "mysubnet2"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us-south-2"
+  total_ipv4_address_count = 256
+}
+
+data "ibm_resource_group" "resource_group" {
+  name = var.resource_group
+}
+
+resource "ibm_container_vpc_cluster" "cluster" {
+  name              = "mycluster"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  flavor            = "b2.4x16"
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+
+  zones {
+    subnet_id = ibm_is_subnet.subnet1.id
+    name      = "us-south-1"
+  }
+}
+
+resource "ibm_container_vpc_worker_pool" "cluster_pool" {
+  cluster           = ibm_container_vpc_cluster.cluster.id
+  worker_pool_name  = "mywp"
+  flavor            = "b2.8x32"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+  zones {
+    name      = "us-south-2"
+    subnet_id = ibm_is_subnet.subnet2.id
+  }
+}
+```
+{: codeblock}
+
+### Classic {{site.data.keyword.openshiftlong_notm}} cluster
+
+```
+resource "ibm_container_cluster" "cluster" {
+  name              = "mycluster"
+  datacenter        = "dal10"
+  default_pool_size = 3
+  machine_type      = "b3c.4x16"
+  hardware          = "shared"
+  kube_version      = "3.11_openshift"
+  public_vlan_id    = "<public_vlan_ID>"
+  private_vlan_id   = "<private_vlane_ID>"
+  lifecycle {
+    ignore_changes = ["kube_version"]
+  }
+}
+```
+{: codeblock}
 
 ### Input parameters
 {: #container-cluster-input}
@@ -267,7 +347,7 @@ Review the input parameters that you can specify for your resource.
 | `disk_encryption` | Boolean | Optional | If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks](docs/containers?topic=containers-security#encrypted_disk).|
 | `hardware` | String | Optional | The level of hardware isolation for your worker node. Use `dedicated` to have available physical resources dedicated to you only, or `shared` to allow physical resources to be shared with other IBM customers. This option is available for virtual machine worker node flavors only. |
 | `gateway_enabled`|Boolean|Optional|Set to **true** if you want to automatically create a gateway-enabled cluster. If `gateway_enabled` is set to **true**, then `private_service_endpoint` must be set to **true** at the same time.|
-| `kube_version` | String | Optional | The Kubernetes version that you want to set up in your cluster. If the version is not specified, the [default version in {{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-cs_versions) is used. |
+| `kube_version` | String | Optional | The Kubernetes or OpenShift version that you want to set up in your cluster. If the version is not specified, the default version in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-cs_versions) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-openshift_versions#version_types) is used. For example, to specify Kubernetes version 1.16, enter `1.16`. For OpenShift clusters, you can specify version `3.11_openshift` or `4.3.1_openshift`.|
 | `machine_type` | String | Optional | The machine type for your worker node. The machine type determines the amount of memory, CPU, and disk space that is available to the worker node. For an overview of supported machine types, see [Planning your worker node setup](/docs/containers?topic=containers-planning_worker_nodes). |
 | `name` | String | Required | The name of the cluster. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions. The cluster name and the region in which the cluster is deployed form the fully qualified domain name for the Ingress subdomain. To ensure that the Ingress subdomain is unique within a region, the cluster name might be truncated and appended with a random value within the Ingress domain name. | 
 | `no_subnet` | Boolean | Optional | If set to **true**, no portable subnet is created during cluster creation. The portable subnet is used to provide portable IP addresses for the Ingress subdomain and Kubernetes load balancer servics. If set to **false**, a portable subnet is created by default. The default is **false**. |
