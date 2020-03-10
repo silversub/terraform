@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-10"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -703,14 +703,14 @@ The following attributes are exported:
 
 
 ## `ibm_compute_ssl_certificate`
-{: #ssl-cert}
+{: #ssl-compute-cert}
 
 Provides an SSL certificate resource. This allows SSL certificates to be created, updated, and deleted.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) security certificates docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Security_Certificate).
 
 ### Sample Terraform code
-{: #ssl-cert-sample}
+{: #ssl-compute-cert-sample}
 
 In the following example, you can use a certificate on file:
 
@@ -739,7 +739,7 @@ resource "ibm_compute_ssl_certificate" "test_cert" {
 ```
 
 ### Input parameters
-{: #ssl-cert-input}
+{: #ssl-compute-cert-input}
 
 The following arguments are supported:
 
@@ -752,7 +752,7 @@ The following arguments are supported:
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
-{: #ssl-cert-output}
+{: #ssl-compute-cert-output}
 
 The following attributes are exported:
 
