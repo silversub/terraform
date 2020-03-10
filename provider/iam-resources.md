@@ -39,7 +39,7 @@ Create, modify, or delete an IAM access group. Access groups can be used to defi
 ### Sample Terraform code
 {: #iam-access-group-sample}
 
-The following example creates an access gorup that is named `mygroup`. 
+The following example creates an access group that is named `mygroup`. 
 
 ```hcl
 resource "ibm_iam_access_group" "accgrp" {
@@ -437,9 +437,9 @@ Review the input parameters that you can specify for your resource.
 |`target_resource_instance_id`|String|Optional| The target resource instance ID.|
 |`source_resource_type`|String|Optional| The resource type of the source service.|
 |`target_resource_type`|String|Optional|The resource type of the target service.|
-|`source_service_account`|String|Optional|The GUID of the account where the source servie is provisioned.|
+|`source_service_account`|String|Optional|The GUID of the account where the source service is provisioned.|
 
-### Output parametesr
+### Output parameters
 {: #iam-auth-policy-output}
 
 Review the output parameters that you can access after your resource is created. 
@@ -482,7 +482,7 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-----------|---------------------|
-|`authorization_policy_id`|String|Requried|The authorization policy ID.|
+|`authorization_policy_id`|String|Required|The authorization policy ID.|
 
 ### Output parameters
 {: #iam-auth-policy-detach-output}
@@ -1067,11 +1067,11 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-----------|---------------------|
 |`users`|List|Required|A comma separated list of user email IDs.|
-|`access_groups`|List|Optional|A comma seperated list of access group IDs.|
-|`classic_infra_roles`|Map|Optional|A nested block describing the classic infrastrucre roles for the inviting users. </br></br>**Note**: If you have an IBM Cloud Lite account, you cannot set classic infrastructure roles. For more information about Lite accounts, see [What's available?](/docs/account?topic=account-accounts#lite-account-features).|
-|`classic_infra_roles.permissions`|List|Optional|A comma seperated list of classic infrastructure permissions.|
+|`access_groups`|List|Optional|A comma separated list of access group IDs.|
+|`classic_infra_roles`|Map|Optional|A nested block describing the classic infrastructure roles for the inviting users. </br></br>**Note**: If you have an IBM Cloud Lite account, you cannot set classic infrastructure roles. For more information about Lite accounts, see [What's available?](/docs/account?topic=account-accounts#lite-account-features).|
+|`classic_infra_roles.permissions`|List|Optional|A comma separated list of classic infrastructure permissions.|
 |`classic_infra_roles.permission_set`|String|Optional|The permission set to be applied. The valid permission sets are `noacess`, `viewonly`, `basicuser`, and `superuser`.|
-|`iam_policy`|List|Optional|A nested block describing the IAM Polocies for invited users. |
+|`iam_policy`|List|Optional|A nested block describing the IAM policies for invited users. |
 |`iam_policy_roles`|List|Required|A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.|
 |`iam_policy.resources`|List of objects|Optional| A nested block describing the resource of this policy.|
 |`iam_policy.resources.service` |String|Optional|The service name of the policy definition. You can retrieve the value by running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search`.|
