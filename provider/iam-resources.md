@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-10"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -356,7 +356,7 @@ Review the output parameters that you can access after your resource is created.
 |`version`|String|The version of the access group policy.|
 
 ### Import
-{: #iam-access-group-policy-input}
+{: #iam-access-group-policy-import}
 
 The access group policy can be imported by using the access group ID and the access group policy ID.
 
