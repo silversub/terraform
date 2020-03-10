@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-10"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -357,7 +357,7 @@ Review the input parameters that you can specify for your resource.
 
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
-|`name`|String|Reuired|The name of the rule.|
+|`name`|String|Required|The name of the rule.|
 |`trigger_name`|String|Required|The name of the trigger.|
 |`action_name`|String|Required|The name of the action.|
 {: caption="Table. Available input parameters" caption-side="top"}
