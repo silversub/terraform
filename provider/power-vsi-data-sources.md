@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-10"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -172,7 +172,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `id` | String | The unique identifier of the instance. |
 | `state` | String | The state of the instance.|
 | `memory`|String|The amount of memory that is allocated to the instance.|
-|`processors`|String|The number of processors taht are allocated to the instance.|
+|`processors`|String|The number of processors that are allocated to the instance.|
 |`status`|String|The status of the instance.|
 |`proctype`|String|The procurement type of the instance. Supported values are `shared` and `dedicated`. |
 |`volumes`|List of strings|The list of volume IDs that are attached to the instance. |
@@ -226,7 +226,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`macaddress`|String|The MAC address of the network that is attached to this instance.|
 |`external_ip`|String|The external IP of the network that is attached to this instance.|
 |`type`|String| The type of the network that is attached to this instance.|
-|`ipoctet`|String|The ipoctet of the network that is attached to this instance.|
+|`ipoctet`|String|The IP octet of the network that is attached to this instance.|
 
 {[white-space.md]}
 
