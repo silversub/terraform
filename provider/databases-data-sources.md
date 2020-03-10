@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-03-10"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -36,7 +36,7 @@ You can reference the output parameters for each resource in other resources or 
 Create a read-only copy of an existing {{site.data.keyword.cloud_notm}} database service. 
 {: shortdesc}
 
-Configuration of an {{site.data.keyword.databases-for}} `data_source` requires that the `region` parameter is set for the IBM provider in the `provider.tf`. The region must be the same as the `location` that the {{site.data.keyword.databases-for}} instance is deployed into. If not specified, `us-south` is used by default. A terraform refresh of the `data_source` fails if the region and the location differ.
+Configuration of an {{site.data.keyword.databases-for}} `data_source` requires that the `region` parameter is set for the IBM provider in the `provider.tf`. The region must be the same as the `location` that the {{site.data.keyword.databases-for}} instance is deployed into. If not specified, `us-south` is used by default. A `terraform refresh` of the `data_source` fails if the region and the location differ.
 {: note}
 
 ### Sample Terraform code
@@ -83,9 +83,9 @@ Review the output parameters that you can access after you retrieved your data s
 |`status`|String| The status of resource instance.|
 |`adminuser`|String| The user ID of the default administration user for the database, such as `admin` or `root`. |
 |`version`|String|The database version.|
-|`connectionstrings` |List| List of connection strings by userid for the database. For information about how to use connection strings, see the [documentation](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings). The results are returned in pairs of the userid and string: connectionstrings.1.name = admin connectionstrings.1.string = postgres://admin:$PASSWORD@12345aa1-1111-1111-a1aa-a1aaa11aa1a1.a1a1a111a1a11a1a111a111a1a111a111.databases.appdomain.cloud:32554/ibmclouddb?sslmode=verify-full
+|`connectionstrings` |List| List of connection strings by userid for the database. For information about how to use connection strings, see the [documentation](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings). The results are returned in pairs of the userid and string: `connectionstrings.1.name = admin connectionstrings.1.string = postgres://admin:$PASSWORD@12345aa1-1111-1111-a1aa-a1aaa11aa1a1.a1a1a111a1a11a1a111a111a1a111a111.databases.appdomain.cloud:32554/ibmclouddb?sslmode=verify-full`
 |`whitelist`|List| A list of whitelisted IP addresses or ranges.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
-The provider only exports the admin userid and associated connectionstring. It does not export any userids additionally configured for the instance. 
+The provider only exports the admin user ID and associated connection string. It does not export any user IDs that are configured for the instance in addition. 
 {: note}
