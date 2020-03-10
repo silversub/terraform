@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-09" 
+lastupdated: "2020-03-10" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -727,7 +727,7 @@ resource "ibm_container_vpc_cluster" "cluster" {
 ```
 
 ### Import parameter
-{: #vpc-cluster-import}
+{: #vpc-cluster-input}
 
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
