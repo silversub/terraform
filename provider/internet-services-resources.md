@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-10"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -149,15 +149,15 @@ Review the output parameters that you can access after your resource is created.
 |----|-----------|--------|
 |`id`|String|The unique identifier of the domain.|
 |`paused`|Boolean|Indicates if the domain is paused and network traffic bypasses your {{site.data.keyword.cis_full_notm}} instance. The default values is **false**.|
-|`status`|String|The status of the domain. Valid values are `active`, `pending`, `initializing`, `moved`, `deleted`, and `deactivated. After creation, the status remains pending until the DNS Registrar is updated with the CIS name servers, exported in the `name_servers` variable.|
+|`status`|String|The status of the domain. Valid values are `active`, `pending`, `initializing`, `moved`, `deleted`, and `deactivated`. After creation, the status remains pending until the DNS Registrar is updated with the CIS name servers, exported in the `name_servers` variable.|
 |`name_servers`|String|The name servers that are assigned to your {{site.data.keyword.cis_full_notm}} instance. |
-|`original_name_servers`|String|The name servers that were used when the domain was orginally registered with the DNS Registrar. |
+|`original_name_servers`|String|The name servers that were used when the domain was first registered with the DNS Registrar. |
 
 
 ### Import
 {: #cis-domain-import}
 
-The {{site.data.keyword.cis_full_notm}} domain can be imported using the domain ID and service instance CRN. The ID is formed from the Domain ID of the domain concatentated using a `:` character with the CRN (Cloud Resource Name).
+The {{site.data.keyword.cis_full_notm}} domain can be imported using the domain ID and service instance CRN. The ID is formed from the Domain ID of the domain concatenated using a `:` character with the CRN (Cloud Resource Name).
 The Domain ID and CRN will be located on the **Overview** page of the Internet Services instance under the Domain heading of the UI, or via using the `ibmcloud cis` CLI commands.
 The domain ID is a 32 digit character string in the format `1aaa11111aa1a1a1111aaa111111a11a`. CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::`.
 
@@ -276,12 +276,12 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-dns-record-import}
 
-The DNS record can be imported by using the `id`. The ID is formed from the DNS record ID, the domain ID and the CRN (Cloud Resource Name). All values are concatentated with a `:` character.
+The DNS record can be imported by using the `id`. The ID is formed from the DNS record ID, the domain ID and the CRN (Cloud Resource Name). All values are concatenated with a `:` character.
 The Domain ID and CRN are located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
 
 - **Domain ID**: The domain ID is a 32 digit character string of the format `1aaa11111aa1a1a1111aaa111111a11a`.
 - **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
-- **DNS record ID**: The DNS record ID is a 32 digit character string of the form: 111a11a1aa1aa11111a111111a111111a. The ID of an existing DNS record is not avaiable via the UI. It can be retrieved programatically via the CIS API or via the CLI by running `ibmcloud cis dns-records <domain_id>`.
+- **DNS record ID**: The DNS record ID is a 32 digit character string of the form: 111a11a1aa1aa11111a111111a111111a. The ID of an existing DNS record is not available via the UI. It can be retrieved via the CIS API or via the CLI by running `ibmcloud cis dns-records <domain_id>`.
 
 ```
 terraform import ibm_cis_dns_record.myorg <dns_record_ID>:<domain_ID>:<crn>
@@ -362,12 +362,12 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-global-lb-import}
 
-The DNS record can be imported by using the `id`. The ID is formed from the global load balancer ID, the domain ID, and the CRN (Cloud Resource Name). All values are concatentated with a `:` character.
+The DNS record can be imported by using the `id`. The ID is formed from the global load balancer ID, the domain ID, and the CRN (Cloud Resource Name). All values are concatenated with a `:` character.
 The Domain ID and CRN are located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
 
 - **Domain ID**: The domain ID is a 32 digit character string of the format `1aaa11111aa1a1a1111aaa111111a11a`.
 - **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
-- **Global load balancer ID**: The global load balancer ID is a 32 digit character string in the format 11a11a1aa1aa11111a111111a111111a. The ID of the load balancer is not avaiable via the UI. It can be retrieved programatically via the CIS API or via the CLI by running `ibmcloud cis glbs <domain_id>`.
+- **Global load balancer ID**: The global load balancer ID is a 32 digit character string in the format 11a11a1aa1aa11111a111111a111111a. The ID of the load balancer is not available via the UI. It can be retrieved via the CIS API or via the CLI by running `ibmcloud cis glbs <domain_id>`.
 
 ```
 terraform import ibm_cis_global_load_balancer.myorg <loadbalancer_ID>:<domain_ID>:<crn>
@@ -384,7 +384,7 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 ## `ibm_cis_healthcheck`
 {: #cis-health}
 
-Create, update, or delete an HTTPS healthcheck for your {{site.data.keyword.cis_full_notm}} instance. 
+Create, update, or delete an HTTPS health check for your {{site.data.keyword.cis_full_notm}} instance. 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -420,8 +420,8 @@ Review the input parameters that you can specify for your resource.
 |`path`|String|Optional|The endpoint path to health check against. Default: `/`.|
 |`interval`|Integer|Optional|The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.|
 |`retries`|Integer|Optional|The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.|
-|`type`|String|Optional|The protocol to use for the healthcheck. Currently supported protocols are `http` and `https`. Default: `http`.
-|`description`|String|Optional|A description for your healthcheck. |
+|`type`|String|Optional|The protocol to use for the health check. Currently supported protocols are `http` and `https`. Default: `http`.
+|`description`|String|Optional|A description for your health check. |
 
 
 ### Output parameter
@@ -433,17 +433,17 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String| The ID of the load balancer to monitor. |
-|`created_on`|String|The RFC3339 timestamp of when the healthcheck was created. |
-|`modified_on`|String|The RFC3339 timestamp of when the healthcheck was last modified. |
+|`created_on`|String|The RFC3339 timestamp of when the health check was created. |
+|`modified_on`|String|The RFC3339 timestamp of when the health check was last modified. |
 
 ### Import
 {: #cis-health-import}
 
-The healthcheck can be imported by using the `id`. The ID is formed from the healthcheck ID and the CRN (Cloud Resource Name). All values are concatentated with a `:` character.
+The health check can be imported by using the `id`. The ID is formed from the health check ID and the CRN (Cloud Resource Name). All values are concatenated with a `:` character.
 The CRN can be located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
 
 - **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
-- **Healthcheck ID**: The healthcheck ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a healthcheckis not avaiable via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-monitors`.
+- **Healthcheck ID**: The health check ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a health check is not available via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-monitors`.
 
 ```
 terraform import ibm_cis_healthcheck.myorg <healthcheck_ID>:<crn>
@@ -499,9 +499,9 @@ Review the input parameters that you can specify for your resource.
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
 |`name`|String|Required|A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.|
 |`origins`|Array|Required|A list of origins within this pool. Traffic directed to this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It’s a complex value. See description below.|
-|`check_regions`|Array|Required| A list of regions (specified by region code) from which to run health checks. If the list is empty, all regions are included, but you must use the Enterprise plan. This is the default setting. Region codes can be found on our partner [Cloudflare’s website](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/#geo-steering-enterprise-plans-only){: external}.
+|`check_regions`|Array|Required| A list of regions (specified by region code) from which to run health checks. If the list is empty, all regions are included, but you must use the Enterprise plan. This is the default setting. Region codes can be found on the [Cloudflare’s website](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/#geo-steering-enterprise-plans-only){: external}.
 |`description`|String|Optional|A description for your origin pool. | 
-|`enabled`|Boolean|Required|If set to **true**, this pool is enabled and can receive incoming network traffic. Disabled pools do not receive network traffic and are excluded from healthchecks. Disabling a pool causes any load balancers that use the pool to failover to the next pool (if applicable).|
+|`enabled`|Boolean|Required|If set to **true**, this pool is enabled and can receive incoming network traffic. Disabled pools do not receive network traffic and are excluded from health checks. Disabling a pool causes any load balancers that use the pool to failover to the next pool (if applicable).|
 |`minimum_origins`|Integer|Optional| The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.|
 |`monitor`|String|Optional|The ID of the monitor to use for health checking origins within this pool.|
 |`notification_email`|String|Optional|The email address to send health status notifications to. This can be an individual mailbox or a mailing list.|
@@ -522,11 +522,11 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-origin-pool-import}
 
-The origin pool can be imported by using the `id`. The ID is formed from the origin pool ID and the CRN (Cloud Resource Name). All values are concatentated with a `:` character.
+The origin pool can be imported by using the `id`. The ID is formed from the origin pool ID and the CRN (Cloud Resource Name). All values are concatenated with a `:` character.
 The CRN can be located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
 
 - **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
-- **Origin pool ID**: The origin pool ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a origin pool is not avaiable via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-pools`.
+- **Origin pool ID**: The origin pool ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a origin pool is not available via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-pools`.
 
 ```
 terraform import ibm_cis_origin_pool.myorg <origin_pool_ID>:<crn>
