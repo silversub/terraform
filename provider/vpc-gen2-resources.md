@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06" 
+lastupdated: "2020-03-10" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -105,7 +105,7 @@ The following timeouts are defined for this resource.
 Create, update, or cancel an Internet Key Exchange (IKE) policy. 
 {: shortdesc}
 
-IKE is an IPsec (Internet Protocol Security) standard protocol that is used to ensure secure communication over the VPC VPN service. For more information, see [Using VPC with your VPC](/docs/vpc-on-classic-network?topic=vpc-on-classic-network---using-vpn-with-your-vpc). 
+IKE is an IPSec (Internet Protocol Security) standard protocol that is used to ensure secure communication over the VPC VPN service. For more information, see [Using VPC with your VPC](/docs/vpc-on-classic-network?topic=vpc-on-classic-network---using-vpn-with-your-vpc). 
 
 ### Sample Terraform code
 {: #ike-sample}
@@ -129,11 +129,11 @@ Review the input parameters that you can specify for your resource.
 
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPsec peers. Available options are `md5`, `sha1`, or `sha256`. |
+| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPSec peers. Available options are `md5`, `sha1`, or `sha256`. |
 | `dh_group` | Integer | Required | Enter the Diffie-Hellman group that you want to use for the encryption key. Available options are `2`, `5`, or `14`. |
 | `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `3des`, `aes128`, or `aes256`. | 
 | `ike_version` | Integer | Optional | Enter the IKE protocol version that you want to use. Available options are `1`, or `2`. |
-| `key_lifetime` | Integer | Optional | Enter the time in seconds that your encyrption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 28800 seconds is used. | 
+| `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 28800 seconds is used. | 
 | `name` | String | Required | Enter a name for your IKE policy. | 
 | `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IKE policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IKE policy is created in the `default` resource group. | 
 
@@ -230,7 +230,7 @@ Review the input parameters that you can specify for your resource.
 |`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.|
 |`volumes`|List|Optional|A comma separated list of volume IDs to attach to the instance.|
 |`user_data`|String|Optional|User data to transfer to the instance.|
-|`resource_group`|String|Optional|The ID of the resource gorup where you want to create the instance.|
+|`resource_group`|String|Optional|The ID of the resource group where you want to create the instance.|
 |`tags`|Array of strings|Optional|A list of tags that you want to add to your instance. Tags can help you find your instance more easily later.|
 
 ### Output parameters
@@ -242,9 +242,9 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 |`id`|String|The ID of the instance.|
-|`memory`|Interger|The amount of memory that is allocated to the instance in gigabytes.|
+|`memory`|Integer|The amount of memory that is allocated to the instance in gigabytes.|
 |`status`|String|The status of the instance.|
-|`vcpu`|List of VCPUs|A list of virtual CPUs that are allocated to the instance.|
+|`vcpu`|List of virtual CPUs|A list of virtual CPUs that are allocated to the instance.|
 |`vcpu.architecture`|String|The architecture of the CPU.|
 |`vcpu.count`|Integer|The number of virtual CPUS that are assigned to the instance.|
 |`gpu`|List of GPUs|A list of GPUs that are assigned to the instance.|
@@ -324,9 +324,9 @@ Review the input parameters that you can specify for your resource.
 
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPsec peers. Available options are `md5`, `sha1`, or `sha256`. |
+| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPSec peers. Available options are `md5`, `sha1`, or `sha256`. |
 | `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `3des`, `aes128`, or `aes256`. | 
-| `key_lifetime` | Integer | Optional | Enter the time in seconds that your encyrption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 3600 seconds is used. | 
+| `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 3600 seconds is used. | 
 | `name` | String | Required | Enter the name for your IPSec policy. |
 | `pfs` | String | Required | Enter the Perfect Forward Secrecy (PFS) protocol that you want to use during a session. Available options are `disabled`, `group_2`, `group_5`, and `group_14`. | 
 | `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IPSec policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IPSec policy is created in the `default` resource group. | 
@@ -484,7 +484,7 @@ Review the input parameters that you can specify for your resource.
 | `name` | String| Required | Enter a name for your public gateway. |
 | `vpc` | String | Required | Enter the ID of the VPC, for which you want to create a public gateway. To list available VPCs, run `ibmcloud is vpcs`.  | 
 | `zone` | String | Required | Enter the zone where you want to create the public gateway. To list available zones, run `ibmcloud is zones`. |
-| `resource_group`|String|Optional|Enter the ID of the resource group where you want to create the public gatewat. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the public gateway is created in the `default` resource group. |
+| `resource_group`|String|Optional|Enter the ID of the resource group where you want to create the public gateway. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the public gateway is created in the `default` resource group. |
 | `tags`|Array of strings|Optional|Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). |
 
 ### Output parameters
@@ -506,8 +506,8 @@ Review the output parameters that you can access after your resource is created.
 The following timeouts are defined for this resource. 
 {: shortdesc}
 
-- **create**: The creation of the public gatway is considered `failed` when no response is received for 60 minutes. 
-- **delete**: The deletion of the public gatway is considered `failed` when no response is received for 60 minutes.
+- **create**: The creation of the public gateway is considered `failed` when no response is received for 60 minutes. 
+- **delete**: The deletion of the public gateway is considered `failed` when no response is received for 60 minutes.
 
 ## `ibm_is_route`
 {: #provider-route}
@@ -543,10 +543,10 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the route.|
 |`vpc`|String|Required|The ID of the VPC.|
 |`zone`|String|Required|The name of the VPC zone where you want to create the route.| 
-|`destination`|String|Required|The destionation IP address of the route.|
+|`destination`|String|Required|The destination IP address of the route.|
 |`next_hop`|String|Required|The next hop of the route.|
 
-### Output parametesr
+### Output parameters
 {: #route-output}
 
 Review the output parameters that you can access after your resource is created. 
@@ -807,7 +807,7 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-----------|---------------------|
 |`group`|String|Required|The security group ID.|
-|`direction`|String|Requried|The direction of the traffic either `inbound` or `outbound`.|
+|`direction`|String|Required|The direction of the traffic either `inbound` or `outbound`.|
 |`remote`|String|Optional|Security group id, an IP address, a CIDR block, or a single security group identifier.|
 |`ip_version`|String|Optional|The IP version either `IPv4` or `IPv6`. Default `IPv4`.|
 |`icmp`|List of objects|Optional|A nested block describing the `icmp` protocol of this security group rule.  |
@@ -884,10 +884,10 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String|The ID of the security group network interface. The ID is composed of `<security_group_id>/<network_interface_id>`.|
 |`instance_network_interface`|String|The instance network interface ID.|
 |`name`|String|The user-defined name for this network interface.|
-|`port_speed`|Integer|The network interface port speed in Mbp.|
-|`primary_ipv4_address`|String|The primvary IPv4 address.|
+|`port_speed`|Integer|The network interface port speed in Mbps.|
+|`primary_ipv4_address`|String|The primary IPv4 address.|
 |`primary_ipv6_address`|String|The primary IPv6 address in compressed notation as specified by RFC 5952.|
-|`secondary_address`|Array|Collection seconary IP addresses.|
+|`secondary_address`|Array|Collection secondary IP addresses.|
 |`status`|String|The status of the volume.|
 |`subnet`|String|The Subnet ID.|
 |`type`|String|The type of this network interface as it relates to a instance.|
@@ -1039,7 +1039,7 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String|The ID of the SSH key.|
 |`fingerprint`| String|The SHA256 fingerprint of the public key.|
 |`length`|String|The length of this key.|
-|`type`|String|The cryptosystem used by this key.|
+|`type`|String|The crypto system used by this key.|
 |`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
@@ -1127,7 +1127,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the VPN gateway.|
 |`subnet`|String|Required|The unique identifier for this subnet.|
 |`resource_group`|String|Optional| The resource group where the VPN gateway to be created.|
-|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gatway. Tags can help you find your VPN gateway more easily later.|
+|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gateway. Tags can help you find your VPN gateway more easily later.|
 
 ### Output parameters
 {: #vpn-gateway-output}
@@ -1249,7 +1249,7 @@ Review the input parameters that you can specify for your resource.
 |`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.
 |`type`|String|Optional|The type of the load balancer. Default value `public`. Supported values `public` and `private`.|
 |`resource_group`|String|Optional| The resource group where the load balancer to be created.|
-|`tags`|List of strings|Optional|A list of tags that you want to add to your load balancer. Tags can help you find the load balanacer more easily later. |
+|`tags`|List of strings|Optional|A list of tags that you want to add to your load balancer. Tags can help you find the load balancer more easily later. |
 
 ### Output parameters
 {: #lb-output}
@@ -1428,7 +1428,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #lb-pool-import}
 
-`ibm_is_lb_pool` can be imported byh using the load balancer ID and pool ID. 
+`ibm_is_lb_pool` can be imported by using the load balancer ID and pool ID. 
 
 ```
 terraform import ibm_is_lb_pool.example <loadbalancer_ID>/<pool_ID>
