@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-10"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -231,7 +231,7 @@ Review the input parameters that you can specify for your data source.
 
 
 ### Output parameters
-{: #container-cluster-output}
+{: #container-cluster-config-output}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
