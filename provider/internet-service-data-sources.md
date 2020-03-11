@@ -148,5 +148,5 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|----------|
-| `ipv4_cidrs` | String | The IPv4 address ranges that are used by CIS for name servers. |
-| `ipv6_cidrs` | String | The IPv6 address ranges that are used by CIS for name servers. |
+| `ipv4_cidrs` | String | The IPv4 address ranges that the CIS proxy uses and that you can reference to configure and whitelist IP addresses in firewalls, network ACLs, and security groups. |
+| `ipv6_cidrs` | String | The IPv6 address ranges that the CIS proxy uses and that you can reference to configure and whitelist IP addresses in firewalls, network ACLs, and security groups.|
