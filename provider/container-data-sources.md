@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10"
+lastupdated: "2020-03-11"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -382,6 +382,8 @@ Review the output parameters that you can access after you retrieved your data s
 | `crn` | String | The CRN of the cluster. |
 | `health` | String | The health of the cluster master. |
 | `id` | String | The unique identifier of the cluster. |
+| `ingress_hostname`| String|The hostname that was assigned to your Ingress subdomain.| 
+|`ingress_secret`|String|The name of the Kubernetes secret that was created for your Ingress subdomain.|
 | `kube_version` | String | The Kubernetes version of the cluster, including the major.minor version. |
 | `master_url` | String | The URL of the cluster master. |
 | `name` | String | The name of the cluster. |
