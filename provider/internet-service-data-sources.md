@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-11"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -41,7 +41,7 @@ Retrieve information about an existing {{site.data.keyword.cis_full_notm}} insta
 The following example retrieves information about an {{site.data.keyword.cis_full_notm}} instance. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_cis" "cis_instance" {
   name              = "myinstance"
 }
@@ -82,7 +82,7 @@ Retrieve information about an {{site.data.keyword.cis_full_notm}} domain.
 The following example retrieves information about an {{site.data.keyword.cis_full_notm}} domain. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_cis_domain" "cis_instance_domain" {
   domain = "mydomain.com"
   cis_id = ibm_cis.instance.id
@@ -121,7 +121,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_cis_ip_addresses`
 {: #cis_ip}
 
-Retrieve information about the IP addresses that {{site.data.keyword.cis_full_notm}} uses for your name servers. 
+Import a list of all IP addresses that the CIS proxy uses. The CIS proxy uses these IP addresses for both `client-to-proxy` and `proxy-to-origin` communication. You can reference the IP addresses by using Terraform interpolation syntax to configure and whitelist IP addresses in firewalls, network ACLs, and security groups. 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -130,7 +130,7 @@ Retrieve information about the IP addresses that {{site.data.keyword.cis_full_no
 The following example retrieves information about IP addresses that {{site.data.keyword.cis_full_notm}} uses for name servers. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_cis_ip_addresses" "cisname" {
 }
 ```
@@ -148,5 +148,5 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|----------|
-| `ipv4_cidrs` | String | The IPv4 address ranges that are used by CIS for name servers. |
-| `ipv6_cidrs` | String | The IPv6 address ranges that are used by CIS for name servers. |
+| `ipv4_cidrs` | String | The IPv4 address ranges that the CIS proxy uses and that you can reference to configure and whitelist IP addresses in firewalls, network ACLs, and security groups. |
+| `ipv6_cidrs` | String | The IPv6 address ranges that the CIS proxy uses and that you can reference to configure and whitelist IP addresses in firewalls, network ACLs, and security groups.|

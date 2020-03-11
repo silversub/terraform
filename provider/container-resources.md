@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10" 
+lastupdated: "2020-03-11" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -726,7 +726,7 @@ resource "ibm_container_vpc_cluster" "cluster" {
 }
 ```
 
-### Import parameter
+### Input parameters
 {: #vpc-cluster-input}
 
 Review the input parameters that you can specify for your resource. 
@@ -747,8 +747,9 @@ Review the input parameters that you can specify for your resource.
 |`worker_count`|Integer|Optional| The number of worker nodes per zone in the default worker pool. Default value `1`.|
 |`resource_group_id`|String|Optional|The ID of the resource group. You can retrieve the value by running `ibmcloud resource groups` or using the `ibm_resource_group` data source. If no value is provided, the `default` resource group is used. |
 |`tags`|Array of strings|Optional|A list of tags that you want to associate with your VPC cluster. **Note**: For users on account to add tags to a resource, they must be assigned the [appropriate permissions](/docs/resources?topic=resources-access). |
+|`wait_till`|String|Optional|The creation of a cluster can take a few minutes (for virtual servers) or even hours (for bare metal servers) to complete. To avoid long wait times when you run your Terraform code, you can specify the stage when you want Terraform to mark the cluster resource creation as completed. Depending on what stage you choose, the cluster creation might not be fully completed and continues to run in the background. However, your Terraform code can continue to run without waiting for the cluster to be fully created. Supported stages are: <ul><li><strong>MasterNodeReady</strong>: Terraform marks the creation of your cluster complete when the cluster master is in a <code>ready</code> state.</li><li><strong>OneWorkerNodeReady</strong>: Terraform marks the creation of your cluster complete when the master and at least one worker node are in a <code>ready</code> state.</li><li><strong>IngressReady</strong>: Terraform marks the creation of your cluster complete when the cluster master and all worker nodes are in a <code>ready</code> state, and the Ingress subdomain is fully set up.</li></ul> If you do not specify this option, <code>IngressReady</code> is used by default. You can set this option only when the cluster is created. If this option is set during a cluster update or deletion, the parameter is ignored by the Terraform provider. |
 
-### Output parameter
+### Output parameters
 {: #vpc-cluster-output}
 
 Review the output parameters that you can access after your resource is created. 
@@ -758,6 +759,8 @@ Review the output parameters that you can access after your resource is created.
 | ------------ |-------------| -------------- |
 |`id`|String|The ID of the VPC cluster. |
 |`crn`|String|The CRN of the VPC cluster. |
+|`ingress_hostname`|String|The hostname that was assigned to your Ingress subdomain.|
+|`ingress_secret`|String|The name of the Ingress secret that was created for you and that the Ingress subdomain uses.|
 |`master_status`|String|The status of the Kubernetes master. |
 |`master_url`|String|The URL of the Kubernetes master. |
 |`private_service_endpoint_url`|String|The private service endpoint URL.|
