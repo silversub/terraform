@@ -45,7 +45,7 @@ Create, update, or delete for a Power Systems Virtual Server image.
 ### Sample Terraform code
 {: #power-image-sample}
 
-```hcl
+```
 resource "ibm_pi_image" "testacc_image  "{
   pi_image_name       = "7200-03-02"
   pi_image_id         = [ "image id obtained from the datasource"]
@@ -97,7 +97,7 @@ Create or update a [Power Systems Virtual Server instance](/docs/infrastructure/
 The following example creates a Power Systems Virtual Server instance. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_pi_instance" "test-instance" {
     pi_memory             = "4"
     pi_processors         = "2"
@@ -191,7 +191,7 @@ Create, update, or delete an SSH key for your Power Systems Virtual Server insta
 The following example creates an SSH key that is named `mykey`. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_pi_key" "testacc_sshkey" {
   pi_key_name          = "mykey"
   pi_ssh_key           = "ssh-rsa <value>"
@@ -257,7 +257,7 @@ Create, update, or delete a network connection for your Power Systems Virtual Se
 The following example creates a network connection for your Power Systems Virtual Server instance.
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_pi_network" "power_networks" {
   count                = 1
   pi_network_name      = "power-network"
@@ -327,7 +327,7 @@ Create, update, or delete a volume to attach it to a Power Systems Virtual Serve
 The following example creates a 20 GB volume. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_pi_volume" "testacc_volume"{
   pi_volume_size       = 20
   pi_volume_name       = test-volume
