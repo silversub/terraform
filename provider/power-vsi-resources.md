@@ -346,7 +346,7 @@ Review the input parameters that you can specify for your resource.
 | `pi_volume_name` | String | Required |  The name of the volume. |
 | `pi_volume_shareable` | Boolean | Required | If set to **true**, the volume can be shared across Power Systems Virtual Server instances. If set to **false**, you can attach it only to one instance. | 
 | `pi_volume_size` | Integer | Required | The size of the volume in gigabytes. | 
-| `pi_volume_type` | String | Required | The type of volume that you want to create. Supported values are `ssd` and `standard`. |
+| `pi_volume_type` | String | Required | The type of volume that you want to create. Supported values are `ssd`, `standard`, `tier1`, and `tier3`. |
 
 ### Output parameters
 {: #power-volume-output}
