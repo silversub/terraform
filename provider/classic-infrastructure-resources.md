@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10"
+lastupdated: "2020-03-12"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -39,7 +39,7 @@ Create, or delete a CDN mapping.
 ### Sample Terraform code
 {: #cdn-sample}
 
-```hcl
+```
 resource "ibm_cdn" "test_cdn1" {
   hostname = "www.default.com"
   vendor_name = "akamai"
@@ -101,7 +101,7 @@ Create, update, or delete autoscaling groups.
 In the following example, you can create an auto scaling group using a Debian image. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_compute_autoscale_group" "test_scale_group" {
     name = "test_scale_group_name"
     regional_group = "as-sgp-central-1"
@@ -183,7 +183,7 @@ Create, update, or delete a policy for an autoscaling group.
 In the following example, you can create an autoscaling policy.
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_compute_autoscale_policy" "test_scale_policy" {
     name = "test_scale_policy_name"
     scale_type = "RELATIVE"
@@ -253,7 +253,7 @@ Provides a bare metal resource. This allows bare metal servers to be created, up
 When the `ibm_compute_bare_metal` resource definition has a `fixed_config_preset` attribute, Terraform creates an hourly bare metal server. Hardware specifications are predefined in the `fixed_config_preset` attribute and cannot be modified. The following example shows you how to create a new hourly bare metal server.
 
 ##### Example of an hourly bare metal server
-```hcl
+```
 resource "ibm_compute_bare_metal" "hourly-bm1" {
     hostname = "hourly-bm1"
     domain = "example.com"
@@ -277,7 +277,7 @@ resource "ibm_compute_bare_metal" "hourly-bm1" {
 When the `fixed_config_preset` attribute is not configured, Terraform creates a monthly bare metal server resource. The monthly bare metal server resource provides options to configure process, memory, network, disk, and RAID. You can also can assign VLANs and subnets for the target monthly bare metal server. To configure the monthly bare metal server, you must provide additional attributes such as `package_key_name`, `proecss_key_name`, `disk_key_names`, and `os_key_name`. The following example shows you how to create a new monthly bare metal server.
 
 ##### Example of a monthly bare metal server
-```hcl
+```
 resource "ibm_compute_bare_metal" "monthly_bm1" {
 
 
@@ -326,7 +326,7 @@ resource "ibm_compute_bare_metal" "monthly_bm1" {
 If you already have a quote ID for the bare metal server, you can create a new bare metal server with the quote ID. The following example shows you how to create a new bare metal server with a quote ID.
 
 ##### Example of a quote based ordering
-```hcl
+```
 resource "ibm_compute_bare_metal" "quote_test" {
 
 
@@ -463,7 +463,7 @@ For additional details please refer to the [SoftLayer API docs](http://sldn.soft
 
 In the following example, you can create a dedicated host:
 
-```hcl
+```
 resource "ibm_compute_dedicated_host" "dedicatedhost" {
   hostname        = "host"
   domain          = "example.com"
@@ -519,7 +519,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) AP
 
 In the following example, you can create a monitor:
 
-```hcl
+```
 resource "ibm_compute_monitor" "test_monitor" {
     guest_id = ${ibm_compute_vm_instance.test_server.id}
     ip_address = ${ibm_compute_vm_instance.test_server.id.ipv4_address}
@@ -571,7 +571,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) AP
 ### Sample Terraform code
 {: #plmt-group-sample}
 
-```hcl
+```
 resource "ibm_compute_placement_group" "test_placement_group" {
     name = "test"
     pod = "pod01"
@@ -625,7 +625,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) AP
 ### Sample Terraform code
 {: #provision-hook-sample}
 
-```hcl
+```
 resource "ibm_compute_provisioning_hook" "test_provisioning_hook" {
     name = "test_provisioning_hook_name"
     uri  = "https://raw.githubusercontent.com/test/slvm/master/test-script.sh"
@@ -714,7 +714,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) se
 
 In the following example, you can use a certificate on file:
 
-```hcl
+```
 resource "ibm_compute_ssl_certificate" "test_cert" {
   certificate = "${file("cert.pem")}"
   private_key = "${file("key.pem")}"
@@ -723,7 +723,7 @@ resource "ibm_compute_ssl_certificate" "test_cert" {
 
 You can also use an in-line certificate:
 
-```hcl
+```
 resource "ibm_compute_ssl_certificate" "test_cert" {
     certificate = <<EOF
 [......] # cert contents
@@ -791,7 +791,7 @@ If the SoftLayer API [`getBlueIdAuthenticationRequiredFlag`](https://api.softlay
 
 The following example shows how to use this resource with SoftLayer accounts:
 
-```hcl
+```
 resource "ibm_compute_user" "joe" {
     address1     = "12345 Any Street"
     address2     = "Suite #99"
@@ -832,7 +832,7 @@ returns `true`, the account is an IBMid.
 
 The following example shows how to use this resource with IBMid accounts:
 
-```hcl
+```
 resource "ibm_compute_user" "joe" {
     address1     = "12345 Any Street"
     address2     = "Suite #99"
@@ -919,7 +919,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) AP
 
 In the following example, you can create a VM instance using a Debian image:
 
-```hcl
+```
 resource "ibm_compute_vm_instance" "twc_terraform_sample" {
     hostname = "twc-terraform-sample-name"
     domain = "bar.example.com"
@@ -942,7 +942,7 @@ resource "ibm_compute_vm_instance" "twc_terraform_sample" {
 
 In the following example, you can create a VM instance using a block device template:
 
-```hcl
+```
 resource "ibm_compute_vm_instance" "terraform-sample-BDTGroup" {
    hostname = "terraform-sample-blockDeviceTemplateGroup"
    domain = "bar.example.com"
@@ -964,7 +964,7 @@ resource "ibm_compute_vm_instance" "terraform-sample-BDTGroup" {
 
 In the following example, you can create a VM instance using a flavor:
 
-```hcl
+```
 resource "ibm_compute_vm_instance" "terraform-sample-flavor" {
     hostname = "terraform-sample-flavor"
     domain = "bar.example.com"
@@ -988,7 +988,7 @@ resource "ibm_compute_vm_instance" "terraform-sample-flavor" {
 ```
 In the following example, you can create multiple vm's
 
-```hcl
+```
 resource "ibm_compute_vm_instance" "terraform-bulk-vms" {
   bulk_vms = [{
     hostname = "vm1"
@@ -1016,7 +1016,7 @@ resource "ibm_compute_vm_instance" "terraform-bulk-vms" {
 
 In the following example, you can retry to create a VM instance using a datacenter_choice. If VM fails to place order on first datacenter or VLANs it retries to place order on subsequent data centers and VLANs untill place order is successful:
 
-```hcl
+```
 resource "ibm_compute_vm_instance" "terraform-retry" {
   hostname          = "vmretry"
   domain            = "example.com"
@@ -1153,7 +1153,7 @@ Individual records, such as `A`, `AAAA`, `CTYPE`, and `MX` records, are stored i
 ### Sample Terraform code
 {: #dns-domain-sample}
 
-```hcl
+```
 resource "ibm_dns_domain" "dns-domain-test" {
     name = "dns-domain-test.com"
     target = "127.0.0.10"
@@ -1198,7 +1198,7 @@ This resource is typically used in conjunction with IBM Cloud Internet Services 
 ### Sample Terraform code
 {: #dns-register-sample}
 
-```hcl
+```
 resource "ibm_dns_domain_registration_nameservers" "dnstestdomain" {
     dns_registration_id = "${data.ibm_dns_domain_registration.dnstestdomain.id}"
     name_servers = "${ibm_cis_domain.dnstestdomain.name_servers}" 
@@ -1213,7 +1213,7 @@ resource "ibm_cis_domain" "dnstestdomain" {
 
 Or 
 
-```hcl
+```
 resource "ibm_dns_domain_registration_nameservers" "dns-domain-test" {
     dns_registration_id = "${data.ibm_dns_domain_registration.dns-domain-test.id}"
     name_servers = ["ns006.name.ibm.cloud.com", "ns017.name.ibm.cloud.com"] 
@@ -1258,7 +1258,7 @@ The `ibm_dns_secondary` resource represents a single secondary DNS zone managed 
 ### Sample Terraform code
 {: #dns-second-sample}
 
-```hcl
+```
 resource "ibm_dns_secondary" "dns-secondary-test" {
     zone_name = "dns-secondary-test.com"
     master_ip_address = "127.0.0.10"
@@ -1303,7 +1303,7 @@ The IBM Cloud Classic Infrastructure (SoftLayer) object  [SoftLayer_Dns_Domain_R
 
 ### Sample Terraform code
 {: #dns-rev-rec-sample}
-```hcl
+```
 resource "ibm_dns_reverse_record" "testreverserecord" {
     ipaddress="123.123.123.123"
     hostname="www.example.com"
@@ -1352,7 +1352,7 @@ The SOA and NS records are automatically created by IBM Cloud Classic Infrastruc
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_AType) to properly implement the `A` record.
 
-```hcl
+```
 resource "ibm_dns_domain" "main" {
     name = "main.example.com"
 }
@@ -1371,7 +1371,7 @@ resource "ibm_dns_record" "www" {
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_AaaaType) to properly implement the `AAAA` record.
 
-```hcl
+```
 resource "ibm_dns_record" "aaaa" {
     data = "fe80:0000:0000:0000:0202:b3ff:fe1e:8329"
     domain_id = "${ibm_dns_domain.main.id}"
@@ -1386,7 +1386,7 @@ resource "ibm_dns_record" "aaaa" {
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs] to properly implement the `CNAME` record.
 
-```hcl
+```
 resource "ibm_dns_record" "cname" {
     data = "real-host.example.com."
     domain_id = "${ibm_dns_domain.main.id}"
@@ -1401,7 +1401,7 @@ resource "ibm_dns_record" "cname" {
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_NsType) to properly implement the `NS` record.
 
-```hcl
+```
 resource "ibm_dns_record" "recordNS" {
     data = "ns.example.com."
     domain_id = "${ibm_dns_domain.main.id}"
@@ -1416,7 +1416,7 @@ resource "ibm_dns_record" "recordNS" {
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_MxType) to properly implement the `MX` record.
 
-```hcl
+```
 resource "sibm_dns_record" "recordMX-1" {
     data = "mail-1"
     domain_id = "${ibm_dns_domain.main.id}"
@@ -1432,7 +1432,7 @@ resource "sibm_dns_record" "recordMX-1" {
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_SoaType) to properly implement the `SOA` record.
 
-```hcl
+```
 resource "ibm_dns_record" "recordSOA" {
     data = "ns1.example.com. abuse.example.com. 2018101002 7200 600 1728000 43200"
     domain_id = "${ibm_dns_domain.main.id}"
@@ -1447,7 +1447,7 @@ resource "ibm_dns_record" "recordSOA" {
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_SpfType) to properly implement the `SPF` record.
 
-```hcl
+```
 resource "ibm_dns_record" "recordSPF" {
     data = "v=spf1 mx:mail.example.org ~all"
     domain_id = "${ibm_dns_domain.main.id}"
@@ -1462,7 +1462,7 @@ resource "ibm_dns_record" "recordSPF" {
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_TxtType/) to properly implement the `TXT` record.
 
-```hcl
+```
 resource "ibm_dns_record" "recordTXT" {
     data = "host"
     domain_id = "${ibm_dns_domain.main.id}"
@@ -1477,7 +1477,7 @@ resource "ibm_dns_record" "recordTXT" {
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_SrvType) to properly implement the `SRV` record.
 
-```hcl
+```
 resource "ibm_dns_record" "recordSRV" {
     data = "ns1.example.org"
     domain_id = "${ibm_dns_domain.main.id}"
@@ -1497,7 +1497,7 @@ resource "ibm_dns_record" "recordSRV" {
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_PtrType/) to properly implement the `PTR` record.
 
-```hcl
+```
 resource "ibm_dns_record" "recordPTR" {
     data = "ptr.example.com"
     domain_id = "${ibm_dns_domain.main.id}"
@@ -1562,7 +1562,7 @@ For more information about how to configure a firewall, see the [docs](https://k
 ### Sample Terraform code
 {: #firewall-sample}
 
-```hcl
+```
 resource "ibm_firewall" "testfw" {
   firewall_type = "HARDWARE_FIREWALL_DEDICATED"
   ha_enabled = false
@@ -1616,7 +1616,7 @@ For additional details, see the [IBM Cloud (SoftLayer) multi VLAN firewall Reque
 
 In the following example, you can create a multi-vlan firewall:
 
-```hcl
+```
 resource "ibm_multi_vlan_firewall" "firewall_first" {
 	datacenter = "dal13"
 	pod = "pod01"
@@ -1677,7 +1677,7 @@ Firewalls should have at least one rule. If Terraform destroys the rules resourc
 ### Sample Terraform code
 {: #firewall-policy-sample}
 
-```hcl
+```
 resource "ibm_firewall" "demofw" {
   ha_enabled = false
   public_vlan_id = 1234567
@@ -1746,7 +1746,7 @@ For more information about how to configure a firewall, see the [docs](https://k
 ### Sample Terraform code
 {: #shared-fw-sample}
 
-```hcl
+```
 resource "ibm_hardware_firewall_shared" "test_firewall" {
     firewall_type="100MBPS_HARDWARE_FIREWALL"
     hardware_instance_id="12345678"
@@ -1788,7 +1788,7 @@ Create, update, or delete an IPSec VPN resource.
 The following example creates an IPSec VPN resource. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_ipsec_vpn" "ipsec" {
     datacenter = "tok02"
     Customer_Peer_IP = "192.168.32.2"
@@ -1840,7 +1840,7 @@ Provides a resource for local load balancers. This allows local load balancers t
 
 In the following example, you can create a local load balancer:
 
-```hcl
+```
 resource "ibm_lb" "test_lb_local" {
   connections = 1500
   datacenter  = "tok02"
@@ -1908,7 +1908,7 @@ Cloud load balancer creation takes 5 to 10 minutes. Destroy can take up to 30 mi
 ### Sample Terraform code
 {: #lbaas-sample}
 
-```hcl
+```
 
 resource "ibm_lbaas" "lbaas" {
   name        = "terraformLB"
@@ -1994,7 +1994,7 @@ Provides a resource for the health monitors of IBM Lbaas. This allows to update 
 ### Sample Terraform code
 {: #health-monitor-sample}
 
-```hcl
+```
 
 resource "ibm_lbaas" "lbaas" {
   name        = "terraformLB"
@@ -2072,7 +2072,7 @@ Provides a resource for attaching the server instance to IBM cloud load balancer
 ### Sample Terraform code
 {: #instance-attachment-sample}
 
-```hcl
+```
 
 resource "ibm_compute_vm_instance" "vm_instances" {
   count = "2"
@@ -2150,7 +2150,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) AP
 
 In the following example, you can create a local load balancer service:
 
-```hcl
+```
 resource "ibm_lb_service" "test_lb_local_service" {
     port = 80
     enabled = true
@@ -2193,7 +2193,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) AP
 
 In the following example, you can create a local load balancer service group:
 
-```hcl
+```
 resource "ibm_lb_service_group" "test_service_group" {
     port = 82
     routing_method = "CONSISTENT_HASH_IP"
@@ -2251,7 +2251,7 @@ https://<userName>:<apiKey>@api.softlayer.com/rest/v3/SoftLayer_Product_Package/
 
 Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller) for more information.
 
-```hcl
+```
 resource "ibm_lb_vpx" "test_vpx" {
     datacenter = "dal06"
     speed = 10
@@ -2312,7 +2312,7 @@ The two NetScaler VPXs use the same password in HA mode. When you create this re
 ### Sample Terraform code
 {: #lb-vpx-ha-sample}
 
-```hcl
+```
 
 ## Create a primary NetScaler VPX
 resource "ibm_lb_vpx" "test_pri" {
@@ -2384,7 +2384,7 @@ Provides a resource for VPX load balancer services. This allows VPX load balance
 
 In the following example, you can create a VPX load balancer:
 
-```hcl
+```
 resource "ibm_lb_vpx_service" "test_service" {
   name = "test_load_balancer_service"
   vip_id = "${ibm_lb_vpx_vip.testacc_vip.id}"
@@ -2440,7 +2440,7 @@ Provides a resource for VPX load balancer virtual IP addresses. This allows VPX 
 
 The following example configuration supports NetScaler VPX 10.1 and 10.5:
 
-```hcl
+```
 resource "ibm_lb_vpx_vip" "testacc_vip" {
     name = "test_load_balancer_vip"
     nad_controller_id = 1234567
@@ -2453,7 +2453,7 @@ resource "ibm_lb_vpx_vip" "testacc_vip" {
 
 The following example configuration supports only NetScaler VPX 10.5. Additional options for the `load_balancing_method` and `persistence` arguments are shown. A private IP address can be used for the `virtual_ip_address` argument.
 
-```hcl
+```
 resource "ibm_lb_vpx_vip" "testacc_vip" {
     name = "test_load_balancer_vip"
     nad_controller_id = "1234567"
@@ -2467,7 +2467,7 @@ resource "ibm_lb_vpx_vip" "testacc_vip" {
 
 NetScaler VPX 10.5 also supports SSL offload. If you set the `type` argument to `SSL` and configure the `security_certificate_id` argument, then the `virtual_ip_address` argument provides the `HTTPS` protocol. The following example shows an SSL-offload configuration:
 
-```hcl
+```
 
 ## Create a NetScaler VPX 10.5
 resource "ibm_lb_vpx" "test" {
@@ -2552,7 +2552,7 @@ For more information about getting started, see the [IBM Virtual Router Applianc
 
 #### Standalone configuration
 
-```hcl
+```
 resource "ibm_network_gateway" "gateway" {
   name = "my-gateway"
 
@@ -2578,7 +2578,7 @@ resource "ibm_network_gateway" "gateway" {
 ```
 #### HA configuration
 
-```hcl
+```
 resource "ibm_network_gateway" "gateway" {
   name = "my-ha-gateway"
 
@@ -2704,7 +2704,7 @@ For more information about getting started, see the [IBM Virtual Router Applianc
 ### Sample Terraform code
 {: #network-vlan-associate-sample}
 
-```hcl
+```
 resource "ibm_network_gateway" "gateway" {
   name = "gateway"
 
@@ -2821,7 +2821,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) AP
 ### Sample Terraform code
 {: #public-ip-sample}
 
-```hcl
+```
 resource "ibm_network_public_ip" "test_public_ip " {
     routes_to = "119.81.82.163"
     notes     = "public ip notes"
@@ -2880,7 +2880,7 @@ For additional details please refer to the [SoftLayer API docs](http://sldn.soft
 
 In the following example, you can create a VLAN:
 
-```hcl
+```
 resource "ibm_network_vlan" "test_vlan" {
    name = "test_vlan"
    datacenter = "dal06"
@@ -2951,7 +2951,7 @@ VRF at an IaaS account level can be used as an alternative to VLAN Spanning and 
 ### Sample Terraform code
 {: #vlan-spanning-sample}
 
-```hcl
+```
 resource "ibm_network_vlan_spanning" "spanning" {
    "vlan_spanning" = "on"
 }`
@@ -2991,7 +2991,7 @@ Do not use this resource for managing the lifecycle of an Object Storage instanc
 ### Sample Terraform code
 {: #os-account-sample}
 
-```hcl
+```
 resource "ibm_object_storage_account" "foo" {
 }
 ```
@@ -3122,7 +3122,7 @@ To access block storage, see the KnowledgeLayer docs [for Linux](https://knowled
 
 In the following example, you can create 20G of Endurance block storage with 10G snapshot capacity and 0.25 IOPS/GB.
 
-```hcl
+```
 resource "ibm_storage_block" "test1" {
         type = "Endurance"
         datacenter = "dal05"
@@ -3140,7 +3140,7 @@ resource "ibm_storage_block" "test1" {
 
 In the following example, you can create 20G of Performance block storage and 100 IOPS.
 
-```hcl
+```
 resource "ibm_storage_block" "test2" {
         type = "Performance"
         datacenter = "dal05"
@@ -3203,7 +3203,7 @@ Provides an  evault storage resource. This allows [IBM Cloud Backup](/docs/infra
 
 In the following example, you can create 20G of evault storage 
 
-```hcl
+```
 resource "ibm_storage_evault" "test" {
   datacenter          = "dal05"
   capacity            = "20"
@@ -3267,7 +3267,7 @@ See [Mounting File Storage](/docs/infrastructure/FileStorage?topic=FileStorage-m
 
 In the following example, you can create 20G of Endurance file storage with a 10G snapshot capacity and 0.25 IOPS/GB.
 
-```hcl
+```
 resource "ibm_storage_file" "fs_endurance" {
   type       = "Endurance"
   datacenter = "dal06"
@@ -3304,7 +3304,7 @@ resource "ibm_storage_file" "fs_endurance" {
 
 In the following example, you can create 20G of Performance file storage with 100 IOPS.
 
-```hcl
+```
 resource "ibm_storage_file" "fs_performance" {
         type = "Performance"
         datacenter = "dal06"
@@ -3379,7 +3379,7 @@ Both the public portable IPv6 subnet and the public static IP only accept `64` a
 {: #subnet-sample}
 The following example creates a private portable subnet which has one available IPv4 address:
 
-```hcl
+```
 resource "ibm_subnet" "portable_subnet" {
   type = "Portable"
   private = true
@@ -3396,7 +3396,7 @@ resource "ibm_subnet" "portable_subnet" {
 
 Users can use Terraform built-in functions to get IP addresses from `portable subnet`. The following example returns the first usable IP address of the portable subnet `test`.:
 
-```hcl
+```
 resource "ibm_subnet" "test" {
   type = "Portable"
   private = true
@@ -3416,7 +3416,7 @@ output "first_ip_address" {
 ### Example Usage of static subnet
 The following example creates a public static subnet which has four available IPv4 address:
 
-```hcl
+```
 resource "ibm_subnet" "static_subnet" {
   type = "Static"
   private = false
@@ -3429,7 +3429,7 @@ resource "ibm_subnet" "static_subnet" {
 
 Users can use Terraform built-in functions to get IP addresses from `subnet`. The following example returns the first usable IP address in the static subnet `test`:
 
-```hcl
+```
 resource "ibm_subnet" "test" {
   type = "Static"
   private = false
@@ -3500,7 +3500,7 @@ For additional details, see the [IBM Cloud Classic Infrastructure(SoftLayer) sec
 
 In the following example, you can use a certificate on file:
 
-```hcl
+```
 resource "ibm_ssl_certificate" "my_ssllllll" {
   	certificate_signing_request= "-----BEGIN CERTIFICATE REQUEST-----\nCERTIFICATE CONTENT\n-----END CERTIFICATE REQUEST-----"
 	organization_information = {
