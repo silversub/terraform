@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-11"
+lastupdated: "2020-03-12"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -33,6 +33,9 @@ Review the [Power Systems resources](/docs/infrastructure/power-iaas?topic=power
 To find supported input parameter values, you can use the Power Systems CLI plug-in in {{site.data.keyword.cloud_notm}}. To install the plug-in, run `ibmcloud plugin install pi`. 
 {: tip}
 
+If you want to create, update, or delete Power System resources in a multizone-capable region, you must specify the `zone` in the `provider` block of your Terraform configuration file. For more information, see the [provider reference](/docs/terraform?topic=terraform-provider-reference).
+{: important}
+
 ## `ibm_pi_image`
 {: #power-image}
 
@@ -42,7 +45,7 @@ Create, update, or delete for a Power Systems Virtual Server image.
 ### Sample Terraform code
 {: #power-image-sample}
 
-```hcl
+```
 resource "ibm_pi_image" "testacc_image  "{
   pi_image_name       = "7200-03-02"
   pi_image_id         = [ "image id obtained from the datasource"]
@@ -94,7 +97,7 @@ Create or update a [Power Systems Virtual Server instance](/docs/infrastructure/
 The following example creates a Power Systems Virtual Server instance. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_pi_instance" "test-instance" {
     pi_memory             = "4"
     pi_processors         = "2"
@@ -188,7 +191,7 @@ Create, update, or delete an SSH key for your Power Systems Virtual Server insta
 The following example creates an SSH key that is named `mykey`. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_pi_key" "testacc_sshkey" {
   pi_key_name          = "mykey"
   pi_ssh_key           = "ssh-rsa <value>"
@@ -254,7 +257,7 @@ Create, update, or delete a network connection for your Power Systems Virtual Se
 The following example creates a network connection for your Power Systems Virtual Server instance.
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_pi_network" "power_networks" {
   count                = 1
   pi_network_name      = "power-network"
@@ -324,7 +327,7 @@ Create, update, or delete a volume to attach it to a Power Systems Virtual Serve
 The following example creates a 20 GB volume. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_pi_volume" "testacc_volume"{
   pi_volume_size       = 20
   pi_volume_name       = test-volume
