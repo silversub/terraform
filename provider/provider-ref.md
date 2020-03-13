@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-12"
+lastupdated: "2020-03-13"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -135,5 +135,5 @@ You can retrieve the values for the provider input parameters from environment v
    ```
    terraform plan
    ```
-   {: pre}
+   {: pre} 
    
