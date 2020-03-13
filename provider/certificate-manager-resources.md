@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-28"
+lastupdated: "2020-03-12"
 
 keywords: terraform provider plugin, terraform certificate manager, terraform cert manager, terraform certificate
 
@@ -39,7 +39,7 @@ Upload or delete a certificate in Certificate Manager.
 ### Sample Terraform code
 {: #cert-manager-sample}
 
-```hcl
+```
 provider "ibm"
 {
 }
@@ -100,7 +100,7 @@ Order, renew, update, or delete a certificate in Certificate Manager. For more i
 ### Sample Terraform code
 {: #certmanager-order-sample}
 
-```hcl
+```
 resource "ibm_certificate_manager_order" "cert" {
   certificate_manager_instance_id = ibm_resource_instance.cm.id
   name                            = "test"
