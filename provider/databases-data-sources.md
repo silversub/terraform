@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10"
+lastupdated: "2020-03-16"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -79,7 +79,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`plan`|String| The service plan of the {{site.data.keyword.databases-for}} instance.|
 |`location`|String| The location where the {{site.data.keyword.databases-for}} instance is deployed into. |
 |`status`|String| The status of the {{site.data.keyword.databases-for}} instance. |
-| `id`|String| The unique identifier of the new database instance (CRN).|
+| `crn`|String| The unique identifier of the new database instance (CRN).|
 |`status`|String| The status of resource instance.|
 |`adminuser`|String| The user ID of the default administration user for the database, such as `admin` or `root`. |
 |`version`|String|The database version.|
