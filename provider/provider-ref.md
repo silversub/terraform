@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-13"
+lastupdated: "2020-03-16"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -33,7 +33,7 @@ Review what credentials and information you need to provide to work with {{site.
 ## Overview of required input parameters for each resource category
 {: required-parameters}
 
-Review what information you must provide in the `provider` block to work with a specific resource category. The values in this table are required values. However, you can specify additional parameters as described in the [provider reference](#provider-parameters).
+Review what information you must provide in the `provider` block to work with a specific resource category. The values in this table are required values. However, you can specify additional parameters as described in the [provider reference](#provider-parameter-ov).
 {: shortdesc}
 
 |Resource|Required input parameters|
