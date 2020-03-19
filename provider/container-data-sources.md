@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-11"
+lastupdated: "2020-03-19"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -40,7 +40,7 @@ Retrieve information about an existing {{site.data.keyword.containerlong_notm}} 
 
 The following example retrieves information about a cluster that is named `mycluster`. 
 
-```hcl
+```
 data "ibm_container_cluster" "cluster" {
   cluster_name_id = "mycluster"
 }
@@ -121,7 +121,7 @@ Download the Kubernetes configuration files and certificates to access your clus
 ### Sample Terraform code
 {: #container-cluster-config-sample}
 
-```hcl
+```
 data "ibm_container_cluster_config" "cluster_foo" {
   cluster_name_id = "mycluster"
   config_dir      = "/home/mycluster_config"
@@ -130,7 +130,7 @@ data "ibm_container_cluster_config" "cluster_foo" {
 
 #### Example for downloading the TLS certificates and permission files for the cluster administrator in a classic or VPC  {{site.data.keyword.containerlong_notm}} cluster
 
-```hcl
+```
 data "ibm_container_cluster_config" "mycluster" {
   cluster_name_id = "mycluster"
   admin           = true
@@ -153,7 +153,7 @@ resource "kubernetes_namespace" "example" {
 
 #### Example for connecting to the cluster by using the cluster host and token in a classic or VPC  {{site.data.keyword.containerlong_notm}} cluster
 
-```hcl
+```
 data "ibm_container_cluster_config" "mycluster" {
   cluster_name_id = "mycluster"
 }
@@ -174,7 +174,7 @@ resource "kubernetes_namespace" "example" {
 
 #### Example for downloading the TLS certificates and permission files for the cluster administrator in a classic {{site.data.keyword.openshiftlong_notm}} cluster
 
-```hcl
+```
 data "ibm_container_cluster_config" "mycluster" {
   cluster_name_id = "mycluster"
   admin           = true
@@ -196,7 +196,7 @@ resource "kubernetes_namespace" "example" {
 
 #### Example for connecting to the cluster by using the cluster host and token in a classic {{site.data.keyword.openshiftlong_notm}} cluster
 
-```hcl
+```
 data "ibm_container_cluster_config" "mycluster" {
   cluster_name_id = "mycluster"
 }
@@ -259,7 +259,7 @@ Retrieve information about the worker nodes of your {{site.data.keyword.containe
 
 The following example retrieves information about a worker node with the ID `dal10-1112222abd111222`. 
 
-```hcl
+```
 data "ibm_container_cluster_worker" "cluster" {
   worker_id    = "dal10-1112222abd111222"
 }
@@ -305,7 +305,7 @@ To find a list of supported Kubernetes versions, see the [{{site.data.keyword.co
 
 The following example shows how to retrieve information about supported Kubernetes versions for the resource group `11222333111abc111`. 
 
-```hcl
+```
 data "ibm_container_cluster_versions" "cluster_versions" {
   resource_group_id          = "11222333111abc111"
 }
@@ -344,7 +344,7 @@ Retrieve information about a VPC cluster in {{site.data.keyword.containerlong_no
 
 The following example shows how to retrieve informaion about a VPC cluster that is named `mycluster`. 
 
-```hcl
+```
 data "ibm_container_vpc_cluster" "cluster" {
   cluster_name_id   = "mycluster"
   resource_group_id = data.ibm_resource_group.group.id
@@ -419,7 +419,7 @@ Retrieve information about the worker nodes of your {{site.data.keyword.containe
 
 The following example retrieves information about a worker node with the ID `dal10-1112222abd111222` in the `mycluster` cluster. 
 
-```hcl
+```
 data "ibm_container_cluster_worker" "worker_foo" {
   worker_id       = "dal10-1112222abd111222"
   cluster_name_id = "mycluster"
