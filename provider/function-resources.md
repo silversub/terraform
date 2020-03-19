@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10"
+lastupdated: "2020-03-19"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -155,9 +155,9 @@ Review the input parameters that you can specify for your resource.
 |`exec.image`|String|Optional| When using the `blackbox` executable, the name of the container image name.        **NOTE**: Conflicts with `exec.components`, `exec.code`.    |
 |`exec.init`|String|Optional| When using `nodejs`, the optional zipfile reference.        **NOTE**: Conflicts with `exec.components`, `exec.image`.    |
 |`exec.code`|String|Optional| When not using the `blackbox` executable, the code to execute.       **NOTE**: Conflicts with `exec.components`, `exec.image`.    |
-|`kind`|String|Required|The type of action. You can find supported kinds in the [IBM Cloud Functions docs](/docs/openwhisk?topic=cloud-functions-runtimes).    |
-|`main`|String|Optional|The name of the action entry point (function or fully-qualified method name, when applicable).       **NOTE**: Conflicts with `exec.components`, `exec.image`.    |
-|`components`|String|Optional|The list of fully qualified actions. **NOTE**: Conflicts with `exec.code`, `exec.image`.|
+|`exec.kind`|String|Required|The type of action. You can find supported kinds in the [IBM Cloud Functions docs](/docs/openwhisk?topic=cloud-functions-runtimes).    |
+|`exec.main`|String|Optional|The name of the action entry point (function or fully-qualified method name, when applicable).       **NOTE**: Conflicts with `exec.components`, `exec.image`.    |
+|`exec.components`|String|Optional|The list of fully qualified actions. **NOTE**: Conflicts with `exec.code`, `exec.image`.|
 |`publish`|Boolean|Optional|Action visibility.|
 |`user_defined_annotations`|String|Optional|Annotations defined in key value format.|
 |`user_defined_parameters`|String|Optional|Parameters defined in key value format. Parameter bindings included in the context passed to the action. Cloud Function backend/API.|
