@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10"
+lastupdated: "2020-03-19"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -38,7 +38,7 @@ Create, update, or delete an {{site.data.keyword.cis_full_notm}} instance.
 ### Sample Terraform code
 {: #cis-sample}
 
-```hcl
+```
 data "ibm_resource_group" "group" {
   name = "test"
 }
@@ -115,7 +115,7 @@ Create, update, or delete an {{site.data.keyword.cis_full_notm}} domain.
 ### Sample Terraform code
 {: #cis-domain-sample}
 
-```hcl
+```
 resource "ibm_cis_domain" "example" {
   domain = "example.com"
   cis_id = ibm_cis.instance.id
@@ -181,7 +181,7 @@ Customize the {{site.data.keyword.cis_full_notm}} domain settings.
 ### Sample Terraform code
 {: #cis-domain-settings-sample}
 
-```hcl
+```
 resource "ibm_cis_domain_settings" "test" {
   cis_id          = ibm_cis.instance.id
   domain_id       = ibm_cis_domain.example.id
@@ -229,7 +229,7 @@ Create, update, or delete a DNS record for a domain.
 ### Sample Terraform code
 {: #cis-dns-record-sample}
 
-```hcl
+```
 # Add a DNS record to the domain
 resource "ibm_cis_dns_record" "example" {
   cis_id    = ibm_cis.instance.id
@@ -304,7 +304,7 @@ Create, update, or delete a global load balancer.
 ### Sample Terraform code
 {: #cis-global-lb-sample}
 
-```hcl
+```
 # Define a global load balancer which directs traffic to defined origin pools
 # In normal usage different pools would be set for data centers/availability zones and/or for different regions
 # Within each availability zone or region we can define multiple pools in failover order
@@ -390,7 +390,7 @@ Create, update, or delete an HTTPS health check for your {{site.data.keyword.cis
 ### Sample Terraform code
 {: #cis-health-sample}
 
-```hcl
+```
 resource "ibm_cis_healthcheck" "test" {
   cis_id         = ibm_cis.instance.id
   expected_body  = "alive"
@@ -466,7 +466,7 @@ Create, update, or delete an origin pool for your {{site.data.keyword.cis_full_n
 ### Sample Terraform code
 {: #cis-origin-pool-sample}
 
-```hcl
+```
 resource "ibm_cis_origin_pool" "example" {
   cis_id = ibm_cis.instance.id
   name   = "example-pool"
