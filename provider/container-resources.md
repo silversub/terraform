@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-11" 
+lastupdated: "2020-03-19" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -43,7 +43,7 @@ For more information about Ingress ALBs, see [About Ingress ALBs](/docs/containe
 
 The following 
 
-```hcl
+```
 resource ibm_container_alb alb {
   alb_id = "public-cr083d810e501d4c73b42184eab5a7ad56-alb"
   enable = true
@@ -98,7 +98,7 @@ Create, update, or delete an SSL certificate that you store in {{site.data.keywo
 
 The following example adds an SSL certificate that is stored in {{site.data.keyword.cloudcerts_long_notm}} to an Ingress ALB that is set up in a cluster that is named `myCluster`. 
 
-```hcl
+```
 resource ibm_container_alb_cert cert {
   cert_crn    = "crn:v1:bluemix:public:cloudcerts:us-south:a/e9021a4dc47e3d:faadea8e-a7f4-408f-8b39-2175ed17ae62:certificate:3f2ab474fbbf9564582"
   secret_name = "test-sec"
@@ -168,7 +168,7 @@ For more information about service binding, see [Adding services by using {{site
 
 The following example binds a service with the name `myservice` to a cluster with the name `mycluster`. 
 
-```hcl
+```
 resource "ibm_container_bind_service" "bind_service" {
   cluster_name_id             = "mycluster"
   service_instance_name       = "myservice"
@@ -428,7 +428,7 @@ Supported features include:
 
 The following example enables the private service endpoint feature for a cluster that is named `mycluster`. 
 
-```hcl
+```
 resource ibm_container_cluster_feature feature {
   cluster                 = "mycluster"
   private_service_endpoint = "true"
@@ -485,7 +485,7 @@ Create, update, or delete a worker pool.
 The following example creates the worker pool `mypool` for the cluster that is named `mycluster`. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_container_worker_pool" "testacc_workerpool" {
   worker_pool_name = "mypool"
   machine_type     = "u2c.2x4"
@@ -568,7 +568,7 @@ Create, update, or delete a zone from a worker pool.
 The following example adds zone dal12 to a worker pool that is named `mypool` in the `mycluster` cluster. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_container_worker_pool" "test_pool" {
   worker_pool_name = "mypool"
   machine_type     = "u2c.2x4"
@@ -656,7 +656,7 @@ Enable or disable an Application Load Balancer (ALB) for a VPC cluster.
 The following example adds zone dal12 to a worker pool that is named `mypool` in the `mycluster` cluster. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_container_vpc_alb" "alb" {
   alb_id = "public-cr083d810e501d4c73b42184eab5a7ad56-alb"
   enable = true
@@ -712,7 +712,7 @@ Create, update, or delete a VPC cluster.
 ### Sample Terraform code
 {: #vpc-cluster-sample}
 
-```hcl
+```
 resource "ibm_container_vpc_cluster" "cluster" {
   name              = "my_vpc_cluster"
   vpc_id            = "1111111a-1a11-1aa1-1111-11aa1aa1aa11"
@@ -795,7 +795,7 @@ Create or delete a worker pool for a VPC cluster.
 ### Sample Terraform code
 {: #vpc-worker-pool-sample}
 
-```hcl
+```
 resource "ibm_container_vpc_worker_pool" "test_pool" {
   cluster          = "my_vpc_cluster"
   worker_pool_name = "my_vpc_pool"
