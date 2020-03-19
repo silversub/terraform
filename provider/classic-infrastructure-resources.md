@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-12"
+lastupdated: "2020-03-19"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -880,7 +880,7 @@ The following arguments are supported:
 |`password`|(Required for SoftLayer accounts, string) The initial password for the user account. The password is hashed and encoded before it is stored in the Terraform state file. For an IBMid account, the password argument is ignored. For a SoftLayer account, the password must conform to SoftLayer's password policies to avoid failures.  Valid passwords must meet the following rules: <ul><li>Be 8 to 20 characters in length.</li><li>Have a combination of upper and lowercase characters. </li><li>Contain at least one number. </li><li>Contain at least one of the following special characters: <code>_</code>, <code>-</code>, <code>&#124;</code>, <code>@</code>, <code>.</code>, <code>,</code>, <code>?</code>, <code>/</code>, <code>!</code>, <code>~</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>^</code>, <code>&</code>, <code>*</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, <code>=</code>.|
 |`permissions`|(Optional, string) Permissions assigned to this user. This is a set of zero or more string values. See the [SoftLayer API doc for user permissions](https://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_CustomerPermission_Permission).|
 |`state`|(Required, string) The state of a user's street address.|
-|`timezone`|(Required, string) The user's timezone as a short name value (e.g., "EST"). For accepted values, see the [SoftLayer API doc for timezones ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Locale_Timezone).|
+|`timezone`|(Required, string) The user's time zone as a short name value (e.g., "EST"). For accepted values, see the [SoftLayer API doc for time zones ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Locale_Timezone).|
 |`user_status`|(Optional, string) The user's login status. You can find accepted values in the [SoftLayer API doc for user status](http://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_Status). The default value is `ACTIVE`.|
 |`tags`|(Optional, array of strings) Tags associated with the user account instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -1090,10 +1090,10 @@ Review the input parameters that you can specify for your resource.
 |`image_id`|Integer|Optional| The image template ID you want to use to provision the computing instance. This is not the global identifier (UUID), but the image template group ID that should point to a valid global identifier. To retrieve the image template ID from the IBM Cloud infrastructure customer portal, navigate to **Devices > Manage > Images**, click the image that you want, and note the ID number in the resulting URL. **NOTE**: Conflicts with `os_reference_code`. |
 |`network_speed`|Integer|Optional|The connection speed (in Mbps) for the instance's network components. The default value is `100`|
 |`private_network_only`|Boolean|Optional|When set to `true`, a compute instance only has access to the private network. The default value is `false`.|
-|`private_security_group_ids`|Array of integers|Optional| The ids of security groups to apply on the private interface.This attribute can't be updated. This is provided so that you can apply security groups to  your VSI right from the beginning, the first time it comes up. If you would like to add or remove security groups in the future to this VSI then you should consider using `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource you might experience errors. So use one of these consistently for a particular VSI.|
+|`private_security_group_ids`|Array of integers|Optional| The IDs of security groups to apply on the private interface. This attribute can't be updated. You can can use this parameter to add a security groups to your virtual server instance when you create it. If you want to add or remove security groups later, you must use the `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource you might experience errors. So use one of these consistently for a particular virtual server instance.|
 |`public_vlan_id`|Integer|Optional| The public VLAN ID for the public network interface of the instance. Accepted values are in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source. **NOTE**: Conflicts with `datacenter_choice`.|
-|`private_vlan_id`|Integer|Optional|The private VLAN ID for the private network interface of the instance. You can find accepted values in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the desired VLAN and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source. **NOTE**: Conflicts with `datacenter_choice`.|
-|`public_security_group_ids`|Array of integers|Optional|The ids of security groups to apply on the public interface.This attribute can't be updated. This is provided so that you can apply security groups to  your VSI right from the beginning, the first time it comes up. If you would like to add or remove security groups in the future to this VSI then you should consider using `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource, you might experience errors. So use one of these consistently for a particular VSI.|
+|`private_vlan_id`|Integer|Optional|The private VLAN ID for the private network interface of the instance. You can find accepted values in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source. **NOTE**: Conflicts with `datacenter_choice`.|
+|`public_security_group_ids`|Array of integers|Optional|The ids of security groups to apply on the public interface.This attribute can't be updated. You can can use this parameter to add a security groups to your virtual server instance when you create it. If you want to add or remove security groups later, you must use the `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource, you might experience errors. So use one of these consistently for a particular virtual server instance.|
 |`public_subnet`|String|Optional| The public subnet for the public network interface of the instance. Accepted values are primary public networks. You can find accepted values in the [subnets doc](https://cloud.ibm.com/classic/network/subnets).|
 |`private_subnet`|String|Optional| The private subnet for the private network interface of the instance. Accepted values are primary private networks. You can find accepted values in the [subnets doc](https://cloud.ibm.com/classic/network/subnets).|
 |`disks`|Array of integers|Optional| The numeric disk sizes (in GBs) for the instance's block device and disk image settings. The default value is the smallest available capacity for the primary disk. If you specify an image template, the template provides the disk capacity. If you specify the `flavorKeyName`, first disk is provided by the flavor.|
@@ -1113,8 +1113,8 @@ Review the input parameters that you can specify for your resource.
 |`evault`|Integer|Optional|Allowed evault(GB) per month for monthly based servers.|
 |`datacenter_choice`|List of objects|Optional|A nested block to describe datacenter choice options to retry on different data centers and VLANs. Nested `datacenter_choice` blocks must have the following structure:    |
 |`datacenter_choice.datacenter`|String|Required|The datacenter in which you want to provision the instance.    |
-|`datacenter_choice.public_vlan_id`|String|Optional|The public VLAN ID for the public network interface of the instance. Accepted values are in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the desired VLAN and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.    |
-|`datacenter_choice.private_vlan_id`|String|Optional|The private VLAN ID for the private network interface of the instance. You can find accepted values in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the desired VLAN and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.  **NOTE**: Conflicts with `datacenter`, `private_vlan_id`, `public_vlan_id`, `placement_group_name` and `placement_group_id`.|
+|`datacenter_choice.public_vlan_id`|String|Optional|The public VLAN ID for the public network interface of the instance. Accepted values are in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.    |
+|`datacenter_choice.private_vlan_id`|String|Optional|The private VLAN ID for the private network interface of the instance. You can find accepted values in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.  **NOTE**: Conflicts with `datacenter`, `private_vlan_id`, `public_vlan_id`, `placement_group_name` and `placement_group_id`.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1192,7 +1192,7 @@ The following attributes are exported:
 
 Configures the (custom) name servers associated with a DNS domain registration managed by the IBM Cloud DNS Registration Service. The default IBM Cloud name servers specified when the domain was initially registered are replaced with the values passed when this resource is created. 
 
-This resource is typically used in conjunction with IBM Cloud Internet Services to enable DNS services for the domain to be managed via IBM Cloud Internet Services. All futher configuration of the domain is then performed using the Cloud Internet Services resource instances. To transfer management control, the IBM Cloud DNS domain registration is updated with the Internet Services specific name servers. This step is required before the domain in Cloud Internet Services becomes active and will start serving web traffic. Using interpolation syntax, the computed name servers of the CIS resource are passed into this resource. 
+This resource is typically used in conjunction with IBM Cloud Internet Services to enable DNS services for the domain to be managed via IBM Cloud Internet Services. All further configuration of the domain is then performed using the Cloud Internet Services resource instances. To transfer management control, the IBM Cloud DNS domain registration is updated with the Internet Services specific name servers. This step is required before the domain in Cloud Internet Services becomes active and will start serving web traffic. Using interpolation syntax, the computed name servers of the CIS resource are passed into this resource. 
 
 
 ### Sample Terraform code
@@ -1299,7 +1299,7 @@ The following attributes are exported:
 
 Provides a single DNS reverse record managed on IBM Cloud Classic Infrastructure (SoftLayer). Record contain general information about the reverse record, such as the hostname, ip address and time to leave(ttl).
 
-The IBM Cloud Classic Infrastructure (SoftLayer) object  [SoftLayer_Dns_Domain_ResourceRecord](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord) is used for most create-retrieve-update-delete (CRUD) operations.
+The IBM Cloud Classic Infrastructure (SoftLayer) object  [SoftLayer_Dns_Domain_ResourceRecord](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord) is used for most create-retrieve-update-delete (`CRUD`) operations.
 
 ### Sample Terraform code
 {: #dns-rev-rec-sample}
@@ -1341,7 +1341,7 @@ The following attributes are exported:
 
 Provides a single-resource record entry in `ibm_dns_domain`. Each resource record contains a `host` and a `data` property to define the name and target data of a resource.
 
-The IBM Cloud Classic Infrastructure (SoftLayer) object  [SoftLayer_Dns_Domain_ResourceRecord](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord) is used for most create-retrieve-update-delete (CRUD) operations. The IBM Cloud Classic Infrastructure (SoftLayer) object [SoftLayer_Dns_Domain_ResourceRecord_SrvType](https://sldn.softlayer.com/reference/services/SoftLayer_Dns_Domain_ResourceRecord_SrvType) is used for SRV record types.
+The IBM Cloud Classic Infrastructure (SoftLayer) object  [SoftLayer_Dns_Domain_ResourceRecord](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord) is used for most create-retrieve-update-delete (`CRUD`) operations. The IBM Cloud Classic Infrastructure (SoftLayer) object [SoftLayer_Dns_Domain_ResourceRecord_SrvType](https://sldn.softlayer.com/reference/services/SoftLayer_Dns_Domain_ResourceRecord_SrvType) is used for service record types (`SRV`).
 
 The SOA and NS records are automatically created by IBM Cloud Classic Infrastructure (SoftLayer) when the domain is created, you don't need to create those manually.
 
@@ -1529,8 +1529,8 @@ The following arguments are supported:
 |`ttl`|(Required, integer) The time to live (TTL) duration, expressed in seconds, of a resource record. A name server uses TTL to determine how long to cache a resource record. An SOA record's TTL value defines the domain's overall TTL.|
 |`type`|(Required, string) The type of domain resource record. Accepted values are as follows: `a` for address records, `aaaa` for address records, `cname` for canonical name records, `mx` for mail exchanger records, `ptr` for pointer records in reverse domains, `spf` for sender policy framework records, `srv` for service records. |
 |`txt`|(Optional, string) Used for text records.|
-|`service`|(`SRV` records only, required, string) The symbolic name of the desired service.|
-|`protocol`|(`SRV` records only, required, string) The protocol of the desired service. This is usually TCP or UDP.|
+|`service`|(`SRV` records only, required, string) The symbolic name of the service.|
+|`protocol`|(`SRV` records only, required, string) The protocol of the service that you want to use, such as `TCP` or `UDP`.|
 |`port`|(`SRV` records only, required, integer) The TCP or UDP port on which the service will be found.|
 |`priority`|(`SRV` records only, required, integer) The priority of the target host. The lowest numerical value is given the highest priority. The default value is `0`.|
 |`weight`|(`SRV` records only, required, integer) A relative weight for records that have the same priority. The default value is `0`.|
@@ -1583,8 +1583,8 @@ The following arguments are supported:
 |----|-----------|
 |`firewall_type`|(Optional, string) Specifies the type of firewall to create. Valid options are HARDWARE_FIREWALL_DEDICATED or FORTIGATE_SECURITY_APPLIANCE. Defaults to HARDWARE_FIREWALL_DEDICATED|
 |`ha_enabled`|(Required, boolean) Specifies whether the local load balancer needs to be HA-enabled.|
-|`public_vlan_id`|(Required, integer) The target public VLAN ID that you want the firewall to protect. You can find accepted values [here](https://cloud.ibm.com/classic/network/vlans). Click the desired VLAN and note the ID number in the resulting URL. You can also refer to a VLAN by name using a data source.|
-|`tags`|(Optional, array of strings) Set tages on the firewall. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.|
+|`public_vlan_id`|(Required, integer) The target public VLAN ID that you want the firewall to protect. You can find accepted values [here](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the resulting URL. You can also refer to a VLAN by name using a data source.|
+|`tags`|(Optional, array of strings) Set tags on the firewall. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1607,14 +1607,14 @@ The following attributes are exported:
 ## `ibm_multivlan_firewall`
 {: #multivlan-firewall}
 
-Provides an Multi-Vlan Firewall Resource.
+Create a firewall with multiple VLANs.
 
 For additional details, see the [IBM Cloud (SoftLayer) multi VLAN firewall Request docs](https://softlayer.github.io/reference/datatypes/SoftLayer_Container_Product_Order_Network_Protection_Firewall_Dedicated/)
 
 ### Sample Terraform code
 {: #multivlan-firewall-sample}
 
-In the following example, you can create a multi-vlan firewall:
+In the following example, you can create a firewall with multiple VLANs:
 
 ```
 resource "ibm_multi_vlan_firewall" "firewall_first" {
@@ -1637,8 +1637,8 @@ The following arguments are supported:
 |`datacenter`|(Required, string) The data center in which the firewall appliance resides.|
 |`pod`|(Required, string) The pod in which the firewall resides|
 |`name`|(Required, string) The name of the firewall device|
-|`firewall_type`|(Required, string) The type of the firewall device. Allowed values are:- FortiGate Security Appliance,FortiGate Firewall Appliance HA Option|
-|`addon_configuration`|(Required, list) The list of addons that are allowed. Allowed values are `FortiGate Security Appliance) - Web Filtering Add-on (High Availability)`,`FortiGate Security Appliance - NGFW Add-on (High Availability)`,`FortiGate Security Appliance - AV Add-on (High Availability)` or `FortiGate Security Appliance - Web Filtering Add-on`, `FortiGate Security Appliance - NGFW Add-on`,`FortiGate Security Appliance - AV Add-on`.|
+|`firewall_type`|(Required, string) The type of the firewall device. Supported values include `FortiGate Security Appliance` and `FortiGate Firewall Appliance HA Option`.|
+|`addon_configuration`|(Required, list) The list of add-ons that are allowed. Allowed values are `FortiGate Security Appliance) - Web Filtering Add-on (High Availability)`,`FortiGate Security Appliance - NGFW Add-on (High Availability)`,`FortiGate Security Appliance - AV Add-on (High Availability)` or `FortiGate Security Appliance - Web Filtering Add-on`, `FortiGate Security Appliance - NGFW Add-on`,`FortiGate Security Appliance - AV Add-on`.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1989,7 +1989,7 @@ The following attributes are exported:
 ## `ibm_lbaas_health_monitor`
 {: #health-monitor}
 
-Provides a resource for the health monitors of IBM Lbaas. This allows to update a health monitor configuration of the load balancer. Health monitors are created and deleted by the creation and deletion of lbaas protocols.
+Provides a resource for the health monitors of IBM LBaaS. This allows to update a health monitor configuration of the load balancer. Health monitors are created and deleted by the creation and deletion of LBaaS protocols.
  
 ### Sample Terraform code
 {: #health-monitor-sample}
@@ -2039,8 +2039,8 @@ The following arguments are supported:
 
 |Name|Description|
 |----|-----------|
-|`monitor_id`|(Required,string) Health Monitor unique identifier. The monitor id can be imported from either the ibm_lbaas resource or datasource.ex: ibm_lbaas.lbaas.health_monitors.X.monitor_id or data.ibm_lbaas.lbaas.health_monitors.X.monitor_id|
-|`lbaas_id`|(Required,string) Lbaas unique identifier|
+|`monitor_id`|(Required,string) Health Monitor unique identifier. The monitor id can be imported from either the `ibm_lbaas` resource or datasource. Example: `ibm_lbaas.lbaas.health_monitors.X.monitor_id` or `data.ibm_lbaas.lbaas.health_monitors.X.monitor_id`|
+|`lbaas_id`|(Required,string) LBaaS unique identifier|
 |`protocol`|(Required, string) Backends protocol|
 |`port`|(Required, int) Backends port|
 |`interval`|(Optional,int) Interval in seconds to perform |
@@ -2056,8 +2056,19 @@ The following attributes are exported:
 
 |Name|Description|
 |----|-----------|
-|`id`|The unique identifier of the lbaas health monitor resource. The id is composed of \<lbaas_id\>/\<monitor_id/>### Importibm_lbaas_health_monitor can be imported using lbaas_id and monitor_id, eg `terraform import ibm_lbaas_health_monitor.example 988-454f-45vf-454542/d343f-f44r-wer3-fe`.|
+|`id`|The unique identifier of the LBaaS health monitor resource. The ID is composed of `<lbaas_id>/<monitor_id>`.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
+
+### Import
+{: #health-monitor-import}
+
+`ibm_lbaas_health_monitor` can be imported using LBaaS ID and monitor ID.
+
+```
+terraform import ibm_lbaas_health_monitor.example 988-454f-45vf-454542/d343f-f44r-wer3-fe
+```
+{: pre}
+
 
 
 
@@ -2277,8 +2288,8 @@ The following arguments are supported:
 |`version`|(Required, string) The VPX load balancer version. Accepted values are `10.1`, `10.5`, `11.0`, `11.1` and `12.1`.|
 |`plan`|(Required, string) The VPX load balancer plan. Accepted values are `Standard` and `Platinum`.|
 |`ip_count`|(Required, integer) The number of static public IP addresses assigned to the VPX load balancer. Accepted values are `1`,`2`, `4`, `8`, and `16`.|
-|`public_vlan_id`|(Optional, integer) The public VLAN ID that is used for the public network interface of the VPX load balancer. You can find accepted values in the [VLAN docs](https://cloud.ibm.com/classic/network/vlans) by clicking the desired VLAN and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
-|`private_vlan_id`|(Optional, integer) The private VLAN ID that is used for the private network interface of the VPX load balancer. You can find accepted values in the [VLAN docs](https://cloud.ibm.com/classic/network/vlans) by clicking the desired VLAN and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
+|`public_vlan_id`|(Optional, integer) The public VLAN ID that is used for the public network interface of the VPX load balancer. You can find accepted values in the [VLAN docs](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want to use and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
+|`private_vlan_id`|(Optional, integer) The private VLAN ID that is used for the private network interface of the VPX load balancer. You can find accepted values in the [VLAN docs](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want to use and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
 |`public_subnet`|(Optional, string) The public subnet that is used for the public network interface of the VPX load balancer. Accepted values are primary public networks. You can find accepted values in the [subnet docs](https://cloud.ibm.com/classic/network/subnets).|
 |`private_subnet`|(Optional, string) Public subnet that is used for the private network interface of the VPX load balancer. Accepted values are primary private networks. You can find accepted values in the [subnet docs](https://cloud.ibm.com/classic/network/subnets).|
 |`tags`|(Optional, array of strings) Tags associated with the VPX load balancer instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
@@ -2758,14 +2769,14 @@ The following attributes are exported:
 
 
 ## `ibm_network_interface_sg_attachment`
-{: #network-sq-attachment}
+{: #network-sg-attachment}
 
 Provide a resource to attach security group to a network interface. This allows attachments to be created and deleted.
 
 For additional details, see the [IBM Cloud Classic Infrastructure  (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Virtual_Network_SecurityGroup_NetworkComponentBinding).
 
 ### Sample Terraform code
-{: #network-sq-attachment-sample}
+{: #network-sg-attachment-sample}
 
 ```
 data "ibm_security_group" "allowssh" {
@@ -2786,7 +2797,7 @@ resource "ibm_network_interface_sg_attachment" "sg1" {
 ```
 
 ### Input parameters
-{: #network-sq-attachment-input}
+{: #network-sg-attachment-input}
 
 The following arguments are supported:
 
@@ -2794,12 +2805,12 @@ The following arguments are supported:
 |----|-----------|
 |`security_group_id`|(Required, int) The ID of the security group.|
 |`network_interface_id`|(Required, int) The ID of the network interface to which the security group must be applied.|
-|`soft_reboot`|(Optional, boolean) Default `true`. If true and if a reboot is required to apply the attachment then VSI on which the network interface lies would be soft rebooted. If false then no reboot is performed. **Note**: A reboot is required if this is first time any security group is applied to this network interface and it has never been rebooted since then.|
+|`soft_reboot`|(Optional, boolean) Default `true`. If set to **true** and a reboot is required to apply the security group attachment for the virtual server instance, then a soft reboot is performed. If set to **false**, no reboot is performed. **Note**: A reboot is always required the first time a security group is applied to a network interface of a virtual server instance that was never rebooted before. |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 
 ### Timeouts
-{: #network-sq-attachment-timeouts}
+{: #network-sg-attachment-timeouts}
 
 ibm_network_interface_sg_attachment provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
 
@@ -2921,8 +2932,8 @@ The following attributes are exported:
 |`softlayer_managed`|Whether or not SoftLayer manages the VLAN. If SoftLayer creates the VLAN automatically when SoftLayer creates other resources, this attribute is set to `true`. If a user creates the VLAN using the SoftLayer API, portal, or ticket, this attribute is set to `false`.|
 |`child_resource_count`|A count of the resources, such as virtual servers and other network components, that are connected to the VLAN.|
 |`subnets`|The collection of subnets associated with the VLAN.    |
-|`subnets.subnet`|The subnet for the vlan.    |
-|`subnets.subnet-type`|A subnet can be one of several types. `PRIMARY, ADDITIONAL_PRIMARY, SECONDARY, ROUTED_TO_VLAN, SECONDARY_ON_VLAN, STORAGE_NETWORK, and STATIC_IP_ROUTED`. A `PRIMARY` subnet is the primary network bound to a VLAN within the softlayer network. An `ADDITIONAL_PRIMARY` subnet is bound to a network VLAN to augment the pool of available primary IP addresses that may be assigned to a server. A `SECONDARY` subnet is any of the secondary subnet's bound to a VLAN interface. A `ROUTED_TO_VLAN` subnet is a portable subnet that can be routed to any server on a vlan. A `SECONDARY_ON_VLAN` subnet also doesn't exist as a VLAN interface, but is routed directly to a VLAN instead of a single IP address by SoftLayer's.    |
+|`subnets.subnet`|The subnet for the VLAN.    |
+|`subnets.subnet-type`|A subnet can be one of several types. `PRIMARY, ADDITIONAL_PRIMARY, SECONDARY, ROUTED_TO_VLAN, SECONDARY_ON_VLAN, STORAGE_NETWORK, and STATIC_IP_ROUTED`. A `PRIMARY` subnet is the primary network bound to a VLAN within the softlayer network. An `ADDITIONAL_PRIMARY` subnet is bound to a network VLAN to augment the pool of available primary IP addresses that may be assigned to a server. A `SECONDARY` subnet is any of the secondary subnet's bound to a VLAN interface. A `ROUTED_TO_VLAN` subnet is a portable subnet that can be routed to any server on a VLAN. A `SECONDARY_ON_VLAN` subnet also doesn't exist as a VLAN interface, but is routed directly to a VLAN instead of a single IP address by SoftLayer's.    |
 |`subnets.subnet-size`|The size of the subnet for the VLAN.    |
 |`subnets.gateway`|A subnet's gateway address.    |
 |`subnets.cidr`|A subnet's Classless Inter-Domain Routing prefix. This is a number between 0 and 32 signifying the number of bits in a subnet's netmask. |
@@ -2965,7 +2976,7 @@ The following arguments are supported:
 
 |Name|Description|
 |----|-----------|
-|`vlan_spanning`|(Required, string) The desired state of VLAN spanning for the account. Accepted values are `on`, `off`.|
+|`vlan_spanning`|(Required, string) Indicate if you want to enable VLAN spanning (`on`) or disable VLAN spanning (`off`). |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3371,7 +3382,7 @@ public portable subnets, private portable subnets, and public static subnets wit
 The portable IPv4 subnet is created as a secondary subnet on a VLAN. IP addresses in the portable subnet can be assigned as secondary IP 
 addresses for IBM resources in the VLAN. Because each portable subnet has a default gateway IP address, network IP address, and broadcast IP address, the number of usable IP addresses is `capacity` - 3. A `capacity` of 4 means that the number of usable IP addresses is 1; a `capacity` of 8 means that the number of usable IP addresses is 5. For example, consider a portable subnet of `10.0.0.0/30` that has `10.0.0.1` as a default gateway IP address, `10.0.0.0` as a network IP address, and `10.0.0.3` as a broadcast IP address. Only `10.0.0.2` can be assigned to IBM resources as a secondary IP address. For additional details, refer to [Static and Portable IP blocks](https://knowledgelayer.softlayer.com/articles/static-and-portable-ip-blocks).
 
-The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the stactic subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. For additional details, refer to [Subnet](https://knowledgelayer.softlayer.com/topic/subnets).
+The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. For additional details, refer to [Subnet](https://knowledgelayer.softlayer.com/topic/subnets).
 
 Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](http://blog.softlayer.com/tag/ipv6)
 
@@ -3457,7 +3468,7 @@ The following arguments are supported:
 |`type`|(Required, string) The type of the subnet. Accepted values are `portable` and `static`.|
 |`ip_version`|(Optional, integer) The IP version of the subnet. Accepted values are 4 and 6.|
 |`capacity`|(Required, integer) The size of the subnet. <ul><li>Accepted values for a public portable IPv4 subnet are 4, 8, 16, and 32. </li><li> Accepted values for a private portable IPv4 subnet are 4, 8, 16, 32, and 64. </li><li>Accepted values for a public static IPv4 subnet are 1, 2, 4, 8, 16, and 32. </li><li>Accepted value for a public portable IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided. </li><li>Accepted value for a public static IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided.</li></ul>|
-|`vlan_id`|(Optional, integer) The VLAN ID for portable subnet. You can configure both public and private VLAN ID. You can find accepted values in the [SoftLayer VLAN documentation](https://cloud.ibm.com/classic/network/vlans) by clicking on the desired VLAN and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
+|`vlan_id`|(Optional, integer) The VLAN ID for portable subnet. You can configure both public and private VLAN ID. You can find accepted values in the [SoftLayer VLAN documentation](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
 |`endpoint_ip`|(Optional, string) The target primary IP address for a static subnet. Only public IP addresses of virtual servers, bare metal servers, and netscaler VPXs can be configured as an `endpoint_ip`. The `static subnet` will be created on the VLAN where the `endpoint_ip` is located.|
 |`notes`|(Optional, string) Descriptive text or comments about the subnet.|
 |`tags`|(Optional, array of strings) Tags associated with the subnet instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
@@ -3491,7 +3502,7 @@ ibm_subnet provides the following [Timeouts](https://www.terraform.io/docs/confi
 ## `ibm_ssl_certificate`
 {: #ssl-cert}
 
-Provides an SSL certificate resource. This allows SSL certificates to be requested, and delete request for ssl certificates.
+Provides an SSL certificate resource. This allows SSL certificates to be requested, and delete request for SSL certificates.
 
 For additional details, see the [IBM Cloud Classic Infrastructure(SoftLayer) security certificates Request docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Security_Certificate/Request).
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-19"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -42,7 +42,7 @@ Create, update, or delete a Cloud Foundry app.
 The following example creates the `my-app` Node.js Cloud Foundry app. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_space" "space" {
   org   = "example.com"
   space = "dev"
@@ -110,7 +110,7 @@ Create, update, or delete a private domain for your Cloud Foundry app.
 The following example creates the `example.com` private domain. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_org" "orgdata" {
   org = "myorg"
 }
@@ -161,7 +161,7 @@ Create, update, or delete a shared domain for your Cloud Foundry app.
 The following example creates the `example.com` shared domain. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_app_domain_shared" "domain" {
   name              = "example.com"
   router_group_guid = "3hG5jkjk4k34JH5666"
@@ -206,7 +206,7 @@ Create, update, or delete a route for your Cloud Foundry app.
 The following example creates a route for the `example.com` shared domain. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_space" "spacedata" {
   space = "space"
   org   = "myorg"
@@ -264,7 +264,7 @@ Create, update, or delete a Cloud Foundry organization.
 The following example create the `myorg` Cloud Foundry organization and assigns users access to the organization. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_org" "testacc_org" {
     name = "myorg"
     org_quota_definition_guid = "myorgquotaguid"
@@ -330,7 +330,7 @@ Create, update, or delete a Cloud Foundry service instance.
 The following example creates the `speech_to_text` Cloud Foundry service instance. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_space" "spacedata" {
   space = "prod"
   org   = "myorg"
@@ -389,7 +389,7 @@ Create, update, or delete a service key for your Cloud Foundry service instance.
 The following example creates the `mycloudantkey` service key. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_service_instance" "service_instance" {
   name = "mycloudant"
 }
@@ -438,7 +438,7 @@ Create, update, or delete a Cloud Foundry space.
 The following example creates the `myspace` Cloud Foundry space. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_space" "space" {
   name        = "myspace"
   org         = "myorg"

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-02"
+lastupdated: "2020-03-19"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -43,7 +43,7 @@ Retrieve information about an existing {{site.data.keyword.cloud_notm}} account.
 The following example retrieves information about an {{site.data.keyword.cloud_notm}} account that belongs to the `myorg` Cloud Foundry organization. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_org" "orgData" {
   org = "myorg"
 }
@@ -93,7 +93,7 @@ Retrieve information about an existing Cloud Foundry app.
 The following example retrieves information about the `my-app` Cloud Foundry app.  
 {: shortdesc}
 
-```hcl
+```
 data "ibm_app" "testacc_ds_app" {
   name       = "my-app"
   space_guid = "${ibm_app.app.space_guid}"
@@ -147,7 +147,7 @@ Retrieve information about an existing private domain for an app.
 The following example retrieves information about the `example.com` domain. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_app_domain_private" "private_domain" {
   name = "example.com"
 }
@@ -188,7 +188,7 @@ Retrieve information about an existing shared domain for an app.
 The following example retrieves information about the `example.com` domain. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_app_domain_shared" "shared_domain" {
   name = "example.com"
 }
@@ -229,7 +229,7 @@ Retrieve information about an existing app route.
 The following example retrieves information about an app route. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_app_route" "route" {
   domain_guid = "${data.ibm_app_domain_shared.domain.id}"
   space_guid  = "${data.ibm_space.spacedata.id}"
@@ -276,7 +276,7 @@ Retrieve information about an existing Cloud Foundry organization.
 The following example retrieves information about the `myorg` Cloud Foundry organization. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_org" "orgdata" {
   org = "myorg"
 }
@@ -317,7 +317,7 @@ Retrieve information about a quota for a Cloud Foundry organization.
 The following example retrieves information for an existing quota plan. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_org_quota" "orgquotadata" {
   name = "quotaname"
 }
@@ -367,7 +367,7 @@ Retrieve information about a Cloud Foundry service instance.
 The following example retrieves information about the `mycloudantdb` instance. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_space" "space" {
   org   = "myorg"
   space = "dev"
@@ -418,7 +418,7 @@ Retrieve information about existing service credentials that a Cloud Foundry ser
 The following example retrieves service key information for the `mycloudantdb` service instance. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_space" "space" {
   org   = "example.com"
   space = "dev"
@@ -468,7 +468,7 @@ Retrieve information about a service plan for a Cloud Foundry service.
 
 The following example retrieves information about the `Lite` service plan for the CloudantNOSQLDB service. 
 
-```hcl
+```
 data "ibm_service_plan" "service_plan" {
   service = "cloudantNoSQLDB"
   plan    = "Lite"
@@ -512,7 +512,7 @@ Retrieve information about an existing Cloud Foundry space.
 The following example retrieves information about the `prod` Cloud Foundry space.
 {: shortdesc}
 
-```hcl
+```
 data "ibm_space" "spaceData" {
   space = "prod"
   org   = "myorg"

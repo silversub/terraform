@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10"
+lastupdated: "2020-03-19"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action
 
@@ -42,7 +42,7 @@ Retrieve information about an action.
 The following example retrieves information about the `myaction` action. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_function_action" "nodehello" {
     name = "myaction"		  
 }
@@ -97,7 +97,7 @@ Retrieve information about an existing IBM Cloud Functions OpenWhisk package.
 The following example retrieves information about the `mypackage` package. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_function_package" "package" {
   name = "mypackage"
 }
@@ -141,7 +141,7 @@ Retrieve information about an IBM Cloud Functions rule.
 
 The following example retrieves information about the `myrule` rule. 
 
-```hcl
+```
 data "ibm_function_rule" "rule" {
 	name = "myrule"
 }
@@ -186,7 +186,7 @@ Retrieve information about an IBM Cloud Functions trigger.
 
 The following example retrieves information about the `mytrigger` trigger. 
 
-```hcl
+```
 data "ibm_function_trigger" "trigger" {
   name = "mytrigger"		  
 }
