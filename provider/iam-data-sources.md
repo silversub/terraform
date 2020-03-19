@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-19"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -38,7 +38,7 @@ Retrieve information about your IAM access token. You can use this token to auth
 ### Sample Terraform code
 {: #iam-token-sample}
 
-```hcl
+```
 data "ibm_iam_auth_token" "tokendata" {}
 ```
 
@@ -73,7 +73,7 @@ Retrieve information about an IAM service ID.
 
 The following example retrieves information about the `myservice` service. 
 
-```hcl
+```
 data "ibm_iam_service_id" "ds_serviceID" {
   name = "myservice"
 }
@@ -115,7 +115,7 @@ Retrieve information about an IAM service policy.
 ### Sample Terraform code
 {: #iam-service-policy-sample}
 
-```hcl
+```
 resource "ibm_iam_service_policy" "policy" {
   iam_service_id = "ServiceId-a1aaa111-1111-111a-1a11-a11a1a11a11a"
   roles        = ["Manager", "Viewer", "Administrator"]
@@ -172,7 +172,7 @@ Retrieve information about an IAM user policy.
 ### Sample Terraform code
 {: #iam-user-policy-sample}
 
-```hcl
+```
 resource "ibm_iam_user_policy" "policy" {
   ibm_id = "user@us.ibm.com"
   roles  = ["Viewer"]
