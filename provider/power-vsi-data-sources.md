@@ -45,7 +45,7 @@ Retrieve the details of an image that you can use in your Power Systems Virtual 
 The following example shows how to retrieve information about the `7200-03-03` image ID. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_pi_image" "ds_image" {
   pi_image_name        = "7200-03-03"
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
@@ -94,7 +94,7 @@ Retrieve a list of supported images that you can use in your Power Systems Virtu
 The following example retrieves all images for a cloud instance ID. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_pi_images" "ds_images" {
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
 }
@@ -141,7 +141,7 @@ Retrieve information about a Power Systems Virtual Server instance.
 
 The following example shows how to retrieve information about an instance that is named `myinstance`. 
 
-```hcl
+```
 data "ibm_pi_instance" "ds_instance" {
   pi_instance_name     = "myinstance"
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
@@ -201,7 +201,7 @@ Retrieve information about a Power Systems Virtual Server instance IP address.
 
 The following example shows how to retrieve information about an instance IP for an instance that is named `myinstance`. 
 
-```hcl
+```
 data "ibm_pi_instance" "ds_instance" {
   pi_instance_name     = "myinstance"
   pi_network_name = "APP"
@@ -251,7 +251,7 @@ Retrieve information about the SSH key that is used for your Power Systems Virtu
 ### Sample Terraform code
 {: #power-ssh-key-sample}
 
-```hcl
+```
 data "ibm_pi_key" "ds_instance" {
   pi_key_name          = "terraform-test-key"
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
@@ -298,7 +298,7 @@ Retrieve information about the network that your Power Systems Virtual Server in
 
 The following example retrieves information about a network that is named `mynetwork`.
 
-```hcl
+```
 data "ibm_pi_network" "ds_network" {
   pi_network_name = "mynetwork"
   powerinstanceid = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
@@ -348,7 +348,7 @@ Retrieve the details about a public network that is used for your Power Systems 
 ### Sample Terraform code
 {: #power-public-network-sample}
 
-```hcl
+```
 data "ibm_pi_public_network" "ds_public_network" {
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
 }
@@ -393,7 +393,7 @@ Retrieve information about the tenants that are configured for your Power System
 
 The following example retrieves all tenants for the Power Systems Virtual Server instance with the ID `11aaa1a1-11a1-11aa-1111-aaa111aa1a1a`. 
 
-```hcl
+```
 data "ibm_pi_tenant" "ds_tenant" {
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
 }
@@ -441,7 +441,7 @@ Retrieves information about a persistent storage volume that is mounted to a Pow
 
 The following example retrieves information about the `volume_1` volume that is mounted to the Power Systems Virtual Server instance with the ID `11aaa1a1-11a1-11aa-1111-aaa111aa1a1a`. 
 
-```hcl
+```
 data "ibm_pi_volume" "ds_volume" {
   pi_volume_name       = "volume_1"
   pi_cloud_instance_id = "`11aaa1a1-11a1-11aa-1111-aaa111aa1a1a`"
@@ -489,7 +489,7 @@ Retrieves information about a persistent storage volume that is mounted to a Pow
 
 The following example retrieves information about the `volume_1` volume that is mounted to the Power Systems Virtual Server instance with the ID `11aaa1a1-11a1-11aa-1111-aaa111aa1a1a`. 
 
-```hcl
+```
 data "ibm_pi_instance_volumes" "ds_volumes" {
   pi_instance_name     = "volume_1"
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
