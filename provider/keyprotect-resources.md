@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform key protect, terraform kp, terraform root key 
 
@@ -42,7 +42,7 @@ To use the `ibm_kp_key` resource, the region parameter in the `provider.tf` file
 ### Sample Terraform code
 {: #kp-key-sample}
 
-```hcl
+```
 resource "ibm_resource_instance" "kp_instance" {
   name     = "instance-name"
   service  = "kms"
