@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cos bucket, terraform get object storage resources
 
@@ -44,7 +44,7 @@ To create a bucket, you must provision an {{site.data.keyword.cos_full_notm}} in
 The following example creates an instance of {{site.data.keyword.cos_full_notm}}. Then, one bucket with a `flex` profile and one bucket with the `cold` profile are created for the service instance. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_resource_group" "cos_group" {
   name = "cos-resource-group"
 }
