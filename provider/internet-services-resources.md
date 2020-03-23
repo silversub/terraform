@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-19"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -81,7 +81,8 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String|The unique identifier of the {{site.data.keyword.cis_full_notm}} instance.|
+|`id`|String|The CRN of the {{site.data.keyword.cis_full_notm}} instance.|
+|`guid`|String|The unique identifier of the {{site.data.keyword.cis_full_notm}} instance.|
 |`status`|String|The status of the {{site.data.keyword.cis_full_notm}} instance.|
 
 ### Timeouts
