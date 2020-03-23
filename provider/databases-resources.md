@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-19"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -121,7 +121,7 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String|The unique identifier of the database instance (CRN).|
+|`id`|String|The CRN of the database instance.|
 |`status`|String|The status of the instance. |
 |`adminuser`|String|The user ID of the database administrator. Example: `admin` or `root`.|
 |`version`|String|The database version.|
