@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform key protect, terraform kp, terraform root key 
 
@@ -45,7 +45,7 @@ To use the `ibm_kp_key` data resource, the region parameter in the `provider.tf`
 The following example creates a read-only copy of the `mydatabase` instance in `us-east`.  
 {: shortdesc}
 
-```hcl
+```
 data "ibm_kp_key" "test" {
   key_protect_id = "my-kp-id"
 }
