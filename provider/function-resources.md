@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-19"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -46,7 +46,7 @@ Create, update, or delete a {{site.data.keyword.openwhisk_short}} action. Action
 The following example creates a JavaScript action. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_function_action" "nodehello" {
   name = "myaction"
 
@@ -63,7 +63,7 @@ resource "ibm_function_action" "nodehello" {
 The following example shows how to pass parameters to an action. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_function_action" "nodehellowithparameter" {
   name = "hellonodeparam"
 
@@ -90,7 +90,7 @@ resource "ibm_function_action" "nodehellowithparameter" {
 The following example packages a JavaScript action to a module. 
 {: shortdesc}
 
-``` hcl
+``` 
 resource "ibm_function_action" "nodezip" {
   name = "nodezip"
 
@@ -108,7 +108,7 @@ resource "ibm_function_action" "nodezip" {
 The following example creates an action sequence. 
 {: shortdesc}
 
-``` hcl
+``` 
 resource "ibm_function_action" "swifthello" {
   name = "actionsequence"
 
@@ -126,7 +126,7 @@ resource "ibm_function_action" "swifthello" {
 The following example creates a Docker action. 
 {: shortdesc}
 
-``` hcl
+``` 
 resource "ibm_function_action" "swifthello" {
   name = "dockeraction"
 
@@ -202,7 +202,7 @@ Create, update, or delete an IBM Cloud Functions package. You can the packages t
 
 The following example creates the `mypackage` package. 
 
-```hcl
+```
 resource "ibm_function_package" "package" {
   name = "mypackage"
 
@@ -239,7 +239,7 @@ EOF
 The following example shows how to bind a package. 
 {: shortdesc}
 
-``` hcl
+``` 
 resource "ibm_function_package" "bindpackage" {
   name              = "bindalaram"
   bind_package_name = "/whisk.system/alarms/alarm"
@@ -312,7 +312,7 @@ Create, update, or delete an IBM Cloud Functions rule. Events from external and 
 The following example creates a rule for an action. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_function_action" "action" {
   name = "hello"
 
@@ -403,7 +403,7 @@ Create, update, or delete an IBM Cloud Functions trigger. Events from external a
 The following example creates the `mytrigger` trigger. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_function_trigger" "trigger" {
   name = "mytrigger"
 
@@ -433,7 +433,7 @@ resource "ibm_function_trigger" "trigger" {
 The following example creates a feed for the `alarmFeed` trigger. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_function_trigger" "feedtrigger" {
   name = "alarmFeed"
 

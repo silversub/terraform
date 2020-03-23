@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-12"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -176,7 +176,10 @@ terraform import ibm_pi_instance.example <power_instance_id>/<instance_id>
 ```
 {: pre}
 
-{[white-space.md]}
+
+
+
+
 
 
 ## `ibm_pi_key`
@@ -242,7 +245,10 @@ terraform import ibm_pi_key.example <power_instance_id>/<key_name>
 ```
 {: pre}
 
-{[white-space.md]}
+
+
+
+
 
 
 ## `ibm_pi_network`
@@ -313,7 +319,10 @@ terraform import ibm_pi_network.example <power_instance_id>/<network_id>
 ```
 {: pre}
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_pi_volume`
 {: #power-volume}

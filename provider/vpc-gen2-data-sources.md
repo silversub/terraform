@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -40,7 +40,7 @@ Retrieve information about a virtual server image for Gen 2 compute.
 The following example retrieves information about the `centos-7.x-amd64` image. 
 {: shortdesc}
 
-```hcl
+```
 
 data "ibm_is_image" "ds_image" {
     name = "centos-7.x-amd64"
@@ -84,7 +84,7 @@ Retrieve information about Gen 2 virtual server images.
 ### Sample Terraform code
 {: #vpc-images-sample}
 
-```hcl
+```
 
 data "ibm_is_images" "ds_images" {
 }
@@ -128,7 +128,7 @@ Retrieve information about a virtual server instance profile.
 The following example retrieves information about the `b-2x8` instance profile. 
 {: shortdesc}
 
-```hcl
+```
 
 data "ibm_is_instance_profile" "profile" {
 	name = "b-2x8"
@@ -168,7 +168,7 @@ Retrieve information about supported virtual server instance profiles.
 ### Sample Terraform code
 {: #vpc-instance-profiles-sample}
 
-```hcl
+```
 
 data "ibm_is_instance_profiles" "ds_instance_profiles" {
 }
@@ -205,7 +205,7 @@ Retrieve information about a VPC Gen 2 Compute region.
 ### Sample Terraform code
 {: #vpc-region-sample}
 
-```hcl
+```
 
 data "ibm_is_region" "ds_region" {
     name = "us-south"
@@ -247,7 +247,7 @@ Retrieve information about a VPC Gen 2 SSH key.
 ### Sample Terraform code
 {: #vpc-ssh-key-sample}
 
-```hcl
+```
 
 data "ibm_is_ssh_key" "ds_key" {
     name = "test"
@@ -291,7 +291,7 @@ Retrieve information about a VPC Gen 2 compute subnet.
 ### Sample Terraform code
 {: #vpc-subnet-sample}
 
-```hcl
+```
 resource "ibm_is_vpc" "testacc_vpc" {
 	name = "test"
 }
@@ -350,7 +350,7 @@ Retrieve information about a Gen 2 compute VPC.
 ### Sample Terraform code
 {: #vpc-sample}
 
-```hcl
+```
 resource "ibm_is_vpc" "testacc_vpc" {
     name = "test"
 }
@@ -398,7 +398,7 @@ Retrieve information about a Gen 2 compute zone.
 ### Sample Terraform code
 {: #vpc-zone-sample}
 
-```hcl
+```
 
 data "ibm_is_zone" "ds_zone" {
     name = "us-south-1"
@@ -441,7 +441,7 @@ Retrieves information about Gen 2 compute zones.
 ### Sample Terraform code
 {: #vpc-zones-sample}
 
-```hcl
+```
 
 data "ibm_is_zones" "ds_zones" {
     region = "us-south"

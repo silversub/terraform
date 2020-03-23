@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform resource group, terraform resource management, terraform iam services
 
@@ -40,13 +40,13 @@ Retrieve information about an {{site.data.keyword.cloud_notm}} resource group.
 
 The following two examples retrieve information about the `default` resource group. 
 
-```hcl
+```
 data "ibm_resource_group" "group" {
   name = "default"
 }
 ```
 
-```hcl
+```
 data "ibm_resource_group" "group" {
   is_default = "true"
 }
@@ -84,7 +84,7 @@ Retrieve information about an IAM-enabled service instance.
 ### Sample Terraform code
 {: #resouce-instance-sample}
 
-```hcl
+```
 data "ibm_resource_group" "group" {
   name = "default"
 }
@@ -135,7 +135,7 @@ Retrieve information about existing access keys for an IAM-enabled service insta
 
 The following example retrieves information about the `myobjectKey` access key. 
 
-```hcl
+```
 data "ibm_resource_key" "resourceKeydata" {
   name                  = "myobjectKey"
   resource_instance_id  = "${ibm_resource_instance.resource.id}"
@@ -179,7 +179,7 @@ Retrieve information about the quota for an IAM-enabled service instance.
 ### Sample Terraform code
 {: #resource-quota-sample}
 
-```hcl
+```
 data "ibm_resource_quota" "rsquotadata" {
   name = "Trial Quota"
 }

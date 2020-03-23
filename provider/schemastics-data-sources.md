@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform schematics data source, terraform schematics workspace 
 
@@ -39,7 +39,7 @@ Retrieve information about a Schematics workspace.
 The following example retrieves information about the `my-workspace-id` workspace.  
 {: shortdesc}
 
-```hcl
+```
 data "ibm_schematics_workspace" "test" {
   workspace_id = "my-workspace-id"
 }
@@ -88,7 +88,7 @@ Retrieve state information for a Schematics workspace. For detailed information 
 The following example retrieves information about the `my-workspace-id` workspace.  
 {: shortdesc}
 
-```hcl
+```
 data "ibm_schematics_output" "test" {
   workspace_id = "<schematics_workspace_id>"
   template_id= "${data.ibm_schematics_workspace.vpc.template_id.0}"
@@ -132,7 +132,7 @@ Retrieve information about the Terraform state file for a Schematics workspace.
 The following example retrieves information about the `my-workspace-id` workspace.  
 {: shortdesc}
 
-```hcl
+```
 data "ibm_schematics_state" "test" {
   workspace_id = "my-worspace-id"
   template_id= "my-template-id"

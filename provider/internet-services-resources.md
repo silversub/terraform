@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-19"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -81,7 +81,8 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String|The unique identifier of the {{site.data.keyword.cis_full_notm}} instance.|
+|`id`|String|The CRN of the {{site.data.keyword.cis_full_notm}} instance.|
+|`guid`|String|The unique identifier of the {{site.data.keyword.cis_full_notm}} instance.|
 |`status`|String|The status of the {{site.data.keyword.cis_full_notm}} instance.|
 
 ### Timeouts
@@ -104,7 +105,10 @@ terraform import ibm_cis.myorg <crn>
 ```
 {: pre}
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_cis_domain`
 {: #cis-domain}
@@ -218,7 +222,10 @@ Review the output parameters that you can access after your resource is created.
 |----|-----------|--------|
 |`certificate_status`|String| Value of: `none`, `initializing`, `authorizing`, or `active`.|
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_cis_dns_record`
 {: #cis-dns-record}
@@ -293,7 +300,10 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 ```
 {: pre}
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_cis_global_load_balancer`
 {: #cis-global-lb}
@@ -379,7 +389,10 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 ```
 {: pre}
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_cis_healthcheck`
 {: #cis-health}
@@ -455,7 +468,10 @@ terraform import ibm_cis_healthcheck.myorg 1aaaa111111aa11111111111a1a11a1:crn:v
 ```
 {: pre}
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_cis_origin_pool`
 {: #cis-origin-pool}
@@ -538,4 +554,7 @@ terraform import ibm_cis_origin_pool.myorg 1aaaa111111aa11111111111a1a11a1:crn:v
 ```
 {: pre}
 
-{[white-space.md]}
+
+
+
+

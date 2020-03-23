@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-11"
+lastupdated: "2020-03-23"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -25,7 +25,7 @@ subcollection: terraform
 {:external: target="_blank" .external}
 
 # Internet Services data sources
-{: cis_data}
+{: #cis_data}
 
 You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
 
@@ -65,7 +65,8 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|----------|
-| `id` | String | The unique identifier of your instance. |
+| `id` | String | The CRN of your instance. |
+| `guid` | String| The unique identifier of the instance.|
 | `plan` | String | The service plan for the instance. |
 | `location` | String | The location of your instance. |
 | `status` | String | The status of your instance. |

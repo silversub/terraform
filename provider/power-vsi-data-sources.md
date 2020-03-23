@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -45,7 +45,7 @@ Retrieve the details of an image that you can use in your Power Systems Virtual 
 The following example shows how to retrieve information about the `7200-03-03` image ID. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_pi_image" "ds_image" {
   pi_image_name        = "7200-03-03"
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
@@ -77,7 +77,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `size` | String | The size of the image in megabytes. |
 | `state` | String | The state for this image. | 
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_pi_images`
 {: #power-images}
@@ -91,7 +94,7 @@ Retrieve a list of supported images that you can use in your Power Systems Virtu
 The following example retrieves all images for a cloud instance ID. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_pi_images" "ds_images" {
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
 }
@@ -121,7 +124,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `image_info.name`| String | The name of the image. |
 | `image_info.state` | String | The state of the image. |
 
-{[white-space.md]}
+
+
+
+
 
 
 ## `ibm_pi_instance`
@@ -135,7 +141,7 @@ Retrieve information about a Power Systems Virtual Server instance.
 
 The following example shows how to retrieve information about an instance that is named `myinstance`. 
 
-```hcl
+```
 data "ibm_pi_instance" "ds_instance" {
   pi_instance_name     = "myinstance"
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
@@ -179,7 +185,10 @@ Review the output parameters that you can access after you retrieved your data s
 |`health_status`|String|The health of the instance.|
 
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_pi_instance_ip`
 {: #power-instance-ip}
@@ -192,7 +201,7 @@ Retrieve information about a Power Systems Virtual Server instance IP address.
 
 The following example shows how to retrieve information about an instance IP for an instance that is named `myinstance`. 
 
-```hcl
+```
 data "ibm_pi_instance" "ds_instance" {
   pi_instance_name     = "myinstance"
   pi_network_name = "APP"
@@ -228,7 +237,10 @@ Review the output parameters that you can access after you retrieved your data s
 |`type`|String| The type of the network that is attached to this instance.|
 |`ipoctet`|String|The IP octet of the network that is attached to this instance.|
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_pi_key`
 {: #power-ssh-key}
@@ -239,7 +251,7 @@ Retrieve information about the SSH key that is used for your Power Systems Virtu
 ### Sample Terraform code
 {: #power-ssh-key-sample}
 
-```hcl
+```
 data "ibm_pi_key" "ds_instance" {
   pi_key_name          = "terraform-test-key"
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
@@ -270,7 +282,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `id` | String | The unique identifier of the SSH key. |
 | `sshkey` | String | The public SSH key value. |
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_pi_network`
 {: #power-network}
@@ -283,7 +298,7 @@ Retrieve information about the network that your Power Systems Virtual Server in
 
 The following example retrieves information about a network that is named `mynetwork`.
 
-```hcl
+```
 data "ibm_pi_network" "ds_network" {
   pi_network_name = "mynetwork"
   powerinstanceid = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
@@ -319,7 +334,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `type`|String|The type of network.|
 |`cidr`|String|The CIDR of the network.|
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_pi_public_network`
 {: #power-public-network}
@@ -330,7 +348,7 @@ Retrieve the details about a public network that is used for your Power Systems 
 ### Sample Terraform code
 {: #power-public-network-sample}
 
-```hcl
+```
 data "ibm_pi_public_network" "ds_public_network" {
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
 }
@@ -359,7 +377,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `type` | String | The type of VLAN that the network is connected to. |
 | `vlan_id` | String | The ID of the VLAN that the network is connected to. |
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_pi_tenant`
 {: #power-tenant}
@@ -372,7 +393,7 @@ Retrieve information about the tenants that are configured for your Power System
 
 The following example retrieves all tenants for the Power Systems Virtual Server instance with the ID `11aaa1a1-11a1-11aa-1111-aaa111aa1a1a`. 
 
-```hcl
+```
 data "ibm_pi_tenant" "ds_tenant" {
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
 }
@@ -404,7 +425,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `cloudinstances.cloud_instance_id`|String|The unique identifier of the cloud instance.|
 | `cloudinstances.region`|String|The region of the cloud instance.|
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_pi_volume`
 {: #power-volume}
@@ -417,7 +441,7 @@ Retrieves information about a persistent storage volume that is mounted to a Pow
 
 The following example retrieves information about the `volume_1` volume that is mounted to the Power Systems Virtual Server instance with the ID `11aaa1a1-11a1-11aa-1111-aaa111aa1a1a`. 
 
-```hcl
+```
 data "ibm_pi_volume" "ds_volume" {
   pi_volume_name       = "volume_1"
   pi_cloud_instance_id = "`11aaa1a1-11a1-11aa-1111-aaa111aa1a1a`"
@@ -449,7 +473,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `state` | String | The state of the volume. |
 | `type` | String | The disk type that is used for this volume. |
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_pi_instance_volumes`
 {: #power-instance-volumes}
@@ -462,7 +489,7 @@ Retrieves information about a persistent storage volume that is mounted to a Pow
 
 The following example retrieves information about the `volume_1` volume that is mounted to the Power Systems Virtual Server instance with the ID `11aaa1a1-11a1-11aa-1111-aaa111aa1a1a`. 
 
-```hcl
+```
 data "ibm_pi_instance_volumes" "ds_volumes" {
   pi_instance_name     = "volume_1"
   pi_cloud_instance_id = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"

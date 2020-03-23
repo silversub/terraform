@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -42,7 +42,7 @@ Retrieve the details of an image that you can use in your {{site.data.keyword.vs
 The following example shows how you can retrieve information about the `centos-7.x-amd64` image. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_image" "ds_image" {
     name = "centos-7.x-amd64"
 }
@@ -74,7 +74,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `os` | String | The name and version of the operating system that is installed with the image. | 
 | `status` | String | The status of this image. |
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_is_images`
 {: #images}
@@ -88,7 +91,7 @@ Retrieve a list of all images that you can use in your {{site.data.keyword.vsi_i
 The following example shows how you can retrieve a list of supported images for a {{site.data.keyword.vsi_is_short}} instance.
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_images" "ds_images" {
 }
 ```
@@ -111,7 +114,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `images.visibility` | String | The visibility of the image. Images that are marked as `public` are provided by IBM. `Private` images are custom images that you uploaded to {{site.data.keyword.cloud_notm}}. |
 
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_is_instance_profile` 
 {: #instance-profile}
@@ -125,7 +131,7 @@ Retrieve the details for a profile that you can use in your {{site.data.keyword.
 The following example shows how you can retrieve information about the `b-2x8` profile. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_instance_profile" "profile" {
 	name = "b-2x8"
 }
@@ -152,7 +158,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `family` | String | The family that the profile belongs to. The family indicates what workloads are best suited for this type of profile. For more information, see [Profiles](/docs/vpc?topic=vpc-profiles).  |
 
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_is_instance_profiles`
 {: #instance-profiles}
@@ -166,7 +175,7 @@ Retrieve a list of all profiles that you can use in your {{site.data.keyword.vsi
 The following example shows how you can retrieve a list of supported {{site.data.keyword.vsi_is_short}} profiles. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_instance_profiles" "ds_instance_profiles" {
 }
 ```
@@ -189,7 +198,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `profiles.family` | String |The family that the profile belongs to. The family indicates what workloads are best suited for this type of profile. For more information, see [Profiles](/docs/vpc?topic=vpc-profiles).|
 
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_is_region`
 {: #region}
@@ -203,7 +215,7 @@ Retrieve the details for a {{site.data.keyword.vpc_full}} regions.
 The following example shows how you can retrieve information about the `us-south` region. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_region" "ds_region" {
     name = "us-south"
 }
@@ -231,7 +243,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `endpoint` | String | The API endpoint of the region. |
 
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_is_ssh_key`
 {: #ssh-key}
@@ -245,7 +260,7 @@ Retrieve the details for an SSH key that you uploaded in {{site.data.keyword.clo
 The following example shows how you can retrieve details about an SSH key that is named `mysshkey`. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_ssh_key" "ds_key" {
     name = "mysshkey"
 }
@@ -276,7 +291,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `type` | String | The cryptosystem that is used by the SSH key. | 
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to view details about the SSH key. |
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_is_subnet`
 {: #subnet}
@@ -290,7 +308,7 @@ Retrieve details for a {{site.data.keyword.vpc_full}} subnet.
 The following example shows how you can retrieve information about a VPC subnet that you create with the `ibm_is_subnet` resource. 
 {: shortdesc} 
 
-```hcl
+```
 resource "ibm_is_vpc" "myvpc_resource" {
 	name = "myvpc"
 }
@@ -337,7 +355,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `zone` | String | The name of the zone where the subnet is provisioned. |
 
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_is_vpc`
 {: #vpc}
@@ -351,7 +372,7 @@ Retrieve information about a {{site.data.keyword.vpc_full}}.
 The following example shows how you can retrieve information about a VPC that is named `myvpc`. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_is_vpc" "myvpc_resource" {
     name = "myvpc"
 }
@@ -388,7 +409,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `tags` | Array | A list of tags that are associated with the VPC. |
 
 
-{[white-space.md]}
+
+
+
+
 
 
 ## `ibm_is_zone`
@@ -404,7 +428,7 @@ Retrieve details about a supported {{site.data.keyword.vpc_full}} zone.
 The following example shows how you can retrieve details about the `us-south-1` zone. 
 {: shortdesc}
 
-```hcl
+```
 
 data "ibm_is_zone" "ds_zone" {
     name = "us-south-1"
@@ -435,7 +459,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `status` | String | The status of zone. |
 
 
-{[white-space.md]}
+
+
+
+
 
 ## `ibm_is_zones`
 {: #zones}
@@ -449,7 +476,7 @@ Retrieve a list of supported {{site.data.keyword.vpc_full}} zones in an {{site.d
 The following example shows how you can list all zones in the `us-south` region. 
 {: shortdesc}
 
-```hcl
+```
 
 data "ibm_is_zones" "ds_zones" {
     region = "us-south"
@@ -479,4 +506,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `zones` | Array | The list of zones in an {{site.data.keyword.cloud_notm}} region. |
 
 
-{[white-space.md]}
+
+
+
+

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-01-10"
+lastupdated: "2020-03-23"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -384,7 +384,7 @@ To import the Terraform infrastructure inventory into Ansible:
    
 3. Navigate into the `ibm_ansible_dyn_inv` directory.
    ```
-   cd terraform-provider-ibm/examples/ansible/ibm_ansible_dyn_inv
+   cd terraform-provider-ibm/examples/ibm-ansible-samples/ibm_ansible_dyn_inv
    ```
    {: pre}
    

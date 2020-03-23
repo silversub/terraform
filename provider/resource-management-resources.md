@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-25" 
+lastupdated: "2020-03-23" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -37,7 +37,7 @@ Create, update, or delete an IBM Cloud resource group.
 ### Sample Terraform code
 {: #rg-sample}
 
-```hcl
+```
 
 resource "ibm_resource_group" "resourceGroup" {
   name     = "prod"
@@ -91,7 +91,7 @@ Create, update, or delete an IAM-enabled service instance.
 ### Sample Terraform code
 {: #resource-instance-sample}
 
-```hcl
+```
 data "ibm_resource_group" "group" {
   name = "test"
 }
@@ -173,7 +173,7 @@ Create, update, or delete service credentials for an IAM-enabled service.
 
 #### Creating credentials for a resource without using a service ID
 
-```hcl
+```
 data "ibm_resource_instance" "resource_instance" {
   name = "myobjectsotrage"
 }
@@ -195,7 +195,7 @@ resource "ibm_resource_key" "resourceKey" {
 
 The `ibm_resource_instance` resource does not support creating service credentials for a service ID. However, you can pass in a service ID as an additional parameter to create credentials for a service ID. 
 
-```hcl
+```
 data "ibm_resource_instance" "resource_instance" {
   name = "myobjectsotrage"
 }
