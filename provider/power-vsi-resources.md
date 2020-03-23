@@ -176,9 +176,9 @@ terraform import ibm_pi_instance.example <power_instance_id>/<instance_id>
 ```
 {: pre}
 
-<br>
-<br>
-<br>
+
+
+
 
 
 
@@ -245,9 +245,9 @@ terraform import ibm_pi_key.example <power_instance_id>/<key_name>
 ```
 {: pre}
 
-<br>
-<br>
-<br>
+
+
+
 
 
 
@@ -319,9 +319,9 @@ terraform import ibm_pi_network.example <power_instance_id>/<network_id>
 ```
 {: pre}
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_pi_volume`

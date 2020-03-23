@@ -74,9 +74,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `os` | String | The name and version of the operating system that is installed with the image. | 
 | `status` | String | The status of this image. |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_is_images`
@@ -114,9 +114,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `images.visibility` | String | The visibility of the image. Images that are marked as `public` are provided by IBM. `Private` images are custom images that you uploaded to {{site.data.keyword.cloud_notm}}. |
 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_is_instance_profile` 
@@ -158,9 +158,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `family` | String | The family that the profile belongs to. The family indicates what workloads are best suited for this type of profile. For more information, see [Profiles](/docs/vpc?topic=vpc-profiles).  |
 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_is_instance_profiles`
@@ -198,9 +198,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `profiles.family` | String |The family that the profile belongs to. The family indicates what workloads are best suited for this type of profile. For more information, see [Profiles](/docs/vpc?topic=vpc-profiles).|
 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_is_region`
@@ -243,9 +243,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `endpoint` | String | The API endpoint of the region. |
 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_is_ssh_key`
@@ -291,9 +291,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `type` | String | The cryptosystem that is used by the SSH key. | 
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to view details about the SSH key. |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_is_subnet`
@@ -355,9 +355,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `zone` | String | The name of the zone where the subnet is provisioned. |
 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_is_vpc`
@@ -409,9 +409,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `tags` | Array | A list of tags that are associated with the VPC. |
 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 
@@ -459,9 +459,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `status` | String | The status of zone. |
 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_is_zones`
@@ -506,7 +506,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `zones` | Array | The list of zones in an {{site.data.keyword.cloud_notm}} region. |
 
 
-<br>
-<br>
-<br>
+
+
+
 

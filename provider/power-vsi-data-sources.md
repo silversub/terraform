@@ -77,9 +77,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `size` | String | The size of the image in megabytes. |
 | `state` | String | The state for this image. | 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_pi_images`
@@ -124,9 +124,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `image_info.name`| String | The name of the image. |
 | `image_info.state` | String | The state of the image. |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 
@@ -185,9 +185,9 @@ Review the output parameters that you can access after you retrieved your data s
 |`health_status`|String|The health of the instance.|
 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_pi_instance_ip`
@@ -237,9 +237,9 @@ Review the output parameters that you can access after you retrieved your data s
 |`type`|String| The type of the network that is attached to this instance.|
 |`ipoctet`|String|The IP octet of the network that is attached to this instance.|
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_pi_key`
@@ -282,9 +282,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `id` | String | The unique identifier of the SSH key. |
 | `sshkey` | String | The public SSH key value. |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_pi_network`
@@ -334,9 +334,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `type`|String|The type of network.|
 |`cidr`|String|The CIDR of the network.|
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_pi_public_network`
@@ -377,9 +377,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `type` | String | The type of VLAN that the network is connected to. |
 | `vlan_id` | String | The ID of the VLAN that the network is connected to. |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_pi_tenant`
@@ -425,9 +425,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `cloudinstances.cloud_instance_id`|String|The unique identifier of the cloud instance.|
 | `cloudinstances.region`|String|The region of the cloud instance.|
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_pi_volume`
@@ -473,9 +473,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `state` | String | The state of the volume. |
 | `type` | String | The disk type that is used for this volume. |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_pi_instance_volumes`

@@ -86,9 +86,9 @@ Review the output parameters that you can access after your resource is created.
 |`status`|String|The Status of the cdn domain mapping.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
-<br>
-<br>
-<br>
+
+
+
 
 
 
@@ -241,9 +241,9 @@ Review the output parameters that you can access after your resource is created.
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_compute_bare_metal`

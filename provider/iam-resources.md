@@ -74,9 +74,9 @@ Review the output parameters that you can access after your resource is created.
 | `id` | String | The unique identifier of the access group. |
 | `version` | String | The version of the access group. |
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_iam_access_group_members`
@@ -144,9 +144,9 @@ Review the output parameters that you can access after your resource is created.
 $ terraform import ibm_iam_access_group_members.example AccessGroupId-5391772e-1207-45e8-b032-2a21941c11ab/2018-10-04 06:27:40.041599641 +0000 UTC
 ```
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_access_group_policy`
@@ -370,9 +370,9 @@ The access group policy can be imported by using the access group ID and the acc
 $ terraform import ibm_iam_access_group_policy.example <access_group_ID>/<access_group_policy_ID>
 ```
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_authorization_policy`
@@ -499,9 +499,9 @@ Review the input parameters that you can specify for your resource.
 This resource does not provide output parameters. 
 {: shortdesc}
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_iam_service_id`
@@ -544,9 +544,9 @@ Review the output parameters that you can access after your resource is created.
 |`version` |String| The version of the service ID.|
 |`crn` |String| The CRN of the service ID.|
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_iam_service_policy`
@@ -729,9 +729,9 @@ The service policy can be imported using the service ID and service policy ID.
 $ terraform import ibm_iam_service_policy.example <service_ID>/<service_policy_ID>
 ```
 
-<br>
-<br>
-<br>
+
+
+
 
 
 
@@ -893,9 +893,9 @@ The user policy can be imported by using the IBMid and user policy ID.
 $ terraform import ibm_iam_user_policy.example <ibm_id>/<user_policy_ID>
 ```
 
-<br>
-<br>
-<br>
+
+
+
 
 
 ## `ibm_iam_user_invite`
