@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform provider cos, terraform resources cos, terraform resources object storage, create bucket with terraform
 
@@ -42,7 +42,7 @@ Retrieve information about an {{site.data.keyword.cos_full_notm}} bucket.
 The following example shows how to retrieve information about your {{site.data.keyword.cos_full_notm}} service instance and the bucket. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_resource_group" "cos_group" {
   name = "cos-resource-group"
 }
