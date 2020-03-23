@@ -42,7 +42,7 @@ Retrieve the details of an image that you can use in your {{site.data.keyword.vs
 The following example shows how you can retrieve information about the `centos-7.x-amd64` image. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_image" "ds_image" {
     name = "centos-7.x-amd64"
 }
@@ -91,7 +91,7 @@ Retrieve a list of all images that you can use in your {{site.data.keyword.vsi_i
 The following example shows how you can retrieve a list of supported images for a {{site.data.keyword.vsi_is_short}} instance.
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_images" "ds_images" {
 }
 ```
@@ -131,7 +131,7 @@ Retrieve the details for a profile that you can use in your {{site.data.keyword.
 The following example shows how you can retrieve information about the `b-2x8` profile. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_instance_profile" "profile" {
 	name = "b-2x8"
 }
@@ -175,7 +175,7 @@ Retrieve a list of all profiles that you can use in your {{site.data.keyword.vsi
 The following example shows how you can retrieve a list of supported {{site.data.keyword.vsi_is_short}} profiles. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_instance_profiles" "ds_instance_profiles" {
 }
 ```
@@ -215,7 +215,7 @@ Retrieve the details for a {{site.data.keyword.vpc_full}} regions.
 The following example shows how you can retrieve information about the `us-south` region. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_region" "ds_region" {
     name = "us-south"
 }
@@ -260,7 +260,7 @@ Retrieve the details for an SSH key that you uploaded in {{site.data.keyword.clo
 The following example shows how you can retrieve details about an SSH key that is named `mysshkey`. 
 {: shortdesc}
 
-```hcl
+```
 data "ibm_is_ssh_key" "ds_key" {
     name = "mysshkey"
 }
@@ -308,7 +308,7 @@ Retrieve details for a {{site.data.keyword.vpc_full}} subnet.
 The following example shows how you can retrieve information about a VPC subnet that you create with the `ibm_is_subnet` resource. 
 {: shortdesc} 
 
-```hcl
+```
 resource "ibm_is_vpc" "myvpc_resource" {
 	name = "myvpc"
 }
@@ -372,7 +372,7 @@ Retrieve information about a {{site.data.keyword.vpc_full}}.
 The following example shows how you can retrieve information about a VPC that is named `myvpc`. 
 {: shortdesc}
 
-```hcl
+```
 resource "ibm_is_vpc" "myvpc_resource" {
     name = "myvpc"
 }
@@ -428,7 +428,7 @@ Retrieve details about a supported {{site.data.keyword.vpc_full}} zone.
 The following example shows how you can retrieve details about the `us-south-1` zone. 
 {: shortdesc}
 
-```hcl
+```
 
 data "ibm_is_zone" "ds_zone" {
     name = "us-south-1"
@@ -476,7 +476,7 @@ Retrieve a list of supported {{site.data.keyword.vpc_full}} zones in an {{site.d
 The following example shows how you can list all zones in the `us-south` region. 
 {: shortdesc}
 
-```hcl
+```
 
 data "ibm_is_zones" "ds_zones" {
     region = "us-south"
