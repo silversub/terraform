@@ -105,7 +105,10 @@ terraform import ibm_cis.myorg <crn>
 ```
 {: pre}
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_cis_domain`
 {: #cis-domain}
@@ -219,7 +222,10 @@ Review the output parameters that you can access after your resource is created.
 |----|-----------|--------|
 |`certificate_status`|String| Value of: `none`, `initializing`, `authorizing`, or `active`.|
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_cis_dns_record`
 {: #cis-dns-record}
@@ -294,7 +300,10 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 ```
 {: pre}
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_cis_global_load_balancer`
 {: #cis-global-lb}
@@ -380,7 +389,10 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 ```
 {: pre}
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_cis_healthcheck`
 {: #cis-health}
@@ -456,7 +468,10 @@ terraform import ibm_cis_healthcheck.myorg 1aaaa111111aa11111111111a1a11a1:crn:v
 ```
 {: pre}
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_cis_origin_pool`
 {: #cis-origin-pool}
@@ -539,4 +554,7 @@ terraform import ibm_cis_origin_pool.myorg 1aaaa111111aa11111111111a1a11a1:crn:v
 ```
 {: pre}
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+

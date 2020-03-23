@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -74,7 +74,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `os` | String | The name and version of the operating system that is installed with the image. | 
 | `status` | String | The status of this image. |
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_is_images`
 {: #images}
@@ -111,7 +114,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `images.visibility` | String | The visibility of the image. Images that are marked as `public` are provided by IBM. `Private` images are custom images that you uploaded to {{site.data.keyword.cloud_notm}}. |
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_is_instance_profile` 
 {: #instance-profile}
@@ -152,7 +158,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `family` | String | The family that the profile belongs to. The family indicates what workloads are best suited for this type of profile. For more information, see [Profiles](/docs/vpc?topic=vpc-profiles).  |
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_is_instance_profiles`
 {: #instance-profiles}
@@ -189,7 +198,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `profiles.family` | String |The family that the profile belongs to. The family indicates what workloads are best suited for this type of profile. For more information, see [Profiles](/docs/vpc?topic=vpc-profiles).|
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_is_region`
 {: #region}
@@ -231,7 +243,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `endpoint` | String | The API endpoint of the region. |
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_is_ssh_key`
 {: #ssh-key}
@@ -276,7 +291,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `type` | String | The cryptosystem that is used by the SSH key. | 
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to view details about the SSH key. |
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_is_subnet`
 {: #subnet}
@@ -337,7 +355,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `zone` | String | The name of the zone where the subnet is provisioned. |
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_is_vpc`
 {: #vpc}
@@ -388,7 +409,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `tags` | Array | A list of tags that are associated with the VPC. |
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 
 ## `ibm_is_zone`
@@ -435,7 +459,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `status` | String | The status of zone. |
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_is_zones`
 {: #zones}
@@ -479,4 +506,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `zones` | Array | The list of zones in an {{site.data.keyword.cloud_notm}} region. |
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-19"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -86,7 +86,10 @@ Review the output parameters that you can access after your resource is created.
 |`status`|String|The Status of the cdn domain mapping.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 
 ## `ibm_compute_autoscale_group`
@@ -238,7 +241,10 @@ Review the output parameters that you can access after your resource is created.
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_compute_bare_metal`
 {: #bm}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-10"
+lastupdated: "2020-03-23"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -77,7 +77,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `size` | String | The size of the image in megabytes. |
 | `state` | String | The state for this image. | 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_pi_images`
 {: #power-images}
@@ -121,7 +124,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `image_info.name`| String | The name of the image. |
 | `image_info.state` | String | The state of the image. |
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 
 ## `ibm_pi_instance`
@@ -179,7 +185,10 @@ Review the output parameters that you can access after you retrieved your data s
 |`health_status`|String|The health of the instance.|
 
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_pi_instance_ip`
 {: #power-instance-ip}
@@ -228,7 +237,10 @@ Review the output parameters that you can access after you retrieved your data s
 |`type`|String| The type of the network that is attached to this instance.|
 |`ipoctet`|String|The IP octet of the network that is attached to this instance.|
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_pi_key`
 {: #power-ssh-key}
@@ -270,7 +282,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `id` | String | The unique identifier of the SSH key. |
 | `sshkey` | String | The public SSH key value. |
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_pi_network`
 {: #power-network}
@@ -319,7 +334,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `type`|String|The type of network.|
 |`cidr`|String|The CIDR of the network.|
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_pi_public_network`
 {: #power-public-network}
@@ -359,7 +377,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `type` | String | The type of VLAN that the network is connected to. |
 | `vlan_id` | String | The ID of the VLAN that the network is connected to. |
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_pi_tenant`
 {: #power-tenant}
@@ -404,7 +425,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `cloudinstances.cloud_instance_id`|String|The unique identifier of the cloud instance.|
 | `cloudinstances.region`|String|The region of the cloud instance.|
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_pi_volume`
 {: #power-volume}
@@ -449,7 +473,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `state` | String | The state of the volume. |
 | `type` | String | The disk type that is used for this volume. |
 
-{[white-space.md]}
+<br>
+<br>
+<br>
+
 
 ## `ibm_pi_instance_volumes`
 {: #power-instance-volumes}
