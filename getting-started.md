@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-17"
+lastupdated: "2020-03-24"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -1001,6 +1001,8 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    terraform destroy
    ```
    {: pre}
+   
+
 
 **What's next?** </br>
 [Explore other {{site.data.keyword.cloud_notm}} resources](/docs/terraform?topic=terraform-tf-provider) that you can provision with Terraform. 
