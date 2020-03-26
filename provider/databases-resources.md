@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -70,7 +70,7 @@ resource "ibm_database" "<your_database>" {
 }
 
 output "ICD Etcd database connection string" {
-  value = "http://${ibm_database.test_acc.connectionstrings[0].composed}"
+  value = http://ibm_database.test_acc.connectionstrings[0].composed
 }
 ```
 

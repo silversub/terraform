@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-19"
+lastupdated: "2020-03-26"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -123,12 +123,13 @@ resource "ibm_iam_service_policy" "policy" {
   resources = [{
     service              = "kms"
     region               = "us-south"
-    resource_instance_id = "${element(split(":",ibm_resource_instance.instance.id),7)}"
-  }]
+    resource_instance_id = element(split(":",ibm_resource_instance.instance.id),7)
+  }
+  ]
 }
 
 data "ibm_iam_service_policy" "testacc_ds_service_policy" {
-  iam_service_id = "${ibm_iam_service_policy.policy.iam_service_id}"
+  iam_service_id = ibm_iam_service_policy.policy.iam_service_id
 }
 
 ```
@@ -180,11 +181,12 @@ resource "ibm_iam_user_policy" "policy" {
   resources = [{
     service = "kms"
     region  = "us-south"
-  }]
+  }
+  ]
 }
 
 data "ibm_iam_user_policy" "testacc_ds_user_policy" {
-  ibm_id = "${ibm_iam_user_policy.policy.ibm_id}"
+  ibm_id = ibm_iam_user_policy.policy.ibm_id
 }
 
 ```

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform provider cos, terraform resources cos, terraform resources object storage, create bucket with terraform
 
@@ -49,19 +49,19 @@ data "ibm_resource_group" "cos_group" {
 
 data "ibm_resource_instance" "cos_instance" {
   name              = "cos-instance"
-  resource_group_id = "${data.ibm_resource_group.cos_group.id}"
+  resource_group_id = data.ibm_resource_group.cos_group.id
   service           = "cloud-object-storage"
 }
 
 data "ibm_cos_bucket" "standard-ams03" {
   bucket_name = "a-standard-bucket-at-ams"
-  resource_instance_id = "${data.ibm_resource_instance.cos_instance.id}"
+  resource_instance_id = data.ibm_resource_instance.cos_instance.id
   bucket_type = "single_site_location"
   region = "ams03"
 }
 
 output "bucket_private_endpoint" {
-  value = "${data.ibm_cos_bucket.standard-ams03.s3_endpoint_private}"
+  value = data.ibm_cos_bucket.standard-ams03.s3_endpoint_private
 }
 ```
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-17"
+lastupdated: "2020-03-26"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -209,11 +209,11 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    variable "softlayer_api_key" {}
 
    provider "ibm" {
-     ibmcloud_api_key   = "${var.ibmcloud_api_key}"
+     ibmcloud_api_key   = var.ibmcloud_api_key
      generation         = 1
      region             = "us-south"
-     softlayer_username = "${var.softlayer_username}"
-     softlayer_api_key  = "${var.softlayer_api_key}"
+     softlayer_username = var.softlayer_username
+     softlayer_api_key  = "var.softlayer_api_key
    }
    ```
    {: codeblock}
@@ -281,70 +281,71 @@ To create a VPC and a virtual server instance:
    Example configuration file: 
    
    ```
-   variable "ssh_key" {}
+   variable "ssh_key" {
+   }
 
    locals {
-        BASENAME = "<name>" 
-        ZONE     = "us-south-1"
-      }
+     BASENAME = "<name>"
+     ZONE     = "us-south-1"
+   }
 
-   resource ibm_is_vpc "vpc" {
+   resource "ibm_is_vpc" "vpc" {
      name = "${local.BASENAME}-vpc"
    }
 
-   resource ibm_is_security_group "sg1" {
+   resource "ibm_is_security_group" "sg1" {
      name = "${local.BASENAME}-sg1"
-     vpc  = "${ibm_is_vpc.vpc.id}"
+     vpc  = ibm_is_vpc.vpc.id
    }
 
    # allow all incoming network traffic on port 22
    resource "ibm_is_security_group_rule" "ingress_ssh_all" {
-     group     = "${ibm_is_security_group.sg1.id}"
+     group     = ibm_is_security_group.sg1.id
      direction = "inbound"
-     remote    = "0.0.0.0/0"                       
-     
-     tcp = {
+     remote    = "0.0.0.0/0"
+
+     tcp {
        port_min = 22
        port_max = 22
      }
    }
-   
-   resource ibm_is_subnet "subnet1" {
-     name = "${local.BASENAME}-subnet1"
-     vpc  = "${ibm_is_vpc.vpc.id}"
-     zone = "${local.ZONE}"
+
+   resource "ibm_is_subnet" "subnet1" {
+     name                     = "${local.BASENAME}-subnet1"
+     vpc                      = ibm_is_vpc.vpc.id
+     zone                     = local.ZONE
      total_ipv4_address_count = 256
    }
 
-   data ibm_is_image "ubuntu" {
+   data "ibm_is_image" "ubuntu" {
      name = "ubuntu-18.04-amd64"
    }
-   
-   data ibm_is_ssh_key "ssh_key_id" {
-     name = "${var.ssh_key}"
+
+   data "ibm_is_ssh_key" "ssh_key_id" {
+     name = var.ssh_key
    }
 
-   resource ibm_is_instance "vsi1" {
+   resource "ibm_is_instance" "vsi1" {
      name    = "${local.BASENAME}-vsi1"
-     vpc     = "${ibm_is_vpc.vpc.id}"
-     zone    = "${local.ZONE}"
-     keys    = ["${data.ibm_is_ssh_key.ssh_key_id.id}"]
-     image   = "${data.ibm_is_image.ubuntu.id}"
+     vpc     = ibm_is_vpc.vpc.id
+     zone    = local.ZONE
+     keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
+     image   = data.ibm_is_image.ubuntu.id
      profile = "cc1-2x4"
 
-     primary_network_interface = {
-       subnet          = "${ibm_is_subnet.subnet1.id}"
-       security_groups = ["${ibm_is_security_group.sg1.id}"]
+     primary_network_interface {
+       subnet          = ibm_is_subnet.subnet1.id
+       security_groups = [ibm_is_security_group.sg1.id]
      }
    }
 
-   resource ibm_is_floating_ip "fip1" {
+   resource "ibm_is_floating_ip" "fip1" {
      name   = "${local.BASENAME}-fip1"
-     target = "${ibm_is_instance.vsi1.primary_network_interface.0.id}"
+     target = ibm_is_instance.vsi1.primary_network_interface[0].id
    }
 
-   output sshcommand {
-     value = "ssh root@${ibm_is_floating_ip.fip1.address}"
+   output "sshcommand" {
+     value = "ssh root@ibm_is_floating_ip.fip1.address"
    }
    ```
    {: codeblock}
@@ -736,17 +737,17 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
 1. Create a configuration file that is named `classic-vsi.tf` with the following content. Store this file in the folder that you created earlier. 
    ```
    resource "ibm_compute_vm_instance" "vm1" {
-   hostname = "vm1"
-   domain = "example.com"
-   os_reference_code = "DEBIAN_8_64"
-   datacenter = "dal10"
-   network_speed = 10
-   hourly_billing = true
+   hostname             = "vm1"
+   domain               = "example.com"
+   os_reference_code    = "DEBIAN_8_64"
+   datacenter           = "dal10"
+   network_speed        = 10
+   hourly_billing       = true
    private_network_only = false
-   cores = 1
-   memory = 1024
-   disks = [25]
-   local_disk = false
+   cores                = 1
+   memory               = 1024
+   disks                = [25]
+   local_disk           = false
    }
    ```
    {: codeblock}

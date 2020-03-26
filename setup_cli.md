@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-05"
+lastupdated: "2020-03-26"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -122,7 +122,55 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       ```
       {: screen}
       
+## Migrating your Terraform configuration files from version 0.11 to version 0.12
+{: #tf-0.12-migration}
+  
+Update your Terraform configuration files from version 0.11 to version 0.12 so that you can run your Terraform code with the Terraform version 0.12 
 
+With the release of Terraform version 0.12, the syntax for configuration files changed. If you want to run your infrastructure code by using Terraform version 0.12, you must first update your configuration files to apply the new syntax. 
+{: important}
+
+1. Follow the [instructions](#install_cli) to install Terraform version 0.12 and the latest release of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform. 
+2. Copy your Terraform version 0.11 configuration files into your Terraform working directory. 
+   ```
+   mv <tf_config_file_path> $HOME/terraform
+   ```
+   {: pre}
+   
+3. Use the Terraform version 0.12 CLI to automatically apply the new syntax to your Terraform configuration files. 
+   ```
+   terraform 0.12upgrade
+   ```
+   {: pre}
+   
+   Example output: 
+   ```
+   This command will rewrite the configuration files in the given directory so
+   that they use the new syntax features from Terraform v0.12, and will identify
+   any constructs that may need to be adjusted for correct operation with
+   Terraform v0.12.
+
+   We recommend using this command in a clean version control work tree, so that
+   you can easily see the proposed changes as a diff against the latest commit.
+   If you have uncommited changes already present, we recommend aborting this
+   command and dealing with them before running this command again.
+
+   Would you like to upgrade the module in the current directory?
+     Only 'yes' will be accepted to confirm.
+
+     Enter a value: yes
+
+   -----------------------------------------------------------------------------
+
+   Upgrade complete!
+
+   The configuration files were upgraded successfully. Use your version control
+   system to review the proposed changes, make any necessary adjustments, and
+   then commit.
+   ```
+   {: screen}
+   
+4. Open your Terraform configuration file to verify the changes. 
 
 ## Retrieving required credentials for your resources
 {: #retrieve_credentials}
@@ -277,11 +325,11 @@ The cloud provider configuration file is named `provider.tf`. Terraform automati
    variable "iaas_classic_api_key" {}
    
    provider "ibm" {
-   ibmcloud_api_key    = "${var.ibmcloud_api_key}"
+   ibmcloud_api_key = var.ibmcloud_api_key
    generation = 1
    region = "us-south"
-   iaas_classic_username = "${var.iaas_classic_username}"
-   iaas_classic_api_key  = "${var.iaas_classic_api_key}"
+   iaas_classic_username = var.iaas_classic_username
+   iaas_classic_api_key  = var.iaas_classic_api_key
    }
    ```
    {: codeblock}

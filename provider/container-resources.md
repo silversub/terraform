@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-19" 
+lastupdated: "2020-03-26" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -12,7 +12,7 @@ subcollection: terraform
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
-{:screen: .screen}
+{:screen: .screen} 
 {:pre: .pre}
 {:table: .aria-labeledby="caption"}
 {:codeblock: .codeblock}
@@ -253,8 +253,8 @@ resource "ibm_container_cluster" "testacc_cluster" {
     level = "Normal"
     type = "slack"
     url = "https://hooks.slack.com/services/yt7rebjhgh2r4rd44fjk"
-  }]
-
+  }
+ ]
 }
 ```
 {: codeblock}
@@ -344,7 +344,7 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- |
 | `datacenter` | String | Required | The datacenter where you want to provision the worker nodes. The zone that you choose must be supported in the region where you want to create the cluster. To find supported zones, run `ibmcloud ks zones`. |
 | `default_pool_size` | Integer | Optional | The number of worker nodes that you want to add to the default worker pool. |
-| `disk_encryption` | Boolean | Optional | If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks](docs/containers?topic=containers-security#encrypted_disk).|
+| `disk_encryption` | Boolean | Optional | If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks](/docs/containers?topic=containers-security#encrypted_disk).|
 | `hardware` | String | Optional | The level of hardware isolation for your worker node. Use `dedicated` to have available physical resources dedicated to you only, or `shared` to allow physical resources to be shared with other IBM customers. This option is available for virtual machine worker node flavors only. |
 | `gateway_enabled`|Boolean|Optional|Set to **true** if you want to automatically create a gateway-enabled cluster. If `gateway_enabled` is set to **true**, then `private_service_endpoint` must be set to **true** at the same time.|
 | `kube_version` | String | Optional | The Kubernetes or OpenShift version that you want to set up in your cluster. If the version is not specified, the default version in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-cs_versions) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-openshift_versions#version_types) is used. For example, to specify Kubernetes version 1.16, enter `1.16`. For OpenShift clusters, you can specify version `3.11_openshift` or `4.3.1_openshift`.|
@@ -495,7 +495,7 @@ resource "ibm_container_worker_pool" "testacc_workerpool" {
   disk_encryption  = "true"
   region           = "eu-de"
 
-  labels = {
+  labels {
     "test" = "test-pool"
   }
 
@@ -576,7 +576,7 @@ resource "ibm_container_worker_pool" "test_pool" {
   size_per_zone    = 2
   hardware         = "shared"
   disk_encryption  = "true"
-  labels = {
+  labels {
     "test" = "test-pool"
 
     "test1" = "test-pool1"
@@ -584,7 +584,7 @@ resource "ibm_container_worker_pool" "test_pool" {
 }
 resource "ibm_container_worker_pool_zone_attachment" "test_zone" {
   cluster         = "mycluster"
-  worker_pool     = "${element(split("/",ibm_container_worker_pool.test_pool.id),1)}"
+  worker_pool     = element(split("/",ibm_container_worker_pool.test_pool.id),1)
   zone            = "dal12"
   private_vlan_id = "2320267"
   public_vlan_id  = "2320265"

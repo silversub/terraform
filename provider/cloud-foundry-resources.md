@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-19"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -50,7 +50,7 @@ data "ibm_space" "space" {
 
 resource "ibm_app" "app" {
   name                 = "my-app"
-  space_guid           = "${data.ibm_space.space.id}"
+  space_guid           = data.ibm_space.space.id
   app_path             = "hello.zip"
   wait_timeout_minutes = 90
   buildpack            = "sdk-for-nodejs"
@@ -117,7 +117,7 @@ data "ibm_org" "orgdata" {
 
 resource "ibm_app_domain_private" "domain" {
   name     = "example.com"
-  org_guid = "${data.ibm_org.orgdata.id}"
+  org_guid = data.ibm_org.orgdata.id
   tags     = ["tag1", "tag2"]
 }
 ```
@@ -217,8 +217,8 @@ data "ibm_app_domain_shared" "domain" {
 }
 
 resource "ibm_app_route" "route" {
-  domain_guid = "${data.ibm_app_domain_shared.domain.id}"
-  space_guid  = "${data.ibm_space.spacedata.id}"
+  domain_guid = data.ibm_app_domain_shared.domain.id
+  space_guid  = data.ibm_space.spacedata.id
   host        = "myhost"
   path        = "/app"
 }
@@ -338,7 +338,7 @@ data "ibm_space" "spacedata" {
 
 resource "ibm_service_instance" "service_instance" {
   name       = "myspeech"
-  space_guid = "${data.ibm_space.spacedata.id}"
+  space_guid = data.ibm_space.spacedata.id
   service    = "speech_to_text"
   plan       = "lite"
   tags       = ["cluster-service", "cluster-bind"]
@@ -396,7 +396,7 @@ data "ibm_service_instance" "service_instance" {
 
 resource "ibm_service_key" "serviceKey" {
   name                  = "mycloudantkey"
-  service_instance_guid = "${data.ibm_service_instance.service_instance.id}"
+  service_instance_guid = data.ibm_service_instance.service_instance.id
 }
 ```
 

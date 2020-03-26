@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform resource group, terraform resource management, terraform iam services
 
@@ -92,7 +92,7 @@ data "ibm_resource_group" "group" {
 data "ibm_resource_instance" "testacc_ds_resource_instance" {
   name              = "myobjectstore"
   location          = "global"
-  resource_group_id = "${data.ibm_resource_group.group.id}"
+  resource_group_id = data.ibm_resource_group.group.id
   service           = "cloud-object-storage"
 }
 ```
@@ -138,7 +138,7 @@ The following example retrieves information about the `myobjectKey` access key.
 ```
 data "ibm_resource_key" "resourceKeydata" {
   name                  = "myobjectKey"
-  resource_instance_id  = "${ibm_resource_instance.resource.id}"
+  resource_instance_id  = ibm_resource_instance.resource.id
 }
 ```
 

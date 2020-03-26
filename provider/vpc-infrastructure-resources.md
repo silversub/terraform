@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -46,7 +46,7 @@ resource "ibm_is_instance" "testacc_instance" {
   image   = "7eb4e35b-4257-56f8-d7da-326d85452591"
   profile = "b-2x8"
 
-  primary_network_interface = {
+  primary_network_interface {
     port_speed = "1000"
     subnet     = "70be8eae-134c-436e-a86e-04849f84cb34"
   }
@@ -58,7 +58,7 @@ resource "ibm_is_instance" "testacc_instance" {
 
 resource "ibm_is_floating_ip" "testacc_floatingip" {
   name   = "testfip1"
-  target = "${ibm_is_instance.testacc_instance.primary_network_interface.0.id}"
+  target = ibm_is_instance.testacc_instance.primary_network_interface.0.id
 }
 ```
 {: codeblock}
@@ -498,7 +498,7 @@ resource "ibm_is_vpc" "testacc_vpc" {
 
 resource "ibm_is_public_gateway" "testacc_gateway" {
     name = "test_gateway"
-    vpc = "${ibm_is_vpc.testacc_vpc.id}"
+    vpc = ibm_is_vpc.testacc_vpc.id
     zone = "us-south-1"
 
     //User can configure timeouts
@@ -665,7 +665,7 @@ resource "ibm_is_vpc" "testacc_vpc" {
 resource "ibm_is_vpc_address_prefix" "testacc_vpc_address_prefix" {
   name = "test"
   zone   = "us-south-1"
-  vpc         = "${ibm_is_vpc.testacc_vpc.id}"
+  vpc         = ibm_is_vpc.testacc_vpc.id
   cidr        = "10.240.0.0/24"
 }
 
@@ -725,7 +725,7 @@ resource "ibm_is_vpc" "testacc_vpc" {
 
 resource "ibm_is_security_group" "testacc_security_group" {
 	name = "test"
-	vpc = "${ibm_is_vpc.testacc_vpc.id}"
+	vpc = ibm_is_vpc.testacc_vpc.id
 }
 ```
 
@@ -793,20 +793,20 @@ resource "ibm_is_vpc" "testacc_vpc" {
 
 resource "ibm_is_security_group" "testacc_security_group" {
 	name = "test"
-	vpc = "${ibm_is_vpc.testacc_vpc.id}"
+	vpc = ibm_is_vpc.testacc_vpc.id
 }
 
 resource "ibm_is_security_group_rule" "testacc_security_group_rule_all" {
-	group = "${ibm_is_security_group.testacc_security_group.id}"
+	group = ibm_is_security_group.testacc_security_group.id
 	direction = "inbound"
 	remote = "127.0.0.1"
  }
  
  resource "ibm_is_security_group_rule" "testacc_security_group_rule_icmp" {
-	group = "${ibm_is_security_group.testacc_security_group.id}"
+	group = ibm_is_security_group.testacc_security_group.id
 	direction = "inbound"
 	remote = "127.0.0.1"
-	icmp = {
+	icmp {
 		code = 20
 		type = 30
 	}
@@ -814,20 +814,21 @@ resource "ibm_is_security_group_rule" "testacc_security_group_rule_all" {
  }
 
  resource "ibm_is_security_group_rule" "testacc_security_group_rule_udp" {
-	group = "${ibm_is_security_group.testacc_security_group.id}"
+	group = ibm_is_security_group.testacc_security_group.id
 	direction = "inbound"
 	remote = "127.0.0.1"
-	udp = {
+	udp {
 		port_min = 805
 		port_max = 807
 	}
  }
 
  resource "ibm_is_security_group_rule" "testacc_security_group_rule_tcp" {
-	group = "${ibm_is_security_group.testacc_security_group.id}"
-	direction = "egress"
+	group = ibm_is_security_group.testacc_security_group.id
+	direction = "outbound"
+
 	remote = "127.0.0.1"
-	tcp = {
+	tcp {
 		port_min = 8080
 		port_max = 8080
 	}
@@ -964,7 +965,7 @@ resource "ibm_is_vpc" "testacc_vpc" {
 
 resource "ibm_is_subnet" "testacc_subnet" {
 	name = "test_subnet"
-	vpc = "${ibm_is_vpc.testacc_vpc.id}"
+	vpc = ibm_is_vpc.testacc_vpc.id
 	zone = "us-south-1"
 	ipv4_cidr_block = "192.168.0.0/1"
 
