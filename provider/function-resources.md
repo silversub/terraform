@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -50,9 +50,9 @@ The following example creates a JavaScript action.
 resource "ibm_function_action" "nodehello" {
   name = "myaction"
 
-  exec = {
+  exec {
     kind = "nodejs:6"
-    code = "${file("hellonode.js")}"
+    code = file("hellonode.js")
   }
 }
 
@@ -67,9 +67,9 @@ The following example shows how to pass parameters to an action.
 resource "ibm_function_action" "nodehellowithparameter" {
   name = "hellonodeparam"
 
-  exec = {
+  exec {
     kind = "nodejs:6"
-    code = "${file("hellonodewithparameter.js")}"
+    code = file("hellonodewithparameter.js")
   }
 
   user_defined_parameters = <<EOF
@@ -80,8 +80,6 @@ resource "ibm_function_action" "nodehellowithparameter" {
     }
         ]
         EOF
-}
-
 ```
 
 #### Packaging an action as a Node.js module
@@ -94,9 +92,9 @@ The following example packages a JavaScript action to a module.
 resource "ibm_function_action" "nodezip" {
   name = "nodezip"
 
-  exec = {
+  exec {
     kind = "nodejs:6"
-    code = "${base64encode("${file("nodeaction.zip")}")}"
+    code = base64encode(file("nodeaction.zip"))
   }
 }
 
@@ -112,7 +110,7 @@ The following example creates an action sequence.
 resource "ibm_function_action" "swifthello" {
   name = "actionsequence"
 
-  exec = {
+  exec {
     kind = "sequence"
     components = ["/whisk.system/utils/split","/whisk.system/utils/sort"]
   }
@@ -130,9 +128,9 @@ The following example creates a Docker action.
 resource "ibm_function_action" "swifthello" {
   name = "dockeraction"
 
-  exec = {
+  exec {
     kind = "janesmith/blackboxdemo"
-    image = "${file("helloSwift.swift")}"
+    image = file("helloSwift.swift")
   }
 }
 
@@ -316,9 +314,9 @@ The following example creates a rule for an action.
 resource "ibm_function_action" "action" {
   name = "hello"
 
-  exec = {
+  exec {
     kind = "nodejs:6"
-    code = "${file("test-fixtures/hellonode.js")}"
+    code = file("test-fixtures/hellonode.js")
   }
 }
 
@@ -330,12 +328,12 @@ resource "ibm_function_trigger" "trigger" {
       name = "/whisk.system/alarms/alarm"
 
       parameters = <<EOF
-					[
-						{
-							"key":"cron",
-							"value":"0 */2 * * *"
-						}
-					]
+                    [
+                        {
+                            "key":"cron",
+                            "value":"0 */2 * * *"
+                        }
+                    ]
                 EOF
     },
   ]
@@ -343,8 +341,8 @@ resource "ibm_function_trigger" "trigger" {
 
 resource "ibm_function_rule" "rule" {
   name         = "alarmrule"
-  trigger_name = "${ibm_function_trigger.trigger.name}"
-  action_name  = "${ibm_function_action.action.name}"
+  trigger_name = ibm_function_trigger.trigger.name
+  action_name  = ibm_function_action.action.name
 }
 
 ```

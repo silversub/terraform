@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -114,10 +114,10 @@ resource "ibm_compute_autoscale_group" "test_scale_group" {
     termination_policy = "CLOSEST_TO_NEXT_CHARGE"
     virtual_server_id = 267513
     port = 8080
-    health_check = {
+    health_check {
       type = "HTTP"
     }
-    virtual_guest_member_template = {
+    virtual_guest_member_template {
       hostname = "test_virtual_guest_name"
       domain = "example.com"
       cores = 1
@@ -192,21 +192,21 @@ resource "ibm_compute_autoscale_policy" "test_scale_policy" {
     scale_type = "RELATIVE"
     scale_amount = 1
     cooldown = 30
-    scale_group_id = "${ibm_compute_autoscale_group.sample-http-cluster.id}"
-    triggers = {
+    scale_group_id = ibm_compute_autoscale_group.sample-http-cluster.id
+    triggers {
         type = "RESOURCE_USE"
-        watches = {
+        watches {
                     metric = "host.cpu.percent"
                     operator = ">"
                     value = "80"
                     period = 120
         }
     }
-    triggers = {
+    triggers {
         type = "ONE_TIME"
         date = "2016-07-30T23:55:00-00:00"
     }
-    triggers = {
+    triggers {
         type = "REPEATING"
         schedule = "0 1 ? * MON,WED *"
     }
@@ -527,8 +527,8 @@ In the following example, you can create a monitor:
 
 ```
 resource "ibm_compute_monitor" "test_monitor" {
-    guest_id = ${ibm_compute_vm_instance.test_server.id}
-    ip_address = ${ibm_compute_vm_instance.test_server.id.ipv4_address}
+    guest_id = ibm_compute_vm_instance.test_server.id
+    ip_address = ibm_compute_vm_instance.test_server.id.ipv4_address
     query_type_id = 1
     response_action_id = 1
     wait_cycles = 5
@@ -722,8 +722,8 @@ In the following example, you can use a certificate on file:
 
 ```
 resource "ibm_compute_ssl_certificate" "test_cert" {
-  certificate = "${file("cert.pem")}"
-  private_key = "${file("key.pem")}"
+  certificate = file("cert.pem")
+  private_key = file("key.pem")
 }
 ```
 
@@ -1206,8 +1206,8 @@ This resource is typically used in conjunction with IBM Cloud Internet Services 
 
 ```
 resource "ibm_dns_domain_registration_nameservers" "dnstestdomain" {
-    dns_registration_id = "${data.ibm_dns_domain_registration.dnstestdomain.id}"
-    name_servers = "${ibm_cis_domain.dnstestdomain.name_servers}" 
+    dns_registration_id = data.ibm_dns_domain_registration.dnstestdomain.id
+    name_servers = ibm_cis_domain.dnstestdomain.name_servers
 }
 data "ibm_dns_domain_registration" "dnstestdomain" {
     name = "dnstestdomain.com"
@@ -1221,7 +1221,7 @@ Or
 
 ```
 resource "ibm_dns_domain_registration_nameservers" "dns-domain-test" {
-    dns_registration_id = "${data.ibm_dns_domain_registration.dns-domain-test.id}"
+    dns_registration_id = data.ibm_dns_domain_registration.dns-domain-test.id
     name_servers = ["ns006.name.ibm.cloud.com", "ns017.name.ibm.cloud.com"] 
 }
 data "ibm_dns_domain_registration" "dns-domain-test" {
@@ -1365,7 +1365,7 @@ resource "ibm_dns_domain" "main" {
 
 resource "ibm_dns_record" "www" {
     data = "123.123.123.123"
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
     host = "www.example.com"
     responsible_person = "user@softlayer.com"
     ttl = 900
@@ -1380,7 +1380,7 @@ Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softl
 ```
 resource "ibm_dns_record" "aaaa" {
     data = "fe80:0000:0000:0000:0202:b3ff:fe1e:8329"
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
     host = "www.example.com"
     responsible_person = "user@softlayer.com"
     ttl = 1000
@@ -1395,7 +1395,7 @@ Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs] to properly imple
 ```
 resource "ibm_dns_record" "cname" {
     data = "real-host.example.com."
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
     host = "alias.example.com"
     responsible_person = "user@softlayer.com"
     ttl = 900
@@ -1410,7 +1410,7 @@ Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softl
 ```
 resource "ibm_dns_record" "recordNS" {
     data = "ns.example.com."
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
     host = "example.com"
     responsible_person = "user@softlayer.com"
     ttl = 900
@@ -1425,7 +1425,7 @@ Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softl
 ```
 resource "sibm_dns_record" "recordMX-1" {
     data = "mail-1"
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
     host = "@"
     mx_priority = "10"
     responsible_person = "user@softlayer.com"
@@ -1441,7 +1441,7 @@ Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softl
 ```
 resource "ibm_dns_record" "recordSOA" {
     data = "ns1.example.com. abuse.example.com. 2018101002 7200 600 1728000 43200"
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
     host = "example.com"
     responsible_person = "user@softlayer.com"
     ttl = 900
@@ -1456,7 +1456,7 @@ Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softl
 ```
 resource "ibm_dns_record" "recordSPF" {
     data = "v=spf1 mx:mail.example.org ~all"
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
     host = "mail-1"
     responsible_person = "user@softlayer.com"
     ttl = 900
@@ -1471,7 +1471,7 @@ Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softl
 ```
 resource "ibm_dns_record" "recordTXT" {
     data = "host"
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
     host = "A SPF test host"
     responsible_person = "user@softlayer.com"
     ttl = 900
@@ -1486,7 +1486,7 @@ Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softl
 ```
 resource "ibm_dns_record" "recordSRV" {
     data = "ns1.example.org"
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
     host = "hosta-srv.com"
     responsible_person = "user@softlayer.com"
     ttl = 900
@@ -1506,7 +1506,7 @@ Review the [IBM Cloud Classic Infrastructure (SoftLayer) docs](http://sldn.softl
 ```
 resource "ibm_dns_record" "recordPTR" {
     data = "ptr.example.com"
-    domain_id = "${ibm_dns_domain.main.id}"
+    domain_id = ibm_dns_domain.main.id
 
 ## The host is the last octet of IP address in the range of the subnet
     host = "45"  
@@ -1690,8 +1690,8 @@ resource "ibm_firewall" "demofw" {
 }
 
 resource "ibm_firewall_policy" "rules" {
- firewall_id = "${ibm_firewall.demofw.id}"
- rules = {
+ firewall_id = ibm_firewall.demofw.id
+ rules {
       "action" = "permit"
       "src_ip_address"= "10.1.1.0"
       "src_ip_cidr"= 24
@@ -1702,7 +1702,7 @@ resource "ibm_firewall_policy" "rules" {
       "notes"= "Permit from 10.1.1.0"
       "protocol"= "udp"
  }
-  rules = {
+ rules {
        "action" = "deny"
        "src_ip_address"= "10.1.1.0"
        "src_ip_cidr"= 24
@@ -1939,7 +1939,6 @@ resource "ibm_lbaas" "lbaas" {
   ]
 }
 
-
 ```
 
 ### Input parameters
@@ -2026,14 +2025,14 @@ resource "ibm_lbaas" "lbaas" {
 }
 
 resource "ibm_lbaas_health_monitor" "lbaas_hm" {
-  protocol = "${ibm_lbaas.lbaas.health_monitors.0.protocol}"
-  port = "${ibm_lbaas.lbaas.health_monitors.0.port}"
+  protocol = ibm_lbaas.lbaas.health_monitors.0.protocol
+  port = ibm_lbaas.lbaas.health_monitors.0.port
   timeout = 3
   interval = 5
   max_retries = 6
   url_path = "/"
-  lbaas_id = "${ibm_lbaas.lbaas.id}"
-  monitor_id = "${ibm_lbaas.lbaas.health_monitors.0.monitor_id}"
+  lbaas_id = ibm_lbaas.lbaas.id
+  monitor_id = ibm_lbaas.lbaas.health_monitors.0.monitor_id
 }
 
 ```
@@ -2121,9 +2120,9 @@ resource "ibm_lbaas" "lbaas" {
 
 resource "ibm_lbaas_server_instance_attachment" "lbaas_member" {
   count				 = 2
-  private_ip_address = "${element(ibm_compute_vm_instance.vm_instances.*.ipv4_address_private,count.index)}"
+  private_ip_address = element(ibm_compute_vm_instance.vm_instances.*.ipv4_address_private,count.index)
   weight             = 40
-  lbaas_id           = "${ibm_lbaas.lbaas.id}"
+  lbaas_id           = ibm_lbaas.lbaas.id
   depends_on         = ["ibm_lbaas.lbaas.id"]
 }
 
@@ -2171,10 +2170,10 @@ In the following example, you can create a local load balancer service:
 resource "ibm_lb_service" "test_lb_local_service" {
     port = 80
     enabled = true
-    service_group_id = "${ibm_lb_service_group.test_service_group.service_group_id}"
+    service_group_id = ibm_lb_service_group.test_service_group.service_group_id
     weight = 1
     health_check_type = "DNS"
-    ip_address_id = "${ibm_compute_vm_instance.test_server.ip_address_id}"
+    ip_address_id = ibm_compute_vm_instance.test_server.ip_address_id
 }
 
 ```
@@ -2215,7 +2214,7 @@ resource "ibm_lb_service_group" "test_service_group" {
     port = 82
     routing_method = "CONSISTENT_HASH_IP"
     routing_type = "HTTP"
-    load_balancer_id = "${ibm_lb.test_lb_local.id}"
+    load_balancer_id = "ibm_lb.test_lb_local.id
     allocation = 100
 }
 ```
@@ -2348,17 +2347,16 @@ resource "ibm_lb_vpx" "test_sec" {
     version = "10.5"
     plan = "Standard"
     ip_count = 2
-    public_vlan_id = "${ibm_lb_vpx.test_pri.public_vlan_id}"
-    private_vlan_id = "${ibm_lb_vpx.test_pri.private_vlan_id}"
-    public_subnet = "${ibm_lb_vpx.test_pri.public_subnet}"
-    private_subnet = "${ibm_lb_vpx.test_pri.private_subnet}"
-}
+    public_vlan_id = ibm_lb_vpx.test_pri.public_vlan_id
+    private_vlan_id = ibm_lb_vpx.test_pri.private_vlan_id
+    public_subnet = ibm_lb_vpx.test_pri.public_subnet
+    private_subnet = ibm_lb_vpx.test_pri.private_subnet
 
 
 ## Configure high availability with the primary and secondary NetScaler VPXs
 resource "ibm_lb_vpx_ha" "test_ha" {
-    primary_id = "${ibm_lb_vpx.test_pri.id}"
-    secondary_id = "${ibm_lb_vpx.test_sec.id}"
+    primary_id = ibm_lb_vpx.test_pri.id
+    secondary_id = ibm_lb_vpx.test_sec.id
     stay_secondary = false
 }
 ```
@@ -2404,8 +2402,8 @@ In the following example, you can create a VPX load balancer:
 ```
 resource "ibm_lb_vpx_service" "test_service" {
   name = "test_load_balancer_service"
-  vip_id = "${ibm_lb_vpx_vip.testacc_vip.id}"
-  destination_ip_address = "${ibm_compute_vm_instance.test_server.ipv4_address}"
+  vip_id = ibm_lb_vpx_vip.testacc_vip.id
+  destination_ip_address = ibm_compute_vm_instance.test_server.ipv4_address
   destination_port = 80
   weight = 55
   connection_limit = 5000
@@ -2497,13 +2495,13 @@ resource "ibm_lb_vpx" "test" {
 
 resource "ibm_lb_vpx_vip" "test_vip1" {
     name = "test_vip1"
-    nad_controller_id = "${ibm_lb_vpx.test.id}"
+    nad_controller_id = ibm_lb_vpx.test.id
     load_balancing_method = "rr"
     source_port = 443
 
 ## SSL type provides SSL offload
     type = "SSL"
-    virtual_ip_address = "${ibm_lb_vpx.test.vip_pool[0]}"
+    virtual_ip_address = ibm_lb_vpx.test.vip_pool[0]
 
 ## Use a security certificate in the SoftLayer portal
     security_certificate_id = 80347
@@ -2511,7 +2509,7 @@ resource "ibm_lb_vpx_vip" "test_vip1" {
 
 resource "ibm_lb_vpx_service" "testacc_service1" {
   name = "test_load_balancer_service1"
-  vip_id = "${ibm_lb_vpx_vip.test_vip1.id}"
+  vip_id = ibm_lb_vpx_vip.test_vip1.id
 
 ## 10.6.218.166 should provides HTTP service with port 80
   destination_ip_address = "10.66.218.166"
@@ -2725,7 +2723,7 @@ For more information about getting started, see the [IBM Virtual Router Applianc
 resource "ibm_network_gateway" "gateway" {
   name = "gateway"
 
-  members {
+  members = [{
     hostname             = "my-virtual-router"
     domain               = "terraformuat1.ibm.com"
     datacenter           = "ams01"
@@ -2739,11 +2737,12 @@ resource "ibm_network_gateway" "gateway" {
     public_bandwidth     = 20000
     memory               = 4
     ipv6_enabled         = true
-  }
+  },
+  ]
 }
 
 resource "ibm_network_gateway_vlan_association" "gateway_vlan_association" {
-  gateway_id      = "${ibm_network_gateway.gateway.id}"
+  gateway_id      = ibm_network_gateway.gateway.id
   network_vlan_id = 645086
 }
 
@@ -2793,8 +2792,8 @@ resource "ibm_compute_vm_instance" "vsi"{
    ....
 }
 resource "ibm_network_interface_sg_attachment" "sg1" {
-    security_group_id = "${data.ibm_security_group.allowssh.id}"
-    network_interface_id = "${ibm_compute_vm_instance.vsi.public_interface_id}"
+    security_group_id = data.ibm_security_group.allowssh.id
+    network_interface_id = ibm_compute_vm_instance.vsi.public_interface_id
     //User can increase timeouts 
     timeouts {
       create = "15m"
@@ -3425,7 +3424,7 @@ resource "ibm_subnet" "test" {
 
 ## Use a built-in function cidrhost with index 1.
 output "first_ip_address" {
-  value = "${cidrhost(ibm_subnet.test.subnet_cidr,1)}"
+  value = cidrhost(ibm_subnet.test.subnet_cidr,1)
 }
 
 ```
@@ -3458,7 +3457,7 @@ resource "ibm_subnet" "test" {
 
 ## Use a built-in function cidrhost with index 0.
 output "first_ip_address" {
-  value = "${cidrhost(ibm_subnet.test.subnet_cidr,0)}"
+  value = cidrhost(ibm_subnet.test.subnet_cidr,0)
 }
 
 ```
@@ -3521,7 +3520,7 @@ In the following example, you can use a certificate on file:
 resource "ibm_ssl_certificate" "my_ssllllll" {
   	certificate_signing_request= "-----BEGIN CERTIFICATE REQUEST-----\nCERTIFICATE CONTENT\n-----END CERTIFICATE REQUEST-----"
 	organization_information = {
-		org_address = {
+		org_address {
 			org_address_line1= "abc"
 			org_address_line2= "xyz"
 			org_city="pune"
@@ -3534,8 +3533,8 @@ resource "ibm_ssl_certificate" "my_ssllllll" {
 		org_fax_number = ""
 	}	
 	technical_contact_same_as_org_address_flag = "false"
-	technical_contact = {
-		tech_address = {
+	technical_contact {
+		tech_address {
 			tech_address_line1= "fcb"
 			tech_address_line2= "pqr"
 			tech_city="pune"
@@ -3551,8 +3550,8 @@ resource "ibm_ssl_certificate" "my_ssllllll" {
 		tech_email_address = "abc@gmail.com"
 		tech_title= "SSL CERT"
 	}
-	billing_contact = {
-		billing_address = {
+	billing_contact {
+		billing_address {
 			billing_address_line1= "plk"
 			billing_address_line2= "PLO"
 			billing_city="PUNE"
@@ -3568,8 +3567,8 @@ resource "ibm_ssl_certificate" "my_ssllllll" {
 		billing_email_address = "kjjj@gsd.com"
 		billing_title= "PFGHJK"
 	}
-	administrative_contact = {
-		admin_address = {
+	administrative_contact {
+		admin_address {
 			admin_address_line1= "fghds"
 			admin_address_line2= "twyu"
 			admin_city="pune"

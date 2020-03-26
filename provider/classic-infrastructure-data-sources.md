@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-12"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -121,7 +121,7 @@ data "ibm_compute_image_template" "img_tpl" {
 
 resource "ibm_compute_vm_instance" "vm1" {
     ...
-    image_id = "${data.ibm_compute_image_template.img_tpl.id}"
+    image_id = data.ibm_compute_image_template.img_tpl.id
     ...
 }
 ```
@@ -418,19 +418,18 @@ resource "ibm_lbaas" "lbaas" {
   subnets     = [1878778]
   datacenter  = "dal09"
 
-  protocols = [{
+  protocols {
     "frontend_protocol" = "HTTP"
     "frontend_port" = 80
     "backend_protocol" = "HTTP"
     "backend_port" = 80
     "load_balancing_method" = "round_robin"
-  }]
+  }
 
-  server_instances = [{
-    "private_ip_address" = "10.1.11.11",
+  server_instances {
+    "private_ip_address" = "10.1.11.11"
   },
-  ]
-}
+
     data "ibm_lbaas" "tfacc_lbaas" {
     name = "test"
 }

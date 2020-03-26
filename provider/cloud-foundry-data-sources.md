@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-19"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -49,7 +49,7 @@ data "ibm_org" "orgData" {
 }
 
 data "ibm_account" "accountData" {
-  org_guid = "${data.ibm_org.orgData.id}"
+  org_guid = data.ibm_org.orgData.id
 }
 ```
 
@@ -96,7 +96,7 @@ The following example retrieves information about the `my-app` Cloud Foundry app
 ```
 data "ibm_app" "testacc_ds_app" {
   name       = "my-app"
-  space_guid = "${ibm_app.app.space_guid}"
+  space_guid = ibm_app.app.space_guid
 }
 ```
 
@@ -231,8 +231,8 @@ The following example retrieves information about an app route.
 
 ```
 data "ibm_app_route" "route" {
-  domain_guid = "${data.ibm_app_domain_shared.domain.id}"
-  space_guid  = "${data.ibm_space.spacedata.id}"
+  domain_guid = data.ibm_app_domain_shared.domain.id
+  space_guid  = data.ibm_space.spacedata.id
   host        = "myhost"
   path        = "/app"
 }
@@ -375,7 +375,7 @@ data "ibm_space" "space" {
 
 data "ibm_service_instance" "serviceInstance" {
   name = "mycloudantdb"
-  space_guid   = "${data.ibm_space.space.id}"
+  space_guid   = data.ibm_space.space.id
 }
 ```
 
@@ -427,7 +427,7 @@ data "ibm_space" "space" {
 data "ibm_service_key" "serviceKeydata" {
   name                  = "mycloudantdbKey"
   service_instance_name = "mycloudantdb"
-  space_guid            = "${data.ibm_space.space.id}"
+  space_guid            = data.ibm_space.space.id
 }
 ```
 

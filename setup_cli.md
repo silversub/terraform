@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-05"
+lastupdated: "2020-03-26"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -277,11 +277,11 @@ The cloud provider configuration file is named `provider.tf`. Terraform automati
    variable "iaas_classic_api_key" {}
    
    provider "ibm" {
-   ibmcloud_api_key    = "${var.ibmcloud_api_key}"
+   ibmcloud_api_key = var.ibmcloud_api_key
    generation = 1
    region = "us-south"
-   iaas_classic_username = "${var.iaas_classic_username}"
-   iaas_classic_api_key  = "${var.iaas_classic_api_key}"
+   iaas_classic_username = var.iaas_classic_username
+   iaas_classic_api_key  = var.iaas_classic_api_key
    }
    ```
    {: codeblock}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -298,12 +298,12 @@ resource "ibm_is_vpc" "testacc_vpc" {
 
 resource "ibm_is_subnet" "testacc_subnet" {
 	name = "test_subnet"
-	vpc = "${ibm_is_vpc.testacc_vpc.id}"
+	vpc = ibm_is_vpc.testacc_vpc.id
 	zone = "us-south-1"
 	ipv4_cidr_block = "192.168.0.0/1"
 }
 data "ibm_is_subnet" "ds_subnet" {
-	identifier = "${ibm_is_subnet.testacc_subnet.id}"
+	identifier = ibm_is_subnet.testacc_subnet.id
 }
 
 ```

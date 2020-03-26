@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-25" 
+lastupdated: "2020-03-26" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -253,8 +253,8 @@ resource "ibm_container_cluster" "testacc_cluster" {
     level = "Normal"
     type = "slack"
     url = "https://hooks.slack.com/services/yt7rebjhgh2r4rd44fjk"
-  }]
-
+  }
+ ]
 }
 ```
 {: codeblock}
@@ -495,7 +495,7 @@ resource "ibm_container_worker_pool" "testacc_workerpool" {
   disk_encryption  = "true"
   region           = "eu-de"
 
-  labels = {
+  labels {
     "test" = "test-pool"
   }
 
@@ -576,7 +576,7 @@ resource "ibm_container_worker_pool" "test_pool" {
   size_per_zone    = 2
   hardware         = "shared"
   disk_encryption  = "true"
-  labels = {
+  labels {
     "test" = "test-pool"
 
     "test1" = "test-pool1"
@@ -584,7 +584,7 @@ resource "ibm_container_worker_pool" "test_pool" {
 }
 resource "ibm_container_worker_pool_zone_attachment" "test_zone" {
   cluster         = "mycluster"
-  worker_pool     = "${element(split("/",ibm_container_worker_pool.test_pool.id),1)}"
+  worker_pool     = element(split("/",ibm_container_worker_pool.test_pool.id),1)
   zone            = "dal12"
   private_vlan_id = "2320267"
   public_vlan_id  = "2320265"

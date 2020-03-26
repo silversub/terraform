@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-26"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -314,12 +314,12 @@ resource "ibm_is_vpc" "myvpc_resource" {
 }
 resource "ibm_is_subnet" "mysubnet_resource" {
 	name = "mysubnet"
-	vpc = "${ibm_is_vpc.myvpc_resource.id}"
+	vpc = ibm_is_vpc.myvpc_resource.id
 	zone = "us-south-1"
 	ipv4_cidr_block = "192.168.0.0/1"
 }
 data "ibm_is_subnet" "ds_subnet" {
-	identifier = "${ibm_is_subnet.mysubnet_resource.id}"
+	identifier = ibm_is_subnet.mysubnet_resource.id
 }
 ```
 
