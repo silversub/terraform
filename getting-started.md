@@ -213,7 +213,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
      generation         = 1
      region             = "us-south"
      softlayer_username = var.softlayer_username
-     softlayer_api_key  = "var.softlayer_api_key
+     softlayer_api_key  = var.softlayer_api_key
    }
    ```
    {: codeblock}
