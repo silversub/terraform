@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26"
+lastupdated: "2020-03-27"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -380,12 +380,15 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|-------------|
-|`status`|String|The status of the VPC.|
-|`default_network_acl`|String| The ID of the default network ACL.|
 |`classic_access`|Boolean|Indicates whether this VPC is connected to Classic Infrastructure.|
-|`resource_group`|String|The resource group ID where the VPC created.|
-|`tags`|Array|Tags associated with the instance.|
+| `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
+|`cse_source_address.address`|String|The IP address of the cloud service endpoint.|
+|`cse_source_address.zone_name`|String|The zone where the cloud service endpoint is located.|
+|`default_network_acl`|String| The ID of the default network ACL.|
 |`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
+|`resource_group`|String|The resource group ID where the VPC created.|
+|`status`|String|The status of the VPC.|
+|`tags`|Array|Tags associated with the instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 

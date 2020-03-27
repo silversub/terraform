@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26"
+lastupdated: "2020-03-27"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -402,6 +402,9 @@ Review the output parameters that you can access after you retrieved your data s
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 | `classic_access` | String | Indicates whether this VPC is set up with a connection to classic {{site.data.keyword.cloud_notm}} infrastructure. | 
+| `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
+|`cse_source_address.address`|String|The IP address of the cloud service endpoint.|
+|`cse_source_address.zone_name`|String|The zone where the cloud service endpoint is located.|
 | `default_network_acl` | String | The ID of the default network access control list (ACL) that was set up for the VPC. | 
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to view details about the VPC. |
 | `resource_group` | String | The resource group ID where the VPC was created. |
