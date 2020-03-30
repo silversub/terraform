@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26"
+lastupdated: "2020-03-30"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -43,7 +43,7 @@ To create a {{site.data.keyword.databases-for}} instance, you must specify the `
 
 To find an example for configuring a virtual server instance that connects to a PostgresDB database, see [here](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-database).
 
-```hcl
+```
 data "ibm_resource_group" "group" {
   name = "<your_group>"
 }
@@ -74,7 +74,7 @@ output "ICD Etcd database connection string" {
 }
 ```
 
-```hcl
+```
 provider "ibm" {
   ibmcloud_api_key = var.ibmcloud_api_key
   region           = "eu-gb"
@@ -149,7 +149,7 @@ terraform import ibm_database.my_db <crn>
 
 Import requires a minimal Terraform config file to allow importing.
 
-```hcl
+```
 resource "ibm_database" "<your_database>" {
   name              = "<your_database_name>"
 ```
