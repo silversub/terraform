@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-30"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -45,7 +45,7 @@ Configuration of an {{site.data.keyword.databases-for}} `data_source` requires t
 The following example creates a read-only copy of the `mydatabase` instance in `us-east`.  
 {: shortdesc}
 
-```hcl
+```
 data "ibm_database" "database" {
   name = "mydatabase"
   location = "us-east"
