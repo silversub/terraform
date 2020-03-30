@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-27" 
+lastupdated: "2020-03-30" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -612,8 +612,8 @@ Review the output parameters that you can access after your resource is created.
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the VPC. |
 | `status` | String | The provisioning status of your VPC. | 
 | `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
-|`cse_source_address.address`|String|The IP address of the cloud service endpoint.|
-|`cse_source_address.zone_name`|String|The zone where the cloud service endpoint is located.|
+|`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
+|`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|
 
 ## `ibm_is_vpc_address_prefix`
 {: #address-prefix}
