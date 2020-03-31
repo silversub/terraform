@@ -25,6 +25,7 @@ Terraform
     {: .navgroup id="reference"}
     {: .topicgroup}
     IBM Cloud provider for Terraform
+         provider/sitemap.md
          provider/version_changelog.md
          tf-provider.md
          provider/provider-ref.md
