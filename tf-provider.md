@@ -263,7 +263,7 @@ Because Terraform supports multiple cloud providers, you must specify the cloud 
 The cloud provider configuration file is named `provider.tf`. Terraform automatically loads the cloud provider configuration when you want to provision resources to determines what cloud provider plug-in to call. To provision {{site.data.keyword.cloud_notm}} resources, you must specify `IBM` as your cloud provider and provide the credentials that the {{site.data.keyword.cloud_notm}} Provider plug-in needs to successfully provision your resources. 
 
 Before you begin: 
-- [Retrieve required credentials for your resource and data source catgory](#retrieve_credentials)
+- [Retrieve required credentials for your resource and data source category](#retrieve_credentials)
 - [Store your credentials in a local Terraform variables file](#store_credentials)
 
 To configure the `provider` block:
