@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-27"
+lastupdated: "2020-03-31"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cos bucket, terraform get object storage resources
 
@@ -29,6 +29,9 @@ subcollection: terraform
 
 Review the [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage) resources that you can create, modify, or delete. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
 {: shortdesc}
+
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+
 
 ## `ibm_cos_bucket`
 {: #cos-bucket}
