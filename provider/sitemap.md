@@ -26,11 +26,6 @@ subcollection: terraform
 
 # Quick links 
 
-
-- [{{site.data.keyword.cloud_notm}} provider reference](/docs/terraform?topic=terraform-provider-reference)
-    - [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters)
-    - [Supported input parameters](/docs/terraform?topic=terraform-provider-reference#provider-parameter-ov)
-    - [Example usage](/docs/terraform?topic=terraform-provider-reference#provider-example)
 - [Certificate Manager resources](/docs/terraform?topic=terraform-cert-manager-resources)
     - [`ibm_certificate_manager_import`](/docs/terraform?topic=terraform-cert-manager-resources#cert-manager)
     - [`ibm_certificate_manager_order`](/docs/terraform?topic=terraform-cert-manager-resources#certmanager-order)
