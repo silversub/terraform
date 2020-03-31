@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-27"
+lastupdated: "2020-03-31"
 
 keywords: terraform provider plugin, terraform key protect, terraform kp, terraform root key 
 
@@ -38,6 +38,9 @@ Create, or delete a Key Protect standard or root key.
 
 To use the `ibm_kp_key` resource, the region parameter in the `provider.tf` file must be set to the same region that your Key Protect service instance is in. If no region parameter is specified, `us-south` is used by default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
 {: note}
+
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+
 
 ### Sample Terraform code
 {: #kp-key-sample}
