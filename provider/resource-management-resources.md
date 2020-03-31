@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26" 
+lastupdated: "2020-03-31" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -26,6 +26,8 @@ subcollection: terraform
 
 # Resource management resources
 {: #resource-mgmt-resources}
+
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 
 
 ## `ibm_resource_group`
