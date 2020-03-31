@@ -24,7 +24,7 @@ subcollection: terraform
 {:preview: .preview}
 {:external: target="_blank" .external}
 
-# {{site.data.keyword.cloud_notm}} Provider plug-in sitemap
+# Quick links 
 
 
 - [{{site.data.keyword.cloud_notm}} provider reference](/docs/terraform?topic=terraform-provider-reference)
