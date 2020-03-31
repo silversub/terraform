@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-31"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -28,6 +28,10 @@ subcollection: terraform
 {: #cis_data}
 
 You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
+
+Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
+
 
 ## `ibm_cis`
 {: #cis}

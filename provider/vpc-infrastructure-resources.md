@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-30"
+lastupdated: "2020-03-31"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -26,6 +26,10 @@ subcollection: terraform
 
 # VPC infrastructure resources (Gen 1 compute)
 {: #vpc-gen1-resources}
+
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
+
 
 ## `ibm_is_floating_ip`
 {: #provider-floating-ip}

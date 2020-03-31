@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26"
+lastupdated: "2020-03-31"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -29,6 +29,10 @@ subcollection: terraform
 
 Create, modify, or delete [{{site.data.keyword.cloud_notm}} Identity and Access Management (IAM)](/docs/iam?topic=iam-iamoverview) resources. 
 {: shortdesc}
+
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
+
 
 ## `ibm_iam_access_group`
 {: #iam-access-group}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-03-31"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -32,6 +32,10 @@ Review the data sources that you can use to retrieve information about your [Pow
 
 To find supported input parameter values, you can use the Power Systems CLI plug-in in {{site.data.keyword.cloud_notm}}. To install the plug-in, run `ibmcloud plugin install pi`. 
 {: tip}
+
+Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
+
 
 ## `ibm_pi_image`
 {: #power-image}

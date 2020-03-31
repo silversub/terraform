@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26"
+lastupdated: "2020-03-31"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -172,57 +172,17 @@ With the release of Terraform version 0.12, the syntax for configuration files c
    
 4. Open your Terraform configuration file to verify the changes. 
 
-## Retrieving required credentials for your resources
+## Retrieving required credentials for your resource and data source category
 {: #retrieve_credentials}
 
 Terraform uses the {{site.data.keyword.cloud_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.cloud_notm}} REST API. To provision and work with {{site.data.keyword.cloud_notm}} resources, you must configure your {{site.data.keyword.cloud_notm}} Provider plug-in to use the credentials that are required to access your resource.
 {: shortdesc}
 
-The credentials that you need depend on the type of {{site.data.keyword.cloud_notm}} resource that you want to provision. You can decide to provision {{site.data.keyword.cloud_notm}} platform services, {{site.data.keyword.cloud_notm}} classic infrastructure and {{site.data.keyword.cloud_notm}} Virtual Private Cloud (VPC) infrastructure resources, and {{site.data.keyword.containerlong_notm}} and {{site.data.keyword.cloud_notm}} Functions components. 
+The credentials that you need depend on the type of {{site.data.keyword.cloud_notm}} resource or data source that you want to use. 
   
 To retrieve the credentials: 
 
-1. Review the following table to determine the required credentials for your resource. To retrieve the category that your resource belongs to, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference](/docs/terraform?topic=terraform-tf-provider) for more information. 
-
-   <table>
-   <thead>
-     <th>Provider plug-in resource category</th>
-     <th>Description</th>
-     <th>Required credentials</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Infrastructure data sources and resources</td>
-      <td>Retrieve information, or create, update, or delete {{site.data.keyword.cloud_notm}} classic infrastructure resources.</td>
-      <td><ul><li>{{site.data.keyword.cloud_notm}} classic infrastructure user name</li><li>{{site.data.keyword.cloud_notm}} classic infrastructure API key</li></ul></td>
-    </tr>
-    <tr>
-      <td>VPC Services data sources and resources</td>
-      <td>Retrieve information, or create, update, or delete a Virtual Private Cloud (VPC) instance and infrastructure resources in your VPC.</td>
-      <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>SSH key (for VPC virtual servers)</li></ul></td>
-    </tr>
-      <tr>
-      <td>Container data sources and resources</td>
-      <td>Retrieve information or create, update, or delete a Kubernetes cluster and worker nodes in {{site.data.keyword.containerlong_notm}}.</td>
-      <td>{{site.data.keyword.cloud_notm}} API key</td>
-    </tr>
-    <tr>
-      <td>Identity and Access data sources and resources</td>
-      <td>Retrieve information, or create, update, or delete {{site.data.keyword.cloud_notm}} account settings and service IDs. </td>
-      <td>{{site.data.keyword.cloud_notm}} API key</td>
-    </tr>
-    <tr>
-      <td>Cloud Foundry data sources and resources</td>
-      <td>Retrieve information or create, update, or delete Cloud Foundry services, organizations, and spaces.</td>
-      <td>{{site.data.keyword.cloud_notm}} API key</td>
-    </tr>
-    <tr>
-      <td>Functions data sources and resources</td>
-      <td>Retrieve information, or create, update, or delete {{site.data.keyword.cloud_notm}} Functions resources.</td>
-      <td>{{site.data.keyword.cloud_notm}} API key</td>
-    </tr>
-  </tbody>
-  </table>
+1. Review what [input parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) you need for the resource or data source category that you want to use. 
    
 2. To provision VPC infrastructure resources and {{site.data.keyword.cloud_notm}} platform services, [create an {{site.data.keyword.cloud_notm}} API key](/docs/iam?topic=iam-userapikey#create_user_key).
 
@@ -291,34 +251,13 @@ Because Terraform supports multiple cloud providers, you must specify the cloud 
 
 The cloud provider configuration file is named `provider.tf`. Terraform automatically loads the cloud provider configuration when you want to provision resources to determines what cloud provider plug-in to call. To provision {{site.data.keyword.cloud_notm}} resources, you must specify `IBM` as your cloud provider and provide the credentials that the {{site.data.keyword.cloud_notm}} Provider plug-in needs to successfully provision your resources. 
 
-1. Review the following table to determine the parameters that you need to configure the {{site.data.keyword.cloud_notm}} Provider plug-in for your resource. 
+Before you begin: 
+- [Retrieve required credentials for your resource and data source category](#retrieve_credentials)
+- [Store your credentials in a local Terraform variables file](#store_credentials)
 
-   <table>
-   <thead>
-   <th>Resource</th>
-     <th>Required input parameters</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>VPC infrastructure resources</td>
-      <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>Generation of {{site.data.keyword.cloud_notm}} VPC infrastructure</li></ul></td>
-    </tr>
-    <tr> 
-      <td>Classic infrastructure resources</li>
-    <td><ul><li>{{site.data.keyword.cloud_notm}} classic infrastructure user name</li><li>{{site.data.keyword.cloud_notm}} classic infrastructure API key</li><li>{{site.data.keyword.cloud_notm}} region</li></ul></td>
-    </tr>
-    <tr>
-  <td>{{site.data.keyword.containerlong_notm}} resources</td>
-  <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>{{site.data.keyword.cloud_notm}} region</li></ul></td>
-  </tr>
-  <tr>
-  <td>All other resources</td>
-  <td><ul><li>{{site.data.keyword.cloud_notm}} API key</li><li>{{site.data.keyword.cloud_notm}} region</li></ul></td>
-  </tr>
-  </tbody>
-  </table>
+To configure the `provider` block:
    
-2. Create a Terraform provider configuration file that is named `provider.tf`. Use this file to specify IBM as your cloud provider and reference the credentials from your `terraform.tfvars` file. To reference a variable, declare the variable first, and then retrieve the value of the variable by using the `${var.<variable_name>}` syntax. You can specify additional variables in this file that are required by the {{site.data.keyword.cloud_notm}} Provider plug-in to successfully provision your resources. Make sure that you store this file in the same folder as your `terraform.tfvars` file. 
+1. Create a Terraform provider configuration file that is named `provider.tf`. Use this file to specify IBM as your cloud provider and reference the credentials from your `terraform.tfvars` file. To reference a variable, declare the variable first, and then retrieve the value of the variable by using Terraform interpolation syntax. You can also specify additional variables in this file that you did not include in your `terraform.tfvars` file. Make sure that you store the `provider.tf` file in the same folder as your `terraform.tfvars` file. 
    ```
    variable "ibmcloud_api_key" {}
    variable "iaas_classic_username" {}

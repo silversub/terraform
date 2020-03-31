@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-06-30"
+  years: 2017, 2020
+lastupdated: "2020-03-31"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
@@ -96,7 +96,7 @@ This tutorial is intended for network administrators, software developers, and a
 {: #prerequisites_multi_region}
 - If you do not have one, create an {{site.data.keyword.cloud_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic/services/domains). 
 - [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-ansible#setup_vpn) to access {{site.data.keyword.cloud_notm}} classic infrastructure resources over the private network. 
-- If you do not have an existing DNS domain that is registered with IBM Cloud, register one with the {{site.data.keyword.cloud_notm}} Domain Registration service. For more information about how to register a new domain, see [Register a New Domain](/docs/infrastructure/dns?topic=dns-register-a-new-domain#register-a-new-domain). To transfer an existing domain to {{site.data.keyword.cloud_notm}}, see [Transfer an Existing Domain to {{site.data.keyword.cloud_notm}}](/docs/infrastructure/dns?topic=dns-transfer-an-existing-domain-to-ibm-cloud#transfer-an-existing-domain-to-ibm-cloud). 
+- If you do not have an existing DNS domain that is registered with IBM Cloud, register one with the {{site.data.keyword.cloud_notm}} Domain Registration service. For more information about how to register a new domain, see [Register a New Domain](/docs/infrastructure/dns?topic=dns-register-a-new-domain#register-a-new-domain). To transfer an existing domain to {{site.data.keyword.cloud_notm}}, see [Transfer an Existing Domain to {{site.data.keyword.cloud_notm}}](/docs/infrastructure/dns?topic=dns-transfer-domains). 
 - If you already completed the [Tutorial: Deploying WordPress on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform and Ansible](/docs/terraform/tutorials?topic=terraform-deploy_wordpress#deploy_wordpress), you can reuse the Terraform and Ansible installations. 
   1. Remove the old Terraform `tf` configuration files from your Terraform project directory and follow step 1 and 6 in [Lesson 1](#setup_terraform) to copy the new Terraform configuration files into your project directory.
   2. Follow [Lesson 3](#provision_terraform_infrastructure) to provision the {{site.data.keyword.cloud_notm}} classic infrastructure. 
