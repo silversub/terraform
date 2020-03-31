@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26"
+lastupdated: "2020-03-31"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -33,7 +33,7 @@ Review the [Power Systems resources](/docs/infrastructure/power-iaas?topic=power
 To find supported input parameter values, you can use the Power Systems CLI plug-in in {{site.data.keyword.cloud_notm}}. To install the plug-in, run `ibmcloud plugin install pi`. 
 {: tip}
 
-If you want to create, update, or delete Power System resources in a multizone-capable region, you must specify the `zone` in the `provider` block of your Terraform configuration file. For more information, see the [provider reference](/docs/terraform?topic=terraform-provider-reference).
+If you want to create, update, or delete Power System resources in a multizone-capable region, you must specify the `zone` in the `provider` block of your Terraform configuration file. For more information, see the [`provider` block configuration](/docs/terraform?topic=terraform-provider-reference).
 {: important}
 
 ## `ibm_pi_image`
