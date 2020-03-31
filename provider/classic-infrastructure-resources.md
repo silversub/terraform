@@ -31,6 +31,7 @@ Review the Classic infrastructure resources that you can create, modify, or dele
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
 
  
 ## `ibm_cdn`

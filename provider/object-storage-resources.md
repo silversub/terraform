@@ -31,6 +31,7 @@ Review the [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topi
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
 
 
 ## `ibm_cos_bucket`
