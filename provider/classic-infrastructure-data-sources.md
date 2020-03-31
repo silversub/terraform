@@ -30,6 +30,7 @@ subcollection: terraform
 Review the data sources that you can use to retrieve information about your classic {{site.data.keyword.cloud_notm}} infrastructure resources. All data sources are imported as read-only information. You can reference the output parameters for each data source by using Terraform interpolation syntax.
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
 
 
 ## `ibm_compute_bare_metal`
