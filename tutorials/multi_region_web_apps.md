@@ -634,7 +634,7 @@ With your WordPress app up and running, you can now experiment with what happens
 
 10. Check the health of your {{site.data.keyword.cloud_notm}} Load Balancers.
     1. Open the [status page](https://cloud.ibm.com/classic/network/loadbalancing/cloud) of your {{site.data.keyword.cloud_notm}} Load Balancers and open one of the {{site.data.keyword.cloud_notm}} Load Balancers. 
-    2. Verify that the **Server Status** shows `0/2 Healthy` in the **Health Status**, which reflects that all of your {{site.data.keyword.cloudx_notm}} classic infrastructure Virtual Servers are unavailable. 
+    2. Verify that the **Server Status** shows `0/2 Healthy` in the **Health Status**, which reflects that all of your {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Servers are unavailable. 
     3. Open the other {{site.data.keyword.cloud_notm}} Load Balancers that is deployed in the other data center. 
     4. Verify that the **Server Status** also shows `0/2 Healthy` in the **Health Status**. When the MariaDB database becomes unavailable, all WordPress app instances become unavailable immediately. 
       
