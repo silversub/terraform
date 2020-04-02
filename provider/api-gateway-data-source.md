@@ -80,7 +80,7 @@ Review the output parameters that you can access after your resource is created.
 |`endpoints.managed_url`|String|The managed URL of an endpoint.|
 |`endpoints.alias_url`|String|The alias URL of an endpoint.|
 |`endpoints.open_api_doc`|String|The Open API document of the endpoint.|
-|`endpoints.subscriptions|List of endpoint subscriptions|A list of subscriptions that you created for your endpoint.|
+|`endpoints.subscriptions`|List of endpoint subscriptions|A list of subscriptions that you created for your endpoint.|
 |`endpoints.subscriptions.client_id`|String|The client ID of a subscription.|
 |`endpoints.subscriptions.name`|String|The name of the subscription.|
 |`endpoints.subscriptions.type`|String|The type of subscription. Supported values are `bluemix` and `external`.|
