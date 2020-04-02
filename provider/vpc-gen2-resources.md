@@ -802,7 +802,7 @@ resource "ibm_is_security_group_rule" "testacc_security_group_rule_all" {
 
  resource "ibm_is_security_group_rule" "testacc_security_group_rule_tcp" {
 	group = ibm_is_security_group.testacc_security_group.id
-	direction = "egress"
+	direction = "outbound"
 	remote = "127.0.0.1"
 	tcp {
 		port_min = 8080
