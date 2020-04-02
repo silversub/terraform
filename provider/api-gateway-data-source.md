@@ -25,7 +25,7 @@ subcollection: terraform
 {:external: target="_blank" .external}
 
 # API Gateway data sources
-{: #infrastructure-data-sources}
+{: #api-gw-data-sources}
 
 Review the data sources that you can use to retrieve information about your API Gateway resources. All data sources are imported as read-only information. You can reference the output parameters for each data source by using Terraform interpolation syntax.
 
