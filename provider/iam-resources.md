@@ -427,7 +427,6 @@ Review the input parameters that you can specify for your resource.
 |`conditions.claim`|String|Required|The claim to evaluate against, which can be found in the `ext` claims of a user's login request.|
 |`conditions.operator`|String|Required|The operation to perform on the claim. Supported values are `EQUALS`, `EQUALS_IGNORE_CASE`, `IN`, `NOT_EQUALS_IGNORE_CASE`, `NOT_EQUALS`, and `CONTAINS`.|
 |`conditions.value`|String|Required|The value that the claim is compared to using the `conditions.operator`.|
-The claim to evaluate against. This will be found in the ext claims of a user's login request.
 
 ### Output parameters
 {: #iam-group-dynamic-rule-output}
