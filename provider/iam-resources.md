@@ -385,7 +385,7 @@ $ terraform import ibm_iam_access_group_policy.example <access_group_ID>/<access
 
 
 
-## `iam_access_group_dynamic_rule`
+## `ibm_iam_access_group_dynamic_rule`
 {: #iam-group-dynamic-rule}
 
 Create, update, or delete a dynamic rule for an IAM access group. With dynamic rules, you can automatically add federated users to access groups based on specific identity attributes. When your users log in with a federated ID, the data from the identity provider dynamically maps your users to an access group based on the rules that you set.
