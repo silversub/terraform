@@ -29,6 +29,7 @@ Terraform
          provider/version_changelog.md
          tf-provider.md
          provider/provider-ref.md
+         provider/api-gateway-resources.md
          provider/certificate-manager-resources.md
          provider/classic-infrastructure-resources.md
          provider/classic-infrastructure-data-sources.md
