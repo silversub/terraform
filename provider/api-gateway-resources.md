@@ -96,7 +96,7 @@ Review the input parameters that you can specify for your resource.
 |`open_api_doc_name`|String|Required|The API document that represents the endpoint. |
 |`routes`|List|Optional|The routes that you can invoke for an endpoint.|
 |`provider_id`|String|Optional|The provider ID of an API endpoint. Supported values are `user-defined`, and `whisk`. The default value is `user-defined`.|
-|`type`|String|Optional|The type of action that is performed on the API endpoint. Supported values are `share`, `unshare`, `manage`, and `unmanage`. The default value is `unshare`. Note that dndpoint actions are performed by using the `type` parameter after the endpoint is created. As a consequence, endpoint actions are invoked during an endpoint update only.|
+|`type`|String|Optional|The type of action that is performed on the API endpoint. Supported values are `share`, `unshare`, `manage`, and `unmanage`. The default value is `unshare`. Note that endpoint actions are performed by using the `type` parameter after the endpoint is created. As a consequence, endpoint actions are invoked during an endpoint update only.|
 
 ### Output parameters
 {: #api-gw-endpoint-output}
@@ -159,7 +159,7 @@ Review the input parameters that you can specify for your resource.
 |`artifact_id`|String|Required|The ID of an API endpoint.| 
 |`client_id`|String|Required|The API key to generate an API key for the subscription. The generated API key represents the ID of a subscription.| 
 |`name`|String|Required|The name for an API key.|
-|`type`|String|Required|The type of API key sharing. Supported values are `External`, `Bluemix`.
+|`type`|String|Required|The type of API key sharing. Supported values are `External`, and `Bluemix`.
 |`client_secret`|String|Optional|The secret of the API key.|
 
 
