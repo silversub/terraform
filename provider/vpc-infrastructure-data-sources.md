@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-04-02"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -412,6 +412,12 @@ Review the output parameters that you can access after you retrieved your data s
 | `default_network_acl` | String | The ID of the default network access control list (ACL) that was set up for the VPC. | 
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to view details about the VPC. |
 | `resource_group` | String | The resource group ID where the VPC was created. |
+|`subnets`|List of subnets|A list of subnets that are attached to a VPC.|
+|`subnets.name`|String|The name of the subnet.|
+|`subnets.id`|String|The ID of the subnet.|
+|`subnets.status`|String|The status of the subnet.|
+|`subents.total_ipv4_address_count`|Integer|The total number of IPv4 addresses in the subnet.|
+|`subnets.available_ipv4_address_count`|Integer|The number of IPv4 addresses in the subnet that are available for you to be used.|
 | `status` | String | The status of the VPC. |
 | `tags` | Array | A list of tags that are associated with the VPC. |
 

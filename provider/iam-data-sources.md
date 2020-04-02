@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-04-02"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -31,6 +31,54 @@ Review the data sources that you can use to retrieve information about your Iden
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
+
+
+## `ibm_iam_access_group`
+{: #access_group}
+
+Retrieve information about an IAM access group. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #access-group-sample}
+
+```
+data "ibm_iam_access_group" "accgroup" {
+  access_group_name = ibm_iam_access_group.accgroup.name
+}
+```
+
+### Input parameters
+{: ##access-group-input}
+
+Review the input parameters that you can specify for your data source.
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-------|----------|
+|`access_group_name`|String|Optional|The name of the access group that you want to retrieve details for. If no access group is specified, all access groups that exist in the {{site.data.keyword.cloud_notm}} account are returned.| 
+
+### Output parameters
+{: #access-group-output}
+
+Review the output parameters that you can access after you retrieved your data source.
+
+|Name|Data type|Description|
+|----|-----------|---------|
+|`groups`|List of access groups|A list of IAM access groups that are set up for an {{site.data.keyword.cloud_notm}} account.|
+|`groups.id`|String|The ID of the IAM access group.|
+|`groups.name`|String|The name of the IAM access group.|
+|`groups.description`|String|The description of the IAM access group.|
+|`groups.ibm_ids`|Array of strings|A list of IBMiDs that belong to the access group.|
+|`groups.iam_service_ids`|Array of strings|A list of service IDs that belong to the access group.|
+|`groups.rules`|List of access group rules|A list of dynamic rules that are applied to the IAM access group.|
+|`groups.rules.name`|String|The name of the dynamic rule. |
+|`groups.rules.expiration`|Integer|The number of hours that authenticated users can work in IBM Cloud before they must refresh their access.|
+|`groups.rules.identity_provider`|String|The URI of your identity provider. This is the SAML "entityId" field, which is sometimes referred to as the issuer ID, for the identity provider as part of the federation configuration for onboarding with IBMid. |
+|`groups.rules.conditions`|List of rule conditions|A list of conditions that the rule must satisfy.|
+|`groups.rules.conditions.claim`|String|The claim to evaluate against, which can be found in the `ext` claims of a user's login request.|
+|`groups.rules.conditions.operator`|String|The operation to perform on the claim. Supported values are `EQUALS`, `QUALS_IGNORE_CASE`, `IN`, `NOT_EQUALS_IGNORE_CASE`, `NOT_EQUALS`, and `CONTAINS`.|
+|`groups.rules.conditions.value`|String|The value that the claim is compared to using the `groups.rules.conditions.operator`.|
+|`groups.rules.rule_id`|String|The ID of the dynamic rule.|
 
 
 ## `ibm_iam_auth_token`

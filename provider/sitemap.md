@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-04-02"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -26,6 +26,11 @@ subcollection: terraform
 
 # Quick links 
 
+- [API Gateway resources](/docs/terraform?topic=terraform-api-gateway-resources)
+    - [`ibm_api_gateway_endpoint`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint)
+    - [`ibm_api_gateway_endpoint_subscription`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint-subscript)
+- [API Gateway data sources](/docs/terraform?topic=terraform-api-gw-data-sources)
+    - [`ibm_api_gateway`](/docs/terraform?topic=terraform-api-gw-data-sources#api-gw)
 - [Certificate Manager resources](/docs/terraform?topic=terraform-cert-manager-resources)
     - [`ibm_certificate_manager_import`](/docs/terraform?topic=terraform-cert-manager-resources#cert-manager)
     - [`ibm_certificate_manager_order`](/docs/terraform?topic=terraform-cert-manager-resources#certmanager-order)
@@ -142,6 +147,7 @@ subcollection: terraform
     - [`ibm_iam_access_group`](/docs/terraform?topic=terraform-iam-resources#iam-access-group)
     - [`ibm_iam_access_group_members`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-members)
     - [`ibm_access_group_policy`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-policy)
+    - [`ibm_iam_access_group_dynamic_rule`](/docs/terraform?topic=terraform-iam-resources#iam-group-dynamic-rule)
     - [`ibm_authorization_policy`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy)
     - [`ibm_authorization_policy_detach`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy-detach)
     - [`ibm_iam_service_id`](/docs/terraform?topic=terraform-iam-resources#iam-service-id)
@@ -149,6 +155,7 @@ subcollection: terraform
     - [`ibm_iam_user_policy`](/docs/terraform?topic=terraform-iam-resources#iam-user-policy)
     - [`ibm_iam_user_invite`](/docs/terraform?topic=terraform-iam-resources#iam-user-invite)
 - [Identity & Access (IAM) data sources](/docs/terraform?topic=terraform-identity-&-access-data-sources)
+    - [`ibm_iam_access_group`](/docs/terraform?topic=terraform-identity-&-access-data-sources#access_group)
     - [`ibm_iam_auth_token`](/docs/terraform?topic=terraform-identity-&-access-data-sources#iam-token)
     - [`ibm_iam_service_id`](/docs/terraform?topic=terraform-identity-&-access-data-sources#iam-service)
     - [`ibm_iam_service_policy`](/docs/terraform?topic=terraform-identity-&-access-data-sources#iam-service-policy)
