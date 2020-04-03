@@ -364,6 +364,54 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
+## `ibm_is_subnets`
+{: #vpc-subnets}
+
+Retrieve information about all existing VPC subnets in an IBM Cloud account. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-subnets-sample}
+
+```
+data "ibm_is_subnets" "ds_subnets" {
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #vpc-subnets-input}
+
+This resource does not support any input parameters.
+
+### Output parameters
+{: #vpc-subnets-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`subnets`|List|A list of subnets in the IBM Cloud account.|
+|`subnets.name`|String|The name of the subnet.|
+|`subnets.id`|String|The ID of the subnet.|
+|`subnets.ipv4_cidr_block`|String|The IPv4 CIDR block of this subnet.|
+|`subnets.ipv6_cidr_block`|String|The IPv6 CIDR block of this subnet.|
+|`subnets.status`|String|The status of the subnet.|
+|`subnets.crn`|String|The CRN of the subnet.|
+|`subnets.available_ipv4_address_count`|Integer|The number of IPv4 addresses that are available in the subnet.|
+|`subnets.total_ipv4_address_count`|Integer|The total number of IPv4 addresses in the subnet.|
+|`subnets.network_acl`|String|The access control list (ACL) that is attached to the subnet.|
+|`subnets.public_gateway`|Boolean|If set to **true**, a public gateway is attached to the subnet. If set to **false**, no public gateway for this subnet exists.|
+|`subnets.resource_group`|String|The resource group that the subnet belongs to.|
+|`subnets.vpc`|String|The ID of the VPC that this subnet belongs to.|
+|`subnets.zone`|String|The zone where the subnet was created.|
+
+
+
+
+
+
 ## `ibm_is_vpc`
 {: #vpc}
 
