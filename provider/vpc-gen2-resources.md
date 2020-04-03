@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-02" 
+lastupdated: "2020-04-03" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -48,7 +48,7 @@ The following example shows how to create a {{site.data.keyword.vsi_is_short}} i
 resource "ibm_is_instance" "testacc_instance" {
   name    = "testinstance"
   image   = "7eb4e35b-4257-56f8-d7da-326d85452591"
-  profile = "b-2x8"
+  profile = "bc1-2x8"
 
   primary_network_interface {
     port_speed = "1000"
@@ -184,7 +184,7 @@ resource "ibm_is_ssh_key" "testacc_sshkey" {
 resource "ibm_is_instance" "testacc_instance" {
   name    = "testinstance"
   image   = "7eb4e35b-4257-56f8-d7da-326d85452591"
-  profile = "b-2x8"
+  profile = "bc1-2x8"
 
   primary_network_interface {
     subnet = ibm_is_subnet.testacc_subnet.id
