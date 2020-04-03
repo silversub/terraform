@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-04-03"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -155,7 +155,10 @@ Review the output parameters that you can access after your resource is created.
 | `status` | String | The status of the instance. |
 | `health_status`|String|The health status of the VM.|
 | `migratable`|Boolean|Indicates if the VM is migratable or not.|
+| `max_processors`| Integer| The maximum number of processors that can be allocated to the instance with shutting down or rebooting the LPAR.|
 | `min_processors` | Float | The minimum number of processors that the instance can have. | 
+| `min_memory` |Integer| The minimum memory that was allocated to the instance.|
+| `max_memory`|Integer|The maximum amount of memory that can be allocated to the instance without shutting down or rebotting the LPAR.|
 
 ### Timeouts
 {: #power-instance-timeout}
