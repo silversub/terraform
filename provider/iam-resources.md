@@ -424,7 +424,7 @@ Review the input parameters that you can specify for your resource.
 |`expiration`|Integer|Required|The number of hours that authenticated users can work in IBM Cloud before they must refresh their access. This value must be between 1 and 24. |
 |`identity_provider`|String|Required|Enter the URI for your identity provider. This is the SAML "entityId" field, which is sometimes referred to as the issuer ID, for the identity provider as part of the federation configuration for onboarding with IBMid. Example: `https://idp.example.org/SAML2`.|
 |`conditions`|List of rule conditions|Required|A list of conditions that the rule must satisfy.|
-|`conditions.claim`|String|Required|The claim to evaluate against, which can be found in the `ext` claims of a user's login request.|
+|`conditions.claim`|String|Required|The key value to evaluate the condition against. The key that you enter depends on what key-value pairs your identity provider provides. For example, your identity provider might include a key that is named `blueGroups` and that holds all the user groups that have access. To apply a condition for a specific user group within the `blueGroups` key, you specify `blueGroups` as your claim and add the value that you are looking for in `conditions.value`. |
 |`conditions.operator`|String|Required|The operation to perform on the claim. Supported values are `EQUALS`, `EQUALS_IGNORE_CASE`, `IN`, `NOT_EQUALS_IGNORE_CASE`, `NOT_EQUALS`, and `CONTAINS`.|
 |`conditions.value`|String|Required|The value that the claim is compared to using the `conditions.operator`.|
 
