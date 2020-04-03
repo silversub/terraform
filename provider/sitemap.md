@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-02"
+lastupdated: "2020-04-03"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -243,6 +243,7 @@ subcollection: terraform
     - [`ibm_is_region`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#region)
     - [`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#ssh-key)
     - [`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#subnet)
+    - [`ibm_is_subnets`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#vpc-subnets)
     - [`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#vpc)
     - [`ibm_is_zone`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#zone)
     - [`ibm_is_zones`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#zones)
@@ -277,6 +278,7 @@ subcollection: terraform
     - [`ibm_is_region`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-region)
     - [`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-ssh-key)
     - [`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-subnet)
+    - [`ibm_is_subnets`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-subnets)
     - [`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc)
     - [`ibm_is_zone`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-zone)
     - [`ibm_is_zones`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-zones)
