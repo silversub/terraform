@@ -129,13 +129,13 @@ Retrieve information about a virtual server instance profile.
 ### Sample Terraform code
 {: #vpc-instance-profile-sample}
 
-The following example retrieves information about the `bx2-2x8` instance profile. 
+The following example retrieves information about the `bc1-2x8` instance profile. 
 {: shortdesc}
 
 ```
 
 data "ibm_is_instance_profile" "profile" {
-	name = "bx2-2x8"
+	name = "bc1-2x8"
 }
 
 ```
