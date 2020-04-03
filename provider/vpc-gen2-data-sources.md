@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-02"
+lastupdated: "2020-04-03"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -129,13 +129,13 @@ Retrieve information about a virtual server instance profile.
 ### Sample Terraform code
 {: #vpc-instance-profile-sample}
 
-The following example retrieves information about the `b-2x8` instance profile. 
+The following example retrieves information about the `bx2-2x8` instance profile. 
 {: shortdesc}
 
 ```
 
 data "ibm_is_instance_profile" "profile" {
-	name = "b-2x8"
+	name = "bx2-2x8"
 }
 
 ```
