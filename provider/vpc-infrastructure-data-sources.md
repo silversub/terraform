@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-02"
+lastupdated: "2020-04-03"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -132,12 +132,12 @@ Retrieve the details for a profile that you can use in your {{site.data.keyword.
 ### Sample Terraform code
 {: #instance-profile-sample}
 
-The following example shows how you can retrieve information about the `b-2x8` profile. 
+The following example shows how you can retrieve information about the `bc1-2x8` profile. 
 {: shortdesc}
 
 ```
 data "ibm_is_instance_profile" "profile" {
-	name = "b-2x8"
+	name = "bc1-2x8"
 }
 ```
 
