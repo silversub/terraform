@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-02"
+lastupdated: "2020-04-03"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -394,7 +394,7 @@ Create, update, or delete a dynamic rule for an IAM access group. With dynamic r
 For more information, see [Creating dynamic rules for access groups](/docs/iam?topic=iam-rules). 
 
 ### Sample Terraform code
-{: #iam-group-dynamic-rule}
+{: #iam-group-dynamic-rule-sample}
 
 ```
 resource "ibm_iam_access_group_dynamic_rule" "rule1" {
