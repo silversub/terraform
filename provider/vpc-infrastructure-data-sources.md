@@ -132,12 +132,12 @@ Retrieve the details for a profile that you can use in your {{site.data.keyword.
 ### Sample Terraform code
 {: #instance-profile-sample}
 
-The following example shows how you can retrieve information about the `bc1-2x8` profile. 
+The following example shows how you can retrieve information about the `bx2-2x8` profile. 
 {: shortdesc}
 
 ```
 data "ibm_is_instance_profile" "profile" {
-	name = "bc1-2x8"
+	name = "bx2-2x8"
 }
 ```
 
