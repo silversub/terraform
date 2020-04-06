@@ -62,8 +62,8 @@ This tutorial is intended for system administrators that want to learn how to cr
 ## Prerequisites
 
 - If you do not have one, create an [IBM Cloud Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}. 
-- Install [{{site.data.keyword.cloud_notm}} CLI and the {{site.data.keyword.containerlong_notm}} CLI plug-in](/docs/cli?topic=cloud-cli-getting-started).
-
+- Install the [{{site.data.keyword.cloud_notm}} CLI and the {{site.data.keyword.containerlong_notm}} CLI plug-in](/docs/cli?topic=cloud-cli-getting-started).
+- Follow the [instructions](/docs/containers?topic=containers-clusters#cluster_prepare) to make sure that you are assigned the required permissions in Identity and Access Management (IAM) to create clusters and that your account is enabled for Virtual Routing and Forwarding (VRF). 
 
 ## Lesson 1: Prepare your Terraform environment
 {: #prepare-tf}
@@ -102,29 +102,8 @@ Great! Now that you completed your Terraform setup, you can go ahead and add the
 
 Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster by using Terraform. 
 {: shortdesc}
-
-1. Make sure that you are assigned the following permissions in Identity and Access Management (IAM) to create classic clusters.
-   - [Administrator platform role](/docs/containers?topic=containers-users#platform) for {{site.data.keyword.containerlong_notm}} at the account level.
-   - [Writer or Manager service role](/docs/containers?topic=containers-users#platform) for {{site.data.keyword.containerlong_notm}}.
-   - [Administrator platform role](/docs/containers?topic=containers-users#platform) for Container Registry at the account level. 
-   - **Super User** role or the [minimum required permissions](/docs/containers?topic=containers-access_reference#infra) for classic infrastructure.
-
-2. To set up your cluster with a public and a private service endpoint and enable your VLANs to communicate across multiple zones later, your {{site.data.keyword.cloud_notm}} account must be enabled for [Virtual Routing and Forwarding (VRF)](/docs/resources?topic=direct-link-overview-of-virtual-routing-and-forwarding-vrf-on-ibm-cloud). VRF eliminates the VLAN spanning option for your {{site.data.keyword.cloud_notm}} account because all VLANs are able to communicate. When VRF is enabled, any system that is connected to any of the private VLANs in the same {{site.data.keyword.cloud_notm}} account can communicate with the cluster worker nodes. You can isolate your cluster from other systems on the private network by applying [Calico private network policies](/docs/containers?topic=containers-network_policies#isolate_workers) after the cluster is created.
-   1. Check if your {{site.data.keyword.cloud_notm}} account is already enabled for VRF.
-      ```
-      ibmcloud account show
-      ```
-      {: pre}
-      
-   2. If your account is not enabled for VRF, enable VRF in your account. The CLI output includes instructions for how to open a support case to enable your account for VRF and service endpoints. 
-      ```
-      ibmcloud account update --service-endpoint-enable true
-      ```
-      {: pre}
-      
-   3. Open an {{site.data.keyword.cloud_notm}} support case as instructed in your CLI output. 
    
-3. Create a Terraform configuration file for your single zone cluster. The following example creates a single zone cluster in the `dal10` zone with a default worker pool that consists of 3 worker nodes that are connected to a private and public VLAN in `dal10`.
+1. Create a Terraform configuration file for your single zone cluster. The following example creates a single zone cluster in the `dal10` zone with a default worker pool that consists of 3 worker nodes that are connected to a private and public VLAN in `dal10`.
 
    **Example for an {{site.data.keyword.containerlong_notm}} cluster**: 
    ```
@@ -231,13 +210,13 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    </tbody>
    </table>
    
-4. Initilize the Terraform CLI. 
+2. Initilize the Terraform CLI. 
    ```
    terraform init
    ```
    {: pre}
    
-5. Create a Terraform execution plan. When you execute this command, Terraform validates the syntax of your configuration file and resource definitions against the specifications of the {{site.data.keyword.cloud_notm}} Provider plug-in.
+3. Create a Terraform execution plan. When you execute this command, Terraform validates the syntax of your configuration file and resource definitions against the specifications of the {{site.data.keyword.cloud_notm}} Provider plug-in.
    ```
    terraform plan
    ```
@@ -273,8 +252,8 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    ```
    {: screen}
    
-6. Review the Terraform execution plan to verify that your cluster setup is correct.
-7. Create your single zone cluster. Note that the creation of your cluster takes a few minutes to complete. 
+4. Review the Terraform execution plan to verify that your cluster setup is correct.
+5. Create your single zone cluster. Note that the creation of your cluster takes a few minutes to complete. 
    ```
    terraform apply
    ```
@@ -295,7 +274,7 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    ```
    {: screen}
    
-8. Optional: Review your cluster from the CLI. 
+6. Optional: Review your cluster from the CLI. 
 
    **Example for {{site.data.keyword.containerlong_notm}}:**</br>
    ```
