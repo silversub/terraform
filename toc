@@ -10,6 +10,7 @@ Terraform
     
     {: .topicgroup}
     Tutorials
+        tutorials/clusters.md
         tutorials/install_redhat_openshift.md
         tutorials/wordpress_with_terraform_and_ansible.md
         tutorials/multi_region_web_apps.md
@@ -60,6 +61,7 @@ Terraform
          provider/vpc-gen2-resources.md
          provider/vpc-gen2-data-sources.md 
    
+    [Sample Terraform templates](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples)
     [Terraform documentation](https://www.terraform.io/docs/)
     [Terraform CLI reference](https://www.terraform.io/docs/commands/index.html)
     [Architecture reference: Highly available, secured, and managed Kubernetes environment](https://github.com/ibm-cloud-architecture/refarch-public-iaas-iks)
