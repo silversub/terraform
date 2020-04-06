@@ -10,6 +10,7 @@ Terraform
     
     {: .topicgroup}
     Tutorials
+        tutorials/clusters.md
         tutorials/install_redhat_openshift.md
         tutorials/wordpress_with_terraform_and_ansible.md
         tutorials/multi_region_web_apps.md
