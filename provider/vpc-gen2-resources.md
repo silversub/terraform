@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-03" 
+lastupdated: "2020-04-06" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -453,6 +453,9 @@ Create, update, or delete a public gateway for a VPC subnet.
 {: shortdesc}
 
 Public gateways enable a VPC subnet and all the instances that are connected to the subnet to connect to the internet. For more information, see [Use a Public Gateway for external connectivity of a subnet](/docs/vpc-on-classic-network?topic=vpc-on-classic-network-about-networking-for-vpc#use-a-public-gateway). 
+
+To attach a public gateway that you created to a subnet, use the `public_gateway` input parameter in the [`ibm_is_subnet` resource](#subnet).
+{: note}
 
 ### Sample Terraform code
 {: #public-gateway-sample}
@@ -966,7 +969,7 @@ Review the input parameters that you can specify for your resource.
 |`ip_version`|String|Optional|The IP Version. The default is `ipv4`.|
 |`name`|String|Required| The name of the subnet.|
 |`network_acl`|String|Optional|The ID of the network ACL for the subnet.|
-|`public_gateway`|String|Optional|The ID of the public gateway for the subnet.|
+|`public_gateway`|String|Optional|The ID of the public gateway for the subnet that you want to attach to the subnet. You create the public gateway with the [`ibm_is_public_gateway` resource](#provider-public-gateway).|
 |`vpc`|String|Required|The VPC ID.|
 |`zone`|String|Required|The subnet zone name.|
 {: caption="Table. Available input parameters" caption-side="top"}
