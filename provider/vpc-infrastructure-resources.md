@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-06"
+lastupdated: "2020-04-16"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -437,6 +437,7 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|Required|The name of the network ACL.|
 |`vpc`|String|Optional|The VPC ID. This parameter is required if you want to create a network ACL for a Gen 2 VPC.|
+|`resource_group`|String|Optional|The ID of the resource group where you want to create the network ACL. |
 |`rules`|List of rules|Optional|A list of rules for a network ACL. The order in which the rules are added to the list determines the priority of the rules. For example, the first rule that you want to enforce must be specified as the first rule in this list. |
 |`rules.name`|String|Required|The user-defined name for this rule.|
 |`rules.action`|String|Required|`Allow` or `deny` matching network traffic. |
