@@ -277,7 +277,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`name`|String|Required| A descriptive name used to identify a resource key.|
 |`role`|String|Required|The name of the user role. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.|
-|`parameters`|Map|Optional|Arbitrary parameters to pass. Must be a JSON object.|
+|`parameters`|Map|Optional|Arbitrary parameters to pass to the resource in JSON format. If you want to create service credentials by using the private service endpoint, include the `service-endpoints =  "private"` parameter. |
 |`resource_instance_id`|String|Optional|The ID of the resource instance associated with the resource key. **NOTE**: Conflicts with `resource_alias_id`.|
 |`resource_alias_id`|String|Optional|The ID of the resource alias associated with the resource key. **NOTE**: Conflicts with `resource_instance_id`.|
 |`tags`|Array of strings|Optional|Tags associated with the resource key instance. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
