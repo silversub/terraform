@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31" 
+lastupdated: "2020-04-16" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -171,6 +171,9 @@ Review the output parameters that you can access after your resource is created.
 Create, update, or delete service credentials for an IAM-enabled service. 
 {: shortdesc}
 
+By default, the `ibm_resource_key` resource creates service credentials that use the public service endpoint of a service. To create service credentials that use the private service endpoint instead, you must explicitly define that by using the `parameter` input paramter. Note that your service might not support private service endpoints yet. 
+{: note}
+
 ### Sample Terraform code
 {: #resource-key-sample}
 
@@ -178,7 +181,7 @@ Create, update, or delete service credentials for an IAM-enabled service.
 
 ```
 data "ibm_resource_instance" "resource_instance" {
-  name = "myobjectsotrage"
+  name = "myobjectstorage"
 }
 
 resource "ibm_resource_key" "resourceKey" {
@@ -200,7 +203,7 @@ The `ibm_resource_instance` resource does not support creating service credentia
 
 ```
 data "ibm_resource_instance" "resource_instance" {
-  name = "myobjectsotrage"
+  name = "myobjectstorage"
 }
 
 resource "ibm_iam_service_id" "serviceID" {
@@ -213,7 +216,7 @@ resource "ibm_resource_key" "resourceKey" {
   role                 = "Viewer"
   resource_instance_id = data.ibm_resource_instance.resource_instance.id
   parameters {
-    "serviceid_crn" = ibm_iam_service_id.serviceID.crn
+    serviceid_crn = ibm_iam_service_id.serviceID.crn
   }
 
   //User can increase timeouts
@@ -223,6 +226,46 @@ resource "ibm_resource_key" "resourceKey" {
   }
 }
 ```
+
+#### Creating credentials that use the private service endpoint
+{: #resource-key-sample-private}
+
+The following example shows how you can create a Databases for etcd service instance with service credentials that use the private service endpoint. 
+{: shortdesc}
+
+```
+data "ibm_resource_group" "group" {
+  name = "default"
+}
+
+resource "ibm_resource_instance" "resource_instance" {
+  name              = "tf-db"
+  service           = "databases-for-etcd"
+  plan              = "standard"
+  resource_group_id = "${data.ibm_resource_group.group.id}"
+  location = "us-south"
+  
+  parameters {
+    
+    service-endpoints = "private"
+    
+   }
+}
+
+resource "ibm_resource_key" "resourceKey" {
+  name                 = "tfkey"
+  role                 = "Viewer"
+  resource_instance_id = "${ibm_resource_instance.resource_instance.id}"
+
+  parameters {
+
+     service-endpoints =  "private"
+  
+  }
+}
+
+```
+
 
 ### Input parameters
 {: #resource-key-input}
