@@ -148,7 +148,7 @@ Review the input parameters that you can specify for your resource.
 
 
 ### Output parameters
-{: #cis--domain-output}
+{: #cis-domain-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
@@ -217,7 +217,7 @@ Review the input parameters that you can specify for your resource.
 |`cname_flattening`|String|Optional|Allowed values: `flatten_at_root`, `flatten_all`, and `flatten_none`.|
 
 ### Output parameters
-{: #cis--domain-settings-output}
+{: #cis-domain-settings-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
@@ -348,14 +348,14 @@ Review the input parameters that you can specify for your resource.
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance where you want to create the firewall.|
 |`domain_id`|String|Required|The ID of the domain where you want to apply the firewall rules.|
 |`firewall_type`|String|Required|The type of firewall that you want to create for your domain. Supported values are `lockdowns`, `access_rules`, and `ua_rules`. Consider the following information when choosing your firewall type: <ul><li><strong><code>access_rules</code></strong>: Access rules allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.</li><li><strong><code>ua_rules</code></strong>: Apply firewall rules only if the user agent that is used by the client matches the user agent that you defined. </li><li><strong><code>lockdowns</code></strong>: Allow access to your domain for specific IP addresses or IP address ranges only. If you choose this firewall type, you must define your firewall rules in the `lockdown` input parameter.</li></ul>|
-|`lockdown`|List of firewall rules|Required for `lockdowns` firewall| A list of lockdowns that you want to create. You can specify one item in this list only.|
-|`lockdown.paused`|Boolean|Required|If set to **true**, the lockdown rule is disabled. If set to **false**, the lockdown rule is enabled.|
-|`lockdown.description`|String|Optional|A description for your lockdown rule.|
-|`lockdown.priority`|Integer|Optional|The priority of the lockdown rule. |
+|`lockdown`|List of firewall rules|Required for `lockdowns` firewall| A list of firewall rules that you want to create for your `lockdowns` firewall. You can specify one item in this list only.|
+|`lockdown.paused`|Boolean|Required|If set to **true**, the firewall rule is disabled. If set to **false**, the firewall rule is enabled.|
+|`lockdown.description`|String|Optional|A description for your firewall rule.|
+|`lockdown.priority`|Integer|Optional|The priority of the firewall rule. A low number is associated with a high priority. |
 |`lockdown.urls`|List of URLs|Required|A list of URLs that you want to include in your firewall rule. You can specify wildcard URLs. The URL pattern is escaped before use.|
 |`lockdown.configurations`|List of IP addresses|Required|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. 
 |`lockdown.configurations.target`|String|Optional|Specify if you want to target an `ip` or `ip_range`.|
-|`lockdown.configurations.value`|String|Optional|The IP address or IP address range that you want to target. Make sure that the value that you enter here matches the the type of target that you specified in `lockdown.configurations.target`. |
+|`lockdown.configurations.value`|String|Optional|The IP address or IP address range that you want to target. Make sure that the value that you enter here matches the type of target that you specified in `lockdown.configurations.target`. |
 
 ### Output parameters
 {: #cis-firewall-output}
@@ -432,7 +432,7 @@ Review the input parameters that you can specify for your resource.
 |`description`|String|Optional|A description of the global load balancer. |
 |`enabled`|Boolean|Optional|If set to **true**, the load balancer is enabled and can receive network traffic. If set to **false**, the load balancer is not enabled.|
 |`proxied`|Boolean|Optional|Indicates if the host name receives origin protection by {{site.data.keyword.cis_full_notm}}. The default value is **false**.|
-|`ttl`|Integer|Optional|The time to live (TTL) in seconds how long the load balancer must cache a resolved IP address for a DNS entry before load balancer must look up the IP address again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is unproxied, you can enter a value that is 120 or greater. |
+|`ttl`|Integer|Optional|The time to live (TTL) in seconds for how long the load balancer must cache a resolved IP address for a DNS entry before the load balancer must look up the IP address again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is unproxied, you can enter a value that is 120 or greater. |
 
 ### Output parameters
 {: #cis-global-lb-output}
