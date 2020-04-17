@@ -349,6 +349,460 @@ Review the output parameters that you can access after your resource is created.
 | `transform_protocol` | String | The transform protocol that is used in your IPSec policy. Only the `esp` protocol is supported that uses the triple DES (3DES) encryption algorithm to encrypt your data. |
 | `vpn_connections`| List | A collection of VPN connections that use the IPSec policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
 
+## `ibm_is_image`
+{: #image}
+
+Upload, update, or delete a custom virtual server instance image. For more information about how to create a custom image, see the [VPC documentation](/docs/vpc?topic=vpc-managing-images).
+{: shortdesc}
+
+### Sample Terraform code
+{: #image-sample}
+
+```
+resource "ibm_is_image" "test_is_images" {
+ name                   = "test_image"
+ href                   = "test_image_path"
+ operating_system       = "test_os_info"
+}
+```
+
+### Input parameters
+{: #image-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required|The descriptive name used to identify an image.|
+|`href`|String|Required| The path of an image to be uploaded.|
+|`operating_system`|String|Required|Description of underlying OS of an image.|
+|`resource_group`|String|Optional|The resource group ID for this image.|
+|`tags`|Array of strings|Optional|A list of tags that you want to your image. Tags can help you find the image more easily later.|
+
+### Output parameters
+{: #image-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The unique identifier of the image.|
+|`architecture`|String|The processor architecture that this image is based on.|
+|`crn`|String| The CRN for the image.|
+|`file`|String| The file.|
+|`format`|String| The format of an image.|
+|`resourceGroup`|String| The resource group to which the image belongs to.|
+|`status`|String| - The status of an image such as `corrupt`, or `available`.|
+|`visibility`|String|The access scope of an image such as `private` or `public`.|
+
+## `ibm_is_lb`
+{: #lb}
+
+Create, update, or delete a VPC load balancer. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #lb-sample}
+
+```
+resource "ibm_is_lb" "lb" {
+  name    = "loadbalancer1"
+  subnets = ["04813493-15d6-4150-9948-6cc646cb67f2"]
+}
+```
+
+### Input parameters
+{: #lb-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required|The name of the VPC load balancer.|
+|`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.
+|`type`|String|Optional|The type of the load balancer. Default value `public`. Supported values `public` and `private`.|
+|`resource_group`|String|Optional| The resource group where the load balancer to be created.|
+|`tags`|List of strings|Optional|A list of tags that you want to add to your load balancer. Tags can help you find the load balancer more easily later. |
+
+### Output parameters
+{: #lb-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The unique identifier of the load balancer.|
+|`public_ips`|String|The public IP addresses assigned to this load balancer.|
+|`private_ips`|String|The private IP addresses assigned to this load balancer.|
+|`status`|String|The status of the load balancer.|
+|`operating_status`|String|The operating status of this load balancer.|
+|`hostname`|String|The fully qualified domain name assigned to this load balancer.|
+|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
+
+### Import
+{: #lb-import}
+
+`ibm_is_lb` can be imported using the load balancer ID. 
+
+```
+terraform import ibm_is_lb.example <lb_ID>
+```
+{: pre}
+
+### Timeouts
+{: #lb-timeout}
+
+`ibm_is_lb` provides the following Timeouts. 
+
+- **create** - (Default 60 minutes) Used for creating Instance.
+- **delete** - (Default 60 minutes) Used for deleting Instance.
+
+## `ibm_is_lb_listener`
+{: #lb-listener}
+
+Create, update, or delete a listener for a VPC load balancer.
+
+When provisioning the load balancer listener along with load balancer pool or pool member, use [explicit dependencies](https://learn.hashicorp.com/terraform/getting-started/dependencies#implicit-and-explicit-dependencies){: external} on the resources or perform the terraform apply with parallelism 1. 
+{: note}
+
+### Sample Terraform code
+{: #lb-listener-sample}
+
+```
+resource "ibm_is_lb_listener" "testacc_lb_listener" {
+  lb       = "8898e627-f61f-4ac8-be85-9db9d8bfd345"
+  port     = "9080"
+  protocol = "http"
+}
+
+resource "ibm_is_lb_pool" "webapptier-lb-pool" {
+  lb                 = "8898e627-f61f-4ac8-be85-9db9d8bfd345"
+  name               = "a-webapptier-lb-pool"
+  protocol           = "http"
+  algorithm          = "round_robin"
+  health_delay       = "5"
+  health_retries     = "2"
+  health_timeout     = "2"
+  health_type        = "http"
+  health_monitor_url = "/"
+  depends_on         = [ibm_is_lb_listener.testacc_lb_listener]
+}
+
+resource "ibm_is_lb_pool_member" "webapptier-lb-pool-member-zone1" {
+  count          = "2"
+  lb             = "8898e627-f61f-4ac8-be85-9db9d8bfd345"
+  pool           = element(split("/", ibm_is_lb_pool.webapptier-lb-pool.id), 1)
+  port           = "80"
+  target_address = "192.168.0.1"
+  depends_on     = [ibm_is_lb_listener.testacc_lb_listener]
+}
+```
+
+### Input parameters
+{: #lb-listener-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`lb`|String|Required|The load balancer unique identifier.|
+|`port`|Integer|Required|The listener port number. Valid range 1 to 65535.|
+|`protocol`|String|Required|The listener protocol. Supported values are `http`, `tcp`, and `https`.|
+|`default_pool`|String|Optional| The load balancer pool unique identifier.|
+|`certificate_instance`|String|Optional|The CRN of the certificate instance.|
+|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000.|
+
+### Output parameters
+{: #lb-listener-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The unique identifier of the load balancer listener.|
+|`status`|String|The status of load balancer listener.|
+
+### Import
+{: #lb-listener-import}
+
+`ibm_is_lb_listener` can be imported using the load balancer ID and listener ID.
+
+```
+terraform import ibm_is_lb_listener.example <loadbalancer_ID>/<listener_ID>
+```
+{: pre]
+
+### Timeouts
+{: #lb-listener-timeout}
+
+`ibm_is_lb_listener` provides the following timeouts:
+
+- **create** - (Default 60 minutes) Used for creating Instance.
+- **pdate** - (Default 60 minutes) Used for updating Instance.
+- **delete** - (Default 60 minutes) Used for deleting Instance.
+
+## `ibm_is_lb_listener_policy`
+{: #lb-listener}
+
+Create, update, or delete a load balancer listener policy.  
+{: shortdesc}
+
+### Sample Terraform code
+{: #lb-listener-sample}
+
+
+#### Creating a load balancer listener policy for a `redirect` action
+{: #redirect-sample}
+
+```
+resource "ibm_is_lb" "lb2"{
+  name    = "mylb"
+  subnets = ["<subnet_ID>"]
+}
+
+resource "ibm_is_lb_listener" "lb_listener2"{
+  lb       = ibm_is_lb.lb2.id
+  port     = "9086"
+  protocol = "http"
+}
+resource "ibm_is_lb_listener_policy" "lb_listener_policy" {
+  lb = ibm_is_lb.lb2.id
+  listener = ibm_is_lb_listener.lb_listener2.listener_id
+  action = "redirect"
+  priority = 2
+  name = "mylistener8"
+  target_http_status_code = 302
+  target_url = "https://www.redirect.com"
+  rules{
+      condition = "contains"
+      type = "header"
+      field = "1"
+      value = "2"
+  }
+}
+```
+{: codeblock}
+
+#### Creating a load balancer listener policy for a `forward` action
+{: #forward-sample}
+
+```
+resource "ibm_is_lb" "lb2"{
+  name    = "mylb"
+  subnets = ["<subnet_ID>"]
+}
+
+resource "ibm_is_lb_listener" "lb_listener2"{
+  lb       = ibm_is_lb.lb2.id
+  port     = "9086"
+  protocol = "http"
+}
+resource "ibm_is_lb_listener_policy" "lb_listener_policy" {
+  lb = ibm_is_lb.lb2.id
+  listener = ibm_is_lb_listener.lb_listener2.listener_id
+  action = "forward"
+  priority = 2
+  name = "mylistener8"
+  target_id = "r006-beafdff0-4fe0-4db4-8f0c-b0b4ad828712"
+  rules{
+      condition = "contains"
+      type = "header"
+      field = "1"
+      value = "2"
+  }
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #lb-listener-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`lb`|String|Required|The ID of the load balancer for which you want to create a load balancer listener policy.| 
+|`listener`|String|Required|The ID of the load balancer listener ID.|
+|`action`|String|Required|The action that you want to specify for your action. Supported values are `forward`, `redirect`, and `reject`.|
+|`priority`|Integer|Required|The priority of the load balancer policy. Low values indicate a high priority. The value must be between 1 and 10.|
+|`name`|String|Optional|The name for the load balancer policy. Names must be unique within a load balancer listener.|
+|`rules`|List of policy rules|Required|A list of rules that you want to apply to your load balancer policy. Note that rules can be created only. You cannot update the rules for a load balancer policy.|
+|`rules.condition`|String|Required|The condition that you want to apply to your rule. Supported values are `contains`, `equals`, and `matches_regex`.|
+|`rules.type`|String|Required|The data type where you want to apply the rule condition. Supported values are `header`, `hostname`,  and `path`|
+|`rules.value`|Integer|Required|The value that must be found in the HTTP header, hostname or path to apply the load balancer listener rule. The value that you define can be between 1 and 128 characters long.|
+|`rules.field`|Integer|Required|If you selected `header` as the data type where you want to apply the rule condition, enter the name of the HTTP header field that you want to check. The name of the header can be between 1 and 128 characters long. |
+|`target_id`|Integer|Optional|When `action` is set to **forward**, specify the ID of the load balancer pool that the load balancer forwards network traffic to. |
+|`target-http-status-code`|Integer|Optional|When `action` is set to **redirect**, specify the HTTP response code that must be returned in the redirect response. Supported values are `301`, `302`, `303`, `307`, and `308`.  
+|`target-url`|Integer|Optional|When `action` is set to **redirect**, specify the URL that is used in the redirect response.| 
+
+### Output parameters
+{: #lb-listener-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of the load balancer listener policy. The ID is composed of the `<lb_id>/<listener_ID>/<policy_ID>`. |
+|`status`|String|The status of the load balancer listener.|
+|`policy_id`|String|The ID of the load balancer listener policy.|
+
+### Import
+{: #lb-listener-import}
+
+The resource can be imported by using the ID. The ID is composed of the `<lb_id>/<listener_ID>/<policy_ID>`.
+
+```
+terraform import ibm_is_lb_listener_policy.example <lb_id>/<listener_ID>/<policy_ID>
+```
+{: pre}
+
+
+## `ibm_is_lb_pool`
+{: #lb-pool}
+
+Create, update, or delete a VPC load balancer pool. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #lb-pool-sample}
+
+```
+resource "ibm_is_lb_pool" "testacc_pool" {
+  name           = "test_pool"
+  lb             = "addfd-gg4r4-12345"
+  algorithm      = "round_robin"
+  protocol       = "http"
+  health_delay   = 60
+  health_retries = 5
+  health_timeout = 30
+  health_type    = "http"
+}
+```
+
+### Input parameters
+{: #lb-pool-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required| The name of the pool.|
+|`lb` |String|Required|The load balancer unique identifier.|
+|`algorithm`|String|Required|The load balancing algorithm. Supported values are `round_robin`, `weighted_round_robin`, or `least_connections`.|
+|`protocol`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.|
+|`health_delay`|Integer|Required|The health check interval in seconds. Interval must be greater than `timeout` value.|
+|`health_retries`|Integer|Required|The health check max retries.|
+|`health_timeout`|Integer|Required|The health check timeout in seconds.|
+|`health_type`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.|
+|`health_monitor_url`|String|Optional|The health check url. This option is applicable only to the HTTP `health-type`.|
+|`health_monitor_port`|Integer|Optional|The health check port number.|
+|`session_persistence_type`|String|Optional|The session persistence type. Supported values are `source_ip`, `http_cookie`, and `app_cookie`.|
+|`session_persistence_cookie_name`|String|Optional|Session persistence cookie name. This option is applicable when `sessio_persistence_type` is set.|
+
+### Output parameters
+{: #lb-pool-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The unique identifier of the load balancer pool. The ID is composed of `<lb_id>/<pool_id>`.|
+|`provisioning_status`|String| The status of load balancer pool.|
+
+### Import
+{: #lb-pool-import}
+
+`ibm_is_lb_pool` can be imported by using the load balancer ID and pool ID. 
+
+```
+terraform import ibm_is_lb_pool.example <loadbalancer_ID>/<pool_ID>
+```
+{: pre}
+
+### Timeouts
+{: #lb-pool-timeout}
+
+`ibm_is_lb_pool` provides the following timeouts:
+
+- **create** - (Default 60 minutes) Used for creating Instance.
+- **update** - (Default 60 minutes) Used for updating Instance.
+- **delete** - (Default 60 minutes) Used for deleting Instance.
+
+## `ibm_is_lb_pool_member`
+{: #lb-pool-member}
+
+Create, update, or delete a pool member for a VPC load balancer. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #lb-pool-member-sample}
+
+```
+resource "ibm_is_lb_pool_member" "testacc_lb_mem" {
+  lb             = "daac2b08-fe8a-443b-9b06-1cef79922dce"
+  pool           = "f087d3bd-3da8-452d-9ce4-c1010c9fec04"
+  port           = 8080
+  target_address = "127.0.0.1"
+  weight         = 60
+}
+```
+
+### Input parameters
+{: #lb-pool-member-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`pool`|String|Required| The load balancer pool unique identifier.|
+|`lb`|String|Required| The load balancer unique identifier.|
+|`port`|Integer|Required| The port number of the application running in the server member.|
+|`target_address`|String|Required|The IP address of the pool member.|
+|`weight`|Integer|Optional| Weight of the server member. This option takes effect only when the load balancing algorithm of its belonging pool is `weighted_round_robin`.|
+
+### Output parameters
+{: #lb-pool-member-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The unique identifier of the load balancer pool member.|
+|`href`|String|The member’s canonical URL.|
+|`health`|String|Health of the server member in the pool.|
+
+### Import
+{: #lb-pool-member-import}
+
+`ibm_is_lb_pool_member` can be imported using the load balancer ID, pool ID, pool member ID.
+
+```
+terraform import ibm_is_lb_pool_member.example <loadbalancer_ID>/<pool_ID>/<pool_member_ID>
+```
+{: pre}
+
+### Timeouts
+{: #lb-pool-member-timeout}
+
+`ibm_is_lb_pool_member` provides the following timeouts.
+
+- **create** - (Default 60 minutes) Used for creating Instance.
+- **update** - (Default 60 minutes) Used for updating Instance.
+- **delete** - (Default 60 minutes) Used for deleting Instance.
+
+
 ## `ibm_is_network_acl`
 {: #network-acl}
 
@@ -574,121 +1028,6 @@ Review the output parameters that you can access after your resource is created.
 terraform import ibm_is_vpc_route.example <vpc_id>/<vpc_route_id>
 ```
 {: pre}
-
-## `ibm_is_vpc` 
-{: #provider-vps}
-
-Create, update, or delete a Virtual Private Cloud (VPC). VPCs allow you to create your own space in {{site.data.keyword.cloud_notm}} to run an isolated environment within the public cloud. VPC gives you the security of a private cloud, with the agility and ease of a public cloud.
-{: shortdesc}
-
-For more information, see [About Virtual Private Cloud](/docs/vpc-on-classic?topic=vpc-on-classic-about). 
-
-### Sample Terraform code
-{: #vpc-sample}
-
-```
-resource "ibm_is_vpc" "testacc_vpc" {
-    name = "test"
-}
-```
-{: codeblock}
-
-### Input parameters
-{: #vpc-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-| `classic_access` | Boolean | Optional | Specify if you want to create a VPC that can connect to classic infrastructure resources. Enter **true** to set up private network connectivity from your VPC to classic infrastructure resources that are created in the same {{site.data.keyword.cloud_notm}} account, and **false** to disable this access. If you choose to not set up this access, you cannot enable it after the VPC is created. Make sure to review the [prerequisites](/docs/vpc-on-classic-network?topic=vpc-on-classic-setting-up-access-to-your-classic-infrastructure-from-vpc#vpc-prerequisites) before you create a VPC with classic infrastructure access. Note that you can enable one VPC for classic infrastructure access per {{site.data.keyword.cloud_notm}} account only. |
-|`address_prefix_management`|String|Optional|Indicates whether a default address prefix should be created automatically (`auto`) or manually (`manual`) for each zone in this VPC. Default value `auto`.|
-| `name` | String | Required | Enter a name for your VPC. | 
-| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the VPC. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the VPC is created in the `default` resource group. | 
-| `tags` | Array of Strings | Optional | Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | 
-
-### Output parameters
-{: #vpc-arguments}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-| Output parameter | Data type | Description |
-| ------------- |-------------| -------------- |
-|`crn`|String|The CRN of the VPC.|
-| `default_security_group` | String | The unique identifier of the default security group that was created for your VPC. | 
-| `id` | String | The unique identifier of the VPC that you created. |
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the VPC. |
-|`subnets`|List of subnets|A list of subnets that are attached to a VPC.|
-|`subnets.name`|String|The name of the subnet.|
-|`subnets.id`|String|The ID of the subnet.|
-|`subnets.status`|String|The status of the subnet.|
-|`subents.total_ipv4_address_count`|Integer|The total number of IPv4 addresses in the subnet.|
-|`subnets.available_ipv4_address_count`|Integer|The number of IPv4 addresses in the subnet that are available for you to be used.|
-| `status` | String | The provisioning status of your VPC. | 
-| `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
-|`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
-|`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|
-
-## `ibm_is_vpc_address_prefix`
-{: #address-prefix}
-
-Create, update, or delete an IP address prefix. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #address-prefix-sample}
-
-```
-resource "ibm_is_vpc" "testacc_vpc" {
-  name = "testvpc"
-}
-
-resource "ibm_is_vpc_address_prefix" "testacc_vpc_address_prefix" {
-  name = "test"
-  zone   = "us-south-1"
-  vpc         = ibm_is_vpc.testacc_vpc.id
-  cidr        = "10.240.0.0/24"
-}
-
-```
-
-### Input parameters
-{: #address-prefix-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required| The address prefix name.|
-|`vpc`|String|Required|The VPC ID. |
-|`zone`|String|Required|The name of the zone. |
-|`cidr`|String|Required|The CIDR block for the address prefix. |
-{: caption="Table. Available input parameters" caption-side="top"}
-
-### Output parameters
-{: #address-prefix-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The ID of the address prefix.|
-|`has_subnets`|Boolean|Indicates whether subnets exist with addresses from this prefix.|
-{: caption="Table 1. Available output parameters" caption-side="top"}
-
-
-### Import
-{: #address-prefix-import}
-
-`ibm_is_vpc_address_prefix` can be imported using the ID.
-
-```
-terraform import ibm_is_vpc_address_prefix.example a1aaa111-1111-111a-1a11-a11a1a11a11a
-```
-
 
 ## `ibm_is_security_group`
 {: #sec-group}
@@ -1071,53 +1410,199 @@ terraform import ibm_is_ssh_key.example <ssh_key_ID>
 ```
 {: pre}
 
-## `ibm_is_image`
-{: #image}
 
-Upload, update, or delete a custom virtual server instance image. For more information about how to create a custom image, see the [VPC documentation](/docs/vpc?topic=vpc-managing-images).
+## `ibm_is_volume`
+{: #volume}
+
+Create, update, or delete a VPC block storage volume. 
 {: shortdesc}
 
 ### Sample Terraform code
-{: #image-sample}
+{: #volume-sample}
+
+The following example creates a volume with 10 IOPS. 
 
 ```
-resource "ibm_is_image" "test_is_images" {
- name                   = "test_image"
- href                   = "test_image_path"
- operating_system       = "test_os_info"
+resource "ibm_is_volume" "testacc_volume" {
+  name     = "test_volume"
+  profile  = "10iops-tier"
+  zone     = "us-south-1"
+  iops     = 10000
+  capacity = 100
+}
+
+```
+
+The following example creates a custom volume. 
+
+```
+resource "ibm_is_volume" "testacc_volume" {
+  name     = "test_volume"
+  profile  = "custom"
+  zone     = "us-south-1"
+  iops     = 1000
+  capacity = 200
 }
 ```
 
 ### Input parameters
-{: #image-input}
+{: #volume-input}
 
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-----------|---------------------|
-|`name`|String|Required|The descriptive name used to identify an image.|
-|`href`|String|Required| The path of an image to be uploaded.|
-|`operating_system`|String|Required|Description of underlying OS of an image.|
-|`resource_group`|String|Optional|The resource group ID for this image.|
-|`tags`|Array of strings|Optional|A list of tags that you want to your image. Tags can help you find the image more easily later.|
+|`name`|String|Required|The user-defined name for this volume.|
+|`profile`|String|Required|The profile to use for this volume.|
+|`zone`|String|Required|The location of the volume.|
+|`iops`|Integer|Optional| The bandwidth for the volume.|
+|`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.|
+|`encryption_key`|String|Optional|The key to use for encrypting this volume.|
+|`resource_group`|String|Optional|The resource group ID for this volume.|
+|`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
+|`tags`|List of strings|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
+{: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
-{: #image-output}
+{: #volume-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String|The unique identifier of the image.|
-|`architecture`|String|The processor architecture that this image is based on.|
-|`crn`|String| The CRN for the image.|
-|`file`|String| The file.|
-|`format`|String| The format of an image.|
-|`resourceGroup`|String| The resource group to which the image belongs to.|
-|`status`|String| - The status of an image such as `corrupt`, or `available`.|
-|`visibility`|String|The access scope of an image such as `private` or `public`.|
+|`id`|String|The unique identifier of the volume.|
+|`status`|String|The status of volume.|
+|`crn`|String|The CRN for the volume.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+
+### Timeouts
+{: #volume-timeout}
+
+`ibm_is_volume` provides the following timeouts:
+
+|Name|Description|
+|----|-----------|
+|`create`|(Default 60 minutes) Used for Creating Instance.|
+|`delete`|(Default 60 minutes) Used for Deleting Instance.|
+{: caption="Table. Available timeout configuration options" caption-side="top"}
+
+## `ibm_is_vpc` 
+{: #provider-vps}
+
+Create, update, or delete a Virtual Private Cloud (VPC). VPCs allow you to create your own space in {{site.data.keyword.cloud_notm}} to run an isolated environment within the public cloud. VPC gives you the security of a private cloud, with the agility and ease of a public cloud.
+{: shortdesc}
+
+For more information, see [About Virtual Private Cloud](/docs/vpc-on-classic?topic=vpc-on-classic-about). 
+
+### Sample Terraform code
+{: #vpc-sample}
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+    name = "test"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #vpc-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `classic_access` | Boolean | Optional | Specify if you want to create a VPC that can connect to classic infrastructure resources. Enter **true** to set up private network connectivity from your VPC to classic infrastructure resources that are created in the same {{site.data.keyword.cloud_notm}} account, and **false** to disable this access. If you choose to not set up this access, you cannot enable it after the VPC is created. Make sure to review the [prerequisites](/docs/vpc-on-classic-network?topic=vpc-on-classic-setting-up-access-to-your-classic-infrastructure-from-vpc#vpc-prerequisites) before you create a VPC with classic infrastructure access. Note that you can enable one VPC for classic infrastructure access per {{site.data.keyword.cloud_notm}} account only. |
+|`address_prefix_management`|String|Optional|Indicates whether a default address prefix should be created automatically (`auto`) or manually (`manual`) for each zone in this VPC. Default value `auto`.|
+| `name` | String | Required | Enter a name for your VPC. | 
+| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the VPC. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the VPC is created in the `default` resource group. | 
+| `tags` | Array of Strings | Optional | Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | 
+
+### Output parameters
+{: #vpc-arguments}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`crn`|String|The CRN of the VPC.|
+| `default_security_group` | String | The unique identifier of the default security group that was created for your VPC. | 
+| `id` | String | The unique identifier of the VPC that you created. |
+| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the VPC. |
+|`subnets`|List of subnets|A list of subnets that are attached to a VPC.|
+|`subnets.name`|String|The name of the subnet.|
+|`subnets.id`|String|The ID of the subnet.|
+|`subnets.status`|String|The status of the subnet.|
+|`subents.total_ipv4_address_count`|Integer|The total number of IPv4 addresses in the subnet.|
+|`subnets.available_ipv4_address_count`|Integer|The number of IPv4 addresses in the subnet that are available for you to be used.|
+| `status` | String | The provisioning status of your VPC. | 
+| `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
+|`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
+|`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|
+
+## `ibm_is_vpc_address_prefix`
+{: #address-prefix}
+
+Create, update, or delete an IP address prefix. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #address-prefix-sample}
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "testvpc"
+}
+
+resource "ibm_is_vpc_address_prefix" "testacc_vpc_address_prefix" {
+  name = "test"
+  zone   = "us-south-1"
+  vpc         = ibm_is_vpc.testacc_vpc.id
+  cidr        = "10.240.0.0/24"
+}
+
+```
+
+### Input parameters
+{: #address-prefix-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required| The address prefix name.|
+|`vpc`|String|Required|The VPC ID. |
+|`zone`|String|Required|The name of the zone. |
+|`cidr`|String|Required|The CIDR block for the address prefix. |
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #address-prefix-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The ID of the address prefix.|
+|`has_subnets`|Boolean|Indicates whether subnets exist with addresses from this prefix.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+
+### Import
+{: #address-prefix-import}
+
+`ibm_is_vpc_address_prefix` can be imported using the ID.
+
+```
+terraform import ibm_is_vpc_address_prefix.example a1aaa111-1111-111a-1a11-a11a1a11a11a
+```
+
 
 ## `ibm_is_vpn_gateway`
 {: #vpn-gateway}
@@ -1239,369 +1724,3 @@ terraform import ibm_is_vpn_gateway_connection.example <vpn_gateway_ID>/<vpn_gat
 `ibm_is_vpn_gateway_connection` provides the following Timeouts:
 
 - **delete** - (Default 60 minutes) Used for deleting Instance.
-
-## `ibm_is_lb`
-{: #lb}
-
-Create, update, or delete a VPC load balancer. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #lb-sample}
-
-```
-resource "ibm_is_lb" "lb" {
-  name    = "loadbalancer1"
-  subnets = ["04813493-15d6-4150-9948-6cc646cb67f2"]
-}
-```
-
-### Input parameters
-{: #lb-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The name of the VPC load balancer.|
-|`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.
-|`type`|String|Optional|The type of the load balancer. Default value `public`. Supported values `public` and `private`.|
-|`resource_group`|String|Optional| The resource group where the load balancer to be created.|
-|`tags`|List of strings|Optional|A list of tags that you want to add to your load balancer. Tags can help you find the load balancer more easily later. |
-
-### Output parameters
-{: #lb-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The unique identifier of the load balancer.|
-|`public_ips`|String|The public IP addresses assigned to this load balancer.|
-|`private_ips`|String|The private IP addresses assigned to this load balancer.|
-|`status`|String|The status of the load balancer.|
-|`operating_status`|String|The operating status of this load balancer.|
-|`hostname`|String|The fully qualified domain name assigned to this load balancer.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
-
-### Import
-{: #lb-import}
-
-`ibm_is_lb` can be imported using the load balancer ID. 
-
-```
-terraform import ibm_is_lb.example <lb_ID>
-```
-{: pre}
-
-### Timeouts
-{: #lb-timeout}
-
-`ibm_is_lb` provides the following Timeouts. 
-
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
-
-## `ibm_is_lb_listener`
-{: #lb-listener}
-
-Create, update, or delete a listener for a VPC load balancer.
-
-When provisioning the load balancer listener along with load balancer pool or pool member, use [explicit dependencies](https://learn.hashicorp.com/terraform/getting-started/dependencies#implicit-and-explicit-dependencies){: external} on the resources or perform the terraform apply with parallelism 1. 
-{: note}
-
-### Sample Terraform code
-{: #lb-listener-sample}
-
-```
-resource "ibm_is_lb_listener" "testacc_lb_listener" {
-  lb       = "8898e627-f61f-4ac8-be85-9db9d8bfd345"
-  port     = "9080"
-  protocol = "http"
-}
-
-resource "ibm_is_lb_pool" "webapptier-lb-pool" {
-  lb                 = "8898e627-f61f-4ac8-be85-9db9d8bfd345"
-  name               = "a-webapptier-lb-pool"
-  protocol           = "http"
-  algorithm          = "round_robin"
-  health_delay       = "5"
-  health_retries     = "2"
-  health_timeout     = "2"
-  health_type        = "http"
-  health_monitor_url = "/"
-  depends_on         = [ibm_is_lb_listener.testacc_lb_listener]
-}
-
-resource "ibm_is_lb_pool_member" "webapptier-lb-pool-member-zone1" {
-  count          = "2"
-  lb             = "8898e627-f61f-4ac8-be85-9db9d8bfd345"
-  pool           = element(split("/", ibm_is_lb_pool.webapptier-lb-pool.id), 1)
-  port           = "80"
-  target_address = "192.168.0.1"
-  depends_on     = [ibm_is_lb_listener.testacc_lb_listener]
-}
-```
-
-### Input parameters
-{: #lb-listener-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`lb`|String|Required|The load balancer unique identifier.|
-|`port`|Integer|Required|The listener port number. Valid range 1 to 65535.|
-|`protocol`|String|Required|The listener protocol. Supported values are `http`, `tcp`, and `https`.|
-|`default_pool`|String|Optional| The load balancer pool unique identifier.|
-|`certificate_instance`|String|Optional|The CRN of the certificate instance.|
-|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000.|
-
-### Output parameters
-{: #lb-listener-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The unique identifier of the load balancer listener.|
-|`status`|String|The status of load balancer listener.|
-
-### Import
-{: #lb-listener-import}
-
-`ibm_is_lb_listener` can be imported using the load balancer ID and listener ID.
-
-```
-terraform import ibm_is_lb_listener.example <loadbalancer_ID>/<listener_ID>
-```
-{: pre]
-
-### Timeouts
-{: #lb-listener-timeout}
-
-`ibm_is_lb_listener` provides the following timeouts:
-
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **pdate** - (Default 60 minutes) Used for updating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
-
-## `ibm_is_lb_pool`
-{: #lb-pool}
-
-Create, update, or delete a VPC load balancer pool. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #lb-pool-sample}
-
-```
-resource "ibm_is_lb_pool" "testacc_pool" {
-  name           = "test_pool"
-  lb             = "addfd-gg4r4-12345"
-  algorithm      = "round_robin"
-  protocol       = "http"
-  health_delay   = 60
-  health_retries = 5
-  health_timeout = 30
-  health_type    = "http"
-}
-```
-
-### Input parameters
-{: #lb-pool-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required| The name of the pool.|
-|`lb` |String|Required|The load balancer unique identifier.|
-|`algorithm`|String|Required|The load balancing algorithm. Supported values are `round_robin`, `weighted_round_robin`, or `least_connections`.|
-|`protocol`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.|
-|`health_delay`|Integer|Required|The health check interval in seconds. Interval must be greater than `timeout` value.|
-|`health_retries`|Integer|Required|The health check max retries.|
-|`health_timeout`|Integer|Required|The health check timeout in seconds.|
-|`health_type`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.|
-|`health_monitor_url`|String|Optional|The health check url. This option is applicable only to the HTTP `health-type`.|
-|`health_monitor_port`|Integer|Optional|The health check port number.|
-|`session_persistence_type`|String|Optional|The session persistence type. Supported values are `source_ip`, `http_cookie`, and `app_cookie`.|
-|`session_persistence_cookie_name`|String|Optional|Session persistence cookie name. This option is applicable when `sessio_persistence_type` is set.|
-
-### Output parameters
-{: #lb-pool-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The unique identifier of the load balancer pool. The ID is composed of `<lb_id>/<pool_id>`.|
-|`provisioning_status`|String| The status of load balancer pool.|
-
-### Import
-{: #lb-pool-import}
-
-`ibm_is_lb_pool` can be imported by using the load balancer ID and pool ID. 
-
-```
-terraform import ibm_is_lb_pool.example <loadbalancer_ID>/<pool_ID>
-```
-{: pre}
-
-### Timeouts
-{: #lb-pool-timeout}
-
-`ibm_is_lb_pool` provides the following timeouts:
-
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **update** - (Default 60 minutes) Used for updating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
-
-## `ibm_is_lb_pool_member`
-{: #lb-pool-member}
-
-Create, update, or delete a pool member for a VPC load balancer. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #lb-pool-member-sample}
-
-```
-resource "ibm_is_lb_pool_member" "testacc_lb_mem" {
-  lb             = "daac2b08-fe8a-443b-9b06-1cef79922dce"
-  pool           = "f087d3bd-3da8-452d-9ce4-c1010c9fec04"
-  port           = 8080
-  target_address = "127.0.0.1"
-  weight         = 60
-}
-```
-
-### Input parameters
-{: #lb-pool-member-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`pool`|String|Required| The load balancer pool unique identifier.|
-|`lb`|String|Required| The load balancer unique identifier.|
-|`port`|Integer|Required| The port number of the application running in the server member.|
-|`target_address`|String|Required|The IP address of the pool member.|
-|`weight`|Integer|Optional| Weight of the server member. This option takes effect only when the load balancing algorithm of its belonging pool is `weighted_round_robin`.|
-
-### Output parameters
-{: #lb-pool-member-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The unique identifier of the load balancer pool member.|
-|`href`|String|The member’s canonical URL.|
-|`health`|String|Health of the server member in the pool.|
-
-### Import
-{: #lb-pool-member-import}
-
-`ibm_is_lb_pool_member` can be imported using the load balancer ID, pool ID, pool member ID.
-
-```
-terraform import ibm_is_lb_pool_member.example <loadbalancer_ID>/<pool_ID>/<pool_member_ID>
-```
-{: pre}
-
-### Timeouts
-{: #lb-pool-member-timeout}
-
-`ibm_is_lb_pool_member` provides the following timeouts.
-
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **update** - (Default 60 minutes) Used for updating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
-
-
-## `ibm_is_volume`
-{: #volume}
-
-Create, update, or delete a VPC block storage volume. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #volume-sample}
-
-The following example creates a volume with 10 IOPS. 
-
-```
-resource "ibm_is_volume" "testacc_volume" {
-  name     = "test_volume"
-  profile  = "10iops-tier"
-  zone     = "us-south-1"
-  iops     = 10000
-  capacity = 100
-}
-
-```
-
-The following example creates a custom volume. 
-
-```
-resource "ibm_is_volume" "testacc_volume" {
-  name     = "test_volume"
-  profile  = "custom"
-  zone     = "us-south-1"
-  iops     = 1000
-  capacity = 200
-}
-```
-
-### Input parameters
-{: #volume-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The user-defined name for this volume.|
-|`profile`|String|Required|The profile to use for this volume.|
-|`zone`|String|Required|The location of the volume.|
-|`iops`|Integer|Optional| The bandwidth for the volume.|
-|`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.|
-|`encryption_key`|String|Optional|The key to use for encrypting this volume.|
-|`resource_group`|String|Optional|The resource group ID for this volume.|
-|`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
-|`tags`|List of strings|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
-{: caption="Table. Available input parameters" caption-side="top"}
-
-### Output parameters
-{: #volume-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The unique identifier of the volume.|
-|`status`|String|The status of volume.|
-|`crn`|String|The CRN for the volume.|
-{: caption="Table 1. Available output parameters" caption-side="top"}
-
-
-### Timeouts
-{: #volume-timeout}
-
-`ibm_is_volume` provides the following timeouts:
-
-|Name|Description|
-|----|-----------|
-|`create`|(Default 60 minutes) Used for Creating Instance.|
-|`delete`|(Default 60 minutes) Used for Deleting Instance.|
-{: caption="Table. Available timeout configuration options" caption-side="top"}
