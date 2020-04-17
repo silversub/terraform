@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-03"
+lastupdated: "2020-04-17"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -454,6 +454,7 @@ Review the output parameters that you can access after you retrieved your data s
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 | `classic_access` | String | Indicates whether this VPC is set up with a connection to classic {{site.data.keyword.cloud_notm}} infrastructure. | 
+|`crn`|String|The CRN of the VPC.|
 | `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
 |`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
 |`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|

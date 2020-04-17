@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-03"
+lastupdated: "2020-04-17"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -429,6 +429,7 @@ Review the output parameters that you can access after you retrieved your data s
 |Name|Data type|Description|
 |----|-----------|-------------|
 |`classic_access`|Boolean|Indicates whether this VPC is connected to Classic Infrastructure.|
+|`crn`|String|The CRN of the VPC.|
 | `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
 |`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
 |`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-16" 
+lastupdated: "2020-04-17" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -108,7 +108,7 @@ resource "ibm_resource_instance" "resource_instance" {
   tags              = ["tag1", "tag2"]
 
   parameters {
-    "HMAC" = true
+    HMAC = true
   }
   //User can increase timeouts 
   timeouts {

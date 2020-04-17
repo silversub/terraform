@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-04-17"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -33,7 +33,7 @@ Review what credentials and information you need to provide to work with {{site.
 ## Overview of required input parameters for each resource category
 {: #required-parameters}
 
-Review what information you must provide in the `provider` block to work with a specific resource category. The values in this table are required values. However, you can specify additional parameters as described in the [provider reference](#provider-parameter-ov).
+Review what information you must provide in the `provider` block to work with a specific resource category. The values in this table are required values. To retrieve the values or view additional parameters that you can specify, see the [provider reference](#provider-parameter-ov). 
 {: shortdesc}
 
 |Resource|Required input parameters|
@@ -41,7 +41,7 @@ Review what information you must provide in the `provider` block to work with a 
 |Classic infrastructure|<ul><li><code>iaas_classic_username</code>: The user name to access classic {{site.data.keyword.cloud_notm}} infrastructure.</li><li><code>iaas_classic_api_key</code>: The API key to access classic {{site.data.keyword.cloud_notm}} infrastructure.</li><li><code>region</code>: The {{site.data.keyword.cloud_notm}} region where you want to create classic infrastructure resources.</li><li><code>ibmcloud_api_key</code>: The {{site.data.keyword.cloud_notm}} API key to authenticate with the {{site.data.keyword.cloud_notm}} platform.</li></ul>|
 |Cloud Foundry and all other IAM-enabled services|<ul><li><code>region</code>: The {{site.data.keyword.cloud_notm}} region where you want to create Cloud Foundry or IAM services.</li><li><code>ibmcloud_api_key</code>: The {{site.data.keyword.cloud_notm}} API key to authenticate with the {{site.data.keyword.cloud_notm}} platform.</li></ul>|
 |Functions|<ul><li><code>function_namespace</code>: The namespace in {{site.data.keyword.openwhisk}} where you want to create your resources.</li><li><code>ibmcloud_api_key</code>: The {{site.data.keyword.cloud_notm}} API key to authenticate with the {{site.data.keyword.cloud_notm}} platform.</li></ul>
-|Kubernetes Service|<ul><li><code>ibmcloud_api_key</code>: The {{site.data.keyword.cloud_notm}} API key to authenticate with the {{site.data.keyword.cloud_notm}} platform.</li></ul>|
+|Kubernetes Service|<ul><li><code>ibmcloud_api_key</code>: The {{site.data.keyword.cloud_notm}} API key to authenticate with the {{site.data.keyword.cloud_notm}} platform.</li><li><code>generation</code>: If you want to create a VPC cluster, specify the generation of {{site.data.keyword.cloud_notm}} VPC infrastructure.</li></ul>|
 |Power Systems|<ul><li><code>zone</code>: The {{site.data.keyword.cloud_notm}} zone where you want to create Power System resources. This value is required only when you want to work with a resource in a multizone-capable region.</li><li><code>region</code>: The {{site.data.keyword.cloud_notm}} region where you want to create Power System resources.</li><li><code>ibmcloud_api_key</code>: The {{site.data.keyword.cloud_notm}} API key to authenticate with the {{site.data.keyword.cloud_notm}} platform.</li></ul>|
 |VPC infrastructure for Gen 1 and Gen 2 compute|<ul><li><code>generation</code>: The generation of {{site.data.keyword.cloud_notm}} VPC infrastructure.</li><li><code>region</code>: The {{site.data.keyword.cloud_notm}} region where you want to create VPC resources.</li><li><code>ibmcloud_api_key</code>: The {{site.data.keyword.cloud_notm}} API key to authenticate with the {{site.data.keyword.cloud_notm}} platform.</li></ul>|
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31" 
+lastupdated: "2020-04-17" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -224,13 +224,16 @@ $ terraform import ibm_container_bind_service.example mycluster/myservice/defaul
 Create, update, or delete an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} single zone cluster. Every cluster is set up with a worker pools that is named `default` and that holds worker nodes with the same configuration, such as machine type, CPU, and memory.
 {: shortdesc}
 
-An existing subnet can be attached to the cluster by passing the subnet ID. A webhook can be registered to a cluster. 
-During the creation of the cluster, the workers are created with the default Kubernetes or OpenShift version.
-
 If you want to use this resource to update a cluster, make sure that you review the [version changelog](/docs/containers?topic=containers-changelog) for patch updates and the [version information and update information](/docs/containers?topic=containers-cs_versions) for major and minor changes. 
 {: important}
 
+If you want to create a VPC cluster, make sure to include the VPC infrastructure generation in the `provider` block of your Terraform configuration file. If you do not set this value, the generation is automatically set to 2. For more information about how to configure the `provider` block, see [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters). 
+{: important}
+
 To create a worker pool or add worker nodes and zones to a worker pool, use the `ibm_container_worker_pool` and `ibm_container_worker_pool_zone` resources. 
+{: tip}
+
+For step-by-step instructions for how to create an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster, see [Creating single and multizone Kubernetes and OpenShift clusters](/docs/terraform?topic=terraform-tutorial-tf-clusters). 
 {: tip}
 
 ### Sample Terraform code
@@ -263,12 +266,35 @@ resource "ibm_container_cluster" "testacc_cluster" {
 ```
 {: codeblock}
 
-### VPC {{site.data.keyword.containerlong_notm}} cluster
+### Classic {{site.data.keyword.openshiftlong_notm}} cluster
 
-The following example creates a VPC cluster that is spread across two zones.
+```
+resource "ibm_container_cluster" "cluster" {
+  name              = "mycluster"
+  datacenter        = "dal10"
+  default_pool_size = 3
+  machine_type      = "b3c.4x16"
+  hardware          = "shared"
+  kube_version      = "3.11_openshift"
+  public_vlan_id    = "<public_vlan_ID>"
+  private_vlan_id   = "<private_vlane_ID>"
+  lifecycle {
+    ignore_changes = ["kube_version"]
+  }
+}
+```
+{: codeblock}
+
+### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
+
+The following example creates a VPC Gen 1 cluster that is spread across two zones.
 {: shortdesc}
 
 ```
+provider "ibm" {
+  generation = 1
+}
+
 resource "ibm_is_vpc" "vpc1" {
   name = "myvpc"
 }
@@ -294,7 +320,7 @@ data "ibm_resource_group" "resource_group" {
 resource "ibm_container_vpc_cluster" "cluster" {
   name              = "mycluster"
   vpc_id            = ibm_is_vpc.vpc1.id
-  flavor            = "b2.4x16"
+  flavor            = "bc1-2x8"
   worker_count      = 3
   resource_group_id = data.ibm_resource_group.resource_group.id
 
@@ -307,7 +333,7 @@ resource "ibm_container_vpc_cluster" "cluster" {
 resource "ibm_container_vpc_worker_pool" "cluster_pool" {
   cluster           = ibm_container_vpc_cluster.cluster.id
   worker_pool_name  = "mywp"
-  flavor            = "b2.8x32"
+  flavor            = "bc1-4x16"
   vpc_id            = ibm_is_vpc.vpc1.id
   worker_count      = 3
   resource_group_id = data.ibm_resource_group.resource_group.id
@@ -319,24 +345,67 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 ```
 {: codeblock}
 
-### Classic {{site.data.keyword.openshiftlong_notm}} cluster
+### VPC Gen 2 {{site.data.keyword.containerlong_notm}} cluster
+
+The following example creates a VPC Gen 2 cluster that is spread across two zones.
+{: shortdesc}
 
 ```
-resource "ibm_container_cluster" "cluster" {
+provider "ibm" {
+  generation = 2
+}
+
+resource "ibm_is_vpc" "vpc1" {
+  name = "myvpc"
+}
+
+resource "ibm_is_subnet" "subnet1" {
+  name                     = "mysubnet1"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us_south-1"
+  total_ipv4_address_count = 256
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name                     = "mysubnet2"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us-south-2"
+  total_ipv4_address_count = 256
+}
+
+data "ibm_resource_group" "resource_group" {
+  name = var.resource_group
+}
+
+resource "ibm_container_vpc_cluster" "cluster" {
   name              = "mycluster"
-  datacenter        = "dal10"
-  default_pool_size = 3
-  machine_type      = "b3c.4x16"
-  hardware          = "shared"
-  kube_version      = "3.11_openshift"
-  public_vlan_id    = "<public_vlan_ID>"
-  private_vlan_id   = "<private_vlane_ID>"
-  lifecycle {
-    ignore_changes = ["kube_version"]
+  vpc_id            = ibm_is_vpc.vpc1.id
+  flavor            = "bx2-4x16"
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+
+  zones {
+    subnet_id = ibm_is_subnet.subnet1.id
+    name      = "us-south-1"
+  }
+}
+
+resource "ibm_container_vpc_worker_pool" "cluster_pool" {
+  cluster           = ibm_container_vpc_cluster.cluster.id
+  worker_pool_name  = "mywp"
+  flavor            = "bx2-2x8"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+  zones {
+    name      = "us-south-2"
+    subnet_id = ibm_is_subnet.subnet2.id
   }
 }
 ```
 {: codeblock}
+
+
 
 ### Input parameters
 {: #container-cluster-input}
