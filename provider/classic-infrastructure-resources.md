@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-04-17"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -422,7 +422,7 @@ Review the input parameters that you can specify for your resource.
 |`os_key_name`|String|Optional| The operating system key name that you want to use to provision the computing instance. To get disk key names, first find the package key name in the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). Then replace <PACKAGE_NAME> with your package key name in the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/<PACKAGE_NAME>/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]). Select an OS key name from the resulting available OS key names.|
 |`public_bandwidth`|Integer|Optional| The amount of public network traffic, specified in gigabytes, allowed per month. The value can be greater than 0 when `private_network_only` is set to `false` and the server is a monthly-based server.|
 |`memory`|Integer|Optional| The amount of memory, specified in gigabytes, for the server.|
-|`storage_groups`|List of objects|Optional| Configurations for RAID and partition. For more information on configuring `storage_groups`, refer to [Ordering RAID Through API](https://sldn.softlayer.com/blog/hansKristian/Ordering-RAID-through-API).    |
+|`storage_groups`|List of objects|Optional| Configurations for RAID and partition.   |
 |`storage_groups.array_type_id`|Integer|Required|The RAID type. You can retrieve the value from the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Configuration_Storage_Group_Array_Type/getAllObjects).    |
 |`storage_groups.hard_drives`|Array of integers|Required|The index of hard drives for RAID configuration. The index starts at 0. For example, the array [0,1] is an index of two hard drives.    |
 |`storage_groups.array_size`|Integer|Optional| The target RAID disk size, specific in gigabytes.    |
@@ -3512,8 +3512,6 @@ ibm_subnet provides the following [Timeouts](https://www.terraform.io/docs/confi
 {: #ssl-cert}
 
 Provides an SSL certificate resource. This allows SSL certificates to be requested, and delete request for SSL certificates.
-
-For additional details, see the [IBM Cloud Classic Infrastructure(SoftLayer) security certificates Request docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Security_Certificate/Request).
 
 ### Sample Terraform code
 {: #ssl-cert-sample}
