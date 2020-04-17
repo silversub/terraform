@@ -350,6 +350,124 @@ Review the output parameters that you can access after your resource is created.
 | `transform_protocol` | String | The transform protocol that is used in your IPSec policy. Only the `esp` protocol is supported that uses the triple DES (3DES) encryption algorithm to encrypt your data. |
 | `vpn_connections`| List | A collection of VPN connections that use the IPSec policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
 
+## `ibm_is_lb_listener_policy`
+{: #lb-listener}
+
+Create, update, or delete a load balancer listener policy.  
+{: shortdesc}
+
+### Sample Terraform code
+{: #lb-listener-sample}
+
+
+#### Creating a load balancer listener policy for a `redirect` action
+{: #redirect-sample}
+
+```
+resource "ibm_is_lb" "lb2"{
+  name    = "mylb"
+  subnets = ["<subnet_ID>"]
+}
+
+resource "ibm_is_lb_listener" "lb_listener2"{
+  lb       = ibm_is_lb.lb2.id
+  port     = "9086"
+  protocol = "http"
+}
+resource "ibm_is_lb_listener_policy" "lb_listener_policy" {
+  lb = ibm_is_lb.lb2.id
+  listener = ibm_is_lb_listener.lb_listener2.listener_id
+  action = "redirect"
+  priority = 2
+  name = "mylistener8"
+  target_http_status_code = 302
+  target_url = "https://www.redirect.com"
+  rules{
+      condition = "contains"
+      type = "header"
+      field = "1"
+      value = "2"
+  }
+}
+```
+{: codeblock}
+
+#### Creating a load balancer listener policy for a `forward` action
+{: #forward-sample}
+
+```
+resource "ibm_is_lb" "lb2"{
+  name    = "mylb"
+  subnets = ["<subnet_ID>"]
+}
+
+resource "ibm_is_lb_listener" "lb_listener2"{
+  lb       = ibm_is_lb.lb2.id
+  port     = "9086"
+  protocol = "http"
+}
+resource "ibm_is_lb_listener_policy" "lb_listener_policy" {
+  lb = ibm_is_lb.lb2.id
+  listener = ibm_is_lb_listener.lb_listener2.listener_id
+  action = "forward"
+  priority = 2
+  name = "mylistener8"
+  target_id = "r006-beafdff0-4fe0-4db4-8f0c-b0b4ad828712"
+  rules{
+      condition = "contains"
+      type = "header"
+      field = "1"
+      value = "2"
+  }
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #lb-listener-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`lb`|String|Required|The ID of the load balancer for which you want to create a load balancer listener policy.| 
+|`listener`|String|Required|The ID of the load balancer listener ID.|
+|`action`|String|Required|The action that you want to specify for your action. Supported values are `forward`, `redirect`, and `reject`.|
+|`priority`|Integer|Required|The priority of the load balancer policy. Low values indicate a high priority. The value must be between 1 and 10.|
+|`name`|String|Optional|The name for the load balancer policy. Names must be unique within a load balancer listener.|
+|`rules`|List of policy rules|Required|A list of rules that you want to apply to your load balancer policy. Note that rules can be created only. You cannot update the rules for a load balancer policy.|
+|`rules.condition`|String|Required|The condition that you want to apply to your rule. Supported values are `contains`, `equals`, and `matches_regex`.|
+|`rules.type`|String|Required|The data type where you want to apply the rule condition. Supported values are `header`, `hostname`,  and `path`|
+|`rules.value`|Integer|Required|The value that must be found in the HTTP header, hostname or path to apply the load balancer listener rule. The value that you define can be between 1 and 128 characters long.|
+|`rules.field`|Integer|Required|If you selected `header` as the data type where you want to apply the rule condition, enter the name of the HTTP header field that you want to check. The name of the header can be between 1 and 128 characters long. |
+|`target_id`|Integer|Optional|When `action` is set to **forward**, specify the ID of the load balancer pool that the load balancer forwards network traffic to. |
+|`target-http-status-code`|Integer|Optional|When `action` is set to **redirect**, specify the HTTP response code that must be returned in the redirect response. Supported values are `301`, `302`, `303`, `307`, and `308`.  
+|`target-url`|Integer|Optional|When `action` is set to **redirect**, specify the URL that is used in the redirect response.| 
+
+### Output parameters
+{: #lb-listener-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of the load balancer listener policy. The ID is composed of the `<lb_id>/<listener_ID>/<policy_ID>`. |
+|`status`|String|The status of the load balancer listener.|
+|`policy_id`|String|The ID of the load balancer listener policy.|
+
+### Import
+{: #lb-listener-import}
+
+The resource can be imported by using the ID. The ID is composed of the `<lb_id>/<listener_ID>/<policy_ID>`.
+
+```
+terraform import ibm_is_lb_listener_policy.example <lb_id>/<listener_ID>/<policy_ID>
+```
+{: pre}
+
+
 ## `ibm_is_network_acl`
 {: #network-acl}
 
