@@ -168,16 +168,16 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`instance_id`|String|Required|The ID of the IBM Cloud DNS service instance where you want to create the DNS record.|
 |`zone_id`|String|Required|The ID of the DNS zone where you want to create a DNS record.|
-|`type`|String|Required|The type of DNS recrod that you want to create. Supported values are `A`, `AAAA`, `CNAME`, `PTR`, `TXT`, `MX`, and `SRV`.|
+|`type`|String|Required|The type of DNS record that you want to create. Supported values are `A`, `AAAA`, `CNAME`, `PTR`, `TXT`, `MX`, and `SRV`.|
 |`name`|String|Required|The name of the DNS record.| 
 |`rdata`|String|Required|The resource data of a DNS resource record.
-|`ttl`|Integer|Optional|The time to live (TTL) that the a resolved DNS record is cached before the associated IP address must be retrieved again. The minimum TTL must be 1 minute and can be 12 hours at a maximum. If no value is specified, 15 minutes is used by default. To find the default TTL values for each record type, see [Adding DNS records](https://cloud.ibm.com/docs/dns-svcs?topic=dns-svcs-managing-dns-records#adding-dns-records).|
+|`ttl`|Integer|Optional|The time to live (TTL) in minutes that the resolved DNS record is cached before the associated IP address must be retrieved again. The minimum TTL must be 1 minute and can be 12 hours at a maximum. If no value is specified, 15 minutes is used by default. To find the default TTL values for each record type, see [Adding DNS records](https://cloud.ibm.com/docs/dns-svcs?topic=dns-svcs-managing-dns-records#adding-dns-records).|
 |`preference`|Integer|Required for `MX` records|If you create an `MX` record, enter the preference of the record.|
 |`priority`|Integer|Required for `SRV` records|If you create an `SRV` record, enter the priority of the record.|
 |`weight`|Integer|Required for `SRV` records|If you create an `SRV` record, enter the weight of the record. The weight is considered when multiple records with the same priority exist. A higher value is associated with a higher weight and a higher chance of being considered among records with the same priority.|
 |`port`|Integer|Required for `SRV` records|If you create an `SRV` record, enter the TCP or UDP port of the target server. |
 |`service`|String|Required for `SRV` records|If you create an `SRV` record, enter the name of the desired service. The name must start with an underscore (`_`).|
-|`protocol`|String|Required for `SRV` records`|If you create an `SRV` record, enter the name of the desired protocol. |
+|`protocol`|String|Required for `SRV` records|If you create an `SRV` record, enter the name of the desired protocol. |
 
 ### Output parameters
 {: #dns-record-output}
@@ -189,14 +189,14 @@ Review the output parameters that you can access after your resource is created.
 |----|-----------|--------|
 |`id`|String|The unique identifier of the DNS record. The ID is composed of `<instance_id>/<zone_id>/<dns_record_id>`.|
 |`zone_id`|String|The ID of the zone where the DNS record was created.| 
-|`resource_record_id`|String|The. ID of the DNS record.| 
+|`resource_record_id`|String|The ID of the DNS record.| 
 |`created_on`|Timestamp|The time when the DNS record was created.| 
 |`modified_on`|Timestamp|The time when the DNS record was modified.|
 
 ### Import
 {: #dns-record-import}
 
-The resource. can be imported by using the DNS record ID, zone ID and resource record ID. 
+The resource can be imported by using the DNS record ID, zone ID and resource record ID. 
 
 ```
 terraform import ibm_dns_resource_record.example <instance_id>/<zone_id>/<dns_record_id>
