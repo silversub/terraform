@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-04-17"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -213,7 +213,7 @@ Review the input parameters that you can specify for your resource.
 |`min_tls_version`|String|Optional|The minimum TLS version that you want to allow. Allowed values are `1.1`, `1.2`, or `1.3`. |
 |`ssl`|String|Optional|Allowed values: `off`, `flexible`, `full`, `strict`, `origin_pull`.|
 |`automatic_https_rewrites`|String|Optional|Enable HTTPS rewrites. Allowed values are `off` and `on`. |
-|`opportunistic_encryption|String|Optional|Allowed values: `off`, and `on`.|
+|`opportunistic_encryption`|String|Optional|Allowed values: `off`, and `on`.|
 |`cname_flattening`|String|Optional|Allowed values: `flatten_at_root`, `flatten_all`, and `flatten_none`.|
 
 ### Output parameters
@@ -267,7 +267,7 @@ Review the input parameters that you can specify for your resource.
 |`data`|Map|Optional|A map of attributes that constitute the record value. This value is required for `LOC`, `CAA` and `SRV` record types. |
 |`priority`|String|Optional|The priority of the record.|
 |`proxied`|Boolean|Optional|Indicates if the record receives origin protection by {{site.data.keyword.cis_full_notm}}. The default value is **false**.|
-
+|`ttl`|Integer|Optional|The time to live (TTL) in seconds for how long the resolved DNS record entry is cached before the IP address of the DNS entry must be looked up again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is unproxied, you can enter a value that is 120 or greater. |
 
 ### Output parameters
 {: #cis-dns-record-output}
@@ -280,6 +280,7 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String| The ID of the record. |
 |`name`|String| The FQDN of the record. |
 |`proxiable`|Boolean|Indicates if the record can be proxied. |
+|`record_id`|String|The DNS record ID.|
 |`created_on`|String|The RFC3339 timestamp of when the record was created. |
 |`modified_on`|String|The RFC3339 timestamp of when the record was last modified. |
 |`data`|Map|A map of attributes that constitute the record value.|
@@ -309,11 +310,82 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 
 
 
+## `ibm_cis_firewall`
+{: #cis-firewall}
+
+Create, update, or delete a firewall for a domain that you included in your {{site.data.keyword.cis_full_notm}} instance. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis-firewall-sample}
+
+```
+resource "ibm_cis_firewall" "lockdown" {
+  cis_id    = ibm_cis.instance.id
+  domain_id = ibm_cis_domain.example.id
+  firewall_type = "lockdowns"
+  lockdown {
+    paused      = "false"
+    description = "test"
+    urls = ["www.cis-terraform.com"]
+    configurations {
+      target = "ip"
+      value  = "127.0.0.2"
+    }
+    priority=1
+  }
+}
+```
+
+### Input parameters
+{: #cis-firewall-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance where you want to create the firewall.|
+|`domain_id`|String|Required|The ID of the domain where you want to apply the firewall rules.|
+|`firewall_type`|String|Required|The type of firewall that you want to create for your domain. Supported values are `lockdowns`, `access_rules`, and `ua_rules`. Consider the following information when choosing your firewall type: <ul><li><strong><code>access_rules</code></strong>: Access rules allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.</li><li><strong><code>ua_rules</code></strong>: Apply firewall rules only if the user agent that is used by the client matches the user agent that you defined. </li><li><strong><code>lockdowns</code></strong>: Allow access to your domain for specific IP addresses or IP address ranges only. If you choose this firewall type, you must define your firewall rules in the `lockdown` input parameter.</li></ul>|
+|`lockdown`|List of firewall rules|Required for `lockdowns` firewall| A list of lockdowns that you want to create. You can specify one item in this list only.|
+|`lockdown.paused`|Boolean|Required|If set to **true**, the lockdown rule is disabled. If set to **false**, the lockdown rule is enabled.|
+|`lockdown.description`|String|Optional|A description for your lockdown rule.|
+|`lockdown.priority`|Integer|Optional|The priority of the lockdown rule. |
+|`lockdown.urls`|List of URLs|Required|A list of URLs that you want to include in your firewall rule. You can specify wildcard URLs. The URL pattern is escaped before use.|
+|`lockdown.configurations`|List of IP addresses|Required|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. 
+|`lockdown.configurations.target`|String|Optional|Specify if you want to target an `ip` or `ip_range`.|
+|`lockdown.configurations.value`|String|Optional|The IP address or IP address range that you want to target. Make sure that the value that you enter here matches the the type of target that you specified in `lockdown.configurations.target`. |
+
+### Output parameters
+{: #cis-firewall-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The ID of the record. The ID is composed of `<firewall_type>:<firewall_ID>:<domain_ID>:<cis_crn>`.
+|`lockdown_id`|String|The ID of the firewall that you created.|
+
+### Import
+{: #cis-firewall-import}
+
+The `ibm_cis_firewall` resource can be imported by using the ID. The ID is composed of `<firewall_type>:<firewall_ID>:<domain_ID>:<cis_crn>`.
+
+```
+terraform import ibm_cis_firewall.myorg <firewall_type>:<firewall_id>:<domain-id>:<crn>
+```
+{: pre}
+
 ## `ibm_cis_global_load_balancer`
 {: #cis-global-lb}
 
 Create, update, or delete a global load balancer. 
 {: shortdesc}
+
+The IBM Cloud Terraform Provider plug-in does not support the setup of a region pool for a global load balancer. 
+{: note}
 
 ### Sample Terraform code
 {: #cis-global-lb-sample}
@@ -358,7 +430,9 @@ Review the input parameters that you can specify for your resource.
 |`fallback_pool_id`|String|Required|The ID of the pool to use when all other pools are considered unhealthy. |
 |`default_pools_ids`|String|Required|A list of pool IDs that are ordered by their failover priority. |
 |`description`|String|Optional|A description of the global load balancer. |
+|`enabled`|Boolean|Optional|If set to **true**, the load balancer is enabled and can receive network traffic. If set to **false**, the load balancer is not enabled.|
 |`proxied`|Boolean|Optional|Indicates if the host name receives origin protection by {{site.data.keyword.cis_full_notm}}. The default value is **false**.|
+|`ttl`|Integer|Optional|The time to live (TTL) in seconds how long the load balancer must cache a resolved IP address for a DNS entry before load balancer must look up the IP address again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is unproxied, you can enter a value that is 120 or greater. |
 
 ### Output parameters
 {: #cis-global-lb-output}
@@ -429,12 +503,15 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-----------|---------------------|
+|`allow_insecure`|Boolean|Optional|If set to **true**, the certificate is not validated when the health check uses HTTPS. If set to **false**, the certificate is validated, even if the health check uses HTTPS. The default value is **false**.|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
 |`expected_body`|String|Required|A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. A null value of “” is allowed to match on any content. |
 |`expected_codes`|String|Required|The expected HTTP response code or code range of the health check. Example: 200.|
+|`follow_redirects`|Boolean|Optional|If set to **true**, a redirect is followed when a redirect is returned by the origin pool. Is set to **false**, redirects from the origin pool are not followed.|
 |`method`|String|Optional|The HTTP method to use for the health check. Default: `GET`.|
 |`timeout`|Integer|Optional|The timeout in seconds before marking the health check as failed. Default: 5.|
 |`path`|String|Optional|The endpoint path to health check against. Default: `/`.|
+|`port`|Integer|Optional|The TCP port number that you want to use for the health check.|
 |`interval`|Integer|Optional|The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.|
 |`retries`|Integer|Optional|The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.|
 |`type`|String|Optional|The protocol to use for the health check. Currently supported protocols are `http` and `https`. Default: `http`.
