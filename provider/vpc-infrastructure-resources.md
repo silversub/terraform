@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-16"
+lastupdated: "2020-04-17"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -1008,6 +1008,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required| The name of the subnet.|
 |`network_acl`|String|Optional|The ID of the network ACL for the subnet.|
 |`public_gateway`|String|Optional|The ID of the public gateway for the subnet that you want to attach. You create the public gateway by using the [`ibm_is_public_gateway` resource](#provider-public-gateway).|
+|`resource_group`|String|Optional|The ID of the resource group where you want to create the subnet.|
 |`vpc`|String|Required|The VPC ID.|
 |`zone`|String|Required|The subnet zone name.|
 {: caption="Table. Available input parameters" caption-side="top"}
