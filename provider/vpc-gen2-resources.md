@@ -615,6 +615,7 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
+|`crn`|String|The CRN of the VPC.|
 | `default_security_group` | String | The unique identifier of the default security group that was created for your VPC. | 
 | `id` | String | The unique identifier of the VPC that you created. |
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the VPC. |
