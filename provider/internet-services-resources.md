@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-17"
+lastupdated: "2020-04-20"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -353,7 +353,7 @@ Review the input parameters that you can specify for your resource.
 |`lockdown.description`|String|Optional|A description for your firewall rule.|
 |`lockdown.priority`|Integer|Optional|The priority of the firewall rule. A low number is associated with a high priority. |
 |`lockdown.urls`|List of URLs|Required|A list of URLs that you want to include in your firewall rule. You can specify wildcard URLs. The URL pattern is escaped before use.|
-|`lockdown.configurations`|List of IP addresses|Required|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. 
+|`lockdown.configurations`|List of IP addresses|Required|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. |
 |`lockdown.configurations.target`|String|Optional|Specify if you want to target an `ip` or `ip_range`.|
 |`lockdown.configurations.value`|String|Optional|The IP address or IP address range that you want to target. Make sure that the value that you enter here matches the type of target that you specified in `lockdown.configurations.target`. |
 
@@ -595,7 +595,10 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
 |`name`|String|Required|A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.|
-|`origins`|Array|Required|A list of origins within this pool. Traffic directed to this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It’s a complex value. See description below.|
+|`origins`|List of origins|Required|A list of origin servers within this pool. Traffic directed to this pool is balanced across all currently healthy origins, provided the pool itself is healthy. |
+|`origins.name`|String|Required|The name of the origin server.|
+|`origins.address`|String|Required|The IPv4 or IPv6 address of the origin server. You can also provide a hostname for the origin that is publicly accessible. Make sure that the hostname resolves to the origin server, and is not proxied by {{site.data.keyword.cis_full_notm}}.|
+|`origins.enabled`|Boolean|Optional|If set to **true**, the origin sever is enabled within the origin pool. If set to **false**, the origin server is not enabled. Disabled origin servers cannot receive incoming network traffic and are excluded from {{site.data.keyword.cis_full_notm}} health checks.|
 |`check_regions`|Array|Required| A list of regions (specified by region code) from which to run health checks. If the list is empty, all regions are included, but you must use the Enterprise plan. This is the default setting. Region codes can be found on the [Cloudflare’s website](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/#geo-steering-enterprise-plans-only){: external}.
 |`description`|String|Optional|A description for your origin pool. | 
 |`enabled`|Boolean|Required|If set to **true**, this pool is enabled and can receive incoming network traffic. Disabled pools do not receive network traffic and are excluded from health checks. Disabling a pool causes any load balancers that use the pool to failover to the next pool (if applicable).|
@@ -615,6 +618,9 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String| The ID of the origin pool. |
 |`created_on`|String|The RFC3339 timestamp of when the origin pool was created. |
 |`modified_on`|String|The RFC3339 timestamp of when the origin pool was last modified. |
+|`health`|String|The status of the origin pool.|
+|`origins`|List|A list of origin servers that belong to the load balancer pool.|
+|`origins.healthy`|Boolean|If set to **true**, the origin server is healthy. If set to **false**, the origin server is not healthy.|
 
 ### Import
 {: #cis-origin-pool-import}

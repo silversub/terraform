@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-03"
+lastupdated: "2020-04-20"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -198,10 +198,9 @@ resource "ibm_iam_access_group_policy" "policy" {
   access_group_id = ibm_iam_access_group.accgrp.id
   roles        = ["Operator", "Writer"]
 
-  resources = [{
+  resources {
     resource_group_id = data.ibm_resource_group.group.id
   }
-  ]
 }
 ```
 
@@ -220,10 +219,9 @@ resource "ibm_iam_access_group_policy" "policy" {
   access_group_id = ibm_iam_access_group.accgrp.id
   roles        = ["Viewer"]
 
-  resources = [{
+  resources {
     service = "cloud-object-storage"
   }
-  ]
 }
 
 ```
@@ -249,11 +247,10 @@ resource "ibm_iam_access_group_policy" "policy" {
   access_group_id = ibm_iam_access_group.accgrp.id
   roles        = ["Manager", "Viewer", "Administrator"]
 
-  resources = [{
+  resources {
     service              = "kms"
     resource_instance_id = element(split(":",ibm_resource_instance.instance.id),7)
   }
-  ]
 }
 
 ```
@@ -277,11 +274,10 @@ resource "ibm_iam_access_group_policy" "policy" {
   access_group_id = ibm_iam_access_group.accgrp.id
   roles        = ["Viewer"]
 
-  resources = [{
+  resources {
     service           = "containers-kubernetes"
     resource_group_id = data.ibm_resource_group.group.id
   }
-  ]
 }
 
 ```
@@ -301,11 +297,10 @@ resource "ibm_iam_access_group_policy" "policy" {
   access_group_id = ibm_iam_access_group.accgrp.id
   roles        = ["Administrator"]
 
-  resources = [{
+  resources {
     resource_type = "resource-group"
     resource      = data.ibm_resource_group.group.id
   }
-  ]
 }
 
 ```
@@ -325,7 +320,7 @@ resource "ibm_iam_access_group_policy" "policy" {
   access_group_id = ibm_iam_access_group.accgrp.id
   roles           = ["Viewer"]
 
-  resources = [{
+  resources {
     service = "is"
 
     attributes {
@@ -334,7 +329,6 @@ resource "ibm_iam_access_group_policy" "policy" {
 
     resource_group_id = data.ibm_resource_group.group.id
   }
-  ]
 }
 
 ```
@@ -662,10 +656,9 @@ resource "ibm_iam_service_policy" "policy" {
   iam_service_id = ibm_iam_service_id.serviceID.id
   roles        = ["Viewer"]
 
-  resources = [{
+  resources {
     service = "cloud-object-storage"
   }
-  ]
 }
 
 ```
@@ -687,11 +680,10 @@ resource "ibm_iam_service_policy" "policy" {
   iam_service_id = ibm_iam_service_id.serviceID.id
   roles        = ["Manager", "Viewer", "Administrator"]
 
-  resources = [{
+  resources {
     service              = "kms"
     resource_instance_id = element(split(":",ibm_resource_instance.instance.id),7)
   }
-  ]
 }
 
 ```
@@ -711,11 +703,10 @@ resource "ibm_iam_service_policy" "policy" {
   iam_service_id = ibm_iam_service_id.serviceID.id
   roles        = ["Viewer"]
 
-  resources = [{
+  resources {
     service           = "containers-kubernetes"
     resource_group_id = data.ibm_resource_group.group.id
   }
-  ]
 }
 
 ```
@@ -735,11 +726,10 @@ resource "ibm_iam_service_policy" "policy" {
   iam_service_id = ibm_iam_service_id.serviceID.id
   roles        = ["Administrator"]
 
-  resources = [{
+  resources {
     resource_type = "resource-group"
     resource      = data.ibm_resource_group.group.id
   }
-  ]
 }
 
 ```
@@ -759,7 +749,7 @@ resource "ibm_iam_service_policy" "policy" {
   iam_service_id = ibm_iam_service_id.serviceID.id
   roles        = ["Administrator"]
 
-  resources = [{
+  resources {
     service = "is"
 
     attributes {
@@ -767,7 +757,6 @@ resource "ibm_iam_service_policy" "policy" {
     }
     
   }
-  ]
 }
 
 ```
@@ -844,10 +833,9 @@ resource "ibm_iam_user_policy" "policy" {
   ibm_id = "test@in.ibm.com"
   roles  = ["Viewer"]
 
-  resources = [{
+  resources {
     service = "kms"
   }
-  ]
 }
 
 ```
@@ -865,11 +853,10 @@ resource "ibm_iam_user_policy" "policy" {
   ibm_id = "test@in.ibm.com"
   roles  = ["Manager", "Viewer", "Administrator"]
 
-  resources = [{
+  resources {
     service              = "kms"
     resource_instance_id = element(split(":",ibm_resource_instance.instance.id),7)
   }
-  ]
 }
 
 ```
@@ -885,11 +872,10 @@ resource "ibm_iam_user_policy" "policy" {
   ibm_id = "test@in.ibm.com"
   roles  = ["Viewer"]
 
-  resources = [{
+  resources {
     service           = "containers-kubernetes"
     resource_group_id = data.ibm_resource_group.group.id
   }
-  ]
 }
 
 ```
@@ -905,11 +891,10 @@ resource "ibm_iam_user_policy" "policy" {
   ibm_id = "test@in.ibm.com"
   roles  = ["Administrator"]
 
-  resources = [{
+  resources {
     resource_type = "resource-group"
     resource      = data.ibm_resource_group.group.id
   }
-  ]
 }
 
 ```
@@ -925,7 +910,7 @@ resource "ibm_iam_user_policy" "policy" {
   ibm_id = "test@in.ibm.com"
   roles  = ["Administrator"]
 
-  resources = [{
+  resources {
     service = "is"
 
     attributes {
@@ -933,7 +918,6 @@ resource "ibm_iam_user_policy" "policy" {
     }
     
   }
-  ]
 }
 
 ```
@@ -1040,10 +1024,9 @@ resource "ibm_iam_user_invite" "invite_user" {
 ```
 resource "ibm_iam_user_invite" "invite_user" {
     users = ["test@in.ibm.com"]
-    iam_policy = [{
+    iam_policy {
       roles  = ["Viewer"]
     }
-    ]
 }
 ```
 
@@ -1052,14 +1035,12 @@ resource "ibm_iam_user_invite" "invite_user" {
 ```
 resource "ibm_iam_user_invite" "invite_user" {
     users = ["test@in.ibm.com"]
-    iam_policy = [{
+    iam_policy {
       roles  = ["Viewer"]
-      resources = [{
+      resources {
         service = "kms"
       }
-      ]
     }
-    ]
 }
 ```
 
@@ -1075,15 +1056,13 @@ resource "ibm_resource_instance" "instance" {
 
 resource "ibm_iam_user_invite" "invite_user" {
     users = ["test@in.ibm.com"]
-    iam_policy = [{
+    iam_policy {
       roles  = ["Manager", "Viewer", "Administrator"]
-      resources = [{
+      resources {
         service              = "kms"
         resource_instance_id = element(split(":",ibm_resource_instance.instance.id),7)
       }
-      ]
       }
-      ]
 }
 ```
 
@@ -1096,15 +1075,13 @@ data "ibm_resource_group" "group" {
 
 resource "ibm_iam_user_invite" "invite_user" {
     users = ["test@in.ibm.com"]
-    iam_policy = [{
+    iam_policy {
       roles  = ["Manager", "Viewer", "Administrator"]
-      resources = [{
+      resources {
         service           = "containers-kubernetes"
         resource_group_id = data.ibm_resource_group.group.id
       }
-      ]
     }
-    ]
 }
 ```
 
@@ -1117,15 +1094,13 @@ data "ibm_resource_group" "group" {
 
 resource "ibm_iam_user_invite" "invite_user" {
     users = ["test@in.ibm.com"]
-    iam_policy = [{
+    iam_policy {
       roles  = ["Manager", "Viewer", "Administrator"]
-      resources = [{
+      resources {
         resource_type = "resource-group"
         resource      = data.ibm_resource_group.group.id
       }
-      ]
     }
-    ]
 }
 ```
 
@@ -1138,16 +1113,14 @@ data "ibm_resource_group" "group" {
 
 resource "ibm_iam_user_invite" "invite_user" {
     users = ["test@in.ibm.com"]
-    iam_policy = [{
+    iam_policy {
       roles  = ["Manager", "Viewer", "Administrator"]
-      resources = [{
+      resources {
         service = "is"
         attributes {
           "vpcId" = "*"
         }
-        ]
       }
-      ]
     }
 }
 ```
@@ -1168,16 +1141,14 @@ data "ibm_space" "space" {
 
 resource "ibm_iam_user_invite" "invite_user" {
     users = ["test@in.ibm.com"]
-    cloud_foundry_roles = [{
+    cloud_foundry_roles {
       organization_guid = data.ibm_org.org.id
       org_roles = ["Manager", "Auditor"]
-      spaces = [{
+      spaces {
           space_guid = data.ibm_space.space.id
           space_roles = ["Manager", "Developer"]
       }
-      ]
     }
-    ]
 }
 ```
 

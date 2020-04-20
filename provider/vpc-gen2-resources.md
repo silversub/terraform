@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-17" 
+lastupdated: "2020-04-20" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -1456,7 +1456,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The user-defined name for this volume.|
 |`profile`|String|Required|The profile to use for this volume.|
 |`zone`|String|Required|The location of the volume.|
-|`iops`|Integer|Optional| The bandwidth for the volume.|
+|`iops`|Integer|Required for `custom` storage profiles only| The total input/ output operations per second (IOPS) for your storage. This value is required for `custom` storage profiles only. |
 |`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.|
 |`encryption_key`|String|Optional|The key to use for encrypting this volume.|
 |`resource_group`|String|Optional|The resource group ID for this volume.|
@@ -1537,7 +1537,7 @@ Review the output parameters that you can access after your resource is created.
 |`subnets.name`|String|The name of the subnet.|
 |`subnets.id`|String|The ID of the subnet.|
 |`subnets.status`|String|The status of the subnet.|
-|`subents.total_ipv4_address_count`|Integer|The total number of IPv4 addresses in the subnet.|
+|`subnets.total_ipv4_address_count`|Integer|The total number of IPv4 addresses in the subnet.|
 |`subnets.available_ipv4_address_count`|Integer|The number of IPv4 addresses in the subnet that are available for you to be used.|
 | `status` | String | The provisioning status of your VPC. | 
 | `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
