@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-17"
+lastupdated: "2020-04-20"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -353,7 +353,7 @@ Review the input parameters that you can specify for your resource.
 |`lockdown.description`|String|Optional|A description for your firewall rule.|
 |`lockdown.priority`|Integer|Optional|The priority of the firewall rule. A low number is associated with a high priority. |
 |`lockdown.urls`|List of URLs|Required|A list of URLs that you want to include in your firewall rule. You can specify wildcard URLs. The URL pattern is escaped before use.|
-|`lockdown.configurations`|List of IP addresses|Required|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. 
+|`lockdown.configurations`|List of IP addresses|Required|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. |
 |`lockdown.configurations.target`|String|Optional|Specify if you want to target an `ip` or `ip_range`.|
 |`lockdown.configurations.value`|String|Optional|The IP address or IP address range that you want to target. Make sure that the value that you enter here matches the type of target that you specified in `lockdown.configurations.target`. |
 
