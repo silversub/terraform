@@ -1281,7 +1281,7 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String|The ID of the security group network interface. The ID is composed of `<security_group_id>/<network_interface_id>`.|
 |`instance_network_interface`|String|The instance network interface ID.|
 |`name`|String|The user-defined name for this network interface.|
-|`port_speed`|Integer|The network interface port speed in Mbp.|
+|`port_speed`|Integer|The network interface port speed in Mbps.|
 |`primary_ipv4_address`|String|The primvary IPv4 address.|
 |`primary_ipv6_address`|String|The primary IPv6 address in compressed notation as specified by RFC 5952.|
 |`secondary_address`|Array|Collection seconary IP addresses.|
