@@ -1456,7 +1456,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The user-defined name for this volume.|
 |`profile`|String|Required|The profile to use for this volume.|
 |`zone`|String|Required|The location of the volume.|
-|`iops`|Integer|Optional| The bandwidth for the volume.|
+|`iops`|Integer|Required for `custom` storage profiles only| The total input/ output operations per second (IOPS) for your storage. This value is required for `custom` storage profiles only. |
 |`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.|
 |`encryption_key`|String|Optional|The key to use for encrypting this volume.|
 |`resource_group`|String|Optional|The resource group ID for this volume.|
