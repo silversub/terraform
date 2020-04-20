@@ -42,12 +42,12 @@ Terraform
          provider/cloud-foundry-data-sources.md
          provider/function-resources.md
          provider/function-data-sources.md
+         provider/iam-resources.md
+         provider/iam-data-sources.md
          provider/internet-services-resources.md
          provider/internet-service-data-sources.md
          provider/keyprotect-resources.md
          provider/key-protect-data-sources.md
-         provider/iam-resources.md
-         provider/iam-data-sources.md
          provider/container-resources.md
          provider/container-data-sources.md
          provider/object-storage-resources.md
