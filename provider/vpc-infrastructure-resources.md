@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-20"
+lastupdated: "2020-04-22"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -1649,7 +1649,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the VPN gateway connection.|
 |`vpn_gateway`|String|Required| The unique identifier of the VPN gateway.|
 |`peer_address`|String|Required|The IP address of the peer VPN gateway.|
-|`preshared_key`|String|Optional| The preshared key.|
+|`preshared_key`|String|Required| The preshared key.|
 |`local_cidrs`|Array|Optional|List of local CIDRs for this resource.|
 |`peer_cidrs`|Array|Optional|List of peer CIDRs for this resource.|
 |`admin_state_up`|Boolean|Optional|The VPN gateway connection status. Default false. If set to false, the VPN gateway connection is shut down.|

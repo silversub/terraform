@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26"
+lastupdated: "2020-04-22"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -112,20 +112,21 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       {: screen}  
 
 2. Install the {{site.data.keyword.cloud_notm}} Provider plug-in. 
-   1. [Download the latest version of the {{site.data.keyword.cloud_notm}} Provider binary file ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/IBM-Cloud/terraform-provider-ibm/releases). 
-   2. Create a hidden folder for your plug-in. 
+   1. [Download the latest version of the {{site.data.keyword.cloud_notm}} Provider binary package](https://github.com/IBM-Cloud/terraform-provider-ibm/releases){: external}. 
+   2. Extract the {{site.data.keyword.cloud_notm}} Provider package to retrieve the binary file.
+   3. Create a hidden folder for your plug-in. 
       ```
       mkdir $HOME/.terraform.d/plugins
       ```
       {: pre}
       
-   3. Move the {{site.data.keyword.cloud_notm}} Provider plug-in into your hidden folder. 
+   4. Move the {{site.data.keyword.cloud_notm}} Provider plug-in into your hidden folder. 
       ```
       mv $HOME/Downloads/terraform-provider-ibm* $HOME/.terraform.d/plugins/
       ```
       {: pre}
       
-   4. Navigate into your hidden directory and verify that the installation is complete. 
+   5. Navigate into your hidden directory and verify that the installation is complete. 
       ```
       cd $HOME/.terraform.d/plugins && ./terraform-provider-ibm_*
       ```
