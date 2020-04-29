@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-28"
+lastupdated: "2020-04-29"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -34,6 +34,8 @@ subcollection: terraform
 - [Certificate Manager resources](/docs/terraform?topic=terraform-cert-manager-resources)
     - [`ibm_certificate_manager_import`](/docs/terraform?topic=terraform-cert-manager-resources#cert-manager)
     - [`ibm_certificate_manager_order`](/docs/terraform?topic=terraform-cert-manager-resources#certmanager-order)
+- [Certificate Manager data sources](/docs/terraform?topic=terraform-cert-manager-data-sources)
+    - [`ibm_certificate_manager_certificates`](/docs/terraform?topic=terraform-cert-manager-data-sources#cert-manager-certificates)
 - [Classic infrastructure resources](/docs/terraform?topic=terraform-infrastructure-resources)
     - [`ibm_cdn`](/docs/terraform?topic=terraform-infrastructure-resources#cdn)
     - [`ibm_compute_autoscale_group`](/docs/terraform?topic=terraform-infrastructure-resources#autoscale-group)
@@ -226,6 +228,7 @@ subcollection: terraform
     - [`ibm_is_lb`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb)
     - [`ibm_is_lb_listener`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener)
     - [`ibm_is_lb_listener_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener-policy)
+    - [`ibm_is_lb_listener_policy_rule`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener-policy-rule)
     - [`ibm_is_lb_pool`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-pool)
     - [`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-pool-member)
     - [`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen1-resources#network-acl)
@@ -262,6 +265,7 @@ subcollection: terraform
     - [`ibm_is_lb`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb)
     - [`ibm_is_lb_listener`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener)
     - [`ibm_is_lb_listener_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener-policy)
+    - [`ibm_is_lb_listener_policy_rule`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener-policy-rule)
     - [`ibm_is_lb_pool`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-pool)
     - [`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-pool-member)
     - [`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen2-resources#network-acl)

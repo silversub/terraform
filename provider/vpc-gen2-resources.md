@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-22" 
+lastupdated: "2020-04-29" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -663,6 +663,101 @@ The resource can be imported by using the ID. The ID is composed of `<lb_ID>/<li
 terraform import ibm_is_lb_listener_policy.example <lb_ID>/<listener_ID>/<policy_ID>
 ```
 {: pre}
+
+## `ibm_is_lb_listener_policy_rule`
+{: #lb-listener-policy-rule}
+
+Create, update, or delete a VPC load balancer listener policy rule.
+{: shortdesc}
+
+### Sample Terraform code
+{: #lb-listener-policy-rule-sample}
+
+```
+resource "ibm_is_lb" "lb2"{
+  name    = "mylb"
+  subnets = ["35860fed-c911-4936-8c94-f0d8577dbe5b"]
+}
+
+resource "ibm_is_lb_listener" "lb_listener2"{
+  lb       = ibm_is_lb.lb2.id
+  port     = "9086"
+  protocol = "http"
+}
+resource "ibm_is_lb_listener_policy" "lb_listener_policy" {
+  lb = ibm_is_lb.lb2.id
+  listener = ibm_is_lb_listener.lb_listener2.listener_id
+  action = "redirect"
+  priority = 2
+  name = "mylistener8"
+  target_http_status_code = 302
+  target_url = "https://www.redirect.com"
+  rules{
+      condition = "contains"
+      type = "header"
+      field = "1"
+      value = "2"
+  }
+}
+
+resource "ibm_is_lb_listener_policy_rule" "lb_listener_policy_rule" {
+  lb        = ibm_is_lb.lb2.id
+  listener  = ibm_is_lb_listener.lb_listener2.listener_id
+  policy    = ibm_is_lb_listener_policy.lb_listener_policy.policy_id
+  condition = "equals"
+  type      = "header"
+  field     = "MY-APP-HEADER"
+  value     = "New-value"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #lb-listener-policy-rule-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`lb`|String|Required|The ID of the load balancer for which you want to create a listener policy rule.|
+|`listener`|String|Required|The ID of the load balancer listener for which you want to create a policy rule.| 
+|`policy`|String|Required|The ID of the load balancer listener policy for which you want to create a policy rule.| 
+|`condition`|String|Required|The condition that you want to apply to your rule. Supported values are `contains`, `equals`, and `matches_regex`.|
+|`type`|String|Required|The object where you want to apply the rule. Supported values are `header`, `hostname`, and `path`.|
+|`value`|String|Required|The value that must match the rule condition. The value can be between 1 and 128 characters long. | 
+|`field`|String|Optional|If you set `type` to `header`, enter the HTTP header field where you want to apply the rule condition. |
+
+### Output parameters
+{: #lb-listener-policy-rule-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The ID of the load balancer listener policy rule. The ID is composed of ` <loadbalancer_ID>/<listener_ID>/<policy>ID>`. |
+|`status`|String|The status of the load balancer listener.|
+|`rule`|String|The ID of the rule|
+
+### Import
+{: #lb-listener-policy-rule-import}
+
+You can import the rule by using the ID.
+
+```
+terraform import ibm_is_lb_listener_policy.example <loadbalancer_ID>/<listener_ID>/<policy>ID>
+```
+{: pre}
+
+### Timeout
+{: #lb-listener-policy-rule-timeout}
+
+The following timeouts are configured for the resource: 
+
+- **Create**: The creation of the resource is considered failed if no response is received for 10 minutes. 
+- **Update**: The updaet of the resource is considered failed if no response is received for 10 minutes. 
+- **Delete**: The deletion of the resource is considered failed if no response is received for 10 minutes. 
 
 
 ## `ibm_is_lb_pool`

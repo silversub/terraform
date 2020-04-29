@@ -33,6 +33,7 @@ Terraform
          provider/api-gateway-resources.md
          provider/api-gateway-data-source.md
          provider/certificate-manager-resources.md
+         provider/certificate-manager-data-sources.md
          provider/classic-infrastructure-resources.md
          provider/classic-infrastructure-data-sources.md
          provider/databases-resources.md
@@ -60,7 +61,7 @@ Terraform
          provider/vpc-infrastructure-resources.md
          provider/vpc-infrastructure-data-sources.md
          provider/vpc-gen2-resources.md
-         provider/vpc-gen2-data-sources.md 
+         provider/vpc-gen2-data-sources.md   
    
     [Sample Terraform templates](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples)
     [Terraform documentation](https://www.terraform.io/docs/)

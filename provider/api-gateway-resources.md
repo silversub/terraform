@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-02"
+lastupdated: "2020-04-29"
 
 keywords: terraform provider plugin, terraform certificate manager, terraform cert manager, terraform certificate
 
@@ -157,10 +157,11 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`artifact_id`|String|Required|The ID of an API endpoint.| 
-|`client_id`|String|Required|The API key to generate an API key for the subscription. The generated API key represents the ID of a subscription.| 
+|`client_id`|String|Optional|The API key to generate an API key for the subscription. The generated API key represents the ID of a subscription.| 
 |`name`|String|Required|The name for an API key.|
 |`type`|String|Required|The type of API key sharing. Supported values are `External`, and `Bluemix`.
 |`client_secret`|String|Optional|The secret of the API key.|
+|`generate_secret`|Boolean|Optional|If set to **true**, the secret key is auto-generated. If set to **false**, the secret key is not auto-generated. |
 
 
 ### Output parameters
