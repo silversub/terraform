@@ -26,8 +26,9 @@ If you run into an issue with the {{site.data.keyword.cloud_notm}} Terraform pro
 - **IBM Support**: If you run into an issue with the {{site.data.keyword.cloud_notm}} Terraform provider plug-in when using {{site.data.keyword.bplong_notm}}, you can also contact IBM Support by [opening a support case](/docs/get-support?topic=get-support-getting-customer-support#getting-customer-support). 
 - **StackOverflow**: Post your question on [Stack Overflow](http://stackoverflow.com/search?q=ibm-cloud-infrastructure+terraform){: external} and tag your question with `ibm-cloud-infrastructure` and `terraform`.
 
+</br>
 If you have general questions about Terraform or Ansible, you can use one of the following channels: 
 
-* Subscribe to the [Terraform channel on Reddit ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.reddit.com/r/Terraform/){:new_window} and browse through this channel to read about user issues and how they resolved them. 
-* Get help from the open source community by searching for information on the internet or by asking questions in forums and on websites that support these tools.
+- **Reddit**:  Subscribe to the [Terraform channel on Reddit ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.reddit.com/r/Terraform/){:new_window} and browse through this channel to read about user issues and how they resolved them. 
+- **Open source community**: Get help from the open source community by searching for information on the internet or by asking questions in forums and on websites that support these tools.
 
