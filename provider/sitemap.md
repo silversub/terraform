@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-28"
+lastupdated: "2020-04-29"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -34,6 +34,8 @@ subcollection: terraform
 - [Certificate Manager resources](/docs/terraform?topic=terraform-cert-manager-resources)
     - [`ibm_certificate_manager_import`](/docs/terraform?topic=terraform-cert-manager-resources#cert-manager)
     - [`ibm_certificate_manager_order`](/docs/terraform?topic=terraform-cert-manager-resources#certmanager-order)
+- [Certificate Manager data sources](/docs/terraform?topic=terraform-cert-manager-data-sources)
+    - [`ibm_certificate_manager_certificates`](/docs/terraform?topic=terraform-cert-manager-data-sources#cert-manager-certificates)
 - [Classic infrastructure resources](/docs/terraform?topic=terraform-infrastructure-resources)
     - [`ibm_cdn`](/docs/terraform?topic=terraform-infrastructure-resources#cdn)
     - [`ibm_compute_autoscale_group`](/docs/terraform?topic=terraform-infrastructure-resources#autoscale-group)
