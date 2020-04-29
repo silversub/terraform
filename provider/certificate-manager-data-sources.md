@@ -58,28 +58,35 @@ data "ibm_certificate_manager_certificates" "certs"{
 ### Input parameters
 {: #cert-manager-certificates-input}
 
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
 
-
-certificate_manager_instance_id - (Required,string) The CRN-based service instance ID.
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`certificate_manager_instance_id`|String|Required|The CRN of the Certificate Manager service instance. |
 
 ### Output parameters
 {: #cert-manager-certificates-output}
 
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
 
-id - The Id of the Certificate. It is a combination of <certificate_manager_instance_id>:<CertificateID>
-name - The display name for the certificate.
-domains - An array of valid domains for the issued certificate. The first domain is the primary domain. Additional domains are secondary domains.
-issuer - The issuer of the certificate.
-begins_on - The creation date of the certificate in Unix epoch time.
-expires_on - The expiration date of the certificate in Unix epoch time.
-imported - Indicates whether a certificate has imported or not.
-status - The status of certificate.
-has_previous - Indicates whether a certificate has a previous version.
-key_algorithm - Key Algorithm of a certificate.
-algorithm - Algorithm of a certificate.
-serial_number - The certificate serial number
-issuance_info - Issuance Info of Certificate.
-status - The status of certificate.
-ordered_on - The date the certificate was ordered.
-code - Code of Certificate.
-additional_info - The Additional Info of certificate.
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of the certificate that is managed in Certificate Manager. The ID is composed of `<certificate_manager_instance_ID>:<certificate_ID>`. |
+|`name`|String|The name of the certificate. | 
+|`domains`|Array|A list of domains that the certificate is associated with. The first domain is referred to as the primary domain. Any additional domains are referred to as secondary domains.|
+|`issuer`|String|The issuer of the certificate.|
+|`begins_on`|Timestamp|The timestamp when the certificate was created in Unix epoch time format.| 
+|`expires_on`|Date|The date when the certificate expires in Unix epoch time format.|
+|`imported`|Boolean|If set to **true**, the certificate is imported. |
+|`status`|String|The status of the certificate.|
+|`has_previous`|Boolean|If set to **true**, the certificate has a previous version.| 
+|`key_algorithm`|String|The key algorithm of the certificate. |
+|`algorithm`|String|The algorithm that is used for the certificate.| 
+|`serial_number`|String|The serial number of the certificate.|
+|`issuance_info`|List of objects|The issuance information of the certificate.| 
+|`issuance_info.status`|String|The status of the certificate.|
+|`issuance_info.ordered_on`|Date|The date when the certificate was ordered.|
+|`issuance_info.code`|String|The code of the certificate.|
+|`issuance_info.additional_info`|String|Any additional information for the certificate.| 
