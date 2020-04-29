@@ -62,6 +62,7 @@ Terraform
          provider/vpc-infrastructure-data-sources.md
          provider/vpc-gen2-resources.md
          provider/vpc-gen2-data-sources.md 
+         provider/getting-help.md
    
     [Sample Terraform templates](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples)
     [Terraform documentation](https://www.terraform.io/docs/)
