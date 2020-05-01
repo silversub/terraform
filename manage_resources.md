@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-05-01"
 
 keywords: Add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, Terraform, provision resources
 
@@ -36,7 +36,6 @@ Terraform configuration files are written by using the [HashiCorp Configuration 
 
 Before you begin: 
 - [Install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#setup_cli).
-- [Retrieve required credentials](/docs/terraform?topic=terraform-setup_cli#retrieve_credentials) and store these credentials in a [`terraform.tfvars` file](/docs/terraform?topic=terraform-setup_cli#store_credentials). 
 - [Configure the {{site.data.keyword.cloud_notm}} Provider plug-in to use your {{site.data.keyword.cloud_notm}} credentials](/docs/terraform?topic=terraform-configure_provider#configure_provider). 
 </br>
 
