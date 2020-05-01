@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-30"
+lastupdated: "2020-05-01"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -184,7 +184,7 @@ Because Terraform supports multiple cloud providers, you must specify IBM as you
 
 1. Review the required [input parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) for the resource or data source category that you want to use and retrieve these parameters by using the [Supported input parameters](/docs/terraform?topic=terraform-provider-reference#provider-parameter-ov) documentation.
 
-2. Optional. Create a directory on your local machine for your Terraform project and navigate into the directory. This directory is used to store all configuration files, the provider configuration, and variable definitions. If you have an existing directory that you want to use, navigate into this directory. 
+2. Optional. Create a directory on your local machine for your Terraform project and navigate into the directory. This directory is used to store all Terraform configuration files, the provider configuration, and variable definitions. If you have an existing directory that you want to use, navigate into this directory. 
    ```
    mkdir myproject && cd myproject
    ```
