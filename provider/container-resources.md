@@ -824,22 +824,133 @@ The following timeouts are defined for this resource.
 Create, update, or delete a VPC cluster. 
 {: shortdesc}
 
+To create a VPC cluster, make sure to include the VPC infrastructure generation in the `provider` block of your Terraform configuration file. If you do not set this value, the generation is automatically set to 2. For more information about how to configure the `provider` block, see [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters). 
+{: important}
+
 ### Sample Terraform code
 {: #vpc-cluster-sample}
 
+
+### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
+
+The following example creates a VPC Gen 1 cluster that is spread across two zones.
+{: shortdesc}
+
 ```
+provider "ibm" {
+  generation = 1
+}
+
+resource "ibm_is_vpc" "vpc1" {
+  name = "myvpc"
+}
+
+resource "ibm_is_subnet" "subnet1" {
+  name                     = "mysubnet1"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us_south-1"
+  total_ipv4_address_count = 256
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name                     = "mysubnet2"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us-south-2"
+  total_ipv4_address_count = 256
+}
+
+data "ibm_resource_group" "resource_group" {
+  name = var.resource_group
+}
+
 resource "ibm_container_vpc_cluster" "cluster" {
-  name              = "my_vpc_cluster"
-  vpc_id            = "1111111a-1a11-1aa1-1111-11aa1aa1aa11"
-  flavor            = "c2.2x4"
-  worker_count      = "1"
+  name              = "mycluster"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  flavor            = "bc1-2x8"
+  worker_count      = 3
   resource_group_id = data.ibm_resource_group.resource_group.id
+
   zones {
-    subnet_id = "111aaa1a-aaa1-1a11-1111-11111a11111a"
+    subnet_id = ibm_is_subnet.subnet1.id
     name      = "us-south-1"
   }
 }
+
+resource "ibm_container_vpc_worker_pool" "cluster_pool" {
+  cluster           = ibm_container_vpc_cluster.cluster.id
+  worker_pool_name  = "mywp"
+  flavor            = "bc1-4x16"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+  zones {
+    name      = "us-south-2"
+    subnet_id = ibm_is_subnet.subnet2.id
+  }
+}
 ```
+{: codeblock}
+
+### VPC Gen 2 {{site.data.keyword.containerlong_notm}} cluster
+
+The following example creates a VPC Gen 2 cluster that is spread across two zones.
+{: shortdesc}
+
+```
+provider "ibm" {
+  generation = 2
+}
+
+resource "ibm_is_vpc" "vpc1" {
+  name = "myvpc"
+}
+
+resource "ibm_is_subnet" "subnet1" {
+  name                     = "mysubnet1"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us_south-1"
+  total_ipv4_address_count = 256
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name                     = "mysubnet2"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us-south-2"
+  total_ipv4_address_count = 256
+}
+
+data "ibm_resource_group" "resource_group" {
+  name = var.resource_group
+}
+
+resource "ibm_container_vpc_cluster" "cluster" {
+  name              = "mycluster"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  flavor            = "bx2-4x16"
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+  kube_version      = 1.17.5
+
+  zones {
+    subnet_id = ibm_is_subnet.subnet1.id
+    name      = "us-south-1"
+  }
+}
+
+resource "ibm_container_vpc_worker_pool" "cluster_pool" {
+  cluster           = ibm_container_vpc_cluster.cluster.id
+  worker_pool_name  = "mywp"
+  flavor            = "bx2-2x8"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+  zones {
+    name      = "us-south-2"
+    subnet_id = ibm_is_subnet.subnet2.id
+  }
+}
+```
+{: codeblock}
 
 ### Input parameters
 {: #vpc-cluster-input}
