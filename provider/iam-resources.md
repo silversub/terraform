@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-20"
+lastupdated: "2020-05-07"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -504,6 +504,27 @@ resource "ibm_iam_authorization_policy" "policy" {
 }
 ```
 
+#### Authorization policy between two resource groups
+
+```
+resource "ibm_resource_group" "source_resource_group" {
+  name     = "rg1"
+}
+	  
+resource "ibm_resource_group" "target_resource_group" {
+  name     = "rg2"
+}
+
+resource "ibm_iam_authorization_policy" "policy" {
+  source_service_name         = "cloud-object-storage"
+  source_resource_group_id    = ibm_resource_group.source_resource_group.id
+  target_service_name         = "kms"
+  target_resource_group_id    = ibm_resource_group.target_resource_group.id
+  roles                       = ["Reader"]
+}
+```
+{:  codeblock}
+
 ### Input parameters
 {: #iam-auth-policy-input}
 
@@ -519,6 +540,8 @@ Review the input parameters that you can specify for your resource.
 |`target_resource_instance_id`|String|Optional| The target resource instance ID.|
 |`source_resource_type`|String|Optional| The resource type of the source service.|
 |`target_resource_type`|String|Optional|The resource type of the target service.|
+|`source_resource_group_id`|String|Optional|The ID of the resource group from which you want to allow access to IBM Cloud services in another resource group.|
+|`target_resource_group_id`|String|Optional|The ID of the resource group that holds the IBM Cloud services that you want to allow access to.| 
 |`source_service_account`|String|Optional|The GUID of the account where the source service is provisioned.|
 
 ### Output parameters
