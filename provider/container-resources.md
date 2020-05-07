@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-17" 
+lastupdated: "2020-05-07" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -285,6 +285,25 @@ resource "ibm_container_cluster" "cluster" {
 ```
 {: codeblock}
 
+### Classic {{site.data.keyword.openshiftlong_notm}} cluster with existing OpenShift license
+
+If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, you can create your cluster with that entitlement to avoid being charged twice for the {{site.data.keyword.openshiftshort}} license.
+
+```
+resource "ibm_container_cluster" "cluster" {
+  name              = "test-openshift-cluster"
+  datacenter        = "dal10"
+  default_pool_size = 3
+  machine_type      = "b3c.4x16"
+  hardware          = "shared"
+  kube_version      = "4.3_openshift"
+  public_vlan_id    = "2863614"
+  private_vlan_id   = "2863616"
+  entitlement = "cloud_pak"
+}
+```
+{: pre}
+
 ### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
 
 The following example creates a VPC Gen 1 cluster that is spread across two zones.
@@ -407,6 +426,8 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 
 
 
+
+
 ### Input parameters
 {: #container-cluster-input}
 
@@ -418,6 +439,7 @@ Review the input parameters that you can specify for your resource.
 | `datacenter` | String | Required | The datacenter where you want to provision the worker nodes. The zone that you choose must be supported in the region where you want to create the cluster. To find supported zones, run `ibmcloud ks zones`. |
 | `default_pool_size` | Integer | Optional | The number of worker nodes that you want to add to the default worker pool. |
 | `disk_encryption` | Boolean | Optional | If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks](/docs/containers?topic=containers-security#encrypted_disk).|
+| `entitlement`|String|Optional|If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, enter `cloud_pak` to create your cluster with that entitlement so that you are not charged twice for the {{site.data.keyword.openshiftshort}} license. Note that this option can be set only when you create the cluster. After the cluster is created, the cost for the {{site.data.keyword.openshiftshort}} license occurred and you cannot disable this charge. |
 | `hardware` | String | Optional | The level of hardware isolation for your worker node. Use `dedicated` to have available physical resources dedicated to you only, or `shared` to allow physical resources to be shared with other IBM customers. This option is available for virtual machine worker node flavors only. |
 | `gateway_enabled`|Boolean|Optional|Set to **true** if you want to automatically create a gateway-enabled cluster. If `gateway_enabled` is set to **true**, then `private_service_endpoint` must be set to **true** at the same time.|
 | `kube_version` | String | Optional | The Kubernetes or OpenShift version that you want to set up in your cluster. If the version is not specified, the default version in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-cs_versions) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-openshift_versions#version_types) is used. For example, to specify Kubernetes version 1.16, enter `1.16`. For OpenShift clusters, you can specify version `3.11_openshift` or `4.3.1_openshift`.|
