@@ -580,6 +580,7 @@ Create, update, or delete a worker pool.
 The following example creates the worker pool `mypool` for the cluster that is named `mycluster`. 
 {: shortdesc}
 
+#### Create a worker pool
 ```
 resource "ibm_container_worker_pool" "testacc_workerpool" {
   worker_pool_name = "mypool"
@@ -601,6 +602,24 @@ resource "ibm_container_worker_pool" "testacc_workerpool" {
 }
 ```
 
+#### Create a worker pool with an existing OpenShift license
+```
+resource "ibm_container_worker_pool" "test_pool" {
+  worker_pool_name = "test_openshift_wpool"
+  machine_type     = "b3c.4x16"
+  cluster          = "openshift_cluster_example"
+  size_per_zone    = 3
+  hardware         = "shared"
+  disk_encryption  = "true"
+  entitlement = "cloud_pak"
+
+  labels = {
+    "test" = "oc-pool"
+  }
+}
+```
+{: codeblock}
+
 ### Input parameter
 {: #container-feature-input}
 
@@ -611,6 +630,7 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- |
 | `cluster` | String | Required | The name or ID of the cluster where you want to enable or disable the feature. |
 | `disk_encryption` | Boolean | Optional|If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks](docs/containers?topic=containers-security#encrypted_disk).|
+| `entitlement`|String|Optional|If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, enter `cloud_pak` to create your worker pool with that entitlement so that you are not charged twice for the {{site.data.keyword.openshiftshort}} license. Note that this option can be set only when you create the worker pool. After the worker pool is created, the cost for the {{site.data.keyword.openshiftshort}} license automatically occures when you add worker nodes to your worker pool. |
 | `hardware` | String | Optional | The level of hardware isolation for your worker node. Use `dedicated` to have available physical resources dedicated to you only, or `shared` to allow physical resources to be shared with other IBM customers. This option is available for virtual machine worker node flavors only. |
 | `labels` | Map | Optional | A list of labels that you want to add to your worker pool. The labels can help you find the worker pool more easily later. | 
 | `machine_type` | String | Required | The machine type for your worker node. The machine type determines the amount of memory, CPU, and disk space that is available to the worker node. For an overview of supported machine types, see [Planning your worker node setup](/docs/containers?topic=containers-planning_worker_nodes). |
