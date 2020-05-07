@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-01"
+lastupdated: "2020-05-07"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -33,7 +33,7 @@ Before you can automate your {{site.data.keyword.cloud_notm}} resource provision
 
 The resources and data sources in this documentation are based on the following versions:
 
-- **IBM Cloud Provider plug-in for Terraform version**: 1.5.0
+- **IBM Cloud Provider plug-in for Terraform version**: 1.5.2
 - **Terraform version**: 0.12
 
 With the release of Terraform version 0.12, the syntax for configuration files changed. If you want to run your infrastructure code by using Terraform version 0.12, you must first [update your configuration files](#tf-0.12-migration) to apply the new syntax. 
