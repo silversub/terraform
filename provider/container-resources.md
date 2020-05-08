@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-17" 
+lastupdated: "2020-05-07" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -285,6 +285,25 @@ resource "ibm_container_cluster" "cluster" {
 ```
 {: codeblock}
 
+### Classic {{site.data.keyword.openshiftlong_notm}} cluster with existing OpenShift license
+
+If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, you can create your cluster with that entitlement to avoid being charged twice for the {{site.data.keyword.openshiftshort}} license.
+
+```
+resource "ibm_container_cluster" "cluster" {
+  name              = "test-openshift-cluster"
+  datacenter        = "dal10"
+  default_pool_size = 3
+  machine_type      = "b3c.4x16"
+  hardware          = "shared"
+  kube_version      = "4.3_openshift"
+  public_vlan_id    = "2863614"
+  private_vlan_id   = "2863616"
+  entitlement = "cloud_pak"
+}
+```
+{: pre}
+
 ### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
 
 The following example creates a VPC Gen 1 cluster that is spread across two zones.
@@ -407,6 +426,8 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 
 
 
+
+
 ### Input parameters
 {: #container-cluster-input}
 
@@ -418,6 +439,7 @@ Review the input parameters that you can specify for your resource.
 | `datacenter` | String | Required | The datacenter where you want to provision the worker nodes. The zone that you choose must be supported in the region where you want to create the cluster. To find supported zones, run `ibmcloud ks zones`. |
 | `default_pool_size` | Integer | Optional | The number of worker nodes that you want to add to the default worker pool. |
 | `disk_encryption` | Boolean | Optional | If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks](/docs/containers?topic=containers-security#encrypted_disk).|
+| `entitlement`|String|Optional|If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, enter `cloud_pak` to create your cluster with that entitlement so that you are not charged twice for the {{site.data.keyword.openshiftshort}} license. Note that this option can be set only when you create the cluster. After the cluster is created, the cost for the {{site.data.keyword.openshiftshort}} license occurred and you cannot disable this charge. |
 | `hardware` | String | Optional | The level of hardware isolation for your worker node. Use `dedicated` to have available physical resources dedicated to you only, or `shared` to allow physical resources to be shared with other IBM customers. This option is available for virtual machine worker node flavors only. |
 | `gateway_enabled`|Boolean|Optional|Set to **true** if you want to automatically create a gateway-enabled cluster. If `gateway_enabled` is set to **true**, then `private_service_endpoint` must be set to **true** at the same time.|
 | `kube_version` | String | Optional | The Kubernetes or OpenShift version that you want to set up in your cluster. If the version is not specified, the default version in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-cs_versions) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-openshift_versions#version_types) is used. For example, to specify Kubernetes version 1.16, enter `1.16`. For OpenShift clusters, you can specify version `3.11_openshift` or `4.3.1_openshift`.|
@@ -558,6 +580,7 @@ Create, update, or delete a worker pool.
 The following example creates the worker pool `mypool` for the cluster that is named `mycluster`. 
 {: shortdesc}
 
+#### Create a worker pool
 ```
 resource "ibm_container_worker_pool" "testacc_workerpool" {
   worker_pool_name = "mypool"
@@ -579,6 +602,24 @@ resource "ibm_container_worker_pool" "testacc_workerpool" {
 }
 ```
 
+#### Create a worker pool with an existing OpenShift license
+```
+resource "ibm_container_worker_pool" "test_pool" {
+  worker_pool_name = "test_openshift_wpool"
+  machine_type     = "b3c.4x16"
+  cluster          = "openshift_cluster_example"
+  size_per_zone    = 3
+  hardware         = "shared"
+  disk_encryption  = "true"
+  entitlement = "cloud_pak"
+
+  labels = {
+    "test" = "oc-pool"
+  }
+}
+```
+{: codeblock}
+
 ### Input parameter
 {: #container-feature-input}
 
@@ -589,6 +630,7 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- |
 | `cluster` | String | Required | The name or ID of the cluster where you want to enable or disable the feature. |
 | `disk_encryption` | Boolean | Optional|If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks](docs/containers?topic=containers-security#encrypted_disk).|
+| `entitlement`|String|Optional|If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, enter `cloud_pak` to create your worker pool with that entitlement so that you are not charged twice for the {{site.data.keyword.openshiftshort}} license. Note that this option can be set only when you create the worker pool. After the worker pool is created, the cost for the {{site.data.keyword.openshiftshort}} license automatically occures when you add worker nodes to your worker pool. |
 | `hardware` | String | Optional | The level of hardware isolation for your worker node. Use `dedicated` to have available physical resources dedicated to you only, or `shared` to allow physical resources to be shared with other IBM customers. This option is available for virtual machine worker node flavors only. |
 | `labels` | Map | Optional | A list of labels that you want to add to your worker pool. The labels can help you find the worker pool more easily later. | 
 | `machine_type` | String | Required | The machine type for your worker node. The machine type determines the amount of memory, CPU, and disk space that is available to the worker node. For an overview of supported machine types, see [Planning your worker node setup](/docs/containers?topic=containers-planning_worker_nodes). |
@@ -782,22 +824,133 @@ The following timeouts are defined for this resource.
 Create, update, or delete a VPC cluster. 
 {: shortdesc}
 
+To create a VPC cluster, make sure to include the VPC infrastructure generation in the `provider` block of your Terraform configuration file. If you do not set this value, the generation is automatically set to 2. For more information about how to configure the `provider` block, see [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters). 
+{: important}
+
 ### Sample Terraform code
 {: #vpc-cluster-sample}
 
+
+### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
+
+The following example creates a VPC Gen 1 cluster that is spread across two zones.
+{: shortdesc}
+
 ```
+provider "ibm" {
+  generation = 1
+}
+
+resource "ibm_is_vpc" "vpc1" {
+  name = "myvpc"
+}
+
+resource "ibm_is_subnet" "subnet1" {
+  name                     = "mysubnet1"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us_south-1"
+  total_ipv4_address_count = 256
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name                     = "mysubnet2"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us-south-2"
+  total_ipv4_address_count = 256
+}
+
+data "ibm_resource_group" "resource_group" {
+  name = var.resource_group
+}
+
 resource "ibm_container_vpc_cluster" "cluster" {
-  name              = "my_vpc_cluster"
-  vpc_id            = "1111111a-1a11-1aa1-1111-11aa1aa1aa11"
-  flavor            = "c2.2x4"
-  worker_count      = "1"
+  name              = "mycluster"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  flavor            = "bc1-2x8"
+  worker_count      = 3
   resource_group_id = data.ibm_resource_group.resource_group.id
+
   zones {
-    subnet_id = "111aaa1a-aaa1-1a11-1111-11111a11111a"
+    subnet_id = ibm_is_subnet.subnet1.id
     name      = "us-south-1"
   }
 }
+
+resource "ibm_container_vpc_worker_pool" "cluster_pool" {
+  cluster           = ibm_container_vpc_cluster.cluster.id
+  worker_pool_name  = "mywp"
+  flavor            = "bc1-4x16"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+  zones {
+    name      = "us-south-2"
+    subnet_id = ibm_is_subnet.subnet2.id
+  }
+}
 ```
+{: codeblock}
+
+### VPC Gen 2 {{site.data.keyword.containerlong_notm}} cluster
+
+The following example creates a VPC Gen 2 cluster that is spread across two zones.
+{: shortdesc}
+
+```
+provider "ibm" {
+  generation = 2
+}
+
+resource "ibm_is_vpc" "vpc1" {
+  name = "myvpc"
+}
+
+resource "ibm_is_subnet" "subnet1" {
+  name                     = "mysubnet1"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us_south-1"
+  total_ipv4_address_count = 256
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name                     = "mysubnet2"
+  vpc                      = ibm_is_vpc.vpc1.id
+  zone                     = "us-south-2"
+  total_ipv4_address_count = 256
+}
+
+data "ibm_resource_group" "resource_group" {
+  name = var.resource_group
+}
+
+resource "ibm_container_vpc_cluster" "cluster" {
+  name              = "mycluster"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  flavor            = "bx2-4x16"
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+  kube_version      = 1.17.5
+
+  zones {
+    subnet_id = ibm_is_subnet.subnet1.id
+    name      = "us-south-1"
+  }
+}
+
+resource "ibm_container_vpc_worker_pool" "cluster_pool" {
+  cluster           = ibm_container_vpc_cluster.cluster.id
+  worker_pool_name  = "mywp"
+  flavor            = "bx2-2x8"
+  vpc_id            = ibm_is_vpc.vpc1.id
+  worker_count      = 3
+  resource_group_id = data.ibm_resource_group.resource_group.id
+  zones {
+    name      = "us-south-2"
+    subnet_id = ibm_is_subnet.subnet2.id
+  }
+}
+```
+{: codeblock}
 
 ### Input parameters
 {: #vpc-cluster-input}

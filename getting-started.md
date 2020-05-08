@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-22"
+lastupdated: "2020-04-30"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -148,10 +148,10 @@ Terraform uses the {{site.data.keyword.cloud_notm}} Provider plug-in to securely
 {: shortdesc}
 
 **What credentials do I need?**</br>
-The credentials that you need depend on the type of resource that you want to provision. For example, to provision classic infrastructure resources, you must provide your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key. To provision VPC infrastructure, you need an {{site.data.keyword.cloud_notm}} API key. For more information about what credentials you need for a specific {{site.data.keyword.cloud_notm}} resource, see [Retrieving required credentials for your resources](/docs/terraform?topic=terraform-setup_cli#retrieve_credentials).
+The credentials that you need depend on the type of resource that you want to provision. For example, to provision classic infrastructure resources, you must provide your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key. To provision VPC infrastructure, you need an {{site.data.keyword.cloud_notm}} API key. For more information about what credentials you need for a specific {{site.data.keyword.cloud_notm}} resource, see [Required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters).
 
 **Where can I find an overview of available resources?**</br>
-To find a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in, see the [{{site.data.keyword.cloud_notm}} Provider reference](/docs/terraform?topic=terraform-tf-provider).
+To find a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in, see the [Index of Terraform resources and data sources](/docs/terraform?topic=terraform-index-of-terraform-resources-and-data-sources).
 
 1. Create a folder on your local machine for your first Terraform project and navigate into the folder. This folder is used to store all configuration files and variable definitions. 
    ```
@@ -165,7 +165,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
 
 4. [Retrieve your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). You use this user name and API key to provision the classic infrastructure virtual server in your {{site.data.keyword.cloud_notm}} account. 
         
-6. Create a Terraform configuration file that is named `terraform.tfvars` to store your {{site.data.keyword.cloud_notm}} classic infrastructure credentials and the {{site.data.keyword.cloud_notm}} API key. Make sure to save this file in the folder that you created for your first Terraform project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized and you can reference them in every Terraform configuration file that you use. 
+6. Create a local Terraform variables file that is named `terraform.tfvars` to store your {{site.data.keyword.cloud_notm}} classic infrastructure credentials and the {{site.data.keyword.cloud_notm}} API key. Make sure to save this file in the folder that you created for your first Terraform project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized and you can reference them in every Terraform configuration file that you use. 
 
    Because the `terraform.tfvars` file contains confidential information, do not push this file to your version control system where you store the Terraform configuration files of the resources that you want to provision. This file is meant to be on your local system only. 
    {: important}
@@ -203,7 +203,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    </tbody>
    </table>
    
-7. Create a Terraform provider configuration file that is named `provider.tf`. Use this file to configure the {{site.data.keyword.cloud_notm}} Provider plug-in with the credentials from your `terraform.tfvars` file so that the plug-in can access and provision {{site.data.keyword.cloud_notm}} resources. To reference a variable from the `terraform.tfvars` file, use the syntax `${var.<variable_name>}`. 
+7. Create a Terraform provider configuration file that is named `provider.tf`. Use this file to configure the {{site.data.keyword.cloud_notm}} Provider plug-in with the credentials from your `terraform.tfvars` file so that the plug-in can access and provision {{site.data.keyword.cloud_notm}} resources. To reference a variable from the `terraform.tfvars` file, use the syntax `var.<variable_name>`. 
    ```
    variable "ibmcloud_api_key" {}
    variable "softlayer_username" {}

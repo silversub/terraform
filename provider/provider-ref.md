@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-17"
+lastupdated: "2020-04-30"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -30,10 +30,10 @@ subcollection: terraform
 Review what credentials and information you need to provide to work with {{site.data.keyword.cloud_notm}} resources and data sources with the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
 
-## Overview of required input parameters for each resource category
+## Required input parameters for each resource category
 {: #required-parameters}
 
-Review what information you must provide in the `provider` block to work with a specific resource category. The values in this table are required values. To retrieve the values or view additional parameters that you can specify, see the [provider reference](#provider-parameter-ov). 
+Review what information you must provide in the `provider` block to work with a specific resource category. The values in this table are required values. To retrieve the values or view additional parameters that you can specify, see the [Supported input parameters](#provider-parameter-ov). 
 {: shortdesc}
 
 |Resource|Required input parameters|
