@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-30"
+lastupdated: "2020-05-08"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -137,3 +137,36 @@ You can retrieve the values for the provider input parameters from environment v
    ```
    {: pre} 
    
+
+## Creating multiple `provider` configurations
+{: #multiple-providers}
+
+You can add multiple `provider` configurations within the same Terraform configuration file to create your {{site.data.keyword.cloud_notm}} resources with different provider parameters. 
+{: shortdesc}
+
+Creating multiple `provider` configurations is useful when you want to use different input parameters, such as different regions, zones, infrastructure generations, or accounts to create the {{site.data.keyword.cloud_notm}} resources in your Terraform configuration file. For more information, see [Multiple Provider Instances](https://www.terraform.io/docs/configuration/providers.html#alias-multiple-provider-instances){: external}. 
+
+1. In your Terraform configuration file or `provider.tf` file, create multiple provider blocks with the same provider name. The provider configuration without an alias is considered the default provider configuration and is used for every resource where you do not specify a specific provider configuration.
+   ```
+   provider "ibm" {
+     ibmcloud_api_key    = var.ibmcloud_api_key
+     region = "us-south"
+   }
+   
+   provider "ibm" {
+     alias = "east"
+     ibmcloud_api_key    = var.ibmcloud_api_key
+     region = "us-east"
+   }
+   ```
+   {: codeblock}
+   
+2. In your resource definition, specify the provider configuration that you want to use. If you do not specify a provider, the default provider configuration is used.
+   ```
+   resource "ibm_container_cluster" "cluster" {
+     provider = ibm.east
+   ...
+   }
+   ```
+   {: codeblock}
+
