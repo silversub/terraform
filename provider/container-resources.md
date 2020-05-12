@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-08" 
+lastupdated: "2020-05-12" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -834,6 +834,7 @@ To create a VPC cluster, make sure to include the VPC infrastructure generation 
 
 
 ### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
+{: vpc-gen1}
 
 The following example creates a VPC Gen 1 cluster that is spread across two zones.
 {: shortdesc}
@@ -894,6 +895,7 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 {: codeblock}
 
 ### VPC Gen 2 {{site.data.keyword.containerlong_notm}} cluster
+{: vpc-gen2}
 
 The following example creates a VPC Gen 2 cluster that is spread across two zones.
 {: shortdesc}
