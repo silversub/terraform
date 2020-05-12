@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-07"
+lastupdated: "2020-05-12"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -331,6 +331,19 @@ resource "ibm_iam_access_group_policy" "policy" {
   }
 }
 
+resource "ibm_iam_access_group_policy" "policy_kube" {
+  access_group_id = ibm_iam_access_group.accgrp.id
+  roles           = ["Viewer", "Manager"]
+  
+  resources {
+    service              = "containers-kubernetes"
+    resource_instance_id = "myinstance"
+    
+    attributes = {
+      "namespace" = "default"
+    }
+  }
+}
 ```
 
 ### Input parameters
