@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-29" 
+lastupdated: "2020-05-13" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -800,8 +800,7 @@ Review the input parameters that you can specify for your resource.
 |`health_type`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.|
 |`health_monitor_url`|String|Optional|The health check url. This option is applicable only to the HTTP `health-type`.|
 |`health_monitor_port`|Integer|Optional|The health check port number.|
-|`session_persistence_type`|String|Optional|The session persistence type. Supported values are `source_ip`, `http_cookie`, and `app_cookie`.|
-|`session_persistence_cookie_name`|String|Optional|Session persistence cookie name. This option is applicable when `sessio_persistence_type` is set.|
+|`session_persistence_type`|String|Optional|The session persistence type. Only `source_ip` is supported.|
 
 ### Output parameters
 {: #lb-pool-output}
