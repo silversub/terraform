@@ -128,7 +128,7 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|A descriptive name used to identify the resource instance.|
-|`service`|String|Required|The name of the service offering. You can retrieve the value by running the `ibmcloud catalog service-marketplace` command.|
+|`service`|String|Required|The name of the service offering. You can retrieve the value by installing the `catalogs-management` CLI plug-in and running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search` command.|
 |`plan`|String|Required|The name of the plan type supported by service. You can retrieve the value by running the `ibmcloud catalog service <servicename>` command.|
 |`location`|String|Required|Target location or environment to create the resource instance.|
 |`resource_group_id`|String|Optional|The ID of the resource group where you want to create the service. You can retrieve the value from data source `ibm_resource_group`. If not provided creates the service in default resource group.|
