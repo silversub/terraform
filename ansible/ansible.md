@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-05-15"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -120,16 +120,11 @@ Looking for instructions for how to update or remove Ansible? See [updating Ansi
 Install Ansible on your local machine to automate the deployment of your apps. 
 {: shortdesc}
 
-1. Install [Python version 3.6 or later](https://www.python.org/downloads/). 
-2. Install the Python package manager `pip`. Use the same version that you used when you installed Python. The following example assumes that you downloaded Python version 3.6 and want to install pip version 3.6. 
-   ```
-   python3.6 -m pip install 3.6
-   ```
-   {: pre}
+1. Install [Python version 3.8 or later](https://www.python.org/downloads/). 
 
-3. Install Ansible on your local machine. 
+2. Install Ansible on your local machine by using the Python package manager `pip` that is automatically installed when you install Python. 
    ```
-   sudo pip install ansible
+   sudo pip3 install ansible
    ```
    {: pre}
    
@@ -141,12 +136,12 @@ Install Ansible on your local machine to automate the deployment of your apps.
    
    Example output: 
    ```
-   ansible 2.7.0
+   ansible 2.9.9
    config file = None
-   configured module search path = ['/Users/user/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-   ansible python module location = /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/ansible
-   executable location = /Library/Frameworks/Python.framework/Versions/3.6/bin/ansible
-   python version = 3.6.6 (v3.6.6:4cf1f54eb7, Jun 26 2018, 19:50:54) [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.57)]
+   configured module search path = ['/Users/ibm/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+   ansible python module location = /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/ansible
+   executable location = /Library/Frameworks/Python.framework/Versions/3.8/bin/ansible
+   python version = 3.8.3 (v3.8.3:6f8c8320e9, May 13 2020, 16:29:34) [Clang 6.0 (clang-600.0.57)]
    ```
    {: screen}
  
@@ -158,7 +153,7 @@ You can update Ansible to the latest version.
 
 1. Update Ansible. 
    ```
-   pip install ansible --upgrade
+   pip3 install ansible --upgrade
    ```
    {: pre}
 
@@ -176,13 +171,13 @@ Remove Ansible from your local machine if you do not want to use it anymore.
 
 1. Uninstall Ansible. 
    ```
-   pip uninstall ansible
+   pip3 uninstall ansible
    ```
    {: pre}
    
 2. Verify that Ansible is removed. 
    ```
-   pip freeze
+   pip3 freeze
    ```
    {: pre}
    
@@ -193,8 +188,8 @@ Use Ansible playbooks to connect to your infrastructure resources, run operation
 {: shortdesc}
 
 Before you begin: 
-- [Complete the Terraform getting started tutorial](/docs/terraform?topic=terraform-getting-started#getting-started) to install Terraform, configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in and provision a virtual server in {{site.data.keyword.Bluemix_notm}}. 
-- [Set up a VPN connection to your {{site.data.keyword.Bluemix_notm}} infrastructure resources and upload SSH keys](#setup_vpn). 
+- [Complete the Terraform getting started tutorial](/docs/terraform?topic=terraform-getting-started#getting-started) to install Terraform, configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in and provision a virtual server in {{site.data.keyword.cloud_notm}}. 
+- [Set up a VPN connection to your {{site.data.keyword.cloud_notm}} infrastructure resources and upload SSH keys](#setup_vpn). 
 - [Install Ansible](#install_ansible) on your local machine.
 
 To run Ansible operations against your infrastructure:
@@ -422,7 +417,7 @@ To import the Terraform infrastructure inventory into Ansible:
       <tbody>
       <tr>
       <td><code>inventory</code></td>
-      <td><ul><li><code>hosts</code></li><li><code>terraform_inv.py</code></li><li><code>terraform_inv_ini</code></li></ul></td>
+      <td><ul><li><code>hosts</code></li><li><code>terraform_inv.py</code></li><li><code>terraform_inv.ini</code></li></ul></td>
       </tr>
       <tr>
       <td><code>tr_test_files</code></td>
@@ -434,7 +429,7 @@ To import the Terraform infrastructure inventory into Ansible:
 5. Specify the location of the `terraform.tfstate` file. The `terraform.tfstate` file defines the deployed infrastructure that you want to target with Ansible. By specifying the location of the file in a `terraform_inv.ini` file and storing it in the same directory as the {{site.data.keyword.Bluemix_notm}} Terraform inventory script, Ansible can import the Terraform infrastructure information directly.
    1. In your Ansible `inventory` directory, open the `terraform_inv.ini` file. 
       ```
-      nano terraform-provider-ibm/examples/ansible/ibm_ansible_dyn_inv/terraform_inv.ini
+      nano <ansible_project_path>/inventory/terraform_inv.ini
       ```
       {: pre}
       
