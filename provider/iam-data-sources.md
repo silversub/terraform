@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-03"
+lastupdated: "2020-05-27"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -25,7 +25,7 @@ subcollection: terraform
 {:external: target="_blank" .external}
 
 # Identity & Access (IAM) data sources
-{: #identity-&-access-data-sources}
+{: #iam-data-sources}
 
 Review the data sources that you can use to retrieve information about your Identity and Access Management (IAM) resources. All data sources are imported as read-only information. You can reference the output parameters for each data source by using Terraform interpolation syntax.
 
