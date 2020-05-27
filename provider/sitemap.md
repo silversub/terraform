@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-29"
+lastupdated: "2020-05-27"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -123,6 +123,10 @@ subcollection: terraform
     - [`ibm_dns_permitted_network`](/docs/terraform?topic=terraform-dns-resources#dns-permitted-network)
     - [`ibm_dns_resource_record`](/docs/terraform?topic=terraform-dns-resources#dns-record)
     - [`ibm_dns_zone`](/docs/terraform?topic=terraform-dns-resources#dns-zone)
+- [DNS service data sources](/docs/terraform?topic=terraform-dns-data-sources)
+    - [`ibm_dns_permitted_networks`](/docs/terraform?topic=terraform-dns-data-sources#dns-permitted-network)
+    - [`ibm_dns_resource_records`](/docs/terraform?topic=terraform-dns-data-sources#dns-record)
+    - [`ibm_dns_zones`](/docs/terraform?topic=terraform-dns-data-sources#dns-zones)
 - [Functions resources](/docs/terraform?topic=terraform-function-resources)
     - [`ibm_function_action`](/docs/terraform?topic=terraform-function-resources#fn-action)
     - [`ibm_function_package`](/docs/terraform?topic=terraform-function-resources#fn-package)
