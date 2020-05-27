@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-06"
+lastupdated: "2020-05-27"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -62,7 +62,7 @@ This tutorial is intended for system administrators that want to learn how to cr
 ## Prerequisites
 
 - If you do not have one, create an [IBM Cloud Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}. 
-- Install the [{{site.data.keyword.cloud_notm}} CLI and the {{site.data.keyword.containerlong_notm}} CLI plug-in](/docs/cli?topic=cloud-cli-getting-started).
+- Install the [{{site.data.keyword.cloud_notm}} CLI and the {{site.data.keyword.containerlong_notm}} CLI plug-in](/docs/cli?topic=cli-getting-started).
 - Follow the [instructions](/docs/containers?topic=containers-clusters#cluster_prepare) to make sure that you are assigned the required permissions in Identity and Access Management (IAM) to create clusters and that your account is enabled for Virtual Routing and Forwarding (VRF). 
 
 ## Lesson 1: Prepare your Terraform environment
