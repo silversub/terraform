@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-30"
+lastupdated: "2020-05-27"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -173,8 +173,8 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    ```
    ibmcloud_api_key = "<ibmcloud_api_key>"
    ssh_key = "<ssh_key_name>"
-   softlayer_username = "<classic_infrastructure_username>"
-   softlayer_api_key = "<classic_infrastructure_apikey>"
+   iaas_classic_username = "<classic_infrastructure_username>"
+   iaas_classic_api_key = "<classic_infrastructure_apikey>"
    ```
    {: codeblock}
    
@@ -193,11 +193,11 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    <td>Enter the name of the SSH key that you chose when you uploaded the SSH key to your {{site.data.keyword.cloud_notm}} account.</td>
    </tr>
    <tr>
-   <td><code>softlayer_username</code></td>
+   <td><code>iaas_classic_username</code></td>
    <td>Enter the classic infrastructure user name that you retrieved earlier.  </td>
    </tr>
    <tr>
-   <td><code>softlayer_api_key</code></td>
+   <td><code>iaas_classic_api_key</code></td>
    <td>Enter the classic infrastructure API key that you retrieved earlier. </td>
    </tr>
    </tbody>
@@ -206,15 +206,15 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
 7. Create a Terraform provider configuration file that is named `provider.tf`. Use this file to configure the {{site.data.keyword.cloud_notm}} Provider plug-in with the credentials from your `terraform.tfvars` file so that the plug-in can access and provision {{site.data.keyword.cloud_notm}} resources. To reference a variable from the `terraform.tfvars` file, use the syntax `var.<variable_name>`. 
    ```
    variable "ibmcloud_api_key" {}
-   variable "softlayer_username" {}
-   variable "softlayer_api_key" {}
+   variable "iaas_classic_username" {}
+   variable "iaas_classic_api_key" {}
 
    provider "ibm" {
      ibmcloud_api_key   = var.ibmcloud_api_key
      generation         = 1
      region             = "us-south"
-     softlayer_username = var.softlayer_username
-     softlayer_api_key  = var.softlayer_api_key
+     iaas_classic_username = var.iaas_classic_username
+     iaas_classic_api_key  = var.iaas_classic_api_key
    }
    ```
    {: codeblock}
@@ -238,11 +238,11 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    <td>Specify the {{site.data.keyword.cloud_notm}} region where you want to provision your infrastructure resources. Run <code>ibmcloud is regions</code> to find supported regions.  </td>
    </tr>
    <tr>
-   <td><code>softlayer_username</code></td>
+   <td><code>iaas_classic_username</code></td>
    <td>Reference the classic infrastructure user name that you stored in your <code>terraform.tfvars</code> file. This user name is required to provision classic infrastructure resources. You can remove this credential if you want to provision {{site.data.keyword.cloud_notm}} platform or VPC infrastructure resources only. </td>
    </tr>
    <tr>
-   <td><code>softlayer_api_key</code></td>
+   <td><code>iaas_classic_api_key</code></td>
    <td>Reference the classic infrastructure API key that you stored in your <code>terraform.tfvars</code> file. This API key is required to provision classic infrastructure resources. You can remove this credential if you want to provision {{site.data.keyword.cloud_notm}} platform or VPC infrastructure resources only.   </td>
    </tr>
    </tbody>
