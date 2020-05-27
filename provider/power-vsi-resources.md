@@ -27,7 +27,7 @@ subcollection: terraform
 # Power Systems resources
 {: #power-vsi}
 
-Review the [Power Systems resources](/docs/infrastructure/power-iaas?topic=power-iaas-about-virtual-server) that you can create. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
+Review the [Power Systems resources](/docs/power-iaas?topic=power-iaas-about-virtual-server) that you can create. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
 {: shortdesc}
 
 To find supported input parameter values, you can use the Power Systems CLI plug-in in {{site.data.keyword.cloud_notm}}. To install the plug-in, run `ibmcloud plugin install pi`. 
@@ -88,7 +88,7 @@ The following timeouts are defined for this resource:
 ## `ibm_pi_instance`
 {: #power-instance}
 
-Create or update a [Power Systems Virtual Server instance](/docs/infrastructure/power-iaas?topic=power-iaas-creating-power-virtual-server).
+Create or update a [Power Systems Virtual Server instance](/docs/power-iaas?topic=power-iaas-creating-power-virtual-server).
 {: shortdesc}
 
 ### Sample Terraform code
