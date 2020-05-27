@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2020
-lastupdated: "2020-05-07"
+lastupdated: "2020-05-27"
 
 keywords: terraform, terraform provider release, terraform provider versions
 subcollection: containers
@@ -28,6 +28,26 @@ subcollection: containers
 
 View information for updates to the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {:shortdesc}
+
+## Changelog for 1.6.0, released 20 May 2020
+
+The following table shows the changes that are included in version 1.6.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.5.3 | 1.6.0 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.6.0](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.6.0){: external}.|
+{: caption="Terraform provider 1.6.0" caption-side="top"}
+
+## Changelog for 1.5.3, released 19 May 2020
+
+The following table shows the changes that are included in version 1.5.3 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.5.2 | 1.5.3 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.5.3](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.5.3){: external}.|
+{: caption="Terraform provider 1.5.3" caption-side="top"}
 
 ## Changelog for 1.5.2, released 7 May 2020
 

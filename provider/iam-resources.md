@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-27"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -607,6 +607,59 @@ Review the input parameters that you can specify for your resource.
 
 This resource does not provide output parameters. 
 {: shortdesc}
+
+
+
+
+
+
+## `ibm_iam_custom_role`
+{: #iam-custom-role}
+
+Create, update, or delete a custom IAM role. 
+{: shortdesc}
+
+For more information about IAM custom roles, see [Creating custom roles](/docs/iam?topic=iam-custom-roles).
+
+### Sample Terraform code
+{: #iam-custom-role-sample}
+
+```
+resource "ibm_iam_custom_role" "customrole" {
+  name         = "Role1"
+  display_name = "Role1"
+  description  = "This is a custom role"
+  service = "kms"
+  actions      = ["kms.secrets.rotate"]
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #iam-custom-role-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required|The name of the custom role.|
+|`display_name`|String|Required|The display name of the custom role.|
+|`description`|String|Optional|The description of the custom role. Make sure to include information about the level of access this role assignment gives a user. |
+|`service`|String|Required|The name of the service for which you want to create the custom role. To retrieve the name, run `ibmcloud catalog service-marketplace`.
+|`actions`|Array of strings|Required|A list of action IDs that you want to add to your custom role. The action IDs vary by service. To retrieve supported action IDs, follow the [documentation](/docs/iam?topic=iam-custom-roles) to create the custom role from the UI. |
+
+### Output parameters
+{: #iam-custom-role-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of the custom role.|
+|`crn`|String|The CRN of the custom role.|
+
 
 
 

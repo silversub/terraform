@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-07"
+lastupdated: "2020-05-27"
 
 keywords: terraform provider plugin, terraform schematics data source, terraform schematics workspace 
 
@@ -169,5 +169,6 @@ Review the output parameters that you can access after you retrieved your data s
 |Name|Data type|Description|
 |----|-----------|-------------|
 |`state_store`|String|The URL to the location where the Terraform state file is stored. |
+|`state_store_json`|String|The JSON representation of the Terraform state file.
 |`resource_controller_url`|String| The URL of the IBM Cloud dashboard that can be used to explore and view details about the workspace.|
 {: caption="Table 1. Available output parameters" caption-side="top"}

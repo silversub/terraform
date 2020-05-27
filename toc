@@ -39,6 +39,7 @@ Terraform
          provider/databases-resources.md
          provider/databases-data-sources.md
          provider/dns-resources.md
+         provider/dns-datasources.md
          provider/cloud-foundry-resources.md
          provider/cloud-foundry-data-sources.md
          provider/function-resources.md
