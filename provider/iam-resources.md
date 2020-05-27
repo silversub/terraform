@@ -153,7 +153,7 @@ $ terraform import ibm_iam_access_group_members.example AccessGroupId-5391772e-1
 
 
 
-## `ibm_access_group_policy`
+## `ibm_iam_access_group_policy`
 {: #iam-access-group-policy}
 
 Create, update, or delete an IAM policy for an IAM access group. 
@@ -357,7 +357,7 @@ Review the input parameters that you can specify for your resource.
 |`access_group_id`|String|Required|The ID of the access group.|
 | `roles`|List|Required| A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.
 |`resources` |List|Optional|A nested block describing the resource of this policy.|
-|`resources.service`|String|Optional|The service name of the policy definition.  You can retrieve the value by running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search`.|
+|`resources.service`|String|Optional|The service name that you want to include in your policy definition. For account management services, you can find supported values in the [documentation](/docs/iam?topic=iam-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output. |
 |`resources.resource_instance_id`|String|Optional|The ID of resource instance of the policy definition.|
 |`resources.region` |String|Optional|The region of the policy definition.|
 |`resources.resource_type` |String|Optional|The resource type of the policy definition.|
