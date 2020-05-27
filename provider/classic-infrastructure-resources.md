@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-17"
+lastupdated: "2020-05-27"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -1567,7 +1567,7 @@ Provides a firewall in IBM. One firewall protects one public VLAN and provides i
 
 You can order or find firewalls in the IBM Cloud infrastructure customer portal by navigating to **Network > IP Management > VLANs** and clicking the **Gateway/Firewall** column.
 
-For more information about how to configure a firewall, see the [docs](https://knowledgelayer.softlayer.com/procedure/configure-hardware-firewall-dedicated).
+For an overview of supported firewalls, see [Exploring firewalls](/docs/hardware-firewall-dedicated?topic=fortigate-10g-exploring-firewalls).
 
 ### Sample Terraform code
 {: #firewall-sample}
@@ -1669,14 +1669,10 @@ The following attributes are exported:
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
-
-
 ## `ibm_firewall_policy`
 {: #firewall-policy}
 
 Provides rules for firewall resources in IBM. One rule resource is allowed per firewall. However, a rule resource can contain multiple firewall rules within it.
-
-For more details about how to configure a firewall, see the [docs](https://knowledgelayer.softlayer.com/procedure/configure-hardware-firewall-dedicated).  
 
 **NOTE**: The target VLAN should have at least one subnet for rule configuration. To express any IP addresses externally, configure `src_ip_address` as `0.0.0.0` and `src_ip_cidr` as `0`. To express API IP addresses internally, configure `dst_ip_address` as `any` and `src_ip_cidr` as `32`.
 
@@ -1965,7 +1961,7 @@ The following arguments are supported:
 |`protocols.session_stickiness`|(Optional, string) The SOURCE_IP for session stickiness.  |
 |`protocols.max_conn`|(Optional, integer) The maximum number of connections the listener can accept. The number must be 1-64000.  |
 |`protocols.tls_certificate_id`|(Optional, integer) The ID of the SSL/TLS certificate being used for a protocol. This ID should be specified when `frontend protocol` has a value of `HTTPS`.|
-|`ssl_ciphers`|(Optional, list) The comma separated list of SSL Ciphers. You can find list of supported ciphers [SSL_offload](/docs/infrastructure/loadbalancer-service?topic=loadbalancer-service-ssl-offload-with-ibm-cloud-load-balancer).|
+|`ssl_ciphers`|(Optional, list) The comma separated list of SSL Ciphers. You can find list of supported ciphers [SSL_offload](/docs/loadbalancer-service?topic=loadbalancer-service-ssl-offload-with-ibm-cloud-load-balancer).|
 |`use_system_public_ip_pool`|(Optional, bool) Applicable for public load balancer only. It specifies whether the public IP addresses are allocated from system public IP pool or public subnet from the account ordering the load balancer. Default Value is `true`.|
 |`wait_time_minutes`|(Optional, integer) The duration, expressed in minutes, to wait for the LBaaS instance to become available before declaring it as created. It is also the same amount of time waited for deletion to finish. The default value is `90`.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -2564,7 +2560,7 @@ A network gateway can be created in standalone mode and HA mode with both member
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Gateway).
 
-For more information about getting started, see the [IBM Virtual Router Appliance docs](/docs/infrastructure/gateway-appliance?topic=gateway-appliance-getting-started).
+For more information about getting started, see the [IBM Virtual Router Appliance docs](/docs/gateway-appliance?topic=gateway-appliance-getting-started).
 
 ### Sample Terraform code
 {: #network-gateway-sample}
@@ -2836,7 +2832,7 @@ ibm_network_interface_sg_attachment provides the following [Timeouts](https://ww
 
 Provides a public IP resource to route between servers. This allows public IPs to be created, updated, and deleted. Public IPs are not restricted to routing within the same data center.
 
-For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Subnet_IpAddress_Global) and [public IP address overview](https://knowledgelayer.softlayer.com/learning/global-ip-addresses).
+For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Subnet_IpAddress_Global).
 
 ### Sample Terraform code
 {: #public-ip-sample}
@@ -3131,11 +3127,9 @@ The following attributes are exported:
 ## `ibm_storage_block`
 {: #storage-block}
 
-Provides a block storage resource. This allows iSCSI-based [Endurance](https://knowledgelayer.softlayer.com/topic/endurance-storage) and [Performance](https://knowledgelayer.softlayer.com/topic/performance-storage) block storage to be created, updated, and deleted.
+Provides a block storage resource. This allows iSCSI-based Endurance and Performance block storage to be created, updated, and deleted. Fore more information about Block storage, see [Learn about Block Storage](/docs/BlockStorage?topic=BlockStorage-About). 
 
 Block storage can be accessed and mounted through a Multipath I/O (MPIO) Internet Small Computer System Interface (iSCSI) connection.
-
-To access block storage, see the KnowledgeLayer docs [for Linux](https://knowledgelayer.softlayer.com/procedure/block-storage-linux) or [for Windows](https://knowledgelayer.softlayer.com/procedure/accessing-block-storage-microsoft-windows).
 
 ### Sample Terraform code
 {: #storage-block-sample}
@@ -3185,7 +3179,7 @@ The following arguments are supported:
 |`type`|(Required, string) The type of the storage. Accepted values are `Endurance` and `Performance`.|
 |`datacenter`|(Required, string) The data center where you want to provision the block storage instance.|
 |`capacity`|(Required, integer) The amount of storage capacity you want to allocate, specified in gigabytes.|
-|`iops`|(Required, float) The IOPS value for the storage. You can find available values for Endurance storage in the [IBM Cloud Classic Infrastructure (SoftLayer) docs](https://knowledgelayer.softlayer.com/learning/introduction-endurance-storage).|
+|`iops`|(Required, float) The IOPS value for the storage. For supported values, see [Provisioning](/docs/BlockStorage?topic=BlockStorage-About#provisioning)|
 |`os_format_type`|(Required, string) The OS type used to format the storage space. This OS type must match the OS type that connects to the LUN. [Log in to the IBM Cloud Classic Infrastructure (SoftLayer) API to see available OS format types](https://api.softlayer.com/rest/v3/SoftLayer_Network_Storage_Iscsi_OS_Type/getAllObjects/). Use your API as the password to log in. Log in and find the key called `name`.|
 |`snapshot_capacity`|(Optional, integer) The amount of snapshot capacity to allocate, specified in gigabytes.|
 |`allowed_virtual_guest_ids`|(Optional, array of integers) The virtual guests that you want to give access to this instance. Virtual guests must be in the same data center as the block storage. You can also use this field to import the list of virtual guests that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_vm_instance` resource.|
@@ -3216,7 +3210,7 @@ The following attributes are exported:
 ## `ibm_storage_evault`
 {: #storage-evault}
 
-Provides an  evault storage resource. This allows [IBM Cloud Backup](/docs/infrastructure/Backup?topic=Backup-getting-started#getting-started) storage to be created, updated, and deleted.
+Provides an evault storage resource. This allows [IBM Cloud Backup](/docs/Backup?topic=Backup-getting-started) storage to be created, updated, and deleted.
 
 ### Sample Terraform code
 {: #storage-evault-sample}
@@ -3276,11 +3270,11 @@ ibm_storage_evault provides the following [Timeouts](https://www.terraform.io/do
 ## `ibm_storage_file`
 {: #storage-file}
 
-ibm_storage_file resource provides a file storage resource. This allows NFS-based Endurance and Performance [file storage](/docs/infrastructure/FileStorage?topic=FileStorage-about) to be created, updated, and deleted.
+ibm_storage_file resource provides a file storage resource. This allows NFS-based Endurance and Performance [file storage](/docs/FileStorage?topic=FileStorage-about) to be created, updated, and deleted.
 
 File storage is mounted using the NFS protocol. For example, a file storage resource with the `hostname` argument set to `nfsdal0501a.service.softlayer.com` and the `volumename` argument set to ` IBM01SV278685_7` has the mount point `nfsdal0501a.service.softlayer.com:\IBM01SV278685_7`.
 
-See [Mounting File Storage](/docs/infrastructure/FileStorage?topic=FileStorage-mountingLinux) for NFS configuration.
+See [Mounting File Storage](/docs/FileStorage?topic=FileStorage-mountingLinux) for NFS configuration.
 
 ### Sample Terraform code
 {: #storage-file-sample}
@@ -3348,7 +3342,7 @@ The following arguments are supported:
 |`type`|(Required, string) The type of the storage. Accepted values are `Endurance` and `Performance`|
 |`datacenter`|(Required, string) The data center where you want to provision the file storage instance.|
 |`capacity`|(Required, integer) The amount of storage capacity you want to allocate, expressed in gigabytes.|
-|`iops`|(Required, float) The IOPS value for the storage instance. You can find available values for Endurance storage in the [IBM docs](/docs/infrastructure/FileStorage?topic=FileStorage-orderingConsole#endurance).|
+|`iops`|(Required, float) The IOPS value for the storage instance. For supported values, see [Provisioning](/docs/FileStorage?topic=FileStorage-about#provisioning). |
 |`snapshot_capacity`|(Optional, integer) The amount of snapshot capacity you want to allocate, expressed in gigabytes.|
 |`allowed_virtual_guest_ids`|(Optional, array of integers) The virtual guests that you want to give access to this instance. Virtual guests must be in the same data center as the block storage. You can also use this field to import the list of virtual guests that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_vm_instance` resource.|
 |`allowed_hardware_ids`|(Optional, array of integers) The bare metal servers that you want to give access to this instance. Bare metal servers must be in the same data center as the block storage. You can also use this field to import the list of bare metal servers that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_bare_metal` resource.|
@@ -3363,7 +3357,7 @@ The following arguments are supported:
 |`snapshot_schedule.enable`|(Boolean) Whether to disable an existing snapshot schedule.|
 |`notes`|(Optional, string) Descriptive text to associate with the file storage.  |
 |`tags`|(Optional, array of strings) Tags associated with the file storage instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.  |
-|`hourly_billing`|(Optional,Boolean) Set true to enable hourly billing. Default is false.   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the [link](/docs/infrastructure/FileStorage?topic=FileStorage-selectDC) to get the updated list of data centers.|
+|`hourly_billing`|(Optional,Boolean) Set true to enable hourly billing. Default is false.   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the [link](/docs/FileStorage?topic=FileStorage-selectDC) to get the updated list of data centers.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3389,9 +3383,9 @@ This resource provides portable and static subnets that consist of either IPv4 a
 public portable subnets, private portable subnets, and public static subnets with an IPv4 option, and public portable subnets and public static subnets with an IPv6 option. 
  
 The portable IPv4 subnet is created as a secondary subnet on a VLAN. IP addresses in the portable subnet can be assigned as secondary IP 
-addresses for IBM resources in the VLAN. Because each portable subnet has a default gateway IP address, network IP address, and broadcast IP address, the number of usable IP addresses is `capacity` - 3. A `capacity` of 4 means that the number of usable IP addresses is 1; a `capacity` of 8 means that the number of usable IP addresses is 5. For example, consider a portable subnet of `10.0.0.0/30` that has `10.0.0.1` as a default gateway IP address, `10.0.0.0` as a network IP address, and `10.0.0.3` as a broadcast IP address. Only `10.0.0.2` can be assigned to IBM resources as a secondary IP address. For additional details, refer to [Static and Portable IP blocks](https://knowledgelayer.softlayer.com/articles/static-and-portable-ip-blocks).
+addresses for IBM resources in the VLAN. Because each portable subnet has a default gateway IP address, network IP address, and broadcast IP address, the number of usable IP addresses is `capacity` - 3. A `capacity` of 4 means that the number of usable IP addresses is 1; a `capacity` of 8 means that the number of usable IP addresses is 5. For example, consider a portable subnet of `10.0.0.0/30` that has `10.0.0.1` as a default gateway IP address, `10.0.0.0` as a network IP address, and `10.0.0.3` as a broadcast IP address. Only `10.0.0.2` can be assigned to IBM resources as a secondary IP address. 
 
-The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. For additional details, refer to [Subnet](https://knowledgelayer.softlayer.com/topic/subnets).
+The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
 
 Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](http://blog.softlayer.com/tag/ipv6)
 
