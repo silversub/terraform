@@ -619,7 +619,7 @@ This resource does not provide output parameters.
 Create, update, or delete a custom IAM role. 
 {: shortdesc}
 
-For more information about IAM custom roles, see [Creating custom roles](/docs/iam?topic=iam-custom-roles)
+For more information about IAM custom roles, see [Creating custom roles](/docs/iam?topic=iam-custom-roles).
 
 ### Sample Terraform code
 {: #iam-custom-role-sample}
@@ -647,7 +647,7 @@ Review the input parameters that you can specify for your resource.
 |`display_name`|String|Required|The display name of the custom role.|
 |`description`|String|Optional|The description of the custom role. Make sure to include information about the level of access this role assignment gives a user. |
 |`service`|String|Required|The name of the service for which you want to create the custom role. To retrieve the name, run `ibmcloud catalog service-marketplace`.
-|`actions`|Array of strings|A list of action IDs that you want to add to your custom role. The action IDs vary by service. To retrieve supported action IDs, follow the [documentation](/docs/iam?topic=iam-custom-roles) to create the action ID from the UI. |
+|`actions`|Array of strings|Required|A list of action IDs that you want to add to your custom role. The action IDs vary by service. To retrieve supported action IDs, follow the [documentation](/docs/iam?topic=iam-custom-roles) to create the custom role from the UI. |
 
 ### Output parameters
 {: #iam-custom-role-output}
