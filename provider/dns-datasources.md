@@ -157,7 +157,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_dns_zones`
 {: #dns-zones}
 
-Retrieve details about a zone that you addede to your private DNS service instance.
+Retrieve details about a zone that you added to your private DNS service instance.
 {: shortdesc}
 
 ### Sample Terraform code
