@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-17"
+lastupdated: "2020-05-27"
 
 keywords: terraform provider plugin, terraform dns, terraform vpc dns, terraform private dns
 
@@ -85,7 +85,7 @@ Review the output parameters that you can access after your resource is created.
 ## `ibm_dns_resource_record`
 {: #dns-record}
 
-Create, update, or delete a DNS record. For more information, see [Managing DNS records](docs/dns-svcs?topic=dns-svcs-managing-dns-records). 
+Create, update, or delete a DNS record. For more information, see [Managing DNS records](/docs/dns-svcs?topic=dns-svcs-managing-dns-records). 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -171,7 +171,7 @@ Review the input parameters that you can specify for your resource.
 |`type`|String|Required|The type of DNS record that you want to create. Supported values are `A`, `AAAA`, `CNAME`, `PTR`, `TXT`, `MX`, and `SRV`.|
 |`name`|String|Required|The name of the DNS record.| 
 |`rdata`|String|Required|The resource data of a DNS resource record.
-|`ttl`|Integer|Optional|The time to live (TTL) in minutes that the resolved DNS record is cached before the associated IP address must be retrieved again. The minimum TTL must be 1 minute and can be 12 hours at a maximum. If no value is specified, 15 minutes is used by default. To find the default TTL values for each record type, see [Adding DNS records](https://cloud.ibm.com/docs/dns-svcs?topic=dns-svcs-managing-dns-records#adding-dns-records).|
+|`ttl`|Integer|Optional|The time to live (TTL) in minutes that the resolved DNS record is cached before the associated IP address must be retrieved again. The minimum TTL must be 1 minute and can be 12 hours at a maximum. If no value is specified, 15 minutes is used by default. To find the default TTL values for each record type, see [Adding DNS records](/docs/dns-svcs?topic=dns-svcs-managing-dns-records#adding-dns-records).|
 |`preference`|Integer|Required for `MX` records|If you create an `MX` record, enter the preference of the record.|
 |`priority`|Integer|Required for `SRV` records|If you create an `SRV` record, enter the priority of the record.|
 |`weight`|Integer|Required for `SRV` records|If you create an `SRV` record, enter the weight of the record. The weight is considered when multiple records with the same priority exist. A higher value is associated with a higher weight and a higher chance of being considered among records with the same priority.|

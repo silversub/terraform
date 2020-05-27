@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-15"
+lastupdated: "2020-05-27"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -53,7 +53,7 @@ To securely connect to your virtual machines over the private network with Ansib
    5. If no password is set yet, enter a VPN password. 
    6. Copy the VPN user name as you need it later. 
 2. Install the VPN client on your local machine. 
-   1. Install the Motion Pro Plus client on your local machine. See the instructions for [Linux](/docs/infrastructure/iaas-vpn?topic=iaas-vpn-standalone-vpn-clients#linux-standalone-client), [macOS](/docs/infrastructure/iaas-vpn?topic=iaas-vpn-standalone-vpn-clients#macos-standalone-client), and [Windows](/docs/infrastructure/iaas-vpn?topic=iaas-vpn-standalone-vpn-clients#windows-standalone-client) for more information for your operating system. 
+   1. Install the Motion Pro Plus client on your local machine. See the instructions for [Linux](/docs/iaas-vpn?topic=iaas-vpn-standalone-vpn-clients#linux-standalone-client), [macOS](/docs/iaas-vpn?topic=iaas-vpn-standalone-vpn-clients#macos-standalone-client), and [Windows](/docs/iaas-vpn?topic=iaas-vpn-standalone-vpn-clients#windows-standalone-client) for more information for your operating system. 
    2. In your VPN connection profile, enter the following values. 
       - **Title**: Enter a name for your connection profile. You can enter any name that you want. 
       - **Gateway**: Choose one of the [data center VPN portals in {{site.data.keyword.Bluemix_notm}}](https://www.softlayer.com/VPN-Access) and retrieve their fully qualified domain name in the format `vpn.xxx.softlayer.com` by clicking the portal link.
