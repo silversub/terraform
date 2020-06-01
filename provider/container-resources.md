@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27" 
+lastupdated: "2020-06-01" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -106,7 +106,7 @@ The following example adds an SSL certificate that is stored in {{site.data.keyw
 resource ibm_container_alb_cert cert {
   cert_crn    = "crn:v1:bluemix:public:cloudcerts:us-south:a/e9021a4dc47e3d:faadea8e-a7f4-408f-8b39-2175ed17ae62:certificate:3f2ab474fbbf9564582"
   secret_name = "test-sec"
-  cluster     = "myCluster"
+  cluster_id     = "<cluster_ID>"
 }
 
 ```

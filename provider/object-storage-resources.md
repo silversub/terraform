@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-06-01"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cos bucket, terraform get object storage resources
 
@@ -37,7 +37,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_cos_bucket`
 {: #cos-bucket}
 
-Create or delete an {{site.data.keyword.cos_full_notm}} bucket. The bucket is used to store your data. For more information about configuration options, see [Create some buckets to store your data](/docs/cloud-object-storage?topic=cloud-object-storage-getting-started#gs-create-buckets). 
+Create or delete an {{site.data.keyword.cos_full_notm}} bucket. The bucket is used to store your data. For more information about configuration options, see [Create some buckets to store your data](/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage#gs-create-buckets). 
 
 To create a bucket, you must provision an {{site.data.keyword.cos_full_notm}} instance first by using the [`ibm_resource_instance`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-instance) resource.
 {: note}
