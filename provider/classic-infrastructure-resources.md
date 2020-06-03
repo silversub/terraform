@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-02"
+lastupdated: "2020-06-03"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -572,7 +572,7 @@ The following attributes are exported:
 ## `ibm_compute_placement_group`
 {: #plmt-group}
 
-Create, update, or delete a placement group for your virtual server instance. With placement groups, you can control to which physical host your virtual server instance is deployed to. For more information, see [Placement groups](/docs/virtual-servers?topic=virtual-servers-placement-groups). 
+Create, update, or delete a placement group for your virtual server instance. With placement groups, you can control the physical host your virtual server instance is deployed to. For more information, see [Placement groups](/docs/virtual-servers?topic=virtual-servers-placement-groups). 
 
 ### Sample Terraform code
 {: #plmt-group-sample}
