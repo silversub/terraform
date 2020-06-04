@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-06-04"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -164,10 +164,12 @@ subcollection: terraform
     - [`ibm_cis_global_load_balancer`](/docs/terraform?topic=terraform-cis-resources#cis-global-lb)
     - [`ibm_cis_healthcheck`](/docs/terraform?topic=terraform-cis-resources#cis-health)
     - [`ibm_cis_origin_pool`](/docs/terraform?topic=terraform-cis-resources#cis-origin-pool)
+    - [`ibm_cis_rate_limit`](/docs/terraform?topic=terraform-cis-resources#rate-limit)
 - [Internet Services data sources](/docs/terraform?topic=terraform-cis_data)
     - [`ibm_cis`](/docs/terraform?topic=terraform-cis_data#cis)
     - [`ibm_cis_domain`](/docs/terraform?topic=terraform-cis_data#cis_domain)
     - [`ibm_cis_ip_addresses`](/docs/terraform?topic=terraform-cis_data#cis_ip)
+    - [`ibm_cis_rate_limit`](/docs/terraform?topic=terraform-cis_data#rate-limit)
 - [Key Protect resources](/docs/terraform?topic=terraform-kp-resources)
     - [`ibm_kp_key`](/docs/terraform?topic=terraform-kp-resources#kp-key)
 - [Key Protect data sources](/docs/terraform?topic=terraform-kp-data-sources)
@@ -238,7 +240,6 @@ subcollection: terraform
     - [`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-pool-member)
     - [`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen1-resources#network-acl)
     - [`ibm_is_public_gateway`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-public-gateway)
-    - [`ibm_is_route`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-route)
     - [`ibm_is_security_group`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group)
     - [`ibm_is_security_group_rule`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group-rule)
     - [`ibm_is_security_group_network_interface_attachment`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group-netint)
@@ -246,6 +247,7 @@ subcollection: terraform
     - [`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen1-resources#ssh-key) 
     - [`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-vps)
     - [`ibm_is_vpc_address_prefix`](/docs/terraform?topic=terraform-vpc-gen1-resources#address-prefix)
+    - [`ibm_is_vpc_route`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpc-route)
     - [`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway)
     - [`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway-connection)
     - [`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen1-resources#volume)
@@ -275,7 +277,6 @@ subcollection: terraform
     - [`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-pool-member)
     - [`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen2-resources#network-acl)
     - [`ibm_is_public_gateway`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-public-gateway)
-    - [`ibm_is_route`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-route)
     - [`ibm_is_security_group`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group)
     - [`ibm_is_security_group_rule`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group-rule)
     - [`ibm_is_security_group_network_interface_attachment`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group-netint)
@@ -283,6 +284,7 @@ subcollection: terraform
     - [`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen2-resources#ssh-key)
     - [`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-vps)
     - [`ibm_is_vpc_address_prefix`](/docs/terraform?topic=terraform-vpc-gen2-resources#address-prefix)
+    - [`ibm_is_vpc_route`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpc-route)
     - [`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway)
     - [`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway-connection)
     - [`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen2-resources#volume)
