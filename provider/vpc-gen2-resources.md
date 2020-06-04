@@ -1707,7 +1707,7 @@ terraform import ibm_is_vpc_route.example <vpc_ID>/<vpc_route_ID>
 {: pre}
 
 ### Timeouts
-{: #vpc-route-timeout)
+{: #vpc-route-timeout}
 
 The resource is set up with the following timeouts: 
 
