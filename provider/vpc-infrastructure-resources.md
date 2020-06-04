@@ -548,7 +548,7 @@ terraform import ibm_is_lb_listener.example <loadbalancer_ID>/<listener_ID>
 `ibm_is_lb_listener` provides the following timeouts:
 
 - **create** - (Default 10 minutes) Used for creating Instance.
-- **pdate** - (Default 10 minutes) Used for updating Instance.
+- **update** - (Default 10 minutes) Used for updating Instance.
 - **delete** - (Default 10 minutes) Used for deleting Instance.
 
 ## `ibm_is_lb_listener_policy`
