@@ -537,7 +537,7 @@ Review the output parameters that you can access after your resource is created.
 ```
 terraform import ibm_is_lb_listener.example <loadbalancer_ID>/<listener_ID>
 ```
-{: pre]
+{: pre}
 
 ### Timeouts
 {: #lb-listener-timeout}
