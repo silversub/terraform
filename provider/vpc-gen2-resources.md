@@ -1559,7 +1559,7 @@ Review the input parameters that you can specify for your resource.
 | `tags` | Array of Strings | Optional | Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | 
 
 ### Output parameters
-{: #vpc-arguments}
+{: #vpc-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
