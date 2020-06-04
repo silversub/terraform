@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-06-04"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -644,4 +644,110 @@ terraform import ibm_cis_origin_pool.myorg 1aaaa111111aa11111111111a1a11a1:crn:v
 
 
 
+
+
+## `ibm_cis_rate_limit`
+{: #rate-limit}
+
+Create, update, or delete custom rate limits for an IBM Cloud Internet Services domain. For more information about rate limits, see [Rate limiting](/docs/cis?topic=cis-cis-rate-limiting).
+{: shortdesc}
+
+Rate limiting rule can only be created when you have the enterprise plan for IBM Cloud Internet Services.
+{: note}
+
+### Sample Terraform code
+{: #rate-limit-sample}
+
+The following example shows how you can add a rate limit to an IBM Cloud Internet Services domain. 
+
+```
+resource "ibm_cis_rate_limit" "ratelimit" {
+    cis_id = data.ibm_cis.cis.id
+    domain_id = data.ibm_cis_domain.cis_domain.id
+    threshold = 20
+    period = 900
+    match {
+        request {
+            url = "*.example.org/path*"
+            schemes = ["HTTP", "HTTPS"]
+            methods = ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"]
+        }
+        response {
+            status = [200, 201, 202, 301, 429]
+            origin_traffic = false
+        }
+    }
+    action {
+        mode = "ban"
+        timeout = 43200
+        response {
+            content_type = "text/plain"
+            body = "custom response body"
+        }
+    }
+    correlate {
+        by = "nat"
+    }
+    disabled = false
+    description = "example rate limit for a zone"
+}
+```
+{: codeblock}
+
+### Input parameter 
+{: #rate-limit-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the IBM Cloud Internet Services instance. |
+|`domain_id`|String|Required|The ID of the domain where you want to add a rate limit. |
+|`threshold`|Integer|Required|The number of requests received within a specific time period (`period`) before connections to the domain are refused. The threshold value must be between 2 and 1000000. |
+|`period`|Integer|Required|The period of time in seconds where incoming requests to a domain are counted. If the number of requests exceeds the `threshold`, then connections to the domain are refused. The `period` value must be between 1 and 3600. | 
+|`match`|List of matching rules|Optional|A list of characteristics that incoming network traffic must match to be counted towards the `threshold`. | 
+|`match.request`|List of request characteristics|Optional|A list of characteristics that the incoming request must match to be counted towards the `threshold`. If this list is not provided, all incoming requests are counted towards the `threshold`.|
+|`match.request.url`|String|Optional|The URL that the request uses. Wildcard domains are expanded to match applicable traffic, query strings are not matched. You can use `*` to apply the rule to all URLs. The maximum length of this value can be 1024.|
+|`match.request.schemes`|Set of strings|Optional|The scheme of the request that determines the desired protocol. Supported values are `HTTPS`, `HTTP,HTTPS`, and `ALL`. |
+|`match.request.methods`|Set of strings|Optional|The HTTP methods that the incoming request can use to be counted towards the `threshold`. Supported values are `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, and `ALL`. You can also combine multiple methods and seperate them with a comma. For example `POST,PUT`. |
+|`response`|List of HTTP responses|Optional|A list of HTTP responses that outgoing packets must match before they can be returned to the client. If an incoming request matches the request criteria, but the reponse does not match the response criteria, then the request packet is not counted towards the `threshold`.| 
+|`response.status`|Set of integers|Optional|The HTTP status that the response must have so that the request is counted towards the `threshold`. You can specify one (`403`) or multiple (`401,403`) HTTP response codes. The value that you enter must be between 100 and 999. |
+|`response.header`|List of response headers|Optional|A list of HTTP response headers that the response packet must match so that the original request is counted towards the `threshold`.|
+|`response.header.name`|String|Optional|The name of the HTTP response header.|
+|`response.header.op`|String|Optional|The operator that you want to apply to your HTTP response header. Supported values are `eq` (equals) and `ne` (not equals). |
+|`response.header.value`|String|Optional|The value that the HTTP response header must match. |
+|`action`|List of actions|Required|A list of actions that you want to perform when incoming requests exceed the specified `threshold`.|
+|`action.mode`|String|Required|The type of action that you want to perform. Supported values are `simulate`, `ban`, `challenge`, or `js_challenge`. For more information about each type, see [Configure response](/docs/cis?topic=cis-cis-rate-limiting#rate-limiting-configure-response).|
+|`action.timeout`|Integer|Optional|The time to wait in seconds before the action is performed. The timeout must be equal or greater than the `period` and can be provided only for actions of type `simulate` or `ban`. The value that you enter must be between 10 and 86400.|
+|`action.response`|List of reponse information|Optional|A list of information that you want to return to the client, such as the `content-type` and specific body information. The information provided in this parameter overrides the default HTML error page that is returned to the client. You can use this option only for actions of type `simulate` or `ban`.  |
+|`action.response.content_type`|String|Optional|The `content-type` of the body that you want to return. Supported values are `text/plain`, `text/xml`, and `application/json`.|
+|`action.response.body`|String|Optional|The body of the reponse that you want to return to the client. The information that you provide must match the `action.response.content_type` that you specified. The value that you enter can have a maximum length of 1024.|
+|`disabled`|Boolean|Optional|Set to **true** to disable rate limiting for a domain and **false** to enable rate limiting.|
+|`description`|String|Optional|Enter a description for your rate limiting rule. |
+|`correlate`|List of NAT-based rate limits|Optional|Enable NAT-based rate limiting.|
+|`correlate.by`|String|Optional|Enter `nat` to enable NAT-based rate limiting.|
+|`bypass`|List of bypass criteria|Optional|A list of key-value pairs that, when matched, allow the rate limiting rule to be ignored. For example, use this option if you want to ignore the rate limiting for certain URLs.  |
+|`bypass.name`|String|Optional|The name of the key that you want to apply. Supported values are `url`. |
+|`bypass.value`|String|Optional|The value of the key that you want to match. When `bypass.name` is set to `url`, `bypass.value` must be set to the URL that you want to exclude from the rate limiting rule. |
+
+### Output parameter
+{: #rate-limit-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The ID of the rate limiting rule in the format `<rule_ID>:<domain_ID>:<cis_ID>`. 
+
+### Import
+{: #rate-limit-import}
+
+The resource can be imported by using the ID. 
+
+```
+terraform import ibm_cis_rate_limit.ratelimit <rule_id>:<domain-id>:<crn>
+```
+{: pre}
 

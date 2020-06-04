@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-13"
+lastupdated: "2020-06-04"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -338,8 +338,9 @@ Review the output parameters that you can access after your resource is created.
 
 The following timeouts are defined for the instance: 
 
-- **create**: The creation of the instance is considered failed when no response is received for 60 minutes. 
-- **delete**: The deletion of the instance is considered failed when no response is received for 60 minutes. 
+- **create**: The creation of the instance is considered failed when no response is received for 10 minutes. 
+- **update**: The update of the instance or the attachment of a volume to an instance is considered failed when no response is received for 10 minutes.
+- **delete**: The deletion of the instance is considered failed when no response is received for 10 minutes. 
 
 ### Import
 {: #instance-import}
@@ -461,8 +462,8 @@ terraform import ibm_is_lb.example <lb_ID>
 
 `ibm_is_lb` provides the following Timeouts. 
 
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
+- **create** - (Default 10 minutes) Used for creating Instance.
+- **delete** - (Default 10 minutes) Used for deleting Instance.
 
 ## `ibm_is_lb_listener`
 {: #lb-listener}
@@ -539,16 +540,16 @@ Review the output parameters that you can access after your resource is created.
 ```
 terraform import ibm_is_lb_listener.example <loadbalancer_ID>/<listener_ID>
 ```
-{: pre]
+{: pre}
 
 ### Timeouts
 {: #lb-listener-timeout}
 
 `ibm_is_lb_listener` provides the following timeouts:
 
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **pdate** - (Default 60 minutes) Used for updating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
+- **create** - (Default 10 minutes) Used for creating Instance.
+- **update** - (Default 10 minutes) Used for updating Instance.
+- **delete** - (Default 10 minutes) Used for deleting Instance.
 
 ## `ibm_is_lb_listener_policy`
 {: #lb-listener-policy}
@@ -830,9 +831,9 @@ terraform import ibm_is_lb_pool.example <loadbalancer_ID>/<pool_ID>
 
 `ibm_is_lb_pool` provides the following timeouts:
 
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **update** - (Default 60 minutes) Used for updating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
+- **create** - (Default 10 minutes) Used for creating Instance.
+- **update** - (Default 10 minutes) Used for updating Instance.
+- **delete** - (Default 10 minutes) Used for deleting Instance.
 
 ## `ibm_is_lb_pool_member`
 {: #lb-pool-member}
@@ -894,9 +895,9 @@ terraform import ibm_is_lb_pool_member.example <loadbalancer_ID>/<pool_ID>/<pool
 
 `ibm_is_lb_pool_member` provides the following timeouts.
 
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **update** - (Default 60 minutes) Used for updating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
+- **create** - (Default 10 minutes) Used for creating Instance.
+- **update** - (Default 10 minutes) Used for updating Instance.
+- **delete** - (Default 10 minutes) Used for deleting Instance.
 
 
 ## `ibm_is_network_acl`
@@ -1099,66 +1100,8 @@ Review the output parameters that you can access after your resource is created.
 The following timeouts are defined for this resource. 
 {: shortdesc}
 
-- **create**: The creation of the public gatway is considered `failed` when no response is received for 60 minutes. 
-- **delete**: The deletion of the public gatway is considered `failed` when no response is received for 60 minutes.
-
-## `ibm_is_route`
-{: #provider-route}
-
-Create, update, or delete a route for your VPC. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #route-sample}
-
-```
-resource "ibm_is_vpc" "testacc_vpc" {
-  name = "testvpc"
-}
-
-resource "ibm_is_vpc_route" "testacc_vpc_route" {
-  name        = "routetest"
-  vpc         = ibm_is_vpc.testacc_vpc.id
-  zone        = "us-south-1"
-  destination = "192.168.4.0/24"
-  next_hop    = "10.0.0.4"
-}
-```
-
-### Input parameters 
-{: #route-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`name`|String|Required|The name of the route.|
-|`vpc`|String|Required|The ID of the VPC.|
-|`zone`|String|Required|The name of the VPC zone where you want to create the route.| 
-|`destination`|String|Required|The destionation IP address of the route.|
-|`next_hop`|String|Required|The next hop of the route.|
-
-### Output parametesr
-{: #route-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-| Output parameter | Data type | Description |
-| ------------- |-------------| -------------- |
-|`id`|String|The ID of the route. The id is composed of `<vpc_id>/<vpc_route_id>`.|
-|`status`|String|The status of the VPC route.|
-
-### Import
-{: #route-import}
-
-`ibm_is_vpc_route` can be imported by using the VPC ID and VPC route ID. 
-
-```
-terraform import ibm_is_vpc_route.example <vpc_id>/<vpc_route_id>
-```
-{: pre}
+- **create**: The creation of the public gatway is considered `failed` when no response is received for 10 minutes. 
+- **delete**: The deletion of the public gatway is considered `failed` when no response is received for 10 minutes.
 
 
 ## `ibm_is_security_group`
@@ -1543,244 +1486,6 @@ terraform import ibm_is_ssh_key.example <ssh_key_ID>
 ```
 {: pre}
 
-
-## `ibm_is_vpc` 
-{: #provider-vps}
-
-Create, update, or delete a Virtual Private Cloud (VPC). VPCs allow you to create your own space in {{site.data.keyword.cloud_notm}} to run an isolated environment within the public cloud. VPC gives you the security of a private cloud, with the agility and ease of a public cloud.
-{: shortdesc}
-
-For more information, see [About Virtual Private Cloud](/docs/vpc-on-classic?topic=vpc-on-classic-about). 
-
-### Sample Terraform code
-{: #vpc-sample}
-
-```
-resource "ibm_is_vpc" "testacc_vpc" {
-    name = "test"
-}
-```
-{: codeblock}
-
-### Input parameters
-{: #vpc-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-| `classic_access` | Boolean | Optional | Specify if you want to create a VPC that can connect to classic infrastructure resources. Enter **true** to set up private network connectivity from your VPC to classic infrastructure resources that are created in the same {{site.data.keyword.cloud_notm}} account, and **false** to disable this access. If you choose to not set up this access, you cannot enable it after the VPC is created. Make sure to review the [prerequisites](/docs/vpc-on-classic-network?topic=vpc-on-classic-setting-up-access-to-your-classic-infrastructure-from-vpc#vpc-prerequisites) before you create a VPC with classic infrastructure access. Note that you can enable one VPC for classic infrastructure access per {{site.data.keyword.cloud_notm}} account only. |
-|`address_prefix_management`|String|Optional|Indicates whether a default address prefix should be created automatically (`auto`) or manually (`manual`) for each zone in this VPC. Default value `auto`.|
-| `name` | String | Required | Enter a name for your VPC. | 
-| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the VPC. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the VPC is created in the `default` resource group. | 
-| `tags` | Array of Strings | Optional | Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | 
-
-### Output parameters
-{: #vpc-arguments}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-| Output parameter | Data type | Description |
-| ------------- |-------------| -------------- |
-|`crn`|String|The CRN of the VPC.|
-| `default_security_group` | String | The unique identifier of the default security group that was created for your VPC. | 
-| `id` | String | The unique identifier of the VPC that you created. |
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the VPC. |
-|`subnets`|List of subnets|A list of subnets that are attached to a VPC.|
-|`subnets.name`|String|The name of the subnet.|
-|`subnets.id`|String|The ID of the subnet.|
-|`subnets.status`|String|The status of the subnet.|
-|`subnets.total_ipv4_address_count`|Integer|The total number of IPv4 addresses in the subnet.|
-|`subnets.available_ipv4_address_count`|Integer|The number of IPv4 addresses in the subnet that are available for you to be used.|
-| `status` | String | The provisioning status of your VPC. | 
-| `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
-|`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
-|`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|
-
-## `ibm_is_vpc_address_prefix`
-{: #address-prefix}
-
-Create, update, or delete an IP address prefix. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #address-prefix-sample}
-
-```
-resource "ibm_is_vpc" "testacc_vpc" {
-  name = "testvpc"
-}
-
-resource "ibm_is_vpc_address_prefix" "testacc_vpc_address_prefix" {
-  name = "test"
-  zone   = "us-south-1"
-  vpc         = ibm_is_vpc.testacc_vpc.id
-  cidr        = "10.240.0.0/24"
-}
-
-```
-
-### Input parameters
-{: #address-prefix-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required| The address prefix name.|
-|`vpc`|String|Required|The VPC ID. |
-|`zone`|String|Required|The name of the zone. |
-|`cidr`|String|Required|The CIDR block for the address prefix. |
-{: caption="Table. Available input parameters" caption-side="top"}
-
-### Output parameters
-{: #address-prefix-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The ID of the address prefix.|
-|`has_subnets`|Boolean|Indicates whether subnets exist with addresses from this prefix.|
-{: caption="Table 1. Available output parameters" caption-side="top"}
-
-
-### Import
-{: #address-prefix-import}
-
-`ibm_is_vpc_address_prefix` can be imported using the ID.
-
-```
-terraform import ibm_is_vpc_address_prefix.example a1aaa111-1111-111a-1a11-a11a1a11a11a
-```
-
-
-## `ibm_is_vpn_gateway`
-{: #vpn-gateway}
-
-Create, update, or delete a VPC gateway. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #vpn-gateway-sample}
-
-```
-resource "ibm_is_vpn_gateway" "testacc_vpn_gateway" {
-  name   = "test"
-  subnet = "a1aa111a-a11a-1111-11aa-111a1aa1aaa1"
-}
-```
-
-### Input parameters
-{: #vpn-gateway-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The name of the VPN gateway.|
-|`subnet`|String|Required|The unique identifier for this subnet.|
-|`resource_group`|String|Optional| The resource group where the VPN gateway to be created.|
-|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gatway. Tags can help you find your VPN gateway more easily later.|
-
-### Output parameters
-{: #vpn-gateway-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The unique identifier of the VPN gateway.|
-|`status`|String|The status of VPN gateway.|
-|`public_ip_address`|String|The IP address assigned to this VPN gateway.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
-
-### Import
-{: #vpn-gateway-import}
-
-`ibm_is_vpn_gateway` can be imported using the VPN gateway ID. 
-
-```
-terraform import ibm_is_vpn_gateway.example <vpn_gateway_ID>
-```
-{: pre}
-
-## `ibm_is_vpn_gateway_connection`
-{: #vpn-gateway-connection}
-
-Create, update, or delete a VPN gateway connection. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #vpn-gateway-connection-sample}
-
-```
-resource "ibm_is_vpn_gateway_connection" "VPNGatewayConnection" {
-  name          = "test2"
-  vpn_gateway   = ibm_is_vpn_gateway.testacc_VPNGateway2.id
-  peer_address  = ibm_is_vpn_gateway.testacc_VPNGateway2.public_ip_address
-  preshared_key = "VPNDemoPassword"
-  local_cidrs = [ibm_is_subnet.testacc_subnet2.ipv4_cidr_block]
-  peer_cidrs = [ibm_is_subnet.testacc_subnet1.ipv4_cidr_block]
-}
-```
-
-### Input parameters
-{: #vpn-gateway-connection-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The name of the VPN gateway connection.|
-|`vpn_gateway`|String|Required| The unique identifier of the VPN gateway.|
-|`peer_address`|String|Required|The IP address of the peer VPN gateway.|
-|`preshared_key`|String|Required| The preshared key.|
-|`local_cidrs`|Array|Optional|List of local CIDRs for this resource.|
-|`peer_cidrs`|Array|Optional|List of peer CIDRs for this resource.|
-|`admin_state_up`|Boolean|Optional|The VPN gateway connection status. Default false. If set to false, the VPN gateway connection is shut down.|
-|`action`|String|Optional| Dead peer detection actions. Supported values are `restart`, `clear`, `hold`, `none`. Default: `none`.|
-|`interval`|Integer|Optional| Dead peer detection interval in seconds. Default 30.|
-|`timeout`|Integer|Optional| Dead peer detection timeout in seconds. Default 120.|
-|`ike_policy`|String|Optional|The ID of the IKE policy.|
-|`ipsec_policy`|String|Optional| The ID of the IPSec policy.|
-
-### Output parameters
-{: #vpn-gateway-connection-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The unique identifier of the VPN gateway connection. The ID is composed of `<vpn_gateway_id>/<vpn_gateway_connection_id>`.|
-|`status`|String|The status of the VPN gateway connection.|
-
-### Import
-{: #vpn-gateway-connection-import}
-
-`ibm_is_vpn_gateway_connection` can be imported using the VPN gateway ID and the VPN gateway connection ID. 
-
-```
-terraform import ibm_is_vpn_gateway_connection.example <vpn_gateway_ID>/<vpn_gateway_connection_ID>
-```
-{: pre}
-
-### Timeouts
-{: #vpn-gateway-connection-timeout}
-
-`ibm_is_vpn_gateway_connection` provides the following Timeouts:
-
-- **delete** - (Default 60 minutes) Used for deleting Instance.
-
-
 ## `ibm_is_volume`
 {: #volume}
 
@@ -1855,6 +1560,328 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Description|
 |----|-----------|
-|`create`|(Default 60 minutes) Used for Creating Instance.|
-|`delete`|(Default 60 minutes) Used for Deleting Instance.|
+|`create`|(Default 10 minutes) Used for Creating Instance.|
+|`delete`|(Default 10 minutes) Used for Deleting Instance.|
 {: caption="Table. Available timeout configuration options" caption-side="top"}
+
+
+## `ibm_is_vpc` 
+{: #provider-vps}
+
+Create, update, or delete a Virtual Private Cloud (VPC). VPCs allow you to create your own space in {{site.data.keyword.cloud_notm}} to run an isolated environment within the public cloud. VPC gives you the security of a private cloud, with the agility and ease of a public cloud.
+{: shortdesc}
+
+For more information, see [About Virtual Private Cloud](/docs/vpc-on-classic?topic=vpc-on-classic-about). 
+
+### Sample Terraform code
+{: #vpc-sample}
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+    name = "test"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #vpc-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `classic_access` | Boolean | Optional | Specify if you want to create a VPC that can connect to classic infrastructure resources. Enter **true** to set up private network connectivity from your VPC to classic infrastructure resources that are created in the same {{site.data.keyword.cloud_notm}} account, and **false** to disable this access. If you choose to not set up this access, you cannot enable it after the VPC is created. Make sure to review the [prerequisites](/docs/vpc-on-classic-network?topic=vpc-on-classic-setting-up-access-to-your-classic-infrastructure-from-vpc#vpc-prerequisites) before you create a VPC with classic infrastructure access. Note that you can enable one VPC for classic infrastructure access per {{site.data.keyword.cloud_notm}} account only. |
+|`address_prefix_management`|String|Optional|Indicates whether a default address prefix should be created automatically (`auto`) or manually (`manual`) for each zone in this VPC. Default value `auto`.|
+| `name` | String | Required | Enter a name for your VPC. | 
+| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the VPC. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the VPC is created in the `default` resource group. | 
+| `tags` | Array of Strings | Optional | Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | 
+
+### Output parameters
+{: #vpc-arguments}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`crn`|String|The CRN of the VPC.|
+| `default_security_group` | String | The unique identifier of the default security group that was created for your VPC. | 
+| `id` | String | The unique identifier of the VPC that you created. |
+| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the VPC. |
+|`subnets`|List of subnets|A list of subnets that are attached to a VPC.|
+|`subnets.name`|String|The name of the subnet.|
+|`subnets.id`|String|The ID of the subnet.|
+|`subnets.status`|String|The status of the subnet.|
+|`subnets.total_ipv4_address_count`|Integer|The total number of IPv4 addresses in the subnet.|
+|`subnets.available_ipv4_address_count`|Integer|The number of IPv4 addresses in the subnet that are available for you to be used.|
+| `status` | String | The provisioning status of your VPC. | 
+| `cse_source_addresses`|List of Cloud Service Endpoints|A list of the cloud service endpoints that are associated with your VPC, including their source IP address and zone.|
+|`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
+|`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|
+
+### Timeouts
+{: #vpc-timeout}
+
+The following timeouts are defined for the resource: 
+
+- **create**: The creation of the VPC is considered `failed` when no response is received for 10 minutes. 
+- **delete**: The deletion of the VPC is considered `failed` when no response is received for 10 minutes. 
+
+## `ibm_is_vpc_address_prefix`
+{: #address-prefix}
+
+Create, update, or delete an IP address prefix. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #address-prefix-sample}
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "testvpc"
+}
+
+resource "ibm_is_vpc_address_prefix" "testacc_vpc_address_prefix" {
+  name = "test"
+  zone   = "us-south-1"
+  vpc         = ibm_is_vpc.testacc_vpc.id
+  cidr        = "10.240.0.0/24"
+}
+
+```
+
+### Input parameters
+{: #address-prefix-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required| The address prefix name.|
+|`vpc`|String|Required|The VPC ID. |
+|`zone`|String|Required|The name of the zone. |
+|`cidr`|String|Required|The CIDR block for the address prefix. |
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #address-prefix-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The ID of the address prefix.|
+|`has_subnets`|Boolean|Indicates whether subnets exist with addresses from this prefix.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+
+### Import
+{: #address-prefix-import}
+
+`ibm_is_vpc_address_prefix` can be imported using the ID.
+
+```
+terraform import ibm_is_vpc_address_prefix.example a1aaa111-1111-111a-1a11-a11a1a11a11a
+```
+
+## `ibm_is_vpc_route`
+{: #vpc-route}
+
+Create, update, or delete a VPC route. For more information about VPC routes, see [Setting up advanced routing in VPC](/docs/vpc?topic=vpc-advanced-routing).
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-route-sample}
+
+```
+resource "ibm_is_vpc" "myvpc" {
+  name = "myvpc"
+}
+
+resource "ibm_is_vpc_route" "myroute" {
+  name        = "routetest"
+  vpc         = ibm_is_vpc.myvpc.id
+  zone        = "us-south-1"
+  destination = "192.168.4.0/24"
+  next_hop    = "10.0.0.4"
+}
+```
+
+### Input parameters
+{: #vpc-route-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required|The name of the route that you want to create.| 
+|`vpc`|String|Requied|The ID of the VPC where you want to create the route. | 
+|`zone`|String|Required|The name of the VPC zone where you want to create the route.|
+|`destination`|String|Required|The destination IP address or CIDR that network traffic from your VPC must match to be routed to the `next_hop`.|
+|`next_hop`|String|Required|The IP address where network traffic is sent next.|
+
+### Output parameters
+{: #vpc-route-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The ID of the VPC route. The ID is composed of `<vpc_id>/<vpc_route_id>`.|
+|`status`|Strign|The status of the VPC route.|
+
+### Import
+{: #vpc-route-import}
+
+The resource can be imported by using the VPC and route IDs. 
+
+```
+terraform import ibm_is_vpc_route.example <vpc_ID>/<vpc_route_ID>
+```
+{: pre}
+
+### Timeouts
+{: #vpc-route-timeout}
+
+The resource is set up with the following timeouts: 
+
+- **create**: The creation of the route is considered `failed` when no response is received for 10 minutes. 
+- **delete**: The deletion of the route is considered `failed` when no response is received for 10 minutes. 
+
+
+## `ibm_is_vpn_gateway`
+{: #vpn-gateway}
+
+Create, update, or delete a VPC gateway. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpn-gateway-sample}
+
+```
+resource "ibm_is_vpn_gateway" "testacc_vpn_gateway" {
+  name   = "test"
+  subnet = "a1aa111a-a11a-1111-11aa-111a1aa1aaa1"
+}
+```
+
+### Input parameters
+{: #vpn-gateway-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required|The name of the VPN gateway.|
+|`subnet`|String|Required|The unique identifier for this subnet.|
+|`resource_group`|String|Optional| The resource group where the VPN gateway to be created.|
+|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gatway. Tags can help you find your VPN gateway more easily later.|
+
+### Output parameters
+{: #vpn-gateway-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The unique identifier of the VPN gateway.|
+|`status`|String|The status of VPN gateway.|
+|`public_ip_address`|String|The IP address assigned to this VPN gateway.|
+|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
+
+### Import
+{: #vpn-gateway-import}
+
+`ibm_is_vpn_gateway` can be imported using the VPN gateway ID. 
+
+```
+terraform import ibm_is_vpn_gateway.example <vpn_gateway_ID>
+```
+{: pre}
+
+### Timeouts
+{: #vpn-gateway-timeout}
+
+The following timeouts are specified for this resource: 
+
+- **create**: The creation of the VPN gateway is considered `failed` when no response is received for 10 minutes. 
+- **delete**: The deletion of the VPN gateway is considered `failed` when no response is received for 10 minutes. 
+
+## `ibm_is_vpn_gateway_connection`
+{: #vpn-gateway-connection}
+
+Create, update, or delete a VPN gateway connection. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpn-gateway-connection-sample}
+
+```
+resource "ibm_is_vpn_gateway_connection" "VPNGatewayConnection" {
+  name          = "test2"
+  vpn_gateway   = ibm_is_vpn_gateway.testacc_VPNGateway2.id
+  peer_address  = ibm_is_vpn_gateway.testacc_VPNGateway2.public_ip_address
+  preshared_key = "VPNDemoPassword"
+  local_cidrs = [ibm_is_subnet.testacc_subnet2.ipv4_cidr_block]
+  peer_cidrs = [ibm_is_subnet.testacc_subnet1.ipv4_cidr_block]
+}
+```
+
+### Input parameters
+{: #vpn-gateway-connection-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required|The name of the VPN gateway connection.|
+|`vpn_gateway`|String|Required| The unique identifier of the VPN gateway.|
+|`peer_address`|String|Required|The IP address of the peer VPN gateway.|
+|`preshared_key`|String|Required| The preshared key.|
+|`local_cidrs`|Array|Optional|List of local CIDRs for this resource.|
+|`peer_cidrs`|Array|Optional|List of peer CIDRs for this resource.|
+|`admin_state_up`|Boolean|Optional|The VPN gateway connection status. Default false. If set to false, the VPN gateway connection is shut down.|
+|`action`|String|Optional| Dead peer detection actions. Supported values are `restart`, `clear`, `hold`, `none`. Default: `none`.|
+|`interval`|Integer|Optional| Dead peer detection interval in seconds. Default 30.|
+|`timeout`|Integer|Optional| Dead peer detection timeout in seconds. Default 120.|
+|`ike_policy`|String|Optional|The ID of the IKE policy.|
+|`ipsec_policy`|String|Optional| The ID of the IPSec policy.|
+
+### Output parameters
+{: #vpn-gateway-connection-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The unique identifier of the VPN gateway connection. The ID is composed of `<vpn_gateway_id>/<vpn_gateway_connection_id>`.|
+|`status`|String|The status of the VPN gateway connection.|
+
+### Import
+{: #vpn-gateway-connection-import}
+
+`ibm_is_vpn_gateway_connection` can be imported using the VPN gateway ID and the VPN gateway connection ID. 
+
+```
+terraform import ibm_is_vpn_gateway_connection.example <vpn_gateway_ID>/<vpn_gateway_connection_ID>
+```
+{: pre}
+
+### Timeouts
+{: #vpn-gateway-connection-timeout}
+
+`ibm_is_vpn_gateway_connection` provides the following Timeouts:
+
+- **delete** - (Default 10 minutes) Used for deleting Instance.
+
+
+
