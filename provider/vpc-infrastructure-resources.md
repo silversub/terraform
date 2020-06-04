@@ -540,7 +540,7 @@ Review the output parameters that you can access after your resource is created.
 ```
 terraform import ibm_is_lb_listener.example <loadbalancer_ID>/<listener_ID>
 ```
-{: pre]
+{: pre}
 
 ### Timeouts
 {: #lb-listener-timeout}
@@ -1103,64 +1103,6 @@ The following timeouts are defined for this resource.
 - **create**: The creation of the public gatway is considered `failed` when no response is received for 10 minutes. 
 - **delete**: The deletion of the public gatway is considered `failed` when no response is received for 10 minutes.
 
-## `ibm_is_route`
-{: #provider-route}
-
-Create, update, or delete a route for your VPC. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #route-sample}
-
-```
-resource "ibm_is_vpc" "testacc_vpc" {
-  name = "testvpc"
-}
-
-resource "ibm_is_vpc_route" "testacc_vpc_route" {
-  name        = "routetest"
-  vpc         = ibm_is_vpc.testacc_vpc.id
-  zone        = "us-south-1"
-  destination = "192.168.4.0/24"
-  next_hop    = "10.0.0.4"
-}
-```
-
-### Input parameters 
-{: #route-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`name`|String|Required|The name of the route.|
-|`vpc`|String|Required|The ID of the VPC.|
-|`zone`|String|Required|The name of the VPC zone where you want to create the route.| 
-|`destination`|String|Required|The destionation IP address of the route.|
-|`next_hop`|String|Required|The next hop of the route.|
-
-### Output parametesr
-{: #route-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-| Output parameter | Data type | Description |
-| ------------- |-------------| -------------- |
-|`id`|String|The ID of the route. The id is composed of `<vpc_id>/<vpc_route_id>`.|
-|`status`|String|The status of the VPC route.|
-
-### Import
-{: #route-import}
-
-`ibm_is_vpc_route` can be imported by using the VPC ID and VPC route ID. 
-
-```
-terraform import ibm_is_vpc_route.example <vpc_id>/<vpc_route_id>
-```
-{: pre}
-
 
 ## `ibm_is_security_group`
 {: #sec-group}
@@ -1544,6 +1486,84 @@ terraform import ibm_is_ssh_key.example <ssh_key_ID>
 ```
 {: pre}
 
+## `ibm_is_volume`
+{: #volume}
+
+Create, update, or delete a VPC block storage volume. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #volume-sample}
+
+The following example creates a volume with 10 IOPS. 
+
+```
+resource "ibm_is_volume" "testacc_volume" {
+  name     = "test_volume"
+  profile  = "10iops-tier"
+  zone     = "us-south-1"
+  iops     = 10000
+  capacity = 100
+}
+
+```
+
+The following example creates a custom volume. 
+
+```
+resource "ibm_is_volume" "testacc_volume" {
+  name     = "test_volume"
+  profile  = "custom"
+  zone     = "us-south-1"
+  iops     = 1000
+  capacity = 200
+}
+```
+
+### Input parameters
+{: #volume-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required|The user-defined name for this volume.|
+|`profile`|String|Required|The profile to use for this volume.|
+|`zone`|String|Required|The location of the volume.|
+|`iops`|Integer|Required for `custom` storage profiles only| The total input/ output operations per second (IOPS) for your storage. This value is required for `custom` storage profiles only. |
+|`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.|
+|`encryption_key`|String|Optional|The key to use for encrypting this volume.|
+|`resource_group`|String|Optional|The resource group ID for this volume.|
+|`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
+|`tags`|List of strings|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #volume-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The unique identifier of the volume.|
+|`status`|String|The status of volume.|
+|`crn`|String|The CRN for the volume.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+
+### Timeouts
+{: #volume-timeout}
+
+`ibm_is_volume` provides the following timeouts:
+
+|Name|Description|
+|----|-----------|
+|`create`|(Default 10 minutes) Used for Creating Instance.|
+|`delete`|(Default 10 minutes) Used for Deleting Instance.|
+{: caption="Table. Available timeout configuration options" caption-side="top"}
+
 
 ## `ibm_is_vpc` 
 {: #provider-vps}
@@ -1726,7 +1746,7 @@ terraform import ibm_is_vpc_route.example <vpc_ID>/<vpc_route_ID>
 {: pre}
 
 ### Timeouts
-{: #vpc-route-timeout)
+{: #vpc-route-timeout}
 
 The resource is set up with the following timeouts: 
 
@@ -1864,80 +1884,4 @@ terraform import ibm_is_vpn_gateway_connection.example <vpn_gateway_ID>/<vpn_gat
 - **delete** - (Default 10 minutes) Used for deleting Instance.
 
 
-## `ibm_is_volume`
-{: #volume}
 
-Create, update, or delete a VPC block storage volume. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #volume-sample}
-
-The following example creates a volume with 10 IOPS. 
-
-```
-resource "ibm_is_volume" "testacc_volume" {
-  name     = "test_volume"
-  profile  = "10iops-tier"
-  zone     = "us-south-1"
-  iops     = 10000
-  capacity = 100
-}
-
-```
-
-The following example creates a custom volume. 
-
-```
-resource "ibm_is_volume" "testacc_volume" {
-  name     = "test_volume"
-  profile  = "custom"
-  zone     = "us-south-1"
-  iops     = 1000
-  capacity = 200
-}
-```
-
-### Input parameters
-{: #volume-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The user-defined name for this volume.|
-|`profile`|String|Required|The profile to use for this volume.|
-|`zone`|String|Required|The location of the volume.|
-|`iops`|Integer|Required for `custom` storage profiles only| The total input/ output operations per second (IOPS) for your storage. This value is required for `custom` storage profiles only. |
-|`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.|
-|`encryption_key`|String|Optional|The key to use for encrypting this volume.|
-|`resource_group`|String|Optional|The resource group ID for this volume.|
-|`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
-|`tags`|List of strings|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
-{: caption="Table. Available input parameters" caption-side="top"}
-
-### Output parameters
-{: #volume-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-|Name|Data type|Description|
-|----|-----------|--------|
-|`id`|String|The unique identifier of the volume.|
-|`status`|String|The status of volume.|
-|`crn`|String|The CRN for the volume.|
-{: caption="Table 1. Available output parameters" caption-side="top"}
-
-
-### Timeouts
-{: #volume-timeout}
-
-`ibm_is_volume` provides the following timeouts:
-
-|Name|Description|
-|----|-----------|
-|`create`|(Default 10 minutes) Used for Creating Instance.|
-|`delete`|(Default 10 minutes) Used for Deleting Instance.|
-{: caption="Table. Available timeout configuration options" caption-side="top"}
