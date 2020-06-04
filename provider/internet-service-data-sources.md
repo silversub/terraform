@@ -196,34 +196,34 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|----------|
-|`id`|String|The record ID of the rate limiting rule in the format `<rule_id>:<domain_id>:<cis_id>`.|
+|`id`|String|The record ID of the rate limiting rule in the format `<rule_ID>:<domain_ID>:<cis_ID>`.|
 |`rule_id`|String|The ID of the rate limiting rule. |
-|`threshold`|Integer|The number of requests received within a specific time period (`period`) before connections to the domain are refused. The threshold value must be between 2 and 1000000. |
-|`period`|Integer|The period of time in seconds where incoming requests to a domain are counted. If the number of requests exceeds the `threshold`, then connections to the domain are refused. The `period` value must be between 1 and 3600. |
+|`threshold`|Integer|The number of requests received within a specific time period (`period`) before connections to the domain are refused. The threshold value can be between 2 and 1000000. |
+|`period`|Integer|The period of time in seconds where incoming requests to a domain are counted. If the number of requests exceeds the `threshold`, then connections to the domain are refused. The `period` value can be between 1 and 3600. |
 |`match`|List of matching rules|A list of characteristics that incoming network traffic must match to be counted towards the `threshold`. | 
-|`match.request`|List of request characteristics|A list of characteristics that the incoming request must match to be counted towards the `threshold`. It this list is not provided, all incoming requests are counted towards the `threshold`.|
-|`match.request.url`|String|The URL that the request uses. Wildcard domains are expanded to match applicable traffic, query strings are not matched. You can use `*` to apply the rule to all URLs. The maximum length of this value can be 1024.|
+|`match.request`|List of request characteristics|A list of characteristics that the incoming request must match to be counted towards the `threshold`. If no list is provided, all incoming requests are counted towards the `threshold`.|
+|`match.request.url`|String|The URL that the request uses. Wildcard domains are expanded to match applicable traffic, query strings are not matched. If `*` is returned, the rule is applied to all URLs. The maximum length of this value can be 1024.|
 |`match.request.schemes`|Set of strings|The scheme of the request that determines the desired protocol. Supported values are `HTTPS`, `HTTP,HTTPS`, and `ALL`. |
-|`match.request.methods`|Set of strings|The HTTP methods that the incoming request can use to be counted towards the `threshold`. Supported values are `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, and `ALL`. You can also combine multiple methods and seperate them with a comma. For example `POST,PUT`. |
+|`match.request.methods`|Set of strings|The HTTP methods that the incoming request can use to be counted towards the `threshold`. Supported values are `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, and `ALL`. You can also combine multiple methods and separate them with a comma. For example `POST,PUT`. |
 |`response`|List of HTTP responses|A list of HTTP responses that outgoing packets must match before they can be returned to the client. If an incoming request matches the request criteria, but the reponse does not match the response criteria, then the request packet is not counted towards the `threshold`.| 
-|`response.status`|Set of integers|The HTTP status that the response must have so that the request is counted towards the `threshold`. You can specify one (`403`) or multiple (`401,403`) HTTP response codes. The value that you enter must be between 100 and 999. |
+|`response.status`|Set of integers|The HTTP status code that the response must have so that the request is counted towards the `threshold`. The value can be between 100 and 999. |
 |`response.header`|List of response headers|A list of HTTP response headers that the response packet must match so that the original request is counted towards the `threshold`.|
 |`response.header.name`|String|The name of the HTTP response header.|
-|`response.header.op`|String|The operator that you want to apply to your HTTP response header. Supported values are `eq` (equals) and `ne` (not equals). |
+|`response.header.op`|String|The operator that applied to your HTTP response header. Supported values are `eq` (equals) and `ne` (not equals). |
 |`response.header.value`|String|The value that the HTTP response header must match. |
 |`action`|List of actions|A list of actions that you want to perform when incoming requests exceed the specified `threshold`.|
-|`action.mode`|String|The type of action that you want to perform. Supported values are `simulate`, `ban`, `challenge`, or `js_challenge`. For more information about each type, see [Configure response](/docs/cis?topic=cis-cis-rate-limiting#rate-limiting-configure-response)|
-|`action.timeout`|Integer|The time to wait in seconds before the action is performed. The timeout must be the same or greater than the `period` and can be provided only for actions of type `simulate` or `ban`. The value that you enter must be between 10 and 86400.|
-|`action.response`|List of reponse information|A list of information that you want to return to the client, such as the `content-type` and specific body information. The information provided in this parameter overrides the default HTML error page that is returned to the client. You can use this option only for actions of type `simulate` or `ban`.  |
+|`action.mode`|String|The type of action that you want to perform. Supported values are `simulate`, `ban`, `challenge`, or `js_challenge`. For more information about each type, see [Configure response](/docs/cis?topic=cis-cis-rate-limiting#rate-limiting-configure-response).|
+|`action.timeout`|Integer|The time to wait in seconds before the action is performed. The timeout must be equal to or greater than the `period` and is valid only for actions of type `simulate` or `ban`. The value can be between 10 and 86400.|
+|`action.response`|List of reponse information|A list of information that you want to return to the client, such as the `content-type` and specific body information. The information provided in this parameter overrides the default HTML error page that is returned to the client. This option is valid only for actions of type `simulate` or `ban`.  |
 |`action.response.content_type`|String|The `content-type` of the body that you want to return. Supported values are `text/plain`, `text/xml`, and `application/json`.|
-|`action.response.body`|String|The body of the reponse that you want to return to the client. The information that you provide must match the `content_type` that you specified. The value that you enter can have a maximum length of 1024.|
-|`disabled`|Boolean|Set to **true** to disable rate limiting for a domain and **false** to enable rate limiting.|
-|`description`|String|Enter a description for your rate limiting rule. |
-|`correlate`|List of NAT-based rate limits|Enable NAT-based rate limiting.|
-|`correlate.by`|String|Enter `nat` to enable NAT-based rate limiting.|
-|`bypass`|List of bypass criteria|A list of key-value pairs that, when matched, allow the rate limiting rule to be ignored. For example, use this option if you want to ignore the rate limiting for certain URLs.  |
+|`action.response.body`|String|The body of the reponse that you want to return to the client. The information must match the `action.response.content_type` that you specified. The value can have a maximum length of 1024.|
+|`disabled`|Boolean|If set to **true**, rate limiting is disabled for the domain.|
+|`description`|String|The description for your rate limiting rule. |
+|`correlate`|List of NAT-based rate limits|If provided, NAT-based rate limiting is enabled.|
+|`correlate.by`|String|If set to `nat`, NAT-based rate limiting is enabled.|
+|`bypass`|List of bypass criteria|A list of key-value pairs that, when matched, allow the rate limiting rule to be ignored.  |
 |`bypass.name`|String|The name of the key that you want to apply. Supported values are `url`. |
-|`bypass.value`|String|The value of the key that you want to match. When `bypass.name` is set to `url`, `bypass.value` must hold the URL that you want to exclude from the rate limiting rule. |
+|`bypass.value`|String|The value of the key that you want to match. When `bypass.name` is set to `url`, `bypass.value` contains the URL that you want to exclude from the rate limiting rule. |
 
 
 
