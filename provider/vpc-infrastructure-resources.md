@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-13"
+lastupdated: "2020-06-04"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -338,8 +338,9 @@ Review the output parameters that you can access after your resource is created.
 
 The following timeouts are defined for the instance: 
 
-- **create**: The creation of the instance is considered failed when no response is received for 60 minutes. 
-- **delete**: The deletion of the instance is considered failed when no response is received for 60 minutes. 
+- **create**: The creation of the instance is considered failed when no response is received for 10 minutes. 
+- **update**: The update of the instance or the attachment of a volume to an instance is considered failed when no response is received for 10 minutes.
+- **delete**: The deletion of the instance is considered failed when no response is received for 10 minutes. 
 
 ### Import
 {: #instance-import}
@@ -461,8 +462,8 @@ terraform import ibm_is_lb.example <lb_ID>
 
 `ibm_is_lb` provides the following Timeouts. 
 
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
+- **create** - (Default 10 minutes) Used for creating Instance.
+- **delete** - (Default 10 minutes) Used for deleting Instance.
 
 ## `ibm_is_lb_listener`
 {: #lb-listener}
@@ -546,9 +547,9 @@ terraform import ibm_is_lb_listener.example <loadbalancer_ID>/<listener_ID>
 
 `ibm_is_lb_listener` provides the following timeouts:
 
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **pdate** - (Default 60 minutes) Used for updating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
+- **create** - (Default 10 minutes) Used for creating Instance.
+- **pdate** - (Default 10 minutes) Used for updating Instance.
+- **delete** - (Default 10 minutes) Used for deleting Instance.
 
 ## `ibm_is_lb_listener_policy`
 {: #lb-listener-policy}
@@ -830,9 +831,9 @@ terraform import ibm_is_lb_pool.example <loadbalancer_ID>/<pool_ID>
 
 `ibm_is_lb_pool` provides the following timeouts:
 
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **update** - (Default 60 minutes) Used for updating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
+- **create** - (Default 10 minutes) Used for creating Instance.
+- **update** - (Default 10 minutes) Used for updating Instance.
+- **delete** - (Default 10 minutes) Used for deleting Instance.
 
 ## `ibm_is_lb_pool_member`
 {: #lb-pool-member}
@@ -894,9 +895,9 @@ terraform import ibm_is_lb_pool_member.example <loadbalancer_ID>/<pool_ID>/<pool
 
 `ibm_is_lb_pool_member` provides the following timeouts.
 
-- **create** - (Default 60 minutes) Used for creating Instance.
-- **update** - (Default 60 minutes) Used for updating Instance.
-- **delete** - (Default 60 minutes) Used for deleting Instance.
+- **create** - (Default 10 minutes) Used for creating Instance.
+- **update** - (Default 10 minutes) Used for updating Instance.
+- **delete** - (Default 10 minutes) Used for deleting Instance.
 
 
 ## `ibm_is_network_acl`
@@ -1099,8 +1100,8 @@ Review the output parameters that you can access after your resource is created.
 The following timeouts are defined for this resource. 
 {: shortdesc}
 
-- **create**: The creation of the public gatway is considered `failed` when no response is received for 60 minutes. 
-- **delete**: The deletion of the public gatway is considered `failed` when no response is received for 60 minutes.
+- **create**: The creation of the public gatway is considered `failed` when no response is received for 10 minutes. 
+- **delete**: The deletion of the public gatway is considered `failed` when no response is received for 10 minutes.
 
 ## `ibm_is_route`
 {: #provider-route}
@@ -1599,6 +1600,14 @@ Review the output parameters that you can access after your resource is created.
 |`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
 |`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|
 
+### Timeouts
+{: #vpc-timeout}
+
+The following timeouts are defined for the resource: 
+
+- **create**: The creation of the VPC is considered `failed` when no response is received for 10 minutes. 
+- **delete**: The deletion of the VPC is considered `failed` when no response is received for 10 minutes. 
+
 ## `ibm_is_vpc_address_prefix`
 {: #address-prefix}
 
@@ -1658,6 +1667,72 @@ Review the output parameters that you can access after your resource is created.
 terraform import ibm_is_vpc_address_prefix.example a1aaa111-1111-111a-1a11-a11a1a11a11a
 ```
 
+## `ibm_is_vpc_route`
+{: #vpc-route}
+
+Create, update, or delete a VPC route. For more information about VPC routes, see [Setting up advanced routing in VPC](/docs/vpc?topic=vpc-advanced-routing).
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-route-sample}
+
+```
+resource "ibm_is_vpc" "myvpc" {
+  name = "myvpc"
+}
+
+resource "ibm_is_vpc_route" "myroute" {
+  name        = "routetest"
+  vpc         = ibm_is_vpc.myvpc.id
+  zone        = "us-south-1"
+  destination = "192.168.4.0/24"
+  next_hop    = "10.0.0.4"
+}
+```
+
+### Input parameters
+{: #vpc-route-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`name`|String|Required|The name of the route that you want to create.| 
+|`vpc`|String|Requied|The ID of the VPC where you want to create the route. | 
+|`zone`|String|Required|The name of the VPC zone where you want to create the route.|
+|`destination`|String|Required|The destination IP address or CIDR that network traffic from your VPC must match to be routed to the `next_hop`.|
+|`next_hop`|String|Required|The IP address where network traffic is sent next.|
+
+### Output parameters
+{: #vpc-route-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The ID of the VPC route. The ID is composed of `<vpc_id>/<vpc_route_id>`.|
+|`status`|Strign|The status of the VPC route.|
+
+### Import
+{: #vpc-route-import}
+
+The resource can be imported by using the VPC and route IDs. 
+
+```
+terraform import ibm_is_vpc_route.example <vpc_ID>/<vpc_route_ID>
+```
+{: pre}
+
+### Timeouts
+{: #vpc-route-timeout)
+
+The resource is set up with the following timeouts: 
+
+- **create**: The creation of the route is considered `failed` when no response is received for 10 minutes. 
+- **delete**: The deletion of the route is considered `failed` when no response is received for 10 minutes. 
+
 
 ## `ibm_is_vpn_gateway`
 {: #vpn-gateway}
@@ -1710,6 +1785,14 @@ Review the output parameters that you can access after your resource is created.
 terraform import ibm_is_vpn_gateway.example <vpn_gateway_ID>
 ```
 {: pre}
+
+### Timeouts
+{: #vpn-gateway-timeout}
+
+The following timeouts are specified for this resource: 
+
+- **create**: The creation of the VPN gateway is considered `failed` when no response is received for 10 minutes. 
+- **delete**: The deletion of the VPN gateway is considered `failed` when no response is received for 10 minutes. 
 
 ## `ibm_is_vpn_gateway_connection`
 {: #vpn-gateway-connection}
@@ -1778,7 +1861,7 @@ terraform import ibm_is_vpn_gateway_connection.example <vpn_gateway_ID>/<vpn_gat
 
 `ibm_is_vpn_gateway_connection` provides the following Timeouts:
 
-- **delete** - (Default 60 minutes) Used for deleting Instance.
+- **delete** - (Default 10 minutes) Used for deleting Instance.
 
 
 ## `ibm_is_volume`
@@ -1855,6 +1938,6 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Description|
 |----|-----------|
-|`create`|(Default 60 minutes) Used for Creating Instance.|
-|`delete`|(Default 60 minutes) Used for Deleting Instance.|
+|`create`|(Default 10 minutes) Used for Creating Instance.|
+|`delete`|(Default 10 minutes) Used for Deleting Instance.|
 {: caption="Table. Available timeout configuration options" caption-side="top"}
