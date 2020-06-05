@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-06-05"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -159,8 +159,11 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    
    <table>
    <caption>Understanding the configuration file</caption>
+   <col style="width:30%">
+	 <col style="width:70%">
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the configuration file</th>
+     <th>Parameter</th>
+     <th>Description</th>
    </thead>
    <tbody>
    <tr>
@@ -320,8 +323,11 @@ Add zones to the default worker pool in your cluster that you created in lessson
    
    <table>
    <caption>Understanding the configuration file</caption>
+   <col style="width:30%">
+	 <col style="width:70%">
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the configuration file</th>
+     <th>Parameter</th>
+     <th>Description</th>
    </thead>
    <tbody>
    <tr>
@@ -471,8 +477,11 @@ Adding a worker pool only does not create any worker nodes. To create worker nod
    
    <table>
    <caption>Understanding the configuration file</caption>
+   <col style="width:30%">
+	 <col style="width:70%">
    <thead>
-   <th colspan=2><img src="../images/idea.png" alt="Idea icon"/> Understanding the configuration file</th>
+     <th>Parameter</th>
+     <th>Description</th>
    </thead>
    <tbody>
    <tr>
