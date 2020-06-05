@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-06-05"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -180,8 +180,12 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    
    <table>
    <caption>Understanding the configuration file components</caption>
+   <col style="width:30%">
+	 <col style="width:70%">
    <thead>
-   <th colspan=2><img src="images/idea.png" alt="Idea icon"/> Understanding the configuration file components</th>
+     <th>Parameter</th>
+     <th>Description</th>
+   </thead>
    </thead>
    <tbody>
    <tr>
@@ -221,8 +225,11 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    
    <table>
    <caption>Understanding the configuration file components</caption>
+   <col style="width:30%">
+	 <col style="width:70%">
    <thead>
-   <th colspan=2><img src="images/idea.png" alt="Idea icon"/> Understanding the configuration file components</th>
+     <th>Parameter</th>
+     <th>Description</th>
    </thead>
    <tbody>
    <tr>
@@ -353,8 +360,11 @@ To create a VPC and a virtual server instance:
     
    <table>
    <caption>Understanding the configuration file components</caption>
+   <col style="width:30%">
+	 <col style="width:70%">
    <thead>
-   <th colspan=2><img src="images/idea.png" alt="Idea icon"/> Understanding the configuration file components</th>
+     <th>Parameter</th>
+     <th>Description</th>
    </thead>
    <tbody>
    <tr>
@@ -755,9 +765,11 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    
    <table>
    <caption>Understanding the configuration file components</caption>
+   <col style="width:30%">
+	 <col style="width:70%">
    <thead>
-   <th colspan=2><img src="images/idea.png" alt="Idea icon"/> Understanding the configuration file components</th>
-   </thead>
+     <th>Parameter</th>
+     <th>Description</th>
    <tbody>
    <tr>
    <td><code>resource</code></td>
