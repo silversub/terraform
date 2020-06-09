@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-03"
+lastupdated: "2020-06-09"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -594,7 +594,7 @@ The following arguments are supported:
 |----|-----------|
 |`name`|(Required, string) The descriptive name used to identify a placement group.|
 |`datacenter`|(Required, string) The datacenter in which you want to provision the placement group.|
-|`pod`|(Required, string) The pod in which you want to provision the placement group.|
+|`pod`|(Required, string) The pod in which you want to provision the placement group. To find the pod, follow the steps to [create a placement group from the IBM Cloud console](/docs/virtual-servers?topic=virtual-servers-vsi_managing_placegroup#adding-placement-groups) and select the data center where you want to create the placement group. Available pods are listed in the **Pod** drop down. |
 |`rule`|(Optional, string) The rule of the placement group. Default `SPREAD`. |
 |`tags`|(Optional, array of strings) Tags associated with the placement group.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
