@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-04"
+lastupdated: "2020-06-15"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -118,7 +118,7 @@ IKE is an IPsec (Internet Protocol Security) standard protocol that is used to e
 resource "ibm_is_ike_policy" "example" {
     name = "test"
     authentication_algorithm = "md5"
-    encryption_algorithm = "3des"
+    encryption_algorithm = "triple_des"
     dh_group = 2
     ike_version = 1
 }
@@ -135,7 +135,7 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- |
 | `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPsec peers. Available options are `md5`, `sha1`, or `sha256`. |
 | `dh_group` | Integer | Required | Enter the Diffie-Hellman group that you want to use for the encryption key. Available options are `2`, `5`, or `14`. |
-| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `3des`, `aes128`, or `aes256`. | 
+| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. | 
 | `ike_version` | Integer | Optional | Enter the IKE protocol version that you want to use. Available options are `1`, or `2`. |
 | `key_lifetime` | Integer | Optional | Enter the time in seconds that your encyrption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 28800 seconds is used. | 
 | `name` | String | Required | Enter a name for your IKE policy. | 
@@ -366,7 +366,7 @@ Create, update, or cancel an IPSec policy.
 resource "ibm_is_ipsec_policy" "example" {
     name = "test"
     authentication_algorithm = "md5"
-    encryption_algorithm = "3des"
+    encryption_algorithm = "triple_des"
     pfs = "disabled"
 }
 ```
@@ -381,7 +381,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPsec peers. Available options are `md5`, `sha1`, or `sha256`. |
-| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `3des`, `aes128`, or `aes256`. | 
+| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. | 
 | `key_lifetime` | Integer | Optional | Enter the time in seconds that your encyrption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 3600 seconds is used. | 
 | `name` | String | Required | Enter the name for your IPSec policy. |
 | `pfs` | String | Required | Enter the Perfect Forward Secrecy (PFS) protocol that you want to use during a session. Available options are `disabled`, `group_2`, `group_5`, and `group_14`. | 
