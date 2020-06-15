@@ -214,6 +214,8 @@ Create, update, or delete a {{site.data.keyword.vsi_is_short}} instance.
 ### Sample Terraform code
 {: #instance-sample}
 
+#### Example for creating an instance in a VPC
+
 ```
 resource "ibm_is_vpc" "testacc_vpc" {
   name = "testvpc"
@@ -228,7 +230,7 @@ resource "ibm_is_subnet" "testacc_subnet" {
 
 resource "ibm_is_ssh_key" "testacc_sshkey" {
   name       = "testssh"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCKVmnMOlHKcZK8tpt3MP1lqOLAcqcJzhsvJcjscgVERRN7/9484SOBJ3HSKxxNG5JN8owAjy5f9yYwcUg+JaUVuytn5Pv3aeYROHGGg+5G346xaq3DAwX6Y5ykr2fvjObgncQBnuU5KHWCECO/4h8uWuwh/kfniXPVjFToc+gnkqA+3RKpAecZhFXwfalQ9mMuYGFxn+fwn8cYEApsJbsEmb0iJwPiZ5hjFC8wREuiTlhPHDgkBLOiycd20op2nXzDbHfCHInquEe/gYxEitALONxm0swBOwJZwlTDOB7C6y2dzlrtxr1L59m7pCkWI4EtTRLvleehBoj3u7jB4usR"
+  public_key = "<public_key>"
 }
 
 resource "ibm_is_instance" "testacc_instance" {
@@ -256,6 +258,87 @@ resource "ibm_is_instance" "testacc_instance" {
   }
 }
 ```
+{: codeblock}
+
+#### Example for creating an instance with custom security group rules
+{: #custom-sec-group-rules}
+
+The following example shows how you can create a virtual server instance with custom security group rules. Note that the security group, security group rules, and the virtual server instance must be created in a specific order to meet the dependencies of the individual resources. To force the creation in a specific order, you use the [`depends_on` parameter](https://www.terraform.io/docs/configuration/resources.html){: external}. If you do not provide this parameter, all resources are created at the same time which might lead to resource dependency errors during the provisioning of your virtual server, such as `The security group to attach to is not available`.
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+    name = "test"
+}
+
+resource "ibm_is_security_group" "testacc_security_group" {
+    name = "test"
+    vpc = ibm_is_vpc.testacc_vpc.id
+}
+
+resource "ibm_is_security_group_rule" "testacc_security_group_rule_all" {
+    group = ibm_is_security_group.testacc_security_group.id
+    direction = "inbound"
+    remote = "127.0.0.1"
+    depends_on = [ibm_is_security_group.testacc_security_group]
+ }
+
+ resource "ibm_is_security_group_rule" "testacc_security_group_rule_icmp" {
+    group = ibm_is_security_group.testacc_security_group.id
+    direction = "inbound"
+    remote = "127.0.0.1"
+    icmp {
+        code = 20
+        type = 30
+    }
+    depends_on = [ibm_is_security_group_rule.testacc_security_group_rule_all]
+
+ }
+
+ resource "ibm_is_security_group_rule" "testacc_security_group_rule_udp" {
+    group = ibm_is_security_group.testacc_security_group.id
+    direction = "inbound"
+    remote = "127.0.0.1"
+    udp {
+        port_min = 805
+        port_max = 807
+    }
+    depends_on = [ibm_is_security_group_rule.testacc_security_group_rule_icmp]
+ }
+
+ resource "ibm_is_security_group_rule" "testacc_security_group_rule_tcp" {
+    group = ibm_is_security_group.testacc_security_group.id
+    direction = "outbound"
+    remote = "127.0.0.1"
+    tcp {
+        port_min = 8080
+        port_max = 8080
+    }
+    depends_on = [ibm_is_security_group_rule.testacc_security_group_rule_udp]
+ }
+
+resource "ibm_is_instance" "testacc_instance" {
+  name    = "testinstance"
+  image   = "7eb4e35b-4257-56f8-d7da-326d85452591"
+  profile = "b-2x8"
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.testacc_subnet.id
+    security_groups = [ibm_is_security_group.testacc_security_group.id]
+  }
+
+  vpc  = ibm_is_vpc.testacc_vpc.id
+  zone = "us-south-1"
+  keys = [ibm_is_ssh_key.testacc_sshkey.id]
+  depends_on = [ibm_is_security_group_rule.testacc_security_group_rule_tcp]
+
+  //User can configure timeouts
+  timeouts {
+    create = "90m"
+    delete = "30m"
+  }
+}
+```
+{: codeblock}
 
 ### Input parameters
 {: #instance-input}
@@ -1110,6 +1193,9 @@ The following timeouts are defined for this resource.
 Create, update, or delete a security group for your VPC. 
 {: shortdesc}
 
+When you want to create a security group and security group rule for a virtual server instance in your VPC, you must create these resources in a specific order to avoid errors during the creation of your virtual server instance. For an example, see [Example for creating an instance with custom security group rules](#custom-sec-group-rules). 
+{: note}
+
 
 ### Sample Terraform code
 {: #sec-group-sample}
@@ -1176,6 +1262,9 @@ terraform import ibm_is_security_group.example a1aaa111-1111-111a-1a11-a11a1a11a
 
 Create, update, or delete a security group rule. 
 {: shortdesc}
+
+When you want to create a security group and security group rule for a virtual server instance in your VPC, you must create these resources in a specific order to avoid errors during the creation of your virtual server instance. For an example, see [Example for creating an instance with custom security group rules](#custom-sec-group-rules). 
+{: note}
 
 ### Sample Terraform code
 {: #sec-group-rule-sample}
