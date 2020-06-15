@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-04"
+lastupdated: "2020-06-15"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -23,7 +23,6 @@ subcollection: terraform
 {:download: .download}
 {:preview: .preview}
 {:external: target="_blank" .external}
-
 
 # Internet Services data sources
 {: #cis_data}
@@ -207,7 +206,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`match.request.schemes`|Set of strings|The scheme of the request that determines the desired protocol. Supported values are `HTTPS`, `HTTP,HTTPS`, and `ALL`. |
 |`match.request.methods`|Set of strings|The HTTP methods that the incoming request can use to be counted towards the `threshold`. Supported values are `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, and `ALL`. You can also combine multiple methods and separate them with a comma. For example `POST,PUT`. |
 |`response`|List of HTTP responses|A list of HTTP responses that outgoing packets must match before they can be returned to the client. If an incoming request matches the request criteria, but the reponse does not match the response criteria, then the request packet is not counted towards the `threshold`.| 
-|`response.status`|Set of integers|The HTTP status code that the response must have so that the request is counted towards the `threshold`. The value can be between 100 and 999. |
+|`response.status`|Set of integers|The HTTP status code that the response must have so that the request is counted towards the `threshold`. The value can be between 100 and 999. If you want to use multiple response codes, you must separate them with a comma, such as `401,403`.|
 |`response.header`|List of response headers|A list of HTTP response headers that the response packet must match so that the original request is counted towards the `threshold`.|
 |`response.header.name`|String|The name of the HTTP response header.|
 |`response.header.op`|String|The operator that applied to your HTTP response header. Supported values are `eq` (equals) and `ne` (not equals). |

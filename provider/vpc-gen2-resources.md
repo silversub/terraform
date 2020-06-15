@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-04" 
+lastupdated: "2020-06-15" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -118,7 +118,7 @@ IKE is an IPSec (Internet Protocol Security) standard protocol that is used to e
 resource "ibm_is_ike_policy" "example" {
     name = "test"
     authentication_algorithm = "md5"
-    encryption_algorithm = "3des"
+    encryption_algorithm = "triple_des"
     dh_group = 2
     ike_version = 1
 }
@@ -135,7 +135,7 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- |
 | `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPSec peers. Available options are `md5`, `sha1`, or `sha256`. |
 | `dh_group` | Integer | Required | Enter the Diffie-Hellman group that you want to use for the encryption key. Available options are `2`, `5`, or `14`. |
-| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `3des`, `aes128`, or `aes256`. | 
+| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. | 
 | `ike_version` | Integer | Optional | Enter the IKE protocol version that you want to use. Available options are `1`, or `2`. |
 | `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 28800 seconds is used. | 
 | `name` | String | Required | Enter a name for your IKE policy. | 
@@ -163,6 +163,8 @@ Create, update, or delete a {{site.data.keyword.vsi_is_short}} instance.
 
 ### Sample Terraform code
 {: #instance-sample}
+
+#### Example for creating an instance in a VPC
 
 ```
 resource "ibm_is_vpc" "testacc_vpc" {
@@ -206,6 +208,86 @@ resource "ibm_is_instance" "testacc_instance" {
   }
 }
 ```
+
+#### Example for creating an instance with custom security group rules
+{: #custom-sec-group-rules}
+
+The following example shows how you can create a virtual server instance with custom security group rules. Note that the security group, security group rules, and the virtual server instance must be created in a specific order to meet the dependencies of the individual resources. To force the creation in a specific order, you use the [`depends_on` parameter](https://www.terraform.io/docs/configuration/resources.html){: external}. If you do not provide this parameter, all resources are created at the same time which might lead to resource dependency errors during the provisioning of your virtual server, such as `The security group to attach to is not available`.
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+    name = "test"
+}
+
+resource "ibm_is_security_group" "testacc_security_group" {
+    name = "test"
+    vpc = ibm_is_vpc.testacc_vpc.id
+}
+
+resource "ibm_is_security_group_rule" "testacc_security_group_rule_all" {
+    group = ibm_is_security_group.testacc_security_group.id
+    direction = "inbound"
+    remote = "127.0.0.1"
+    depends_on = [ibm_is_security_group.testacc_security_group]
+ }
+
+ resource "ibm_is_security_group_rule" "testacc_security_group_rule_icmp" {
+    group = ibm_is_security_group.testacc_security_group.id
+    direction = "inbound"
+    remote = "127.0.0.1"
+    icmp {
+        code = 20
+        type = 30
+    }
+    depends_on = [ibm_is_security_group_rule.testacc_security_group_rule_all]
+
+ }
+
+ resource "ibm_is_security_group_rule" "testacc_security_group_rule_udp" {
+    group = ibm_is_security_group.testacc_security_group.id
+    direction = "inbound"
+    remote = "127.0.0.1"
+    udp {
+        port_min = 805
+        port_max = 807
+    }
+    depends_on = [ibm_is_security_group_rule.testacc_security_group_rule_icmp]
+ }
+
+ resource "ibm_is_security_group_rule" "testacc_security_group_rule_tcp" {
+    group = ibm_is_security_group.testacc_security_group.id
+    direction = "outbound"
+    remote = "127.0.0.1"
+    tcp {
+        port_min = 8080
+        port_max = 8080
+    }
+    depends_on = [ibm_is_security_group_rule.testacc_security_group_rule_udp]
+ }
+
+resource "ibm_is_instance" "testacc_instance" {
+  name    = "testinstance"
+  image   = "7eb4e35b-4257-56f8-d7da-326d85452591"
+  profile = "b-2x8"
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.testacc_subnet.id
+    security_groups = [ibm_is_security_group.testacc_security_group.id]
+  }
+
+  vpc  = ibm_is_vpc.testacc_vpc.id
+  zone = "us-south-1"
+  keys = [ibm_is_ssh_key.testacc_sshkey.id]
+  depends_on = [ibm_is_security_group_rule.testacc_security_group_rule_tcp]
+
+  //User can configure timeouts
+  timeouts {
+    create = "90m"
+    delete = "30m"
+  }
+}
+```
+{: codeblock}
 
 ### Input parameters
 {: #instance-input}
@@ -315,7 +397,7 @@ Create, update, or cancel an IPSec policy.
 resource "ibm_is_ipsec_policy" "example" {
     name = "test"
     authentication_algorithm = "md5"
-    encryption_algorithm = "3des"
+    encryption_algorithm = "triple_des"
     pfs = "disabled"
 }
 ```
@@ -330,7 +412,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPSec peers. Available options are `md5`, `sha1`, or `sha256`. |
-| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `3des`, `aes128`, or `aes256`. | 
+| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. | 
 | `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 3600 seconds is used. | 
 | `name` | String | Required | Enter the name for your IPSec policy. |
 | `pfs` | String | Required | Enter the Perfect Forward Secrecy (PFS) protocol that you want to use during a session. Available options are `disabled`, `group_2`, `group_5`, and `group_14`. | 
@@ -1072,6 +1154,9 @@ The following timeouts are defined for this resource.
 Create, update, or delete a security group for your VPC. 
 {: shortdesc}
 
+When you want to create a security group and security group rule for a virtual server instance in your VPC, you must create these resources in a specific order to avoid errors during the creation of your virtual server instance. For an example, see [Example for creating an instance with custom security group rules](#custom-sec-group-rules). 
+{: note}
+
 
 ### Sample Terraform code
 {: #sec-group-sample}
@@ -1138,6 +1223,9 @@ terraform import ibm_is_security_group.example a1aaa111-1111-111a-1a11-a11a1a11a
 
 Create, update, or delete a security group rule. 
 {: shortdesc}
+
+When you want to create a security group and security group rule for a virtual server instance in your VPC, you must create these resources in a specific order to avoid errors during the creation of your virtual server instance. For an example, see [Example for creating an instance with custom security group rules](#custom-sec-group-rules). 
+{: note}
 
 ### Sample Terraform code
 {: #sec-group-rule-sample}
