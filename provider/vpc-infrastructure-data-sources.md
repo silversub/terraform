@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-20"
+lastupdated: "2020-06-15"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -464,6 +464,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`subnets`|List of subnets|A list of subnets that are attached to a VPC.|
 |`subnets.name`|String|The name of the subnet.|
 |`subnets.id`|String|The ID of the subnet.|
+|`subnets.zone`|String|The zone that the subnet belongs to.|
 |`subnets.status`|String|The status of the subnet.|
 |`subnets.total_ipv4_address_count`|Integer|The total number of IPv4 addresses in the subnet.|
 |`subnets.available_ipv4_address_count`|Integer|The number of IPv4 addresses in the subnet that are available for you to be used.|
