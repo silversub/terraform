@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-05"
+lastupdated: "2020-06-15"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -28,7 +28,7 @@ subcollection: terraform
 # Creating single and multizone Kubernetes and OpenShift clusters
 {: #tutorial-tf-clusters}
 
-Use this tutorial to create single and multizone clusters with [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-overview) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-overview), and deploy your own set of compute hosts in the public cloud where you can run and manage highly available containerized apps.
+Use this tutorial to create single and multizone clusters with [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-overview) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-roks-overview), and deploy your own set of compute hosts in the public cloud where you can run and manage highly available containerized apps.
 
 In this tutorial, you create a standard classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster with the following configuration: 
 - The cluster is created in the `us-south` region. 
