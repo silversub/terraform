@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-04"
+lastupdated: "2020-06-15"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -209,12 +209,31 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`domain_id`|String|Required|The ID of the domain that you want to customize. |
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
-|`waf`|String|Optional|Allowed values: `off`, `on`.|
+|`waf`|String|Optional|Enable a web application firewall (WAF). Supported values are `off` and `on`.|
 |`min_tls_version`|String|Optional|The minimum TLS version that you want to allow. Allowed values are `1.1`, `1.2`, or `1.3`. |
 |`ssl`|String|Optional|Allowed values: `off`, `flexible`, `full`, `strict`, `origin_pull`.|
 |`automatic_https_rewrites`|String|Optional|Enable HTTPS rewrites. Allowed values are `off` and `on`. |
-|`opportunistic_encryption`|String|Optional|Allowed values: `off`, and `on`.|
-|`cname_flattening`|String|Optional|Allowed values: `flatten_at_root`, `flatten_all`, and `flatten_none`.|
+|`opportunistic_encryption`|String|Optional|Supported values are `off` and `on`.|
+|`cname_flattening`|String|Optional|Supported values are `flatten_at_root`, `flatten_all`, and `flatten_none`.|
+|`always_use_https`|String|Optional|Supported values are `off` and `on`.|
+|`ipv6`|String|Optional|Supported values are `off` and `on`.|
+|`browser_check`|String|Optional|Enable a client browser check to look for common HTTP headers that are used by malicious users. If HTTP headers are found,  access to your website is blocked. Supported values are `off` and `on`.|
+|`hotlink_protection`|String|Optional|Supported values are `off` and `on`.|
+|`http2`|String|Optional|Supported values are `off` and `on`.|
+|`image_load_optimization`|String|Optional|Supported values are `off` and `on`.| 
+|`image_size_optimization`|String|Optional|Supported values are `lossless`,  `off`, and `lossy`.| 
+|`ip_geolocation`|String|Optional|Supported values are `off` and `on`.| 
+|`origin_error_page_pass_thru`|String|Optional|Supported values are `off` and `on`.| 
+|`brotli`|String|Optional|Supported values are `off` and `on`.| 
+|`pseudo_ipv4`|String|Optional|Supported values are `overwrite_header`, `off`, and `add_header`.|
+|`prefetch_preload`|String|Optional|Supported values are `off` and `on`.| 
+|`response_buffering`|String|Optional|Supported values are `off` and `on`.|
+|`script_load_optimization`|String|Optional|Supported values are `off` and `on`.| 
+|`server_side_exclude`|String|Optional|Supported values are `off` and `on`.| 
+|`tls_client_auth`|String|Optional|Supported values are `off` and `on`.| 
+|`true_client_ip_header`|String|Optional|Supported values are `off` and `on`.| 
+|`websockets`|String|Optional|Supported values are `off` and `on`.| 
+
 
 ### Output parameters
 {: #cis-domain-settings-output}
