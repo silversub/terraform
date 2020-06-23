@@ -1627,7 +1627,7 @@ Review the input parameters that you can specify for your resource.
 |`encryption_key`|String|Optional|The key to use for encrypting this volume. This parameter is supported in VPC Gen 1 only. |
 |`resource_group`|String|Optional|The resource group ID for this volume.|
 |`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
-|`tags`|List of strings|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
+|`tags`|List of strings|Optional|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
