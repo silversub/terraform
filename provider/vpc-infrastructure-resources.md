@@ -1772,11 +1772,12 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #address-prefix-import}
 
-`ibm_is_vpc_address_prefix` can be imported using the ID.
+The resource can be imported using using the VPC ID and VPC address prefix ID.
 
 ```
-terraform import ibm_is_vpc_address_prefix.example a1aaa111-1111-111a-1a11-a11a1a11a11a
+terraform import ibm_is_vpc_address_prefix.example <vpc_ID>/<address_prefix_ID>
 ```
+{: pre}
 
 ## `ibm_is_vpc_route`
 {: #vpc-route}
