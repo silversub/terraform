@@ -45,7 +45,7 @@ To create a bucket, you must provision an {{site.data.keyword.cos_full_notm}} in
 ### Sample Terraform code
 {: #cos-bucket-sample}
 
-The following example creates an instance of {{site.data.keyword.cos_full_notm}}. Then, one bucket with a `flex` profile and one bucket with the `cold` profile are created for the service instance. 
+The following example creates an instance of {{site.data.keyword.cos_full_notm}}, {{site.data.keyword.cloudaccesstrailfull_notm}}, and {{site.data.keyword.mon_full_notm}}. Then, multiple buckets are created and configured to send audit events and metrics to your service instances.  
 {: shortdesc}
 
 ```
@@ -61,26 +61,93 @@ resource "ibm_resource_instance" "cos_instance" {
   location          = "global"
 }
 
+resource "ibm_resource_instance" "activity_tracker" {
+  name              = "activity_tracker"
+  resource_group_id = data.ibm_resource_group.cos_group.id
+  service           = "logdnaat"
+  plan              = "lite"
+  location          = "us-south"
+}
+resource "ibm_resource_instance" "metrics_monitor" {
+  name              = "metrics_monitor"
+  resource_group_id = data.ibm_resource_group.cos_group.id
+  service           = "sysdig-monitor"
+  plan              = "lite"
+  location          = "us-south"
+}
+
 resource "ibm_cos_bucket" "standard-ams03" {
-  bucket_name = "a-standard-bucket-at-ams"
+  bucket_name          = "a-standard-bucket-at-ams"
   resource_instance_id = ibm_resource_instance.cos_instance.id
   single_site_location = "ams03"
-  storage_class = "standard"
+  storage_class        = "standard"
 }
 
 resource "ibm_cos_bucket" "flex-us-south" {
-  bucket_name = "a-flex-bucket-at-us-south"
+  bucket_name          = "a-flex-bucket-at-us-south"
   resource_instance_id = ibm_resource_instance.cos_instance.id
-  region_location = "us-south"
-  storage_class = "flex"
+  region_location      = "us-south"
+  storage_class        = "flex"
 }
 
 resource "ibm_cos_bucket" "cold-ap" {
-  bucket_name = "a-cold-bucket-at-ap"
-  resource_instance_id = ibm_resource_instance.cos_instance.id
+  bucket_name           = "a-cold-bucket-at-ap"
+  resource_instance_id  = ibm_resource_instance.cos_instance.id
   cross_region_location = "ap"
-  storage_class = "cold"
+  storage_class         = "cold"
 }
+
+resource "ibm_cos_bucket" "standard-ams03-firewall" {
+  bucket_name          = "a-standard-bucket-at-ams-firewall"
+  resource_instance_id = ibm_resource_instance.cos_instance.id
+  cross_region_location      = "us"
+  storage_class        = "standard"
+ activity_tracking {
+    read_data_events     = true
+    write_data_events    = true
+    activity_tracker_crn = ibm_resource_instance.activity_tracker.id
+  }
+  metrics_monitoring {
+    usage_metrics_enabled  = true
+    metrics_monitoring_crn = ibm_resource_instance.metrics_monitor.id
+  }
+  allowed_ip =  ["223.196.168.27","223.196.161.38","192.168.0.1"]
+}
+
+resource "ibm_cos_bucket" "flex-us-south-firewall" {
+  bucket_name          = "a-flex-bucket-at-us-south"
+  resource_instance_id = ibm_resource_instance.cos_instance.id
+  cross_region_location      = "us"
+  storage_class        = "flex"
+ activity_tracking {
+    read_data_events     = true
+    write_data_events    = true
+    activity_tracker_crn = ibm_resource_instance.activity_tracker.id
+  }
+  metrics_monitoring {
+    usage_metrics_enabled  = true
+    metrics_monitoring_crn = ibm_resource_instance.metrics_monitor.id
+  }
+  allowed_ip =  ["223.196.168.27","223.196.161.38","192.168.0.1"]
+}
+
+resource "ibm_cos_bucket" "cold-ap-firewall" {
+  bucket_name          = "a-cold-bucket-at-ap"
+  resource_instance_id = ibm_resource_instance.cos_instance.id
+  cross_region_location      = "us"
+  storage_class        = "cold"
+ activity_tracking {
+    read_data_events     = true
+    write_data_events    = true
+    activity_tracker_crn = ibm_resource_instance.activity_tracker.id
+  }
+  metrics_monitoring {
+    usage_metrics_enabled  = true
+    metrics_monitoring_crn = ibm_resource_instance.metrics_monitor.id
+  }
+  allowed_ip =  ["223.196.168.27","223.196.161.38","192.168.0.1"]
+}
+
 ```
 
 ### Input parameters
