@@ -1624,7 +1624,7 @@ Review the input parameters that you can specify for your resource.
 |`zone`|String|Required|The location of the volume.|
 |`iops`|Integer|Required for `custom` storage profiles only| The total input/ output operations per second (IOPS) for your storage. This value is required for `custom` storage profiles only. |
 |`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.|
-|`encryption_key`|String|Optional|The key to use for encrypting this volume.|
+|`encryption_key`|String|Optional|The key to use for encrypting this volume. This parameter is supported in VPC Gen 1 only. |
 |`resource_group`|String|Optional|The resource group ID for this volume.|
 |`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 |`tags`|List of strings|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
