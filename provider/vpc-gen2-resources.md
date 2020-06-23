@@ -1126,6 +1126,7 @@ Review the input parameters that you can specify for your resource.
 | `resource_group`|String|Optional|Enter the ID of the resource group where you want to create the public gateway. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the public gateway is created in the `default` resource group. |
 | `tags`|Array of strings|Optional|Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). |
 
+
 ### Output parameters
 {: #public-gateway-output}
 
@@ -1134,7 +1135,9 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-| `floating_ip` | List | A collection of floating IP addresses that are bound to the public gateway. Every floating IP address is listed with the floating IP `id` and `address`. |
+| `floating_ip` | List | A list of floating IP addresses that are assigned to the public gateway. |
+| `floating_ip.id`|String| The unique identifier that was assigned to the floating IP address.|
+| `floating_ip.address`|String|The IP address that was assigned to the public gatway.|
 | `id` | String | The unique identifier that was assigned to your public gateway. |
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the public gateway. | 
 | `status` | String | The provisioning status of your public gateway. |
