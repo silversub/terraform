@@ -239,7 +239,7 @@ For step-by-step instructions for how to create an {{site.data.keyword.container
 ### Sample Terraform code
 {: #container-cluster-sample}
 
-### Classic {{site.data.keyword.containerlong_notm}} cluster
+#### Classic {{site.data.keyword.containerlong_notm}} cluster
 
 The following example creates a single zone {{site.data.keyword.containerlong_notm}} cluster that is named `mycluster` with one worker node in the default worker pool. 
 {: shortdesc}
@@ -266,7 +266,7 @@ resource "ibm_container_cluster" "testacc_cluster" {
 ```
 {: codeblock}
 
-### Classic {{site.data.keyword.openshiftlong_notm}} cluster
+#### Classic {{site.data.keyword.openshiftlong_notm}} cluster
 
 ```
 resource "ibm_container_cluster" "cluster" {
@@ -285,7 +285,7 @@ resource "ibm_container_cluster" "cluster" {
 ```
 {: codeblock}
 
-### Classic {{site.data.keyword.openshiftlong_notm}} cluster with existing OpenShift license
+#### Classic {{site.data.keyword.openshiftlong_notm}} cluster with existing OpenShift license
 
 If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, you can create your cluster with that entitlement to avoid being charged twice for the {{site.data.keyword.openshiftshort}} license.
 
@@ -304,7 +304,7 @@ resource "ibm_container_cluster" "cluster" {
 ```
 {: pre}
 
-### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
+#### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
 {: #gen1-cluster}
 
 The following example creates a VPC Gen 1 cluster that is spread across two zones.
@@ -365,7 +365,7 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 ```
 {: codeblock}
 
-### VPC Gen 2 {{site.data.keyword.containerlong_notm}} cluster
+#### VPC Gen 2 {{site.data.keyword.containerlong_notm}} cluster
 {: #gen2-cluster}
 
 The following example creates a VPC Gen 2 cluster that is spread across two zones.
@@ -834,7 +834,7 @@ To create a VPC cluster, make sure to include the VPC infrastructure generation 
 {: #vpc-cluster-sample}
 
 
-### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
+#### VPC Gen 1 {{site.data.keyword.containerlong_notm}} cluster
 {: #vpc-gen1}
 
 The following example creates a VPC Gen 1 cluster that is spread across two zones.
@@ -895,7 +895,7 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 ```
 {: codeblock}
 
-### VPC Gen 2 {{site.data.keyword.containerlong_notm}} cluster
+#### VPC Gen 2 {{site.data.keyword.containerlong_notm}} cluster
 {: #vpc-gen2}
 
 The following example creates a VPC Gen 2 cluster that is spread across two zones.
@@ -957,7 +957,7 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 ```
 {: codeblock}
 
-### VPC Gen 2 {{site.data.keyword.openshiftlong_notm}} cluster with existing OpenShift entitlement
+#### VPC Gen 2 {{site.data.keyword.openshiftlong_notm}} cluster with existing OpenShift entitlement
 {: #gen2-openshift}
 
 ```
@@ -1005,7 +1005,7 @@ Review the input parameters that you can specify for your resource.
 |`zones`|List|Required|A nested block describing the zones of this VPC cluster. |
 |`zones.subnet_id`|String|Required|The VPC subnet to assign the cluster.|
 |`zones.name`|String|Required|The name of the zone|
-|`cos_instance_crn`|String|Required for VPC Gen 2 {{site.data.keyword.openshift_notm}} clusters only| The CRN ID of a standard {{site.data.keyword.cos_full_notm}} service instance to back up the internal registry of your cluster. To list the CRN of existing instances, run `ibmcloud resource service-instances --long` and find the **ID** of your object storage instance. To create a standard object storage instance, run `ibmcloud resource service-instance-create cloud-object-storage standard global` and note its **ID**. |
+|`cos_instance_crn`|String|Required for VPC Gen 2 {{site.data.keyword.openshiftlong_notm}} clusters only| The CRN ID of a standard {{site.data.keyword.cos_full_notm}} service instance to back up the internal registry of your cluster. To list the CRN of existing instances, run `ibmcloud resource service-instances --long` and find the **ID** of your object storage instance. To create a standard object storage instance, run `ibmcloud resource service-instance-create cloud-object-storage standard global` and note its **ID**. |
 |`disable_public_service_endpoint`|Boolean|Optional|Disable the public service endpoint to prevent public access to the Kubernetes master. Default value 'true’.|
 |`entitlement`|String| Optional| If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, enter `cloud_pak` to create your cluster with that entitlement so that you are not charged twice for the OpenShift license. Note that this option can be set only when you create the cluster. After the cluster is created, the cost for the OpenShift license occurred and you cannot disable this charge.|
 |`kube_version`|String|Optional| Specify the Kubernetes version, including the major.minor version. If you do not include this flag, the default version is used. To see available versions, run `ibmcloud ks versions`.|
