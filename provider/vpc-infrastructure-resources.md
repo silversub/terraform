@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-15"
+lastupdated: "2020-06-23"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -421,9 +421,9 @@ Review the output parameters that you can access after your resource is created.
 
 The following timeouts are defined for the instance: 
 
-- **create**: The creation of the instance is considered failed when no response is received for 10 minutes. 
-- **update**: The update of the instance or the attachment of a volume to an instance is considered failed when no response is received for 10 minutes.
-- **delete**: The deletion of the instance is considered failed when no response is received for 10 minutes. 
+- **create**: The creation of the instance is considered failed when no response is received for 30 minutes. 
+- **update**: The update of the instance or the attachment of a volume to an instance is considered failed when no response is received for 30 minutes.
+- **delete**: The deletion of the instance is considered failed when no response is received for 30 minutes. 
 
 ### Import
 {: #instance-import}
