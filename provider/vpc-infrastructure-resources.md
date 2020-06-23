@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-15"
+lastupdated: "2020-06-23"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -421,9 +421,9 @@ Review the output parameters that you can access after your resource is created.
 
 The following timeouts are defined for the instance: 
 
-- **create**: The creation of the instance is considered failed when no response is received for 10 minutes. 
-- **update**: The update of the instance or the attachment of a volume to an instance is considered failed when no response is received for 10 minutes.
-- **delete**: The deletion of the instance is considered failed when no response is received for 10 minutes. 
+- **create**: The creation of the instance is considered failed when no response is received for 30 minutes. 
+- **update**: The update of the instance or the attachment of a volume to an instance is considered failed when no response is received for 30 minutes.
+- **delete**: The deletion of the instance is considered failed when no response is received for 30 minutes. 
 
 ### Import
 {: #instance-import}
@@ -1172,7 +1172,9 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-| `floating_ip` | List | A collection of floating IP addresses that are bound to the public gateway. Every floating IP address is listed with the floating IP `id` and `address`. |
+| `floating_ip` | List | A list of floating IP addresses that are assigned to the public gateway. |
+| `floating_ip.id`|String| The unique identifier that was assigned to the floating IP address.|
+| `floating_ip.address`|String|The IP address that was assigned to the public gatway.|
 | `id` | String | The unique identifier that was assigned to your public gateway. |
 | `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the public gateway. | 
 | `status` | String | The provisioning status of your public gateway. |
@@ -1622,10 +1624,10 @@ Review the input parameters that you can specify for your resource.
 |`zone`|String|Required|The location of the volume.|
 |`iops`|Integer|Required for `custom` storage profiles only| The total input/ output operations per second (IOPS) for your storage. This value is required for `custom` storage profiles only. |
 |`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.|
-|`encryption_key`|String|Optional|The key to use for encrypting this volume.|
+|`encryption_key`|String|Optional|The key to use for encrypting this volume. This parameter is supported in VPC Gen 1 only. |
 |`resource_group`|String|Optional|The resource group ID for this volume.|
 |`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
-|`tags`|List of strings|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
+|`tags`|List of strings|Optional|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1770,11 +1772,12 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #address-prefix-import}
 
-`ibm_is_vpc_address_prefix` can be imported using the ID.
+The resource can be imported using using the VPC ID and VPC address prefix ID.
 
 ```
-terraform import ibm_is_vpc_address_prefix.example a1aaa111-1111-111a-1a11-a11a1a11a11a
+terraform import ibm_is_vpc_address_prefix.example <vpc_ID>/<address_prefix_ID>
 ```
+{: pre}
 
 ## `ibm_is_vpc_route`
 {: #vpc-route}

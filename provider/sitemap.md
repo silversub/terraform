@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-04"
+lastupdated: "2020-06-23"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -152,6 +152,8 @@ subcollection: terraform
 - [Identity & Access (IAM) data sources](/docs/terraform?topic=terraform-iam-data-sources)
     - [`ibm_iam_access_group`](/docs/terraform?topic=terraform-iam-data-sources#access_group)
     - [`ibm_iam_auth_token`](/docs/terraform?topic=terraform-iam-data-sources#iam-token)
+    - [`ibm_iam_role_actions`](/docs/terraform?topic=terraform-iam-data-sources#iam-role-actions)
+    - [`ibm_iam_roles`](/docs/terraform?topic=terraform-iam-data-sources#iam-roles)
     - [`ibm_iam_service_id`](/docs/terraform?topic=terraform-iam-data-sources#iam-service)
     - [`ibm_iam_service_policy`](/docs/terraform?topic=terraform-iam-data-sources#iam-service-policy)
     - [`ibm_iam_user_policy`](/docs/terraform?topic=terraform-iam-data-sources#iam-user-policy)

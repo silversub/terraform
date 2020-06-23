@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-15"
+lastupdated: "2020-06-23"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -33,7 +33,7 @@ Before you can automate your {{site.data.keyword.cloud_notm}} resource provision
 
 The resources and data sources in this documentation are based on the following versions:
 
-- **IBM Cloud Provider plug-in for Terraform version**: 1.7.1
+- **IBM Cloud Provider plug-in for Terraform version**: 1.8.0
 - **Terraform version**: 0.12
 
 With the release of Terraform version 0.12, the syntax for configuration files changed. If you want to run your infrastructure code by using Terraform version 0.12, you must first [update your configuration files](#tf-0.12-migration) to apply the new syntax. 
@@ -110,7 +110,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
    2. Extract the {{site.data.keyword.cloud_notm}} Provider package to retrieve the binary file.
    3. Create a hidden folder for your plug-in. The {{site.data.keyword.cloud_notm}} Provider plug-in is used only by the Terraform CLI and is not meant to be accessed by the user.  
       ```
-      mkdir $HOME/.terraform.d/plugins
+      mkdir -p $HOME/.terraform.d/plugins
       ```
       {: pre}
       

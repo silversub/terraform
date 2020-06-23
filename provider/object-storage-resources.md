@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-01"
+lastupdated: "2020-06-23"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cos bucket, terraform get object storage resources
 
@@ -45,7 +45,7 @@ To create a bucket, you must provision an {{site.data.keyword.cos_full_notm}} in
 ### Sample Terraform code
 {: #cos-bucket-sample}
 
-The following example creates an instance of {{site.data.keyword.cos_full_notm}}. Then, one bucket with a `flex` profile and one bucket with the `cold` profile are created for the service instance. 
+The following example creates an instance of {{site.data.keyword.cos_full_notm}}, {{site.data.keyword.cloudaccesstrailfull_notm}}, and {{site.data.keyword.mon_full_notm}}. Then, multiple buckets are created and configured to send audit events and metrics to your service instances.  
 {: shortdesc}
 
 ```
@@ -61,26 +61,93 @@ resource "ibm_resource_instance" "cos_instance" {
   location          = "global"
 }
 
+resource "ibm_resource_instance" "activity_tracker" {
+  name              = "activity_tracker"
+  resource_group_id = data.ibm_resource_group.cos_group.id
+  service           = "logdnaat"
+  plan              = "lite"
+  location          = "us-south"
+}
+resource "ibm_resource_instance" "metrics_monitor" {
+  name              = "metrics_monitor"
+  resource_group_id = data.ibm_resource_group.cos_group.id
+  service           = "sysdig-monitor"
+  plan              = "lite"
+  location          = "us-south"
+}
+
 resource "ibm_cos_bucket" "standard-ams03" {
-  bucket_name = "a-standard-bucket-at-ams"
+  bucket_name          = "a-standard-bucket-at-ams"
   resource_instance_id = ibm_resource_instance.cos_instance.id
   single_site_location = "ams03"
-  storage_class = "standard"
+  storage_class        = "standard"
 }
 
 resource "ibm_cos_bucket" "flex-us-south" {
-  bucket_name = "a-flex-bucket-at-us-south"
+  bucket_name          = "a-flex-bucket-at-us-south"
   resource_instance_id = ibm_resource_instance.cos_instance.id
-  region_location = "us-south"
-  storage_class = "flex"
+  region_location      = "us-south"
+  storage_class        = "flex"
 }
 
 resource "ibm_cos_bucket" "cold-ap" {
-  bucket_name = "a-cold-bucket-at-ap"
-  resource_instance_id = ibm_resource_instance.cos_instance.id
+  bucket_name           = "a-cold-bucket-at-ap"
+  resource_instance_id  = ibm_resource_instance.cos_instance.id
   cross_region_location = "ap"
-  storage_class = "cold"
+  storage_class         = "cold"
 }
+
+resource "ibm_cos_bucket" "standard-ams03-firewall" {
+  bucket_name          = "a-standard-bucket-at-ams-firewall"
+  resource_instance_id = ibm_resource_instance.cos_instance.id
+  cross_region_location      = "us"
+  storage_class        = "standard"
+ activity_tracking {
+    read_data_events     = true
+    write_data_events    = true
+    activity_tracker_crn = ibm_resource_instance.activity_tracker.id
+  }
+  metrics_monitoring {
+    usage_metrics_enabled  = true
+    metrics_monitoring_crn = ibm_resource_instance.metrics_monitor.id
+  }
+  allowed_ip =  ["223.196.168.27","223.196.161.38","192.168.0.1"]
+}
+
+resource "ibm_cos_bucket" "flex-us-south-firewall" {
+  bucket_name          = "a-flex-bucket-at-us-south"
+  resource_instance_id = ibm_resource_instance.cos_instance.id
+  cross_region_location      = "us"
+  storage_class        = "flex"
+ activity_tracking {
+    read_data_events     = true
+    write_data_events    = true
+    activity_tracker_crn = ibm_resource_instance.activity_tracker.id
+  }
+  metrics_monitoring {
+    usage_metrics_enabled  = true
+    metrics_monitoring_crn = ibm_resource_instance.metrics_monitor.id
+  }
+  allowed_ip =  ["223.196.168.27","223.196.161.38","192.168.0.1"]
+}
+
+resource "ibm_cos_bucket" "cold-ap-firewall" {
+  bucket_name          = "a-cold-bucket-at-ap"
+  resource_instance_id = ibm_resource_instance.cos_instance.id
+  cross_region_location      = "us"
+  storage_class        = "cold"
+ activity_tracking {
+    read_data_events     = true
+    write_data_events    = true
+    activity_tracker_crn = ibm_resource_instance.activity_tracker.id
+  }
+  metrics_monitoring {
+    usage_metrics_enabled  = true
+    metrics_monitoring_crn = ibm_resource_instance.metrics_monitor.id
+  }
+  allowed_ip =  ["223.196.168.27","223.196.161.38","192.168.0.1"]
+}
+
 ```
 
 ### Input parameters
@@ -91,9 +158,17 @@ Review the input parameters that you can specify for your resource.
 
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
+| `activity_tracking`| Object to enable auditing with {{site.data.keyword.cloudaccesstrailfull_notm}} | Optional | Configure your {{site.data.keyword.cloudaccesstrailfull_notm}} service instance and the type of events that you want to send to your service to audit activity against your bucket. For a list of supported actions, see [Bucket actions](/docs/cloud-object-storage?topic=cloud-object-storage-at-events#at-actions-mngt-2).|
+|`activity_tracking.read_data_events`| Boolean| Required | If set to **true**, all read events against a bucket are sent to your {{site.data.keyword.cloudaccesstrailfull_notm}} service instance.|
+|`activity_tracking.write_data_events`| Boolean| Required| If set to **true**, all write events against a bucket are sent to your {{site.data.keyword.cloudaccesstrailfull_notm}} service instance.|
+|`activity_tracking.activity_tracker_crn`| String| Required | The CRN of your {{site.data.keyword.cloudaccesstrailfull_notm}} service instance that you want to send your events to. This value is required only when you configure your instance for the first time.|
+| `allowed_ip` | Array of strings | Optional | A list of IPv4 or IPv6 addresses in CIDR notation that you want to allow access to your {{site.data.keyword.cos_full_notm}} bucket.|
 | `bucket_name` | String | Required | The name of the bucket. |
 | `cross_region_location` | String | Optional | The location for a cross-regional bucket. Supported values are `us`, `eu`, and `ap`. If you this parameter, do not set `single_site_location` or `region_location` at the same time. |
 | `key_protect` | String | Optional | The CRN of the {{site.data.keyword.keymanagementservicelong_notm}} instance where your root key is stored. You use this root key to encrypt data that is sent and stored in {{site.data.keyword.cos_full_notm}}. Before you can enable {{site.data.keyword.keymanagementservicelong_notm}} encryption, you must provision an instance of {{site.data.keyword.keymanagementservicelong_notm}} and authorize the service to access {{site.data.keyword.cos_full_notm}}. For more information, see [Server-Side Encryption with IBM Key Protect or Hyper Protect Crypto Services (SSE-KP)](/docs/services/cloud-object-storage?topic=cloud-object-storage-encryption#encryption-kp). |
+|`metrics_monitoring`| Object to enable metrics tracking with {{site.data.keyword.mon_full_notm}} | Optional| Set up your {{site.data.keyword.mon_full_notm}} service instance to receive metrics for your {{site.data.keyword.cos_full_notm}} bucket.|
+|`metrics_monitoring.usage_metrics_enabled`|Boolean|Optional|If set to **true**, all metrics are sent to your {{site.data.keyword.mon_full_notm}} service instance.|
+|`metrics_monitoring.metrics_monitoring_crn`|String|Required| The CRN of the {{site.data.keyword.mon_full_notm}} service instance that you want to send metrics to. This value is required only when you configure your instance for the first time.|
 | `resource_instance_id` | String | Required | The ID of the {{site.data.keyword.cos_full_notm}} service instance for which you want to create a bucket. |
 | `region_location` | String | Optional | The location of a regional bucket. Supported values are `au-syd`, `eu-de`, `eu-gb`, `jp-tok`, `us-east`, `us-south`. If you set this parameter, do not set `single_site_location` or `cross_region_location` at the same time. 
 | `single_site_location` | String | Optional | The location for a single site bucket. Supported values are: `ams03`, `che01`, `hkg02`, `mel01`, `mex01`, `mil01`, `mon01`, `osl01`, `sjc04`, `sao01`, `seo01`, and `tor01`. If you set this parameter, do not set `region_location` or `cross_region_location` at the same time. 
