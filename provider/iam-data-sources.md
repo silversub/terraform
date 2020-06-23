@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-06-23"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -112,6 +112,81 @@ Review the output parameters that you can access after you retrieved your data s
 |`iam_refresh_token`|String|The IAM refresh token. |
 |`uaa_access_token`|String| The UAA access token. |
 |`uaa_refresh_token`|String|The UAA refresh token. |
+
+## `ibm_iam_role_actions`
+{: #iam-role-actions}
+
+Retrieve a list of actions for an {{site.data.keyword.cloud_notm}} service that are included in an IAM service access role. 
+
+### Sample Terraform code
+{: #iam-role-actions-sample}
+
+```
+data "ibm_iam_role_actions" "test" {
+  service = "kms"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #iam-role-actions-input}
+
+Review the input parameters that you can specify for your data source.
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-------|----------|
+|`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported actions. For account management services, you can find supported values in the [documentation](/docs/iam?topic=iam-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
+
+### Output parameters
+{: #iam-role-actions-output}
+
+Review the output parameters that you can access after you retrieved your data source.
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`id`|String|The unique identifier of the service.|
+|`manager`|List of strings|A list of supported actions that require the **Manager** service access role.|
+|`reader`|List of strings|A list of supported actions that require the **Reader** service access role.|
+|`reader_plus`|List of strings|A list of supported actions that require the **Reader plus** service access role.|
+|`writer`|List of strings|A list of supported actions that require the **Writer** service access role.|
+
+## `ibm_iam_roles`
+{: #iam-roles}
+
+Retrieve information about supported IAM roles for an {{site.data.keyword.cloud_notm}} service. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #iam-roles-sample}
+
+```
+data "ibm_iam_roles" "test" {
+  service = "kms"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #iam-role-actions-input}
+
+Review the input parameters that you can specify for your data source.
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-------|----------|
+|`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported IAM roles. For account management services, you can find supported values in the [documentation](/docs/iam?topic=iam-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
+
+### Output parameters
+{: #iam-roles-output}
+
+Review the output parameters that you can access after you retrieved your data source.
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`id`|String|The ID of your {{site.data.keyword.cloud_notm}} account.|
+|`roles`|List of supported IAM roles|A list of supported IAM service access, platform, and custom roles for an {{site.data.keyword.cloud_notm}} service. |
+|`roles.name`|String|The name of the role.|
+|`roles.description`|String|The description of the role.|
+|`roles.type`|String|The type of role. Supported values are `service`, `platform`, and `custom`.|
 
 
 ## `ibm_iam_service_id`
