@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-23" 
+lastupdated: "2020-06-24" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -1139,7 +1139,6 @@ Review the output parameters that you can access after your resource is created.
 | `floating_ip.id`|String| The unique identifier that was assigned to the floating IP address.|
 | `floating_ip.address`|String|The IP address that was assigned to the public gatway.|
 | `id` | String | The unique identifier that was assigned to your public gateway. |
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the public gateway. | 
 | `status` | String | The provisioning status of your public gateway. |
 
 ### Timeouts
