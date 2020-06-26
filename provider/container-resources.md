@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-23" 
+lastupdated: "2020-06-26" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -1035,7 +1035,7 @@ Review the output parameters that you can access after your resource is created.
 |`state`|String|The state of the VPC cluster. |
 |`albs`|List of objects|A list of Application Load Balancers (ALBs) that are attached to the cluster. | 
 |`albs.id`|String|The ID of the ALB. |
-|`albs.name`|String|The name of the ALB.|
+|`albs.name`|String|The name of the ALB.| 
 |`albs.alb_type`|String|The ALB type. Valid values are `public` or `private`. |
 |`albs.enable`|Boolean|Enable (true) or disable (false) the ALB. |
 |`albs.state`|String| The status of the ALB. Valid values are `enabled` or `disabled`.|

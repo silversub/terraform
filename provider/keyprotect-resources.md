@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-06-26"
 
 keywords: terraform provider plugin, terraform key protect, terraform kp, terraform root key 
 
@@ -27,7 +27,7 @@ subcollection: terraform
 # Key Protect resources
 {: #kp-resources}
 
-Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/services/key-protect?topic=key-protect-about) resources. 
+Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources. 
 {: shortdesc}
 
 ## `ibm_kp_key`

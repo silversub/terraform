@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-09"
+lastupdated: "2020-06-26"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -1087,10 +1087,10 @@ Review the input parameters that you can specify for your resource.
 |`hourly_billing`|Boolean|Optional| The billing type for the instance. When set to `true`, the computing instance is billed on hourly usage. Otherwise, the instance is billed on a monthly basis. The default value is `true`.|
 |`local_disk`|Boolean|Optional|The disk type for the instance. When set to `true`, the disks for the computing instance are provisioned on the host that the instance runs. Otherwise, SAN disks are provisioned. The default value is `true`.|
 |`dedicated_acct_host_only`|Boolean|Optional| Specifies whether the instance must only run on hosts with instances from the same account. The default value is `false`. If VM is provisioned using `flavorKeyName`, value should be set to `false`.        **NOTE**: Conflicts with `dedicated_host_name`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.|
-|`dedicated_host_id`|Integer|Optional|Specifies [dedicated host](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `placement_group_name` and `placement_group_id`.|
-|`dedicated_host_name`|String|Optional|Specifies [dedicated host](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.|
-|`placement_group_id`|Integer|Optional|Specifies [placement group](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `dedicated_host_id` and `placement_group_name`.|
-|`placement_group_name`|String|Optional|Specifies [placement group](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name.        **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name` and `placement_group_id`|
+|`dedicated_host_id`|Integer|Optional|Specifies [dedicated host](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `placement_group_name` and `placement_group_id`.|
+|`dedicated_host_name`|String|Optional|Specifies [dedicated host](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.|
+|`placement_group_id`|Integer|Optional|Specifies [placement group](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `dedicated_host_id` and `placement_group_name`.|
+|`placement_group_name`|String|Optional|Specifies [placement group](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name.        **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name` and `placement_group_id`|
 |`transient`|Boolean|Optional|Specifies whether to provision a transient virtual server. The default value is `false`. Transient instances cannot be upgraded or downgraded. Transient instances cannot use local storage.       **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name`, `cores`, `memory`, `public_bandwidth_limited` and `public_bandwidth_unlimited`|
 |`os_reference_code`|String|Optional|The operating system reference code that is used to provision the computing instance. To see available OS reference codes, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode), using your API key as the password.       **NOTE**: Conflicts with `image_id`.|
 |`image_id`|Integer|Optional| The image template ID you want to use to provision the computing instance. This is not the global identifier (UUID), but the image template group ID that should point to a valid global identifier. To retrieve the image template ID from the IBM Cloud infrastructure customer portal, navigate to **Devices > Manage > Images**, click the image that you want, and note the ID number in the resulting URL. **NOTE**: Conflicts with `os_reference_code`. |
@@ -1615,7 +1615,7 @@ The following attributes are exported:
 
 Create a firewall with multiple VLANs.
 
-For additional details, see the [IBM Cloud (SoftLayer) multi VLAN firewall Request docs](https://softlayer.github.io/reference/datatypes/SoftLayer_Container_Product_Order_Network_Protection_Firewall_Dedicated/)
+For additional details, see the [IBM Cloud (SoftLayer) multi VLAN firewall Request docs](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Container_Product_Order_Network_Protection_Firewall_Dedicated/).
 
 ### Sample Terraform code
 {: #multivlan-firewall-sample}
@@ -1743,7 +1743,7 @@ Provides a firewall in IBM. One firewall protects one public VLAN and provides i
 
 
 
-For more information about how to configure a firewall, see the [docs](https://knowledgelayer.softlayer.com/procedure/configure-hardware-firewall).
+For more information about how to configure a firewall, see the [docs](/docs/hardware-firewall-shared?topic=hardware-firewall-shared-about-hardware-firewall-shared-).
 
 ### Sample Terraform code
 {: #shared-fw-sample}
@@ -2284,7 +2284,7 @@ The following arguments are supported:
 
 |Name|Description|
 |----|-----------|
-|`datacenter`|(Required, string) The data center in which you want to provision the VPX load balancer. You can find accepted values in the [data center docs](http://www.softlayer.com/data-centers).|
+|`datacenter`|(Required, string) The data center in which you want to provision the VPX load balancer. You can find accepted values in the [order a Citrix Netscaler VPX](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-getting-started#ordering-a-citrix-netscaler-vpx) documentation. |
 |`speed`|(Required, integer) The speed, expressed in Mbps. Accepted values are `10`, `200`, and `1000`.|
 |`version`|(Required, string) The VPX load balancer version. Accepted values are `10.1`, `10.5`, `11.0`, `11.1` and `12.1`.|
 |`plan`|(Required, string) The VPX load balancer plan. Accepted values are `Standard` and `Platinum`.|
@@ -2315,9 +2315,9 @@ The following attributes are exported:
 ## `ibm_lb_vpx_ha`
 {: #lb-vpx-ha}
 
-Configure a high availability (HA) pair with two NetScaler VPX devices. The two NetScaler VPXs must be version 10.5 and located in the same subnet. A primary NetScaler VPX provides load balancing services in active mode, and a secondary NetScaler VPX provides load balancing services when the primary NetScaler VPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748) and the [KnowledgeLayer NetScaler docs](http://knowledgelayer.softlayer.com/articles/netscaler-vpx-10-high-availability-setup).
+Configure a high availability (HA) pair with two NetScaler VPX devices. The two NetScaler VPXs must be version 10.5 and located in the same subnet. A primary NetScaler VPX provides load balancing services in active mode, and a secondary NetScaler VPX provides load balancing services when the primary NetScaler VPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748){: external} and the [KnowledgeLayer NetScaler docs](https://cloud.ibm.com/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-){: external}.
 
-**NOTE**: This resource only supports NetScaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](http://www.softlayer.com/VPN-Access) to access a private network connection.
+**NOTE**: This resource only supports NetScaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 The two NetScaler VPXs use the same password in HA mode. When you create this resource, Terraform changes the password of the secondary NetScaler VPX to the password of the primary NetScaler VPX. When you destroy this resource, Terraform restores the original password of the secondary NetScaler VPX.
 
@@ -2388,7 +2388,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancer services. This allows VPX load balancer services to be created, updated, and deleted. For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service).  
 
-**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](http://www.softlayer.com/VPN-Access) to access a private network connection.
+**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 ### Sample Terraform code
 {: #vpx-svc-sample}
@@ -2444,7 +2444,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancer virtual IP addresses. This allows VPX load balancer virtual IP addresses to be created, updated, and deleted.  
 
-**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](http://www.softlayer.com/VPN-Access) to access a private network connection.
+**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 ### Sample Terraform code
 {: #lb-vpx-vip-sample}
@@ -2710,7 +2710,7 @@ Provide a resource to associate a VLAN with a network gateway. The VLANs can be 
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Gateway_Vlan).
 
-For more information about getting started, see the [IBM Virtual Router Appliance docs](/docs/infrastructure/gateway-appliance?topic=gateway-appliance-getting-started).
+For more information about getting started, see the [IBM Virtual Router Appliance docs](/docs/gateway-appliance?topic=gateway-appliance-getting-started).
 
 ### Sample Terraform code
 {: #network-vlan-associate-sample}
@@ -2998,7 +2998,7 @@ The following attributes are exported:
 
 Retrieve the account name for an existing Object Storage instance within your IBM account. If no Object Storage instance exists, you can use this resource to order an Object Storage instance and to store the account name.
 
-Do not use this resource for managing the lifecycle of an Object Storage instance in IBM. For lifecycle management, see the [Swift API](https://developer.openstack.org/api-ref/object-store/) or [Swift resources](https://github.com/TheWeatherCompany/terraform-provider-swift).
+Do not use this resource for managing the lifecycle of an Object Storage instance in IBM. For lifecycle management, see the [Swift API](https://docs.openstack.org/api-ref/object-store/) or [Swift resources](https://github.com/TheWeatherCompany/terraform-provider-swift).
 
 ### Sample Terraform code
 {: #os-account-sample}
@@ -3183,7 +3183,7 @@ The following arguments are supported:
 |`allowed_ip_addresses`|(Optional, array of string) The IP addresses that you want to give access to this instance. IP addresses must be in the same data center as the block storage.|
 |`notes`|(Optional, string) A descriptive note that you want to associate with the block storage.|
 |`tags`|(Optional, array of strings) Tags associated with the storage block instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
-|`hourly_billing`|(Optional,Boolean) Set true to enable hourly billing.Default is false   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the link to get the updated list of data centers. http://knowledgelayer.softlayer.com/articles/new-ibm-block-and-file-storage-location-and-features|
+|`hourly_billing`|(Optional,Boolean) Set true to enable hourly billing. Default is false |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3383,7 +3383,7 @@ addresses for IBM resources in the VLAN. Because each portable subnet has a defa
 
 The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
 
-Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](http://blog.softlayer.com/tag/ipv6)
+Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](/docs/subnets?topic=subnets-about-subnets-and-ips).
 
 ### Sample Terraform code of portable subnet
 {: #subnet-sample}

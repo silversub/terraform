@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-04-29"
+lastupdated: "2020-06-26"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -37,7 +37,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_database`
 {: #db}
 
-Create, update, or delete a {{site.data.keyword.databases-for}} instance. The `ibmcloud_api_key` that is defined in the `provider` block and used by Terraform must have sufficient IAM rights to create and modify {{site.data.keyword.databases-for}} instances and must have access to the resource group where you want to deploy the instance. For more information, see the [documentation](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-user-management).
+Create, update, or delete a {{site.data.keyword.databases-for}} instance. The `ibmcloud_api_key` that is defined in the `provider` block and used by Terraform must have sufficient IAM rights to create and modify {{site.data.keyword.databases-for}} instances and must have access to the resource group where you want to deploy the instance. For more information, see the [documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management).
 
 To create a {{site.data.keyword.databases-for}} instance, you must specify the `region` and `ibmcloud_api_key` parameters in the `provider` block of your Terraform configuration file. The region must match the region where you want to deploy your instance. If the region is not specified `us-south` is used by default. 
 {: note}
@@ -108,7 +108,7 @@ Review the input parameters that you can specify for your resource.
 |`key_protect_key`|String|Optional|The CRN of a Key Protect root key that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>:key:`.|
 |`key_protect_instance`|String|Optional|The CRN of a Key Protect instance that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>::`.|
 |`guid`|String|Optional|The unique identifier of the database instance.|
-|`remote_leader_id`|String|Optional|A CRN of the leader database to make the replica(read-only) deployment. The leader database must have been created by a database deployment with the same service ID. A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment using asynchronous replication. For more information, see [Configuring Read-only Replicas](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).|
+|`remote_leader_id`|String|Optional|A CRN of the leader database to make the replica(read-only) deployment. The leader database must have been created by a database deployment with the same service ID. A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment using asynchronous replication. For more information, see [Configuring Read-only Replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).|
 |`point_in_time_recovery_deployment_id`|String|Optional|The ID of the source deployment that you want to recover back to.|
 |`point_in_time_recovery_time`|String|Optional|The timestamp in UTC format that you want to restore to. To retrieve the timestamp, run the `ibmcloud cdb postgresql earliest-pitr-timestamp <deployment name or CRN>` command. For more information, see [Point-in-time Recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr). |
 |`service_endpoints`|String|Optional|Specify if you want to enable the public, private, or both service endpoints. Supported values are `public`, `private`, or `public-and-private`. The default is `public`.|
@@ -131,7 +131,7 @@ Review the output parameters that you can access after your resource is created.
 |`status`|String|The status of the instance. |
 |`adminuser`|String|The user ID of the database administrator. Example: `admin` or `root`.|
 |`version`|String|The database version.|
-|`connectionstrings`|Array|A list of connection strings for the database for each user ID. For more information about how to use connection strings, see the [documentation](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings). The results are returned in pairs of the userid and string: `connectionstrings.1.name = admin connectionstrings.1.string = postgres://admin:$PASSWORD@79226bd4-4076-4873-b5ce-b1dba48ff8c4.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:32554/ibmclouddb?sslmode=verify-full` Individual string parameters can be retrieved using Terraform variables and outputs `connectionstrings.x.hosts.x.port` and `connectionstrings.x.hosts.x.host`|
+|`connectionstrings`|Array|A list of connection strings for the database for each user ID. For more information about how to use connection strings, see the [documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings). The results are returned in pairs of the userid and string: `connectionstrings.1.name = admin connectionstrings.1.string = postgres://admin:$PASSWORD@79226bd4-4076-4873-b5ce-b1dba48ff8c4.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:32554/ibmclouddb?sslmode=verify-full` Individual string parameters can be retrieved using Terraform variables and outputs `connectionstrings.x.hosts.x.port` and `connectionstrings.x.hosts.x.host`|
 
 ### Timeouts
 {: #db-timeout}
