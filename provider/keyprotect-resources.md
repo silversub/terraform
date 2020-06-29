@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-26"
+lastupdated: "2020-06-29"
 
 keywords: terraform provider plugin, terraform key protect, terraform kp, terraform root key 
 
@@ -73,15 +73,15 @@ resource "ibm_cos_bucket" "flex-us-south" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`key_protect_id`|String|Required|The Key Protect service instance ID.|
-|`key_name`|String|Required|The name of the key.|
-|`standard_key`|Boolean|Optional|Set to **true** to create a standard key, to create a root key set this flag to **false**. Default is **false**.|
-|`payload`|String|Optional| The base64 encoded key that you want to store and manage in the service. To import an existing key, provide a 256-bit key. To generate a new key, omit this parameter.|
-|`encrypted_nonce`|String|Optional|The encrypted nonce value that verifies your request to import a key to Key Protect. This value must be encrypted by using the key that you want to import to the service. To retrieve a nonce, use the `ibmcloud kp import-token get` command. Then, encrypt the value by running `ibmcloud kp import-token encrypt-nonce`. Only for imported root key.|
-|`force_delete`|Boolean|Optional|If set to **true**, Key Protect forces the deletion of a root or standard key, even if this key is still in use, such as to protect an {{site.data.keyword.cos_full_notm}} bucket. Note that the key cannot be deleted if the protected cloud resource is set up with a retention policy. Successful deletion includes the removal of any registrations that are associated with the key. Default value: **false**.|
-|`iv_value`|String|Optional| Used with import tokens. The initialization vector (IV) that is generated when you encrypt a nonce. The IV value is required to decrypt the encrypted nonce value that you provide when you make a key import request to the service. To generate an IV, encrypt the nonce by running `ibmcloud kp import-token encrypt-nonce`. Only for imported root key.|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`key_protect_id`|String|Required|The Key Protect service instance ID.| Yes |
+|`key_name`|String|Required|The name of the key.| Yes |
+|`standard_key`|Boolean|Optional|Set to **true** to create a standard key, to create a root key set this flag to **false**. Default is **false**.| Yes |
+|`payload`|String|Optional| The base64 encoded key that you want to store and manage in the service. To import an existing key, provide a 256-bit key. To generate a new key, omit this parameter.| Yes |
+|`encrypted_nonce`|String|Optional|The encrypted nonce value that verifies your request to import a key to Key Protect. This value must be encrypted by using the key that you want to import to the service. To retrieve a nonce, use the `ibmcloud kp import-token get` command. Then, encrypt the value by running `ibmcloud kp import-token encrypt-nonce`. Only for imported root key.| Yes |
+|`force_delete`|Boolean|Optional|If set to **true**, Key Protect forces the deletion of a root or standard key, even if this key is still in use, such as to protect an {{site.data.keyword.cos_full_notm}} bucket. Note that the key cannot be deleted if the protected cloud resource is set up with a retention policy. Successful deletion includes the removal of any registrations that are associated with the key. Default value: **false**.| No |
+|`iv_value`|String|Optional| Used with import tokens. The initialization vector (IV) that is generated when you encrypt a nonce. The IV value is required to decrypt the encrypted nonce value that you provide when you make a key import request to the service. To generate an IV, encrypt the nonce by running `ibmcloud kp import-token encrypt-nonce`. Only for imported root key.|  Yes |
 
 ### Output parameters
 {: #kp-key-output}

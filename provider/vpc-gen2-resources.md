@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-24" 
+lastupdated: "2020-06-29" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -131,15 +131,16 @@ resource "ibm_is_ike_policy" "example" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPSec peers. Available options are `md5`, `sha1`, or `sha256`. |
-| `dh_group` | Integer | Required | Enter the Diffie-Hellman group that you want to use for the encryption key. Available options are `2`, `5`, or `14`. |
-| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. | 
-| `ike_version` | Integer | Optional | Enter the IKE protocol version that you want to use. Available options are `1`, or `2`. |
-| `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 28800 seconds is used. | 
-| `name` | String | Required | Enter a name for your IKE policy. | 
-| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IKE policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IKE policy is created in the `default` resource group. | 
+
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------- |
+| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPsec peers. Available options are `md5`, `sha1`, or `sha256`. | No |
+| `dh_group` | Integer | Required | Enter the Diffie-Hellman group that you want to use for the encryption key. Available options are `2`, `5`, or `14`. | No |
+| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. | No |
+| `ike_version` | Integer | Optional | Enter the IKE protocol version that you want to use. Available options are `1`, or `2`. | No |
+| `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 28800 seconds is used. | No | 
+| `name` | String | Required | Enter a name for your IKE policy. |  No |
+| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IKE policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IKE policy is created in the `default` resource group. | Yes |
 
 ### Output parameters
 {: #ike-output}
@@ -295,29 +296,29 @@ resource "ibm_is_instance" "testacc_instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`name`|String|Optional|The instance name.|
-|`vpc`|String|Required|The ID of the VPC where you want to create the instance.|
-|`zone`|String|Required|The name of the VPC zone where you want to create the instance.|
-|`profile`|String|Required|The name of the profile that you want to use for your instance. To list supported profiles, run `ibmcloud is instance-profiles`.|
-|`image`|String|Required|The ID of the virtual server image that you want to use. To list supported images, run `ibmcloud is images`.|
-|`boot_volume`|List|Optional|A list of boot volumes for an instance.|
-|`boot_volume.name`|String|Optional|The name of the boot volume.|
-|`boot_volume.encryption`|String|Optional|The type of encryption to use for the boot volume.|
-|`keys`|List|Required|A comma separated list of SSH keys that you want to add to your instance.|
-|`primary_network_interface`|List|Required|A nested block describing the primary network interface of this instance. Only one primary network interface can be specified for an instance.|
-|`primary_network_interface.name`|String|Optional|The name of the network interface.|
-|`primary_network_interface.subnet`|String|Required|The ID of the subnet.|
-|`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.|
-|`network_interfaces`|List|Optional|A list of additional network interfaces that are set up for the instance.|
-|`network_interfaces.name`|String|Optional|The name of the network interface.|
-|`network_interfaces.subnet`|String|Required|The ID of the subnet.|
-|`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.|
-|`volumes`|List|Optional|A comma separated list of volume IDs to attach to the instance.|
-|`user_data`|String|Optional|User data to transfer to the instance.|
-|`resource_group`|String|Optional|The ID of the resource group where you want to create the instance.|
-|`tags`|Array of strings|Optional|A list of tags that you want to add to your instance. Tags can help you find your instance more easily later.|
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------- |
+|`name`|String|Optional|The instance name.| No |
+|`vpc`|String|Required|The ID of the VPC where you want to create the instance.| Yes |
+|`zone`|String|Required|The name of the VPC zone where you want to create the instance.| Yes |
+|`profile`|String|Required|The name of the profile that you want to use for your instance. To list supported profiles, run `ibmcloud is instance-profiles`.| Yes |
+|`image`|String|Required|The ID of the virtual server image that you want to use. To list supported images, run `ibmcloud is images`.| No |
+|`boot_volume`|List|Optional|A list of boot volumes for an instance.| No |
+|`boot_volume.name`|String|Optional|The name of the boot volume.| No |
+|`boot_volume.encryption`|String|Optional|The type of encryption to use for the boot volume.| No |
+|`keys`|List|Required|A comma separated list of SSH keys that you want to add to your instance.| No |
+|`primary_network_interface`|List|Required|A nested block describing the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
+|`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
+|`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
+|`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
+|`network_interfaces`|List|Optional|A list of additional network interfaces that are set up for the instance.| Yes |
+|`network_interfaces.name`|String|Optional|The name of the network interface.| No |
+|`network_interfaces.subnet`|String|Required|The ID of the subnet.| No |
+|`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
+|`volumes`|List|Optional|A comma separated list of volume IDs to attach to the instance.| No |
+|`user_data`|String|Optional|User data to transfer to the instance.| No |
+|`resource_group`|String|Optional|The ID of the resource group where you want to create the instance.| Yes |
+|`tags`|Array of strings|Optional|A list of tags that you want to add to your instance. Tags can help you find your instance more easily later.| No |
 
 ### Output parameters
 {: #instance-output}
@@ -409,14 +410,14 @@ resource "ibm_is_ipsec_policy" "example" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPSec peers. Available options are `md5`, `sha1`, or `sha256`. |
-| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. | 
-| `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 3600 seconds is used. | 
-| `name` | String | Required | Enter the name for your IPSec policy. |
-| `pfs` | String | Required | Enter the Perfect Forward Secrecy (PFS) protocol that you want to use during a session. Available options are `disabled`, `group_2`, `group_5`, and `group_14`. | 
-| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IPSec policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IPSec policy is created in the `default` resource group. | 
+| Input parameter | Data type | Required/ optional | Description | Foces new resource |
+| ------------- |-------------| ----- | -------------- | ---------- |
+| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPsec peers. Available options are `md5`, `sha1`, or `sha256`. | No |
+| `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. |  No |
+| `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 3600 seconds is used. | No |
+| `name` | String | Required | Enter the name for your IPSec policy. | No |
+| `pfs` | String | Required | Enter the Perfect Forward Secrecy (PFS) protocol that you want to use during a session. Available options are `disabled`, `group_2`, `group_5`, and `group_14`. | No |
+| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IPSec policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IPSec policy is created in the `default` resource group. |  Yes |
 
 ### Output parameters
 {: #ike-policy-output}
@@ -455,13 +456,13 @@ resource "ibm_is_image" "test_is_images" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The descriptive name used to identify an image.|
-|`href`|String|Required| The path of an image to be uploaded.|
-|`operating_system`|String|Required|Description of underlying OS of an image.|
-|`resource_group`|String|Optional|The resource group ID for this image.|
-|`tags`|Array of strings|Optional|A list of tags that you want to your image. Tags can help you find the image more easily later.|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ----- |
+|`name`|String|Required|The descriptive name used to identify an image.| No |
+|`href`|String|Required| The path of an image to be uploaded.| No |
+|`operating_system`|String|Required|Description of underlying OS of an image.| No |
+|`resource_group`|String|Optional|The resource group ID for this image.| Yes |
+|`tags`|Array of strings|Optional|A list of tags that you want to your image. Tags can help you find the image more easily later.| No |
 
 ### Output parameters
 {: #image-output}
@@ -502,13 +503,13 @@ resource "ibm_is_lb" "lb" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The name of the VPC load balancer.|
-|`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.
-|`type`|String|Optional|The type of the load balancer. Default value `public`. Supported values `public` and `private`.|
-|`resource_group`|String|Optional| The resource group where the load balancer to be created.|
-|`tags`|List of strings|Optional|A list of tags that you want to add to your load balancer. Tags can help you find the load balancer more easily later. |
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`name`|String|Required|The name of the VPC load balancer.| No |
+|`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.| No |
+|`type`|String|Optional|The type of the load balancer. Default value `public`. Supported values `public` and `private`.| Yes |
+|`resource_group`|String|Optional| The resource group where the load balancer to be created.| Yes |
+|`tags`|Array of strings|Optional|A list of tags that you want to add to your load balancer. Tags can help you find the load balancer more easily later. | No |
 
 ### Output parameters
 {: #lb-output}
@@ -591,14 +592,14 @@ resource "ibm_is_lb_pool_member" "webapptier-lb-pool-member-zone1" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`lb`|String|Required|The load balancer unique identifier.|
-|`port`|Integer|Required|The listener port number. Valid range 1 to 65535.|
-|`protocol`|String|Required|The listener protocol. Supported values are `http`, `tcp`, and `https`.|
-|`default_pool`|String|Optional| The load balancer pool unique identifier.|
-|`certificate_instance`|String|Optional|The CRN of the certificate instance.|
-|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000.|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`lb`|String|Required|The load balancer unique identifier.| Yes |
+|`port`|Integer|Required|The listener port number. Valid range 1 to 65535.| No |
+|`protocol`|String|Required|The listener protocol. Supported values are `http`, `tcp`, and `https`.| No |
+|`default_pool`|String|Optional| The load balancer pool unique identifier.| No |
+|`certificate_instance`|String|Optional|The CRN of the certificate instance.| No |
+|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000.| No |
 
 ### Output parameters
 {: #lb-listener-output}
@@ -709,21 +710,21 @@ resource "ibm_is_lb_listener_policy" "lb_listener_policy" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`lb`|String|Required|The ID of the load balancer for which you want to create a load balancer listener policy.| 
-|`listener`|String|Required|The ID of the load balancer listener.|
-|`action`|String|Required|The action that you want to specify for your policy. Supported values are `forward`, `redirect`, and `reject`.|
-|`priority`|Integer|Required|The priority of the load balancer policy. Low values indicate a high priority. The value must be between 1 and 10.|
-|`name`|String|Optional|The name for the load balancer policy. Names must be unique within a load balancer listener.|
-|`rules`|List of policy rules|Required|A list of rules that you want to apply to your load balancer policy. Note that rules can be created only. You cannot update the rules for a load balancer policy.|
-|`rules.condition`|String|Required|The condition that you want to apply to your rule. Supported values are `contains`, `equals`, and `matches_regex`.|
-|`rules.type`|String|Required|The data type where you want to apply the rule condition. Supported values are `header`, `hostname`,  and `path`|
-|`rules.value`|Integer|Required|The value that must be found in the HTTP header, hostname or path to apply the load balancer listener rule. The value that you define can be between 1 and 128 characters long.|
-|`rules.field`|Integer|Required|If you selected `header` as the data type where you want to apply the rule condition, enter the name of the HTTP header that you want to check. The name of the header can be between 1 and 128 characters long. |
-|`target_id`|Integer|Optional|When `action` is set to **forward**, specify the ID of the load balancer pool that the load balancer forwards network traffic to. |
-|`target_http_status_code`|Integer|Optional|When `action` is set to **redirect**, specify the HTTP response code that must be returned in the redirect response. Supported values are `301`, `302`, `303`, `307`, and `308`.  
-|`target_url`|Integer|Optional|When `action` is set to **redirect**, specify the URL that is used in the redirect response.| 
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ----- |
+|`lb`|String|Required|The ID of the load balancer for which you want to create a load balancer listener policy.|  Yes |
+|`listener`|String|Required|The ID of the load balancer listener.| Yes |
+|`action`|String|Required|The action that you want to specify for your policy. Supported values are `forward`, `redirect`, and `reject`.| Yes |
+|`priority`|Integer|Required|The priority of the load balancer policy. Low values indicate a high priority. The value must be between 1 and 10.| Yes |
+|`name`|String|Optional|The name for the load balancer policy. Names must be unique within a load balancer listener.| No |
+|`rules`|List of policy rules|Required|A list of rules that you want to apply to your load balancer policy. Note that rules can be created only. You cannot update the rules for a load balancer policy.| No |
+|`rules.condition`|String|Required|The condition that you want to apply to your rule. Supported values are `contains`, `equals`, and `matches_regex`.| No |
+|`rules.type`|String|Required|The data type where you want to apply the rule condition. Supported values are `header`, `hostname`,  and `path`| No |
+|`rules.value`|Integer|Required|The value that must be found in the HTTP header, hostname or path to apply the load balancer listener rule. The value that you define can be between 1 and 128 characters long.| No |
+|`rules.field`|Integer|Required|If you selected `header` as the data type where you want to apply the rule condition, enter the name of the HTTP header that you want to check. The name of the header can be between 1 and 128 characters long. | No |
+|`target_id`|Integer|Optional|When `action` is set to **forward**, specify the ID of the load balancer pool that the load balancer forwards network traffic to. | No |
+|`target_http_status_code`|Integer|Optional|When `action` is set to **redirect**, specify the HTTP response code that must be returned in the redirect response. Supported values are `301`, `302`, `303`, `307`, and `308`. | No | 
+|`target_url`|Integer|Optional|When `action` is set to **redirect**, specify the URL that is used in the redirect response.|  No |
 
 ### Output parameters
 {: #lb-listener-policy-output}
@@ -801,15 +802,15 @@ resource "ibm_is_lb_listener_policy_rule" "lb_listener_policy_rule" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`lb`|String|Required|The ID of the load balancer for which you want to create a listener policy rule.|
-|`listener`|String|Required|The ID of the load balancer listener for which you want to create a policy rule.| 
-|`policy`|String|Required|The ID of the load balancer listener policy for which you want to create a policy rule.| 
-|`condition`|String|Required|The condition that you want to apply to your rule. Supported values are `contains`, `equals`, and `matches_regex`.|
-|`type`|String|Required|The object where you want to apply the rule. Supported values are `header`, `hostname`, and `path`.|
-|`value`|String|Required|The value that must match the rule condition. The value can be between 1 and 128 characters long. | 
-|`field`|String|Optional|If you set `type` to `header`, enter the HTTP header field where you want to apply the rule condition. |
+|Name|Data type|Required/ optional|Description| Forces new resource | 
+|----|-----------|-----------|---------------------| ------ |
+|`lb`|String|Required|The ID of the load balancer for which you want to create a listener policy rule.| Yes |
+|`listener`|String|Required|The ID of the load balancer listener for which you want to create a policy rule.|  Yes |
+|`policy`|String|Required|The ID of the load balancer listener policy for which you want to create a policy rule.|  Yes |
+|`condition`|String|Required|The condition that you want to apply to your rule. Supported values are `contains`, `equals`, and `matches_regex`.| No |
+|`type`|String|Required|The object where you want to apply the rule. Supported values are `header`, `hostname`, and `path`.| No |
+|`value`|String|Required|The value that must match the rule condition. The value can be between 1 and 128 characters long. |  No |
+|`field`|String|Optional|If you set `type` to `header`, enter the HTTP header field where you want to apply the rule condition. | No |
 
 ### Output parameters
 {: #lb-listener-policy-rule-output}
@@ -871,19 +872,20 @@ resource "ibm_is_lb_pool" "testacc_pool" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required| The name of the pool.|
-|`lb` |String|Required|The load balancer unique identifier.|
-|`algorithm`|String|Required|The load balancing algorithm. Supported values are `round_robin`, `weighted_round_robin`, or `least_connections`.|
-|`protocol`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.|
-|`health_delay`|Integer|Required|The health check interval in seconds. Interval must be greater than `timeout` value.|
-|`health_retries`|Integer|Required|The health check max retries.|
-|`health_timeout`|Integer|Required|The health check timeout in seconds.|
-|`health_type`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.|
-|`health_monitor_url`|String|Optional|The health check url. This option is applicable only to the HTTP `health-type`.|
-|`health_monitor_port`|Integer|Optional|The health check port number.|
-|`session_persistence_type`|String|Optional|The session persistence type. Only `source_ip` is supported.|
+
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------ |
+|`name`|String|Required| The name of the pool.| No |
+|`lb` |String|Required|The load balancer unique identifier.| Yes |
+|`algorithm`|String|Required|The load balancing algorithm. Supported values are `round_robin`, `weighted_round_robin`, or `least_connections`.| No |
+|`protocol`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.| No |
+|`health_delay`|Integer|Required|The health check interval in seconds. Interval must be greater than `timeout` value.| No |
+|`health_retries`|Integer|Required|The health check max retries.| No |
+|`health_timeout`|Integer|Required|The health check timeout in seconds.| No |
+|`health_type`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.| No |
+|`health_monitor_url`|String|Optional|The health check url. This option is applicable only to the HTTP `health-type`.| No |
+|`health_monitor_port`|Integer|Optional|The health check port number.|  No |
+|`session_persistence_type`|String|Optional|The session persistence type. Only `source_ip` is supported.| No |
 
 ### Output parameters
 {: #lb-pool-output}
@@ -940,13 +942,13 @@ resource "ibm_is_lb_pool_member" "testacc_lb_mem" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`pool`|String|Required| The load balancer pool unique identifier.|
-|`lb`|String|Required| The load balancer unique identifier.|
-|`port`|Integer|Required| The port number of the application running in the server member.|
-|`target_address`|String|Required|The IP address of the pool member.|
-|`weight`|Integer|Optional| Weight of the server member. This option takes effect only when the load balancing algorithm of its belonging pool is `weighted_round_robin`.|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| --------- |
+|`pool`|String|Required| The load balancer pool unique identifier.| Yes |
+|`lb`|String|Required| The load balancer unique identifier.| Yes |
+|`port`|Integer|Required| The port number of the application running in the server member.| No |
+|`target_address`|String|Required|The IP address of the pool member.| No |
+|`weight`|Integer|Optional| Weight of the server member. This option takes effect only when the load balancing algorithm of its belonging pool is `weighted_round_robin`.| No |
 
 ### Output parameters
 {: #lb-pool-member-output}
@@ -1028,30 +1030,30 @@ resource "ibm_is_network_acl" "isExampleACL" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`name`|String|Required|The name of the network ACL.|
-|`vpc`|String|Required|The VPC ID. This parameter is note required if you want to create a network ACL for a Gen 1 VPC.|
-|`resource_group`|String|Optional|The ID of the resource group where you want to create the network ACL. |
-|`rules`|List of rules|Optional|A list of rules for a network ACL. The order in which the rules are added to the list determines the priority of the rules. For example, the first rule that you want to enforce must be specified as the first rule in this list. |
-|`rules.name`|String|Required|The user-defined name for this rule.|
-|`rules.action`|String|Required|`Allow` or `deny` matching network traffic. |
-|`rules.source`|String|Required|The source IP address or CIDR block.|
-|`rules.destination`|String|Required|The destination IP address or CIDR block.|
-|`rules.direction`|String|Required|Indicates whether the traffic to be matched is `inbound` or `outbound`.|
-|`rules.icmp`|List of protocol information|Optional|The protocol ICMP.|
-|`rules.icmp.code`|Integer|Optional|The ICMP traffic code to allow. Valid values from 0 to 255. If unspecified, all codes are allowed. This can only be specified if type is also specified.|
-|`rules.icmp.type`|Integer|Optional|The ICMP traffic type to allow. Valid values from 0 to 254. If unspecified, all types are allowed by this rule.|
-|`rules.tcp`|List of protocol information|Optional|The TCP protocol.|
-|`rules.tcp.port_max`|Integer|Optional|The highest port in the range of ports to be matched; if unspecified, 65535 is used.|
-|`rules.tcp.port_min`|Integer|Optional|The lowest port in the range of ports to be matched; if unspecified, 1 is used.|
-|`rules.tcp.source_port_max`|Integer|Optional|The highest port in the range of ports to be matched; if unspecified, 65535 is used.|
-|`rules.tcp.source_port_min`|Integer|Optional|The lowest port in the range of ports to be matched; if unspecified, 1 is used.|
-|`rules.udp`|List of protocol information|Optional|The UDP protocol.|
-|`rules.udp.port_max`|Integer|Optional|The highest port in the range of ports to be matched; if unspecified, 65535 is used.|
-|`rules.udp.port_min`|Integer|Optional|The lowest port in the range of ports to be matched; if unspecified, 1 is used.|
-|`rules.udp.source_port_max`|Integer|Optional|The highest port in the range of ports to be matched; if unspecified, 65535 is used.|
-|`rules.udp.source_port_min`|Integer|Optional|The lowest port in the range of ports to be matched; if unspecified, 1 is used.|
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------------ |
+|`name`|String|Required|The name of the network ACL.| No |
+|`vpc`|String|Optional|The VPC ID. This parameter is required if you want to create a network ACL for a Gen 2 VPC.| Yes |
+|`resource_group`|String|Optional|The ID of the resource group where you want to create the network ACL. | Yes |
+|`rules`|List of rules|Optional|A list of rules for a network ACL. The order in which the rules are added to the list determines the priority of the rules. For example, the first rule that you want to enforce must be specified as the first rule in this list. | No |
+|`rules.name`|String|Required|The user-defined name for this rule.| No |
+|`rules.action`|String|Required|`Allow` or `deny` matching network traffic. | No |
+|`rules.source`|String|Required|The source IP address or CIDR block.| No |
+|`rules.destination`|String|Required|The destination IP address or CIDR block.| No |
+|`rules.direction`|String|Required|Indicates whether the traffic to be matched is `inbound` or `outbound`.| No |
+|`rules.icmp`|List of protocol information|Optional|The protocol ICMP.| No |
+|`rules.icmp.code`|Integer|Optional|The ICMP traffic code to allow. Valid values from 0 to 255. If unspecified, all codes are allowed. This can only be specified if type is also specified.| No |
+|`rules.icmp.type`|Integer|Optional|The ICMP traffic type to allow. Valid values from 0 to 254. If unspecified, all types are allowed by this rule.| No |
+|`rules.tcp`|List of protocol information|Optional|The TCP protocol.| No |
+|`rules.tcp.port_max`|Integer|Optional|The highest port in the range of ports to be matched; if unspecified, 65535 is used.| No |
+|`rules.tcp.port_min`|Integer|Optional|The lowest port in the range of ports to be matched; if unspecified, 1 is used.| No |
+|`rules.tcp.source_port_max`|Integer|Optional|The highest port in the range of ports to be matched; if unspecified, 65535 is used.| No |
+|`rules.tcp.source_port_min`|Integer|Optional|The lowest port in the range of ports to be matched; if unspecified, 1 is used.| No |
+|`rules.udp`|List of protocol information|Optional|The UDP protocol.| No |
+|`rules.udp.port_max`|Integer|Optional|The highest port in the range of ports to be matched; if unspecified, 65535 is used.| No |
+|`rules.udp.port_min`|Integer|Optional|The lowest port in the range of ports to be matched; if unspecified, 1 is used.| No |
+|`rules.udp.source_port_max`|Integer|Optional|The highest port in the range of ports to be matched; if unspecified, 65535 is used.| No |
+|`rules.udp.source_port_min`|Integer|Optional|The lowest port in the range of ports to be matched; if unspecified, 1 is used.| No |
 
 ### Output parameters
 {: #network-acl-output}
@@ -1118,13 +1120,13 @@ resource "ibm_is_public_gateway" "testacc_gateway" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-| `name` | String| Required | Enter a name for your public gateway. |
-| `vpc` | String | Required | Enter the ID of the VPC, for which you want to create a public gateway. To list available VPCs, run `ibmcloud is vpcs`.  | 
-| `zone` | String | Required | Enter the zone where you want to create the public gateway. To list available zones, run `ibmcloud is zones`. |
-| `resource_group`|String|Optional|Enter the ID of the resource group where you want to create the public gateway. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the public gateway is created in the `default` resource group. |
-| `tags`|Array of strings|Optional|Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). |
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------ |
+| `name` | String| Required | Enter a name for your public gateway. | No |
+| `vpc` | String | Required | Enter the ID of the VPC, for which you want to create a public gateway. To list available VPCs, run `ibmcloud is vpcs`.  | Yes |
+| `zone` | String | Required | Enter the zone where you want to create the public gateway. To list available zones, run `ibmcloud is zones`. | Yes |
+| `tags`|Array of strings|Optional|Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | No |
+| `resource_group`|String|Optional|Enter the ID of the resource group where you want to create the public gateway. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the public gateway is created in the `default` resource group. | Yes |
 
 
 ### Output parameters
@@ -1180,11 +1182,11 @@ resource "ibm_is_security_group" "testacc_security_group" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Optional|The security group name.|
-|`vpc`|String|Required|The VPC ID. |
-|`resource_group`|String|Optional|The resource group ID where the security group to be created.|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`name`|String|Optional|The security group name.| No |
+|`vpc`|String|Required|The VPC ID. | Yes |
+|`resource_group`|String|Optional|The resource group ID where the security group to be created.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1288,21 +1290,21 @@ resource "ibm_is_security_group_rule" "testacc_security_group_rule_all" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`group`|String|Required|The security group ID.|
-|`direction`|String|Required|The direction of the traffic either `inbound` or `outbound`.|
-|`remote`|String|Optional|Security group id, an IP address, a CIDR block, or a single security group identifier.|
-|`ip_version`|String|Optional|The IP version either `IPv4` or `IPv6`. Default `IPv4`.|
-|`icmp`|List of objects|Optional|A nested block describing the `icmp` protocol of this security group rule.  |
-|`icmp.type`|Integer|Required|The ICMP traffic type to allow. Valid values from 0 to 254.  |
-|`icmp.code`|Integer|Optional|The ICMP traffic code to allow. Valid values from 0 to 255.|
-|`tcp`|List of objects|Optional|A nested block describing the `tcp` protocol of this security group rule.  |
-|`tcp.port_min`|Integer|Required| The inclusive lower bound of TCP port range. Valid values are from 1 to 65535.  |
-|`tcp.port_max`|Integer|Required| The inclusive upper bound of TCP port range. Valid values are from 1 to 65535.|
-|`udp`|List of objects| Optional| A nested block describing the `udp` protocol of this security group rule.  |
-|`udp.port_min`|Integer|Required|The inclusive lower bound of UDP port range. Valid values are from 1 to 65535.  |
-|`udp.port_max`|Integer|Required|The inclusive upper bound of UDP port range. Valid values are from 1 to 65535. **NOTE**: If any of the `icmp` , `tcp` or `udp` is not specified it creates a rule with protocol `ALL`. |
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| -------- |
+|`group`|String|Required|The security group ID.| Yes |
+|`direction`|String|Required|The direction of the traffic either `inbound` or `outbound`.| No |
+|`remote`|String|Optional|Security group id, an IP address, a CIDR block, or a single security group identifier.| No |
+|`ip_version`|String|Optional|The IP version either `IPv4` or `IPv6`. Default `IPv4`.| No |
+|`icmp`|List of objects|Optional|A nested block describing the `icmp` protocol of this security group rule.  | No |
+|`icmp.type`|Integer|Required|The ICMP traffic type to allow. Valid values from 0 to 254.  | No |
+|`icmp.code`|Integer|Optional|The ICMP traffic code to allow. Valid values from 0 to 255.| No |
+|`tcp`|List of objects|Optional|A nested block describing the `tcp` protocol of this security group rule.  | No |
+|`tcp.port_min`|Integer|Required| The inclusive lower bound of TCP port range. Valid values are from 1 to 65535.  | No |
+|`tcp.port_max`|Integer|Required| The inclusive upper bound of TCP port range. Valid values are from 1 to 65535.| No |
+|`udp`|List of objects| Optional| A nested block describing the `udp` protocol of this security group rule.  | No |
+|`udp.port_min`|Integer|Required|The inclusive lower bound of UDP port range. Valid values are from 1 to 65535.  | No |
+|`udp.port_max`|Integer|Required|The inclusive upper bound of UDP port range. Valid values are from 1 to 65535. **NOTE**: If any of the `icmp` , `tcp` or `udp` is not specified it creates a rule with protocol `ALL`. | No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1351,10 +1353,10 @@ resource "ibm_is_security_group_network_interface_attachment" "sgnic" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`security_group`|String|Required|The security group ID.|
-|`network_interface`|String|Required|The network interface ID. |
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------ |
+|`security_group`|String|Required|The security group ID.|  Yes |
+|`network_interface`|String|Required|The network interface ID. | Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1430,17 +1432,17 @@ resource "ibm_is_subnet" "testacc_subnet" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`ipv4_cidr_block`|String|Optional|The IPv4 range of the subnet.|
-|`total_ipv4_address_count`|String|Optional|The total number of IPv4 addresses.|
-|`ip_version`|String|Optional|The IP Version. The default is `ipv4`.|
-|`name`|String|Required| The name of the subnet.|
-|`network_acl`|String|Optional|The ID of the network ACL for the subnet.|
-|`public_gateway`|String|Optional|The ID of the public gateway for the subnet that you want to attach to the subnet. You create the public gateway with the [`ibm_is_public_gateway` resource](#provider-public-gateway).|
-|`resource_group`|String|Optional|The ID of the resource group where you want to create the subnet.|
-|`vpc`|String|Required|The VPC ID.|
-|`zone`|String|Required|The subnet zone name.|
+|Name|Data type|Required/ optional|Description|Forces new resource |
+|----|-----------|-----------|---------------------|-------|
+|`ipv4_cidr_block`|String|Optional|The IPv4 range of the subnet.| Yes |
+|`total_ipv4_address_count`|String|Optional|The total number of IPv4 addresses.| Yes |
+|`ip_version`|String|Optional|The IP Version. The default is `ipv4`.| Yes |
+|`name`|String|Required| The name of the subnet.| No |
+|`network_acl`|String|Optional|The ID of the network ACL for the subnet.| No |
+|`public_gateway`|String|Optional|The ID of the public gateway for the subnet that you want to attach to the subnet. You create the public gateway with the [`ibm_is_public_gateway` resource](#provider-public-gateway).| No |
+|`resource_group`|String|Optional|The ID of the resource group where you want to create the subnet.| Yes |
+|`vpc`|String|Required|The VPC ID.| Yes |
+|`zone`|String|Required|The subnet zone name.| Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1505,12 +1507,12 @@ resource "ibm_is_ssh_key" "isExampleKey" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required| The user-defined name for this key.|
-|`public_key`|String|Required|The public SSH key.|
-|`resource_group`|String|Optional|The resource group ID where the SSH is created.|
-|`tags`|List of strings|A list of tags that you want to add to your SSH key. Tags can help you find the SSH key more easily later. |
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| -------- |
+|`name`|String|Required| The user-defined name for this key.| No |
+|`public_key`|String|Required|The public SSH key.| Yes |
+|`resource_group`|String|Optional|The resource group ID where the SSH is created.| Yes |
+|`tags`|List of strings|A list of tags that you want to add to your SSH key. Tags can help you find the SSH key more easily later. | No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1578,16 +1580,19 @@ resource "ibm_is_volume" "testacc_volume" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The user-defined name for this volume.|
-|`profile`|String|Required|The profile to use for this volume.|
-|`zone`|String|Required|The location of the volume.|
-|`iops`|Integer|Required for `custom` storage profiles only| The total input/ output operations per second (IOPS) for your storage. This value is required for `custom` storage profiles only. |
-|`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.|
-|`resource_group`|String|Optional|The resource group ID for this volume.|
-|`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
-|`tags`|List of strings|Optional| A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.|
+
+|Name|Data type|Required/ optional|Description|Forces new resource|
+|----|-----------|-----------|---------------------| ------- |
+|`name`|String|Required|The user-defined name for this volume.| No |
+|`profile`|String|Required|The profile to use for this volume.| Yes |
+|`zone`|String|Required|The location of the volume.| Yes |
+|`iops`|Integer|Required for `custom` storage profiles only| The total input/ output operations per second (IOPS) for your storage. This value is required for `custom` storage profiles only. | Yes |
+|`capacity`|Integer|Optional|(The capacity of the volume in gigabytes. This defaults to `100`.| Yes |
+|`encryption_key`|String|Optional|The key to use for encrypting this volume.| Yes |
+|`resource_group`|String|Optional|The resource group ID for this volume.| Yes |
+|`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.| Yes |
+|`tags`|List of strings|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.| No |
+
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1639,13 +1644,13 @@ resource "ibm_is_vpc" "testacc_vpc" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-| `classic_access` | Boolean | Optional | Specify if you want to create a VPC that can connect to classic infrastructure resources. Enter **true** to set up private network connectivity from your VPC to classic infrastructure resources that are created in the same {{site.data.keyword.cloud_notm}} account, and **false** to disable this access. If you choose to not set up this access, you cannot enable it after the VPC is created. Make sure to review the [prerequisites](/docs/vpc-on-classic-network?topic=vpc-on-classic-setting-up-access-to-your-classic-infrastructure-from-vpc#vpc-prerequisites) before you create a VPC with classic infrastructure access. Note that you can enable one VPC for classic infrastructure access per {{site.data.keyword.cloud_notm}} account only. |
-|`address_prefix_management`|String|Optional|Indicates whether a default address prefix should be created automatically (`auto`) or manually (`manual`) for each zone in this VPC. Default value `auto`.|
-| `name` | String | Required | Enter a name for your VPC. | 
-| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the VPC. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the VPC is created in the `default` resource group. | 
-| `tags` | Array of Strings | Optional | Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | 
+| Input parameter | Data type | Required/ optional | Description |Forces new resource|
+| ------------- |-------------| ----- | -------------- |-----|
+| `classic_access` | Boolean | Optional | Specify if you want to create a VPC that can connect to classic infrastructure resources. Enter **true** to set up private network connectivity from your VPC to classic infrastructure resources that are created in the same {{site.data.keyword.cloud_notm}} account, and **false** to disable this access. If you choose to not set up this access, you cannot enable it after the VPC is created. Make sure to review the [prerequisites](/docs/vpc-on-classic-network?topic=vpc-on-classic-setting-up-access-to-your-classic-infrastructure-from-vpc#vpc-prerequisites) before you create a VPC with classic infrastructure access. Note that you can enable one VPC for classic infrastructure access per {{site.data.keyword.cloud_notm}} account only. | No |
+|`address_prefix_management`|String|Optional|Indicates whether a default address prefix should be created automatically (`auto`) or manually (`manual`) for each zone in this VPC. Default value `auto`.| No |
+| `name` | String | Required | Enter a name for your VPC. |  No |
+| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the VPC. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the VPC is created in the `default` resource group. |  Yes |
+| `tags` | Array of Strings | Optional | Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | No |
 
 ### Output parameters
 {: #vpc-output}
@@ -1707,12 +1712,12 @@ resource "ibm_is_vpc_address_prefix" "testacc_vpc_address_prefix" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required| The address prefix name.|
-|`vpc`|String|Required|The VPC ID. |
-|`zone`|String|Required|The name of the zone. |
-|`cidr`|String|Required|The CIDR block for the address prefix. |
+|Name|Data type|Required/ optional|Description|Forces new resource |
+|----|-----------|-----------|---------------------|------|
+|`name`|String|Required| The address prefix name.| No |
+|`vpc`|String|Required|The VPC ID. | Yes |
+|`zone`|String|Required|The name of the zone. | Yes |
+|`cidr`|String|Required|The CIDR block for the address prefix. | Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1767,13 +1772,13 @@ resource "ibm_is_vpc_route" "myroute" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The name of the route that you want to create.| 
-|`vpc`|String|Requied|The ID of the VPC where you want to create the route. | 
-|`zone`|String|Required|The name of the VPC zone where you want to create the route.|
-|`destination`|String|Required|The destination IP address or CIDR that network traffic from your VPC must match to be routed to the `next_hop`.|
-|`next_hop`|String|Required|The IP address where network traffic is sent next.|
+|Name|Data type|Required/ optional|Description|Forces new resource |
+|----|-----------|-----------|---------------------| ------ |
+|`name`|String|Required|The name of the route that you want to create.| No |
+|`vpc`|String|Requied|The ID of the VPC where you want to create the route. |  Yes |
+|`zone`|String|Required|The name of the VPC zone where you want to create the route.| Yes |
+|`destination`|String|Required|The destination IP address or CIDR that network traffic from your VPC must match to be routed to the `next_hop`.| Yes |
+|`next_hop`|String|Required|The IP address where network traffic is sent next.| No |
 
 ### Output parameters
 {: #vpc-route-output}
@@ -1827,12 +1832,12 @@ resource "ibm_is_vpn_gateway" "testacc_vpn_gateway" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The name of the VPN gateway.|
-|`subnet`|String|Required|The unique identifier for this subnet.|
-|`resource_group`|String|Optional| The resource group where the VPN gateway to be created.|
-|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gatway. Tags can help you find your VPN gateway more easily later.|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------ |
+|`name`|String|Required|The name of the VPN gateway.| No |
+|`subnet`|String|Required|The unique identifier for this subnet.| Yes |
+|`resource_group`|String|Optional| The resource group where the VPN gateway to be created.| Yes |
+|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gatway. Tags can help you find your VPN gateway more easily later.| No |
 
 ### Output parameters
 {: #vpn-gateway-output}
@@ -1891,20 +1896,20 @@ resource "ibm_is_vpn_gateway_connection" "VPNGatewayConnection" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The name of the VPN gateway connection.|
-|`vpn_gateway`|String|Required| The unique identifier of the VPN gateway.|
-|`peer_address`|String|Required|The IP address of the peer VPN gateway.|
-|`preshared_key`|String|Required| The preshared key.|
-|`local_cidrs`|Array|Optional|List of local CIDRs for this resource.|
-|`peer_cidrs`|Array|Optional|List of peer CIDRs for this resource.|
-|`admin_state_up`|Boolean|Optional|The VPN gateway connection status. Default false. If set to false, the VPN gateway connection is shut down.|
-|`action`|String|Optional| Dead peer detection actions. Supported values are `restart`, `clear`, `hold`, `none`. Default: `none`.|
-|`interval`|Integer|Optional| Dead peer detection interval in seconds. Default 30.|
-|`timeout`|Integer|Optional| Dead peer detection timeout in seconds. Default 120.|
-|`ike_policy`|String|Optional|The ID of the IKE policy.|
-|`ipsec_policy`|String|Optional| The ID of the IPSec policy.|
+|Name|Data type|Required/ optional|Description|Forces new resource |
+|----|-----------|-----------|---------------------|----------|
+|`name`|String|Required|The name of the VPN gateway connection.| No |
+|`vpn_gateway`|String|Required| The unique identifier of the VPN gateway.| Yes |
+|`peer_address`|String|Required|The IP address of the peer VPN gateway.| No |
+|`preshared_key`|String|Required| The preshared key.| Yes |
+|`local_cidrs`|Array|Optional|List of local CIDRs for this resource.| Yes |
+|`peer_cidrs`|Array|Optional|List of peer CIDRs for this resource.| Yes |
+|`admin_state_up`|Boolean|Optional|The VPN gateway connection status. Default false. If set to false, the VPN gateway connection is shut down.| No |
+|`action`|String|Optional| Dead peer detection actions. Supported values are `restart`, `clear`, `hold`, `none`. Default: `none`.| No |
+|`interval`|Integer|Optional| Dead peer detection interval in seconds. Default 30.| No |
+|`timeout`|Integer|Optional| Dead peer detection timeout in seconds. Default 120.| No |
+|`ike_policy`|String|Optional|The ID of the IKE policy.| No |
+|`ipsec_policy`|String|Optional| The ID of the IPSec policy.| No |
 
 ### Output parameters
 {: #vpn-gateway-connection-output}

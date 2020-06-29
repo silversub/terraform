@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-06-29"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -145,23 +145,23 @@ resource "ibm_function_action" "swifthello" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`name`|String|Required|The name of the action.|
-|`limits`|List of objects|Optional|A nested block to describe assigned limits. |
-|`limits.timeout`|Integer|Optional|The timeout limit to terminate the action, specified in milliseconds. Default value: `60000`.    |
-|`limits.memory`|Integer|Optional|The maximum memory for the action, specified in MBs. Default value: `256`.    |
-|`limits.log_size`|Integer|Optional|The maximum log size for the action, specified in MBs. Default value: `10`.|
-|`exec`|List of objects|Required|A nested block to describe executable binaries.  |
-|`exec.image`|String|Optional| When using the `blackbox` executable, the name of the container image name.        **NOTE**: Conflicts with `exec.components`, `exec.code`.    |
-|`exec.init`|String|Optional| When using `nodejs`, the optional zipfile reference.        **NOTE**: Conflicts with `exec.components`, `exec.image`.    |
-|`exec.code`|String|Optional| When not using the `blackbox` executable, the code to execute.       **NOTE**: Conflicts with `exec.components`, `exec.image`.    |
-|`exec.kind`|String|Required|The type of action. You can find supported kinds in the [IBM Cloud Functions docs](/docs/openwhisk?topic=openwhisk-runtimes).    |
-|`exec.main`|String|Optional|The name of the action entry point (function or fully-qualified method name, when applicable).       **NOTE**: Conflicts with `exec.components`, `exec.image`.    |
-|`exec.components`|String|Optional|The list of fully qualified actions. **NOTE**: Conflicts with `exec.code`, `exec.image`.|
-|`publish`|Boolean|Optional|Action visibility.|
-|`user_defined_annotations`|String|Optional|Annotations defined in key value format.|
-|`user_defined_parameters`|String|Optional|Parameters defined in key value format. Parameter bindings included in the context passed to the action. Cloud Function backend/API.|
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | --------|
+|`name`|String|Required|The name of the action.| Yes |
+|`limits`|List of objects|Optional|A nested block to describe assigned limits. | No |
+|`limits.timeout`|Integer|Optional|The timeout limit to terminate the action, specified in milliseconds. Default value: `60000`.    | No |
+|`limits.memory`|Integer|Optional|The maximum memory for the action, specified in MBs. Default value: `256`.    | No |
+|`limits.log_size`|Integer|Optional|The maximum log size for the action, specified in MBs. Default value: `10`.| No |
+|`exec`|List of objects|Required|A nested block to describe executable binaries.  | No |
+|`exec.image`|String|Optional| When using the `blackbox` executable, the name of the container image name.        **NOTE**: Conflicts with `exec.components`, `exec.code`.    | No |
+|`exec.init`|String|Optional| When using `nodejs`, the optional zipfile reference.        **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
+|`exec.code`|String|Optional| When not using the `blackbox` executable, the code to execute.       **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
+|`exec.kind`|String|Required|The type of action. You can find supported kinds in the [IBM Cloud Functions docs](/docs/openwhisk?topic=openwhisk-runtimes).    | No |
+|`exec.main`|String|Optional|The name of the action entry point (function or fully-qualified method name, when applicable).       **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
+|`exec.components`|String|Optional|The list of fully qualified actions. **NOTE**: Conflicts with `exec.code`, `exec.image`.| No |
+|`publish`|Boolean|Optional|Action visibility.| No |
+|`user_defined_annotations`|String|Optional|Annotations defined in key value format.| No |
+|`user_defined_parameters`|String|Optional|Parameters defined in key value format. Parameter bindings included in the context passed to the action. Cloud Function backend/API.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -275,13 +275,13 @@ EOF
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`name`|String|Required|The name of the package.|
-|`publish`|Boolean|Optional|Package visibility.|
-|`user_defined_annotations`|String|Optional|Annotations defined in key value format.|
-|`user_defined_parameters`|String| Optional|Parameters defined in key value format. Parameter bindings included in the context passed to the package.|
-|`bind_package_name`|String|Optional| Name of package to be bound.|
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------- |
+|`name`|String|Required|The name of the package.| Yes |
+|`publish`|Boolean|Optional|Package visibility.| No |
+|`user_defined_annotations`|String|Optional|Annotations defined in key value format.| No |
+|`user_defined_parameters`|String| Optional|Parameters defined in key value format. Parameter bindings included in the context passed to the package.| No |
+|`bind_package_name`|String|Optional| Name of package to be bound.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -356,11 +356,11 @@ resource "ibm_function_rule" "rule" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`name`|String|Required|The name of the rule.|
-|`trigger_name`|String|Required|The name of the trigger.|
-|`action_name`|String|Required|The name of the action.|
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------ |
+|`name`|String|Required|The name of the rule.| Yes |
+|`trigger_name`|String|Required|The name of the trigger.| No |
+|`action_name`|String|Required|The name of the action.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -471,14 +471,14 @@ resource "ibm_function_trigger" "feedtrigger" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`name`|String|Required|The name of the trigger.|
-|`feed`|List|Optional| A nested block to describe the feed.   |
-|`feed.name`|String|Required|Trigger feed `ACTION_NAME`.    |
-|`feed.parameters`|String|Optional|Parameters definitions in key value format. Parameter bindings are included in the context and passed when the action is invoked.|
-|`user_defined_annotations`|String|Optional| Annotation definitions in key value format.|
-|`user_defined_parameters`|String|Optional|Parameters definitions in key value format. Parameter bindings are included in the context and passed to the trigger.|
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | -------- |
+|`name`|String|Required|The name of the trigger.| Yes |
+|`feed`|List|Optional| A nested block to describe the feed.   | Yes |
+|`feed.name`|String|Required|Trigger feed `ACTION_NAME`.    | Yes |
+|`feed.parameters`|String|Optional|Parameters definitions in key value format. Parameter bindings are included in the context and passed when the action is invoked.| No |
+|`user_defined_annotations`|String|Optional| Annotation definitions in key value format.| No |
+|`user_defined_parameters`|String|Optional|Parameters definitions in key value format. Parameter bindings are included in the context and passed to the trigger.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
