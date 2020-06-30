@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-29"
+lastupdated: "2020-06-30"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -1163,6 +1163,9 @@ Review the input parameters that you can specify for your resource.
 | `zone` | String | Required | Enter the zone where you want to create the public gateway. To list available zones, run `ibmcloud is zones`. | Yes |
 | `tags`|Array of strings|Optional|Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | No |
 | `resource_group`|String|Optional|Enter the ID of the resource group where you want to create the public gateway. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the public gateway is created in the `default` resource group. | Yes |
+| `floating_ip` | List | Optional | A list of floating IP addresses that you want to assign to the public gateway. |
+| `floating_ip.id`|String| Optional | The unique identifier of the floating IP address. If you specify this parameter, do not specify `floating_ip.address` at the same time. |
+| `floating_ip.address`|String| Optional | The floating IP address. If you specify this parameter, do not specify `floating_ip.id` at the same time.|
 
 ### Output parameters
 {: #public-gateway-output}
