@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-06-26"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -26,7 +26,7 @@ subcollection: terraform
 [Ansible ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ansible.com/) is a configuration management and provisioning tool, similar to [Chef ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.chef.io/products/chef-infra/) and [Puppet ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://puppet.com/), and is designed to automate multitier app deployments and provisioning in the cloud. Written in Python, Ansible uses YAML syntax to describe automation tasks, which makes Ansible easy to learn and use. 
 
 **How does Ansible work?** </br>
-Ansible does not use agents or a custom security infrastructure that must be present on a target machine to work properly. Instead, Ansible connects to compute hosts over the private network by using SSH keys. The SSH key can be preconfigured on the virtual server instance when you order the infrastructure in {{site.data.keyword.Bluemix_notm}} so that you can use Ansible right away after your virtual server instance is provisioned. You can choose to create your own SSH key and upload this SSH key to your {{site.data.keyword.Bluemix_notm}} portal. 
+Ansible does not use agents or a custom security infrastructure that must be present on a target machine to work properly. Instead, Ansible connects to compute hosts over the private network by using SSH keys. The SSH key can be preconfigured on the virtual server instance when you order the infrastructure in {{site.data.keyword.cloud_notm}} so that you can use Ansible right away after your virtual server instance is provisioned. You can choose to create your own SSH key and upload this SSH key to your {{site.data.keyword.cloud_notm}} portal. 
 
 Ansible models software packages, configuration, and services as resources on a managed host to ensure that the resource is in a specific state. To bring a resource to the required state, Ansible pushes modules to the managed host to run the required tasks. After the tasks are executed, the result is returned to the Ansible server and the module is removed from the managed host. You can use Ansible modules to execute a specific operation or group scripts and configurations in an Ansible playbook that you can execute. Ansible modules are idempotent such that executing the same playbook or operation multiple times returns the same result as resources are changed only if required. 
 
@@ -46,7 +46,7 @@ To securely connect to your virtual machines over the private network with Ansib
 {: shortdesc}
 
 1. Configure your infrastructure user for VPN access
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure](https://cloud.ibm.com/classic) portal. 
+   1. Log in to the [{{site.data.keyword.cloud_notm}} infrastructure](https://cloud.ibm.com/classic) portal. 
    2. Select **Account** > **Access (IAM)**. 
    3. Select your user name. 
    4. On the **User details** tab, find the **VPN password** section. 
@@ -56,9 +56,9 @@ To securely connect to your virtual machines over the private network with Ansib
    1. Install the Motion Pro Plus client on your local machine. See the instructions for [Linux](/docs/iaas-vpn?topic=iaas-vpn-standalone-vpn-clients#linux-standalone-client), [macOS](/docs/iaas-vpn?topic=iaas-vpn-standalone-vpn-clients#macos-standalone-client), and [Windows](/docs/iaas-vpn?topic=iaas-vpn-standalone-vpn-clients#windows-standalone-client) for more information for your operating system. 
    2. In your VPN connection profile, enter the following values. 
       - **Title**: Enter a name for your connection profile. You can enter any name that you want. 
-      - **Gateway**: Choose one of the [data center VPN portals in {{site.data.keyword.Bluemix_notm}}](https://www.softlayer.com/VPN-Access) and retrieve their fully qualified domain name in the format `vpn.xxx.softlayer.com` by clicking the portal link.
+      - **Gateway**: Choose one of the [data center VPN portals in {{site.data.keyword.cloud_notm}}](https://www.ibm.com/cloud/vpn-access){: external} to retrieve the fully qualified domain name in the format `vpn.<datacenter>.softlayer.com` by clicking the portal link.
       - **Username**: Enter the VPN user name that you noted earlier. 
-3. Upload an SSH key to the {{site.data.keyword.Bluemix_notm}} infrastructure portal. 
+3. Upload an SSH key to the {{site.data.keyword.cloud_notm}} infrastructure portal. 
    1. Generate an SSH key. The SSH key is used to access IBM Cloud infrastructure resources during provisioning. Enter the email address that you want to associate with your SSH key. Make sure to accept the default file name, file location, and missing passphrase by pressing Enter.
       ```
       ssh-keygen -t rsa -b 4096 -C "<email_address>"
@@ -102,13 +102,13 @@ To securely connect to your virtual machines over the private network with Ansib
       ```
       {: screen}
       
-   3. [Add the SSH public key to the {{site.data.keyword.Bluemix_notm}} infrastructure portal](/docs/infrastructure/ssh-keys?topic=ssh-keys-adding-an-ssh-key#adding-an-ssh-key).  
+   3. [Add the SSH public key to the {{site.data.keyword.cloud_notm}} infrastructure portal](/docs/ssh-keys?topic=ssh-keys-adding-an-ssh-key#adding-an-ssh-key).  
 
 
 ## Setting up Ansible on your local machine
 {: #setup_ansible}
 
-To use Ansible to execute operations on a virtual server in {{site.data.keyword.Bluemix_notm}}, you must install Ansible on your local machine. 
+To use Ansible to execute operations on a virtual server in {{site.data.keyword.cloud_notm}}, you must install Ansible on your local machine. 
 {: shortdesc}
 
 Looking for instructions for how to update or remove Ansible? See [updating Ansible](#update_ansible) and [removing Ansible](#remove_ansible) for more information. 
@@ -188,7 +188,7 @@ Use Ansible playbooks to connect to your infrastructure resources, run operation
 {: shortdesc}
 
 Before you begin: 
-- [Complete the Terraform getting started tutorial](/docs/terraform?topic=terraform-getting-started#getting-started) to install Terraform, configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in and provision a virtual server in {{site.data.keyword.cloud_notm}}. 
+- [Complete the Terraform getting started tutorial](/docs/terraform?topic=terraform-getting-started#getting-started) to install Terraform, configure the {{site.data.keyword.cloud_notm}} Provider plug-in and provision a virtual server in {{site.data.keyword.cloud_notm}}. 
 - [Set up a VPN connection to your {{site.data.keyword.cloud_notm}} infrastructure resources and upload SSH keys](#setup_vpn). 
 - [Install Ansible](#install_ansible) on your local machine.
 
@@ -200,7 +200,7 @@ To run Ansible operations against your infrastructure:
    ```
    {: pre}
    
-2. Create an Ansible configuration file that is named `ansible.cfg` with the following content. In this example, SSH **host_key_checking** is disabled to avoid errors during SSH login as virtual servers in {{site.data.keyword.Bluemix_notm}} can reuse IP addresses when they are deleted and re-created. For more information, see [Host Key Checking](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html#host-key-checking). 
+2. Create an Ansible configuration file that is named `ansible.cfg` with the following content. In this example, SSH **host_key_checking** is disabled to avoid errors during SSH login as virtual servers in {{site.data.keyword.cloud_notm}} can reuse IP addresses when they are deleted and re-created. For more information, see [Host Key Checking](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html#host-key-checking). 
    ```
    [defaults]
    host_key_checking = false
@@ -290,7 +290,7 @@ For Ansible to provision apps on Terraform-deployed infrastructure, details abou
 {: shortdesc}
 
 **How does it work?** </br>
-Ansible executes code against multiple hosts at the same time. To retrieve the host's private IP address, Ansible uses an inventory list that includes information for how to connect to each virtual server. By default, this inventory file is named [`hosts`](#specify_hosts) and is stored in the Ansible project directory. You can also use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to [import the infrastructure information from your Terraform `terraform.tfstate` file](#import_from_terraform). 
+Ansible executes code against multiple hosts at the same time. To retrieve the host's private IP address, Ansible uses an inventory list that includes information for how to connect to each virtual server. By default, this inventory file is named [`hosts`](#specify_hosts) and is stored in the Ansible project directory. You can also use the {{site.data.keyword.cloud_notm}} Terraform inventory script to [import the infrastructure information from your Terraform `terraform.tfstate` file](#import_from_terraform). 
 
 ### Specifying the virtual servers in a `hosts` file
 {: #specify_hosts}
@@ -353,7 +353,7 @@ Specifying the virtual servers in a `hosts` file is a good way to get started wi
 ### Importing infrastructure information from Terraform
 {: #import_from_terraform}
 
-Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import infrastructure information from your Terraform `terraform.tfstate` file directly. 
+Use the {{site.data.keyword.cloud_notm}} Terraform inventory script to import infrastructure information from your Terraform `terraform.tfstate` file directly. 
 {: shortdesc}
 
 Looking to group your Terraform infrastructure resources for Ansible so that you can execute code against a group of hosts rather than targeting individual machines? Make sure to create your virtual servers with a group attribute. 
@@ -371,7 +371,7 @@ To import the Terraform infrastructure inventory into Ansible:
    ```
    {: pre}
    
-2. Download the {{site.data.keyword.Bluemix_notm}} Terraform inventory package to a temporary folder on your local machine.  
+2. Download the {{site.data.keyword.cloud_notm}} Terraform inventory package to a temporary folder on your local machine.  
    ```
    git clone https://github.com/IBM-Cloud/terraform-provider-ibm.git
    ```
@@ -383,7 +383,7 @@ To import the Terraform infrastructure inventory into Ansible:
    ```
    {: pre}
    
-4. Prepare your Ansible project folder for the {{site.data.keyword.Bluemix_notm}} Terraform inventory script. 
+4. Prepare your Ansible project folder for the {{site.data.keyword.cloud_notm}} Terraform inventory script. 
    1. Copy the `terraform_inv.py` file from the package into the `inventory` directory that you created. 
       ```
       mv terraform_inv.* <ansible_project_path>/inventory/
@@ -426,7 +426,7 @@ To import the Terraform infrastructure inventory into Ansible:
       </tbody>
       </table>
       
-5. Specify the location of the `terraform.tfstate` file. The `terraform.tfstate` file defines the deployed infrastructure that you want to target with Ansible. By specifying the location of the file in a `terraform_inv.ini` file and storing it in the same directory as the {{site.data.keyword.Bluemix_notm}} Terraform inventory script, Ansible can import the Terraform infrastructure information directly.
+5. Specify the location of the `terraform.tfstate` file. The `terraform.tfstate` file defines the deployed infrastructure that you want to target with Ansible. By specifying the location of the file in a `terraform_inv.ini` file and storing it in the same directory as the {{site.data.keyword.cloud_notm}} Terraform inventory script, Ansible can import the Terraform infrastructure information directly.
    1. In your Ansible `inventory` directory, open the `terraform_inv.ini` file. 
       ```
       nano <ansible_project_path>/inventory/terraform_inv.ini
@@ -440,7 +440,7 @@ To import the Terraform infrastructure inventory into Ansible:
       ```
       {: codeblock}
    
-6. Verify that the {{site.data.keyword.Bluemix_notm}} Terraform inventory script can import the Terraform infrastructure that is defined in the `terraform.tfstate` file. 
+6. Verify that the {{site.data.keyword.cloud_notm}} Terraform inventory script can import the Terraform infrastructure that is defined in the `terraform.tfstate` file. 
    1. Navigate to your Ansible project parent directory.  
    2. Import the Terraform infrastructure information from the `terraform.tfstate` file to create the Ansible infrastructure inventory. 
       ```
@@ -514,7 +514,7 @@ To import the Terraform infrastructure inventory into Ansible:
       ```
       {: pre}
       
-8. Optional: Verify that the virtual server's private IP address in your Ansible inventory list matches the private IP address in your {{site.data.keyword.Bluemix_notm}} infrastructure dashboard. 
-   1. Log in to the [{{site.data.keyword.Bluemix_notm}} infrastructure dashboard](https://cloud.ibm.com/classic) and select **Devices** > **Device List**. 
+8. Optional: Verify that the virtual server's private IP address in your Ansible inventory list matches the private IP address in your {{site.data.keyword.cloud_notm}} infrastructure dashboard. 
+   1. Log in to the [{{site.data.keyword.cloud_notm}} infrastructure dashboard](https://cloud.ibm.com/classic) and select **Devices** > **Device List**. 
    2. Look for the virtual server instance that you created and make sure that the **Private IP** and the IP address that you retrieved from your Ansible inventory list are the same. 
       

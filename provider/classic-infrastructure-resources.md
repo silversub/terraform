@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-09"
+lastupdated: "2020-06-29"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -58,24 +58,24 @@ resource "ibm_cdn" "test_cdn1" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`host_name`|String|Required|The host name that is associated with the CDN domain mapping.|
-|`cname`|String|Optional|The CNAME for your CDN. |
-|`path`|String|Optional|The path for the CDN.|
-|`vendor_name`|String|Required| Only `akamai` is supported for now.|
-|`origin_type`|String|Required|The type of storage to use. Valid values are `HOST_SERVER` or `OBJECT_STORAGE`.|
-|`origin_address`|String|Required|The IP address for the domain mapping.|
-|`protocol`|String|Optional|The protocol to use. Default value: `HTTP`.|
-|`http_port`|Integer|Optional|The port to be opened up. Default value: 80. This option can be set only if you use `HTTP` or `HTTPS` as the `protocol`. |
-|`https_port`|Integer|Optional|The HTTPS port. Default value: 0. This option can be set only if you use `HTTP` or `HTTPS` as the `protocol`.|
-|`bucket_name`|String|Required|If `origin_type` is set to `OBJECT_STORAGE`, you must provide the name of the bucket to use.|
-|`certificate_type`|String|Conditional|The type of certificate to use. This value is required if `protocol` is set to `HTTPS`. Valid values are `SHARED_SAN_CERT` or `WILDCARD_CERT`.|
-|`header`|String|Optional|The header for the CDN.|
-|`respect_headers`|Boolean|Optional| If set to **true**, the TTL settings in the origin overrides CDN TTL settings.|
-|`file_extension`|String|Optional|If `origin_type` is set to `OBJECT_STORAGE`, you can specify the file extensions that you want to cache. |
-|`performance_configuration`|String|Optional|The performance configuration. Default is `General web delivery`.|
-|`cache_key_query_rule`|String|Optional|The rule for caching keys. Valid values are `include-all` (includes all query arguments), `ignore-all` (ignores all query arguments), `ignore: space separated query-args` (ignores specific query arguments). Default value: `include-all`. |
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`host_name`|String|Required|The host name that is associated with the CDN domain mapping.| Yes |
+|`cname`|String|Optional|The CNAME for your CDN. | Yes |
+|`path`|String|Optional|The path for the CDN.| Yes |
+|`vendor_name`|String|Required| Only `akamai` is supported for now.| Yes |
+|`origin_type`|String|Required|The type of storage to use. Valid values are `HOST_SERVER` or `OBJECT_STORAGE`.| Yes |
+|`origin_address`|String|Required|The IP address for the domain mapping.| No |
+|`protocol`|String|Optional|The protocol to use. Default value: `HTTP`.| Yes |
+|`http_port`|Integer|Optional|The port to be opened up. Default value: 80. This option can be set only if you use `HTTP` or `HTTPS` as the `protocol`. | No |
+|`https_port`|Integer|Optional|The HTTPS port. Default value: 0. This option can be set only if you use `HTTP` or `HTTPS` as the `protocol`.| No |
+|`bucket_name`|String|Required|If `origin_type` is set to `OBJECT_STORAGE`, you must provide the name of the bucket to use.| No |
+|`certificate_type`|String|Conditional|The type of certificate to use. This value is required if `protocol` is set to `HTTPS`. Valid values are `SHARED_SAN_CERT` or `WILDCARD_CERT`.| Yes |
+|`header`|String|Optional|The header for the CDN.| No |
+|`respect_headers`|Boolean|Optional| If set to **true**, the TTL settings in the origin overrides CDN TTL settings.| No |
+|`file_extension`|String|Optional|If `origin_type` is set to `OBJECT_STORAGE`, you can specify the file extensions that you want to cache. | No |
+|`performance_configuration`|String|Optional|The performance configuration. Default is `General web delivery`.| No |
+|`cache_key_query_rule`|String|Optional|The rule for caching keys. Valid values are `include-all` (includes all query arguments), `ignore-all` (ignores all query arguments), `ignore: space separated query-args` (ignores specific query arguments). Default value: `include-all`. | No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -150,20 +150,20 @@ resource "ibm_compute_autoscale_group" "test_scale_group" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|The name of the autoscaling group.|
-|`regional_group`|String|Required|The regional group for the autoscaling group.|
-|`minimum_member_count`|Integer|Required|The minimum number of virtual guest members that are allowed in the autoscaling group.|
-|`maximum_member_count`|Integer|Required|The maximum number of virtual guest members that are allowed in the autoscaling group.|
-|`cooldown`|Integer|Required|The duration, expressed in seconds, that the autoscaling group waits before performing another scaling action.|
-|`termination_policy`|String|Required|The termination policy for the autoscaling group.|
-|`virtual_guest_member_template`|Array of strings|Required|The template with which to create guest members. Only one template can be configured. You can find accepted values in the [`ibm_compute_vm_instance`](#vm) resource.|
-|`network_vlan_ids`|Array|Optional|The collection of VLAN IDs for the autoscaling group. You can find accepted values in the [VLAN console](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and note the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
-|`virtual_server_id`|Integer|Optional|The ID of a virtual server in a local load balancer. You can find the ID with the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_VirtualIpAddress/<load_balancer_ID>/getObject?objectMask=virtualServers). Replace `<load_balancer_ID>` with the ID of the target load balancer. An IBM Cloud Classic Infrastructure user name and API key are required.|
-|`port`|Integer|Optional|The port number in a local load balancer. For example, `8080`.|
-|`health_check`|Map|Optional|The type of health check in a local load balancer. For example, `HTTP`. You can also use this value to specify custom HTTP methods.|
-|`tags`|Array of strings|Optional|A list of tags that you want to add to the autoscaling group. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`name`|String|Required|The name of the autoscaling group.| No |
+|`regional_group`|String|Required|The regional group for the autoscaling group.| Yes |
+|`minimum_member_count`|Integer|Required|The minimum number of virtual guest members that are allowed in the autoscaling group.| No |
+|`maximum_member_count`|Integer|Required|The maximum number of virtual guest members that are allowed in the autoscaling group.| No |
+|`cooldown`|Integer|Required|The duration, expressed in seconds, that the autoscaling group waits before performing another scaling action.| No |
+|`termination_policy`|String|Required|The termination policy for the autoscaling group.| No |
+|`virtual_guest_member_template`|Array of strings|Required|The template with which to create guest members. Only one template can be configured. You can find accepted values in the [`ibm_compute_vm_instance`](#vm) resource.| No |
+|`network_vlan_ids`|Array|Optional|The collection of VLAN IDs for the autoscaling group. You can find accepted values in the [VLAN console](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and note the ID in the resulting URL. You can also refer to a VLAN by name using a data source.| No |
+|`virtual_server_id`|Integer|Optional|The ID of a virtual server in a local load balancer. You can find the ID with the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_VirtualIpAddress/<load_balancer_ID>/getObject?objectMask=virtualServers). Replace `<load_balancer_ID>` with the ID of the target load balancer. An IBM Cloud Classic Infrastructure user name and API key are required.| No |
+|`port`|Integer|Optional|The port number in a local load balancer. For example, `8080`.| No |
+|`health_check`|Map|Optional|The type of health check in a local load balancer. For example, `HTTP`. You can also use this value to specify custom HTTP methods.| No |
+|`tags`|Array of strings|Optional|A list of tags that you want to add to the autoscaling group. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -223,15 +223,15 @@ resource "ibm_compute_autoscale_policy" "test_scale_policy" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required/ optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------|
-|`name`|String|Required|The name of the autoscaling policy.|
-|`scale_type`|String|Required|The scale type for the autoscaling policy. Accepted values are `ABSOLUTE`, `RELATIVE`, and `PERCENT`.|
-|`scale_amount`|Integer|Required|A count of the scaling actions to perform upon any trigger hit.|
-|`cooldown`|Integer|Optional|The duration, expressed in seconds, that the policy waits after the last action date before performing another scaling action. If you do not provide a value, the `scale_group` cooldown applies.|
-|`scale_group_id`|Integer|Required| The ID of the autoscaling group that is associated with the policy.|
-|`triggers`|Array of strings|Optional| The triggers to check for this group.|
-|`tags`|Array of strings|Optional|The tags that you want to add to the autoscaling policy. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|`name`|String|Required|The name of the autoscaling policy.| No |
+|`scale_type`|String|Required|The scale type for the autoscaling policy. Accepted values are `ABSOLUTE`, `RELATIVE`, and `PERCENT`.| No |
+|`scale_amount`|Integer|Required|A count of the scaling actions to perform upon any trigger hit.| No |
+|`cooldown`|Integer|Optional|The duration, expressed in seconds, that the policy waits after the last action date before performing another scaling action. If you do not provide a value, the `scale_group` cooldown applies.| No |
+|`scale_group_id`|Integer|Required| The ID of the autoscaling group that is associated with the policy.| Yes |
+|`triggers`|Array of strings|Optional| The triggers to check for this group.| No |
+|`tags`|Array of strings|Optional|The tags that you want to add to the autoscaling policy. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -367,17 +367,17 @@ Review the input parameters that you can specify for your resource.
 
 #### Input parameters for all bare metal server types
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`hostname`|String|Optional|The host name for the compute instance.|
-|`domain`|String|Required|The domain for the computing instance.|
-|`user_metadata`|String|Optional|(Arbitrary data to be made available to the compute instance.|
-|`notes`|String|Optional|Notes to associate with the instance.|
-|`ssh_key_ids`|Array of integers|Optional|The SSH key IDs to install on the compute instance when the instance is provisioned. **Note:** If you don't know the ID(s) for your SSH keys, you can reference your SSH keys by their labels.|
-|`post_install_script_uri`|String|Optional|The URI of the script to be downloaded and executed after installation is complete.|
-|`tags`|Array of strings|Optional| Tags associated with this bare metal server. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters will be removed.|
-|`file_storage_ids`|Array of integers|Optional|File storage to which this computing instance should have access. File storage must be in the same data center as the bare metal server. If you use this argument to authorize access to file storage, do not use the `allowed_hardware_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage being added twice.|
-|`block_storage_ids`|Array of integers|Optional|Block storage to which this computing instance should have access. Block storage must be in the same data center as the bare metal server. If you use this argument to authorize access to block storage, do not use the `allowed_hardware_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage being added twice.#### Arguments common to hourly and monthly server|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`hostname`|String|Optional|The host name for the compute instance.| Yes |
+|`domain`|String|Required|The domain for the computing instance.| Yes |
+|`user_metadata`|String|Optional|(Arbitrary data to be made available to the compute instance.| Yes |
+|`notes`|String|Optional|Notes to associate with the instance.| No |
+|`ssh_key_ids`|Array of integers|Optional|The SSH key IDs to install on the compute instance when the instance is provisioned. **Note:** If you don't know the ID(s) for your SSH keys, you can reference your SSH keys by their labels.| Yes |
+|`post_install_script_uri`|String|Optional|The URI of the script to be downloaded and executed after installation is complete.| Yes |
+|`tags`|Array of strings|Optional| Tags associated with this bare metal server. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters will be removed.| No |
+|`file_storage_ids`|Array of integers|Optional|File storage to which this computing instance should have access. File storage must be in the same data center as the bare metal server. If you use this argument to authorize access to file storage, do not use the `allowed_hardware_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage being added twice.| No |
+|`block_storage_ids`|Array of integers|Optional|Block storage to which this computing instance should have access. Block storage must be in the same data center as the bare metal server. If you use this argument to authorize access to block storage, do not use the `allowed_hardware_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage being added twice.#### Arguments common to hourly and monthly server|  No |
 
 
 #### Input parameters common to hourly and monthly server
@@ -488,16 +488,16 @@ resource "ibm_compute_dedicated_host" "dedicatedhost" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`datacenter`|(Required, string) The data center in which the dedicated host resides.|
-|`hostname`|(Required, string) The host name of dedicated host.|
-|`domian`|(Required, string) The domain of dedicated host..|
-|`router_hostname`|(Required, string) The hostname of the primary router associated with the dedicated host.|
-|`hourly_billing`|(Optional, boolean) The billing type for the host. When set to `true`, the dedicated host is billed on hourly usage. Otherwise, the dedicated host is billed on a monthly basis. The default value is `true`.|
-|`flavor`|(Optional, string) The flavor of dedicated host. Default value `56_CORES_X_242_RAM_X_1_4_TB`. [Log in to the IBM-Cloud Infrastructure (SoftLayer) API to see available flavor types](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/813/getItems.json). Use your API as the password to log in. Log in and find the key called `keyName`.|
-|`wait_time_minutes`|(Optional, integer) The duration, expressed in minutes, to wait for the dedicated host to become available before declaring it as created. The default value is `90`.|
-|`tags`|(Optional, array of strings) Tags associated with the dedicated host.|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------| -------| ---------- | ------- |
+|`datacenter`| String | Required | The data center in which the dedicated host resides.| Yes |
+|`hostname`| String | Required | The host name of dedicated host.| No |
+|`domain`| String | Required | The domain of dedicated host..| Yes |
+|`router_hostname`| String | Required | The hostname of the primary router associated with the dedicated host.| Yes |
+|`hourly_billing`| Boolean | Optional | The billing type for the host. When set to `true`, the dedicated host is billed on hourly usage. Otherwise, the dedicated host is billed on a monthly basis. The default value is `true`.| Yes |
+|`flavor`| String | Optional | The flavor of dedicated host. Default value `56_CORES_X_242_RAM_X_1_4_TB`. [Log in to the IBM-Cloud Infrastructure (SoftLayer) API to see available flavor types](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/813/getItems.json). Use your API as the password to log in. Log in and find the key called `keyName`.| Yes |
+|`wait_time_minutes`| Integer | Optional | The duration, expressed in minutes, to wait for the dedicated host to become available before declaring it as created. The default value is `90`.| No |
+|`tags`| Array of String | Optional | Tags associated with the dedicated host.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -543,15 +543,15 @@ resource "ibm_compute_monitor" "test_monitor" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`guest_id`|(Required, integer) The ID of the virtual guest you want to monitor.|
-|`ip_address`|(Optional, strings) The IP address you want to monitor.|
-|`query_type_id`|(Required, integer) The ID of the query type.|
-|`response_action_id`|(Required, integer) The ID of the response action to take if the monitor fails. Accepted values are `1` or `2`.|
-|`wait_cycles`|(Optional, integer) The number of five-minute cycles to wait before the response action is taken.|
-|`notified_users`|(Optional, array of integers) The list of user IDs that will be notified.|
-|`tags`|(Optional, array of strings) Tags associated with the monitoring instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------- | -------- | ------- |
+|`guest_id`| Integer | Required | The ID of the virtual guest you want to monitor.| Yes |
+|`ip_address`| String | Optional | The IP address you want to monitor.| No |
+|`query_type_id`| Integer | Required | The ID of the query type.| No |
+|`response_action_id`| Integer | Required, | The ID of the response action to take if the monitor fails. Accepted values are `1` or `2`.| No |
+|`wait_cycles`| Integer | Optional | The number of five-minute cycles to wait before the response action is taken.| No |
+|`notified_users`| Array of Integers | Optional | The list of user IDs that will be notified.| No |
+|`tags`| Array of Integers | Optional | Tags associated with the monitoring instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -590,13 +590,13 @@ resource "ibm_compute_placement_group" "test_placement_group" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`name`|(Required, string) The descriptive name used to identify a placement group.|
-|`datacenter`|(Required, string) The datacenter in which you want to provision the placement group.|
-|`pod`|(Required, string) The data center pod where you want to create the placement group. To find the pod, run `ibmcloud sl placement-group create-options` and select one of the **Backend Router ID** for the data center where you want to create the placement group. |
-|`rule`|(Optional, string) The rule of the placement group. Default `SPREAD`. |
-|`tags`|(Optional, array of strings) Tags associated with the placement group.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ----|-----------| -----------| 
+|`name`| String | Required | The descriptive name used to identify a placement group.| No |
+|`datacenter`| String | Required | The datacenter in which you want to provision the placement group.| Yes |
+|`pod`| String | Required |  The data center pod where you want to create the placement group. To find the pod, run `ibmcloud sl placement-group create-options` and select one of the **Backend Router ID** for the data center where you want to create the placement group. | Yes |
+|`rule`| String | Optional | The rule of the placement group. Default `SPREAD`. | Yes |
+|`tags`| Array of Strings | Optional | Tags associated with the placement group.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -749,12 +749,12 @@ resource "ibm_compute_ssl_certificate" "test_cert" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`certificate`|(Required, string) The certificate provided publicly to clients requesting identity credentials.|
-|`intermediate_certificate`|(Optional, string) The certificate from the intermediate certificate authority, or chain certificate, that completes the chain of trust. Required when clients only trust the root certificate.|
-|`private_key`|(Required, string) The private key in the key/certificate pair.|
-|`tags`|(Optional, array of strings) Tags associated with the security certificates instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`certificate`| String | Required | The certificate provided publicly to clients requesting identity credentials.| Yes |
+|`intermediate_certificate`| String | Optional | The certificate from the intermediate certificate authority, or chain certificate, that completes the chain of trust. Required when clients only trust the root certificate.| Yes |
+|`private_key`| String | Required | The private key in the key/certificate pair.| Yes |
+|`tags`| Array of Strings | Optional |  Tags associated with the security certificates instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1073,54 +1073,54 @@ resource "ibm_compute_vm_instance" "terraform-retry" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`hostname`|String|Optional|The hostname for the computing instance. If you set this option, do not specify `bulk_vms` at the same time. |
-|`domain`|String|Optional|The domain for the computing instance. If you set this option, do not specify `bulk_vms` at the same time.|
-|`bulk_vms`|List of objects|Optional|List of hostname and domain of the computing instance. The minimum number of vm's to be defined is 2.   |
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`hostname`|String|Optional|The hostname for the computing instance. If you set this option, do not specify `bulk_vms` at the same time. | No |
+|`domain`|String|Optional|The domain for the computing instance. If you set this option, do not specify `bulk_vms` at the same time.| No |
+|`bulk_vms`|List of objects|Optional|List of hostname and domain of the computing instance. The minimum number of vm's to be defined is 2.   | Yes |
 |`bulk_vms.hostname`|String|Required|The hostname for the computing instance.    |
-|`bulk_vms.domain`|String|Required| The domain for the computing instance. If you set this option, do not specify `hostname` and `domain` at the same time.|
-|`cores`|Integer|Optional|The number of CPU cores that you want to allocate. If you set this option, do not specify `flavor_key_name` at the same time.|
-|`memory`|Integer|Optional|The amount of memory, expressed in megabytes, that you want to allocate. If you set this option, do not specify `flavor_key_name` at the same time.|
-|`flavor_key_name`|String|Optional|The flavor key name that you want to use to provision the instance. To see available Flavor key name, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest/getCreateObjectOptions.json), using your API key as the password. If you set this option, do not specify `cores` and `memory` at the same time.|
-|`datacenter`|String|Optional|The data center in which you want to provision the instance. **NOTE**: If `dedicated_host_name` or `dedicated_host_id`    is provided then the datacenter should be same as the dedicated host datacenter.     If `placement_group_name` or `placement_group_id`    is provided then the datacenter should be same as the placement group datacenter.    Conflicts with `datacenter_choice`. |
-|`hourly_billing`|Boolean|Optional| The billing type for the instance. When set to `true`, the computing instance is billed on hourly usage. Otherwise, the instance is billed on a monthly basis. The default value is `true`.|
-|`local_disk`|Boolean|Optional|The disk type for the instance. When set to `true`, the disks for the computing instance are provisioned on the host that the instance runs. Otherwise, SAN disks are provisioned. The default value is `true`.|
-|`dedicated_acct_host_only`|Boolean|Optional| Specifies whether the instance must only run on hosts with instances from the same account. The default value is `false`. If VM is provisioned using `flavorKeyName`, value should be set to `false`.        **NOTE**: Conflicts with `dedicated_host_name`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.|
-|`dedicated_host_id`|Integer|Optional|Specifies [dedicated host](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `placement_group_name` and `placement_group_id`.|
-|`dedicated_host_name`|String|Optional|Specifies [dedicated host](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.|
-|`placement_group_id`|Integer|Optional|Specifies [placement group](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `dedicated_host_id` and `placement_group_name`.|
-|`placement_group_name`|String|Optional|Specifies [placement group](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name.        **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name` and `placement_group_id`|
-|`transient`|Boolean|Optional|Specifies whether to provision a transient virtual server. The default value is `false`. Transient instances cannot be upgraded or downgraded. Transient instances cannot use local storage.       **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name`, `cores`, `memory`, `public_bandwidth_limited` and `public_bandwidth_unlimited`|
-|`os_reference_code`|String|Optional|The operating system reference code that is used to provision the computing instance. To see available OS reference codes, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode), using your API key as the password.       **NOTE**: Conflicts with `image_id`.|
-|`image_id`|Integer|Optional| The image template ID you want to use to provision the computing instance. This is not the global identifier (UUID), but the image template group ID that should point to a valid global identifier. To retrieve the image template ID from the IBM Cloud infrastructure customer portal, navigate to **Devices > Manage > Images**, click the image that you want, and note the ID number in the resulting URL. **NOTE**: Conflicts with `os_reference_code`. |
-|`network_speed`|Integer|Optional|The connection speed (in Mbps) for the instance's network components. The default value is `100`|
-|`private_network_only`|Boolean|Optional|When set to `true`, a compute instance only has access to the private network. The default value is `false`.|
-|`private_security_group_ids`|Array of integers|Optional| The IDs of security groups to apply on the private interface. This attribute can't be updated. You can can use this parameter to add a security groups to your virtual server instance when you create it. If you want to add or remove security groups later, you must use the `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource you might experience errors. So use one of these consistently for a particular virtual server instance.|
-|`public_vlan_id`|Integer|Optional| The public VLAN ID for the public network interface of the instance. Accepted values are in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source. **NOTE**: Conflicts with `datacenter_choice`.|
-|`private_vlan_id`|Integer|Optional|The private VLAN ID for the private network interface of the instance. You can find accepted values in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source. **NOTE**: Conflicts with `datacenter_choice`.|
-|`public_security_group_ids`|Array of integers|Optional|The ids of security groups to apply on the public interface.This attribute can't be updated. You can can use this parameter to add a security groups to your virtual server instance when you create it. If you want to add or remove security groups later, you must use the `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource, you might experience errors. So use one of these consistently for a particular virtual server instance.|
-|`public_subnet`|String|Optional| The public subnet for the public network interface of the instance. Accepted values are primary public networks. You can find accepted values in the [subnets doc](https://cloud.ibm.com/classic/network/subnets).|
-|`private_subnet`|String|Optional| The private subnet for the private network interface of the instance. Accepted values are primary private networks. You can find accepted values in the [subnets doc](https://cloud.ibm.com/classic/network/subnets).|
-|`disks`|Array of integers|Optional| The numeric disk sizes (in GBs) for the instance's block device and disk image settings. The default value is the smallest available capacity for the primary disk. If you specify an image template, the template provides the disk capacity. If you specify the `flavorKeyName`, first disk is provided by the flavor.|
-|`user_metadata`|String|Optional|Arbitrary data to be made available to the computing instance.|
-|`notes`|String|Optional| Descriptive text of up to 1000 characters about the VM instance.|
-|`ssh_key_ids`|Array of integers|Optional| The SSH key IDs to install on the computing instance when the instance provisions.      **NOTE:** If you don't know the ID(s) for your SSH keys, you can reference your SSH keys by their labels.|
-|`file_storage_ids`|Array of integers|Optional| File storage to which this computing instance should have access. File storage must be in the same data center as the bare metal server. If you use this argument to authorize access to file storage, then do not use the `allowed_virtual_guest_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage being added twice.|
-|`block_storage_ids`|Array of integers|Optional| File storage to which this computing instance should have access. File storage must be in the same data center as the bare metal server. If you use this argument to authorize access to file storage, then do not use the `allowed_virtual_guest_ids` argument in the `ibm_storage_block` resource in order to prevent the same storage being added twice.|
-|`post_install_script_uri`|String|Optional| The URI of the script to be downloaded and executed after installation is complete.|
-|`tags`|Array of strings|Optional| Tags associated with the VM instance. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.|
-|`ipv6_enabled`|Boolean|Optional|The primary public IPv6 address. The default value is `false`.|
-|`ipv6_static_enabled`|Boolean|Optional|The public static IPv6 address block of `/64`. The default value is `false`.|
-|`secondary_ip_count`|Integer|Optional| Specifies secondary public IPv4 addresses. Accepted values are `4` and `8`.|
-|`wait_time_minutes`|Integer|Optional| The duration, expressed in minutes, to wait for the VM instance to become available before declaring it as created. It is also the same amount of time waited for no active transactions before proceeding with an update or deletion. The default value is `90`.|
-|`public_bandwidth_limited`|Integer|Optional| Allowed public network traffic(GB) per month. It can be greater than 0 when the server is a monthly based server. Defaults to the smallest available capacity for the public bandwidth are used.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_unlimited`.|
-|`public_bandwidth_unlimited`|Boolean|Optional|  Allowed unlimited public network traffic(GB) per month for a monthly based server. The `network_speed` should be 100 Mbps. Default value: `false`.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_limited`.|
-|`evault`|Integer|Optional|Allowed evault(GB) per month for monthly based servers.|
-|`datacenter_choice`|List of objects|Optional|A nested block to describe datacenter choice options to retry on different data centers and VLANs. Nested `datacenter_choice` blocks must have the following structure:    |
-|`datacenter_choice.datacenter`|String|Required|The datacenter in which you want to provision the instance.    |
-|`datacenter_choice.public_vlan_id`|String|Optional|The public VLAN ID for the public network interface of the instance. Accepted values are in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.    |
-|`datacenter_choice.private_vlan_id`|String|Optional|The private VLAN ID for the private network interface of the instance. You can find accepted values in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.  **NOTE**: Conflicts with `datacenter`, `private_vlan_id`, `public_vlan_id`, `placement_group_name` and `placement_group_id`.|
+|`bulk_vms.domain`|String|Required| The domain for the computing instance. If you set this option, do not specify `hostname` and `domain` at the same time.| Yes |
+|`cores`|Integer|Optional|The number of CPU cores that you want to allocate. If you set this option, do not specify `flavor_key_name` at the same time.| No |
+|`memory`|Integer|Optional|The amount of memory, expressed in megabytes, that you want to allocate. If you set this option, do not specify `flavor_key_name` at the same time.| No |
+|`flavor_key_name`|String|Optional|The flavor key name that you want to use to provision the instance. To see available Flavor key name, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest/getCreateObjectOptions.json), using your API key as the password. If you set this option, do not specify `cores` and `memory` at the same time.| No |
+|`datacenter`|String|Optional|The data center in which you want to provision the instance. **NOTE**: If `dedicated_host_name` or `dedicated_host_id`    is provided then the datacenter should be same as the dedicated host datacenter.     If `placement_group_name` or `placement_group_id`    is provided then the datacenter should be same as the placement group datacenter.    Conflicts with `datacenter_choice`. | Yes |
+|`hourly_billing`|Boolean|Optional| The billing type for the instance. When set to `true`, the computing instance is billed on hourly usage. Otherwise, the instance is billed on a monthly basis. The default value is `true`.| Yes |
+|`local_disk`|Boolean|Optional|The disk type for the instance. When set to `true`, the disks for the computing instance are provisioned on the host that the instance runs. Otherwise, SAN disks are provisioned. The default value is `true`.| Yes |
+|`dedicated_acct_host_only`|Boolean|Optional| Specifies whether the instance must only run on hosts with instances from the same account. The default value is `false`. If VM is provisioned using `flavorKeyName`, value should be set to `false`.        **NOTE**: Conflicts with `dedicated_host_name`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.| Yes |
+|`dedicated_host_id`|Integer|Optional|Specifies [dedicated host](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `placement_group_name` and `placement_group_id`.| Yes |
+|`dedicated_host_name`|String|Optional|Specifies [dedicated host](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.| Yes |
+|`placement_group_id`|Integer|Optional|Specifies [placement group](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `dedicated_host_id` and `placement_group_name`.| Yes |
+|`placement_group_name`|String|Optional|Specifies [placement group](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name.        **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name` and `placement_group_id`| Yes |
+|`transient`|Boolean|Optional|Specifies whether to provision a transient virtual server. The default value is `false`. Transient instances cannot be upgraded or downgraded. Transient instances cannot use local storage.       **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name`, `cores`, `memory`, `public_bandwidth_limited` and `public_bandwidth_unlimited`| Yes |
+|`os_reference_code`|String|Optional|The operating system reference code that is used to provision the computing instance. To see available OS reference codes, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode), using your API key as the password.       **NOTE**: Conflicts with `image_id`.| Yes |
+|`image_id`|Integer|Optional| The image template ID you want to use to provision the computing instance. This is not the global identifier (UUID), but the image template group ID that should point to a valid global identifier. To retrieve the image template ID from the IBM Cloud infrastructure customer portal, navigate to **Devices > Manage > Images**, click the image that you want, and note the ID number in the resulting URL. **NOTE**: Conflicts with `os_reference_code`. | Yes |
+|`network_speed`|Integer|Optional|The connection speed (in Mbps) for the instance's network components. The default value is `100`| No |
+|`private_network_only`|Boolean|Optional|When set to `true`, a compute instance only has access to the private network. The default value is `false`.| Yes |
+|`private_security_group_ids`|Array of integers|Optional| The IDs of security groups to apply on the private interface. This attribute can't be updated. You can can use this parameter to add a security groups to your virtual server instance when you create it. If you want to add or remove security groups later, you must use the `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource you might experience errors. So use one of these consistently for a particular virtual server instance.| Yes |
+|`public_vlan_id`|Integer|Optional| The public VLAN ID for the public network interface of the instance. Accepted values are in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source. **NOTE**: Conflicts with `datacenter_choice`.| Yes |
+|`private_vlan_id`|Integer|Optional|The private VLAN ID for the private network interface of the instance. You can find accepted values in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source. **NOTE**: Conflicts with `datacenter_choice`.| Yes |
+|`public_security_group_ids`|Array of integers|Optional|The ids of security groups to apply on the public interface.This attribute can't be updated. You can can use this parameter to add a security groups to your virtual server instance when you create it. If you want to add or remove security groups later, you must use the `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource, you might experience errors. So use one of these consistently for a particular virtual server instance.| Yes |
+|`public_subnet`|String|Optional| The public subnet for the public network interface of the instance. Accepted values are primary public networks. You can find accepted values in the [subnets doc](https://cloud.ibm.com/classic/network/subnets).| Yes |
+|`private_subnet`|String|Optional| The private subnet for the private network interface of the instance. Accepted values are primary private networks. You can find accepted values in the [subnets doc](https://cloud.ibm.com/classic/network/subnets).| Yes |
+|`disks`|Array of integers|Optional| The numeric disk sizes (in GBs) for the instance's block device and disk image settings. The default value is the smallest available capacity for the primary disk. If you specify an image template, the template provides the disk capacity. If you specify the `flavorKeyName`, first disk is provided by the flavor.| No |
+|`user_metadata`|String|Optional|Arbitrary data to be made available to the computing instance.| Yes |
+|`notes`|String|Optional| Descriptive text of up to 1000 characters about the VM instance.| No |
+|`ssh_key_ids`|Array of integers|Optional| The SSH key IDs to install on the computing instance when the instance provisions.      **NOTE:** If you don't know the ID(s) for your SSH keys, you can reference your SSH keys by their labels.| No |
+|`file_storage_ids`|Array of integers|Optional| File storage to which this computing instance should have access. File storage must be in the same data center as the bare metal server. If you use this argument to authorize access to file storage, then do not use the `allowed_virtual_guest_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage being added twice.| No |
+|`block_storage_ids`|Array of integers|Optional| File storage to which this computing instance should have access. File storage must be in the same data center as the bare metal server. If you use this argument to authorize access to file storage, then do not use the `allowed_virtual_guest_ids` argument in the `ibm_storage_block` resource in order to prevent the same storage being added twice.| No |
+|`post_install_script_uri`|String|Optional| The URI of the script to be downloaded and executed after installation is complete.| Yes |
+|`tags`|Array of strings|Optional| Tags associated with the VM instance. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.| No |
+|`ipv6_enabled`|Boolean|Optional|The primary public IPv6 address. The default value is `false`.| Yes |
+|`ipv6_static_enabled`|Boolean|Optional|The public static IPv6 address block of `/64`. The default value is `false`.| No |
+|`secondary_ip_count`|Integer|Optional| Specifies secondary public IPv4 addresses. Accepted values are `4` and `8`.|  Yes |
+|`wait_time_minutes`|Integer|Optional| The duration, expressed in minutes, to wait for the VM instance to become available before declaring it as created. It is also the same amount of time waited for no active transactions before proceeding with an update or deletion. The default value is `90`.| No |
+|`public_bandwidth_limited`|Integer|Optional| Allowed public network traffic(GB) per month. It can be greater than 0 when the server is a monthly based server. Defaults to the smallest available capacity for the public bandwidth are used.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_unlimited`.| Yes |
+|`public_bandwidth_unlimited`|Boolean|Optional|  Allowed unlimited public network traffic(GB) per month for a monthly based server. The `network_speed` should be 100 Mbps. Default value: `false`.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_limited`.| Yes |
+|`evault`|Integer|Optional|Allowed evault(GB) per month for monthly based servers.| Yes |
+|`datacenter_choice`|List of objects|Optional|A nested block to describe datacenter choice options to retry on different data centers and VLANs. Nested `datacenter_choice` blocks must have the following structure:    | No |
+|`datacenter_choice.datacenter`|String|Required|The datacenter in which you want to provision the instance.    | No |
+|`datacenter_choice.public_vlan_id`|String|Optional|The public VLAN ID for the public network interface of the instance. Accepted values are in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.    | No |
+|`datacenter_choice.private_vlan_id`|String|Optional|The private VLAN ID for the private network interface of the instance. You can find accepted values in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.  **NOTE**: Conflicts with `datacenter`, `private_vlan_id`, `public_vlan_id`, `placement_group_name` and `placement_group_id`.| Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1171,11 +1171,11 @@ resource "ibm_dns_domain" "dns-domain-test" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`name`|(Required, string) The domain's name, including the top-level domain. For example, "example.com". When the domain is created, proper `NS` and `SOA` records are created automatically for the domain.|
-|`target`|(Optional, string) The primary target IP address to which the domain resolves. When the domain is created, an `A` record with a host value of `@` and a data-target value of the IP address are provided and associated with the new domain|
-|`tags`|(Optional, array of strings) Tags associated with the DNS domain instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name|Data type| Required/ Optional|Description|Forces new resource|
+|----|-----------|-------|--------|--------|
+|`name`| String | Required | The domain's name, including the top-level domain. For example, "example.com". When the domain is created, proper `NS` and `SOA` records are created automatically for the domain.| Yes |
+|`target`| String | Optional | The primary target IP address to which the domain resolves. When the domain is created, an `A` record with a host value of `@` and a data-target value of the IP address are provided and associated with the new domain| No |
+|`tags`| Array of Strings | Optional | Tags associated with the DNS domain instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1277,12 +1277,12 @@ resource "ibm_dns_secondary" "dns-secondary-test" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`zone_name`|(Required, string) The name of the zone that is transferred.|
-|`transfer_frequency`|(Required, int) Signifies how often a secondary DNS zone should be transferred in minutes.|
-|`master_ip_address`|(Required, string)  The IP address of the master name server where a secondary DNS zone is transferred from.|
-|`tags`|(Optional, array of strings) Tags associated with the DNS secondary instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource
+|----|-----------| ------ | ----- | ----------|
+|`zone_name`| String | Required | The name of the zone that is transferred.| Yes |
+|`transfer_frequency`| Integer | Required | Signifies how often a secondary DNS zone should be transferred in minutes.| No |
+|`master_ip_address`| String | Required |  The IP address of the master name server where a secondary DNS zone is transferred from.| No |
+|`tags`| Array of Strings | Optional | Tags associated with the DNS secondary instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1322,11 +1322,11 @@ resource "ibm_dns_reverse_record" "testreverserecord" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`ipaddress`|(Required, string) The IP address or a hostname of a domain's resource record.|
-|`hostname`|(Required, string) The host defined by a reverse record.|
-|`ttl`|(Optional, integer) The time to live (TTL) duration, expressed in seconds, of a resource record. Default value is 604800 seconds.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`ipaddress`| String | Required | The IP address or a hostname of a domain's resource record.| Yes |
+|`hostname`| String | Required | The host defined by a reverse record.| No |
+|`ttl`|Integer| Optional| The time to live (TTL) duration, expressed in seconds, of a resource record. Default value is 604800 seconds.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1521,26 +1521,26 @@ resource "ibm_dns_record" "recordPTR" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`data`|(Required, string) The IP address or a hostname of a domain's resource record. Fully qualified host and domain name data must end with the `.` character.|
-|`domain_id`|(Required, integer) The ID for the domain associated with the resource record.|
-|`expire`|(Optional, integer) The duration, expressed in seconds, that a secondary name server (or servers) holds a zone before it is no longer considered authoritative.|
-|`host`|(Required, string) The host defined by a resource record. The `@` symbol denotes a wildcard.|
-|`minimum_ttl`|(Optional, integer) The duration, expressed in seconds, that a domain's resource records are valid. This is also known as a minimum time to live (TTL), and can be overridden by an individual resource record's TTL.|
-|`mx_priority`|(Optional, integer) The priority of the mail exchanger that delivers mail for a domain. This is useful in cases where a domain has more than one mail exchanger. A lower number denotes a higher priority, and mail will attempt to deliver through the highest priority exchanger before moving to lower priority exchangers. The default value is `0`.|
-|`refresh`|(Optional, integer) The duration, expressed in seconds, that a secondary name server waits to check the domain's primary name server for a new copy of a DNS zone. If a zone file has changed, the secondary DNS server updates its copy of the zone to match the primary DNS server's zone.|
-|`responsible_person`|(Required, string) The email address of the person responsible for a domain. Replace the `@` symbol in the address with a `.`. For example: root@example.org would be expressed as `root.example.org.`.|
-|`retry`|(Optional, integer) The duration, expressed in seconds, that the domain's primary name server (or servers) waits before attempting to refresh the domain's zone with the secondary name server. A failed attempt to refresh by a secondary name server triggers the retry action.|
-|`ttl`|(Required, integer) The time to live (TTL) duration, expressed in seconds, of a resource record. A name server uses TTL to determine how long to cache a resource record. An SOA record's TTL value defines the domain's overall TTL.|
-|`type`|(Required, string) The type of domain resource record. Accepted values are as follows: `a` for address records, `aaaa` for address records, `cname` for canonical name records, `mx` for mail exchanger records, `ptr` for pointer records in reverse domains, `spf` for sender policy framework records, `srv` for service records. |
-|`txt`|(Optional, string) Used for text records.|
-|`service`|(`SRV` records only, required, string) The symbolic name of the service.|
-|`protocol`|(`SRV` records only, required, string) The protocol of the service that you want to use, such as `TCP` or `UDP`.|
-|`port`|(`SRV` records only, required, integer) The TCP or UDP port on which the service will be found.|
-|`priority`|(`SRV` records only, required, integer) The priority of the target host. The lowest numerical value is given the highest priority. The default value is `0`.|
-|`weight`|(`SRV` records only, required, integer) A relative weight for records that have the same priority. The default value is `0`.|
-|`tags`|(Optional, array of strings) Tags associated with the DNS domain record instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`data`| String | Required | The IP address or a hostname of a domain's resource record. Fully qualified host and domain name data must end with the `.` character.| No |
+|`domain_id`| Integer | Required | The ID for the domain associated with the resource record.| Yes |
+|`expire`| Integer | Optional | The duration, expressed in seconds, that a secondary name server (or servers) holds a zone before it is no longer considered authoritative.| No |
+|`host`| String | Required |The host defined by a resource record. The `@` symbol denotes a wildcard.| No |
+|`minimum_ttl`|Integer| Optional | The duration, expressed in seconds, that a domain's resource records are valid. This is also known as a minimum time to live (TTL), and can be overridden by an individual resource record's TTL.|
+|`mx_priority`| Integer | Optional | The priority of the mail exchanger that delivers mail for a domain. This is useful in cases where a domain has more than one mail exchanger. A lower number denotes a higher priority, and mail will attempt to deliver through the highest priority exchanger before moving to lower priority exchangers. The default value is `0`.| No |
+|`refresh`|Integer|Optional| The duration, expressed in seconds, that a secondary name server waits to check the domain's primary name server for a new copy of a DNS zone. If a zone file has changed, the secondary DNS server updates its copy of the zone to match the primary DNS server's zone.| No |
+|`responsible_person`| String | Required | The email address of the person responsible for a domain. Replace the `@` symbol in the address with a `.`. For example: root@example.org would be expressed as `root.example.org.`.| No |
+|`retry`| Integer | Optional | The duration, expressed in seconds, that the domain's primary name server (or servers) waits before attempting to refresh the domain's zone with the secondary name server. A failed attempt to refresh by a secondary name server triggers the retry action.| No |
+|`ttl`|Integer | Required |The time to live (TTL) duration, expressed in seconds, of a resource record. A name server uses TTL to determine how long to cache a resource record. An SOA record's TTL value defines the domain's overall TTL.| No |
+|`type`| String | Required |The type of domain resource record. Accepted values are as follows: `a` for address records, `aaaa` for address records, `cname` for canonical name records, `mx` for mail exchanger records, `ptr` for pointer records in reverse domains, `spf` for sender policy framework records, `srv` for service records. | Yes |
+|`txt`| String | Optional | Used for text records.| No |
+|`service`| String | Required |`SRV` records only. The symbolic name of the service.| No |
+|`protocol`| String | Required |`SRV` records only. The protocol of the service that you want to use, such as `TCP` or `UDP`.| No |
+|`port`| Integer | Required |`SRV` records only. The TCP or UDP port on which the service will be found.| No |
+|`priority`| Integer | Required | `SRV` records only. The priority of the target host. The lowest numerical value is given the highest priority. The default value is `0`.| No |
+|`weight`| Integer | Required | `SRV` records only. A relative weight for records that have the same priority. The default value is `0`.| No |
+|`tags`| Array of Strings | Optional | Tags associated with the DNS domain record instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1585,12 +1585,12 @@ resource "ibm_firewall" "testfw" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`firewall_type`|(Optional, string) Specifies the type of firewall to create. Valid options are HARDWARE_FIREWALL_DEDICATED or FORTIGATE_SECURITY_APPLIANCE. Defaults to HARDWARE_FIREWALL_DEDICATED|
-|`ha_enabled`|(Required, boolean) Specifies whether the local load balancer needs to be HA-enabled.|
-|`public_vlan_id`|(Required, integer) The target public VLAN ID that you want the firewall to protect. You can find accepted values [here](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the resulting URL. You can also refer to a VLAN by name using a data source.|
-|`tags`|(Optional, array of strings) Set tags on the firewall. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`firewall_type`| String | Optional | Specifies the type of firewall to create. Valid options are HARDWARE_FIREWALL_DEDICATED or FORTIGATE_SECURITY_APPLIANCE. Defaults to HARDWARE_FIREWALL_DEDICATED| Yes |
+|`ha_enabled`|Boolean| Required | Specifies whether the local load balancer needs to be HA-enabled.| Yes |
+|`public_vlan_id`|Integer | Required | The target public VLAN ID that you want the firewall to protect. You can find accepted values [here](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the resulting URL. You can also refer to a VLAN by name using a data source.| Yes |
+|`tags`|Array of Strings | Optional | Set tags on the firewall. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1615,7 +1615,7 @@ The following attributes are exported:
 
 Create a firewall with multiple VLANs.
 
-For additional details, see the [IBM Cloud (SoftLayer) multi VLAN firewall Request docs](https://softlayer.github.io/reference/datatypes/SoftLayer_Container_Product_Order_Network_Protection_Firewall_Dedicated/)
+For additional details, see the [IBM Cloud (SoftLayer) multi VLAN firewall Request docs](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Container_Product_Order_Network_Protection_Firewall_Dedicated/).
 
 ### Sample Terraform code
 {: #multivlan-firewall-sample}
@@ -1638,13 +1638,13 @@ resource "ibm_multi_vlan_firewall" "firewall_first" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`datacenter`|(Required, string) The data center in which the firewall appliance resides.|
-|`pod`|(Required, string) The pod in which the firewall resides|
-|`name`|(Required, string) The name of the firewall device|
-|`firewall_type`|(Required, string) The type of the firewall device. Supported values include `FortiGate Security Appliance` and `FortiGate Firewall Appliance HA Option`.|
-|`addon_configuration`|(Required, list) The list of add-ons that are allowed. Allowed values are `FortiGate Security Appliance) - Web Filtering Add-on (High Availability)`,`FortiGate Security Appliance - NGFW Add-on (High Availability)`,`FortiGate Security Appliance - AV Add-on (High Availability)` or `FortiGate Security Appliance - Web Filtering Add-on`, `FortiGate Security Appliance - NGFW Add-on`,`FortiGate Security Appliance - AV Add-on`.|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`datacenter`| String | Required | The data center in which the firewall appliance resides.| Yes |
+|`pod`| String | Required | The pod in which the firewall resides| Yes |
+|`name`| String | Required | The name of the firewall device| Yes |
+|`firewall_type`| String | Required | The type of the firewall device. Supported values include `FortiGate Security Appliance` and `FortiGate Firewall Appliance HA Option`.| Yes |
+|`addon_configuration`| List | Required |) The list of add-ons that are allowed. Allowed values are `FortiGate Security Appliance) - Web Filtering Add-on (High Availability)`,`FortiGate Security Appliance - NGFW Add-on (High Availability)`,`FortiGate Security Appliance - AV Add-on (High Availability)` or `FortiGate Security Appliance - Web Filtering Add-on`, `FortiGate Security Appliance - NGFW Add-on`,`FortiGate Security Appliance - AV Add-on`.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1717,20 +1717,20 @@ resource "ibm_firewall_policy" "rules" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`firewall_id`|(Required, integer) The device ID for the target hardware firewall.|
-|`rules`|(Required, array) The firewall rules. At least one rule is required.|
-|`rules.action`|(Required, string) Specifies whether traffic is allowed when rules are matched. Accepted values are `permit` or `deny`.|
-|`rules.src_ip_address`|(Required, string) Specifies either a specific IP address or the network address for a specific subnet.|
-|`rules.src_ip_cidr`|(Required, string) Specifies the standard CIDR notation for the selected source. `32` implements the rule for a single IP while, for example, `24` implements the rule for 256 IPs.|
-|`rules.dst_ip_address`|(Required, string) Accepted values are `any`, a specific IP address, or the network address for a specific subnet.|
-|`rules.dst_ip_cidr`|(Required, string) Specifies the standard CIDR notation for the selected destination.|
-|`rules.dst_port_range_start`|(Optional, string) The start of the range of ports for TCP and UDP. Accepted values are `1`-`65535`.|
-|`rules.dst_port_range_end`|(Optional, string) The end of the range of ports for TCP and UDP. Accepted values are `1`-`65535`.|
-|`rules.notes`|(Optional, string) Descriptive text about the rule.|
-|`rules.protocol`|(Required, string) The protocol for the rule. Accepted values are `tcp`,`udp`,`icmp`,`gre`,`pptp`,`ah`, or `esp`.|
-|`tags`|(Optional, array of strings) Tags associated with the firewall policy instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`firewall_id`| Integer | Required | The device ID for the target hardware firewall.| Yes |
+|`rules`|Array | Required | The firewall rules. At least one rule is required.| No |
+|`rules.action`| String | Required | Specifies whether traffic is allowed when rules are matched. Accepted values are `permit` or `deny`.| No |
+|`rules.src_ip_address`| String | Required | Specifies either a specific IP address or the network address for a specific subnet.| No |
+|`rules.src_ip_cidr`| String | Required |Specifies the standard CIDR notation for the selected source. `32` implements the rule for a single IP while, for example, `24` implements the rule for 256 IPs.| No |
+|`rules.dst_ip_address`| String | Required | Accepted values are `any`, a specific IP address, or the network address for a specific subnet.| No |
+|`rules.dst_ip_cidr`| String | Required | Specifies the standard CIDR notation for the selected destination.| No |
+|`rules.dst_port_range_start`| String | Optional | The start of the range of ports for TCP and UDP. Accepted values are `1`-`65535`.| No |
+|`rules.dst_port_range_end`| String | Optional |The end of the range of ports for TCP and UDP. Accepted values are `1`-`65535`.| No |
+|`rules.notes`| Strings | Optional | Descriptive text about the rule.| No |
+|`rules.protocol`| String | Required | The protocol for the rule. Accepted values are `tcp`,`udp`,`icmp`,`gre`,`pptp`,`ah`, or `esp`.| No |
+|`tags`| Array of Strings | Optional | Tags associated with the firewall policy instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 
@@ -1743,7 +1743,7 @@ Provides a firewall in IBM. One firewall protects one public VLAN and provides i
 
 
 
-For more information about how to configure a firewall, see the [docs](https://knowledgelayer.softlayer.com/procedure/configure-hardware-firewall).
+For more information about how to configure a firewall, see the [docs](/docs/hardware-firewall-shared?topic=hardware-firewall-shared-about-hardware-firewall-shared-).
 
 ### Sample Terraform code
 {: #shared-fw-sample}
@@ -1861,15 +1861,15 @@ resource "ibm_lb" "test_lb_local" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`connections`|(Required, integer) The number of connections for the local load balancer. Only incremental upgrade is supported . For downgrade, please open the softlayer support ticket.|
-|`datacenter`|(Required, string) The data center for the local load balancer.|
-|`ha_enabled`|(Required, boolean) Specifies whether the local load balancer must be HA-enabled.|
-|`security_certificate_id`|(Optional, integer) The ID of the security certificate associated with the local load balancer.|
-|`dedicated`|(Optional, boolean) Specifies whether the local load balancer must be dedicated. The default value is `false`.|
-|`ssl_offload`|(Optional, boolean) Specifies the local load balancer SSL offload. If `true` start SSL acceleration on all SSL virtual services (those with a type of HTTPS). This action should be taken only after configuring an SSL certificate for the virtual IP. If `false` stop SSL acceleration on all SSL virtual services (those with a type of HTTPS). The default value is `false`.|
-|`tags`|(Optional, array of strings) Tags associated with the local load balancer instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`connections`|Integer | Required |The number of connections for the local load balancer. Only incremental upgrade is supported . For downgrade, please open the softlayer support ticket.| No |
+|`datacenter`| String | Required | The data center for the local load balancer.| Yes |
+|`ha_enabled`|Boolean|Required|Specifies whether the local load balancer must be HA-enabled.| Yes |
+|`security_certificate_id`| Integer | Optional | The ID of the security certificate associated with the local load balancer.| Yes |
+|`dedicated`|Boolean|Optional| Specifies whether the local load balancer must be dedicated. The default value is `false`.| No |
+|`ssl_offload`|Boolean|Optional| Specifies the local load balancer SSL offload. If `true` start SSL acceleration on all SSL virtual services (those with a type of HTTPS). This action should be taken only after configuring an SSL certificate for the virtual IP. If `false` stop SSL acceleration on all SSL virtual services (those with a type of HTTPS). The default value is `false`.| No |
+|`tags`|Array of Strings|Optional|Tags associated with the local load balancer instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1942,24 +1942,24 @@ resource "ibm_lbaas" "lbaas" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`name`|(Required, string) The load balancer's name.|
-|`description`|(Optional, string) A description of the load balancer.|
-|`type`|(Optional, string) Specify whether this load balancer is a public or internal facing load balancer. Accepted values are `PUBLIC` or `PRIVATE`. The default is 'PUBLIC'.|
-|`subnets`|(Required, array) The subnet where the load balancer will be provisioned. Only one subnet is supported.|
-|`protocols`|(Optional, array) A nested block describing the protocols assigned to load balancer.   |
-|`protocols.frontend_protocol`|(Required, string) The frontend protocol. Accepted values are 'TCP', 'HTTP', and 'HTTPS'.  |
-|`protocols.frontend_port`|(Required, integer) The frontend protocol port number. The port number must be in the range of 1-65535.  |
-|`protocols.backend_protocol`|(Required, string) The backend protocol. Accepted values are 'TCP', 'HTTP', and 'HTTPS'.  |
-|`protocols.backend_port`|(Required, integer) The backend protocol port number. The port number must be in the range of 1-65535.  |
-|`protocols.load_balancing_method`|(Optional, string) The load balancing algorithm. Accepted values are 'round_robin', 'weighted_round_robin', and 'least_connection'. The default is 'round_robin'.  |
-|`protocols.session_stickiness`|(Optional, string) The SOURCE_IP for session stickiness.  |
-|`protocols.max_conn`|(Optional, integer) The maximum number of connections the listener can accept. The number must be 1-64000.  |
-|`protocols.tls_certificate_id`|(Optional, integer) The ID of the SSL/TLS certificate being used for a protocol. This ID should be specified when `frontend protocol` has a value of `HTTPS`.|
-|`ssl_ciphers`|(Optional, list) The comma separated list of SSL Ciphers. You can find list of supported ciphers [SSL_offload](/docs/loadbalancer-service?topic=loadbalancer-service-ssl-offload-with-ibm-cloud-load-balancer).|
-|`use_system_public_ip_pool`|(Optional, bool) Applicable for public load balancer only. It specifies whether the public IP addresses are allocated from system public IP pool or public subnet from the account ordering the load balancer. Default Value is `true`.|
-|`wait_time_minutes`|(Optional, integer) The duration, expressed in minutes, to wait for the LBaaS instance to become available before declaring it as created. It is also the same amount of time waited for deletion to finish. The default value is `90`.|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`name`| String | Required | The load balancer's name.| Yes |
+|`description`| String | Optional | A description of the load balancer.| No |
+|`type`| String | Optional | Specify whether this load balancer is a public or internal facing load balancer. Accepted values are `PUBLIC` or `PRIVATE`. The default is 'PUBLIC'.| Yes |
+|`subnets`| Array | Required | The subnet where the load balancer will be provisioned. Only one subnet is supported.| Yes |
+|`protocols`| Array | Optional | A nested block describing the protocols assigned to load balancer.   | Yes |
+|`protocols.frontend_protocol`| String | Required | The frontend protocol. Accepted values are 'TCP', 'HTTP', and 'HTTPS'.  |  No |
+|`protocols.frontend_port`| Integer | Required |The frontend protocol port number. The port number must be in the range of 1-65535.  | No |
+|`protocols.backend_protocol`| String | Required | The backend protocol. Accepted values are 'TCP', 'HTTP', and 'HTTPS'.  | No |
+|`protocols.backend_port`| Integer | Required |The backend protocol port number. The port number must be in the range of 1-65535.  | No |
+|`protocols.load_balancing_method`| String | Optional | The load balancing algorithm. Accepted values are 'round_robin', 'weighted_round_robin', and 'least_connection'. The default is 'round_robin'.  | No |
+|`protocols.session_stickiness`| String | Optional | The SOURCE_IP for session stickiness.  | No |
+|`protocols.max_conn`| Integer | Optional | The maximum number of connections the listener can accept. The number must be 1-64000.  | No |
+|`protocols.tls_certificate_id`| Integer | Optional | The ID of the SSL/TLS certificate being used for a protocol. This ID should be specified when `frontend protocol` has a value of `HTTPS`.| No |
+|`ssl_ciphers`| list | Optional |The comma separated list of SSL Ciphers. You can find list of supported ciphers [SSL_offload](/docs/loadbalancer-service?topic=loadbalancer-service-ssl-offload-with-ibm-cloud-load-balancer).| No |
+|`use_system_public_ip_pool`| Boolean | Optional | Applicable for public load balancer only. It specifies whether the public IP addresses are allocated from system public IP pool or public subnet from the account ordering the load balancer. Default Value is `true`.| No |
+|`wait_time_minutes`| Integer | Required | The duration, expressed in minutes, to wait for the LBaaS instance to become available before declaring it as created. It is also the same amount of time waited for deletion to finish. The default value is `90`.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2038,16 +2038,16 @@ resource "ibm_lbaas_health_monitor" "lbaas_hm" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`monitor_id`|(Required,string) Health Monitor unique identifier. The monitor id can be imported from either the `ibm_lbaas` resource or datasource. Example: `ibm_lbaas.lbaas.health_monitors.X.monitor_id` or `data.ibm_lbaas.lbaas.health_monitors.X.monitor_id`|
-|`lbaas_id`|(Required,string) LBaaS unique identifier|
-|`protocol`|(Required, string) Backends protocol|
-|`port`|(Required, int) Backends port|
-|`interval`|(Optional,int) Interval in seconds to perform |
-|`max_retries`|(Optional,int) Maximum retries|
-|`timeout`|(Optional,int) Health check methods timeout in |
-|`url_path`|(Optional,string) If monitor is "HTTP", this specifies URL path|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`monitor_id`| String | Required | Health Monitor unique identifier. The monitor id can be imported from either the `ibm_lbaas` resource or datasource. Example: `ibm_lbaas.lbaas.health_monitors.X.monitor_id` or `data.ibm_lbaas.lbaas.health_monitors.X.monitor_id`| Yes |
+|`lbaas_id`| String | Required | LBaaS unique identifier| Yes |
+|`protocol`| String | Required | Backends protocol| No |
+|`port`| Integer | Required | Backends port| No |
+|`interval`| Integer | Optional | Interval in seconds to perform | No |
+|`max_retries`|Integer | Optional | Maximum retries| No |
+|`timeout`| Integer | Optional | Health check methods timeout in | No |
+|`url_path`| String | Optional | If monitor is "HTTP", this specifies URL path| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2129,12 +2129,12 @@ resource "ibm_lbaas_server_instance_attachment" "lbaas_member" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`private_ip_address`|(Required, string) The private IP address of a load balancer member.|
-|`weight`|(Optional, integer) The weight of a load balancer member.|
-|`lbaas_id`|(Required, string) The UUID of a load balancer.|
-|`depends_on`|(Required, string) the UUID of a load balancer |
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`private_ip_address`| String | Required | The private IP address of a load balancer member.| Yes |
+|`weight`| Integer | Optional | The weight of a load balancer member.| No |
+|`lbaas_id`| String | Required |The UUID of a load balancer.| Yes |
+|`depends_on`| String | Required | the UUID of a load balancer | No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2179,15 +2179,15 @@ resource "ibm_lb_service" "test_lb_local_service" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`service_group_id`|(Required, integer) The ID of the local load balancer service group.|
-|`ip_address_id`|(Required, integer) The ID of the virtual server.|
-|`port`|(Required, integer) The port for the local load balancer service.|
-|`enabled`|(Required, boolean) Specifies whether you want to enable the load balancer service. The default value is `false`.|
-|`health_check_type`|(Required, string) The health check type for the load balancer service.|
-|`weight`|(Required, integer) The weight for the load balancer service.|
-|`tags`|(Optional, array of strings) Tags associated with the local load balancer service instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`service_group_id`| Integer | Required |  The ID of the local load balancer service group.| Yes |
+|`ip_address_id`| Integer | Required | The ID of the virtual server.| Yes |
+|`port`| Integer | Required | The port for the local load balancer service.| No |
+|`enabled`| Integer | Required | Specifies whether you want to enable the load balancer service. The default value is `false`.| No |
+|`health_check_type`| String | Required | The health check type for the load balancer service.| No |
+|`weight`| Integer | Required | The weight for the load balancer service.| No |
+|`tags`| Arrya of Strings | Optional | Tags associated with the local load balancer service instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 
@@ -2220,15 +2220,15 @@ resource "ibm_lb_service_group" "test_service_group" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`load_balancer_id`|(Required, integer) The ID of the local load balancer.|
-|`allocation`|(Required, integer) The connection allocation for the load balancer service group.|
-|`port`|(Required, integer) The port for the local load balancer service group.|
-|`routing_method`|(Required, string) The routing method for the load balancer group. For example, `CONSISTENT_HASH_IP`.|
-|`routing_type`|(Required, string) The routing type for the group.|
-|`timeout`|(Optional, int) The timeout value for connections from remote clients to the load balancer. Timeout values are only valid for HTTP service groups. |
-|`tags`|(Optional, array of strings) Tags associated with the local load balancer service group instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`load_balancer_id`| Integer | Required | The ID of the local load balancer.| Yes |
+|`allocation`| Integer | Required | The connection allocation for the load balancer service group.| No |
+|`port`| Integer | Required | The port for the local load balancer service group.| No |
+|`routing_method`| String | Required | The routing method for the load balancer group. For example, `CONSISTENT_HASH_IP`.| No |
+|`routing_type`| String | Required |The routing type for the group.| No |
+|`timeout`| Integer | Optional |The timeout value for connections from remote clients to the load balancer. Timeout values are only valid for HTTP service groups. | No |
+|`tags`| Array of Strings | Optional | Tags associated with the local load balancer service group instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2282,18 +2282,18 @@ resource "ibm_lb_vpx" "test_vpx" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`datacenter`|(Required, string) The data center in which you want to provision the VPX load balancer. You can find accepted values in the [data center docs](http://www.softlayer.com/data-centers).|
-|`speed`|(Required, integer) The speed, expressed in Mbps. Accepted values are `10`, `200`, and `1000`.|
-|`version`|(Required, string) The VPX load balancer version. Accepted values are `10.1`, `10.5`, `11.0`, `11.1` and `12.1`.|
-|`plan`|(Required, string) The VPX load balancer plan. Accepted values are `Standard` and `Platinum`.|
-|`ip_count`|(Required, integer) The number of static public IP addresses assigned to the VPX load balancer. Accepted values are `1`,`2`, `4`, `8`, and `16`.|
-|`public_vlan_id`|(Optional, integer) The public VLAN ID that is used for the public network interface of the VPX load balancer. You can find accepted values in the [VLAN docs](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want to use and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
-|`private_vlan_id`|(Optional, integer) The private VLAN ID that is used for the private network interface of the VPX load balancer. You can find accepted values in the [VLAN docs](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want to use and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
-|`public_subnet`|(Optional, string) The public subnet that is used for the public network interface of the VPX load balancer. Accepted values are primary public networks. You can find accepted values in the [subnet docs](https://cloud.ibm.com/classic/network/subnets).|
-|`private_subnet`|(Optional, string) Public subnet that is used for the private network interface of the VPX load balancer. Accepted values are primary private networks. You can find accepted values in the [subnet docs](https://cloud.ibm.com/classic/network/subnets).|
-|`tags`|(Optional, array of strings) Tags associated with the VPX load balancer instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`datacenter`| String | Required |The data center in which you want to provision the VPX load balancer. You can find accepted values in the [data center docs](http://www.softlayer.com/data-centers).| Yes |
+|`speed`|Integer | Required | The speed, expressed in Mbps. Accepted values are `10`, `200`, and `1000`.| Yes |
+|`version`| String | Required | The VPX load balancer version. Accepted values are `10.1`, `10.5`, `11.0`, `11.1` and `12.1`.| Yes |
+|`plan`| String | Required |The VPX load balancer plan. Accepted values are `Standard` and `Platinum`.| Yes |
+|`ip_count`| Integer | Required | The number of static public IP addresses assigned to the VPX load balancer. Accepted values are `1`,`2`, `4`, `8`, and `16`.| Yes |
+|`public_vlan_id`|Integer | Optional | The public VLAN ID that is used for the public network interface of the VPX load balancer. You can find accepted values in the [VLAN docs](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want to use and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.| Yes |
+|`private_vlan_id`|Integer | Optional | The private VLAN ID that is used for the private network interface of the VPX load balancer. You can find accepted values in the [VLAN docs](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want to use and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.| Yes |
+|`public_subnet`|String | Optional| The public subnet that is used for the public network interface of the VPX load balancer. Accepted values are primary public networks. You can find accepted values in the [subnet docs](https://cloud.ibm.com/classic/network/subnets).| Yes |
+|`private_subnet`|String | Optional | Public subnet that is used for the private network interface of the VPX load balancer. Accepted values are primary private networks. You can find accepted values in the [subnet docs](https://cloud.ibm.com/classic/network/subnets).| Yes |
+|`tags`|Array of strings | Optional | Tags associated with the VPX load balancer instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2315,9 +2315,9 @@ The following attributes are exported:
 ## `ibm_lb_vpx_ha`
 {: #lb-vpx-ha}
 
-Configure a high availability (HA) pair with two NetScaler VPX devices. The two NetScaler VPXs must be version 10.5 and located in the same subnet. A primary NetScaler VPX provides load balancing services in active mode, and a secondary NetScaler VPX provides load balancing services when the primary NetScaler VPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748) and the [KnowledgeLayer NetScaler docs](http://knowledgelayer.softlayer.com/articles/netscaler-vpx-10-high-availability-setup).
+Configure a high availability (HA) pair with two NetScaler VPX devices. The two NetScaler VPXs must be version 10.5 and located in the same subnet. A primary NetScaler VPX provides load balancing services in active mode, and a secondary NetScaler VPX provides load balancing services when the primary NetScaler VPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748){: external} and the [KnowledgeLayer NetScaler docs](https://cloud.ibm.com/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-){: external}.
 
-**NOTE**: This resource only supports NetScaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](http://www.softlayer.com/VPN-Access) to access a private network connection.
+**NOTE**: This resource only supports NetScaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 The two NetScaler VPXs use the same password in HA mode. When you create this resource, Terraform changes the password of the secondary NetScaler VPX to the password of the primary NetScaler VPX. When you destroy this resource, Terraform restores the original password of the secondary NetScaler VPX.
 
@@ -2362,12 +2362,12 @@ resource "ibm_lb_vpx_ha" "test_ha" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`primary_id`|(Required, string) The ID of the primary NetScaler VPX.|
-|`secondary_id`|(Required, string) The ID of the secondary NetScaler VPX.|
-|`stay_secondary`|(Optional, boolean) Specifies whether the secondary NetScaler VPX will  take over the service. Set this argument to `true` to prevent the secondary NetScaler VPX from taking over the service even if the primary NetScaler VPX fails. For additional details, see the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support docs](https://support.citrix.com/article/CTX116748). The default value is `false`.|
-|`tags`|(Optional, array of strings) Tags associated with the high availability NetScale VPX pair instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`primary_id`| String | Required | The ID of the primary NetScaler VPX.| Yes |
+|`secondary_id`| String | Required | The ID of the secondary NetScaler VPX.| Yes |
+|`stay_secondary`|Boolean | Optional | Specifies whether the secondary NetScaler VPX will  take over the service. Set this argument to `true` to prevent the secondary NetScaler VPX from taking over the service even if the primary NetScaler VPX fails. For additional details, see the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support docs](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
+|`tags`|Array of strings | Optional | Tags associated with the high availability NetScale VPX pair instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2388,7 +2388,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancer services. This allows VPX load balancer services to be created, updated, and deleted. For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service).  
 
-**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](http://www.softlayer.com/VPN-Access) to access a private network connection.
+**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 ### Sample Terraform code
 {: #vpx-svc-sample}
@@ -2413,17 +2413,17 @@ resource "ibm_lb_vpx_service" "test_service" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`name`|(Required, string) The ID of the VPX load balancer service.|
-|`vip_id`|(Required, string) The ID of the VPX load balancer virtual IP address to which the service is assigned.|
-|`destination_ip_address`|(Required, string) The IP address of the server to which traffic directs. If you use NetScaler VPX 10.1, you must indicate a public IP address in an IBM Cloud Classic Infrastructure (SoftLayer) account. If you use NetScaler VPX 10.5, you can use any IP address.|
-|`destination_port`|(Required, integer) The destination port of the server to which traffic directs.|
-|`weight`|(Required, integer) The percentage of the total connection limit allocated to the load balancer between all your services. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.       **NOTE**: If you use NetScaler VPX 10.5, the weight value is ignored.|
-|`connection_limit`|(Required, integer) The connection limit for this service. Acceptable values are `0`-`4294967294`. See the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/11/reference/netscaler-command-reference/basic/service.html) for details.|
-|`health_check`|(Required, string) The health check type. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.|
-|`usip`|(Optional, string) Whether the service reports the source IP of the client to the service being load balanced. Acceptable values are `YES` or `NO`. The default value is `NO`. See the [Citrix NetScaler docs](https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/11.0/configuration/basic/service/service) for more details.       **NOTE**: This argument is only available for VPX 10.5.|
-|`tags`|(Optional, array of strings) Tags associated with the VPX load balancer service instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`name`| String | Required |The ID of the VPX load balancer service.| Yes |
+|`vip_id`| String | Required |The ID of the VPX load balancer virtual IP address to which the service is assigned.| Yes |
+|`destination_ip_address`| String | Required | The IP address of the server to which traffic directs. If you use NetScaler VPX 10.1, you must indicate a public IP address in an IBM Cloud Classic Infrastructure (SoftLayer) account. If you use NetScaler VPX 10.5, you can use any IP address.| Yes |
+|`destination_port`| Integer | Required |The destination port of the server to which traffic directs.| No |
+|`weight`| Integer | Required | The percentage of the total connection limit allocated to the load balancer between all your services. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.       **NOTE**: If you use NetScaler VPX 10.5, the weight value is ignored.| No |
+|`connection_limit`| Integer | Required |The connection limit for this service. Acceptable values are `0`-`4294967294`. See the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/11/reference/netscaler-command-reference/basic/service.html) for details.| No |
+|`health_check`| String | Required |The health check type. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.| No |
+|`usip`| String | Optional | Whether the service reports the source IP of the client to the service being load balanced. Acceptable values are `YES` or `NO`. The default value is `NO`. See the [Citrix NetScaler docs](https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/11.0/configuration/basic/service/service) for more details.       **NOTE**: This argument is only available for VPX 10.5.| No |
+|`tags`| Array of strings | Optional | Tags associated with the VPX load balancer service instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2444,7 +2444,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancer virtual IP addresses. This allows VPX load balancer virtual IP addresses to be created, updated, and deleted.  
 
-**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](http://www.softlayer.com/VPN-Access) to access a private network connection.
+**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 ### Sample Terraform code
 {: #lb-vpx-vip-sample}
@@ -2521,17 +2521,17 @@ resource "ibm_lb_vpx_service" "testacc_service1" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`name`|(Required, string) The ID of the VPX load balancer virtual IP address.|
-|`nad_controller_id`|(Required, integer) The ID of the VPX load balancer that the virtual IP address is assigned to.|
-|`load_balancing_method`|(Required, string) See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use NetScaler VPX 10.5, see the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for additional methods that you can use.|
-|`persistence`|(Optional, string) Applies to NetScaler VPX 10.5 only. See the available persistence types in the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-persistence-wrapper-con/ns-lb-persistence-about-con.html).  |
-|`virtual_ip_address`|(Required, string) The public IP address for the VPX load balancer virtual IP.|
-|`source_port`|(Required, integer) The source port for the VPX load balancer virtual IP address.|
-|`type`|(Required, string) The connection type for the VPX load balancer virtual IP address. Accepted values are `HTTP`, `FTP`, `TCP`, `UDP`, `DNS`, and `SSL`. If you set the type to `SSL`, then `security_certificate_id` provides certification for SSL offload services.|
-|`security_certificate_id`|(Optional, integer) Applies to NetScaler VPX 10.5 only. The ID of a security certificate you want to use. This argument provides security certification for SSL offload services. For additional information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).|
-|`tags`|(Optional, array of strings) Tags associated with the VPX load balancer virtual IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description| Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`name`| String | Required |The ID of the VPX load balancer virtual IP address.| Yes |
+|`nad_controller_id`| Integer | Required | The ID of the VPX load balancer that the virtual IP address is assigned to.| Yes |
+|`load_balancing_method`| String | Required | See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use NetScaler VPX 10.5, see the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for additional methods that you can use.| No |
+|`persistence`| String | Optional |Applies to NetScaler VPX 10.5 only. See the available persistence types in the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-persistence-wrapper-con/ns-lb-persistence-about-con.html).  | No |
+|`virtual_ip_address`| String | Required |The public IP address for the VPX load balancer virtual IP.| No |
+|`source_port`|Integer | Required | The source port for the VPX load balancer virtual IP address.| No |
+|`type`| String | Required | The connection type for the VPX load balancer virtual IP address. Accepted values are `HTTP`, `FTP`, `TCP`, `UDP`, `DNS`, and `SSL`. If you set the type to `SSL`, then `security_certificate_id` provides certification for SSL offload services.| Yes |
+|`security_certificate_id`| Integer | Optional | Applies to NetScaler VPX 10.5 only. The ID of a security certificate you want to use. This argument provides security certification for SSL offload services. For additional information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).| Yes |
+|`tags`| Array of strings | Optional | Tags associated with the VPX load balancer virtual IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2637,40 +2637,40 @@ resource "ibm_network_gateway" "gateway" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`name`|(Required, string) The name of the gateway.|
-|`ssh_key_ids`|(Optional, list) The SSH key IDs to install on the gateway when the gateway gets created.|
-|`post_install_script_uri`|(Optional, string) The URI of the script to be downloaded and executed after the gateway installation is complete. Default value: `nil`. |
-|`members`|(Required, list) A nested block describing the hardware members of this network gateway. |
-|`members.hostname`|(Optional, string) Hostname of the member.  |
-|`members.domain`|(Required, string) The domain of the member  |
-|`members.notes`|(Optional, string) Descriptive text of up to 1000 characters about the member.  |
-|`members.datacenter`|(Required, string) The data center in which you want to provision the member.  |
-|`members.network_speed`|(Optional, integer) The connection speed (in Mbps) for the member network components. Default value: `100`.  |
-|`members.redundant_power_supply`|(Optional, boolean) When the value is `true`, an additional power supply is provided. Default value: `false`  |
-|`members.tcp_monitoring`|(Optional, boolean) Whether to enable TCP monitoring for the member. Default value: `false`.  |
-|`members.process_key_name`|(Optional, string) The process key name for the member. Default value:  `INTEL_SINGLE_XEON_1270_3_40_2`. Refer to the same attribute on the `ibm_compute_bare_metal` resource.  |
-|`members.package_key_name`|(Optional, string) The key name for the network gateway package. You can find available package key names in the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_GATEWAY"}}}), using your API key as the password. Default value: `NETWORK_GATEWAY_APPLIANCE`. The default will allow to order Single Processor Multi-Core Servers. Use `2U_NETWORK_GATEWAY_APPLIANCE_1O_GBPS` for ordering Dual Processor Multi-Core Servers.  |
-|`members.os_key_name`|(Optional, string) The os key name for member. Default value:  `OS_VYATTA_5600_5_X_UP_TO_1GBPS_SUBSCRIPTION_EDITION_64_BIT`. Refer to the same attribute on the `ibm_compute_bare_metal` resource.  |
-|`members.redundant_network`|(Optional, boolean) When the value is `true`, two physical network interfaces are provided with a bonding configuration. Default value: `false`.   |
-|`members.unbonded_network`|(Optional, boolean) When the value is `true`, two physical network interfaces are provided without a bonding configuration. Default value: `false`.   |
-|`members.tags`|(Optional, set) Tags associated with the VM instance. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.  |
-|`members.public_bandwidth`|(Optional, integer) Allowed public network traffic (in GB) per month. Default value: `20000`.  |
-|`members.memory`|(Required, integer) The amount of memory, expressed in megabytes, that you want to allocate.  |
-|`members.storage_groups`|(Optional, list) A nested block describing the storage group for the member of the network gateway. Nested `storage_groups` blocks have the following structure:      |
-|`members.storage_groups.array_type_id`|(Required, integer) The ID of the array type.      |
-|`members.storage_groups.hard_drives`|(Required, list) The list of hard drive associated with the gateway member.      |
-|`members.storage_groups.array_size`|(Optional, integer) The size of the array.      |
-|`members.storage_groups.partition_template_id`|(Optional, integer) The partition template ID for the member.  |
-|`members.ssh_key_ids`|(Optional, list) The SSH key IDs to install on the member.  |
-|`members.post_install_script_uri`|(Optional, string) The URI of the script to be downloaded and executed on the member. Default value: `nil`.  |
-|`members.user_metadata`|(Optional, string) Arbitrary data to be made available to the member.  |
-|`members.disk_key_names`|(Optional, list) Provide the disk key name. Refer to the same attribute in the `ibm_compute_bare_metal` resource.  |
-|`members.public_vlan_id`|(Optional, integer) ID of the public VLAN.  |
-|`members.private_vlan_id`|(Optional, integer) ID of the private VLAN.       **NOTE**: If there are two members in this gateway, then both should have same value for `public_vlan_id` and `private_vlan_id`.      |
-|`members.ipv6_enabled`|(Optional, boolean) Whether to enable IPv6. Default value: `true`.  |
-|`members.private_network_only`|(Optional, boolean) Whether to enable a private network only. Default value: `false`.|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`name`| String | Required | The name of the gateway.| No |
+|`ssh_key_ids`| List | Optional | The SSH key IDs to install on the gateway when the gateway gets created.| Yes |
+|`post_install_script_uri`| String | Optional | The URI of the script to be downloaded and executed after the gateway installation is complete. Default value: `nil`. | Yes |
+|`members`| List | Required | A nested block describing the hardware members of this network gateway. | No |
+|`members.hostname`| String | Optional | Hostname of the member.  | Yes |
+|`members.domain`| String | Required |The domain of the member  | Yes |
+|`members.notes`|String | Optional | Descriptive text of up to 1000 characters about the member.  | Yes |
+|`members.datacenter`| String | Required | The data center in which you want to provision the member.  | Yes |
+|`members.network_speed`| Integer | Optional |The connection speed (in Mbps) for the member network components. Default value: `100`.  | Yes |
+|`members.redundant_power_supply`| Boolean | Optional | When the value is `true`, an additional power supply is provided. Default value: `false`  | Yes |
+|`members.tcp_monitoring`| Boolean | Optional |Whether to enable TCP monitoring for the member. Default value: `false`.  | Yes |
+|`members.process_key_name`| String | Optional | The process key name for the member. Default value:  `INTEL_SINGLE_XEON_1270_3_40_2`. Refer to the same attribute on the `ibm_compute_bare_metal` resource.  | Yes |
+|`members.package_key_name`| String | Optional | The key name for the network gateway package. You can find available package key names in the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_GATEWAY"}}}), using your API key as the password. Default value: `NETWORK_GATEWAY_APPLIANCE`. The default will allow to order Single Processor Multi-Core Servers. Use `2U_NETWORK_GATEWAY_APPLIANCE_1O_GBPS` for ordering Dual Processor Multi-Core Servers.  | Yes |
+|`members.os_key_name`| String | Optional | The os key name for member. Default value:  `OS_VYATTA_5600_5_X_UP_TO_1GBPS_SUBSCRIPTION_EDITION_64_BIT`. Refer to the same attribute on the `ibm_compute_bare_metal` resource.  | Yes |
+|`members.redundant_network`| Boolean | Optional | When the value is `true`, two physical network interfaces are provided with a bonding configuration. Default value: `false`.   | Yes |
+|`members.unbonded_network`| Boolean | Optional |  When the value is `true`, two physical network interfaces are provided without a bonding configuration. Default value: `false`.   | Yes |
+|`members.tags`| Set | Optional | Tags associated with the VM instance. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.  | Yes |
+|`members.public_bandwidth`| Integer | Optional | Allowed public network traffic (in GB) per month. Default value: `20000`.  | Yes |
+|`members.memory`| Integer | Required | The amount of memory, expressed in megabytes, that you want to allocate.  | Yes |
+|`members.storage_groups`| List | Optional | A nested block describing the storage group for the member of the network gateway. Nested `storage_groups` blocks have the following structure:      | Yes |
+|`members.storage_groups.array_type_id`| Integer | Required | The ID of the array type.      | No |
+|`members.storage_groups.hard_drives`| List | Required |The list of hard drive associated with the gateway member.      | No |
+|`members.storage_groups.array_size`| Integer | Optional | The size of the array.      | No |
+|`members.storage_groups.partition_template_id`| Integer | Optional | The partition template ID for the member.  | No |
+|`members.ssh_key_ids`| List | Optional |  The SSH key IDs to install on the member.  | Yes |
+|`members.post_install_script_uri`| String | Optional | The URI of the script to be downloaded and executed on the member. Default value: `nil`.  | Yes |
+|`members.user_metadata`| String | Optional | Arbitrary data to be made available to the member.  | Yes |
+|`members.disk_key_names`| List | Optional |  Provide the disk key name. Refer to the same attribute in the `ibm_compute_bare_metal` resource.  | Yes |
+|`members.public_vlan_id`| Integer | Optional | ID of the public VLAN.  | Yes |
+|`members.private_vlan_id`| Integer | Optional |  ID of the private VLAN.       **NOTE**: If there are two members in this gateway, then both should have same value for `public_vlan_id` and `private_vlan_id`. | Yes |
+|`members.ipv6_enabled`| Boolean | Optional | Whether to enable IPv6. Default value: `true`.  | Yes |
+|`members.private_network_only`| Boolean | Optional |  Whether to enable a private network only. Default value: `false`.| Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2710,7 +2710,7 @@ Provide a resource to associate a VLAN with a network gateway. The VLANs can be 
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Gateway_Vlan).
 
-For more information about getting started, see the [IBM Virtual Router Appliance docs](/docs/infrastructure/gateway-appliance?topic=gateway-appliance-getting-started).
+For more information about getting started, see the [IBM Virtual Router Appliance docs](/docs/gateway-appliance?topic=gateway-appliance-getting-started).
 
 ### Sample Terraform code
 {: #network-vlan-associate-sample}
@@ -2749,11 +2749,11 @@ resource "ibm_network_gateway_vlan_association" "gateway_vlan_association" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`gateway_id`|(Required, integer) The ID of the network gateway.|
-|`network_vlan_id`|(Required, integer) The ID of the network VLAN to associate with the network gateway.|
-|`bypass`|(Optional, boolean) Indicates if the VLAN should be in bypass or routed mode. Default value: `true`. |
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`gateway_id`| Integer | Required | The ID of the network gateway.| Yes |
+|`network_vlan_id`| Integer | Required | The ID of the network VLAN to associate with the network gateway.| Yes |
+|`bypass`| Boolean | Optional |Indicates if the VLAN should be in bypass or routed mode. Default value: `true`. |  No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2802,11 +2802,11 @@ resource "ibm_network_interface_sg_attachment" "sg1" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`security_group_id`|(Required, int) The ID of the security group.|
-|`network_interface_id`|(Required, int) The ID of the network interface to which the security group must be applied.|
-|`soft_reboot`|(Optional, boolean) Default `true`. If set to **true** and a reboot is required to apply the security group attachment for the virtual server instance, then a soft reboot is performed. If set to **false**, no reboot is performed. **Note**: A reboot is always required the first time a security group is applied to a network interface of a virtual server instance that was never rebooted before. |
+|Name| Data type | Required/ Optional | Description | Forces new resource
+|----|-----------| ------ | ----- | ----------|
+|`security_group_id`| Integer | Required | The ID of the security group.| Yes |
+|`network_interface_id`| Integer | Required | The ID of the network interface to which the security group must be applied.| Yes |
+|`soft_reboot`| Boolean | Optional | Default `true`. If set to **true** and a reboot is required to apply the security group attachment for the virtual server instance, then a soft reboot is performed. If set to **false**, no reboot is performed. **Note**: A reboot is always required the first time a security group is applied to a network interface of a virtual server instance that was never rebooted before. | Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 
@@ -2845,11 +2845,11 @@ resource "ibm_network_public_ip" "test_public_ip " {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`routes_to`|(Required, string) The destination IP address that the public IP routes traffic through. The destination IP address can be a public IP address of IBM resources in the same account, such as a public IP address of a VM or public virtual IP addresses of NetScaler VPXs.|
-|`notes`|(Optional, string) Descriptive text to associate with the public IP instance.|
-|`tags`|(Optional, array of strings) Tags associated with the public IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description |
+|----|-----------| ------ | ----- |
+|`routes_to`| String | Required | The destination IP address that the public IP routes traffic through. The destination IP address can be a public IP address of IBM resources in the same account, such as a public IP address of a VM or public virtual IP addresses of NetScaler VPXs.|
+|`notes`| String | Optional | Descriptive text to associate with the public IP instance.|
+|`tags`| Array of strings | Optional | Tags associated with the public IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2911,14 +2911,14 @@ resource "ibm_network_vlan" "test_vlan" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`datacenter`|(Required, string) The data center in which the VLAN resides.|
-|`type`|(Required, string) The type of VLAN. Accepted values are `PRIVATE` and `PUBLIC`.|
-|`subnet_size`|(Removed, integer) The size of the primary subnet for the VLAN. Accepted values are `8`, `16`, `32`, and `64`. This field has been removed.|
-|`name`|(Optional, string) The name of the VLAN. Maximum length of 20 characters.|
-|`router_hostname`|(Optional, string) The hostname of the primary router associated with the VLAN.|
-|`tags`|(Optional, array of strings) Tags associated with the VLAN. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed. 
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`datacenter`| String | Required |The data center in which the VLAN resides.| Yes |
+|`type`| String | Required | The type of VLAN. Accepted values are `PRIVATE` and `PUBLIC`.| Yes |
+|`subnet_size`| Integer | Required | The size of the primary subnet for the VLAN. Accepted values are `8`, `16`, `32`, and `64`. This field has been removed.| Yes |
+|`name`| String | Optional | The name of the VLAN. Maximum length of 20 characters.| No |
+|`router_hostname`| String | Optional | The hostname of the primary router associated with the VLAN.| Yes |
+|`tags`| Array of strings | Optional |  Tags associated with the VLAN. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed. | No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2998,7 +2998,7 @@ The following attributes are exported:
 
 Retrieve the account name for an existing Object Storage instance within your IBM account. If no Object Storage instance exists, you can use this resource to order an Object Storage instance and to store the account name.
 
-Do not use this resource for managing the lifecycle of an Object Storage instance in IBM. For lifecycle management, see the [Swift API](https://developer.openstack.org/api-ref/object-store/) or [Swift resources](https://github.com/TheWeatherCompany/terraform-provider-swift).
+Do not use this resource for managing the lifecycle of an Object Storage instance in IBM. For lifecycle management, see the [Swift API](https://docs.openstack.org/api-ref/object-store/) or [Swift resources](https://github.com/TheWeatherCompany/terraform-provider-swift).
 
 ### Sample Terraform code
 {: #os-account-sample}
@@ -3051,10 +3051,10 @@ resource "ibm_security_group" "sg1" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`name`|(Required, string) The descriptive name used to identify the security group.|
-|`description`|(Optional, string) Additional details to describe the security group.|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`name`| String | Required | The descriptive name used to identify the security group.| Yes |
+|`description`| String | Optional | Additional details to describe the security group.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3096,16 +3096,16 @@ resource "ibm_security_group_rule" "allow_port_8080" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`direction`|(Required, string) The direction of traffic. Accepted values: `ingress` or `egress`.|
-|`ether_type`|(Optional, string) The IP version. Accepted values  (case sensitive): `IPv4` or `IPv6`. Default value: 'IPv4'.|
-|`port_range_min`|(Optional, int) The start of the port range for allowed traffic.|
-|`port_range_max`|(Optional, int) The end of the port range for allowed traffic.|
-|`protocol`|(Optional, string) The IP protocol type. Accepted values (case sensitive): `icmp`,`tcp`, or `udp`.|
-|`remote_group_id`|(Optional, int) The ID of the remote security group allowed as part of the rule.       **NOTE**: Conflicts with `remote_ip`.|
-|`remote_ip`|(Optional, string) The CIDR or IP address for allowed connections.       **NOTE**: Conflicts with `remote_group_id`.|
-|`security_group_id`|(Required, int) The ID of the security group this rule belongs to.|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`direction`| String | Required | The direction of traffic. Accepted values: `ingress` or `egress`.| No |
+|`ether_type`| String | Optional | The IP version. Accepted values  (case sensitive): `IPv4` or `IPv6`. Default value: 'IPv4'.| No |
+|`port_range_min`| Integer | Optional | The start of the port range for allowed traffic.| No |
+|`port_range_max`| Integer | Optional | The end of the port range for allowed traffic.| No |
+|`protocol`| String | Optional |  The IP protocol type. Accepted values (case sensitive): `icmp`,`tcp`, or `udp`.| No |
+|`remote_group_id`| Integer | Optional | The ID of the remote security group allowed as part of the rule.       **NOTE**: Conflicts with `remote_ip`.| No |
+|`remote_ip`| String | Optional |  The CIDR or IP address for allowed connections.       **NOTE**: Conflicts with `remote_group_id`.| No |
+|`security_group_id`| Integer | Required | The ID of the security group this rule belongs to.| Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3170,20 +3170,20 @@ resource "ibm_storage_block" "test2" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`type`|(Required, string) The type of the storage. Accepted values are `Endurance` and `Performance`.|
-|`datacenter`|(Required, string) The data center where you want to provision the block storage instance.|
-|`capacity`|(Required, integer) The amount of storage capacity you want to allocate, specified in gigabytes.|
-|`iops`|(Required, float) The IOPS value for the storage. For supported values, see [Provisioning](/docs/BlockStorage?topic=BlockStorage-About#provisioning)|
-|`os_format_type`|(Required, string) The OS type used to format the storage space. This OS type must match the OS type that connects to the LUN. [Log in to the IBM Cloud Classic Infrastructure (SoftLayer) API to see available OS format types](https://api.softlayer.com/rest/v3/SoftLayer_Network_Storage_Iscsi_OS_Type/getAllObjects/). Use your API as the password to log in. Log in and find the key called `name`.|
-|`snapshot_capacity`|(Optional, integer) The amount of snapshot capacity to allocate, specified in gigabytes.|
-|`allowed_virtual_guest_ids`|(Optional, array of integers) The virtual guests that you want to give access to this instance. Virtual guests must be in the same data center as the block storage. You can also use this field to import the list of virtual guests that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_vm_instance` resource.|
-|`allowed_hardware_ids`|(Optional, array of integers) The bare metal servers that you want to give access to this instance. Bare metal servers must be in the same data center as the block storage. You can also use this field to import the list of bare metal servers that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_bare_metal` resource.|
-|`allowed_ip_addresses`|(Optional, array of string) The IP addresses that you want to give access to this instance. IP addresses must be in the same data center as the block storage.|
-|`notes`|(Optional, string) A descriptive note that you want to associate with the block storage.|
-|`tags`|(Optional, array of strings) Tags associated with the storage block instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
-|`hourly_billing`|(Optional,Boolean) Set true to enable hourly billing.Default is false   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the link to get the updated list of data centers. http://knowledgelayer.softlayer.com/articles/new-ibm-block-and-file-storage-location-and-features|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`type`| String | Required | The type of the storage. Accepted values are `Endurance` and `Performance`.| Yes |
+|`datacenter`| String | Required |The data center where you want to provision the block storage instance.| Yes |
+|`capacity`| Integer | Required | The amount of storage capacity you want to allocate, specified in gigabytes.|
+|`iops`| Float | Required | The IOPS value for the storage. For supported values, see [Provisioning](/docs/BlockStorage?topic=BlockStorage-About#provisioning)| No |
+|`os_format_type`| String | Required | The OS type used to format the storage space. This OS type must match the OS type that connects to the LUN. [Log in to the IBM Cloud Classic Infrastructure (SoftLayer) API to see available OS format types](https://api.softlayer.com/rest/v3/SoftLayer_Network_Storage_Iscsi_OS_Type/getAllObjects/). Use your API as the password to log in. Log in and find the key called `name`.| Yes |
+|`snapshot_capacity`| Integer | Optional | The amount of snapshot capacity to allocate, specified in gigabytes.| Yes |
+|`allowed_virtual_guest_ids`| Array of integers | Optional | The virtual guests that you want to give access to this instance. Virtual guests must be in the same data center as the block storage. You can also use this field to import the list of virtual guests that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_vm_instance` resource.| No |
+|`allowed_hardware_ids`| Array of integers | Optional | The bare metal servers that you want to give access to this instance. Bare metal servers must be in the same data center as the block storage. You can also use this field to import the list of bare metal servers that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_bare_metal` resource.| No |
+|`allowed_ip_addresses`| Array of strings | Optional | The IP addresses that you want to give access to this instance. IP addresses must be in the same data center as the block storage.| No |
+|`notes`| Strings | Optional |  A descriptive note that you want to associate with the block storage.| No |
+|`tags`| Array of strings | Optional | Tags associated with the storage block instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
+|`hourly_billing`| Boolean | Optional | Set true to enable hourly billing.Default is false   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the link to get the updated list of data centers. http://knowledgelayer.softlayer.com/articles/new-ibm-block-and-file-storage-location-and-features| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3226,13 +3226,13 @@ resource "ibm_storage_evault" "test" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`datacenter`|(Required, string) The data center where you want to provision the evault storage instance.|
-|`capacity`|(Required, integer) The amount of storage capacity you want to allocate, specified in gigabytes.|
-|`virtual_instance_id`|(Optional, integer) The id of the virtual instance.     **NOTE**: Conflicts with `hardware_instance_id`.|
-|`hardware_instance_id`|(Optional, integer) The id of the hardware instance.     **NOTE**: Conflicts with `virtual_instance_id`.|
-|`tags`|(Optional, array of strings) Tags associated with the storage evault instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`datacenter`| String | Required |The data center where you want to provision the evault storage instance.| Yes |
+|`capacity`| Integer | Required | The amount of storage capacity you want to allocate, specified in gigabytes.| No |
+|`virtual_instance_id`| Integer | Optional | The id of the virtual instance.     **NOTE**: Conflicts with `hardware_instance_id`.| Yes |
+|`hardware_instance_id`| Integer | Optional | The id of the hardware instance.     **NOTE**: Conflicts with `virtual_instance_id`.| Yes |
+|`tags`| Array of strings | Optional | Tags associated with the storage evault instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3333,27 +3333,27 @@ resource "ibm_storage_file" "fs_performance" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`type`|(Required, string) The type of the storage. Accepted values are `Endurance` and `Performance`|
-|`datacenter`|(Required, string) The data center where you want to provision the file storage instance.|
-|`capacity`|(Required, integer) The amount of storage capacity you want to allocate, expressed in gigabytes.|
-|`iops`|(Required, float) The IOPS value for the storage instance. For supported values, see [Provisioning](/docs/FileStorage?topic=FileStorage-about#provisioning). |
-|`snapshot_capacity`|(Optional, integer) The amount of snapshot capacity you want to allocate, expressed in gigabytes.|
-|`allowed_virtual_guest_ids`|(Optional, array of integers) The virtual guests that you want to give access to this instance. Virtual guests must be in the same data center as the block storage. You can also use this field to import the list of virtual guests that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_vm_instance` resource.|
-|`allowed_hardware_ids`|(Optional, array of integers) The bare metal servers that you want to give access to this instance. Bare metal servers must be in the same data center as the block storage. You can also use this field to import the list of bare metal servers that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_bare_metal` resource.|
-|`allowed_subnets`|(Optional, array of integers) The subnets that you want to give access to this instance. Subnets must be in the same data center as the block storage.|
-|`allowed_ip_addresses`|(Optional, array of string) The IP addresses that you want to allow. IP addresses must be in the same data center as the block storage. |
-|`snapshot_schedule`|(Optional, array) Applies only to Endurance storage. Specifies the parameters required for a snapshot schedule.    |
-|`snapshot_schedule.schedule_type`|(String) The snapshot schedule type. Accepted values are `HOURLY`, `WEEKLY`, and `DAILY`.    |
-|`snapshot_schedule.retention_count`|(Integer) The retention count for a snapshot schedule. Required for all types of `schedule_type`.    |
-|`snapshot_schedule.minute`|(Integer) The minute for a snapshot schedule. Required for all types of `schedule_type`.    |
-|`snapshot_schedule.hour`|(Integer) The hour for a snapshot schedule. Required if `schedule_type` is set to `DAILY` or `WEEKLY`.    |
-|`snapshot_schedule.day_of_week`|(String) The day of the week for a snapshot schedule. Required if the `schedule_type` is set to `WEEKLY`.    |
-|`snapshot_schedule.enable`|(Boolean) Whether to disable an existing snapshot schedule.|
-|`notes`|(Optional, string) Descriptive text to associate with the file storage.  |
-|`tags`|(Optional, array of strings) Tags associated with the file storage instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.  |
-|`hourly_billing`|(Optional,Boolean) Set true to enable hourly billing. Default is false.   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the [link](/docs/FileStorage?topic=FileStorage-selectDC) to get the updated list of data centers.|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`type`| String | Required | The type of the storage. Accepted values are `Endurance` and `Performance`| Yes |
+|`datacenter`| String | Required |The data center where you want to provision the file storage instance.| Yes |
+|`capacity`| Integer | Required |The amount of storage capacity you want to allocate, expressed in gigabytes.| No |
+|`iops`| Float | Required | The IOPS value for the storage instance. For supported values, see [Provisioning](/docs/FileStorage?topic=FileStorage-about#provisioning). | No |
+|`snapshot_capacity`| Integer | Optional | The amount of snapshot capacity you want to allocate, expressed in gigabytes.| Yes |
+|`allowed_virtual_guest_ids`| Array of integers | Optional | The virtual guests that you want to give access to this instance. Virtual guests must be in the same data center as the block storage. You can also use this field to import the list of virtual guests that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_vm_instance` resource.| No |
+|`allowed_hardware_ids`| Array of integers | Optional | The bare metal servers that you want to give access to this instance. Bare metal servers must be in the same data center as the block storage. You can also use this field to import the list of bare metal servers that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_bare_metal` resource.| No |
+|`allowed_subnets`| Array of integers | Optional | The subnets that you want to give access to this instance. Subnets must be in the same data center as the block storage.| No |
+|`allowed_ip_addresses`| Array of strings | Optional | The IP addresses that you want to allow. IP addresses must be in the same data center as the block storage. | No |
+|`snapshot_schedule`| Array | Optional | Applies only to Endurance storage. Specifies the parameters required for a snapshot schedule.    | No |
+|`snapshot_schedule.schedule_type`| String | Optional | The snapshot schedule type. Accepted values are `HOURLY`, `WEEKLY`, and `DAILY`.    | No |
+|`snapshot_schedule.retention_count`| Integer | Optional | The retention count for a snapshot schedule. Required for all types of `schedule_type`.    | No |
+|`snapshot_schedule.minute`| Integer | Optional | The minute for a snapshot schedule. Required for all types of `schedule_type`. |  No |
+|`snapshot_schedule.hour`| Integer | Optional | The hour for a snapshot schedule. Required if `schedule_type` is set to `DAILY` or `WEEKLY`.    | No |
+|`snapshot_schedule.day_of_week`| String | Optional | The day of the week for a snapshot schedule. Required if the `schedule_type` is set to `WEEKLY`.    | No |
+|`snapshot_schedule.enable`| Boolean | Optional | Whether to disable an existing snapshot schedule.| No |
+|`notes`| String | Optional |  Descriptive text to associate with the file storage.  | No |
+|`tags`| Arrays of Strings | Optional |  Tags associated with the file storage instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.  | No |
+|`hourly_billing`| Boolean | Optional |  Set true to enable hourly billing. Default is false.   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the [link](/docs/FileStorage?topic=FileStorage-selectDC) to get the updated list of data centers.| Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3383,7 +3383,7 @@ addresses for IBM resources in the VLAN. Because each portable subnet has a defa
 
 The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
 
-Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](http://blog.softlayer.com/tag/ipv6)
+Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](/docs/subnets?topic=subnets-about-subnets-and-ips).
 
 ### Sample Terraform code of portable subnet
 {: #subnet-sample}
@@ -3461,16 +3461,16 @@ output "first_ip_address" {
 
 The following arguments are supported:
 
-|Name|Description|
-|----|-----------|
-|`private`|(Optional, boolean) Specifies whether the network is public or private.|
-|`type`|(Required, string) The type of the subnet. Accepted values are `portable` and `static`.|
-|`ip_version`|(Optional, integer) The IP version of the subnet. Accepted values are 4 and 6.|
-|`capacity`|(Required, integer) The size of the subnet. <ul><li>Accepted values for a public portable IPv4 subnet are 4, 8, 16, and 32. </li><li> Accepted values for a private portable IPv4 subnet are 4, 8, 16, 32, and 64. </li><li>Accepted values for a public static IPv4 subnet are 1, 2, 4, 8, 16, and 32. </li><li>Accepted value for a public portable IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided. </li><li>Accepted value for a public static IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided.</li></ul>|
-|`vlan_id`|(Optional, integer) The VLAN ID for portable subnet. You can configure both public and private VLAN ID. You can find accepted values in the [SoftLayer VLAN documentation](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.|
-|`endpoint_ip`|(Optional, string) The target primary IP address for a static subnet. Only public IP addresses of virtual servers, bare metal servers, and netscaler VPXs can be configured as an `endpoint_ip`. The `static subnet` will be created on the VLAN where the `endpoint_ip` is located.|
-|`notes`|(Optional, string) Descriptive text or comments about the subnet.|
-|`tags`|(Optional, array of strings) Tags associated with the subnet instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name| Data type | Required/ Optional | Description | Forces new resource |
+|----|-----------| ------ | ----- | ----------|
+|`private`| Boolean | Optional |Specifies whether the network is public or private.| Yes |
+|`type`| String | Required |The type of the subnet. Accepted values are `portable` and `static`.| Yes |
+|`ip_version`| Integer | Optional | The IP version of the subnet. Accepted values are 4 and 6.| Yes |
+|`capacity`| Integer | Required | The size of the subnet. <ul><li>Accepted values for a public portable IPv4 subnet are 4, 8, 16, and 32. </li><li> Accepted values for a private portable IPv4 subnet are 4, 8, 16, 32, and 64. </li><li>Accepted values for a public static IPv4 subnet are 1, 2, 4, 8, 16, and 32. </li><li>Accepted value for a public portable IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided. </li><li>Accepted value for a public static IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided.</li></ul>| Yes |
+|`vlan_id`| Integer | Optional | The VLAN ID for portable subnet. You can configure both public and private VLAN ID. You can find accepted values in the [SoftLayer VLAN documentation](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.| Yes |
+|`endpoint_ip`| String | Optional | The target primary IP address for a static subnet. Only public IP addresses of virtual servers, bare metal servers, and netscaler VPXs can be configured as an `endpoint_ip`. The `static subnet` will be created on the VLAN where the `endpoint_ip` is located.| Yes |
+|`notes`| String | Optional | Descriptive text or comments about the subnet.| No |
+|`tags`| Array of Strings | Optional |  Tags associated with the subnet instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters

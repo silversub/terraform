@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-06-26"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -260,12 +260,12 @@ In this tutorial, you provision {{site.data.keyword.cloud_notm}} classic infrast
    </tr>
    <tr>
    <td><code>rhn_password</code></td>
-   <td>The [Red Hat Network password ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.redhat.com/apps/register/connect/) to access the OpenShift project. You can enter this information here or provide it as part of your OpenShift deployment in [Lesson 2](#provision_infrastructure).  </td>
+   <td>The [Red Hat Network password ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://access.redhat.com/solutions/253273) to access the OpenShift project. You can enter this information here or provide it as part of your OpenShift deployment in [Lesson 2](#provision_infrastructure).  </td>
    <td>n/a</td>
    </tr>
    <tr>
    <td><code>rhn_username</code></td>
-   <td>The [Red Hat Network user name with OpenShift subscription ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.redhat.com/apps/register/connect/) to access the OpenShift project. You can enter this information here or provide it as part of your OpenShift deployment in [Lesson 2](#provision_infrastructure).  </td>
+   <td>The [Red Hat Network user name with OpenShift subscription ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://access.redhat.com/solutions/253273) to access the OpenShift project. You can enter this information here or provide it as part of your OpenShift deployment in [Lesson 2](#provision_infrastructure).  </td>
    <td>n/a</td>
    </tr>
    <tr>

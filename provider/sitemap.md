@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-06-30"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -140,10 +140,10 @@ subcollection: terraform
 - [Identity & Access (IAM) resources](/docs/terraform?topic=terraform-iam-resources)
     - [`ibm_iam_access_group`](/docs/terraform?topic=terraform-iam-resources#iam-access-group)
     - [`ibm_iam_access_group_members`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-members)
-    - [`ibm_access_group_policy`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-policy)
+    - [`ibm_iam_access_group_policy`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-policy)
     - [`ibm_iam_access_group_dynamic_rule`](/docs/terraform?topic=terraform-iam-resources#iam-group-dynamic-rule)
-    - [`ibm_authorization_policy`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy)
-    - [`ibm_authorization_policy_detach`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy-detach)
+    - [`ibm_iam_authorization_policy`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy)
+    - [`ibm_iam_authorization_policy_detach`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy-detach)
     - [`ibm_iam_custom_role`](/docs/terraform?topic=terraform-iam-resources#iam-custom-role)
     - [`ibm_iam_service_id`](/docs/terraform?topic=terraform-iam-resources#iam-service-id)
     - [`ibm_iam_service_policy`](/docs/terraform?topic=terraform-iam-resources#iam-service-policy)

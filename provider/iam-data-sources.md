@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-06-30"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -167,7 +167,7 @@ data "ibm_iam_roles" "test" {
 {: codeblock}
 
 ### Input parameters
-{: #iam-role-actions-input}
+{: #iam-roles-input}
 
 Review the input parameters that you can specify for your data source.
 

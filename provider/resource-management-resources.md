@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-15" 
+lastupdated: "2020-06-29" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -125,16 +125,16 @@ resource "ibm_resource_instance" "resource_instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required|A descriptive name used to identify the resource instance.|
-|`service`|String|Required|The name of the service offering. You can retrieve the value by installing the `catalogs-management` CLI plug-in and running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search` command.|
-|`plan`|String|Required|The name of the plan type supported by service. You can retrieve the value by running the `ibmcloud catalog service <servicename>` command.|
-|`location`|String|Required|Target location or environment to create the resource instance.|
-|`resource_group_id`|String|Optional|The ID of the resource group where you want to create the service. You can retrieve the value from data source `ibm_resource_group`. If not provided creates the service in default resource group.|
-|`tags`|Array of strings|Optional|Tags associated with the instance.|
-|`parameters`|Map|Optional|Arbitrary parameters to create instance. The value must be a JSON object.|
-|`guid`|String|Optional|The GUID of the resource instance.|
+|Name|Data type|Required/ optional|Description|Forces new resource|
+|----|-----------|-----------|---------------------|------|
+|`name`|String|Required|A descriptive name used to identify the resource instance.| No |
+|`service`|String|Required|The name of the service offering. You can retrieve the value by installing the `catalogs-management` CLI plug-in and running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search` command.| Yes |
+|`plan`|String|Required|The name of the plan type supported by service. You can retrieve the value by running the `ibmcloud catalog service <servicename>` command.| No |
+|`location`|String|Required|Target location or environment to create the resource instance.| Yes |
+|`resource_group_id`|String|Optional|The ID of the resource group where you want to create the service. You can retrieve the value from data source `ibm_resource_group`. If not provided creates the service in default resource group.| Yes |
+|`tags`|Array of strings|Optional|Tags associated with the instance.| No |
+|`parameters`|Map|Optional|Arbitrary parameters to create instance. The value must be a JSON object.| Yes |
+|`guid`|String|Optional|The GUID of the resource instance.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -275,14 +275,14 @@ resource "ibm_resource_key" "resourceKey" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
-|----|-----------|-----------|---------------------|
-|`name`|String|Required| A descriptive name used to identify a resource key.|
-|`role`|String|Required|The name of the user role. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.|
-|`parameters`|Map|Optional|Arbitrary parameters to pass to the resource in JSON format. If you want to create service credentials by using the private service endpoint, include the `service-endpoints =  "private"` parameter. |
-|`resource_instance_id`|String|Optional|The ID of the resource instance associated with the resource key. **NOTE**: Conflicts with `resource_alias_id`.|
-|`resource_alias_id`|String|Optional|The ID of the resource alias associated with the resource key. **NOTE**: Conflicts with `resource_instance_id`.|
-|`tags`|Array of strings|Optional|Tags associated with the resource key instance. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------|----------|
+|`name`|String|Required| A descriptive name used to identify a resource key.| Yes |
+|`role`|String|Required|The name of the user role. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.| Yes |
+|`parameters`|Map|Optional|Arbitrary parameters to pass to the resource in JSON format. If you want to create service credentials by using the private service endpoint, include the `service-endpoints =  "private"` parameter. | Yes |
+|`resource_instance_id`|String|Optional|The ID of the resource instance associated with the resource key. **NOTE**: Conflicts with `resource_alias_id`.| Yes |
+|`resource_alias_id`|String|Optional|The ID of the resource alias associated with the resource key. **NOTE**: Conflicts with `resource_instance_id`.| Yes |
+|`tags`|Array of strings|Optional|Tags associated with the resource key instance. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
