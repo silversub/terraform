@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-30"
+lastupdated: "2020-07-06"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -26,9 +26,11 @@ subcollection: terraform
 
 # Index of Terraform resources and data sources
 
+## API Gateway resources
 - [API Gateway resources](/docs/terraform?topic=terraform-api-gateway-resources)
     - [`ibm_api_gateway_endpoint`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint)
     - [`ibm_api_gateway_endpoint_subscription`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint-subscript)
+## API Gateway data sources
 - [API Gateway data sources](/docs/terraform?topic=terraform-api-gw-data-sources)
     - [`ibm_api_gateway`](/docs/terraform?topic=terraform-api-gw-data-sources#api-gw)
 - [Certificate Manager resources](/docs/terraform?topic=terraform-cert-manager-resources)
