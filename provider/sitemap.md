@@ -100,10 +100,10 @@ subcollection: terraform
     - [`ibm_lbaas`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-lbaas)
     - [`ibm_network_vlan`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-vlan)
     - [`ibm_security_group`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-security-group)
- ## {{site.data.keyword.databases-for}} resources
+ ## Cloud Databases resources
 - [{{site.data.keyword.databases-for}} resources](/docs/terraform?topic=terraform-databases-resources)
     - [`ibm_database`](/docs/terraform?topic=terraform-databases-resources#db)
- ## {{site.data.keyword.databases-for}} data sources
+ ## Cloud Databases data sources
 - [{{site.data.keyword.databases-for}} data sources](/docs/terraform?topic=terraform-databases-data-sources)
     - [`ibm_database`](/docs/terraform?topic=terraform-databases-data-sources#database)
  ## Cloud Foundry resources
