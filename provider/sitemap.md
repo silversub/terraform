@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-06"
+lastupdated: "2020-07-07"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -33,11 +33,14 @@ subcollection: terraform
 ## API Gateway data sources
 - [API Gateway data sources](/docs/terraform?topic=terraform-api-gw-data-sources)
     - [`ibm_api_gateway`](/docs/terraform?topic=terraform-api-gw-data-sources#api-gw)
+## Certificate Manager resources
 - [Certificate Manager resources](/docs/terraform?topic=terraform-cert-manager-resources)
     - [`ibm_certificate_manager_import`](/docs/terraform?topic=terraform-cert-manager-resources#cert-manager)
     - [`ibm_certificate_manager_order`](/docs/terraform?topic=terraform-cert-manager-resources#certmanager-order)
+## Certificate Manager data sources
 - [Certificate Manager data sources](/docs/terraform?topic=terraform-cert-manager-data-sources)
     - [`ibm_certificate_manager_certificates`](/docs/terraform?topic=terraform-cert-manager-data-sources#cert-manager-certificates)
+## Classic infrastructure resources
 - [Classic infrastructure resources](/docs/terraform?topic=terraform-infrastructure-resources)
     - [`ibm_cdn`](/docs/terraform?topic=terraform-infrastructure-resources#cdn)
     - [`ibm_compute_autoscale_group`](/docs/terraform?topic=terraform-infrastructure-resources#autoscale-group)
@@ -85,6 +88,7 @@ subcollection: terraform
     - [`ibm_storage_file`](/docs/terraform?topic=terraform-infrastructure-resources#storage-file)
     - [`ibm_subnet`](/docs/terraform?topic=terraform-infrastructure-resources#subnet)
     - [`ibm_ssl_certificate`](/docs/terraform?topic=terraform-infrastructure-resources#ssl-cert)
+ ## Classic infrastructure data sources
 - [Classic infrastructure data sources](/docs/terraform?topic=terraform-infrastructure-data-sources)
     - [`ibm_compute_bare_metal`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-bare-metal)
     - [`ibm_compute_image_template`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-image)
@@ -96,10 +100,13 @@ subcollection: terraform
     - [`ibm_lbaas`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-lbaas)
     - [`ibm_network_vlan`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-vlan)
     - [`ibm_security_group`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-security-group)
+ ## 
 - [{{site.data.keyword.databases-for}} resources](/docs/terraform?topic=terraform-databases-resources)
     - [`ibm_database`](/docs/terraform?topic=terraform-databases-resources#db)
+ ## 
 - [{{site.data.keyword.databases-for}} data sources](/docs/terraform?topic=terraform-databases-data-sources)
     - [`ibm_database`](/docs/terraform?topic=terraform-databases-data-sources#database)
+ ## Cloud Foundry resources
 - [Cloud Foundry resources](/docs/terraform?topic=terraform-cloud-foundry-resources)
     - [`ibm_app`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-app)
     - [`ibm_app_domain_private`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-private-domain)
@@ -109,6 +116,7 @@ subcollection: terraform
     - [`ibm_service_instance`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-service)
     - [`ibm_service_key`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-service-key)
     - [`ibm_space`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-space)
+ ## Cloud Foundry data sources
 - [Cloud Foundry data sources](/docs/terraform?topic=terraform-cloud-foundry-data-sources)
     - [`ibm_account`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-account)
     - [`ibm_app`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-app)
@@ -121,24 +129,29 @@ subcollection: terraform
     - [`ibm_service_key`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-service-key)
     - [`ibm_service_plan`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-service-plan)
     - [`ibm_space`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-space)
+ ## DNS service resources
 - [DNS service resources](/docs/terraform?topic=terraform-dns-resources)
     - [`ibm_dns_permitted_network`](/docs/terraform?topic=terraform-dns-resources#dns-permitted-network)
     - [`ibm_dns_resource_record`](/docs/terraform?topic=terraform-dns-resources#dns-record)
     - [`ibm_dns_zone`](/docs/terraform?topic=terraform-dns-resources#dns-zone)
+ ##  DNS service data sources
 - [DNS service data sources](/docs/terraform?topic=terraform-dns-data-sources)
     - [`ibm_dns_permitted_networks`](/docs/terraform?topic=terraform-dns-data-sources#dns-permitted-network)
     - [`ibm_dns_resource_records`](/docs/terraform?topic=terraform-dns-data-sources#dns-record)
     - [`ibm_dns_zones`](/docs/terraform?topic=terraform-dns-data-sources#dns-zones)
+ ## Functions resources
 - [Functions resources](/docs/terraform?topic=terraform-function-resources)
     - [`ibm_function_action`](/docs/terraform?topic=terraform-function-resources#fn-action)
     - [`ibm_function_package`](/docs/terraform?topic=terraform-function-resources#fn-package)
     - [`ibm_function_rule`](/docs/terraform?topic=terraform-function-resources#fn-rule)
     - [`ibm_function_trigger`](/docs/terraform?topic=terraform-function-resources#fn-trigger)
+ ## Functions data sources
 - [Functions data sources](/docs/terraform?topic=terraform-function-data-sources)
     - [`ibm_function_action`](/docs/terraform?topic=terraform-function-data-sources#fn-action)
     - [`ibm_function_package`](/docs/terraform?topic=terraform-function-data-sources#fn-package)
     - [`ibm_function_rule`](/docs/terraform?topic=terraform-function-data-sources#fn-rule)
     - [`ibm_function_trigger`](/docs/terraform?topic=terraform-function-data-sources#fn-trigger)
+ ## Identity & Access (IAM) resources
 - [Identity & Access (IAM) resources](/docs/terraform?topic=terraform-iam-resources)
     - [`ibm_iam_access_group`](/docs/terraform?topic=terraform-iam-resources#iam-access-group)
     - [`ibm_iam_access_group_members`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-members)
@@ -151,6 +164,7 @@ subcollection: terraform
     - [`ibm_iam_service_policy`](/docs/terraform?topic=terraform-iam-resources#iam-service-policy)
     - [`ibm_iam_user_policy`](/docs/terraform?topic=terraform-iam-resources#iam-user-policy)
     - [`ibm_iam_user_invite`](/docs/terraform?topic=terraform-iam-resources#iam-user-invite)
+ ## Identity & Access (IAM) data sources
 - [Identity & Access (IAM) data sources](/docs/terraform?topic=terraform-iam-data-sources)
     - [`ibm_iam_access_group`](/docs/terraform?topic=terraform-iam-data-sources#access_group)
     - [`ibm_iam_auth_token`](/docs/terraform?topic=terraform-iam-data-sources#iam-token)
@@ -159,6 +173,7 @@ subcollection: terraform
     - [`ibm_iam_service_id`](/docs/terraform?topic=terraform-iam-data-sources#iam-service)
     - [`ibm_iam_service_policy`](/docs/terraform?topic=terraform-iam-data-sources#iam-service-policy)
     - [`ibm_iam_user_policy`](/docs/terraform?topic=terraform-iam-data-sources#iam-user-policy)
+ ## Internet services resources
 - [Internet services resources](/docs/terraform?topic=terraform-cis-resources)
     - [`ibm_cis`](/docs/terraform?topic=terraform-cis-resources#cis)
     - [`ibm_cis_domain`](/docs/terraform?topic=terraform-cis-resources#cis-domain)
@@ -169,15 +184,19 @@ subcollection: terraform
     - [`ibm_cis_healthcheck`](/docs/terraform?topic=terraform-cis-resources#cis-health)
     - [`ibm_cis_origin_pool`](/docs/terraform?topic=terraform-cis-resources#cis-origin-pool)
     - [`ibm_cis_rate_limit`](/docs/terraform?topic=terraform-cis-resources#rate-limit)
+## Internet Services data sources
 - [Internet Services data sources](/docs/terraform?topic=terraform-cis_data)
     - [`ibm_cis`](/docs/terraform?topic=terraform-cis_data#cis)
     - [`ibm_cis_domain`](/docs/terraform?topic=terraform-cis_data#cis_domain)
     - [`ibm_cis_ip_addresses`](/docs/terraform?topic=terraform-cis_data#cis_ip)
     - [`ibm_cis_rate_limit`](/docs/terraform?topic=terraform-cis_data#rate-limit)
+## Key Protect resources
 - [Key Protect resources](/docs/terraform?topic=terraform-kp-resources)
     - [`ibm_kp_key`](/docs/terraform?topic=terraform-kp-resources#kp-key)
+## Key Protect data sources
 - [Key Protect data sources](/docs/terraform?topic=terraform-kp-data-sources)
     - [`ibm_kp_key`](/docs/terraform?topic=terraform-kp-data-sources#kp-key)
+## Kubernetes Service resources
 - [Kubernetes Service resources](/docs/terraform?topic=terraform-container-resources)
     - [`ibm_container_alb`](/docs/terraform?topic=terraform-container-resources#container-alb)
     - [`ibm_container_alb_cert`](/docs/terraform?topic=terraform-container-resources#container-alb-cert)
@@ -189,6 +208,7 @@ subcollection: terraform
     - [`ibm_container_vpc_alb`](/docs/terraform?topic=terraform-container-resources#vpc-alb)
     - [`ibm_container_vpc_cluster`](/docs/terraform?topic=terraform-container-resources#vpc-cluster)
     - [`ibm_container_vpc_worker_pool`](/docs/terraform?topic=terraform-container-resources#vpc-worker-pool)
+## Kubernetes Service data sources
 - [Kubernetes Service data sources](/docs/terraform?topic=terraform-container-data-sources)
     - [`ibm_container_cluster`](/docs/terraform?topic=terraform-container-data-sources#container-cluster)
     - [`ibm_container_cluster_config`](/docs/terraform?topic=terraform-container-data-sources#container-cluster-config)
@@ -196,16 +216,20 @@ subcollection: terraform
     - [`ibm_container_cluster_versions`](/docs/terraform?topic=terraform-container-data-sources#container-cluster-versions)
     - [`ibm_container_vpc_cluster`](/docs/terraform?topic=terraform-container-data-sources#container-vpc-cluster)
     - [`ibm_container_vpc_cluster_worker`](/docs/terraform?topic=terraform-container-data-sources#container-vpc-worker)
+## Object Storage resources
 - [Object Storage resources](/docs/terraform?topic=terraform-object-storage-resources)
     - [`ibm_cos_bucket`](/docs/terraform?topic=terraform-object-storage-resources#cos-bucket)
+## Object Storage data source
 - [Object Storage data sources](/docs/terraform?topic=terraform-object-storage-data-sources)
     - [`ibm_cos_bucket`](/docs/terraform?topic=terraform-object-storage-data-sources#cos-bucket)
+## Power Systems resources
 - [Power Systems resources](/docs/terraform?topic=terraform-power-vsi)
     - [`ibm_pi_image`](/docs/terraform?topic=terraform-power-vsi#power-image)
     - [`ibm_pi_instance`](/docs/terraform?topic=terraform-power-vsi#power-instance)
     - [`ibm_pi_key`](/docs/terraform?topic=terraform-power-vsi#ssh-key)
     - [`ibm_pi_network`](/docs/terraform?topic=terraform-power-vsi#power-network)
     - [`ibm_pi_volume`](/docs/terraform?topic=terraform-power-vsi#power-volume)
+ ## Power Systems data sources
 - [Power Systems data sources](/docs/terraform?topic=terraform-power-data-sources)
     - [`ibm_pi_image`](/docs/terraform?topic=terraform-power-data-sources#power-image)
     - [`ibm_pi_images`](/docs/terraform?topic=terraform-power-data-sources#power-images)
@@ -217,19 +241,23 @@ subcollection: terraform
     - [`ibm_pi_tenant`](/docs/terraform?topic=terraform-power-data-sources#power-tenant)
     - [`ibm_pi_volume`](/docs/terraform?topic=terraform-power-data-sources#power-volume)
     - [`ibm_pi_instance_volumes`](/docs/terraform?topic=terraform-power-data-sources#power-instance-volumes)
+ ## Resource management resources
 - [Resource management resources](/docs/terraform?topic=terraform-resource-mgmt-resources)
     - [`ibm_resource_group`](/docs/terraform?topic=terraform-resource-mgmt-resources#rg)
     - [`ibm_resource_instance`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-instance)
     - [`ibm_resource_key`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-key)
+ ## Resource management data sources
 - [Resource management data sources](/docs/terraform?topic=terraform-resource-management-data-sources)
     - [`ibm_resource_group`](/docs/terraform?topic=terraform-resource-management-data-sources#resource-group)
     - [`ibm_resource_instance`](/docs/terraform?topic=terraform-resource-management-data-sources#resouce-instance)
     - [`ibm_resource_key`](/docs/terraform?topic=terraform-resource-management-data-sources#resource-key)
     - [`ibm_resource_quota`](/docs/terraform?topic=terraform-resource-management-data-sources#resource-quota)
+ ## Schematics data sources
 - [Schematics data sources](/docs/terraform?topic=terraform-schematics-data-sources)
     - [`ibm_schematics_workspace`](/docs/terraform?topic=terraform-schematics-data-sources#schematics-workspace)
     - [`ibm_schematics_output`](/docs/terraform?topic=terraform-schematics-data-sources#schematics-output)
     - [`ibm_schematics_state`](/docs/terraform?topic=terraform-schematics-data-sources#schematics-state)
+ ## VPC infrastructure resources (Gen 1 compute)
 - [VPC infrastructure resources (Gen 1 compute)](/docs/terraform?topic=terraform-vpc-gen1-resources)
     - [`ibm_is_floating_ip`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-floating-ip)
     - [`ibm_is_ike_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-ike-policy)
@@ -255,6 +283,7 @@ subcollection: terraform
     - [`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway)
     - [`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway-connection)
     - [`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen1-resources#volume)
+ ## VPC infrastructure data sources (Gen 1 compute)
 - [VPC infrastructure data sources (Gen 1 compute)](/docs/terraform?topic=terraform-vpc-gen1-data-sources)
     - [`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#image)
     - [`ibm_is_images`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#images)
@@ -267,6 +296,7 @@ subcollection: terraform
     - [`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#vpc)
     - [`ibm_is_zone`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#zone)
     - [`ibm_is_zones`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#zones)
+ ## VPC infrastructure resources (Gen 2 compute)
 - [VPC infrastructure resources (Gen 2 compute)](/docs/terraform?topic=terraform-vpc-gen2-resources)
     - [`ibm_is_floating_ip`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-floating-ip)
     - [`ibm_is_ike_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-ike-policy)
@@ -292,6 +322,7 @@ subcollection: terraform
     - [`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway)
     - [`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway-connection)
     - [`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen2-resources#volume)
+ ## VPC infrastructure data sources (Gen 2 compute)
 - [VPC infrastructure data sources (Gen 2 compute)](/docs/terraform?topic=terraform-vpc-gen2-data-sources)
     - [`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-image)
     - [`ibm_is_images`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-images)
