@@ -2343,10 +2343,14 @@ subcollection: terraform
 - [`ibm_api_gateway_endpoint_subscription`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint-subscript)
 
 ## API Gateway data sources
+
     - [`ibm_api_gateway`](/docs/terraform?topic=terraform-api-gw-data-sources#api-gw)
+    
 ## Certificate Manager resources
+
     - [`ibm_certificate_manager_import`](/docs/terraform?topic=terraform-cert-manager-resources#cert-manager)
     - [`ibm_certificate_manager_order`](/docs/terraform?topic=terraform-cert-manager-resources#certmanager-order)
+    
 ## Certificate Manager data sources
     - [`ibm_certificate_manager_certificates`](/docs/terraform?topic=terraform-cert-manager-data-sources#cert-manager-certificates)
 ## Classic infrastructure resources
