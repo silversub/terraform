@@ -2338,8 +2338,10 @@ subcollection: terraform
 # Index of Terraform resources and data sources
 
 ## API Gateway resources
-    - [`ibm_api_gateway_endpoint`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint)
-    - [`ibm_api_gateway_endpoint_subscription`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint-subscript)
+    
+- [`ibm_api_gateway_endpoint`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint)
+- [`ibm_api_gateway_endpoint_subscription`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint-subscript)
+
 ## API Gateway data sources
     - [`ibm_api_gateway`](/docs/terraform?topic=terraform-api-gw-data-sources#api-gw)
 ## Certificate Manager resources
