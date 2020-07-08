@@ -34,7 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Index of Terraform resources and data sources
+# Index of Terraform resources and data sources 
 
 ## API Gateway resources
     
