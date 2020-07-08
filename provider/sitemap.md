@@ -2344,7 +2344,7 @@ subcollection: terraform
 
 ## API Gateway data sources
 
-    - [`ibm_api_gateway`](/docs/terraform?topic=terraform-api-gw-data-sources#api-gw)
+- [`ibm_api_gateway`](/docs/terraform?topic=terraform-api-gw-data-sources#api-gw) 
     
 ## Certificate Manager resources
 
