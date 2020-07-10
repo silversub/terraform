@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-10"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -757,6 +757,7 @@ resource "ibm_iam_service_policy" "policy" {
 
   resources {
     service = "cloud-object-storage"
+    region = "us-south"
   }
 }
 
@@ -787,7 +788,7 @@ resource "ibm_iam_service_policy" "policy" {
 
 ```
 
-#### Service Policy using resource group 
+#### Service Policy using resource group
 
 ```
 resource "ibm_iam_service_id" "serviceID" {
