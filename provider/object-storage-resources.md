@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-26"
+lastupdated: "2020-07-13"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cos bucket, terraform get object storage resources
 
@@ -10,19 +10,29 @@ subcollection: terraform
 
 ---
 
-{:new_window: target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:pre: .pre}
-{:table: .aria-labeledby="caption"}
+{:beta: .beta}
 {:codeblock: .codeblock}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
 {:deprecated: .deprecated}
 {:download: .download}
-{:preview: .preview}
 {:external: target="_blank" .external}
+{:faq: data-hd-content-type='faq'}
+{:gif: data-image-type='gif'}
+{:help: data-hd-content-type='help'}
+{:important: .important}
+{:new_window: target="_blank"}
+{:note: .note}
+{:pre: .pre}
+{:preview: .preview}
+{:screen: .screen}
+{:shortdesc: .shortdesc}
+{:support: data-reuse='support'}
+{:table: .aria-labeledby="caption"}
+{:tip: .tip}
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:tsCauses: .tsCauses}
+{:tsResolve: .tsResolve}
+{:tsSymptoms: .tsSymptoms}
+
 
 # Object Storage resources
 {: #object-storage-resources}
@@ -165,7 +175,7 @@ Review the input parameters that you can specify for your resource.
 | `allowed_ip` | Array of strings | Optional | A list of IPv4 or IPv6 addresses in CIDR notation that you want to allow access to your {{site.data.keyword.cos_full_notm}} bucket.|
 | `bucket_name` | String | Required | The name of the bucket. |
 | `cross_region_location` | String | Optional | The location for a cross-regional bucket. Supported values are `us`, `eu`, and `ap`. If you this parameter, do not set `single_site_location` or `region_location` at the same time. |
-| `key_protect` | String | Optional | The CRN of the {{site.data.keyword.keymanagementservicelong_notm}} instance where your root key is stored. You use this root key to encrypt data that is sent and stored in {{site.data.keyword.cos_full_notm}}. Before you can enable {{site.data.keyword.keymanagementservicelong_notm}} encryption, you must provision an instance of {{site.data.keyword.keymanagementservicelong_notm}} and authorize the service to access {{site.data.keyword.cos_full_notm}}. For more information, see [Server-Side Encryption with IBM Key Protect or Hyper Protect Crypto Services (SSE-KP)](/docs/cloud-object-storage?topic=cloud-object-storage-encryption#encryption-kp). |
+| `key_protect` | String | Optional | The CRN of the {{site.data.keyword.keymanagementservicelong_notm}} root key that you want to use to encrypt data that is sent and stored in {{site.data.keyword.cos_full_notm}}. Before you can enable {{site.data.keyword.keymanagementservicelong_notm}} encryption, you must provision an instance of {{site.data.keyword.keymanagementservicelong_notm}} and authorize the service to access {{site.data.keyword.cos_full_notm}}. For more information, see [Server-Side Encryption with IBM Key Protect or Hyper Protect Crypto Services (SSE-KP)](/docs/cloud-object-storage?topic=cloud-object-storage-encryption#encryption-kp). |
 |`metrics_monitoring`| Object to enable metrics tracking with {{site.data.keyword.mon_full_notm}} | Optional| Set up your {{site.data.keyword.mon_full_notm}} service instance to receive metrics for your {{site.data.keyword.cos_full_notm}} bucket.|
 |`metrics_monitoring.usage_metrics_enabled`|Boolean|Optional|If set to **true**, all metrics are sent to your {{site.data.keyword.mon_full_notm}} service instance.|
 |`metrics_monitoring.metrics_monitoring_crn`|String|Required| The CRN of the {{site.data.keyword.mon_full_notm}} service instance that you want to send metrics to. This value is required only when you configure your instance for the first time.|

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-07-08"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
@@ -10,16 +10,29 @@ subcollection: terraform
 
 ---
 
-{:new_window: target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:pre: .pre}
-{:table: .aria-labeledby="caption"}
+{:beta: .beta}
 {:codeblock: .codeblock}
-{:tip: .tip}
-{:note: .note}
+{:deprecated: .deprecated}
+{:download: .download}
+{:external: target="_blank" .external}
+{:faq: data-hd-content-type='faq'}
+{:gif: data-image-type='gif'}
+{:help: data-hd-content-type='help'}
 {:important: .important}
-{:download: .download} 
+{:new_window: target="_blank"}
+{:note: .note}
+{:pre: .pre}
+{:preview: .preview}
+{:screen: .screen}
+{:shortdesc: .shortdesc}
+{:support: data-reuse='support'}
+{:table: .aria-labeledby="caption"}
+{:tip: .tip}
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:tsCauses: .tsCauses}
+{:tsResolve: .tsResolve}
+{:tsSymptoms: .tsSymptoms}
+
  
 # Tutorial: Deploying WordPress in a highly available, cross-region web site architecture with Terraform and Ansible  
 {: #multi_region}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-29"
+lastupdated: "2020-07-13"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -10,19 +10,29 @@ subcollection: terraform
 
 ---
 
-{:new_window: target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:pre: .pre}
-{:table: .aria-labeledby="caption"}
+{:beta: .beta}
 {:codeblock: .codeblock}
-{:tip: .tip} 
-{:note: .note}
-{:important: .important}
 {:deprecated: .deprecated}
 {:download: .download}
-{:preview: .preview}
 {:external: target="_blank" .external}
+{:faq: data-hd-content-type='faq'}
+{:gif: data-image-type='gif'}
+{:help: data-hd-content-type='help'}
+{:important: .important}
+{:new_window: target="_blank"}
+{:note: .note}
+{:pre: .pre}
+{:preview: .preview}
+{:screen: .screen}
+{:shortdesc: .shortdesc}
+{:support: data-reuse='support'}
+{:table: .aria-labeledby="caption"}
+{:tip: .tip}
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:tsCauses: .tsCauses}
+{:tsResolve: .tsResolve}
+{:tsSymptoms: .tsSymptoms}
+
 
 # Identity & Access (IAM) resources 
 {: #iam-resources}
@@ -452,7 +462,7 @@ Review the output parameters that you can access after your resource is created.
 The dynamic rule can be imported using the access group ID and rule ID. 
 
 ```
-terraform import iam_access_group_dynamic_rule.example <access_group_ID>/<rule_ID>
+terraform import ibm_iam_access_group_dynamic_rule.example <access_group_ID>/<rule_ID>
 ```
 {: pre}
 
@@ -747,6 +757,7 @@ resource "ibm_iam_service_policy" "policy" {
 
   resources {
     service = "cloud-object-storage"
+    region = "us-south"
   }
 }
 
@@ -777,7 +788,7 @@ resource "ibm_iam_service_policy" "policy" {
 
 ```
 
-#### Service Policy using resource group 
+#### Service Policy using resource group
 
 ```
 resource "ibm_iam_service_id" "serviceID" {

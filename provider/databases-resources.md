@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-29"
+lastupdated: "2020-07-10"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -10,19 +10,29 @@ subcollection: terraform
 
 ---
 
-{:new_window: target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:pre: .pre}
-{:table: .aria-labeledby="caption"}
+{:beta: .beta}
 {:codeblock: .codeblock}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
 {:deprecated: .deprecated}
 {:download: .download}
-{:preview: .preview}
 {:external: target="_blank" .external}
+{:faq: data-hd-content-type='faq'}
+{:gif: data-image-type='gif'}
+{:help: data-hd-content-type='help'}
+{:important: .important}
+{:new_window: target="_blank"}
+{:note: .note}
+{:pre: .pre}
+{:preview: .preview}
+{:screen: .screen}
+{:shortdesc: .shortdesc}
+{:support: data-reuse='support'}
+{:table: .aria-labeledby="caption"}
+{:tip: .tip}
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:tsCauses: .tsCauses}
+{:tsResolve: .tsResolve}
+{:tsSymptoms: .tsSymptoms}
+
 
 # {{site.data.keyword.databases-for}} resources
 {: #databases-resources}
@@ -106,7 +116,7 @@ Review the input parameters that you can specify for your resource.
 |`members_disk_allocation_mb`|Integer|Optional|The amount of disk space for the database, split across all members. If not specified, the default setting of the database service is used, which can vary by database type. | No |
 |`members_cpu_allocation_count`|Integer|Optional|Enables and allocates the number of specified dedicated cores to your deployment.| No |
 |`backup_id`|String|Optional|The CRN of a backup resource to restore from. The backup must have been created by a database deployment with the same service ID. The backup is loaded after provisioning and the new deployment starts up that uses that data. A backup CRN is in the format `crn:v1:<…>:backup:`. If omitted, the database is provisioned empty.| No |
-|`key_protect_key`|String|Optional|The CRN of a Key Protect root key that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>:key:`.| No |
+|`key_protect_key`|String|Optional|The CRN of a Key Protect root key that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>:key:`. You can specify the root key during the database creation only. After the database is created, you cannot update the root key. | Yes |
 |`key_protect_instance`|String|Optional|The CRN of a Key Protect instance that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>::`.| No |
 |`guid`|String|Optional|The unique identifier of the database instance.| No |
 |`remote_leader_id`|String|Optional|A CRN of the leader database to make the replica(read-only) deployment. The leader database must have been created by a database deployment with the same service ID. A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment using asynchronous replication. For more information, see [Configuring Read-only Replicas](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).| No |

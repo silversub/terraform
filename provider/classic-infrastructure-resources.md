@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-29"
+lastupdated: "2020-07-08"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -10,19 +10,29 @@ subcollection: terraform
 
 ---
 
-{:new_window: target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:pre: .pre}
-{:table: .aria-labeledby="caption"}
+{:beta: .beta}
 {:codeblock: .codeblock}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
 {:deprecated: .deprecated}
 {:download: .download}
-{:preview: .preview}
 {:external: target="_blank" .external}
+{:faq: data-hd-content-type='faq'}
+{:gif: data-image-type='gif'}
+{:help: data-hd-content-type='help'}
+{:important: .important}
+{:new_window: target="_blank"}
+{:note: .note}
+{:pre: .pre}
+{:preview: .preview}
+{:screen: .screen}
+{:shortdesc: .shortdesc}
+{:support: data-reuse='support'}
+{:table: .aria-labeledby="caption"}
+{:tip: .tip}
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:tsCauses: .tsCauses}
+{:tsResolve: .tsResolve}
+{:tsSymptoms: .tsSymptoms}
+
 
 # Classic infrastructure resources
 {: #infrastructure-resources}
@@ -1087,10 +1097,10 @@ Review the input parameters that you can specify for your resource.
 |`hourly_billing`|Boolean|Optional| The billing type for the instance. When set to `true`, the computing instance is billed on hourly usage. Otherwise, the instance is billed on a monthly basis. The default value is `true`.| Yes |
 |`local_disk`|Boolean|Optional|The disk type for the instance. When set to `true`, the disks for the computing instance are provisioned on the host that the instance runs. Otherwise, SAN disks are provisioned. The default value is `true`.| Yes |
 |`dedicated_acct_host_only`|Boolean|Optional| Specifies whether the instance must only run on hosts with instances from the same account. The default value is `false`. If VM is provisioned using `flavorKeyName`, value should be set to `false`.        **NOTE**: Conflicts with `dedicated_host_name`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.| Yes |
-|`dedicated_host_id`|Integer|Optional|Specifies [dedicated host](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `placement_group_name` and `placement_group_id`.| Yes |
-|`dedicated_host_name`|String|Optional|Specifies [dedicated host](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.| Yes |
-|`placement_group_id`|Integer|Optional|Specifies [placement group](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `dedicated_host_id` and `placement_group_name`.| Yes |
-|`placement_group_name`|String|Optional|Specifies [placement group](/docs/vsi?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name.        **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name` and `placement_group_id`| Yes |
+|`dedicated_host_id`|Integer|Optional|Specifies [dedicated host](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `placement_group_name` and `placement_group_id`.| Yes |
+|`dedicated_host_name`|String|Optional|Specifies [dedicated host](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `placement_group_name` and `placement_group_id`.| Yes |
+|`placement_group_id`|Integer|Optional|Specifies [placement group](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its id. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `dedicated_host_id` and `placement_group_name`.| Yes |
+|`placement_group_name`|String|Optional|Specifies [placement group](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name.        **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name` and `placement_group_id`| Yes |
 |`transient`|Boolean|Optional|Specifies whether to provision a transient virtual server. The default value is `false`. Transient instances cannot be upgraded or downgraded. Transient instances cannot use local storage.       **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name`, `cores`, `memory`, `public_bandwidth_limited` and `public_bandwidth_unlimited`| Yes |
 |`os_reference_code`|String|Optional|The operating system reference code that is used to provision the computing instance. To see available OS reference codes, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode), using your API key as the password.       **NOTE**: Conflicts with `image_id`.| Yes |
 |`image_id`|Integer|Optional| The image template ID you want to use to provision the computing instance. This is not the global identifier (UUID), but the image template group ID that should point to a valid global identifier. To retrieve the image template ID from the IBM Cloud infrastructure customer portal, navigate to **Devices > Manage > Images**, click the image that you want, and note the ID number in the resulting URL. **NOTE**: Conflicts with `os_reference_code`. | Yes |

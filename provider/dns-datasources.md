@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-05-27"
+lastupdated: "2020-07-08"
 
 keywords: terraform provider plugin, terraform dns service, terraform dns, terraform private dns
 
@@ -10,19 +10,29 @@ subcollection: terraform
 
 ---
 
-{:new_window: target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:pre: .pre}
-{:table: .aria-labeledby="caption"}
+{:beta: .beta}
 {:codeblock: .codeblock}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
 {:deprecated: .deprecated}
 {:download: .download}
-{:preview: .preview}
 {:external: target="_blank" .external}
+{:faq: data-hd-content-type='faq'}
+{:gif: data-image-type='gif'}
+{:help: data-hd-content-type='help'}
+{:important: .important}
+{:new_window: target="_blank"}
+{:note: .note}
+{:pre: .pre}
+{:preview: .preview}
+{:screen: .screen}
+{:shortdesc: .shortdesc}
+{:support: data-reuse='support'}
+{:table: .aria-labeledby="caption"}
+{:tip: .tip}
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:tsCauses: .tsCauses}
+{:tsResolve: .tsResolve}
+{:tsSymptoms: .tsSymptoms}
+
 
 # DNS service data sources 
 {: #dns-data-sources}
@@ -189,7 +199,7 @@ Review the output parameters that you can access after you retrieved your data s
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 |`dns_zones`|List of zones|A List of zones that you added to your private DNS service instance.| 
-|`dns_zones.zones_id`|String|The ID of the zone.|
+|`dns_zones.zone_id`|String|The ID of the zone.|
 |`dns_zones.instance_id`|String|The ID of the private DNS service instance where you added the zone.|
 |`dns_zones.description`|String|The description of the zone.|
 |`dns_zones.name`|String|The name of the zone.|
