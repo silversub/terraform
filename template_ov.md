@@ -2,7 +2,7 @@
   </tbody>
   </table>
 
-## Object Storage resources
+## Object Storage templates
 
   <table>
     <thead>
@@ -22,7 +22,7 @@
   </tbody>
   </table>
 
-## Power Systems resources
+## Power Systems templates
 
   <table>
     <thead>
@@ -42,7 +42,7 @@
   </tbody>
   </table>
 
-## Resource Management resources
+## Resource Management templates
 
   <table>
     <thead>
@@ -62,7 +62,7 @@
   </tbody>
   </table>
 
-## Schematics Data resources
+## Schematics templates
 
    <table>
     <thead>
@@ -82,7 +82,7 @@
    </tbody>
   </table>
 
-## VPC infrastructure resources (Gen 1 compute)
+## VPC infrastructure templates (Gen 1 compute)
 
   <table>
   <thead>
@@ -92,12 +92,6 @@
     <th>View in GitHub</th>
   </thead>
   <tbody>
-  <tr>
-    <td><code>ibm-is-ng</code></td>
-      <td>Create a Virtual Private Cloud (VPC) for Generation 2 compute, configure a VPC load balancer with custom routing rules, and add a virtual server instance to your VPC that you can access from the internet by using a public IP address. Then, create another VPC Gen 2 and configure it with a VPN gateway with custom IPSec and IKE networking rules. You also learn how to create VPC Gen 2 block storage volumes.  </td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_is_vpc</code></li><li style="margin:0px; padding:0px"><code>ibm_is_vpc_route</code></li><li style="margin:0px; padding:0px"><code>ibm_is_subnet</code></li><li style="margin:0px; padding:0px"><code>ibm_is_lb</code></li><li style="margin:0px; padding:0px"><code>ibm_is_lb_listener</code></li><li style="margin:0px; padding:0px"><code>ibm_is_lb_listener_policy</code></li><li style="margin:0px; padding:0px"><code>ibm_is_lb_listener_policy_rule</code></li><li style="margin:0px; padding:0px"><code>ibm_is_vpn_gateway</code></li><li style="margin:0px; padding:0px"><code>ibm_is_vpn_gateway_connection</code></li><li style="margin:0px; padding:0px"><code>ibm_is_ssh_key</code></li><li style="margin:0px; padding:0px"><code>ibm_is_instance</code></li><li style="margin:0px; padding:0px"><code>ibm_is_floating_ip</code></li><li style="margin:0px; padding:0px"><code>ibm_is_security_group_rule</code></li><li style="margin:0px; padding:0px"><code>ibm_is_ipsec_policy</code></li><li style="margin:0px; padding:0px"><code>ibm_is_ike_policy</code></li><li style="margin:0px; padding:0px"><code>ibm_is_volume</code></li><li style="margin:0px; padding:0px"><code>ibm_is_public_gateway</code></li></ul></td>
-      <td>[Open](https://github.com/IBM-Cloud/terraform-provider-ibm/blob/master/examples/ibm-is-ng)</td>
-  </tr>
   <tr>
     <td><code>ibm-is-vpc</code></td>
       <td>Create a Virtual Private Cloud (VPC) for Generation 1 compute, configure a VPC load balancer with custom routing rules, and add a virtual server instance to your VPC that you can access from the internet by using a public IP address. Then, create another VPC Gen 1 and configure it with a VPN gateway with custom IPSec and IKE networking rules. You also learn how to create VPC Gen 1 block storage volumes.  </td>
@@ -114,7 +108,7 @@
   </tbody>
   </table>
 
-## VPC infrastructure resources (Gen 2 compute)
+## VPC infrastructure templates (Gen 2 compute)
 
   <table>
   <thead>
@@ -131,12 +125,6 @@
       <td>[Open](https://github.com/IBM-Cloud/terraform-provider-ibm/blob/master/examples/ibm-is-ng)</td>
   </tr>
   <tr>
-    <td><code>ibm-is-vpc</code></td>
-      <td>Create a Virtual Private Cloud (VPC) for Generation 1 compute, configure a VPC load balancer with custom routing rules, and add a virtual server instance to your VPC that you can access from the internet by using a public IP address. Then, create another VPC Gen 1 and configure it with a VPN gateway with custom IPSec and IKE networking rules. You also learn how to create VPC Gen 1 block storage volumes.  </td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_is_vpc</code></li><li style="margin:0px; padding:0px"><code>ibm_is_vpc_route</code></li><li style="margin:0px; padding:0px"><code>ibm_is_subnet</code></li><li style="margin:0px; padding:0px"><code>ibm_is_lb</code></li><li style="margin:0px; padding:0px"><code>ibm_is_lb_listener</code></li><li style="margin:0px; padding:0px"><code>ibm_is_lb_listener_policy</code></li><li style="margin:0px; padding:0px"><code>ibm_is_lb_listener_policy_rule</code></li><li style="margin:0px; padding:0px"><code>ibm_is_vpn_gateway</code></li><li style="margin:0px; padding:0px"><code>ibm_is_vpn_gateway_connection</code></li><li style="margin:0px; padding:0px"><code>ibm_is_ssh_key</code></li><li style="margin:0px; padding:0px"><code>ibm_is_instance</code></li><li style="margin:0px; padding:0px"><code>ibm_is_floating_ip</code></li><li style="margin:0px; padding:0px"><code>ibm_is_security_group_rule</code></li><li style="margin:0px; padding:0px"><code>ibm_is_ipsec_policy</code></li><li style="margin:0px; padding:0px"><code>ibm_is_ike_policy</code></li><li style="margin:0px; padding:0px"><code>ibm_is_volume</code></li><li style="margin:0px; padding:0px"><code>ibm_is_public_gateway</code></li></ul></td>
-      <td>[Open](https://github.com/IBM-Cloud/terraform-provider-ibm/blob/master/examples/ibm-is-vpc)</td>
-  </tr>
-   <tr>
     <td><code>ibm-transit-gateway</code></td>
       <td>Create an {{site.data.keyword.tg_full_notm}} service instance. </td>
       <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_tg_gateway</code></li>
