@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-13"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -35,6 +35,8 @@ subcollection: terraform
 
 
 # Index of Terraform resources and data sources 
+
+
 
 ## API Gateway resources
     
