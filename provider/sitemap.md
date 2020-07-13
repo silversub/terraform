@@ -38,7 +38,6 @@ subcollection: terraform
 
 
 
-
 ## API Gateway resources
 {: #ibm-api-gateway-resource}
 
