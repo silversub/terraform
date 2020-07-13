@@ -36,6 +36,9 @@ subcollection: terraform
 
 # Index of Terraform resources and data sources 
 
+
+
+
 ## API Gateway resources
     
 - [`ibm_api_gateway_endpoint`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint)
