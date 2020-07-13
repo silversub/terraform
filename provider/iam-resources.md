@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-10"
+lastupdated: "2020-07-13"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -462,7 +462,7 @@ Review the output parameters that you can access after your resource is created.
 The dynamic rule can be imported using the access group ID and rule ID. 
 
 ```
-terraform import iam_access_group_dynamic_rule.example <access_group_ID>/<rule_ID>
+terraform import ibm_iam_access_group_dynamic_rule.example <access_group_ID>/<rule_ID>
 ```
 {: pre}
 
