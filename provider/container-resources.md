@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08" 
+lastupdated: "2020-07-15" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -238,6 +238,9 @@ If you want to use this resource to update a cluster, make sure that you review 
 {: important}
 
 If you want to create a VPC cluster, make sure to include the VPC infrastructure generation in the `provider` block of your Terraform configuration file. If you do not set this value, the generation is automatically set to 2. For more information about how to configure the `provider` block, see [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters). 
+{: important}
+
+You cannot create a free cluster in {{site.data.keyword.bpfull_notm}}.
 {: important}
 
 To create a worker pool or add worker nodes and zones to a worker pool, use the `ibm_container_worker_pool` and `ibm_container_worker_pool_zone` resources. 
