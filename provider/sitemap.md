@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-13"
+lastupdated: "2020-07-15"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -36,380 +36,275 @@ subcollection: terraform
 
 # Index of Terraform resources and data sources 
 
+## API Gateway
+{: #ibm-api-gateway}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_api_gateway_endpoint`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint)</li><li style="margin:0px; padding:0px">[`ibm_api_gateway_endpoint_subscription`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint-subscript)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_api_gateway`](/docs/terraform?topic=terraform-api-gw-data-sources#api-gw)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
 
+## Certificate Manager
+{: #ibm-certificate-manager}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+   <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_certificate_manager_import`](/docs/terraform?topic=terraform-cert-manager-resources#cert-manager)</li><li style="margin:0px; padding:0px">[`ibm_certificate_manager_order`](/docs/terraform?topic=terraform-cert-manager-resources#certmanager-order)</li></ul></td>
+     <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_certificate_manager_certificates`](/docs/terraform?topic=terraform-cert-manager-data-sources#cert-manager-certificates)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
 
-## API Gateway resources
-{: #ibm-api-gateway-resource}
-
-- [`ibm_api_gateway_endpoint`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint)
-- [`ibm_api_gateway_endpoint_subscription`](/docs/terraform?topic=terraform-api-gateway-resources#api-gw-endpoint-subscript)
+## Classic infrastructure
+{: #ibm-classic-infrastructure}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+<tr>
+<td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_cdn`](/docs/terraform?topic=terraform-infrastructure-resources#cdn)</li><li style="margin:0px; padding:0px">[`ibm_compute_autoscale_group`](/docs/terraform?topic=terraform-infrastructure-resources#autoscale-group)</li><li style="margin:0px; padding:0px">[`ibm_compute_autoscale_policy`](/docs/terraform?topic=terraform-infrastructure-resources#autoscale-policy)</li><li style="margin:0px; padding:0px">[`ibm_compute_bare_metal`](/docs/terraform?topic=terraform-infrastructure-resources#bm)</li><li style="margin:0px; padding:0px">[`ibm_compute_dedicated_host`](/docs/terraform?topic=terraform-infrastructure-resources#dedicated-host)</li><li style="margin:0px; padding:0px">[`ibm_compute_monitor`](/docs/terraform?topic=terraform-infrastructure-resources#compute-monitor)</li><li style="margin:0px; padding:0px">[`ibm_compute_placement_group`](/docs/terraform?topic=terraform-infrastructure-resources#plmt-group)</li><li style="margin:0px; padding:0px">[`ibm_compute_provisioning_hook`](/docs/terraform?topic=terraform-infrastructure-resources#provision-hook)</li><li style="margin:0px; padding:0px">[`ibm_compute_ssh_key`](/docs/terraform?topic=terraform-infrastructure-resources#ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_compute_ssl_certificate`](/docs/terraform?topic=terraform-infrastructure-resources#ssl-compute-cert)</li><li style="margin:0px; padding:0px">[`ibm_compute_user`](/docs/terraform?topic=terraform-infrastructure-resources#compute-user)</li><li style="margin:0px; padding:0px">[`ibm_compute_vm_instance`](/docs/terraform?topic=terraform-infrastructure-resources#vm)</li><li style="margin:0px; padding:0px">[`ibm_dns_domain`](/docs/terraform?topic=terraform-infrastructure-resources#dns-domain)</li><li style="margin:0px; padding:0px">[`ibm_dns_domain_registration_nameservers`](/docs/terraform?topic=terraform-infrastructure-resources#dns-register)</li><li style="margin:0px; padding:0px">[`ibm_dns_secondary`](/docs/terraform?topic=terraform-infrastructure-resources#dns-second)</li><li style="margin:0px; padding:0px">[`ibm_dns_reverse_record`](/docs/terraform?topic=terraform-infrastructure-resources#dns-rev-rec)</li> <li style="margin:0px; padding:0px">[`ibm_dns_record`](/docs/terraform?topic=terraform-infrastructure-resources#dns-record)</li><li style="margin:0px; padding:0px">[`ibm_firewall`](/docs/terraform?topic=terraform-infrastructure-resources#firewall)</li><li style="margin:0px; padding:0px">[`ibm_multivlan_firewall`](/docs/terraform?topic=terraform-infrastructure-resources#multivlan-firewall)</li><li style="margin:0px; padding:0px">[`ibm_firewall_policy`](/docs/terraform?topic=terraform-infrastructure-resources#firewall-policy)</li><li style="margin:0px; padding:0px">[`ibm_hardware_firewall_shared`](/docs/terraform?topic=terraform-infrastructure-resources#shared-fw)</li><li style="margin:0px; padding:0px">[`ibm_ipsec_vpn`](/docs/terraform?topic=terraform-infrastructure-resources#ipsec-vpn)</li><li style="margin:0px; padding:0px">[`ibm_lb`](/docs/terraform?topic=terraform-infrastructure-resources#lb)</li><li style="margin:0px; padding:0px">[`ibm_lbaas`](/docs/terraform?topic=terraform-infrastructure-resources#lbaas)</li><li style="margin:0px; padding:0px">[`ibm_lbaas_health_monitor`](/docs/terraform?topic=terraform-infrastructure-resources#health-monitor)</li><li style="margin:0px; padding:0px">[`ibm_lbaas_server_instance_attachment`](/docs/terraform?topic=terraform-infrastructure-resources#instance-attachment)</li><li style="margin:0px; padding:0px">[`ibm_lb_service`](/docs/terraform?topic=terraform-infrastructure-resources#lb-service)</li><li style="margin:0px; padding:0px">[`ibm_lb_service_group`](/docs/terraform?topic=terraform-infrastructure-resources#service-group)</li><li style="margin:0px; padding:0px">[`ibm_lb_vpx`](/docs/terraform?topic=terraform-infrastructure-resources#lb-vpx)</li><li style="margin:0px; padding:0px">[`ibm_lb_vpx_ha`](/docs/terraform?topic=terraform-infrastructure-resources#lb-vpx-ha)</li><li style="margin:0px; padding:0px">[`ibm_lb_vpx_service`](/docs/terraform?topic=terraform-infrastructure-resources#vpx-svc)</li><li style="margin:0px; padding:0px">[`ibm_lb_vpx_vip`](/docs/terraform?topic=terraform-infrastructure-resources#lb-vpx-vip)</li><li style="margin:0px; padding:0px">[`ibm_network_gateway`](/docs/terraform?topic=terraform-infrastructure-resources#network-gateway)</li><li style="margin:0px; padding:0px">[`ibm_network_gateway_vlan_association`](/docs/terraform?topic=terraform-infrastructure-resources#network-vlan-associate)</li><li style="margin:0px; padding:0px">[`ibm_network_interface_sg_attachment`](/docs/terraform?topic=terraform-infrastructure-resources#network-sg-attachment)</li><li style="margin:0px; padding:0px">[`ibm_network_public_ip`](/docs/terraform?topic=terraform-infrastructure-resources#public-ip)</li><li style="margin:0px; padding:0px">[`ibm_network_vlan`](/docs/terraform?topic=terraform-infrastructure-resources#vlan)</li><li style="margin:0px; padding:0px">[`ibm_network_vlan_spanning`](/docs/terraform?topic=terraform-infrastructure-resources#vlan-spanning)</li><li style="margin:0px; padding:0px">[`ibm_object_storage_account`](/docs/terraform?topic=terraform-infrastructure-resources#os-account)</li><li style="margin:0px; padding:0px">[`ibm_security_group`](/docs/terraform?topic=terraform-infrastructure-resources#sec-group)</li><li style="margin:0px; padding:0px">[`ibm_security_group_rule`](/docs/terraform?topic=terraform-infrastructure-resources#sec-group-rule)</li><li style="margin:0px; padding:0px">[`ibm_storage_block`](/docs/terraform?topic=terraform-infrastructure-resources#storage-block)</li><li style="margin:0px; padding:0px">[`ibm_storage_evault`](/docs/terraform?topic=terraform-infrastructure-resources#storage-evault)</li><li style="margin:0px; padding:0px">[`ibm_storage_file`](/docs/terraform?topic=terraform-infrastructure-resources#storage-file)</li><li style="margin:0px; padding:0px">[`ibm_subnet`](/docs/terraform?topic=terraform-infrastructure-resources#subnet)</li><li style="margin:0px; padding:0px">[`ibm_ssl_certificate`](/docs/terraform?topic=terraform-infrastructure-resources#ssl-cert)</li></ul></td>
+<td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_compute_bare_metal`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-bare-metal)</li><li style="margin:0px; padding:0px">[`ibm_compute_image_template`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-image)</li><li style="margin:0px; padding:0px">[`ibm_compute_placement_group`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-placement-group)</li><li style="margin:0px; padding:0px">[`ibm_compute_ssh_key`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_compute_vm_instance`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-vm)</li><li style="margin:0px; padding:0px">[`ibm_dns_domain`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-domain)</li><li style="margin:0px; padding:0px">[`ibm_dns_secondary`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-dns-secondary)</li><li style="margin:0px; padding:0px">[`ibm_lbaas`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-lbaas)</li><li style="margin:0px; padding:0px">[`ibm_network_vlan`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-vlan)</li><li style="margin:0px; padding:0px">[`ibm_security_group`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-security-group)</li></ul></td>
+</tr>
+  </tbody>
+  </table>
  
-## API Gateway data sources
-{: #ibm-api-gateway-data-source}
-
-- [`ibm_api_gateway`](/docs/terraform?topic=terraform-api-gw-data-sources#api-gw)
-
-## Certificate Manager resources
-{: #ibm-certificate-manager-resource}
-
-- [`ibm_certificate_manager_import`](/docs/terraform?topic=terraform-cert-manager-resources#cert-manager)
-- [`ibm_certificate_manager_order`](/docs/terraform?topic=terraform-cert-manager-resources#certmanager-order)
-
-## Certificate Manager data sources
-{: #ibm-certificate-manager-certificates}
-
-- [`ibm_certificate_manager_certificates`](/docs/terraform?topic=terraform-cert-manager-data-sources#cert-manager-certificates)
-
-## Classic infrastructure resources
-{: #ibm-classic-infrastructure-resource}
-
-- [`ibm_cdn`](/docs/terraform?topic=terraform-infrastructure-resources#cdn)
-- [`ibm_compute_autoscale_group`](/docs/terraform?topic=terraform-infrastructure-resources#autoscale-group)
-- [`ibm_compute_autoscale_policy`](/docs/terraform?topic=terraform-infrastructure-resources#autoscale-policy)
-- [`ibm_compute_bare_metal`](/docs/terraform?topic=terraform-infrastructure-resources#bm)
-- [`ibm_compute_dedicated_host`](/docs/terraform?topic=terraform-infrastructure-resources#dedicated-host)
-- [`ibm_compute_monitor`](/docs/terraform?topic=terraform-infrastructure-resources#compute-monitor)
-- [`ibm_compute_placement_group`](/docs/terraform?topic=terraform-infrastructure-resources#plmt-group)
-- [`ibm_compute_provisioning_hook`](/docs/terraform?topic=terraform-infrastructure-resources#provision-hook)
-- [`ibm_compute_ssh_key`](/docs/terraform?topic=terraform-infrastructure-resources#ssh-key)
-- [`ibm_compute_ssl_certificate`](/docs/terraform?topic=terraform-infrastructure-resources#ssl-compute-cert)
-- [`ibm_compute_user`](/docs/terraform?topic=terraform-infrastructure-resources#compute-user)
-- [`ibm_compute_vm_instance`](/docs/terraform?topic=terraform-infrastructure-resources#vm)
-- [`ibm_dns_domain`](/docs/terraform?topic=terraform-infrastructure-resources#dns-domain)
-- [`ibm_dns_domain_registration_nameservers`](/docs/terraform?topic=terraform-infrastructure-resources#dns-register)
-- [`ibm_dns_secondary`](/docs/terraform?topic=terraform-infrastructure-resources#dns-second)
-- [`ibm_dns_reverse_record`](/docs/terraform?topic=terraform-infrastructure-resources#dns-rev-rec)
-- [`ibm_dns_record`](/docs/terraform?topic=terraform-infrastructure-resources#dns-record)
-- [`ibm_firewall`](/docs/terraform?topic=terraform-infrastructure-resources#firewall)
-- [`ibm_multivlan_firewall`](/docs/terraform?topic=terraform-infrastructure-resources#multivlan-firewall)
-- [`ibm_firewall_policy`](/docs/terraform?topic=terraform-infrastructure-resources#firewall-policy)
-- [`ibm_hardware_firewall_shared`](/docs/terraform?topic=terraform-infrastructure-resources#shared-fw)
-- [`ibm_ipsec_vpn`](/docs/terraform?topic=terraform-infrastructure-resources#ipsec-vpn)
-- [`ibm_lb`](/docs/terraform?topic=terraform-infrastructure-resources#lb)
-- [`ibm_lbaas`](/docs/terraform?topic=terraform-infrastructure-resources#lbaas)
-- [`ibm_lbaas_health_monitor`](/docs/terraform?topic=terraform-infrastructure-resources#health-monitor)
-- [`ibm_lbaas_server_instance_attachment`](/docs/terraform?topic=terraform-infrastructure-resources#instance-attachment)
-- [`ibm_lb_service`](/docs/terraform?topic=terraform-infrastructure-resources#lb-service)
-- [`ibm_lb_service_group`](/docs/terraform?topic=terraform-infrastructure-resources#service-group)
-- [`ibm_lb_vpx`](/docs/terraform?topic=terraform-infrastructure-resources#lb-vpx)
-- [`ibm_lb_vpx_ha`](/docs/terraform?topic=terraform-infrastructure-resources#lb-vpx-ha)
-- [`ibm_lb_vpx_service`](/docs/terraform?topic=terraform-infrastructure-resources#vpx-svc)
-- [`ibm_lb_vpx_vip`](/docs/terraform?topic=terraform-infrastructure-resources#lb-vpx-vip)
-- [`ibm_network_gateway`](/docs/terraform?topic=terraform-infrastructure-resources#network-gateway)
-- [`ibm_network_gateway_vlan_association`](/docs/terraform?topic=terraform-infrastructure-resources#network-vlan-associate)
-- [`ibm_network_interface_sg_attachment`](/docs/terraform?topic=terraform-infrastructure-resources#network-sg-attachment)
-- [`ibm_network_public_ip`](/docs/terraform?topic=terraform-infrastructure-resources#public-ip)
-- [`ibm_network_vlan`](/docs/terraform?topic=terraform-infrastructure-resources#vlan)
-- [`ibm_network_vlan_spanning`](/docs/terraform?topic=terraform-infrastructure-resources#vlan-spanning)
-- [`ibm_object_storage_account`](/docs/terraform?topic=terraform-infrastructure-resources#os-account)
-- [`ibm_security_group`](/docs/terraform?topic=terraform-infrastructure-resources#sec-group)
-- [`ibm_security_group_rule`](/docs/terraform?topic=terraform-infrastructure-resources#sec-group-rule)
-- [`ibm_storage_block`](/docs/terraform?topic=terraform-infrastructure-resources#storage-block)
-- [`ibm_storage_evault`](/docs/terraform?topic=terraform-infrastructure-resources#storage-evault)
-- [`ibm_storage_file`](/docs/terraform?topic=terraform-infrastructure-resources#storage-file)
-- [`ibm_subnet`](/docs/terraform?topic=terraform-infrastructure-resources#subnet)
-- [`ibm_ssl_certificate`](/docs/terraform?topic=terraform-infrastructure-resources#ssl-cert)
-
-## Classic infrastructure data sources
-{: #ibm-classic-infrastructure-data-source}
-
-- [`ibm_compute_bare_metal`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-bare-metal)
-- [`ibm_compute_image_template`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-image)
-- [`ibm_compute_placement_group`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-placement-group)
-- [`ibm_compute_ssh_key`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-ssh-key)
-- [`ibm_compute_vm_instance`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-vm)
-- [`ibm_dns_domain`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-domain)
-- [ibm_dns_secondary](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-dns-secondary)
-- [`ibm_lbaas`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-lbaas)
-- [`ibm_network_vlan`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-vlan)
-- [`ibm_security_group`](/docs/terraform?topic=terraform-infrastructure-data-sources#classic-security-group)
-
-## Cloud Databases resources
-{: #ibm-cloud-database-resource}
-
-- [`ibm_database`](/docs/terraform?topic=terraform-databases-resources#db)
-
-## Cloud Databases data sources
-{: #ibm-cloud-database-data-source}
-
-- [`ibm_database`](/docs/terraform?topic=terraform-databases-data-sources#database)
-
-## Cloud Foundry resources
-{: #ibm-cloud-foundry-resource}
-
-- [`ibm_app`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-app)
-- [`ibm_app_domain_private`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-private-domain)
-- [`ibm_app_domain_shared`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-shared-domain)
-- [`ibm_app_route`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-route)
-- [`ibm_org`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-org)
-- [`ibm_service_instance`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-service)
-- [`ibm_service_key`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-service-key)
-- [`ibm_space`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-space)
-
-## Cloud Foundry data sources
-{: #ibm-cloud-foundry-data-source}
-
-- [`ibm_account`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-account)
-- [`ibm_app`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-app)
-- [`ibm_app_domain_private`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-private-domain)
-- [`ibm_app_domain_shared`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-shared-domain)
-- [`ibm_app_route`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-app-route)
-- [`ibm_org`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-org)
-- [`ibm_org_quota`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-org-quota)
-- [`ibm_service_instance`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-service-instance)
-- [`ibm_service_key`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-service-key)
-- [`ibm_service_plan`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-service-plan)
-- [`ibm_space`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-space)
-
-## DNS service resources
-{: #ibm-dns-service-resource}
-
-- [`ibm_dns_permitted_network`](/docs/terraform?topic=terraform-dns-resources#dns-permitted-network)
-- [`ibm_dns_resource_record`](/docs/terraform?topic=terraform-dns-resources#dns-record)
-- [`ibm_dns_zone`](/docs/terraform?topic=terraform-dns-resources#dns-zone)
-
-##  DNS service data sources
-{: #ibm-dns-service-data-source}
-
-- [`ibm_dns_permitted_networks`](/docs/terraform?topic=terraform-dns-data-sources#dns-permitted-network)
-- [`ibm_dns_resource_records`](/docs/terraform?topic=terraform-dns-data-sources#dns-record)
-- [`ibm_dns_zones`](/docs/terraform?topic=terraform-dns-data-sources#dns-zones)
-
-## Functions resources
-{: #ibm-functions-resource}
-
-- [`ibm_function_action`](/docs/terraform?topic=terraform-function-resources#fn-action)
-- [`ibm_function_package`](/docs/terraform?topic=terraform-function-resources#fn-package)
-- [`ibm_function_rule`](/docs/terraform?topic=terraform-function-resources#fn-rule)
-- [`ibm_function_trigger`](/docs/terraform?topic=terraform-function-resources#fn-trigger)
-
-## Functions data sources
-{: #ibm-functions-data-source}
-
-- [`ibm_function_action`](/docs/terraform?topic=terraform-function-data-sources#fn-action)
-- [`ibm_function_package`](/docs/terraform?topic=terraform-function-data-sources#fn-package)
-- [`ibm_function_rule`](/docs/terraform?topic=terraform-function-data-sources#fn-rule)
-- [`ibm_function_trigger`](/docs/terraform?topic=terraform-function-data-sources#fn-trigger)
-
-## Identity & Access (IAM) resources
-{: #ibm-iam-resource}
-
-- [`ibm_iam_access_group`](/docs/terraform?topic=terraform-iam-resources#iam-access-group)
-- [`ibm_iam_access_group_members`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-members)
-- [`ibm_iam_access_group_policy`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-policy)
-- [`ibm_iam_access_group_dynamic_rule`](/docs/terraform?topic=terraform-iam-resources#iam-group-dynamic-rule)
-- [`ibm_iam_authorization_policy`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy)
-- [`ibm_iam_authorization_policy_detach`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy-detach)
-- [`ibm_iam_custom_role`](/docs/terraform?topic=terraform-iam-resources#iam-custom-role)
-- [`ibm_iam_service_id`](/docs/terraform?topic=terraform-iam-resources#iam-service-id)
-- [`ibm_iam_service_policy`](/docs/terraform?topic=terraform-iam-resources#iam-service-policy)
-- [`ibm_iam_user_policy`](/docs/terraform?topic=terraform-iam-resources#iam-user-policy)
-- [`ibm_iam_user_invite`](/docs/terraform?topic=terraform-iam-resources#iam-user-invite)
-
-## Identity & Access (IAM) data sources
-{: #ibm-iam-data-source}
-
-- [`ibm_iam_access_group`](/docs/terraform?topic=terraform-iam-data-sources#access_group)
-- [`ibm_iam_auth_token`](/docs/terraform?topic=terraform-iam-data-sources#iam-token)
-- [`ibm_iam_role_actions`](/docs/terraform?topic=terraform-iam-data-sources#iam-role-actions)
-- [`ibm_iam_roles`](/docs/terraform?topic=terraform-iam-data-sources#iam-roles)
-- [`ibm_iam_service_id`](/docs/terraform?topic=terraform-iam-data-sources#iam-service)
-- [`ibm_iam_service_policy`](/docs/terraform?topic=terraform-iam-data-sources#iam-service-policy)
-- [`ibm_iam_user_policy`](/docs/terraform?topic=terraform-iam-data-sources#iam-user-policy)
-
-## Internet services resources
-{: #ibm-internet-services-resource}
-
-- [`ibm_cis`](/docs/terraform?topic=terraform-cis-resources#cis)
-- [`ibm_cis_domain`](/docs/terraform?topic=terraform-cis-resources#cis-domain)
-- [`ibm_cis_domain_settings`](/docs/terraform?topic=terraform-cis-resources#cis-domain-settings)
-- [`ibm_cis_dns_record`](/docs/terraform?topic=terraform-cis-resources#cis-dns-record)
-- [`ibm_cis_firewall`](/docs/terraform?topic=terraform-cis-resources#cis-firewall)
-- [`ibm_cis_global_load_balancer`](/docs/terraform?topic=terraform-cis-resources#cis-global-lb)
-- [`ibm_cis_healthcheck`](/docs/terraform?topic=terraform-cis-resources#cis-health)
-- [`ibm_cis_origin_pool`](/docs/terraform?topic=terraform-cis-resources#cis-origin-pool)
-- [`ibm_cis_rate_limit`](/docs/terraform?topic=terraform-cis-resources#rate-limit)
-
-## Internet Services data sources
-{: #ibm-internet-services-data-source}
-
-- [`ibm_cis`](/docs/terraform?topic=terraform-cis_data#cis)
-- [`ibm_cis_domain`](/docs/terraform?topic=terraform-cis_data#cis_domain)
-- [`ibm_cis_ip_addresses`](/docs/terraform?topic=terraform-cis_data#cis_ip)
-- [`ibm_cis_rate_limit`](/docs/terraform?topic=terraform-cis_data#rate-limit)
-
-## Key Protect resources
-{: #ibm-key-protect-resource}
-
-- [`ibm_kp_key`](/docs/terraform?topic=terraform-kp-resources#kp-key)
-
-## Key Protect data sources
-{: #ibm-key-protect-data-source}
-
-- [`ibm_kp_key`](/docs/terraform?topic=terraform-kp-data-sources#kp-key)
-
-## Kubernetes Service resources
-{: #ibm-kubernetes-service-resource}
-
-- [`ibm_container_alb`](/docs/terraform?topic=terraform-container-resources#container-alb)
-- [`ibm_container_alb_cert`](/docs/terraform?topic=terraform-container-resources#container-alb-cert)
-- [`ibm_container_bind_service`](/docs/terraform?topic=terraform-container-resources#container-bind)
-- [`ibm_container_cluster`](/docs/terraform?topic=terraform-container-resources#container-cluster)
-- [`ibm_container_cluster_feature`](/docs/terraform?topic=terraform-container-resources#container-cluster-feature)
-- [`ibm_container_worker_pool`](/docs/terraform?topic=terraform-container-resources#container-pool)
-- [`ibm_container_worker_pool_zone_attachment`](/docs/terraform?topic=terraform-container-resources#container-pool-zone)
-- [`ibm_container_vpc_alb`](/docs/terraform?topic=terraform-container-resources#vpc-alb)
-- [`ibm_container_vpc_cluster`](/docs/terraform?topic=terraform-container-resources#vpc-cluster)
-- [`ibm_container_vpc_worker_pool`](/docs/terraform?topic=terraform-container-resources#vpc-worker-pool)
-
-## Kubernetes Service data sources
-{: #ibm-kubernetes-service-data-source}
-
-- [`ibm_container_cluster`](/docs/terraform?topic=terraform-container-data-sources#container-cluster)
-- [`ibm_container_cluster_config`](/docs/terraform?topic=terraform-container-data-sources#container-cluster-config)
-- [`ibm_container_cluster_worker`](/docs/terraform?topic=terraform-container-data-sources#container-worker)
-- [`ibm_container_cluster_versions`](/docs/terraform?topic=terraform-container-data-sources#container-cluster-versions)
-- [`ibm_container_vpc_cluster`](/docs/terraform?topic=terraform-container-data-sources#container-vpc-cluster)
-- [`ibm_container_vpc_cluster_worker`](/docs/terraform?topic=terraform-container-data-sources#container-vpc-worker)
-
-## Object Storage resources
-{: #ibm-object-storage-resource}
-
-- [`ibm_cos_bucket`](/docs/terraform?topic=terraform-object-storage-resources#cos-bucket)
-
-## Object Storage data source
-{: #ibm-object-storage-data-source}
-
-- [`ibm_cos_bucket`](/docs/terraform?topic=terraform-object-storage-data-sources#cos-bucket)
-
-## Power Systems resources
-{: #ibm-power-system-resource}
-
-- [`ibm_pi_image`](/docs/terraform?topic=terraform-power-vsi#power-image)
-- [`ibm_pi_instance`](/docs/terraform?topic=terraform-power-vsi#power-instance)
-- [`ibm_pi_key`](/docs/terraform?topic=terraform-power-vsi#ssh-key)
-- [`ibm_pi_network`](/docs/terraform?topic=terraform-power-vsi#power-network)
-- [`ibm_pi_volume`](/docs/terraform?topic=terraform-power-vsi#power-volume)
-
-## Power Systems data sources
-{: #ibm-power-system-data-source}
-
-- [`ibm_pi_image`](/docs/terraform?topic=terraform-power-data-sources#power-image)
-- [`ibm_pi_images`](/docs/terraform?topic=terraform-power-data-sources#power-images)
-- [`ibm_pi_instance`](/docs/terraform?topic=terraform-power-data-sources#power-instance)
-- [`ibm_pi_instance_ip`](/docs/terraform?topic=terraform-power-data-sources#power-instance-ip)
-- [`ibm_pi_key`](/docs/terraform?topic=terraform-power-data-sources#power-ssh-key)
-- [`ibm_pi_network`](/docs/terraform?topic=terraform-power-data-sources#power-network)
-- [`ibm_pi_public_network`](/docs/terraform?topic=terraform-power-data-sources#power-public-network)
-- [`ibm_pi_tenant`](/docs/terraform?topic=terraform-power-data-sources#power-tenant)
-- [`ibm_pi_volume`](/docs/terraform?topic=terraform-power-data-sources#power-volume)
-- [`ibm_pi_instance_volumes`](/docs/terraform?topic=terraform-power-data-sources#power-instance-volumes)
-
-## Resource management resources
-{: #ibm-resource-management-resource}
-
-- [`ibm_resource_group`](/docs/terraform?topic=terraform-resource-mgmt-resources#rg)
-- [`ibm_resource_instance`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-instance)
-- [`ibm_resource_key`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-key)
-
-## Resource management data sources
-{: #ibm-resource-management-data-source}
-
-- [`ibm_resource_group`](/docs/terraform?topic=terraform-resource-management-data-sources#resource-group)
-- [`ibm_resource_instance`](/docs/terraform?topic=terraform-resource-management-data-sources#resouce-instance)
-- [`ibm_resource_key`](/docs/terraform?topic=terraform-resource-management-data-sources#resource-key)
-- [`ibm_resource_quota`](/docs/terraform?topic=terraform-resource-management-data-sources#resource-quota)
-
-## Schematics data sources
-{: #ibm-schematics-data-source}
-
-- [`ibm_schematics_workspace`](/docs/terraform?topic=terraform-schematics-data-sources#schematics-workspace)
-- [`ibm_schematics_output`](/docs/terraform?topic=terraform-schematics-data-sources#schematics-output)
-- [`ibm_schematics_state`](/docs/terraform?topic=terraform-schematics-data-sources#schematics-state)
-
-## VPC infrastructure resources (Gen 1 compute)
-{: #ibm-vpc-infrastructure-resource-gen-1}
-
-- [`ibm_is_floating_ip`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-floating-ip)
-- [`ibm_is_ike_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-ike-policy)
-- [`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen1-resources#image)
-- [`ibm_is_instance`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-instance)
-- [`ibm_is_ipsec_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-ipsec)
-- [`ibm_is_lb`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb)
-- [`ibm_is_lb_listener`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener)
-- [`ibm_is_lb_listener_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener-policy)
-- [`ibm_is_lb_listener_policy_rule`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener-policy-rule)
-- [`ibm_is_lb_pool`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-pool)
-- [`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-pool-member)
-- [`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen1-resources#network-acl)
-- [`ibm_is_public_gateway`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-public-gateway)
-- [`ibm_is_security_group`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group)
-- [`ibm_is_security_group_rule`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group-rule)
-- [`ibm_is_security_group_network_interface_attachment`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group-netint)
-- [`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen1-resources#subnet)
-- [`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen1-resources#ssh-key) 
-- [`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-vps)
-- [`ibm_is_vpc_address_prefix`](/docs/terraform?topic=terraform-vpc-gen1-resources#address-prefix)
-- [`ibm_is_vpc_route`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpc-route)
-- [`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway)
-- [`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway-connection)
-- [`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen1-resources#volume)
-
-## VPC infrastructure data sources (Gen 1 compute)
-{: #ibm-vpc-infrastructure-data-source-Gen-1}
-
-- [`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#image)
-- [`ibm_is_images`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#images)
-- [`ibm_is_instance_profile`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#instance-profile)
-- [`ibm_is_instance_profiles`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#instance-profiles)
-- [`ibm_is_region`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#region)
-- [`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#ssh-key)
-- [`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#subnet)
-- [`ibm_is_subnets`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#vpc-subnets)
-- [`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#vpc)
-- [`ibm_is_zone`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#zone)
-- [`ibm_is_zones`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#zones)
-
-## VPC infrastructure resources (Gen 2 compute)
-{: #ibm-vpc-infrastructure-resource-Gen-2}
-
-- [`ibm_is_floating_ip`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-floating-ip)
-- [`ibm_is_ike_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-ike-policy)
-- [`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen2-resources#image)
-- [`ibm_is_instance`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-instance)
-- [`ibm_is_ipsec_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-ipsec)
-- [`ibm_is_lb`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb)
-- [`ibm_is_lb_listener`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener)
-- [`ibm_is_lb_listener_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener-policy)
-- [`ibm_is_lb_listener_policy_rule`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener-policy-rule)
-- [`ibm_is_lb_pool`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-pool)
-- [`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-pool-member)
-- [`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen2-resources#network-acl)
-- [`ibm_is_public_gateway`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-public-gateway)
-- [`ibm_is_security_group`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group)
-- [`ibm_is_security_group_rule`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group-rule)
-- [`ibm_is_security_group_network_interface_attachment`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group-netint)
-- [`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen2-resources#subnet)
-- [`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen2-resources#ssh-key)
-- [`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-vps)
-- [`ibm_is_vpc_address_prefix`](/docs/terraform?topic=terraform-vpc-gen2-resources#address-prefix)
-- [`ibm_is_vpc_route`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpc-route)
-- [`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway)
-- [`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway-connection)
-- [`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen2-resources#volume)
-
-## VPC infrastructure data sources (Gen 2 compute)
-{: #ibm-vpc-infrastructure-data-source-Gen-2}
-
-- [`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-image)
-- [`ibm_is_images`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-images)
-- [`ibm_is_instance_profile`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-instance-profile)
-- [`ibm_is_instance_profiles`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-instance-profiles)
-- [`ibm_is_region`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-region)
-- [`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-ssh-key)
-- [`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-subnet)
-- [`ibm_is_subnets`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-subnets)
-- [`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc)
-- [`ibm_is_zone`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-zone)
-- [`ibm_is_zones`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-zones)
+  ## Cloud Databases
+{: #ibm-Cloud-Databases}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_database`](/docs/terraform?topic=terraform-databases-resources#db)</li></ul></td>
+    <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_database`](/docs/terraform?topic=terraform-databases-data-sources#database)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
+  
+## Cloud Foundry
+{: #ibm-Cloud-Foundry}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_app`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-app)</li><li style="margin:0px; padding:0px">[`ibm_app_domain_private`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-private-domain)</li><li style="margin:0px; padding:0px">[`ibm_app_domain_shared`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-shared-domain)</li><li style="margin:0px; padding:0px">[`ibm_app_route`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-route)</li><li style="margin:0px; padding:0px">[`ibm_org`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-org)</li><li style="margin:0px; padding:0px">[`ibm_service_instance`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-service)</li><li style="margin:0px; padding:0px">[`ibm_service_key`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-service-key)</li><li style="margin:0px; padding:0px">[`ibm_space`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-space)</li></ul></td>
+    <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_account`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-account)</li><li style="margin:0px; padding:0px">[`ibm_app`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-app)</li><li style="margin:0px; padding:0px">[`ibm_app_domain_private`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-private-domain)</li><li style="margin:0px; padding:0px">[`ibm_app_domain_shared`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-shared-domain)</li><li style="margin:0px; padding:0px">[`ibm_app_route`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-app-route)</li><li style="margin:0px; padding:0px">[`ibm_org`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-org)</li><li style="margin:0px; padding:0px">[`ibm_org_quota`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-org-quota)</li><li style="margin:0px; padding:0px">[`ibm_service_instance`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-service-instance)</li><li style="margin:0px; padding:0px">[`ibm_service_key`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-service-key)</li><li style="margin:0px; padding:0px">[`ibm_service_plan`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-service-plan)</li><li style="margin:0px; padding:0px">[`ibm_space`](/docs/terraform?topic=terraform-cloud-foundry-data-sources#cf-space)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
+  
+  ## DNS service
+  {: #ibm-dns-service}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dns_permitted_network`](/docs/terraform?topic=terraform-dns-resources#dns-permitted-network)</li><li style="margin:0px; padding:0px">[`ibm_dns_resource_record`](/docs/terraform?topic=terraform-dns-resources#dns-record)</li><li style="margin:0px; padding:0px">[`ibm_dns_zone`](/docs/terraform?topic=terraform-dns-resources#dns-zone)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dns_permitted_networks`](/docs/terraform?topic=terraform-dns-data-sources#dns-permitted-network)</li><li style="margin:0px; padding:0px">[`ibm_dns_resource_records`](/docs/terraform?topic=terraform-dns-data-sources#dns-record)</li><li style="margin:0px; padding:0px">[`ibm_dns_zones`](/docs/terraform?topic=terraform-dns-data-sources#dns-zones)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
+  
+  ## Functions
+  {: #ibm-Functions}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_function_action`](/docs/terraform?topic=terraform-function-resources#fn-action)</li><li style="margin:0px; padding:0px">[`ibm_function_package`](/docs/terraform?topic=terraform-function-resources#fn-package)</li><li style="margin:0px; padding:0px">[`ibm_function_rule`](/docs/terraform?topic=terraform-function-resources#fn-rule)</li><li style="margin:0px; padding:0px">[`ibm_function_trigger`](/docs/terraform?topic=terraform-function-resources#fn-trigger)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_function_action`](/docs/terraform?topic=terraform-function-data-sources#fn-action)</li><li style="margin:0px; padding:0px">[`ibm_function_package`](/docs/terraform?topic=terraform-function-data-sources#fn-package)</li><li style="margin:0px; padding:0px">[`ibm_function_rule`](/docs/terraform?topic=terraform-function-data-sources#fn-rule)</li><li style="margin:0px; padding:0px">[`ibm_function_trigger`](/docs/terraform?topic=terraform-function-data-sources#fn-trigger)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
+  
+ ## Identity & Access (IAM)
+  {: #ibm-iam-resource}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_iam_access_group`](/docs/terraform?topic=terraform-iam-resources#iam-access-group)</li><li style="margin:0px; padding:0px">[`ibm_iam_access_group_members`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-members)</li><li style="margin:0px; padding:0px">[`ibm_iam_access_group_policy`](/docs/terraform?topic=terraform-iam-resources#iam-access-group-policy)</li><li style="margin:0px; padding:0px">[`ibm_iam_access_group_dynamic_rule`](/docs/terraform?topic=terraform-iam-resources#iam-group-dynamic-rule)</li><li style="margin:0px; padding:0px">[`ibm_iam_authorization_policy`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy)</li><li style="margin:0px; padding:0px">[`ibm_iam_authorization_policy_detach`](/docs/terraform?topic=terraform-iam-resources#iam-auth-policy-detach)</li><li style="margin:0px; padding:0px">[`ibm_iam_custom_role`](/docs/terraform?topic=terraform-iam-resources#iam-custom-role)</li><li style="margin:0px; padding:0px">[`ibm_iam_service_id`](/docs/terraform?topic=terraform-iam-resources#iam-service-id)</li><li style="margin:0px; padding:0px">[`ibm_iam_service_policy`](/docs/terraform?topic=terraform-iam-resources#iam-service-policy)</li><li style="margin:0px; padding:0px">[`ibm_iam_user_policy`](/docs/terraform?topic=terraform-iam-resources#iam-user-policy)</li><li style="margin:0px; padding:0px">[`ibm_iam_user_invite`](/docs/terraform?topic=terraform-iam-resources#iam-user-invite)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_iam_access_group`](/docs/terraform?topic=terraform-iam-data-sources#access_group)</li><li style="margin:0px; padding:0px">[`ibm_iam_auth_token`](/docs/terraform?topic=terraform-iam-data-sources#iam-token)</li><li style="margin:0px; padding:0px">[`ibm_iam_role_actions`](/docs/terraform?topic=terraform-iam-data-sources#iam-role-actions)</li><li style="margin:0px; padding:0px">[`ibm_iam_roles`](/docs/terraform?topic=terraform-iam-data-sources#iam-roles)</li><li style="margin:0px; padding:0px">[`ibm_iam_service_id`](/docs/terraform?topic=terraform-iam-data-sources#iam-service)</li><li style="margin:0px; padding:0px">[`ibm_iam_service_policy`](/docs/terraform?topic=terraform-iam-data-sources#iam-service-policy)</li><li style="margin:0px; padding:0px">[`ibm_iam_user_policy`](/docs/terraform?topic=terraform-iam-data-sources#iam-user-policy)</li></ul></td>
+    </tr>
+  </tbody>
+  </table> 
+  
+  ## Internet services
+  {: #ibm-internet-services}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_cis`](/docs/terraform?topic=terraform-cis-resources#cis)</li><li style="margin:0px; padding:0px">[`ibm_cis_domain`](/docs/terraform?topic=terraform-cis-resources#cis-domain)</li><li style="margin:0px; padding:0px">[`ibm_cis_domain_settings`](/docs/terraform?topic=terraform-cis-resources#cis-domain-settings)</li><li style="margin:0px; padding:0px">[`ibm_cis_dns_record`](/docs/terraform?topic=terraform-cis-resources#cis-dns-record)</li><li style="margin:0px; padding:0px">[`ibm_cis_firewall`](/docs/terraform?topic=terraform-cis-resources#cis-firewall)</li><li style="margin:0px; padding:0px">[`ibm_cis_global_load_balancer`](/docs/terraform?topic=terraform-cis-resources#cis-global-lb)</li><li style="margin:0px; padding:0px">[`ibm_cis_healthcheck`](/docs/terraform?topic=terraform-cis-resources#cis-health)</li><li style="margin:0px; padding:0px">[`ibm_cis_origin_pool`](/docs/terraform?topic=terraform-cis-resources#cis-origin-pool)</li><li style="margin:0px; padding:0px">[`ibm_cis_rate_limit`](/docs/terraform?topic=terraform-cis-resources#rate-limit)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_cis`](/docs/terraform?topic=terraform-cis_data#cis)</li><li style="margin:0px; padding:0px">[`ibm_cis_domain`](/docs/terraform?topic=terraform-cis_data#cis_domain)</li><li style="margin:0px; padding:0px">[`ibm_cis_ip_addresses`](/docs/terraform?topic=terraform-cis_data#cis_ip)</li><li style="margin:0px; padding:0px">[`ibm_cis_rate_limit`](/docs/terraform?topic=terraform-cis_data#rate-limit)</li></ul></td>
+    </tr>
+  </tbody>
+  </table> 
+  
+  ## Key Protect
+  {: #ibm-key-protect}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kp-resources#kp-key)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kp-data-sources#kp-key)</li></ul></td>
+    </tr>
+  </tbody>
+  </table> 
+  
+  ## Kubernetes Service
+  {: #ibm-kubernetes-service}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_container_alb`](/docs/terraform?topic=terraform-container-resources#container-alb)</li><li style="margin:0px; padding:0px">[`ibm_container_alb_cert`](/docs/terraform?topic=terraform-container-resources#container-alb-cert)</li><li style="margin:0px; padding:0px">[`ibm_container_bind_service`](/docs/terraform?topic=terraform-container-resources#container-bind)</li><li style="margin:0px; padding:0px">[`ibm_container_cluster`](/docs/terraform?topic=terraform-container-resources#container-cluster)</li><li style="margin:0px; padding:0px">[`ibm_container_cluster_feature`](/docs/terraform?topic=terraform-container-resources#container-cluster-feature)</li><li style="margin:0px; padding:0px">[`ibm_container_worker_pool`](/docs/terraform?topic=terraform-container-resources#container-pool)</li><li style="margin:0px; padding:0px">[`ibm_container_worker_pool_zone_attachment`](/docs/terraform?topic=terraform-container-resources#container-pool-zone)</li><li style="margin:0px; padding:0px">[`ibm_container_vpc_alb`](/docs/terraform?topic=terraform-container-resources#vpc-alb)</li><li style="margin:0px; padding:0px">[`ibm_container_vpc_cluster`](/docs/terraform?topic=terraform-container-resources#vpc-cluster)</li><li style="margin:0px; padding:0px">[`ibm_container_vpc_worker_pool`](/docs/terraform?topic=terraform-container-resources#vpc-worker-pool)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_container_cluster`](/docs/terraform?topic=terraform-container-data-sources#container-cluster)</li><li style="margin:0px; padding:0px">[`ibm_container_cluster_config`](/docs/terraform?topic=terraform-container-data-sources#container-cluster-config)</li><li style="margin:0px; padding:0px">[`ibm_container_cluster_worker`](/docs/terraform?topic=terraform-container-data-sources#container-worker)</li><li style="margin:0px; padding:0px">[`ibm_container_cluster_versions`](/docs/terraform?topic=terraform-container-data-sources#container-cluster-versions)</li><li style="margin:0px; padding:0px">[`ibm_container_vpc_cluster`](/docs/terraform?topic=terraform-container-data-sources#container-vpc-cluster)</li><li style="margin:0px; padding:0px">[`ibm_container_vpc_cluster_worker`](/docs/terraform?topic=terraform-container-data-sources#container-vpc-worker)</li></ul></td>
+    </tr>
+  </tbody>
+  </table> 
+  
+   ## Object Storage
+  {: #ibm-object-storage}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_cos_bucket`](/docs/terraform?topic=terraform-object-storage-resources#cos-bucket)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_cos_bucket`](/docs/terraform?topic=terraform-object-storage-data-sources#cos-bucket)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
+  
+   ## Power Systems
+  {: #ibm-power-system}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+       <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_pi_image`](/docs/terraform?topic=terraform-power-vsi#power-image)</li><li style="margin:0px; padding:0px">[`ibm_pi_instance`](/docs/terraform?topic=terraform-power-vsi#power-instance)</li><li style="margin:0px; padding:0px">[`ibm_pi_key`](/docs/terraform?topic=terraform-power-vsi#ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_pi_network`](/docs/terraform?topic=terraform-power-vsi#power-network)</li><li style="margin:0px; padding:0px">[`ibm_pi_volume`](/docs/terraform?topic=terraform-power-vsi#power-volume)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_pi_image`](/docs/terraform?topic=terraform-power-data-sources#power-image)</li><li style="margin:0px; padding:0px">[`ibm_pi_images`](/docs/terraform?topic=terraform-power-data-sources#power-images)</li><li style="margin:0px; padding:0px">[`ibm_pi_instance`](/docs/terraform?topic=terraform-power-data-sources#power-instance)</li><li style="margin:0px; padding:0px">[`ibm_pi_instance_ip`](/docs/terraform?topic=terraform-power-data-sources#power-instance-ip)</li><li style="margin:0px; padding:0px">[`ibm_pi_key`](/docs/terraform?topic=terraform-power-data-sources#power-ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_pi_network`](/docs/terraform?topic=terraform-power-data-sources#power-network)</li><li style="margin:0px; padding:0px">[`ibm_pi_public_network`](/docs/terraform?topic=terraform-power-data-sources#power-public-network)</li><li style="margin:0px; padding:0px">[`ibm_pi_tenant`](/docs/terraform?topic=terraform-power-data-sources#power-tenant)</li><li style="margin:0px; padding:0px">[`ibm_pi_volume`](/docs/terraform?topic=terraform-power-data-sources#power-volume)</li><li style="margin:0px; padding:0px">[`ibm_pi_instance_volumes`](/docs/terraform?topic=terraform-power-data-sources#power-instance-volumes)</li></ul></td>
+    </tr>
+  </tbody>
+  </table> 
+  
+  ## Resource management
+  {: #ibm-resource-management}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+       <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_group`](/docs/terraform?topic=terraform-resource-mgmt-resources#rg)</li><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-instance)</li><li style="margin:0px; padding:0px">[`ibm_resource_key`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-key)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_group`](/docs/terraform?topic=terraform-resource-management-data-sources#resource-group)</li><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-resource-management-data-sources#resouce-instance)</li><li style="margin:0px; padding:0px">[`ibm_resource_key`](/docs/terraform?topic=terraform-resource-management-data-sources#resource-key)</li><li style="margin:0px; padding:0px">[`ibm_resource_quota`](/docs/terraform?topic=terraform-resource-management-data-sources#resource-quota)</li></ul></td>
+    </tr>
+  </tbody>
+  </table> 
+  
+  ## Schematics 
+  {: #ibm-schematics-data}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+       <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">N/A</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_schematics_workspace`](/docs/terraform?topic=terraform-schematics-data-sources#schematics-workspace)</li><li style="margin:0px; padding:0px">[`ibm_schematics_output`](/docs/terraform?topic=terraform-schematics-data-sources#schematics-output)</li><li style="margin:0px; padding:0px">[`ibm_schematics_state`](/docs/terraform?topic=terraform-schematics-data-sources#schematics-state)</li></ul></td>
+    </tr>
+  </tbody>
+  </table> 
+  
+ ## VPC infrastructure (Gen 1 compute)
+ {: #ibm-vpc-infrastructure-gen-1}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_is_floating_ip`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-floating-ip)</li><li style="margin:0px; padding:0px">[`ibm_is_ike_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-ike-policy)</li><li style="margin:0px; padding:0px">[`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen1-resources#image)</li><li style="margin:0px; padding:0px">[`ibm_is_instance`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-instance)</li><li style="margin:0px; padding:0px">[`ibm_is_ipsec_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-ipsec)</li><li style="margin:0px; padding:0px">[`ibm_is_lb`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener-policy)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener_policy_rule`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener-policy-rule)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_pool`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-pool)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-pool-member)</li><li style="margin:0px; padding:0px">[`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen1-resources#network-acl)</li><li style="margin:0px; padding:0px">[`ibm_is_public_gateway`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-public-gateway)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group_rule`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group-rule)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group_network_interface_attachment`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group-netint)</li><li style="margin:0px; padding:0px">[`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen1-resources#subnet)</li><li style="margin:0px; padding:0px">[`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen1-resources#ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-vps)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc_address_prefix`](/docs/terraform?topic=terraform-vpc-gen1-resources#address-prefix)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc_route`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpc-route)</li><li style="margin:0px; padding:0px">[`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway)</li><li style="margin:0px; padding:0px">[`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway-connection)</li><li style="margin:0px; padding:0px">[`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen1-resources#volume)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#image)</li><li style="margin:0px; padding:0px">[`ibm_is_images`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#images)</li><li style="margin:0px; padding:0px">[`ibm_is_instance_profile`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#instance-profile)</li><li style="margin:0px; padding:0px">[`ibm_is_instance_profiles`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#instance-profiles)</li><li style="margin:0px; padding:0px">[`ibm_is_region`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#region)</li><li style="margin:0px; padding:0px">[`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#subnet)</li><li style="margin:0px; padding:0px">[`ibm_is_subnets`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#vpc-subnets)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#vpc)</li><li style="margin:0px; padding:0px">[`ibm_is_zone`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#zone)</li><li style="margin:0px; padding:0px">[`ibm_is_zones`](/docs/terraform?topic=terraform-vpc-gen1-data-sources#zones)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
+  
+  ## VPC infrastructure (Gen 2 compute)
+ {: #ibm-vpc-infrastructure-gen-2}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_is_floating_ip`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-floating-ip)</li><li style="margin:0px; padding:0px">[`ibm_is_ike_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-ike-policy)</li><li style="margin:0px; padding:0px">[`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen2-resources#image)</li><li style="margin:0px; padding:0px">[`ibm_is_instance`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-instance)</li><li style="margin:0px; padding:0px">[`ibm_is_ipsec_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-ipsec)</li><li style="margin:0px; padding:0px">[`ibm_is_lb`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener-policy)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener_policy_rule`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener-policy-rule)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_pool`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-pool)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-pool-member)</li><li style="margin:0px; padding:0px">[`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen2-resources#network-acl)</li><li style="margin:0px; padding:0px">[`ibm_is_public_gateway`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-public-gateway)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group_rule`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group-rule)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group_network_interface_attachment`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group-netint)</li><li style="margin:0px; padding:0px">[`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen2-resources#subnet)</li><li style="margin:0px; padding:0px">[`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen2-resources#ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-vps)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc_address_prefix`](/docs/terraform?topic=terraform-vpc-gen2-resources#address-prefix)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc_route`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpc-route)</li><li style="margin:0px; padding:0px">[`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway)</li><li style="margin:0px; padding:0px">[`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway-connection)</li><li style="margin:0px; padding:0px">[`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen2-resources#volume)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-image)</li><li style="margin:0px; padding:0px">[`ibm_is_images`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-images)</li><li style="margin:0px; padding:0px">[`ibm_is_instance_profile`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-instance-profile)</li><li style="margin:0px; padding:0px">[`ibm_is_instance_profiles`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-instance-profiles)</li><li style="margin:0px; padding:0px">[`ibm_is_region`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-region)</li><li style="margin:0px; padding:0px">[`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-subnet)</li><li style="margin:0px; padding:0px">[`ibm_is_subnets`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-subnets)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc)</li><li style="margin:0px; padding:0px">[`ibm_is_zone`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-zone)</li><li style="margin:0px; padding:0px">[`ibm_is_zones`](/docs/terraform?topic=terraform-vpc-gen2-data-sources#vpc-zones)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
 
