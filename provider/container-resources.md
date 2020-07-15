@@ -364,7 +364,8 @@ resource "ibm_container_vpc_cluster" "cluster" {
 }
 
 resource "ibm_container_vpc_worker_pool" "cluster_pool" {
-  cluster           = ibm_container_vpc_cluster.cluster.id
+  cluster           = ibm_container_
+  .cluster.id
   worker_pool_name  = "mywp"
   flavor            = "bc1-4x16"
   vpc_id            = ibm_is_vpc.vpc1.id
@@ -840,6 +841,9 @@ Create, update, or delete a VPC cluster.
 {: shortdesc}
 
 To create a VPC cluster, make sure to include the VPC infrastructure generation in the `provider` block of your Terraform configuration file. If you do not set this value, the generation is automatically set to 2. For more information about how to configure the `provider` block, see [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters). 
+{: important}
+
+You cannot create a free cluster in {{site.data.keyword.bpfull_notm}}.
 {: important}
 
 ### Sample Terraform code
