@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-21"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -197,7 +197,6 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    <thead>
      <th>Parameter</th>
      <th>Description</th>
-   </thead>
    </thead>
    <tbody>
    <tr>
@@ -782,6 +781,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    <thead>
      <th>Parameter</th>
      <th>Description</th>
+   </thead>
    <tbody>
    <tr>
    <td><code>resource</code></td>
