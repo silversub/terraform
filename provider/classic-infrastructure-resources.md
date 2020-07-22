@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-22"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -55,7 +55,7 @@ Create, or delete a CDN mapping.
 
 ```
 resource "ibm_cdn" "test_cdn1" {
-  hostname = "www.default.com"
+  host_name = "www.default.com"
   vendor_name = "akamai"
   origin_address = "111.111.111.5"
   origin_type = "HOST_SERVER"
