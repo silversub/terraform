@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-23"
+lastupdated: "2020-07-24"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, single site, single zone
 
@@ -244,8 +244,8 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} classic infrast
       
    2. Add your classic infrastructure credentials and the {{site.data.keyword.Bluemix_notm}} API key to the `terraform.tfvars` file. 
       ```
-      softlayer_username = "<classic_infrastructure_username>"
-      softlayer_api_key = "<classic_infrastructure_api_key>"
+      iaas_classic_username = "<classic_infrastructure_username>"
+      iaas_classic_api_key = "<classic_infrastructure_api_key>"
       ibmcloud_api_key = "<ibmcloud_api_key>"
       ```
       {: codeblock}
