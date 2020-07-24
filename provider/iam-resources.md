@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-13"
+lastupdated: "2020-07-24"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -145,7 +145,7 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-| `id` | String | The unique identifier of the access group members. The ID is returned in the format `<iam_access_group_ID\/<random_ID>`. | 
+| `id` | String | The unique identifier of the access group members. The ID is returned in the format `<iam_access_group_ID>/<random_ID>`. | 
 | `members` | Array of objects | A list of members that are included in the access group. |
 | `members.iam_id` | String | The IBMid or service ID of the member. |
 | `members.type` | String | The type of member. Supported values are `user` or `service`. 
