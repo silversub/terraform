@@ -19,6 +19,7 @@ Terraform
     
     {: .navgroup id="howto"}
     setup_cli.md
+    create-terraform-template.md
     manage_resources.md
     ansible/ansible.md
     {: .navgroup-end}

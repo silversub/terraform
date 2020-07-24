@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08" 
+lastupdated: "2020-07-23" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -117,7 +117,7 @@ resource "ibm_resource_instance" "resource_instance" {
   resource_group_id = data.ibm_resource_group.group.id
   tags              = ["tag1", "tag2"]
 
-  parameters {
+  parameters = {
     HMAC = true
   }
   //User can increase timeouts 
@@ -225,7 +225,7 @@ resource "ibm_resource_key" "resourceKey" {
   name                 = "myobjectkey"
   role                 = "Viewer"
   resource_instance_id = data.ibm_resource_instance.resource_instance.id
-  parameters {
+  parameters = {
     serviceid_crn = ibm_iam_service_id.serviceID.crn
   }
 
@@ -269,7 +269,7 @@ resource "ibm_resource_key" "resourceKey" {
   role                 = "Viewer"
   resource_instance_id = ibm_database.database.id
   
-  parameters {
+  parameters = {
 
      service-endpoints =  "private"
   
