@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-27"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -99,7 +99,6 @@ Review the output parameters that you can access after you retrieved your data s
 | `public_service_endpoint_url` | String | The URL of the public service endpoint for your cluster. |
 | `private_service_endpoint` | Boolean | Indicates if the private service endpoint is enabled (**true**) or disabled (**false**) for a cluster. | 
 | `private_service_endpoint_url` | String | The URL of the private service endpoint for your cluster.|
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that can be used to view details about this cluster.|
 | `vlans`| List of objects | A list of VLANs that are attached to the cluster. | 
 | `vlans.id` | String | The ID of the VLAN. | 
 | `vlans.subnets` | List of objects | A list of subnets that belong to the cluster. |
@@ -302,7 +301,6 @@ Review the output parameters that you can access after you retrieved your data s
 | `private_vlan` | String | The ID of the private VLAN that the worker node is attached to. |
 | `public_ip` | String | The public IP address that is assigned to the worker node. | 
 | `public_vlan` | String | The ID of the public VLAN that the worker node is attached to. |
-| `resource_controller_url` | String | TThe URL of the {{site.data.keyword.cloud_notm}} dashboard that can be used to view details about the worker node.|
 | `state` | String | The state of the worker node. | 
 | `status` | String | The status of the worker node. |
 
