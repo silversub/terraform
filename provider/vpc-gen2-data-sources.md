@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-27"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -292,7 +292,6 @@ Review the output parameters that you can access after you retrieved your data s
 |`fingerprint`| String| The SHA256 fingerprint of the public key.|
 |`length`|String|The length of the SSH key.|
 |`type`|String|The cryptosystem that is used by this key.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -352,7 +351,6 @@ Review the output parameters that you can access after you retrieved your data s
 |`vpc`|String|The ID of the VPC that the subnet belongs to.|
 |`zone`|String|The subnet zone name.|
 |`available_ipv4_address_count`|Integer|The total number of available IPv4 addresses.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -444,7 +442,6 @@ Review the output parameters that you can access after you retrieved your data s
 |`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
 |`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|
 |`default_network_acl`|String| The ID of the default network ACL.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 |`resource_group`|String|The resource group ID where the VPC created.|
 |`subnets`|List of subnets|A list of subnets that are attached to a VPC.|
 |`subnets.name`|String|The name of the subnet.|
