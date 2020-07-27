@@ -447,7 +447,7 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 ### Input parameters
 {: #container-cluster-input}
 
-Review the input parameters that you can specify for your resource. 
+	Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
 | Input parameter | Data type | Required/ optional | Description | Forces new resource |
@@ -1016,7 +1016,7 @@ Review the input parameters that you can specify for your resource.
 |`flavor`|String|Required|The flavor of the VPC worker node that you want to use. | Yes |
 |`name`|String|Required|The name of the cluster.| Yes |
 |`vpc_id`|String|Required|The ID of the VPC that you want to use for your cluster. To list available VPCs, run `ibmcloud is vpcs`. | Yes |
-|`zones`|List|Required|A nested block describing the zones of this VPC cluster. | Yes |
+|`zones`|List|Required|A nested block describing the zones of this VPC cluster. | No |
 |`zones.subnet_id`|String|Required|The VPC subnet to assign the cluster.| Yes |
 |`zones.name`|String|Required|The name of the zone| Yes |
 |`disable_public_service_endpoint`|Boolean|Optional|Disable the public service endpoint to prevent public access to the Kubernetes master. Default value 'true’.| No |
@@ -1105,7 +1105,7 @@ Review the input parameters that you can specify for your resource.
 |`vpc_id`|String|Required|The ID of the VPC.| Yes |
 |`worker_count`|Integer|Required| The number of worker nodes per zone in the worker pool.| No |
 |`flavor`|String|Required|The flavor of the worker node.| Yes |
-|`zones`|List|Required|A nested block describing the zones of this worker pool. | Yes |
+|`zones`|List|Required|A nested block describing the zones of this worker pool. | No |
 |`zones.subnet_id`|String|Required|The subnet that you want to use for your worker pool.| No |
 |`zones.name`|String|Required|The name of the zone.| No |
 |`labels`|Map|Optional|A list of labels that you want to add to all the worker nodes in the worker pool.| No |
