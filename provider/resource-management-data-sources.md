@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-27"
 
 keywords: terraform provider plugin, terraform resource group, terraform resource management, terraform iam services
 
@@ -134,6 +134,8 @@ Review the output parameters that you can access after you retrieved your data s
 |`id`|String|The unique identifier of the service instance.|
 |`status`|String|The status of the service instance.|
 |`plan`|String| The service plan that is used for the service instance.|
+|`guid`|String|The guid of the resource instance.|
+|`extensions`|String|The extended metadata as a map associated with the resource instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ## `ibm_resource_key`
