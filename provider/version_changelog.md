@@ -41,7 +41,7 @@ View information for updates to the {{site.data.keyword.cloud_notm}} Provider pl
 
 ## Changelog for 1.9.0, released 22 July 2020
 
-The following table shows the changes that are included in version 1.8.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+The following table shows the changes that are included in version 1.9.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
 
 | Previous | Current | Description |
