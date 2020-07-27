@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-15" 
+lastupdated: "2020-07-27" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -501,7 +501,6 @@ Review the output parameters that you can access after your resource is created.
 | `name` | String | The name of the cluster. |
 | `public_service_endpoint_url` | String | The URL of the public service endpoint for your cluster. |
 | `private_service_endpoint_url` | String | The URL of the private service endpoint for your cluster.|
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that can be used to view details about this cluster.|
 | `server_url` | String | The server URL. | 
 | `subnet_id` | String | The subnets attached to this cluster. | 
 | `workers` | List of objects | A list of worker nodes that belong to the cluster. | 
@@ -661,7 +660,6 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------ |-------------| -------------- |
 | `id` | String | The unique identifier of the worker pool in the format `<cluster_name_id>/<worker_pool_id>`.| 
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that can be used to view details about the worker pool. |
 | `state` | String | The state of the worker pool. |
 | `zones` | List | A list of zones that are attached to the worker pool. | 
 | `zones.zone` | String | The name of the zone. | 
