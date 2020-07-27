@@ -134,7 +134,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`id`|String|The unique identifier of the service instance.|
 |`status`|String|The status of the service instance.|
 |`plan`|String| The service plan that is used for the service instance.|
-|`guid`|String|The guid of the resource instance.|
+|`guid`|String|The GUID of the resource instance.|
 |`extensions`|String|The extended metadata as a map associated with the resource instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
