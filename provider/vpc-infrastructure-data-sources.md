@@ -133,6 +133,197 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
+## `ibm_is_instance`
+{: #instance}
+
+Retrieve the details for a Gen 1 {{site.data.keyword.vsi_is_short}} instance.
+{: shortdesc}
+
+### Sample Terraform code
+{: #instance-sample}
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "testvpc"
+}
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "testsubnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "10.240.0.0/24"
+}
+
+resource "ibm_is_ssh_key" "testacc_sshkey" {
+  name       = "testssh"
+  public_key = file("~/.ssh/id_rsa.pub")
+}
+
+resource "ibm_is_instance" "testacc_instance" {
+  name    = "testinstance"
+  image   = "a7a0626c-f97e-4180-afbe-0331ec62f32a"
+  profile = "bc1-2x8"
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.testacc_subnet.id
+  }
+
+  network_interfaces {
+    name   = "eth1"
+    subnet = ibm_is_subnet.testacc_subnet.id
+  }
+
+  vpc  = ibm_is_vpc.testacc_vpc.id
+  zone = "us-south-1"
+  keys = [ibm_is_ssh_key.testacc_sshkey.id]
+}
+
+data "ibm_is_instance" "ds_instance" {
+  name        = "${ibm_is_instance.testacc_instance.name}"
+  private_key = file("~/.ssh/id_rsa")
+  passphrase  = ""
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #instance-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`name`|String|Required|The name of the {{site.data.keyword.vsi_is_short}} instance that you want to retrieve. |
+|`private_key`|String|Optional|The private key of an SSH key that you want to add to your {{site.data.keyword.vsi_is_short}} instance during creation in PEM format. SSH keys are used by virtual servers to identify a user or device through public-key cryptography. For more information about how to create SSH keys and upload them to {{site.data.keyword.cloud_notm}}, see [Locating or generating your SSH key](/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys). The SSH key is used to decrypt the default administrator password in Windows if Windows is installed as the operating system on your {{site.data.keyword.vsi_is_short}} instance.|
+|`passphrase`|String|Optional|The passphrase that you used when you created your SSH key. If you did not enter a passphrase when you created the SSH key, do not provide this input parameter.|
+
+### Output parameters
+{: #instance-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID that was assigned to the {{site.data.keyword.vsi_is_short}} instance.|
+|`memory`|Integer|The amount of memory that was allocated to the instance.|
+|`status`|String|The status of the instance.|
+|`image`|String|The ID of the virtual server image that is used in the instance.|
+|`zone`|String|The zone where the instance was created.|
+|`vpc`|String|The ID of the VPC that the instance belongs to.|
+|`resource_group`|String|The name of the resource group where the instance was created.|
+|`vcpu`|Object|A list of virtual CPUs that were allocated to the instance.|
+|`vcpu.architecture`|String|The architecture of the virtual CPU. |
+|`vcpu.count`|Integer|The number of virtual CPUs that are allocated to the instance.|
+|`gpu`|Object|A list of graphics processing units that are allocated to the instance.|
+|`gpu.cores`|Integer|The number of cores that are assigned to the GPU.|
+|`gpu.count`|Integer|The number of GPUs that are allocated to the instance.|
+|`gpu.manufacture`|String|The manufacturer of the GPU.|
+|`gpu.memory`|Integer|The amount of memory that was allocated to the GPU.|
+|`gpu.model`|String|The model of the GPU.| 
+|`primary_network_interface`|Object|A list of primary network interfaces that were created for the instance.| 
+|`primary_network_interface.id`|String|The ID of the primary network interface.|
+|`primary_network_interface.name`|String|The name of the primary network interface.|
+|`primary_network_interface.subnet`|String|The ID of the subnet that is used in the primary network interface.|
+|`primary_network_interface.security_groups`|List|A list of security groups that were created for the interface.|
+|`primary_network_interface.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
+|`network_interfaces`|Object|A list of additional network interfaces that the instance uses.|
+|`network_interfaces.id`|String|The ID of the additional network interface.|
+|`network_interfaces.name`|String|The name of the additional network interface.|
+|`network_interfaces.subnet`|String|The ID of the subnet that is used in the additional network interface.|
+|`network_interfaces.security_groups`|List|A list of security groups that were created for the interface.|
+|`network_interfaces.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
+|`boot_volume`|Object|A list of boot volumes that were created for the instance.|
+|`boot_volume.id`|String|The ID of the boot volume attachment.|
+|`boot_volume.name`|String|The nam of the boot volume.|
+|`boot_volume.device`|String|The name of the device that is associated with the boot volume.|
+|`boot_volume.volume_id`|String|The ID of the volume that is associated with the boot volume attachment.|
+|`boot_volume.volume_crn`|String|The CRN of the volume that is associated with the boot volume attachment.|
+|`volume_attachments`|Object|A list of volume attachments that were created for the instance.| 
+|`volume_attachments.id`|String|The ID of the volume attachment.|
+|`volume_attachments.name`|String|The name of the volume attachment.|
+|`volume_attachments.volume_id`|String|The ID of the volume that is associated with the volume attachment.|
+|`volume_attachments.volume_name`|String|The name of the volume that is associated with the volume attachment.|
+|`volume_attachments.crn`|String|The CRN of the volume that is associated with the volume attachment.|
+|`resource_controller_url`|String|The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to see details for your instance.| 
+|`password`|String|The password that you can use to access your instance.|
+|`keys`|Object|A list of SSH keys that were added to the instance during creation.|
+|`keys.id`|String|The ID of the SSH key.|
+|`keys.name`|String|The name of the SSH key that you entered when you uploaded the key to {{site.data.keyword.cloud_notm}}.|
+
+{{white-space.md]}
+
+## `ibm_is_instances`
+{: #instances}
+
+Retrieve the details for all Gen 1 {{site.data.keyword.vsi_is_short}} instances in your account.
+{: shortdesc}
+
+### Sample Terraform code
+{: #instances-sample}
+
+```
+data "ibm_is_instances" "ds_instances" {
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #instances-input}
+
+This data source does not support any input parameters.
+{: shortdesc}
+
+### Output parameters
+{: #instances-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`instances`|Object|A list of {{site.data.keyword.vsi_is_short}} instances that exist in your account.|
+|`instances.id`|String|The ID that was assigned to the {{site.data.keyword.vsi_is_short}} instance.|
+|`instances.memory`|Integer|The amount of memory that was allocated to the instance.|
+|`instances.status`|String|The status of the instance.|
+|`instances.image`|String|The ID of the virtual server image that is used in the instance.|
+|`instances.zone`|String|The zone where the instance was created.|
+|`instances.vpc`|String|The ID of the VPC that the instance belongs to.|
+|`instances.resource_group`|String|The name of the resource group where the instance was created.|
+|`instances.vcpu`|Object|A list of virtual CPUs that were allocated to the instance.|
+|`instances.vcpu.architecture`|String|The architecture of the virtual CPU. |
+|`instances.vcpu.count`|Integer|The number of virtual CPUs that are allocated to the instance.|
+|`instances.primary_network_interface`|Object|A list of primary network interfaces that were created for the instance.| 
+|`instances.primary_network_interface.id`|String|The ID of the primary network interface.|
+|`instances.primary_network_interface.name`|String|The name of the primary network interface.|
+|`instances.primary_network_interface.subnet`|String|The ID of the subnet that is used in the primary network interface.|
+|`instances.primary_network_interface.security_groups`|List|A list of security groups that were created for the interface.|
+|`instances.primary_network_interface.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
+|`instances.network_interfaces`|Object|A list of additional network interfaces that the instance uses.|
+|`instances.network_interfaces.id`|String|The ID of the additional network interface.|
+|`instances.network_interfaces.name`|String|The name of the additional network interface.|
+|`instances.network_interfaces.subnet`|String|The ID of the subnet that is used in the additional network interface.|
+|`instances.network_interfaces.security_groups`|List|A list of security groups that were created for the interface.|
+|`instances.network_interfaces.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
+|`instances.boot_volume`|Object|A list of boot volumes that were created for the instance.|
+|`instances.boot_volume.id`|String|The ID of the boot volume attachment.|
+|`instances.boot_volume.name`|String|The nam of the boot volume.|
+|`instances.boot_volume.device`|String|The name of the device that is associated with the boot volume.|
+|`instances.boot_volume.volume_id`|String|The ID of the volume that is associated with the boot volume attachment.|
+|`instances.boot_volume.volume_crn`|String|The CRN of the volume that is associated with the boot volume attachment.|
+|`instances.volume_attachments`|Object|A list of volume attachments that were created for the instance.| 
+|`instances.volume_attachments.id`|String|The ID of the volume attachment.|
+|`instances.volume_attachments.name`|String|The name of the volume attachment.|
+|`instances.volume_attachments.volume_id`|String|The ID of the volume that is associated with the volume attachment.|
+|`instances.volume_attachments.volume_name`|String|The name of the volume that is associated with the volume attachment.|
+|`instances.volume_attachments.crn`|String|The CRN of the volume that is associated with the volume attachment.|
+
+
+
+
+
+
 ## `ibm_is_instance_profile` 
 {: #instance-profile}
 
