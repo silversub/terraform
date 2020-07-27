@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-27"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -1172,7 +1172,6 @@ Review the input parameters that you can specify for your resource.
 | `vpc` | String | Required | Enter the ID of the VPC, for which you want to create a public gateway. To list available VPCs, run `ibmcloud is vpcs`.  | Yes |
 | `zone` | String | Required | Enter the zone where you want to create the public gateway. To list available zones, run `ibmcloud is zones`. | Yes |
 | `tags`|Array of strings|Optional|Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | No |
-| `resource_group`|String|Optional|Enter the ID of the resource group where you want to create the public gateway. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the public gateway is created in the `default` resource group. | Yes |
 | `floating_ip` | List | Optional | A list of floating IP addresses that you want to assign to the public gateway. | No |
 | `floating_ip.id`|String| Optional | The unique identifier of the floating IP address. If you specify this parameter, do not specify `floating_ip.address` at the same time. | No | 
 | `floating_ip.address`|String| Optional | The floating IP address. If you specify this parameter, do not specify `floating_ip.id` at the same time.| No |
@@ -1490,7 +1489,6 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required| The name of the subnet.| No |
 |`network_acl`|String|Optional|The ID of the network ACL for the subnet.| No |
 |`public_gateway`|String|Optional|The ID of the public gateway for the subnet that you want to attach. You create the public gateway by using the [`ibm_is_public_gateway` resource](#provider-public-gateway).| No |
-|`resource_group`|String|Optional|The ID of the resource group where you want to create the subnet.| Yes |
 |`vpc`|String|Required|The VPC ID.| Yes |
 |`zone`|String|Required|The subnet zone name.| Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
