@@ -236,7 +236,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`network_interfaces.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
 |`boot_volume`|Object|A list of boot volumes that were created for the instance.|
 |`boot_volume.id`|String|The ID of the boot volume attachment.|
-|`boot_volume.name`|String|The nam of the boot volume.|
+|`boot_volume.name`|String|The name of the boot volume.|
 |`boot_volume.device`|String|The name of the device that is associated with the boot volume.|
 |`boot_volume.volume_id`|String|The ID of the volume that is associated with the boot volume attachment.|
 |`boot_volume.volume_crn`|String|The CRN of the volume that is associated with the boot volume attachment.|
@@ -252,7 +252,10 @@ Review the output parameters that you can access after you retrieved your data s
 |`keys.id`|String|The ID of the SSH key.|
 |`keys.name`|String|The name of the SSH key that you entered when you uploaded the key to {{site.data.keyword.cloud_notm}}.|
 
-{{white-space.md]}
+
+
+
+
 
 ## `ibm_is_instances`
 {: #instances}
@@ -308,7 +311,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`instances.network_interfaces.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
 |`instances.boot_volume`|Object|A list of boot volumes that were created for the instance.|
 |`instances.boot_volume.id`|String|The ID of the boot volume attachment.|
-|`instances.boot_volume.name`|String|The nam of the boot volume.|
+|`instances.boot_volume.name`|String|The name of the boot volume.|
 |`instances.boot_volume.device`|String|The name of the device that is associated with the boot volume.|
 |`instances.boot_volume.volume_id`|String|The ID of the volume that is associated with the boot volume attachment.|
 |`instances.boot_volume.volume_crn`|String|The CRN of the volume that is associated with the boot volume attachment.|
