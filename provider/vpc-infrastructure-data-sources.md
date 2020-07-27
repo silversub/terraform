@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-27"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -303,7 +303,6 @@ Review the output parameters that you can access after you retrieved your data s
 | `id` | String | The ID of the SSH key. | 
 | `length` | String | The length of the SSH key. | 
 | `type` | String | The cryptosystem that is used by the SSH key. | 
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to view details about the SSH key. |
 
 
 
@@ -362,7 +361,6 @@ Review the output parameters that you can access after you retrieved your data s
 | `name` | String | The name of the subnet. |
 | `network_acl` | String | The ID of the network access control list (ACL) that is set up for the subnet. |
 | `public_gateway` | String | The ID of the public gateway that is attached to the subnet. |
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to view details about the subnet. |
 | `status` | String | The status of the subnet. |
 | `total_ipv4_address_count` | Integer | The total number of IPv4 addresses. |
 | `vpc` | String | The ID of the VPC that the subnet is attached to. |
@@ -469,7 +467,6 @@ Review the output parameters that you can access after you retrieved your data s
 |`cse_source_addresses.address`|String|The IP address of the cloud service endpoint.|
 |`cse_source_addresses.zone_name`|String|The zone where the cloud service endpoint is located.|
 | `default_network_acl` | String | The ID of the default network access control list (ACL) that was set up for the VPC. | 
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to view details about the VPC. |
 | `resource_group` | String | The resource group ID where the VPC was created. |
 |`subnets`|List of subnets|A list of subnets that are attached to a VPC.|
 |`subnets.name`|String|The name of the subnet.|
