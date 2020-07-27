@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-27"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -101,7 +101,6 @@ Review the output parameters that you can access after your resource is created.
 | ------------- |-------------| -------------- |
 | `address` | String | The floating IP address that was created. | 
 | `id` | String | The unique identifier of the floating IP address. | 
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the floating IP address. | 
 | `status` | String | The provisioning status of the floating IP address. |
 
 ### Timeouts
@@ -162,7 +161,6 @@ Review the output parameters that you can access after your resource is created.
 | `href`| String| The canonical URL that was assigned to your IKE policy. | 
 | `id` | String | The unique identifier of the IKE policy that you created. |
 | `negotiation_mode` | String | The negotiation mode that was set for your IKE policy. Only `main` is supported. | 
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the IKE policy. | 
 | `vpn_connections`| List | A collection of VPN connections that use the IKE policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
 
 ## `ibm_is_image`
@@ -424,7 +422,6 @@ Review the output parameters that you can access after your resource is created.
 |`volume_attachments.volume_id`|String|The ID of the volume that is used in the volume attachment.|
 |`volume_attachments.volume_name`|String|The name of the volume that is used in the volume attachment.|
 |`volume_attachments.volume_crn`|String|The CRN of the volume that is used in the volume attachment.|
-|`resource_controller_url`|String|The URL of the {{site.data.keyword.cloud_notm}} dashboard that can be used to explore and view details about this instance.|
 
 ### Timeout
 {: #instance-timeout}
@@ -490,7 +487,6 @@ Review the output parameters that you can access after your resource is created.
 | ------------- |-------------| -------------- |
 | `encapsulation_mode` | String | The encapsulation mode that was set for your IPSec policy. Only `tunnel` is supported. |
 | `id` | String | The unique identifier of the IPSec policy that you created. |
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the IPSec policy. | 
 | `transform_protocol` | String | The transform protocol that is used in your IPSec policy. Only the `esp` protocol is supported that uses the triple DES (3DES) encryption algorithm to encrypt your data. |
 | `vpn_connections`| List | A collection of VPN connections that use the IPSec policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
 
@@ -538,7 +534,6 @@ Review the output parameters that you can access after your resource is created.
 |`status`|String|The status of the load balancer.|
 |`operating_status`|String|The operating status of this load balancer.|
 |`hostname`|String|The fully qualified domain name assigned to this load balancer.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 
 ### Import
 {: #lb-import}
@@ -1114,7 +1109,6 @@ Review the output parameters that you can access after your resource is created.
 |`rules.id`|String|The rule ID.|
 |`rules.ip_version`|String|The IP version of the rule.|
 |`rules.subnets`|String|The subnets for the ACL rule.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 
 ### Import
 {: #network-acl-import}
@@ -1172,7 +1166,6 @@ Review the input parameters that you can specify for your resource.
 | `vpc` | String | Required | Enter the ID of the VPC, for which you want to create a public gateway. To list available VPCs, run `ibmcloud is vpcs`.  | Yes |
 | `zone` | String | Required | Enter the zone where you want to create the public gateway. To list available zones, run `ibmcloud is zones`. | Yes |
 | `tags`|Array of strings|Optional|Enter any tags that you want to associate with your VPC. Tags might help you find your VPC more easily after it is created. Separate multiple tags with a comma (`,`). | No |
-| `resource_group`|String|Optional|Enter the ID of the resource group where you want to create the public gateway. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the public gateway is created in the `default` resource group. | Yes |
 | `floating_ip` | List | Optional | A list of floating IP addresses that you want to assign to the public gateway. | No |
 | `floating_ip.id`|String| Optional | The unique identifier of the floating IP address. If you specify this parameter, do not specify `floating_ip.address` at the same time. | No | 
 | `floating_ip.address`|String| Optional | The floating IP address. If you specify this parameter, do not specify `floating_ip.id` at the same time.| No |
@@ -1256,7 +1249,6 @@ Review the output parameters that you can access after your resource is created.
 |`rules.code`|String|The ICMP traffic code to allow.  |
 |`rules.port_max`|Integer|The inclusive upper bound of TCP/UDP port range.  |
 |`rules.port_min`|Integer|The inclusive lower bound of TCP/UDP port range. |
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.   |
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -1490,7 +1482,6 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required| The name of the subnet.| No |
 |`network_acl`|String|Optional|The ID of the network ACL for the subnet.| No |
 |`public_gateway`|String|Optional|The ID of the public gateway for the subnet that you want to attach. You create the public gateway by using the [`ibm_is_public_gateway` resource](#provider-public-gateway).| No |
-|`resource_group`|String|Optional|The ID of the resource group where you want to create the subnet.| Yes |
 |`vpc`|String|Required|The VPC ID.| Yes |
 |`zone`|String|Required|The subnet zone name.| Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -1507,7 +1498,6 @@ Review the output parameters that you can access after your resource is created.
 |`ipv6_cidr_block`|String|The IPv6 range of the subnet.|
 |`status`|String|The status of the subnet.|
 |`available_ipv4_address_count`|String|The total number of available IPv4 addresses.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
@@ -1577,7 +1567,6 @@ Review the output parameters that you can access after your resource is created.
 |`fingerprint`| String|The SHA256 fingerprint of the public key.|
 |`length`|String|The length of this key.|
 |`type`|String|The cryptosystem used by this key.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
@@ -1712,7 +1701,6 @@ Review the output parameters that you can access after your resource is created.
 |`crn`|String|The CRN of the VPC.|
 | `default_security_group` | String | The unique identifier of the default security group that was created for your VPC. | 
 | `id` | String | The unique identifier of the VPC that you created. |
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that you can use to explore and view details about the VPC. |
 |`subnets`|List of subnets|A list of subnets that are attached to a VPC.|
 |`subnets.name`|String|The name of the subnet.|
 |`subnets.id`|String|The ID of the subnet.|
@@ -1899,7 +1887,6 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String|The unique identifier of the VPN gateway.|
 |`status`|String|The status of VPN gateway.|
 |`public_ip_address`|String|The IP address assigned to this VPN gateway.|
-|`resource_controller_url`|String|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.|
 
 ### Import
 {: #vpn-gateway-import}

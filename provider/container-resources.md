@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-15" 
+lastupdated: "2020-07-27" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -447,7 +447,7 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 ### Input parameters
 {: #container-cluster-input}
 
-Review the input parameters that you can specify for your resource. 
+	Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
 | Input parameter | Data type | Required/ optional | Description | Forces new resource |
@@ -501,7 +501,6 @@ Review the output parameters that you can access after your resource is created.
 | `name` | String | The name of the cluster. |
 | `public_service_endpoint_url` | String | The URL of the public service endpoint for your cluster. |
 | `private_service_endpoint_url` | String | The URL of the private service endpoint for your cluster.|
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that can be used to view details about this cluster.|
 | `server_url` | String | The server URL. | 
 | `subnet_id` | String | The subnets attached to this cluster. | 
 | `workers` | List of objects | A list of worker nodes that belong to the cluster. | 
@@ -661,7 +660,6 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------ |-------------| -------------- |
 | `id` | String | The unique identifier of the worker pool in the format `<cluster_name_id>/<worker_pool_id>`.| 
-| `resource_controller_url` | String | The URL of the {{site.data.keyword.cloud_notm}} dashboard that can be used to view details about the worker pool. |
 | `state` | String | The state of the worker pool. |
 | `zones` | List | A list of zones that are attached to the worker pool. | 
 | `zones.zone` | String | The name of the zone. | 
@@ -1018,14 +1016,16 @@ Review the input parameters that you can specify for your resource.
 |`flavor`|String|Required|The flavor of the VPC worker node that you want to use. | Yes |
 |`name`|String|Required|The name of the cluster.| Yes |
 |`vpc_id`|String|Required|The ID of the VPC that you want to use for your cluster. To list available VPCs, run `ibmcloud is vpcs`. | Yes |
-|`zones`|List|Required|A nested block describing the zones of this VPC cluster. | Yes |
+|`zones`|List|Required|A nested block describing the zones of this VPC cluster. | No |
 |`zones.subnet_id`|String|Required|The VPC subnet to assign the cluster.| Yes |
 |`zones.name`|String|Required|The name of the zone| Yes |
 |`disable_public_service_endpoint`|Boolean|Optional|Disable the public service endpoint to prevent public access to the Kubernetes master. Default value 'true’.| No |
 |`kube_version`|String|Optional| Specify the Kubernetes version, including the major.minor version. If you do not include this flag, the default version is used. To see available versions, run `ibmcloud ks versions`.| No |
+|`update_all_workers`|Boolean|Optional| Set to true, if you want to update workers kube version with the cluster kube_version.| No |
 |`pod_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for pods. The subnet must have a CIDR of at least `/23` or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#pod-subnet). Default value: `172.30.0.0/16`.| Yes |
 |`service_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for services. The subnet must be at least ’/24’ or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#service-subnet). Default value: `172.21.0.0/16`.| Yes |
 |`worker_count`|Integer|Optional| The number of worker nodes per zone in the default worker pool. Default value `1`.| Yes |
+|`worker_labels`|Map|Optional| Labels on all the workers in the default worker pool.| No |
 |`resource_group_id`|String|Optional|The ID of the resource group. You can retrieve the value by running `ibmcloud resource groups` or using the `ibm_resource_group` data source. If no value is provided, the `default` resource group is used. | Yes |
 |`tags`|Array of strings|Optional|A list of tags that you want to associate with your VPC cluster. **Note**: For users on account to add tags to a resource, they must be assigned the [appropriate permissions](/docs/resources?topic=resources-tag-access). | No |
 |`cos_instance_crn`|String|Optional|Required for OpenShift clusters only. The standard cloud object storage instance CRN to back up the internal registry in your OpenShift on VPC Gen 2 cluster.| No |
@@ -1105,7 +1105,7 @@ Review the input parameters that you can specify for your resource.
 |`vpc_id`|String|Required|The ID of the VPC.| Yes |
 |`worker_count`|Integer|Required| The number of worker nodes per zone in the worker pool.| No |
 |`flavor`|String|Required|The flavor of the worker node.| Yes |
-|`zones`|List|Required|A nested block describing the zones of this worker pool. | Yes |
+|`zones`|List|Required|A nested block describing the zones of this worker pool. | No |
 |`zones.subnet_id`|String|Required|The subnet that you want to use for your worker pool.| No |
 |`zones.name`|String|Required|The name of the zone.| No |
 |`labels`|Map|Optional|A list of labels that you want to add to all the worker nodes in the worker pool.| No |
