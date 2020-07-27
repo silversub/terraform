@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-07-27"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -158,6 +158,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required/ optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | --------|
 |`name`|String|Required|The name of the action.| Yes |
+|`namespace`|String|Required|The name of the function namespace.| No |
 |`limits`|List of objects|Optional|A nested block to describe assigned limits. | No |
 |`limits.timeout`|Integer|Optional|The timeout limit to terminate the action, specified in milliseconds. Default value: `60000`.    | No |
 |`limits.memory`|Integer|Optional|The maximum memory for the action, specified in MBs. Default value: `256`.    | No |
@@ -183,9 +184,11 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 |`id`|String|The ID of the new action.|
+|`namespace`|String| The name of the function namespace.|
 |`version`|String|Semantic version of the item.|
 |`annotations`|List|All annotations to describe the action, including those set by you or by IBM Cloud Functions.|
 |`parameters`|List|All parameters passed to the action when the action is invoked, including those set by you or by IBM Cloud Functions.|
+|`action_id`|String|The action ID.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
@@ -288,6 +291,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required/ optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
 |`name`|String|Required|The name of the package.| Yes |
+|`namespace`|String|Required|The name of the function namespace.| No|
 |`publish`|Boolean|Optional|Package visibility.| No |
 |`user_defined_annotations`|String|Optional|Annotations defined in key value format.| No |
 |`user_defined_parameters`|String| Optional|Parameters defined in key value format. Parameter bindings included in the context passed to the package.| No |
@@ -303,9 +307,11 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 |`id`|String|The ID of the new package.|
+|`namespace`|String| The name of the function namespace.|
 |`version`|String|Semantic version of the item.|
 |`annotations`|String|All annotations to describe the package, including those set by you or by IBM Cloud Functions.|
 |`parameters`|String|All parameters passed to the package, including those set by you or by IBM Cloud Functions.### Import`ibm_function_package` can be imported using the ID.Example:```$ terraform import ibm_function_package.sample hello```|
+|`package_id`|String|The package ID.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -369,6 +375,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required/ optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------ |
 |`name`|String|Required|The name of the rule.| Yes |
+|`namespace`|String|Required|The name of the function namespace.| No|
 |`trigger_name`|String|Required|The name of the trigger.| No |
 |`action_name`|String|Required|The name of the action.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -382,9 +389,11 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 |`id`|String|The ID of the new rule.|
+|`namespace`|String| The name of the function namespace.|
 |`publish`|Boolean|Rule visibility.|
 |`version`|String|Semantic version of the item.|
 |`status`|String|The status of the rule.|
+|`rule_id`|String|The rule ID.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
@@ -484,6 +493,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required/ optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | -------- |
 |`name`|String|Required|The name of the trigger.| Yes |
+|`namespace`|String|Required|The name of the function namespace.| No |
 |`feed`|List|Optional| A nested block to describe the feed.   | Yes |
 |`feed.name`|String|Required|Trigger feed `ACTION_NAME`.    | Yes |
 |`feed.parameters`|String|Optional|Parameters definitions in key value format. Parameter bindings are included in the context and passed when the action is invoked.| No |
@@ -500,10 +510,12 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 |`id`|String|The ID of the new trigger.|
+|`namespace`|String| The name of the function namespace.|
 |`publish`|Boolean|Trigger visibility.|
 |`version`|String|Semantic version of the item.|
 |`annotations`|String|All annotations to describe the trigger, including those set by you or by IBM Cloud Functions.|
 |`parameters`|String|All parameters passed to the trigger, including those set by you or by IBM Cloud Functions.|
+|`trigger_id`|String|The trigger ID.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
