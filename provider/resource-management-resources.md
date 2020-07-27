@@ -155,9 +155,9 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The unique identifier of the new resource instance.|
-|`guid`|String|Optional|The GUID of the resource instance.|
+|`guid`|String|The GUID of the resource instance.|
 |`status`|String|The status of resource instance.|
-|`extension`|String|The extended metadata as a map associated with the resource instance.|
+|`extensions`|String|The extended metadata as a map associated with the resource instance.|
 |`dashboard_url`|String|The dashboard url of the new resource instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
