@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-23" 
+lastupdated: "2020-07-27" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -144,7 +144,6 @@ Review the input parameters that you can specify for your resource.
 |`resource_group_id`|String|Optional|The ID of the resource group where you want to create the service. You can retrieve the value from data source `ibm_resource_group`. If not provided creates the service in default resource group.| Yes |
 |`tags`|Array of strings|Optional|Tags associated with the instance.| No |
 |`parameters`|Map|Optional|Arbitrary parameters to create instance. The value must be a JSON object.| Yes |
-|`guid`|String|Optional|The GUID of the resource instance.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -156,6 +155,7 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The unique identifier of the new resource instance.|
+|`guid`|String|Optional|The GUID of the resource instance.|
 |`status`|String|The status of resource instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
