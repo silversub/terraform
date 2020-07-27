@@ -1021,9 +1021,11 @@ Review the input parameters that you can specify for your resource.
 |`zones.name`|String|Required|The name of the zone| Yes |
 |`disable_public_service_endpoint`|Boolean|Optional|Disable the public service endpoint to prevent public access to the Kubernetes master. Default value 'true’.| No |
 |`kube_version`|String|Optional| Specify the Kubernetes version, including the major.minor version. If you do not include this flag, the default version is used. To see available versions, run `ibmcloud ks versions`.| No |
+|`update_all_workers`|Boolean|Optional| Set to true, if you want to update workers kube version with the cluster kube_version.| No |
 |`pod_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for pods. The subnet must have a CIDR of at least `/23` or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#pod-subnet). Default value: `172.30.0.0/16`.| Yes |
 |`service_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for services. The subnet must be at least ’/24’ or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#service-subnet). Default value: `172.21.0.0/16`.| Yes |
 |`worker_count`|Integer|Optional| The number of worker nodes per zone in the default worker pool. Default value `1`.| Yes |
+|`worker_labels`|Map|Optional| Labels on all the workers in the default worker pool.| No |
 |`resource_group_id`|String|Optional|The ID of the resource group. You can retrieve the value by running `ibmcloud resource groups` or using the `ibm_resource_group` data source. If no value is provided, the `default` resource group is used. | Yes |
 |`tags`|Array of strings|Optional|A list of tags that you want to associate with your VPC cluster. **Note**: For users on account to add tags to a resource, they must be assigned the [appropriate permissions](/docs/resources?topic=resources-tag-access). | No |
 |`cos_instance_crn`|String|Optional|Required for OpenShift clusters only. The standard cloud object storage instance CRN to back up the internal registry in your OpenShift on VPC Gen 2 cluster.| No |
