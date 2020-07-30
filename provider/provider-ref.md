@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-23"
+lastupdated: "2020-07-30"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -179,4 +179,5 @@ Creating multiple `provider` configurations is useful when you want to use diffe
    }
    ```
    {: codeblock}
+
 
