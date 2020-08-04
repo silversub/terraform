@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27" 
+lastupdated: "2020-08-04" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -566,6 +566,7 @@ resource "ibm_is_lb_listener" "testacc_lb_listener" {
   lb       = "8898e627-f61f-4ac8-be85-9db9d8bfd345"
   port     = "9080"
   protocol = "http"
+  default_pool = "ibmcloud is load-balancer-pools <load_balancer_ID>"
 }
 
 resource "ibm_is_lb_pool" "webapptier-lb-pool" {
@@ -602,7 +603,7 @@ Review the input parameters that you can specify for your resource.
 |`lb`|String|Required|The load balancer unique identifier.| Yes |
 |`port`|Integer|Required|The listener port number. Valid range 1 to 65535.| No |
 |`protocol`|String|Required|The listener protocol. Supported values are `http`, `tcp`, and `https`.| No |
-|`default_pool`|String|Optional| The load balancer pool unique identifier.| No |
+|`default_pool`|String|Required| The load balancer pool unique identifier.| No |
 |`certificate_instance`|String|Optional|The CRN of the certificate instance.| No |
 |`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000.| No |
 
