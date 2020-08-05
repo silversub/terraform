@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27"
+lastupdated: "2020-08-05"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -414,7 +414,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_is_region`
 {: #region}
 
-Retrieve the details for a {{site.data.keyword.vpc_full}} regions. 
+Retrieve the details for an {{site.data.keyword.vpc_full}} regions. 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -506,7 +506,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_is_subnet`
 {: #subnet}
 
-Retrieve details for a {{site.data.keyword.vpc_full}} subnet. 
+Retrieve details for an {{site.data.keyword.vpc_full}} subnet. 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -617,7 +617,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_is_vpc`
 {: #vpc}
 
-Retrieve information about a {{site.data.keyword.vpc_full}}. 
+Retrieve information about an {{site.data.keyword.vpc_full}}. 
 {: shortdesc}
 
 ### Sample Terraform code
