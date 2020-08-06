@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-06"
 
 keywords: Terraform, configuration files, resources, what is Terraform, automation, automate
 
@@ -40,7 +40,7 @@ subcollection: terraform
 With Terraform, you can automate the {{site.data.keyword.Bluemix_notm}} resource provisioning to build, change, and version complex, multi-tier cloud environments. 
 {: shortdesc} 
 
-Terraform is an Opens Source software that is developed by HashiCorp that enables predictable and consistent provisioning of cloud resources by using a high-level scripting language. Supported resources include Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS), and Function-as-a-Service (FaaS). By working with different cloud providers, you can use Terraform to configure and automate your cloud resource provisioning across cloud providers. 
+Terraform is an open source software that is developed by HashiCorp that enables predictable and consistent provisioning of cloud resources by using a high-level scripting language. Supported resources include Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS), and Function-as-a-Service (FaaS). By working with different cloud providers, you can use Terraform to configure and automate your cloud resource provisioning across cloud providers. 
 
 ## Key terms
 {: #terms}

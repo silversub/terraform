@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-04"
+lastupdated: "2020-08-06"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -1478,7 +1478,7 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required/ optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| -------- |
 |`ipv4_cidr_block`|String|Optional|The IPv4 range of the subnet.| Yes |
-|`total_ipv4_address_count`|String|Optional|The total number of IPv4 addresses.| Yes |
+|`total_ipv4_address_count`|String|Required|The total number of IPv4 addresses.| Yes |
 |`ip_version`|String|Optional|The IP Version. The default is `ipv4`.| Yes |
 |`name`|String|Required| The name of the subnet.| No |
 |`network_acl`|String|Optional|The ID of the network ACL for the subnet.| No |
@@ -1582,7 +1582,7 @@ terraform import ibm_is_ssh_key.example <ssh_key_ID>
 ## `ibm_is_volume`
 {: #volume}
 
-Create, update, or delete a VPC block storage volume. 
+Create, update, or delete a VPC block storage volume. For more information about the VPC block storage volume, see [Getting started with VPC](/docs/vpc).
 {: shortdesc}
 
 ### Sample Terraform code
