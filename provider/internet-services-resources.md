@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-07"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -462,6 +462,13 @@ Review the input parameters that you can specify for your resource.
 |`enabled`|Boolean|Optional|If set to **true**, the load balancer is enabled and can receive network traffic. If set to **false**, the load balancer is not enabled.|
 |`proxied`|Boolean|Optional|Indicates if the host name receives origin protection by {{site.data.keyword.cis_full_notm}}. The default value is **false**.|
 |`ttl`|Integer|Optional|The time to live (TTL) in seconds for how long the load balancer must cache a resolved IP address for a DNS entry before the load balancer must look up the IP address again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is unproxied, you can enter a value that is 120 or greater. |
+|`region_pools`| Set of Strings | Optional | A set of containing mappings of region and country codes to the list of pool of IDs. IDs are ordered by their failover priority.|
+|`region_pools.region`| String | Required | Enter a region code. Should not specify the multiple entries with the same region. |
+|`region_pools.pool_ids`| String | Required | A list of pool IDs in failover priority for the provided region.|
+|`pop_pools`| Set of Strings | Optional | A set of mappings of the IBM Point-of-Presence (PoP) identifiers to the list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to the enterprise customers. |
+|`pop_pools.pop`| Strings | Required | Enter a 3-letter code. Should not specify the multiple entries with the same PoP. |
+|`pop_pools.pool_ids`| Strings | Required | A list of pool IDs in failover priority to use for the traffic reaching the provided PoP. |
+
 
 ### Output parameters
 {: #cis-global-lb-output}
