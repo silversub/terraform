@@ -41,10 +41,10 @@ Before you start working with your resource, make sure to review the [required p
 {: important}
 
 
-## `ibm_dl_gateway`
-{: #provider-dl-gateway}
+## `ibm_dl_connection`
+{: #provider-dl-connection}
 
-Create, update and delete a Direct Link gateway by using the network connections to provide a transit gateway connection resource with a {{site.data.keyword.vsi_is_short}} instance. For more information, see [Adding virtual connections to a Direct Link gateway](/docs/dl?topic=dl-add-virtual-connection)
+Create, update and delete a Direct Link gateway by using the network connections to provide a transit gateway connection resource with a {{site.data.keyword.vsi_is_short}} instance. For more information, see [Adding virtual connections to a Direct Link gateway](/docs/direct-link?topic=direct-link-about-ibm-cloud-direct-link)
 {: shortdesc}
 
 ### Sample Terraform code
@@ -54,11 +54,12 @@ The following example shows how to create, update and delete a transit gateway c
 
 ```
 resource "ibm_tg_connection" "test_ibm_tg_connection"{
-		gateway = ibm_tg_gateway.test_tg_gateway.id
-		network_type = "vpc"
-		name= "myconnection"
-		network_id = ibm_is_vpc.test_tg_vpc.resource_crn
+  gateway = ibm_tg_gateway.test_tg_gateway.id
+  network_type = "vpc"
+  name= "myconnection"
+  network_id = ibm_is_vpc.test_tg_vpc.resource_crn
 }
+
 ```
 {: codeblock}
 
@@ -87,18 +88,52 @@ Review the input parameters that you can specify for your resource.
 | `updated_at` | String | Last updated date and time of the connection. |
 | `status` | String | The configuration status of the connection, such as **attached**, **failed**, **pending**, **deleting**. |
 
-### Output parameters
-{: #floating-ip-output}
+## `ibm_dl_gateway`
+{: #provider-dl-gateway}
 
-Review the output parameters that you can access after your resource is created. 
+Create, update and delete a Direct Link gateway by using the network connections to provide a transit gateway connection resource with a {{site.data.keyword.vsi_is_short}} instance. For more information, see [Adding virtual connections to a Direct Link gateway](/docs/dl?topic=dl-add-virtual-connection)
 {: shortdesc}
+
+### Sample Terraform code
+{: #provider-dl-sample}
+
+The following example shows how to create, update and delete a transit gateway connection by using a transit gateway resource.
+
+```
+resource "ibm_tg_gateway" "new_tg_gw"{
+  name="transit-gateway-1"
+  location="us-south"
+  global=true
+  resource_group="30951d2dff914dafb26455a88c0c0092"
+}
+
+```
+{: codeblock}
+
+### Input parameters
+{: #dl-gateway-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------- |
+| `gateway` | String | Required | Enter the transit gateway identifier. | Yes |
+| `name` | String| Optional | Enter a name. If unentered, the default name is provided based on the network type, such as `vpc` for network type VPC and `classic` for network type classic. | No|
+| `network_type` | String | Required | Enter the network type. Allowed values are `classic` and `vpc`. | Yes |
+| `network_id` |  String | Optional | Enter the ID of the network being connected through this connection. This parameter is required for network type 'vpc', it is CRN of the VPC to be connected. This field is required to be unspecified for network type 'classic'. For example: crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b | Yes |
+
+### Output parameters
+{: #dl-gateway-output}
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-| `address` | String | The floating IP address that was created. | 
-| `id` | String | The unique identifier of the floating IP address. | 
-| `status` | String | The provisioning status of the floating IP address. |
-***
+
+| `id` | String | The unique identifier of the gateway ID or connection ID resource.|
+| `connection_id` | String | The unique identifier for transit gateway connection to network. |
+| `created_at` | String | Creation date and time of this connection. | 
+| `updated_at` | String | Last updated date and time of the connection. |
+| `status` | String | The configuration status of the connection, such as **attached**, **failed**, **pending**, **deleting**. |
 
 ## `ibm_is_floating_ip`
 {: #provider-floating-ip}
