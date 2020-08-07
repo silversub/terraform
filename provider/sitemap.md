@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27"
+lastupdated: "2020-08-07"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -128,6 +128,22 @@ subcollection: terraform
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dns_permitted_network`](/docs/terraform?topic=terraform-dns-resources#dns-permitted-network)</li><li style="margin:0px; padding:0px">[`ibm_dns_resource_record`](/docs/terraform?topic=terraform-dns-resources#dns-record)</li><li style="margin:0px; padding:0px">[`ibm_dns_zone`](/docs/terraform?topic=terraform-dns-resources#dns-zone)</li></ul></td>
       <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dns_permitted_networks`](/docs/terraform?topic=terraform-dns-data-sources#dns-permitted-network)</li><li style="margin:0px; padding:0px">[`ibm_dns_resource_records`](/docs/terraform?topic=terraform-dns-data-sources#dns-record)</li><li style="margin:0px; padding:0px">[`ibm_dns_zones`](/docs/terraform?topic=terraform-dns-data-sources#dns-zones)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
+  
+  ## Event Streams Topic
+  {: #ibm-event-streams}
+  
+  <table>
+    <thead>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data Sources</th>
+  </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`]()</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`]()</li><li style="margin:0px; padding:0px">[`kafka_consumer_app`]()</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`]()</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`]()</li></ul></td>
     </tr>
   </tbody>
   </table>
