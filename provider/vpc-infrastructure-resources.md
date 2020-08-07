@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-06"
+lastupdated: "2020-08-07"
 
 keywords: terraform provider plugin, terraform vpc gen 1, terraform vpc, terraform generation 1 compute, terraform vpc resources
 
@@ -40,6 +40,65 @@ subcollection: terraform
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
 
+
+## `ibm_dl_gateway`
+{: #provider-dl-gateway}
+
+Create, update and delete a Direct Link gateway by using the network connections to provide a transit gateway connection resource with a {{site.data.keyword.vsi_is_short}} instance. For more information, see [Adding virtual connections to a Direct Link gateway](/docs/dl?topic=dl-add-virtual-connection)
+{: shortdesc}
+
+### Sample Terraform code
+{: #provider-dl-sample}
+
+The following example shows how to create, update and delete a transit gateway connection by using a transit gateway resource.
+
+```
+resource "ibm_tg_connection" "test_ibm_tg_connection"{
+		gateway = ibm_tg_gateway.test_tg_gateway.id
+		network_type = "vpc"
+		name= "myconnection"
+		network_id = ibm_is_vpc.test_tg_vpc.resource_crn
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #dl-gateway-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------- |
+| `gateway` | String | Required | Enter the transit gateway identifier. | Yes |
+| `name` | String| Optional | Enter a name. If unentered, the default name is provided based on the network type, such as `vpc` for network type VPC and `classic` for network type classic. | No|
+| `network_type` | String | Required | Enter the network type. Allowed values are `classic` and `vpc`. | Yes |
+| `network_id` |  String | Optional | Enter the ID of the network being connected through this connection. This parameter is required for network type 'vpc', it is CRN of the VPC to be connected. This field is required to be unspecified for network type 'classic'. For example: crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b | Yes |
+
+### Output parameters
+{: #dl-gateway-output}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+
+| `id` | String | The unique identifier of the gateway ID or connection ID resource.|
+| `connection_id` | String | The unique identifier for transit gateway connection to network. |
+| `created_at` | String | Creation date and time of this connection. | 
+| `updated_at` | String | Last updated date and time of the connection. |
+| `status` | String | The configuration status of the connection, such as **attached**, **failed**, **pending**, **deleting**. |
+
+### Output parameters
+{: #floating-ip-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `address` | String | The floating IP address that was created. | 
+| `id` | String | The unique identifier of the floating IP address. | 
+| `status` | String | The provisioning status of the floating IP address. |
+***
 
 ## `ibm_is_floating_ip`
 {: #provider-floating-ip}
@@ -1181,7 +1240,7 @@ Review the output parameters that you can access after your resource is created.
 | ------------- |-------------| -------------- |
 | `floating_ip` | List | A list of floating IP addresses that are assigned to the public gateway. |
 | `floating_ip.id`|String| The unique identifier that was assigned to the floating IP address.|
-| `floating_ip.address`|String|The IP address that was assigned to the public gatway.|
+| `floating_ip.address`|String|The IP address that was assigned to the public gateway.|
 | `id` | String | The unique identifier that was assigned to your public gateway. |
 | `status` | String | The provisioning status of your public gateway. |
 
@@ -1191,8 +1250,8 @@ Review the output parameters that you can access after your resource is created.
 The following timeouts are defined for this resource. 
 {: shortdesc}
 
-- **create**: The creation of the public gatway is considered `failed` when no response is received for 10 minutes. 
-- **delete**: The deletion of the public gatway is considered `failed` when no response is received for 10 minutes.
+- **create**: The creation of the public gateway is considered `failed` when no response is received for 10 minutes. 
+- **delete**: The deletion of the public gateway is considered `failed` when no response is received for 10 minutes.
 
 
 ## `ibm_is_security_group`
@@ -1875,7 +1934,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the VPN gateway.| No |
 |`subnet`|String|Required|The unique identifier for this subnet.| Yes |
 |`resource_group`|String|Optional| The resource group where the VPN gateway to be created.| Yes |
-|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gatway. Tags can help you find your VPN gateway more easily later.| No |
+|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gateway. Tags can help you find your VPN gateway more easily later.| No |
 
 ### Output parameters
 {: #vpn-gateway-output}
