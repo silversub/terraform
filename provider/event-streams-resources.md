@@ -83,7 +83,7 @@ resource "ibm_event_streams_topic" "es_topic_1" {
 ### Sample2 Terraform code
 {: #event-stream-sample2}
 
-Create topic on an existing Event Streams instance.
+Create topic on an existing event streams instance.
 {: shortdesc}
 
 ```
@@ -158,7 +158,7 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the topic in CRN format. For example, `crn:v1:bluemix:public:messagehub:us-south:a/6db1b0d0b5c54ee5c201552547febcd8:cb5a0252-8b8d-4390-b017-80b743d32839:topic:my-es-topic`|
-|`kafka_http_url`|String|The API endpoint for interacting with Event Streams REST API.|
+|`kafka_http_url`|String|The API endpoint for interacting with event streams REST API.|
 |`kafka_brokers_sasl`|Array of Strings|Kafka brokers uses for interacting with Kafka native API.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
