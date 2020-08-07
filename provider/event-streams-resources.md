@@ -34,7 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Event streams topic resources
+# Event Streams topic resources
 {: #event-streams-resources}
 
 
