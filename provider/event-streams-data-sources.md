@@ -34,7 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Event streams topic data sources
+# Event Streams topic data sources
 {: #event-streams-ds}
 
 
