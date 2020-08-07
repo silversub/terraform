@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27"
+lastupdated: "2020-08-07"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -468,3 +468,49 @@ Review the output parameters that you can access after you retrieved your data s
 | `state` | String | The state of the worker node. | 
 | `subnet_id` | String | The ID of the worker pool subnet that the worker node is attached to. |
 
+## ibm_container_vpc_alb
+{: #container-vpc-alb}
+
+Import the details of a Kubernetes cluster ALB on an {{site.data.keyword.cloud_notm}} as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-vpc-alb-sample}
+
+In the following example you can configure an ALB.
+
+```
+data "ibm_container_vpc_cluster_alb" "alb" {
+  alb_id = "public-cr083d810e501d4c73b42184eab5a7ad56-alb"
+}
+```
+
+### Input parameters
+{: #container-vpc-alb-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `alb_id` | String | Required | The name or ID of the application load balancer. |
+
+### Output parameters
+{: #container-vpc-alb-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `alb_type` | String | The ALB type. |
+| `cluster` | String | The name of the cluster. |
+| `name` | String | The name of the ALB. |
+| `id` | String | The ALB ID. |
+| `load_balancer_hostname` | String | The name of the load balancer. |
+| `resize` | String | Resize of the ALB. | 
+| `state` | String | ALB state. |
+| `status` | String | The status of the ALB. |
+| `zone` | String | The name of the zone. |
+| `enable` | String | Enable an ALB for the cluster. | 
+| `disable_deployment` | String | Disables the ALB deployment details. |
