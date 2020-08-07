@@ -35,7 +35,7 @@ subcollection: terraform
 
 
 # Event streams topic data sources
-{: #event-streams-resources}
+{: #event-streams-ds}
 
 
 Review the [Event Streams](/docs/EventStreams?topic=EventStreams-about) resource that you can connect, administer, develope with event streams and integrate with the other services. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration/resources.html){: external}.
@@ -46,93 +46,29 @@ Before you start working with your resource, make sure to review the [required p
 
 
 ## ibm_event_streams_topic
-{: #event-streams}
+{: #event-streams-topic}
 
-Create and update the event streams topic.
+Import the name of an existing event streams topic as a read-only data source. Then, You can  reference the fields of the data source in other resources within the same configuration by using interpolation syntax.
 {: shortdesc}
 
-### Sample1 Terraform code
-{: #event-stream-sample}
-
-Create event streams service instance and topic.
-{: shortdesc}
+### Sample Terraform code
+{: #event-stream-ds-sample}
 
 ```
-resource "ibm_resource_instance" "es_instance_1" {
-  name              = "terraform-integration-1"
-  service           = "messagehub"
-  plan              = "standard" # "lite", "enterprise-3nodes-2tb"
-  location          = "us-south" # "us-east", "eu-gb", "eu-de", "jp-tok", "au-syd"
+data "ibm_resource_instance" "es_instance" {
+  name              = "terraform-integration"
   resource_group_id = data.ibm_resource_group.group.id
 }
 
-resource "ibm_event_streams_topic" "es_topic_1" {
-  resource_instance_id = ibm_resource_instance.es_instance_1.id
+data "ibm_event_streams_topic" "es_topic" {
+  resource_instance_id = data.ibm_resource_instance.es_instance.id
   name                 = "my-es-topic"
-  partitions           = 1
-  config = {
-    "cleanup.policy"  = "compact,delete"
-    "retention.ms"    = "86400000"
-    "retention.bytes" = "1073741824"
-    "segment.bytes"   = "536870912"
-  }
-}
-
-```
-
-### Sample2 Terraform code
-{: #event-stream-sample2}
-
-Create topic on an existing Event Streams instance.
-{: shortdesc}
-
-```
-data "ibm_resource_instance" "es_instance_2" {
-  name              = "terraform-integration-2"
-  resource_group_id = data.ibm_resource_group.group.id
-}
-
-resource "ibm_event_streams_topic" "es_topic_2" {
-  resource_instance_id = data.ibm_resource_instance.es_instance_2.id
-  name                 = "my-es-topic"
-  partitions           = 1
-  config = {
-    "cleanup.policy"  = "compact,delete"
-    "retention.ms"    = "86400000"
-    "retention.bytes" = "1073741824"
-    "segment.bytes"   = "536870912"
-  }
-}
-
-```
-
-### Sample3 Terraform code
-{: #event-stream-sample3}
-
-Create a kafka consumer application connecting to an existing event streams instance and its topics.
-{: shortdesc}
-
-```
-data "ibm_resource_instance" "es_instance_3" {
-  name              = "terraform-integration-3"
-  resource_group_id = data.ibm_resource_group.group.id
-}
-
-data "ibm_event_streams_topic" "es_topic_3" {
-  resource_instance_id = data.ibm_resource_instance.es_instance_3.id
-  name                 = "my-es-topic"
-}
-
-resource "kafka_consumer_app" "es_kafka_app" {
-  bootstrap_server = lookup(data.ibm_resource_instance.es_instance_3.extensions, "kafka_brokers_sasl", [])
-  topics           = [data.ibm_event_streams_topic.es_topic_3.name]
-  apikey           = var.es_reader_api_key
 }
 
 ```
 
 ### Input parameters
-{: #event-streams-input}
+{: #event-streams-ds-input}
 
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
@@ -141,16 +77,10 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`resource_instance_id`|String|Required|The ID/CRN of the event streams service instance.|
 |`name`|String|Required|The name of the topic.|
-|`partitions`|Integer|Optional|The number of partitions of the topic. Default value is 1.|
-|`config`|Map|Optional|The configuration parameters of the topic. Supported configurations are: `cleanup.policy`, `retention.ms`, `retention.bytes`, `segment.bytes`, `segment.ms`, `segment.index.bytes`.|
-|`data.content`|String|Required|The content of certificate data.|
-|`data.priv_key`|String|Optional|The private key data.|
-|`data.intermediate`|String|Optional|The intermediate certificate data.|
-|`description`|String|Optional|The description of the certificate.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
-{: #event-streams-output}
+{: #event-streams-ds-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
@@ -158,23 +88,6 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the topic in CRN format. For example, `crn:v1:bluemix:public:messagehub:us-south:a/6db1b0d0b5c54ee5c201552547febcd8:cb5a0252-8b8d-4390-b017-80b743d32839:topic:my-es-topic`|
-|`kafka_http_url`|String|The API endpoint for interacting with Event Streams REST API.|
+|`kafka_http_url`|String|The API endpoint for interacting with event streams REST API.|
 |`kafka_brokers_sasl`|Array of Strings|Kafka brokers uses for interacting with Kafka native API.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
-
-
-### Import
-{: #event-streams-import}
-
-This resource can be imported by using `ID`. The ID is the 'CRN', the `resource type` is `topic`, the `resource` is the name of the topic.
-{: shortdesc}
-
-**Syntax**: 
-```
-terraform import ibm_event_streams_topic.es_topic <crn>
-
-```
-**Example**:
-```
-terraform import ibm_event_streams_topic.es_topic crn:v1:bluemix:public:messagehub:us-south:a/6db1b0d0b5c54ee5c201552547febcd8:cb5a0252-8b8d-4390-b017-80b743d32839:topic:my-es-topic
-```
