@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-08-07"
 
-keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
+keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event streams topic
 
 subcollection: terraform
 
@@ -34,7 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Event Streams resources
+# Event streams topic data sources
 {: #event-streams-resources}
 
 
@@ -45,7 +45,7 @@ Before you start working with your resource, make sure to review the [required p
 {: important}
 
 
-## ibm_event_streams
+## ibm_event_streams_topic
 {: #event-streams}
 
 Create and update the event streams topic.
