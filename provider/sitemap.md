@@ -132,7 +132,7 @@ subcollection: terraform
   </tbody>
   </table>
   
-  ## Event Streams Topic
+  ## Event Streams topic
   {: #ibm-event-streams}
   
   <table>
@@ -142,8 +142,8 @@ subcollection: terraform
   </thead>
   <tbody>
     <tr>
- <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`]()</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`]()</li><li style="margin:0px; padding:0px">[`kafka_consumer_app`]()</li></ul></td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`]()</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`]()</li></ul></td>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-event-streams-resources#event-streams)</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`](/docs/terraform?topic=terraform-event-streams-resources#event-streams)</li><li style="margin:0px; padding:0px">[`kafka_consumer_app`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample3)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-event-streams-ds#event-streams-topic)</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`](/docs/terraform?topic=terraform-event-streams-ds#event-streams-topic)</li></ul></td>
     </tr>
   </tbody>
   </table>
