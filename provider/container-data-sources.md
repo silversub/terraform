@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-07"
+lastupdated: "2020-08-08"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -344,6 +344,58 @@ Review the output parameters that you can access after you retrieved your data s
 | `id` | String | The unique identifier of the cluster. | 
 | `valid_kube_versions` | String | The supported Kubernetes version in {{site.data.keyword.containerlong_notm}} clusters. | 
 | `valid_openshift_versions` | String | The supported OpenShift Container Platform version in {{site.data.keyword.openshiftlong_notm}} clusters.
+
+## `ibm_container_worker_pool`
+{: #container-worker-pool}
+
+Import information about Kubernetes cluster on an {{site.data.keyword.cloud_notm}} as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-worker-pool-sample}
+
+The following example shows how to import information about Kubernetes clusters.
+
+```
+data "ibm_container_worker_pool" "testacc_ds_worker_pool"{
+  worker_pool_name = ibm_container_worker_pool.test_pool.worker_pool_name
+  cluster          = ibm_container_cluster.testacc_cluster.id
+}
+```
+
+### Input parameters
+{: #container-worker-pool-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `cluster` | String | Required | The name or ID of the cluster.|
+| `worker_pool_name` | String | Required | The name of the worker pool that need to be retrieved.|
+
+
+### Output parameters
+{: #container-worker-pool-output}
+
+Review the output parameters that are exported.
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `id` | String | The unique identifier of the worker pool. | 
+| `state` | String | Worker pool state. | 
+| `zones` | String | List of zones attached to the worker_pool. |
+| `zones.zone` | String | Zone name. |
+| `zones.private_vlan` | String | The ID of the private VLAN. |
+| `zones.public_vlan` | String | The ID of the public VLAN. |
+| `zones.worker_count` | String | Number of workers attached to this zone.|
+| `machine_type` | String | The machine type of the worker node. |
+| `size_per_zone` | String | Number of workers per zone in this pool. |
+|`hardware` | String | The level of hardware isolation for your worker node. |
+|`disk_encryption` | String | Disk encryption on a worker. |
+|`labels` | String | Labels on all the workers in the worker pool.|
+|`resource_group_id` | String | The ID of the worker pool resource group. |
 
 ## ibm_container_vpc_alb
 {: #container-vpc-alb}
