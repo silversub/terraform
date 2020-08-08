@@ -206,8 +206,8 @@ subcollection: terraform
   </thead>
   <tbody>
     <tr>
- <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kp-resources#kp-key)</li></ul></td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kp-data-sources#kp-key)</li></ul></td>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kp-resources#kms-key)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kp-resources#kp-key)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kp-data-sources#kms-key-ds)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kp-data-sources#kp-key)</li></ul></td>
     </tr>
   </tbody>
   </table> 
