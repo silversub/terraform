@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-08"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -349,7 +349,7 @@ The following attributes are exported:
 |`policies`|List|A nested block describing IAM Policies assigned to user. |
 |`policies.id`|String|The unique identifier of the IAM user policy. The ID is composed of \<ibm_id\>/\<user_policy_id\>.  |
 |`policies.roles`| String|The roles that are assigned to the policy.	|
-|`policies.resources`| List of objects| A nested block describing the resources in the policy.		|
+|`policies.resources`| List of objects| A nested block describing the resources in the policy.|
 |`policies.resources.service`|String|The service name of the policy definition. 		|
 |`policies.resources.resource_instance_id`|String}The ID of resource instance of the policy definition.		|
 |`policies.resources.region`|String|The region of the policy definition.		|
@@ -357,3 +357,85 @@ The following attributes are exported:
 |`policies.resources.resource`|String|The resource of the policy definition.		|
 |`policies.resources.resource_group_id`|String|The ID of the resource group.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
+
+## `ibm_iam_user_profile`
+{: #iam-user-profile}
+
+Retrieve information about an IAM user profile. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #iam-user-profile-sample}
+
+```
+resource "ibm_iam_user_settings" "user_setting" {
+  iam_id = "example@in.ibm.com"
+  allowed_ip_addresses = ["192.168.0.2","192.168.0.3","192.168.0.4"]
+}
+
+data "ibm_iam_user_profile" "user_profle" {
+  iam_id = ibm_iam_user_settings.user_setting.iam_id
+}
+```
+
+### Input parameters
+{: #iam-user-profile-input}
+
+Review the input parameters that you can specify for your data source.
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|---------------|-------------------|
+|`id`|String|Required| The IBMid or email address of the user.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+
+### Output parameters
+{: #iam-user-profile-output}
+
+The following attributes are exported:
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`allowed_ip_addresses`|List|List of invited users IPs to access the IBM cloud console. |
+|`id`|String|The unique identifier or email address of the IAM user. |
+|`firstname`| String|The first name of the user. |
+|`lastname`| String| The last name of the user.|
+|`state`|String|The state of the user.|
+|`phonenumber`|String}The phonenumber of the user. |
+|`email`|String|The email address of the user. |
+
+
+## `ibm_iam_users`
+{: #iam-users}
+
+Retrieve information about an IAM user profile on IBM Cloud as a read-only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #iam-users-sample}
+
+```
+	data "ibm_iam_users" "users_profiles"{
+  
+	}
+```
+
+### Output parameters
+{: #iam-users-output}
+
+The following attributes are exported:
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`id`|String|The unique identifier user. |
+|`users`| String|List of all IAM users. Each user profile has following list of arguments. |
+|`users.iam_id`| String|The Id of the IAM user. |
+|`users.realm`| String|The realm of the user.  |
+|`users.user_id`| String|The user ID used for login. |
+|`users.firstname`| String|The first name of the user. |
+|`users.lastname`| String|The last name of the user. |
+|`users.state`| String|The state of the user. |
+|`users.email`| String|The email of the user. |
+|`users.phonenumber`| String|The phone for the user. |
+|`users.altphonenumber`| String|The alternative phone number of the user.|
+|`users.account_id`| String|The account ID of the user. |
