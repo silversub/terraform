@@ -875,3 +875,69 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
+
+## `ibm_tg_gateway`
+{: #tg-gateway-ds}
+ 
+Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastructure transit gateway as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #tg-gateway-sample}
+
+The following example shows how you can list all zones in the `us-south` region. 
+{: shortdesc}
+
+```
+resource "ibm_tg_gateway" "new_tg_gw"{
+name="transit-gateway-1"
+location="us-south"
+global=true
+resource_group="30951d2dff914dafb26455a88c0c0092"
+} 
+
+data "ibm_tg_gateway" "ds_tggateway" {
+    id=ibm_tg_gateway.new_tg_gw.id
+}
+```
+
+### Input parameters
+{: #tg-gateway-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `name` | String | Required | The name of the gateway. |
+
+### Output parameters
+{: #tg-gateway-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `created_at` | String | The date and time resource is created.|
+| `updated_at` | String | The date and time resource is last updated.|
+| `crn` | String | The CRN of the gateway.|
+| `global` | String | The gateways with global routing true to connect to the networks outside the associated region.|
+| `location` | String | The gateway location.|
+| `id` | String | The unique identifier of this gateway.|
+| `status` | String | The gateway status.|
+| `resource_group` | String | The resource group identifier.|
+| `connections.name` | String | The user-defined name for the transit gateway connection.|
+| `connections.network_type` | String | The type of network connected with the connection. Possible values are `classic` or `vpc`. |
+| `connections.network_id` | String | The ID of the network being connected with the connection. |
+| `connections.id` | String | The unique identifier for the transit gateway connection to network either `vpc` or `classic`).|
+| `connections.created_at` | String | The date and time the connection is created.|
+| `connections.updated_at` | String | The date and time the connection is last updated.|
+| `connections.status` | String | The current configuration state of the connection. Possible values are `attached`, `failed,` `pending`, `deleting`.|
+
+
+
+
+
+
+
