@@ -824,5 +824,5 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|-------------|
-|`zones`|String|The list of zones in a region. For example, `us-south-1`,`us-south-2`. |
+|`zones`|String|The list of zones in an {{site.data.keyword.cloud_notm}} region.  For example, `us-south-1`,`us-south-2`.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
