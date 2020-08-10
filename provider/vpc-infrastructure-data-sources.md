@@ -940,4 +940,52 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
+## `ibm_tg_gateways`
+{: #tg-gateways-ds}
+ 
+Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastructure transit gatewasy as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #tg-gateway-sample}
+
+The following example shows how you can list all zones in the `us-south` region. 
+{: shortdesc}
+
+```
+data "ibm_tg_gateways" "ds_tggateways" {
+}
+```
+
+### Input parameters
+{: #tg-gateway-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+There is no input parameters.
+
+### Output parameters
+{: #tg-gateway-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `transit_gateways` | String | List of all transit gateways.|
+| `transit_gateways.created_at` | String | The date and time resource is created.|
+| `transit_gateways.updated_at` | String | The date and time resource is last updated.|
+| `transit_gateways.crn` | String | The CRN of the gateway.|
+| `transit_gateways.global` | String | The gateways with global routing true to connect to the networks outside the associated region.|
+| `transit_gateways.id` | String | The unique identifier of this gateway.|
+| `transit_gateways.location` | String | The gateway location.|
+| `transit_gateways.name` | String | The user-defined name for the transit gateway connection.|
+| `transit_gateways.status` | String | The gateway status.|
+| `transit_gateways.resource_group` | String | Resource group identifier.|
+
+
+
+
+
 
