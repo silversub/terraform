@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-08"
+lastupdated: "2020-08-10"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -824,5 +824,5 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|-------------|
-|`zones`|String|The list of zones in a region.|
+|`zones`|String|The list of zones in a region. For example, `us-south-1`,`us-south-2`. |
 {: caption="Table 1. Available output parameters" caption-side="top"}
