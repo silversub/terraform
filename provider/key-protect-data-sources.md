@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-08"
 
 keywords: terraform provider plugin, terraform key protect, terraform kp, terraform root key 
 
@@ -42,6 +42,59 @@ You can reference the output parameters for each resource in other resources or 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
 
+
+## `ibm_kms_key`
+{: #kms-key-ds}
+
+Import the information of hs-crypto and key protect services. Retrieves the list of keys from the hs-crypto and key protect services for the given key name. The region parameter in the `provider.tf` file must be set. If no region parameter is specified, `us-south` is used by default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
+{: shortdesc}
+
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
+
+
+### Sample Terraform code
+{: #kms-key-ds-sample}
+
+```
+data "ibm_kms_key" "test" {
+  instance_id = "guid-of-keyprotect-or hs-crypto-instance"
+  key_name = "name-of-key"
+}
+resource "ibm_cos_bucket" "flex-us-south" {
+  bucket_name          = "atest-bucket"
+  resource_instance_id = "cos-instance-id"
+  region_location      = "us-south"
+  storage_class        = "flex"
+  key_protect          = data.ibm_kms_key.test.key.0.crn
+}
+```
+
+### Input parameters
+{: #kms-key-ds-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required/ optional|Description|
+|----|-----------|-----------|---------------------|
+|`instance_id`|String|Required|The key-protect instance GUID.|
+|`key_name`|String|Required|The name of the key. Only matching name of the keys are etrieved |
+|`endpoint_type`|String|Optional|The type of the public or private endpoint to be used for fetching keys. |
+
+### Output parameters
+{: #kms-key-ds-output}
+
+Review the output parameters that are exported.
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`keys`|String|Lists the Keys of hs-crypto or Key-protect instance. |
+|`keys.name`|String|The name for the key. |
+|`keys.id`|String|The unique ID for the key. |
+|`keys.crn`|String|The CRN of the key. |
+|`keys.standard_key`|String|The flag lists true in case of standard key, and lists false for root key.|
 
 ## `ibm_kp_key`
 {: #kp-key}

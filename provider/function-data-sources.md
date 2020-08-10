@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27"
+lastupdated: "2020-08-10"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action
 
@@ -101,6 +101,47 @@ Review the output parameters that you can access after you retrieved your data s
 |`publish`|Boolean|Action visibility.|
 |`action_id`|String|Action ID.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
+
+## `ibm_function_namespace`
+{: #fn-namespace_ds}
+
+Import the details of an existing IBM Cloud Functions namespace. For more information about managing namespace, see [Managing namespace](/docs/openwhisk?topic=openwhisk-namespaces). 
+
+### Sample Terraform code
+{: #fn-namespace-ds-sample}
+
+The following example creates the namespace and package at a specific location.
+
+```
+data "ibm_function_namespace" "test_namespace" {
+	name = var.namespace
+}
+```
+
+### Input parameters
+{: #fn-namespace-ds-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description | 
+| ------------- |-------------| ----- | -------------- | 
+|`name`|String|Required|The name of the namespace. |
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #fn-namespace-ds-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of the namespace.|
+|`resource_group_id`|String| The ID of the resource group.|
+|`location`|String| The target location of the namespace.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
 
 ## `ibm_function_package`
 {: #fn-package}

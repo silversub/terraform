@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-24"
+lastupdated: "2020-08-08"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -1065,6 +1065,48 @@ The user policy can be imported by using the IBMid and user policy ID.
 ```
 $ terraform import ibm_iam_user_policy.example <ibm_id>/<user_policy_ID>
 ```
+
+
+
+
+
+
+## `ibm_iam_user_settings`
+{: #iam-user-settings}
+
+Retrieve information about an IAM user settings. The IP addresses configured here are the only details a user can use to log in to the {{site.data.keyword.cloud_notm}}.
+{: shortdesc}
+
+### Sample Terraform code
+{: #iam-users-sample}
+
+```
+  resource "ibm_iam_user_settings" "user_setting" {
+  iam_id = "example@in.ibm.com"
+  allowed_ip_addresses = ["192.168.0.2","192.168.0.3","192.168.0.4"]
+}
+
+```
+
+### Input parameters
+{: #iam-user-settings-input}
+
+The following attributes are supported:
+
+|Name|Data type|Required / Optional|Description|
+|----|-----------|-------------| ------------|
+|`iam_id`|String|Required|The users IAM or email ID.|
+|`allowed_ip_addresses`|List|Optional|Lists the IP addresses in comman separated format.|
+
+### Output parameters
+{: #iam-user-settings-output}
+
+The following attributes are exported:
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`id`|String|The unique identifier of the IAM user setting as `account_id`/`iam_id`.|
+
 
 
 

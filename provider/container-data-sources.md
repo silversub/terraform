@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27"
+lastupdated: "2020-08-08"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -345,6 +345,105 @@ Review the output parameters that you can access after you retrieved your data s
 | `valid_kube_versions` | String | The supported Kubernetes version in {{site.data.keyword.containerlong_notm}} clusters. | 
 | `valid_openshift_versions` | String | The supported OpenShift Container Platform version in {{site.data.keyword.openshiftlong_notm}} clusters.
 
+## `ibm_container_worker_pool`
+{: #container-worker-pool}
+
+Import information about Kubernetes cluster on an {{site.data.keyword.cloud_notm}} as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-worker-pool-sample}
+
+The following example shows how to import information about Kubernetes clusters.
+
+```
+data "ibm_container_worker_pool" "testacc_ds_worker_pool"{
+  worker_pool_name = ibm_container_worker_pool.test_pool.worker_pool_name
+  cluster          = ibm_container_cluster.testacc_cluster.id
+}
+```
+
+### Input parameters
+{: #container-worker-pool-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `cluster` | String | Required | The name or ID of the cluster.|
+| `worker_pool_name` | String | Required | The name of the worker pool that need to be retrieved.|
+
+
+### Output parameters
+{: #container-worker-pool-output}
+
+Review the output parameters that are exported.
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `id` | String | The unique identifier of the worker pool. | 
+| `state` | String | Worker pool state. | 
+| `zones` | String | List of zones attached to the worker_pool. |
+| `zones.zone` | String | Zone name. |
+| `zones.private_vlan` | String | The ID of the private VLAN. |
+| `zones.public_vlan` | String | The ID of the public VLAN. |
+| `zones.worker_count` | String | Number of workers attached to this zone.|
+| `machine_type` | String | The machine type of the worker node. |
+| `size_per_zone` | String | Number of workers per zone in this pool. |
+|`hardware` | String | The level of hardware isolation for your worker node. |
+|`disk_encryption` | String | Disk encryption on a worker. |
+|`labels` | String | Labels on all the workers in the worker pool.|
+|`resource_group_id` | String | The ID of the worker pool resource group. |
+
+## ibm_container_vpc_alb
+{: #container-vpc-alb}
+
+Import the details of a Kubernetes cluster ALB on an {{site.data.keyword.cloud_notm}} as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-vpc-alb-sample}
+
+In the following example you can configure an ALB.
+
+```
+data "ibm_container_vpc_cluster_alb" "alb" {
+  alb_id = "public-cr083d810e501d4c73b42184eab5a7ad56-alb"
+}
+```
+
+### Input parameters
+{: #container-vpc-alb-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `alb_id` | String | Required | The name or ID of the application load balancer. |
+
+### Output parameters
+{: #container-vpc-alb-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `alb_type` | String | The ALB type. |
+| `cluster` | String | The name of the cluster. |
+| `name` | String | The name of the ALB. |
+| `id` | String | The ALB ID. |
+| `load_balancer_hostname` | String | The name of the load balancer. |
+| `resize` | String | Resize of the ALB. | 
+| `state` | String | ALB state. |
+| `status` | String | The status of the ALB. |
+| `zone` | String | The name of the zone. |
+| `enable` | String | Enable an ALB for the cluster. | 
+| `disable_deployment` | String | Disables the ALB deployment details. |
+
 ## `ibm_container_vpc_cluster`
 {: #container-vpc-cluster}
 
@@ -468,3 +567,69 @@ Review the output parameters that you can access after you retrieved your data s
 | `state` | String | The state of the worker node. | 
 | `subnet_id` | String | The ID of the worker pool subnet that the worker node is attached to. |
 
+
+## ibm_container_vpc_worker_pool
+{: #container-vpc-workerpool}
+
+Import the details of a Kubernetes cluster worker pool on an {{site.data.keyword.cloud_notm}} as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-vpc-alb-sample}
+
+In the following example, you can create a worker pool for a VPC cluster.
+
+```
+data "ibm_container_vpc_cluster_worker_pool" "testacc_ds_worker_pool" {
+    cluster = "cluster_name"
+    worker_pool_name = i"worker_pool_name
+}
+```
+
+### Input parameters
+{: #container-vpc-workerpool-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `worker_pool_name` | String | Required | The name of the worker pool. |
+| `cluster` | String | Required | The name or id of the cluster. |
+
+### Output parameters
+{: #container-vpc-workerpool-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `id` | String | The unique identifier of the worker pool resource, as <cluster_name_id>/<worker_pool_id>.|
+| `vpc_id` | String | The ID of the VPC.  |
+| `worker_count` | String | The number of worker nodes per zone in the worker pool. |
+| `flavor` | String | The flavour of the worker node. |
+| `zones` | String | The name of the load balancer. |
+| `resize` | String | Resize of the ALB. | 
+| `state` | String | ALB state. |
+| `status` | String | The status of the ALB. |
+| `zone` | String | A nested block describes the zones of the worker_pool. Nested zones blocks has `subnet-id` and `name`.|
+| `zone.subnet-id` | String | The worker pool subnet to assign the cluster.|
+| `zone.subnet-name` | String | Name of the zone.|
+| `labels` | String | Labels on all the workers in the worker pool. | 
+| `resource_group_id` | String | The ID of the resource group. |
+| `provider` | String | Provider Details of the worker Pool. |
+| `isolation` | String | Isolation for the worker node.|
+
+
+* `id` - The unique identifier of the worker pool resource. The id is composed of \<cluster_name_id\>/\<worker_pool_id\>.<br/>
+* `vpc_id` -  The Id of VPC 
+* `worker_count` - The number of worker nodes per zone in the worker pool.
+* `flavor` - The flavour of the worker node.
+* `zones` - A nested block describing the zones of this worker_pool. Nested zones blocks have the following structure:
+  * `subnet-id` -  The worker pool subnet to assign the cluster. 
+  * `name` -  Name of the zone.
+* `labels` -  Labels on all the workers in the worker pool.
+* `resource_group_id` -  The ID of the resource group.
+* `provider` -  Provider Details of the worker Pool.
+* `isolation` -  Isolation for the worker node

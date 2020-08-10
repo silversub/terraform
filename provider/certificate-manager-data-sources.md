@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-07"
 
 keywords: terraform provider plugin, terraform api gateway
 
@@ -74,6 +74,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`certificate_manager_instance_id`|String|Required|The CRN of the Certificate Manager service instance. |
+|`name`|String|Required|The display name for the certificate.|
 
 ### Output parameters
 {: #cert-manager-certificates-output}
@@ -84,8 +85,14 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 |`id`|String|The ID of the certificate that is managed in Certificate Manager. The ID is composed of `<certificate_manager_instance_ID>:<certificate_ID>`. |
-|`name`|String|The name of the certificate. | 
-|`domains`|Array|A list of domains that the certificate is associated with. The first domain is referred to as the primary domain. Any additional domains are referred to as secondary domains.|
+|`certificate_details`|String|List of certificates for the provided name. |
+|`certificate_details.cert_id`|String|The CRN based certificate ID. |
+|`certificate_details.name`|String|The name of the certificate. | 
+|`certificate_details.domains`|Array|A list of domains that the certificate is associated with. The first domain is referred to as the primary domain. Any additional domains are referred to as secondary domains.|
+|`certificate_details.data`|String|The certificate data. |
+|`certificate_details.data.content`|String|The content of certificate data, escaped. |
+|`certificate_details.data.priv_key`|String|The private key data, escaped. |
+|`certificate_details.data.intermediate`|String| The intermediate certificate data, escaped.|
 |`issuer`|String|The issuer of the certificate.|
 |`begins_on`|Timestamp|The timestamp when the certificate was created in Unix epoch time format.| 
 |`expires_on`|Date|The date when the certificate expires in Unix epoch time format.|
