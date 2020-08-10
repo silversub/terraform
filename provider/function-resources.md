@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27"
+lastupdated: "2020-08-10"
 
-keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
+keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless, terraform namespace
 
 subcollection: terraform
 
@@ -202,6 +202,87 @@ Example:
 terraform import ibm_function_action.nodeAction hello
 ```
 {: pre}
+
+## `ibm_function_namespace`
+{: #fn-namespace}
+
+Create, update, or delete an IBM Cloud Functions namespace. For more information about managing namespace, see [Managing namespace](/docs/openwhisk?topic=openwhisk-namespaces). Then, you can create IAM managed namespaces to group entities such as actions, triggers or both.
+
+### Sample Terraform code
+{: #fn-namespace-sample}
+
+The following example creates the namespace and package at a specific location.
+
+```
+provider "ibm" {
+  ibmcloud_api_key   = var.ibmcloud_api_key
+  region = var.region
+}
+
+data "ibm_resource_group" "resource-group" {
+   name = var.resource_group
+}
+
+resource "ibm_function_namespace" "namespace" {
+   name                = var.namespace
+   resource_group_id   = data.ibm_resource_group.resource-group.id
+}
+
+resource "ibm_function_package" "package" {
+  name      = var.packagename
+  namespace = ibm_function_namespace.namespace.name
+}
+```
+
+### Input parameters
+{: #fn-namespace-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------- |
+|`name`|String|Required|The name of the namespace.| No |
+|`description`|String|Optional|The description of the namespace.| No|
+|`resource_group_id`|String|Required| The ID of the resource group.  You can retrieve the value from data source `ibm_resource_group`. | Yes |
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #fn-namespace-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of the new namespace.|
+|`location`|String| Target locations of the namespace.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+### Import
+{: #fn-namespace-import}
+
+`ibm_function_namespace` can be imported using the namespace ID.
+
+Namespace import will not return the value for `resource_group_id` attribute.
+{: note}
+
+Syntax:
+
+```
+terraform import ibm_function_namespace.namespace <namespaceID>
+
+```
+{: pre}
+
+Example:
+
+```
+terraform import ibm_function_namespace.namespace 4cf78bb1-2298-413f-8575-2464948a344b
+
+```
+{: pre}
+
 
 ## `ibm_function_package`
 {: #fn-package}
