@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-08"
+lastupdated: "2020-08-10"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -158,8 +158,8 @@ subcollection: terraform
   </thead>
   <tbody>
     <tr>
- <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_function_action`](/docs/terraform?topic=terraform-function-resources#fn-action)</li><li style="margin:0px; padding:0px">[`ibm_function_package`](/docs/terraform?topic=terraform-function-resources#fn-package)</li><li style="margin:0px; padding:0px">[`ibm_function_rule`](/docs/terraform?topic=terraform-function-resources#fn-rule)</li><li style="margin:0px; padding:0px">[`ibm_function_trigger`](/docs/terraform?topic=terraform-function-resources#fn-trigger)</li></ul></td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_function_action`](/docs/terraform?topic=terraform-function-data-sources#fn-action)</li><li style="margin:0px; padding:0px">[`ibm_function_package`](/docs/terraform?topic=terraform-function-data-sources#fn-package)</li><li style="margin:0px; padding:0px">[`ibm_function_rule`](/docs/terraform?topic=terraform-function-data-sources#fn-rule)</li><li style="margin:0px; padding:0px">[`ibm_function_trigger`](/docs/terraform?topic=terraform-function-data-sources#fn-trigger)</li></ul></td>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_function_action`](/docs/terraform?topic=terraform-function-resources#fn-action)</li><li style="margin:0px; padding:0px">[`ibm_function_namespace`](/docs/terraform?topic=terraform-function-resources#fn-namespace)</li><li style="margin:0px; padding:0px">[`ibm_function_package`](/docs/terraform?topic=terraform-function-resources#fn-package)</li><li style="margin:0px; padding:0px">[`ibm_function_rule`](/docs/terraform?topic=terraform-function-resources#fn-rule)</li><li style="margin:0px; padding:0px">[`ibm_function_trigger`](/docs/terraform?topic=terraform-function-resources#fn-trigger)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_function_action`](/docs/terraform?topic=terraform-function-data-sources#fn-action)</li><li style="margin:0px; padding:0px">[`ibm_function_namespace`](/docs/terraform?topic=terraform-function-data-sources#fn-namespace_ds)</li><li style="margin:0px; padding:0px">[`ibm_function_package`](/docs/terraform?topic=terraform-function-data-sources#fn-package)</li><li style="margin:0px; padding:0px">[`ibm_function_rule`](/docs/terraform?topic=terraform-function-data-sources#fn-rule)</li><li style="margin:0px; padding:0px">[`ibm_function_trigger`](/docs/terraform?topic=terraform-function-data-sources#fn-trigger)</li></ul></td>
     </tr>
   </tbody>
   </table>
