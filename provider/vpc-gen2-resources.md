@@ -83,9 +83,9 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| -------------- |
 
 | `id` | String | The unique identifier of the gateway ID or connection ID resource.|
-| `connection_id` | String | The unique identifier for transit gateway connection to network. |
-| `created_at` | String |The date and time the connection was created. | 
-| `updated_at` | String | Last updated date and time of the connection. |
+| `connection_id` | String | The unique identifier for transit gateway connection to network.|
+|`created_at` | String |The date and time the connection was created.|
+| `updated_at` | String | Last updated date and time of the connection.|
 | `status` | String | The configuration status of the connection, such as **attached**, **failed**, **pending**, **deleting**. |
 
 ### Import
@@ -142,7 +142,7 @@ Review the input parameters that you can specify for your resource.
 
 | `id` | String | The unique identifier of the gateway ID or connection ID resource.|
 | `crn` | String | The CRN of the gateway.|
-| `created_at` | String | The date and time the connection is created. | 
+|`created_at` | String | The date and time the connection is created. |
 | `updated_at` | String | The date and time the connection is last updated. |
 | `status` | String | The configuration status of the connection, such as **Available**, **pending**. |
 
