@@ -963,7 +963,7 @@ data "ibm_tg_gateways" "ds_tggateways" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-There is no input parameters.
+There is no input parameters for `ibm_tg_gateways`.
 
 ### Output parameters
 {: #tg-gateways-output}
