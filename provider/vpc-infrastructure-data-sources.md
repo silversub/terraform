@@ -885,7 +885,7 @@ Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastr
 ### Sample Terraform code
 {: #tg-gateway-sample}
 
-The following example shows how you can list all zones in the `us-south` region. 
+The following example shows the details of transit gateway data source. 
 {: shortdesc}
 
 ```
@@ -949,7 +949,7 @@ Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastr
 ### Sample Terraform code
 {: #tg-gateway-sample}
 
-The following example shows how you can list all zones in the `us-south` region. 
+The following example shows the details of transit gateways data source. 
 {: shortdesc}
 
 ```
@@ -958,7 +958,7 @@ data "ibm_tg_gateways" "ds_tggateways" {
 ```
 
 ### Input parameters
-{: #tg-gateway-input}
+{: #tg-gateways-input}
 
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
@@ -966,7 +966,7 @@ Review the input parameters that you can specify for your data source.
 There is no input parameters.
 
 ### Output parameters
-{: #tg-gateway-output}
+{: #tg-gateways-output}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
@@ -984,6 +984,98 @@ Review the output parameters that you can access after you retrieved your data s
 | `transit_gateways.status` | String | The gateway status.|
 | `transit_gateways.resource_group` | String | Resource group identifier.|
 
+
+
+
+
+
+
+## `ibm_tg_location`
+{: #tg-location-ds}
+ 
+Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastructure transit location as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #tg-location-sample}
+
+The following example shows the details of transit location data source. 
+{: shortdesc}
+
+```
+data "ibm_tg_location" "ds_tg_location" {
+  name = "us-south"
+}
+```
+
+### Input parameters
+{: #tg-location-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required/ optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `name` | String | Required | The name of the transit gateway location. |
+
+### Output parameters
+{: #tg-location-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `billing_location` | String | The geographical location of the location, used for billing purposes.|
+| `name` | String | The name of the location.|
+| `type` | String | The type of the location, determining a `multi-zone region`, a `single data center`, or a `point of presence`.|
+| `local_connection_locations` | String | The set of network locations that are considered local for the transit gateway location.|
+| `local_connection_locations.display_name` | String |The descriptive display name for the location.|
+| `local_connection_locations.name` | String | The name of the location.|
+| `local_connection_locations.type` | String | The type of the location, determining a `multi-zone region`, a `single data center`, or a `point of presence`.|
+
+
+
+
+
+
+## `ibm_tg_locations`
+{: #tg-locations-ds}
+ 
+Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastructure transit location as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #tg-locations-sample}
+
+The following example shows the details of transit locations data source. 
+{: shortdesc}
+
+```
+data "ibm_tg_locations" "ds_tg_locations" {
+}
+```
+
+### Input parameters
+{: #tg-locations-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+There is no input parameters for `ibm_tg_locations`.
+
+### Output parameters
+{: #tg-locations-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `locations` | String | List of all locations that supports transit gateways.|
+| `locations.billing_location` | String | The geographical location of the location, used for billing purposes.|
+| `locations.name` | String | The name of the location.|
+| `locations.type` | String | The type of the location, determining a `multi-zone region`, a `single data center`, or a `point of presence`.|
 
 
 
