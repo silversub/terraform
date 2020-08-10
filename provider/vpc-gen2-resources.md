@@ -81,7 +81,6 @@ Review the input parameters that you can specify for your resource.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-
 | `id` | String | The unique identifier of the gateway ID or connection ID resource.|
 | `connection_id` | String | The unique identifier for transit gateway connection to network.|
 |`created_at` | String |The date and time the connection was created.|
@@ -139,7 +138,6 @@ Review the input parameters that you can specify for your resource.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-
 | `id` | String | The unique identifier of the gateway ID or connection ID resource.|
 | `crn` | String | The CRN of the gateway.|
 |`created_at` | String | The date and time the connection is created. |
