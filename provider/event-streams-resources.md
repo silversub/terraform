@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-07"
+lastupdated: "2020-08-11"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -143,10 +143,6 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the topic.|
 |`partitions`|Integer|Optional|The number of partitions of the topic. Default value is 1.|
 |`config`|Map|Optional|The configuration parameters of the topic. Supported configurations are: `cleanup.policy`, `retention.ms`, `retention.bytes`, `segment.bytes`, `segment.ms`, `segment.index.bytes`.|
-|`data.content`|String|Required|The content of certificate data.|
-|`data.priv_key`|String|Optional|The private key data.|
-|`data.intermediate`|String|Optional|The intermediate certificate data.|
-|`description`|String|Optional|The description of the certificate.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
