@@ -80,10 +80,10 @@ resource "ibm_event_streams_topic" "es_topic_1" {
 
 ```
 
-### Example 2: create topic for an existing instance
+### Example 2: create topic on an existing event streams instance
 {: #event-stream-sample2}
 
-Create topic for an existing event streams instance.
+Create topic on an existing event streams instance.
 {: shortdesc}
 
 ```
@@ -106,7 +106,7 @@ resource "ibm_event_streams_topic" "es_topic_2" {
 
 ```
 
-### Example 3: create a Kafka consumer application connecting instance
+### Example 3: create a Kafka consumer application connecting event streams instance and its topics
 {: #event-stream-sample3}
 
 Create a kafka consumer application connecting to an existing event streams instance and its topics.
