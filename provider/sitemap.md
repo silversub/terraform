@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-10"
+lastupdated: "2020-08-11"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -132,7 +132,7 @@ subcollection: terraform
   </tbody>
   </table>
   
-  ## Event Streams topic
+  ## Event Streams
   {: #ibm-event-streams}
   
   <table>
