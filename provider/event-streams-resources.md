@@ -34,7 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Event Streams topic resources
+# Event Streams resources
 {: #event-streams-resources}
 
 
@@ -48,7 +48,7 @@ Before you start working with your resource, make sure to review the [required p
 ## ibm_event_streams_topic
 {: #event-streams}
 
-Create and update the event streams topic.
+Create and update the event streams.
 {: shortdesc}
 
 ### Example 1: create event streams service instance and topic
