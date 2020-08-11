@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-07"
+lastupdated: "2020-08-11"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -34,7 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Event Streams topic resources
+# Event Streams resources
 {: #event-streams-resources}
 
 
@@ -48,10 +48,10 @@ Before you start working with your resource, make sure to review the [required p
 ## ibm_event_streams_topic
 {: #event-streams}
 
-Create and update the event streams topic.
+Create and update the event streams.
 {: shortdesc}
 
-### Sample1 Terraform code
+### Example 1: create event streams service instance and topic
 {: #event-stream-sample}
 
 Create event streams service instance and topic.
@@ -80,7 +80,7 @@ resource "ibm_event_streams_topic" "es_topic_1" {
 
 ```
 
-### Sample2 Terraform code
+### Example 2: create topic on an existing event streams instance
 {: #event-stream-sample2}
 
 Create topic on an existing event streams instance.
@@ -106,7 +106,7 @@ resource "ibm_event_streams_topic" "es_topic_2" {
 
 ```
 
-### Sample3 Terraform code
+### Example 3: create a Kafka consumer application connecting event streams instance and its topics
 {: #event-stream-sample3}
 
 Create a kafka consumer application connecting to an existing event streams instance and its topics.
@@ -143,10 +143,6 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the topic.|
 |`partitions`|Integer|Optional|The number of partitions of the topic. Default value is 1.|
 |`config`|Map|Optional|The configuration parameters of the topic. Supported configurations are: `cleanup.policy`, `retention.ms`, `retention.bytes`, `segment.bytes`, `segment.ms`, `segment.index.bytes`.|
-|`data.content`|String|Required|The content of certificate data.|
-|`data.priv_key`|String|Optional|The private key data.|
-|`data.intermediate`|String|Optional|The intermediate certificate data.|
-|`description`|String|Optional|The description of the certificate.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
