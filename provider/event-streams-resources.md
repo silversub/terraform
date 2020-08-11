@@ -51,7 +51,7 @@ Before you start working with your resource, make sure to review the [required p
 Create and update the event streams topic.
 {: shortdesc}
 
-### Sample1 Terraform code
+### Example 1: create event streams service instance and topic
 {: #event-stream-sample}
 
 Create event streams service instance and topic.
@@ -80,10 +80,10 @@ resource "ibm_event_streams_topic" "es_topic_1" {
 
 ```
 
-### Sample2 Terraform code
+### Example 2: create topic for an existing instance
 {: #event-stream-sample2}
 
-Create topic on an existing event streams instance.
+Create topic for an existing event streams instance.
 {: shortdesc}
 
 ```
@@ -106,7 +106,7 @@ resource "ibm_event_streams_topic" "es_topic_2" {
 
 ```
 
-### Sample3 Terraform code
+### Example 3: create a Kafka consumer application connecting instance
 {: #event-stream-sample3}
 
 Create a kafka consumer application connecting to an existing event streams instance and its topics.
