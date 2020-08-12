@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-12"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -308,7 +308,7 @@ Congratulations! You created your single zone {{site.data.keyword.containerlong_
 ## Lesson 3: Convert your single zone cluster into a multizone cluster
 {: #multizone}
  
-Add zones to the default worker pool in your cluster that you created in lessson 1. By adding zones, the same number of worker nodes that you created in lesson 3 are spread across these zones converting your single zone cluster into a multizone cluster. 
+Add zones to the default worker pool in your cluster that you created in lessson 1. By adding zones, the same number of worker nodes that you created in lesson 2 are spread across these zones converting your single zone cluster into a multizone cluster. 
 {: shortdesc}
 
 1. Open your Terraform configuration file and add the following content to your configuration. For each zone that you want to add, you must add a separate `ibm_container_worker_pool_zone_attachment` resource. 
