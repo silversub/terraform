@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-07"
+lastupdated: "2020-08-12"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event streams topic
 
@@ -34,7 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Event Streams topic data sources
+# Event Streams data sources
 {: #event-streams-ds}
 
 
