@@ -106,7 +106,7 @@ resource "ibm_event_streams_topic" "es_topic_2" {
 
 ```
 
-### Example 3: Create a Kafka consumer application connecting event streams instance and its topics
+### Example 3: Create a Kafka consumer application connecting to an event streams instance and its topics
 {: #event-stream-sample3}
 
 Create a kafka consumer application connecting to an existing event streams instance and its topics.
