@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-11"
+lastupdated: "2020-08-12"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -51,10 +51,10 @@ Before you start working with your resource, make sure to review the [required p
 Create and update the event streams.
 {: shortdesc}
 
-### Example 1: create event streams service instance and topic
+### Example 1: Create an event streams service instance and topic
 {: #event-stream-sample}
 
-Create event streams service instance and topic.
+Create an event streams service instance and topic.
 {: shortdesc}
 
 ```
@@ -80,7 +80,7 @@ resource "ibm_event_streams_topic" "es_topic_1" {
 
 ```
 
-### Example 2: create topic on an existing event streams instance
+### Example 2: Create a topic on an existing event streams instance
 {: #event-stream-sample2}
 
 Create topic on an existing event streams instance.
@@ -106,7 +106,7 @@ resource "ibm_event_streams_topic" "es_topic_2" {
 
 ```
 
-### Example 3: create a Kafka consumer application connecting event streams instance and its topics
+### Example 3: Create a Kafka consumer application connecting event streams instance and its topics
 {: #event-stream-sample3}
 
 Create a kafka consumer application connecting to an existing event streams instance and its topics.
