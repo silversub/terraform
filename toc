@@ -41,8 +41,8 @@ Terraform
          provider/cloud-foundry-data-sources.md
          provider/databases-resources.md
          provider/databases-data-sources.md
-         provider/directlink-gateway-resources.md
-         provider/directlink-gateway-data-sources.md
+         provider/direct-link-gateway-resources.md
+         provider/direct-link-gateway-data-sources.md
          provider/dns-resources.md
          provider/dns-datasources.md
          provider/event-streams-data-sources.md
