@@ -34,7 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Transit Gateway Data Sources
+# Transit Gateway data sources
 {: #transit-gateway-ds}
 
 The {{site.data.keyword.cloud_dotm}} [Transit Gateway](/docs/transit-gateway?topic=transit-gateway-getting-started) provides to create,  manage gateways and connections and list available locations for gateways. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}.
