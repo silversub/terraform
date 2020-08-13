@@ -37,6 +37,9 @@ subcollection: terraform
 # DirectLink Gateway resources
 {: #dl-gateway-resource}
 
+Review the Event Streams resource that you can connect, administer, develope with event streams and integrate with the other services. You can reference the output parameters for each resource in other resources or data sources by using Terraform interpolation syntax.
+
+
 ## `ibm_dl_connection`
 {: #dl-connection}
 
