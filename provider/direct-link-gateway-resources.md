@@ -34,10 +34,13 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# DirectLink Gateway resources
+# Direct Link Gateway resources
 {: #dl-gateway-resource}
 
-Review the Event Streams resource that you can connect, administer, develope with event streams and integrate with the other services. You can reference the output parameters for each resource in other resources or data sources by using Terraform interpolation syntax.
+Use {{site.data.keyword.cloud_dotm}} [Direct Link](/docs/dl?topic=dl-get-started-with-ibm-cloud-dl) to seamlessly connect your on-premises resources to your cloud resources. The speed and reliability of direct link extends your organization’s data center network. You can reference the output parameters for each resource in other resources or data sources by using Terraform interpolation syntax.
+
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
 
 
 ## `ibm_dl_connection`
