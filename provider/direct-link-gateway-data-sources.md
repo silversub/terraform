@@ -34,8 +34,8 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Direct Link data sources
-{: #dl-ds}
+# Direct Link Gateway data sources
+{: #dl-gateway-ds}
 
 Use {{site.data.keyword.cloud_notm}} [Direct Link](/docs/dl?topic=dl-get-started-with-ibm-cloud-dl) to seamlessly connect your on-premises resources to your cloud resources. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}.
 {: shordesc}
