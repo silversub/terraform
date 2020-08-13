@@ -126,7 +126,7 @@ subcollection: terraform
   </thead>
   <tbody>
     <tr>
- <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dl_connection`]()</li><li style="margin:0px; padding:0px">[`ibm_dl_gateway`]()</li></li></ul></td>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dl_connection`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-connection)</li><li style="margin:0px; padding:0px">[`ibm_dl_gateway`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-gateway)</li></li></ul></td>
       <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[``]()</li></ul></td>
     </tr>
   </tbody>
