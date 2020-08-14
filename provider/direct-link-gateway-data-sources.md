@@ -46,3 +46,6 @@ Before you start working with your resource, make sure to review the [required p
 
 ## ibm_dl_gateway
 {: #ibm_dl_gateway}
+
+
+Import the details of an existing IBM Cloud Infrastructure directlink gateway and its virtual connectionsas a read-only data source. You can then reference the fields of the data source in other resources within the same configuration using interpolation syntax.
