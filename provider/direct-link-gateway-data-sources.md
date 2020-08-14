@@ -191,8 +191,8 @@ Import the details of valid locations for the specified direct link offering.
 Retrieve the input parameters that you need to specify for the data source. 
 {: shortdesc}
 
-| Output parameter | Data type | Description |
-| ------------- |-------------| -------------- |
+| Input parameter | Data type |Required/ Optional | Description |
+| ------------- |-------------| --------------|-------------- |
 |`offering_type`| String | Required|The direct link offering type. Possible values are `dedicated`,`connect`.| 
 
 ### Output parameters
@@ -273,8 +273,8 @@ Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructur
 Retrieve the input parameters that you need to specify for the data source. 
 {: shortdesc}
 
-| Output parameter | Data type | Description |
-| ------------- |-------------| -------------- |
+| Input parameter | Data type |Required/ Optional | Description |
+| ------------- |-------------| --------------|-------------- |
 |`port_id`| String | Required|The unique ID for the direct link port.| 
 
 ### Output parameters
@@ -291,3 +291,81 @@ Review the output parameters that you can access after your resource is created.
 |`location_name`|String|The port location name.|
 |`provider_name`|String|The port's provider name.|
 |`supported_link_speeds`|String|The port supported speeds in megabits per second.|
+
+## ibm_dl_ports
+{: #dl_ports_ds}
+
+Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link  ports.
+{: shortdesc}
+
+### Sample Terraform code
+{: #dl-ports-dssample}
+
+```
+data "ibm_dl_ports" "ds_dlports" {
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #dl-ports-dsinput}
+
+There is no input parameters that you need to specify for the data source. 
+{: shortdesc}
+
+### Output parameters
+{: #dl-ports-dsoutput}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`ports`|String|List of all the direct link ports.|
+|`ports.direct_link_count`|String|Count of the existing direct link gateways in this port account.|
+|`ports.label`|String|The port label.|
+|`ports.location_display_name`|String|The port location long name.|
+|`ports.location_name`|String|The port location name.|
+|`ports.id`|String|The port identifier.|
+|`ports.provider_name`|String|The port's provider name.|
+|`ports.supported_link_speeds`|String|The port supported speeds in megabits per second.|
+
+## ibm_dl_routers
+{: #dl_routers_ds}
+
+Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link  location specific cross connect router information.
+{: shortdesc}
+
+### Sample Terraform code
+{: #dl-routers-dssample}
+
+```
+data "ibm_dl_routers" "test_dl_routers" {
+	offering_type = "dedicated"
+	location_name = "dal09"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #dl-routers-dsinput}
+
+The input parameters that you need to specify for the data source. 
+{: shortdesc}
+
+| Input parameter | Data type |Required/ Optional | Description |
+| ------------- |-------------| --------------|-------------- |
+|`offering_type`|String|Required|The direct link offering type. Only `dedicated` is supported in this API.|
+|`location_name`|String|Required|The name of the direct link location.|
+
+### Output parameters
+{: #dl-routers-dsoutput}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`cross_connect_routers`|String|List of all the cross connect router details.|
+|`cross_connect_routers.router_name`|String|The name of the router.|
+|`cross_connect_routers.total_connections`|String|Count of existing direct link dedicated gateways on this router account.|
