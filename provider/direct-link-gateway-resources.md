@@ -2,9 +2,10 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-13"
+lastupdated: "2020-08-14"
 
-keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
+keywords:  direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
+
 
 subcollection: terraform
 
