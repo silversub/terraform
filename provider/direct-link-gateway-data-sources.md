@@ -278,7 +278,7 @@ Retrieve the input parameters that you need to specify for the data source.
 |`port_id`| String | Required|The unique ID for the direct link port.| 
 
 ### Output parameters
-{: #dl-loc-dsoutput}
+{: #dl-port-dsoutput}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
