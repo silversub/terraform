@@ -115,7 +115,7 @@ Review the output parameters that you can access after your resource is created.
 ## ibm_dl_gateways
 {: #dl_gateways_ds}
 
-Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link gateway and its virtual connections.
+Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link gateways.
 {: shortdesc}
 
 ### Sample Terraform code
@@ -169,9 +169,9 @@ Review the output parameters that you can access after your resource is created.
 |`gateways.vlan`|String| The VLAN allocated for the gateway. Only set for connect gateways type created directly through the {{site.data.keyword.IBM_notm}} portal.|
 
 ## ibm_dl_locations
-{: #dl_locations_ds}
+{: #dl_loc_ds}
 
-Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link gateway and its virtual connections.
+Import the details of valid locations for the specified direct link offering.
 {: shortdesc}
 
 ### Sample Terraform code
@@ -186,7 +186,7 @@ Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructur
 {: codeblock}
 
 ### Input parameters
-{: #api-dl-gws-dsinput}
+{: #dl-loc-dsinput}
 
 Retrieve the input parameters that you need to specify for the data source. 
 {: shortdesc}
@@ -203,7 +203,7 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-|`locations`|String|List of all the direct link location in the {{site.data.keyword.cloud_notm}} infrastructure.|
+|`locations`|String|List of all the direct link locations in the {{site.data.keyword.cloud_notm}} infrastructure.|
 |`locations.billing_location`|String|The billing location.|
 |`locations.building_colocation_owner`|String|The building co-location owner. Only present for dedicated offering type locations.|
 |`locations.name`|String|The location short name.|
@@ -213,3 +213,81 @@ Review the output parameters that you can access after your resource is created.
 |`locations.market_geography`|String|The location geography.|
 |`locations.mzr`|Boolean|Is location a multi-zone region(MZR).|
 |`locations.vpc_region`|String| The location VPC region.|
+
+## ibm_dl_offering_speeds
+{: #dl_offering_spd_ds}
+
+Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link offering speeds options.
+{: shortdesc}
+
+### Sample Terraform code
+{: #dl-off-spd-dssample}
+
+```
+  data "ibm_dl_offering_speeds" "ds_dlspeedoptions" {
+    offering_type="dedicated"
+  }
+```
+{: codeblock}
+
+### Input parameters
+{: #dl-off-spd-dsinput}
+
+Retrieve the input parameters that you need to specify for the data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`offering_type`| String | Required|The direct link offering type. Possible values are `dedicated`,`connect`.| 
+
+### Output parameters
+{: #dl-off-spd-dsoutput}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`offering_speeds`|String|List of all the direct link offering speeds in the {{site.data.keyword.cloud_notm}} infrastructure.|
+|`offering_speeds.link_speed`|String|The link speed in megabits per second.|
+
+## ibm_dl_port
+{: #dl_port_ds}
+
+Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link offering port.
+{: shortdesc}
+
+### Sample Terraform code
+{: #dl-port-dssample}
+
+```
+  data "ibm_dl_port" "ds_dlport" {
+      port_id = "dl_port_id"
+   }
+```
+{: codeblock}
+
+### Input parameters
+{: #dl-port-dsinput}
+
+Retrieve the input parameters that you need to specify for the data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`port_id`| String | Required|The unique ID for the direct link port.| 
+
+### Output parameters
+{: #dl-loc-dsoutput}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`direct_link_count`|String|The count of the existing direct link gateways on the port.|
+|`label`|String|The port label.|
+|`location_display_name`|String|The port location long name.|
+|`location_name`|String|The port location name.|
+|`provider_name`|String|The port's provider name.|
+|`supported_link_speeds`|String|The port supported speeds in megabits per second.|
