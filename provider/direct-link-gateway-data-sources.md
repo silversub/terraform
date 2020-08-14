@@ -142,7 +142,7 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-|`gateways`|String|List of all the direct link gateways in the the {{site.data.keyword.cloud_notm}} infrastructure.|
+|`gateways`|String|List of all the direct link gateways in the {{site.data.keyword.cloud_notm}} infrastructure.|
 |`gateways.bgp_asn`|String|Customer BGP ASN.|
 |`gateways.created_at`|String|The date and time resource is created.|
 |`gateways.crn`|String|The CRN of the gateway.|
@@ -167,3 +167,49 @@ Review the output parameters that you can access after your resource is created.
 |`gateways.port`|Integer|The port identifier.|
 |`gateways.provider_api_managed`|Boolean|Indicates the gateway is created through a provider portal. If set `true`, gateway can only be changed. If set `false`, gateway is deleted through the corresponding provider portal.|
 |`gateways.vlan`|String| The VLAN allocated for the gateway. Only set for connect gateways type created directly through the {{site.data.keyword.IBM_notm}} portal.|
+
+## ibm_dl_locations
+{: #dl_locations_ds}
+
+Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link gateway and its virtual connections.
+{: shortdesc}
+
+### Sample Terraform code
+{: #dl-loc-dssample}
+
+```
+  data "ibm_dl_locations" "test_dl_locations"{
+		offering_type = "dedicated"
+	 }
+	 
+```
+{: codeblock}
+
+### Input parameters
+{: #api-dl-gws-dsinput}
+
+Retrieve the input parameters that you need to specify for the data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`offering_type`| String | Required|The direct link offering type. Possible values are `dedicated`,`connect`.| 
+
+### Output parameters
+{: #dl-loc-dsoutput}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`locations`|String|List of all the direct link location in the {{site.data.keyword.cloud_notm}} infrastructure.|
+|`locations.billing_location`|String|The billing location.|
+|`locations.building_colocation_owner`|String|The building co-location owner. Only present for dedicated offering type locations.|
+|`locations.name`|String|The location short name.|
+|`locations.display_name`|String|The location long name.|
+|`locations.location_type`|String|The location type.|
+|`locations.market`|String|The market location.|
+|`locations.market_geography`|String|The location geography.|
+|`locations.mzr`|Boolean|Is location a multi-zone region(MZR).|
+|`locations.vpc_region`|String| The location VPC region.|
