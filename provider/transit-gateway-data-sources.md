@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-08-15"
 
-keywords: terraform transit gateway, terraform  transit gateways,  terraform transit gateway location, transit gateway locations, transit gateway, transit location
+keywords: terraform provider plugin, terraform transit gateway, terraform  transit gateways,  terraform transit gateway location, transit gateway locations, transit gateway, transit location
 
 subcollection: terraform
 
