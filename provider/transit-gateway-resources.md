@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-14"
+lastupdated: "2020-08-15"
 
-keywords: terraform transit gateway resource, terraform transit gateway, transit gateway resource, transit gateway
+keywords: terraform provider plugin, terraform transit gateway resource, terraform transit gateway, transit gateway resource, transit gateway
 
 subcollection: terraform
 
