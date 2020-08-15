@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-13"
+lastupdated: "2020-08-15"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -126,8 +126,8 @@ subcollection: terraform
   </thead>
   <tbody>
     <tr>
- <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dl_connection`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-connection)</li><li style="margin:0px; padding:0px">[`ibm_dl_gateway`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-gateway)</li></li></ul></td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[``]()</li></ul></td>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dl_gateway`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-gwy)</li><li style="margin:0px; padding:0px">[`ibm_dl_virtual_connection`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-vc)</li></li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dl_gateway`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_gateway_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_gateways`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_gateways_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_locations`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_loc_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_offering_speeds`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_offering_spd_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_port`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_port_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_ports`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_ports_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_routers`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_routers_ds)</li></ul></td>
     </tr>
   </tbody>
   </table>
