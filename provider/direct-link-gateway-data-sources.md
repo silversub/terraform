@@ -4,7 +4,7 @@ copyright:
   years: 2017, 2020
 lastupdated: "2020-08-15"
 
-keywords:  direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
+keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
 subcollection: terraform
 
