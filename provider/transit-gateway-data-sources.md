@@ -226,9 +226,6 @@ data "ibm_tg_locations" "ds_tg_locations" {
 ### Input parameters
 {: #tg-locations-input}
 
-Review the input parameters that you can specify for your data source. 
-{: shortdesc}
-
 There is no input parameters for `ibm_tg_locations`.
 
 ### Output parameters
