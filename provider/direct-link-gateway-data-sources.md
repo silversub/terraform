@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-14"
+lastupdated: "2020-08-15"
 
 keywords:  direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -105,12 +105,12 @@ Review the output parameters that you can access after your resource is created.
 |`vlan`|String| The VLAN allocated for the gateway. Only set for connect gateways type created directly through the {{site.data.keyword.IBM_notm}} portal.|
 |`virtual_connections`|String|List of the specified gateway's virtual connections.|
 |`virtual_connections.created_at`|String|The creation date and time resource.|
-|`virtual_connections.id`|String|The unique identifier of the virtual connection. For Example, `ef4dcbtyu1a-fee4-41c7-9e11-9cd99e65c1f4`|
+|`virtual_connections.id`|String|The unique identifier of the virtual connection. For example, `ef4dcbtyu1a-fee4-41c7-9e11-9cd99e65c1f4`|
 |`virtual_connections.name`|String|The unique user-defined name of the only virtual connection in the gateway.| 
 |`virtual_connections.status`|String| The status of the virtual connection. Possible values are `pending`,`attached`,`approval_pending`,`rejected`,`expired`,`deleting`,`detached_by_network_pending`,`detached_by_network`.|
 |`virtual_connections.type`|String|The virtual connection type. Possible values are `classic`,`vpc`.|
-|`virtual_connections.network_account`|String|For virtual connections across two different {{site.data.keyword.cloud_notm}} accounts. Network_account indicates the account you own the target network. For Example: `00aa14a2e0fb102c8995ebefhhhf8655556`
-|`virtual_connections.network_id`|String| The unique identifier of the target network. For type `vpc`, virtual connections is the CRN of the target VPC. This field do not apply for type `classic` connections. For Example, `crn:v1:bluemix:public:is:us-east:a/28e4d90ac7504be69447111122223333::vpc:aaa81ac8-5e96-42a0-a4b7-6c2e2dbb`|
+|`virtual_connections.network_account`|String|For virtual connections across two different {{site.data.keyword.cloud_notm}} accounts. Network_account indicates the account you own the target network. For example: `00aa14a2e0fb102c8995ebefhhhf8655556`
+|`virtual_connections.network_id`|String| The unique identifier of the target network. For type `vpc`, virtual connections is the CRN of the target VPC. This field do not apply for type `classic` connections. For example, `crn:v1:bluemix:public:is:us-east:a/28e4d90ac7504be69447111122223333::vpc:aaa81ac8-5e96-42a0-a4b7-6c2e2dbb`|
 
 ## ibm_dl_gateways
 {: #dl_gateways_ds}
