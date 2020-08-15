@@ -319,7 +319,7 @@ subcollection: terraform
   </thead>
   <tbody>
     <tr>
- <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[``]()</li><li style="margin:0px; padding:0px">[``]()</li><li style="margin:0px; padding:0px">[``]()</li></ul></td>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_tg_connection`](/docs/terraform?topic=terraform-tg-resource#tg-connection)</li><li style="margin:0px; padding:0px">[`ibm_tg_gateway`](/docs/terraform?topic=terraform-tg-resource#tg-gateway-resource)</li></ul></td>
       <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_tg_gateway`](/docs/terraform?topic=terraform-transit-gateway-ds#tg-gateway-ds)</li><li style="margin:0px; padding:0px">[`ibm_tg_gateways`](/docs/terraform?topic=terraform-transit-gateway-ds#tg-gateways-ds)</li><li style="margin:0px; padding:0px">[`ibm_tg_location`](/docs/terraform?topic=terraform-transit-gateway-ds#tg-location-ds)</li><li style="margin:0px; padding:0px">[`ibm_tg_locations`](/docs/terraform?topic=terraform-transit-gateway-ds#tg-locations-ds)</li></ul></td>
     </tr>
   </tbody>
