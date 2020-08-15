@@ -160,7 +160,7 @@ subcollection: terraform
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample)</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample2)</li><li style="margin:0px; padding:0px">[`kafka_consumer_app`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample3)</li></ul></td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-event-streams-ds#event-streams-topic)</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`](/docs/terraform?topic=terraform-event-streams-ds#event-streams-topic)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`](/docs/terraform?topic=terraform-event-streams-ds#event-streams-topic)</li></ul></td>
     </tr>
   </tbody>
   </table>
