@@ -143,6 +143,67 @@ terraform import ibm_dl_gateway.example 5ffda12064634723b079acdb018ef308
 ```
 {: pre}
 
+## `ibm_dl_virtual_connection`
+{: #dl-vc}
+
+Create, update, or delete a direct link gateway virtual connection by using the direck link gateway resource.
+{: shortdesc}
+
+### Sample Terraform code
+{: #dl-gwy-vc-sample}
+
+```
+resource "ibm_dl_virtual_connection" "test_dl_gateway_vc"{
+		gateway = ibm_dl_gateway.test_dl_gateway.id
+		name = "my_dl_vc"
+		type = "vpc"
+		network_id = ibm_is_vpc.test_dl_vc_vpc.resource_crn   }  
+		
+```
+{: pre}
+
+### Input parameters
+{: #dl-gwy-vc-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+
+|Name|Data type|Required/ optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| --------|
+|`gateway`|String|Required|The direct link gateway ID.| Yes |
+|`name`|String|Required|The user-defined name for the virtual connection.| No |
+|`type`|String|Required|The type of virtual connection. Allowed values are `classic`,`vpc`.| Yes|
+|`network_id`|String|Required|Metered billing option. If set `true` gateway usage is billed per GB. Otherwise, flat rate is charged for the gateway.| Yes |
+|`name`|String|Required|The unique identifier of the target network. For `type=vpc` virtual connections it is the CRN of the target VPC. This parameter does not apply for `type=classic` connections. For example, `crn:v1:bluemix:public:is:us-east:a/28e4d90ac7504be69447111122223333::vpc:aaa81ac8-5e96-42a0-a4b7-6c2e2d1bb`.| No |
+
+### Output parameters
+{: #dl-gwy-vc-output}
+
+Review the output parameters that you can access after your resource are exported. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`created_at`|String|The date and time resource created.|
+|`id`|String|The unique ID of the resource with combination of gateway / virtual_connection_id.||
+|`virtual_connection_id`|String|The unique identifier for the direct link gateway virtual connection |
+|`status`|String|The status of the virtual connection. Possible values are `pending`, `attached`, `approval_pending`, `rejected`, `expired`, `deleting`, `detached_by_network_pending`, `detached_by_network`.|
+|`network_account`|String|The virtual connections across two different {{site.data.keyword.cloud_notm} accounts network_account indicates the account that owns the target network. For example, `00aa14a2e0fb102c8995ebeff65555`.|
+
+### Import
+{: #dl-gwyvc-import}
+
+The `ibm_dl_gateway_vc` can be imported using direct link gateway id and direct link gateway virtual connection ID.
+
+**Example**
+
+```
+terraform import ibm_dl_virtual_connection.example 
+d7bec597-4726-451f-8a53-e62e6f19c32c/cea6651a-bd0a-4438-9f8a-a0770bbf3ebb
+```
+{: pre}
+
 
 
 
