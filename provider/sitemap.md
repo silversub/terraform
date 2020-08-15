@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-13"
+lastupdated: "2020-08-15"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -126,8 +126,8 @@ subcollection: terraform
   </thead>
   <tbody>
     <tr>
- <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dl_connection`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-connection)</li><li style="margin:0px; padding:0px">[`ibm_dl_gateway`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-gateway)</li></li></ul></td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[``]()</li></ul></td>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dl_gateway`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-gwy)</li><li style="margin:0px; padding:0px">[`ibm_dl_virtual_connection`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-vc)</li></li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dl_gateway`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_gateway_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_gateways`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_gateways_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_locations`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_loc_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_offering_speeds`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_offering_spd_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_port`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_port_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_ports`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_ports_ds)</li><li style="margin:0px; padding:0px">[`ibm_dl_routers`](/docs/terraform?topic=terraform-dl-gateway-ds#dl_routers_ds)</li></ul></td>
     </tr>
   </tbody>
   </table>
@@ -160,7 +160,7 @@ subcollection: terraform
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample)</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample2)</li><li style="margin:0px; padding:0px">[`kafka_consumer_app`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample3)</li></ul></td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-event-streams-ds#event-streams-topic)</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`](/docs/terraform?topic=terraform-event-streams-ds#event-streams-topic)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`](/docs/terraform?topic=terraform-event-streams-ds#event-streams-topic)</li></ul></td>
     </tr>
   </tbody>
   </table>
@@ -319,7 +319,7 @@ subcollection: terraform
   </thead>
   <tbody>
     <tr>
- <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[``]()</li><li style="margin:0px; padding:0px">[``]()</li><li style="margin:0px; padding:0px">[``]()</li></ul></td>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_tg_connection`](/docs/terraform?topic=terraform-tg-resource#tg-connection)</li><li style="margin:0px; padding:0px">[`ibm_tg_gateway`](/docs/terraform?topic=terraform-tg-resource#tg-gateway-resource)</li></ul></td>
       <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_tg_gateway`](/docs/terraform?topic=terraform-transit-gateway-ds#tg-gateway-ds)</li><li style="margin:0px; padding:0px">[`ibm_tg_gateways`](/docs/terraform?topic=terraform-transit-gateway-ds#tg-gateways-ds)</li><li style="margin:0px; padding:0px">[`ibm_tg_location`](/docs/terraform?topic=terraform-transit-gateway-ds#tg-location-ds)</li><li style="margin:0px; padding:0px">[`ibm_tg_locations`](/docs/terraform?topic=terraform-transit-gateway-ds#tg-locations-ds)</li></ul></td>
     </tr>
   </tbody>

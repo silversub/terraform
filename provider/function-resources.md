@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-10"
+lastupdated: "2020-08-14"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless, terraform namespace
 
@@ -61,7 +61,8 @@ The following example creates a JavaScript action.
 
 ```
 resource "ibm_function_action" "nodehello" {
-  name = "myaction"
+  name      = "action-name"
+  namespace = "function-namespace-name"
 
   exec {
     kind = "nodejs:6"
