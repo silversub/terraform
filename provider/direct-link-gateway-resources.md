@@ -124,50 +124,59 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required/ optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| --------|
 |`bgp_asn`|Integer|Required|The BGP ASN of the gateway to be created. For example: `64999`.| Yes |
-|`bgp_base_cidr`|String|Required|The BGP base CIDR of the gateway to be created. For example: `10.254.30.76/30` | No |
+|`bgp_base_cidr`|String|Required|The BGP base CIDR of the gateway to be created. For example: `10.254.30.76/30` | Yes |
 |`global`|Boolean|Required|Gateway with global routing as `true` can connect networks outside your associated region. | No |
+|`metered`|Boolean|Required|Metered billing option. If set `true` gateway usage is billed per GB. Otherwise, flat rate is charged for the gateway.| No |
+|`name`|String|Required|The unique user-defined name for the gateway. For example, `myGateway`.| No |
+|`speed_mbps`|Integer|Required|The gateway speed in MBPS. For example, `10.254.30.78/30`.| No |
+|`type`|String|Required|The gateway type, allowed values are `dedicated` and `connect`.| Yes |
+|`bgp_cer_cidr`|String|Optional|The BGP customer edge router CIDR. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can be ommitted and a CIDR is selected automatically. For example, `10.254.30.78/30`.| Yes |
+|`bgp_ibm_cidr`|String|Optional|The {{site.data.keyword.IBM_notm}} BGP ASN. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can be ommitted and a CIDR is selected automatically. For example: `10.254.30.77/30`.| Yes |
+|`resource_group`|String|Optional|The resource group. If unspecified, the account's default resource group is used.| Yes |
+|`carrier_name`|String|Required|The carrier name. Constraints are 1 ≤ length ≤ 128, Value must match regular expression ^[a-z][A-Z][0-9][ -_]$. For example, `myCarrierName`.| Yes |
+|`cross_connect_router`|String|Required|The cross connect router. For example, `xcr01.dal03`.| Yes |
+|`customer_name`|String|Required|The customer name is required for `dedicated` type. Constraints are 1 ≤ length ≤ 128, Value must match regular expression ^[a-z][A-Z][0-9][ -_]$. For example, `newCustomerName`.| Yes |
+|`location_name`|String|Required|The gateway location is required for `dedicated` type. For example, `dal03`.| Yes |
 
 
 ### Output parameters
-{: #db-output}
+{: #dl-gwy-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String|The CRN of the database instance.|
-|`status`|String|The status of the instance. |
-|`adminuser`|String|The user ID of the database administrator. Example: `admin` or `root`.|
-|`version`|String|The database version.|
-|`connectionstrings`|Array|A list of connection strings for the database for each user ID. For more information about how to use connection strings, see the [documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings). The results are returned in pairs of the userid and string: `connectionstrings.1.name = admin connectionstrings.1.string = postgres://admin:$PASSWORD@79226bd4-4076-4873-b5ce-b1dba48ff8c4.b8a5e798d2d04f2e860e54e5d042c915.databases.appdomain.cloud:32554/ibmclouddb?sslmode=verify-full` Individual string parameters can be retrieved using Terraform variables and outputs `connectionstrings.x.hosts.x.port` and `connectionstrings.x.hosts.x.host`|
+|`id`|String|The unique ID of the gateway.|
+|`name`|String|The unique user-defined name for the gateway |
+|`crn`|String|The CRN of the gateway.|
+|`created_at`|String|The date and time resource created.|
+|`location_display_name`|String|The gateway location long name.|
+|`resource_group`|String|The resource group reference.|
+|`bgp_asn`|String|The {{site.data.keyword.IBM.notm}} BGP ASN.|
+|`bgp_status`|String|The gateway BGP status.|
+|`completion_notice_reject_reason`|String|The reason for completion notice rejection.|
+|`link_status`|String|The gateway link status. You can include only on `type=dedicated` gateways. For example, `down`, `up`.|
+|`port`|String|The gateway port for `type=connect` gateways.|
+|`vlan`|String|The VLAN allocated for the gateway. You can set only for `type=connect` gateways created directly through the {{site.data.keyword.IBM_notm}} portal.|
+|`provider_api_managed`|String|Indicates whether gateway changes need to be made via a provider portal.|
+|`operational_status`|String|The gateway operational status. For gateways pending LOA approval, patch operational_status to the appropriate value to approve or reject its LOA. For example, `loa_accepted`.|
 
-### Timeouts
-{: #db-timeout}
-
-The following timeouts are defined for this resource. 
-{: shortdesc}
-
-- **Create:** The creation of the instance is considered failed when no response is received for 60 minutes.
-- **Update:** The update of the instance is considered failed when no response is received for 20 minutes.
-- **Delete:** The deletion of the instance is considered failed when no response is received for 10 minutes.
+Operational_status(gateway operational status) and loa_reject_reason(LOA reject reason) cannot be updated using Terraform as the status and reason keeps changing with the different workflow actions.
+{: note}
 
 ### Import
-{: #db-import}
+{: #dl-gwy-import}
 
-The database instance can be imported using the CRN. To import the resource, you must specify the `region` parameter in the `provider` block of your Terraform configuration file. If the region is not specified, `us-south` is used by default. 
+The `ibm_dl_gateway` can be imported using gateway id. 
+
+**Example**
 
 ```
-terraform import ibm_database.my_db <crn>
+terraform import ibm_dl_gateway.example 5ffda12064634723b079acdb018ef308
 ```
 {: pre}
 
-Import requires a minimal Terraform config file to allow importing.
-
-```
-resource "ibm_database" "<your_database>" {
-  name              = "<your_database_name>"
-```
 
 
 
