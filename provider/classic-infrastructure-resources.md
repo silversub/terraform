@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-22"
+lastupdated: "2020-08-17"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -3193,7 +3193,7 @@ The following arguments are supported:
 |`allowed_ip_addresses`| Array of strings | Optional | The IP addresses that you want to give access to this instance. IP addresses must be in the same data center as the block storage.| No |
 |`notes`| Strings | Optional |  A descriptive note that you want to associate with the block storage.| No |
 |`tags`| Array of strings | Optional | Tags associated with the storage block instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
-|`hourly_billing`| Boolean | Optional | Set true to enable hourly billing.Default is false   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the link to get the updated list of data centers. http://knowledgelayer.softlayer.com/articles/new-ibm-block-and-file-storage-location-and-features| No |
+|`hourly_billing`| Boolean | Optional | Set true to enable hourly billing.Default is false   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the link to get the updated list of data centers. see [Data Center locations](/docs/FileStorage?topic=FileStorage-selectDC)| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
