@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-17"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
@@ -238,7 +238,7 @@ To use Terraform to provision {{site.data.keyword.cloud_notm}} classic infrastru
    
    Your API key is displayed in the **API Key** section of your CLI output. 
       
-5. [Retrieve your {{site.data.keyword.cloud_notm}} infrastructure user name and API key](/docs/iam?topic=iam-classic_keys). 
+5. [Retrieve your {{site.data.keyword.cloud_notm}} infrastructure user name and API key](/docs/account?topic=account-classic_keys). 
    
 6. Copy the Terraform configuration files to create your WordPress infrastructure from the {{site.data.keyword.cloud_notm}} Terraform Provider package to your local Terraform project directory. 
    ```
