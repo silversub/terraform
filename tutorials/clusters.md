@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-12"
+lastupdated: "2020-08-17"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -141,7 +141,7 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    ```
    {: codeblock}
    
-   **Example for a {{site.data.keyword.openshiftlong_notm}} cluster**: 
+   **Example for an {{site.data.keyword.openshiftlong_notm}} cluster**: 
    ```
    data "ibm_resource_group" "resource_group" {
      name = "default"
