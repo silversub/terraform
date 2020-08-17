@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-08"
+lastupdated: "2020-08-17"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -367,7 +367,7 @@ Review the input parameters that you can specify for your resource.
 |`access_group_id`|String|Required|The ID of the access group.| Yes |
 | `roles`|List|Required| A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`. | No |
 |`resources` |List|Optional|A nested block describing the resource of this policy.|  No |
-|`resources.service`|String|Optional|The service name that you want to include in your policy definition. For account management services, you can find supported values in the [documentation](/docs/iam?topic=iam-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output. | No |
+|`resources.service`|String|Optional|The service name that you want to include in your policy definition. For account management services, you can find supported values in the [documentation](/docs/account?topic=account-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output. | No |
 |`resources.resource_instance_id`|String|Optional|The ID of resource instance of the policy definition.| No |
 |`resources.region` |String|Optional|The region of the policy definition.| No |
 |`resources.resource_type` |String|Optional|The resource type of the policy definition.| No |
