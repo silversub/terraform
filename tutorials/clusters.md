@@ -79,7 +79,7 @@ This tutorial is intended for system administrators that want to learn how to cr
 {: #prepare-tf}
 
 1. [Install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#install_cli).
-2. If you do not have one, [create an {{site.data.keyword.cloud_notm}} API key](/docs/iam?topic=iam-userapikey#create_user_key).
+2. If you do not have one, [create an {{site.data.keyword.cloud_notm}} API key](/docs/account?topic=account-userapikey#create_user_key).
 3. Create a Terraform project directory. The directory will hold all your Terraform configuration files that you create as part of this tutorial. The directory in this tutorial is named `tf-cluster`, but you can use any name for the directory.
    ``` 
    mkdir tf-cluster && cd tf-cluster
