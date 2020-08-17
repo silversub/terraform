@@ -579,7 +579,7 @@ You can remove the default worker pool from your cluster.
 
 The default worker pool is automatically created when the cluster is created. Because you do not explicitely specify the default worker pool in your configuration file, you cannot remove this worker pool by removing the `ibm_container_worker_pool` resource from your file. Instead, you use the `local-exec` Terraform provisioner to run an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} command against your cluster to remove the default worker pool. 
 
-1. Open your Terraform configuration and add the following content. To run a command against your cluster, you embed the `local-exec` provisioner in a Terraform [`null_resource`](https://www.terraform.io/docs/providers/null/resource.html){: external}. 
+1. Open your Terraform configuration and add the following content. To run a command against your cluster, you embed the `local-exec` provisioner in a Terraform [`null_resource`](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource){: external}. 
    
    **Example for an {{site.data.keyword.containerlong_notm}} cluster:**
    ```
