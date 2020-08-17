@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-15"
+lastupdated: "2020-08-17"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -48,7 +48,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_dl_gateway`
 {: #dl-gwy}
 
-Create, update, or delete a direct link gateway using the direck link gateway resource.
+Create, update, or delete a direct link gateway using the direct link gateway resource.
 {: shortdesc}
 
 ### Sample Terraform code
