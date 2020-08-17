@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-08"
+lastupdated: "2020-08-17"
 
 keywords: terraform provider plugin, terraform key protect, terraform kp, terraform root key 
 
@@ -46,7 +46,7 @@ Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/k
 Provide a key management resource for hs-crypto and key protect services. This allows standaard and root keys to be created and deleted. The region parameter in the `provider.tf` file must be set. If no region parameter is specified, `us-south` is used by default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
 {: shortdesc}
 
-After creating an hs-crypto service instance you need to initialize the instance properly with the crypto units, in order to create or manage hs-crypto keys. To initialize the service instance, see [Initialize hs-crypto](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-initialize-hsm). 
+After creating an hs-crypto service instance you need to initialize the instance properly with the crypto units, in order to create or manage hs-crypto keys. To initialize the service instance, see [Initialize hs-crypto](/docs/hs-crypto?topic=hs-crypto-initialize-hsm). 
 {: note}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
