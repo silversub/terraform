@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-12"
+lastupdated: "2020-08-17"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -38,7 +38,7 @@ subcollection: terraform
 # Creating single and multizone Kubernetes and OpenShift clusters
 {: #tutorial-tf-clusters}
 
-Use this tutorial to create single and multizone clusters with [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-overview) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-roks-overview), and deploy your own set of compute hosts in the public cloud where you can run and manage highly available containerized apps.
+Use this tutorial to create single and multizone clusters with [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-iks-overview) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-roks-overview), and deploy your own set of compute hosts in the public cloud where you can run and manage highly available containerized apps.
 
 In this tutorial, you create a standard classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster with the following configuration: 
 - The cluster is created in the `us-south` region. 
@@ -79,7 +79,7 @@ This tutorial is intended for system administrators that want to learn how to cr
 {: #prepare-tf}
 
 1. [Install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#install_cli).
-2. If you do not have one, [create an {{site.data.keyword.cloud_notm}} API key](/docs/iam?topic=iam-userapikey#create_user_key).
+2. If you do not have one, [create an {{site.data.keyword.cloud_notm}} API key](/docs/account?topic=account-userapikey#create_user_key).
 3. Create a Terraform project directory. The directory will hold all your Terraform configuration files that you create as part of this tutorial. The directory in this tutorial is named `tf-cluster`, but you can use any name for the directory.
    ``` 
    mkdir tf-cluster && cd tf-cluster
@@ -141,7 +141,7 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    ```
    {: codeblock}
    
-   **Example for a {{site.data.keyword.openshiftlong_notm}} cluster**: 
+   **Example for an {{site.data.keyword.openshiftlong_notm}} cluster**: 
    ```
    data "ibm_resource_group" "resource_group" {
      name = "default"
@@ -579,7 +579,7 @@ You can remove the default worker pool from your cluster.
 
 The default worker pool is automatically created when the cluster is created. Because you do not explicitely specify the default worker pool in your configuration file, you cannot remove this worker pool by removing the `ibm_container_worker_pool` resource from your file. Instead, you use the `local-exec` Terraform provisioner to run an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} command against your cluster to remove the default worker pool. 
 
-1. Open your Terraform configuration and add the following content. To run a command against your cluster, you embed the `local-exec` provisioner in a Terraform [`null_resource`](https://www.terraform.io/docs/providers/null/resource.html){: external}. 
+1. Open your Terraform configuration and add the following content. To run a command against your cluster, you embed the `local-exec` provisioner in a Terraform [`null_resource`](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource){: external}. 
    
    **Example for an {{site.data.keyword.containerlong_notm}} cluster:**
    ```

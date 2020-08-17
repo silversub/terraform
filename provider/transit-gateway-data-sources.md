@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-15"
+lastupdated: "2020-08-17"
 
-keywords: terraform transit gateway, terraform  transit gateways,  terraform transit gateway location, transit gateway locations, transit gateway, transit location
+keywords: terraform provider plugin, terraform transit gateway, terraform  transit gateways,  terraform transit gateway location, transit gateway locations, transit gateway, transit location
 
 subcollection: terraform
 
@@ -50,7 +50,7 @@ Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastr
 {: shortdesc}
 
 ### Sample Terraform code
-{: #tg-gateway-sample}
+{: #tg-gateway-sample1}
 
 The following example shows the details of transit gateway data source. 
 {: shortdesc}
@@ -114,7 +114,7 @@ Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastr
 {: shortdesc}
 
 ### Sample Terraform code
-{: #tg-gateway-sample}
+{: #tg-gateway-sample2}
 
 The following example shows the details of transit gateways data source. 
 {: shortdesc}
@@ -225,9 +225,6 @@ data "ibm_tg_locations" "ds_tg_locations" {
 
 ### Input parameters
 {: #tg-locations-input}
-
-Review the input parameters that you can specify for your data source. 
-{: shortdesc}
 
 There is no input parameters for `ibm_tg_locations`.
 

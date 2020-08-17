@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-08"
+lastupdated: "2020-08-17"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -37,7 +37,7 @@ subcollection: terraform
 # Identity & Access (IAM) resources 
 {: #iam-resources}
 
-Create, modify, or delete [{{site.data.keyword.cloud_notm}} Identity and Access Management (IAM)](/docs/iam?topic=iam-iamoverview) resources. 
+Create, modify, or delete [{{site.data.keyword.cloud_notm}} Identity and Access Management (IAM)](/docs/account?topic=account-iamoverview) resources. 
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
@@ -367,7 +367,7 @@ Review the input parameters that you can specify for your resource.
 |`access_group_id`|String|Required|The ID of the access group.| Yes |
 | `roles`|List|Required| A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`. | No |
 |`resources` |List|Optional|A nested block describing the resource of this policy.|  No |
-|`resources.service`|String|Optional|The service name that you want to include in your policy definition. For account management services, you can find supported values in the [documentation](/docs/iam?topic=iam-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output. | No |
+|`resources.service`|String|Optional|The service name that you want to include in your policy definition. For account management services, you can find supported values in the [documentation](/docs/account?topic=account-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output. | No |
 |`resources.resource_instance_id`|String|Optional|The ID of resource instance of the policy definition.| No |
 |`resources.region` |String|Optional|The region of the policy definition.| No |
 |`resources.resource_type` |String|Optional|The resource type of the policy definition.| No |
@@ -408,7 +408,7 @@ $ terraform import ibm_iam_access_group_policy.example <access_group_ID>/<access
 Create, update, or delete a dynamic rule for an IAM access group. With dynamic rules, you can automatically add federated users to access groups based on specific identity attributes. When your users log in with a federated ID, the data from the identity provider dynamically maps your users to an access group based on the rules that you set.
 {: shortdesc}
 
-For more information, see [Creating dynamic rules for access groups](/docs/iam?topic=iam-rules). 
+For more information, see [Creating dynamic rules for access groups](/docs/account?topic=account-rules). 
 
 ### Sample Terraform code
 {: #iam-group-dynamic-rule-sample}
@@ -629,7 +629,7 @@ This resource does not provide output parameters.
 Create, update, or delete a custom IAM role. 
 {: shortdesc}
 
-For more information about IAM custom roles, see [Creating custom roles](/docs/iam?topic=iam-custom-roles).
+For more information about IAM custom roles, see [Creating custom roles](/docs/account?topic=account-custom-roles).
 
 ### Sample Terraform code
 {: #iam-custom-role-sample}
@@ -657,7 +657,7 @@ Review the input parameters that you can specify for your resource.
 |`display_name`|String|Required|The display name of the custom role.|
 |`description`|String|Optional|The description of the custom role. Make sure to include information about the level of access this role assignment gives a user. |
 |`service`|String|Required|The name of the service for which you want to create the custom role. To retrieve the name, run `ibmcloud catalog service-marketplace`.
-|`actions`|Array of strings|Required|A list of action IDs that you want to add to your custom role. The action IDs vary by service. To retrieve supported action IDs, follow the [documentation](/docs/iam?topic=iam-custom-roles) to create the custom role from the UI. |
+|`actions`|Array of strings|Required|A list of action IDs that you want to add to your custom role. The action IDs vary by service. To retrieve supported action IDs, follow the [documentation](/docs/account?topic=account-custom-roles) to create the custom role from the UI. |
 
 ### Output parameters
 {: #iam-custom-role-output}

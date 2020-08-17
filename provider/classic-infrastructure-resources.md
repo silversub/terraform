@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-22"
+lastupdated: "2020-08-17"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -2260,7 +2260,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancers. This allows VPX load balancers to be created, updated, and deleted.  
 
-**NOTE**: IBM VPX load balancers consist of Citrix NetScaler VPX devices (virtual), which are currently priced on a per-month basis. Use caution when creating the resource because the cost for an entire month is incurred immediately upon creation. For more information about pricing, see the [network appliance docs](http://www.softlayer.com/network-appliances). Under the Citrix log, click **See more pricing** for a current price matrix.
+**NOTE**: IBM VPX load balancers consist of Citrix NetScaler VPX devices (virtual), which are currently priced on a per-month basis. Use caution when creating the resource because the cost for an entire month is incurred immediately upon creation. For more information about pricing, see the [network appliance docs](https://www.ibm.com/cloud/network-appliances). Under the Citrix log, click **See more pricing** for a current price matrix.
 
 You can also use the following REST URL to get a listing of VPX choices along with version numbers, speed, and plan type:
 
@@ -2294,7 +2294,7 @@ The following arguments are supported:
 
 |Name| Data type | Required/ Optional | Description| Forces new resource |
 |----|-----------| ------ | ----- | ----------|
-|`datacenter`| String | Required |The data center in which you want to provision the VPX load balancer. You can find accepted values in the [data center docs](http://www.softlayer.com/data-centers).| Yes |
+|`datacenter`| String | Required |The data center in which you want to provision the VPX load balancer. You can find accepted values in the [data center docs](https://www.ibm.com/cloud/load-balancer).| Yes |
 |`speed`|Integer | Required | The speed, expressed in Mbps. Accepted values are `10`, `200`, and `1000`.| Yes |
 |`version`| String | Required | The VPX load balancer version. Accepted values are `10.1`, `10.5`, `11.0`, `11.1` and `12.1`.| Yes |
 |`plan`| String | Required |The VPX load balancer plan. Accepted values are `Standard` and `Platinum`.| Yes |
@@ -2325,7 +2325,7 @@ The following attributes are exported:
 ## `ibm_lb_vpx_ha`
 {: #lb-vpx-ha}
 
-Configure a high availability (HA) pair with two NetScaler VPX devices. The two NetScaler VPXs must be version 10.5 and located in the same subnet. A primary NetScaler VPX provides load balancing services in active mode, and a secondary NetScaler VPX provides load balancing services when the primary NetScaler VPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748){: external} and the [KnowledgeLayer NetScaler docs](https://cloud.ibm.com/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-){: external}.
+Configure a high availability (HA) pair with two NetScaler VPX devices. The two NetScaler VPXs must be version 10.5 and located in the same subnet. A primary NetScaler VPX provides load balancing services in active mode, and a secondary NetScaler VPX provides load balancing services when the primary NetScaler VPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748){: external} and the [KnowledgeLayer NetScaler docs](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
 
 **NOTE**: This resource only supports NetScaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
@@ -3193,7 +3193,7 @@ The following arguments are supported:
 |`allowed_ip_addresses`| Array of strings | Optional | The IP addresses that you want to give access to this instance. IP addresses must be in the same data center as the block storage.| No |
 |`notes`| Strings | Optional |  A descriptive note that you want to associate with the block storage.| No |
 |`tags`| Array of strings | Optional | Tags associated with the storage block instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
-|`hourly_billing`| Boolean | Optional | Set true to enable hourly billing.Default is false   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the link to get the updated list of data centers. http://knowledgelayer.softlayer.com/articles/new-ibm-block-and-file-storage-location-and-features| No |
+|`hourly_billing`| Boolean | Optional | Set true to enable hourly billing.Default is false   **NOTE**: `Hourly billing` is only available in updated data centers with improved capabilities. Refer to the link to get the updated list of data centers. see [Data Center locations](/docs/FileStorage?topic=FileStorage-selectDC)| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters

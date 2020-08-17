@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-08"
+lastupdated: "2020-08-17"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -404,7 +404,7 @@ Import the details of a Kubernetes cluster ALB on an {{site.data.keyword.cloud_n
 {: shortdesc}
 
 ### Sample Terraform code
-{: #container-vpc-alb-sample}
+{: #container-vpc-alb-sample1}
 
 In the following example you can configure an ALB.
 
@@ -575,7 +575,7 @@ Import the details of a Kubernetes cluster worker pool on an {{site.data.keyword
 {: shortdesc}
 
 ### Sample Terraform code
-{: #container-vpc-alb-sample}
+{: #container-vpc-alb-sample2}
 
 In the following example, you can create a worker pool for a VPC cluster.
 

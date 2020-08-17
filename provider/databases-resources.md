@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-22"
+lastupdated: "2020-08-17"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -55,7 +55,7 @@ To create a {{site.data.keyword.databases-for}} instance, you must specify the `
 ### Sample Terraform code
 {: #db-sample}
 
-To find an example for configuring a virtual server instance that connects to a PostgresDB database, see [here](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-database).
+To find an example for configuring a virtual server instance that connects to a postgres database, see [here](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-database).
 
 ```
 data "ibm_resource_group" "group" {
@@ -120,7 +120,7 @@ Review the input parameters that you can specify for your resource.
 |`key_protect_key`|String|Optional|The CRN of a Key Protect root key that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>:key:`. You can specify the root key during the database creation only. After the database is created, you cannot update the root key. | Yes |
 |`key_protect_instance`|String|Optional|The CRN of a Key Protect instance that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>::`.| No |
 |`guid`|String|Optional|The unique identifier of the database instance.| No |
-|`remote_leader_id`|String|Optional|A CRN of the leader database to make the replica(read-only) deployment. The leader database must have been created by a database deployment with the same service ID. A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment using asynchronous replication. For more information, see [Configuring Read-only Replicas](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).| No |
+|`remote_leader_id`|String|Optional|A CRN of the leader database to make the replica(read-only) deployment. The leader database must have been created by a database deployment with the same service ID. A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment using asynchronous replication. For more information, see [Configuring Read-only Replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).| No |
 |`point_in_time_recovery_deployment_id`|String|Optional|The ID of the source deployment that you want to recover back to.| No |
 |`point_in_time_recovery_time`|String|Optional|The timestamp in UTC format that you want to restore to. To retrieve the timestamp, run the `ibmcloud cdb postgresql earliest-pitr-timestamp <deployment name or CRN>` command. For more information, see [Point-in-time Recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr). | No |
 |`service_endpoints`|String|Optional|Specify if you want to enable the public, private, or both service endpoints. Supported values are `public`, `private`, or `public-and-private`. The default is `public`.| No |

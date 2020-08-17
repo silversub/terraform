@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-07"
+lastupdated: "2020-08-17"
 
 keywords: terraform provider plugin, terraform certificate manager, terraform cert manager, terraform certificate
 
@@ -108,7 +108,7 @@ Review the output parameters that you can access after your resource is created.
 ## `ibm_certificate_manager_order`
 {: #certmanager-order}
 
-Order, renew, update, or delete a certificate in Certificate Manager. For more information, see [Ordering certificates](/docs/services/certificate-manager?topic=certificate-manager-ordering-certificates).
+Order, renew, update, or delete a certificate in Certificate Manager. For more information, see [Ordering certificates](/docs/certificate-manager?topic=certificate-manager-ordering-certificates).
 {: shortdesc}
 
 ### Sample Terraform code

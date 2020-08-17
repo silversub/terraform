@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-08"
+lastupdated: "2020-08-17"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -145,7 +145,7 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-------|----------|
-|`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported actions. For account management services, you can find supported values in the [documentation](/docs/iam?topic=iam-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
+|`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported actions. For account management services, you can find supported values in the [documentation](/docs/account?topic=account-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
 
 ### Output parameters
 {: #iam-role-actions-output}
@@ -183,7 +183,7 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-------|----------|
-|`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported IAM roles. For account management services, you can find supported values in the [documentation](/docs/iam?topic=iam-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
+|`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported IAM roles. For account management services, you can find supported values in the [documentation](/docs/account?topic=account-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
 
 ### Output parameters
 {: #iam-roles-output}

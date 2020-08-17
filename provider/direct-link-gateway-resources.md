@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-15"
+lastupdated: "2020-08-17"
 
-keywords:  direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
+keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
 
 subcollection: terraform
@@ -48,7 +48,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_dl_gateway`
 {: #dl-gwy}
 
-Create, update, or delete a direct link gateway using the direck link gateway resource.
+Create, update, or delete a direct link gateway using the direct link gateway resource.
 {: shortdesc}
 
 ### Sample Terraform code
@@ -87,7 +87,7 @@ Review the input parameters that you can specify for your resource.
 {: shortdesc}
 
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Input parameter |Data type|Required/ optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| --------|
 |`bgp_asn`|Integer|Required|The BGP ASN of the gateway to be created. For example: `64999`.| Yes |
 |`bgp_base_cidr`|String|Required|The BGP base CIDR of the gateway to be created. For example: `10.254.30.76/30` | Yes |
@@ -111,7 +111,7 @@ Review the input parameters that you can specify for your resource.
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
 
-|Name|Data type|Description|
+|Output parameter|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The unique ID of the gateway.|
 |`name`|String|The unique user-defined name for the gateway |
@@ -169,7 +169,7 @@ Review the input parameters that you can specify for your resource.
 {: shortdesc}
 
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Input parameter|Data type|Required/ optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| --------|
 |`gateway`|String|Required|The direct link gateway ID.| Yes |
 |`name`|String|Required|The user-defined name for the virtual connection.| No |
@@ -183,7 +183,7 @@ Review the input parameters that you can specify for your resource.
 Review the output parameters that you can access after your resource are exported. 
 {: shortdesc}
 
-|Name|Data type|Description|
+|Output parameter|Data type|Description|
 |----|-----------|--------|
 |`created_at`|String|The date and time resource created.|
 |`id`|String|The unique ID of the resource with combination of gateway / virtual_connection_id.||
@@ -203,9 +203,3 @@ terraform import ibm_dl_virtual_connection.example
 d7bec597-4726-451f-8a53-e62e6f19c32c/cea6651a-bd0a-4438-9f8a-a0770bbf3ebb
 ```
 {: pre}
-
-
-
-
-
-
