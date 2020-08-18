@@ -50,7 +50,7 @@ Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastr
 {: shortdesc}
 
 ### Sample Terraform code
-{: #tg-gateway-sample1}
+{: #tg-gateway-sample}
 
 The following example shows the details of transit gateway data source. 
 {: shortdesc}
@@ -114,7 +114,7 @@ Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastr
 {: shortdesc}
 
 ### Sample Terraform code
-{: #tg-gateway-sample2}
+{: #tg-gateways-sample}
 
 The following example shows the details of transit gateways data source. 
 {: shortdesc}
