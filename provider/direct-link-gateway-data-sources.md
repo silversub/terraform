@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-15"
+lastupdated: "2020-08-19"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -40,7 +40,7 @@ subcollection: terraform
 Use {{site.data.keyword.cloud_notm}} [Direct Link](/docs/dl?topic=dl-get-started-with-ibm-cloud-dl) to seamlessly connect your on-premises resources to your cloud resources. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}.
 {: shordesc}
 
-Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
 
 
@@ -217,7 +217,7 @@ Review the output parameters that you can access after your resource is created.
 ## ibm_dl_offering_speeds
 {: #dl_offering_spd_ds}
 
-Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link offering speeds options.
+Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure direct link offering speed options.
 {: shortdesc}
 
 ### Sample Terraform code
