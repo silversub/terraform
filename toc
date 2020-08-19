@@ -53,8 +53,8 @@ Terraform
          provider/iam-data-sources.md
          provider/internet-services-resources.md
          provider/internet-service-data-sources.md
-         provider/keyprotect-resources.md
-         provider/key-protect-data-sources.md
+         provider/key-management-service-resources.md
+         provider/key-management-service-data-sources.md
          provider/container-resources.md
          provider/container-data-sources.md
          provider/object-storage-resources.md

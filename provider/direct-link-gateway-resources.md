@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-17"
+lastupdated: "2020-08-19"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -119,7 +119,7 @@ Review the output parameters that you can access after your resource is created.
 |`created_at`|String|The date and time resource created.|
 |`location_display_name`|String|The gateway location long name.|
 |`resource_group`|String|The resource group reference.|
-|`bgp_asn`|String|The {{site.data.keyword.IBM.notm}} BGP ASN.|
+|`bgp_asn`|String|The IBM BGP ASN.|
 |`bgp_status`|String|The gateway BGP status.|
 |`completion_notice_reject_reason`|String|The reason for completion notice rejection.|
 |`link_status`|String|The gateway link status. You can include only on `type=dedicated` gateways. For example, `down`, `up`.|
