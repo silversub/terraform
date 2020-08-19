@@ -49,10 +49,6 @@ Before you start working with your data source, make sure to review the [require
 Retrieves the list of keys from the Hyper Protect Crypto Services (HPCS) and Key Protect services for the given key name. The region parameter in the `provider.tf` file must be set. If region parameter is not specified, `us-south` is used by default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
 {: shortdesc}
 
-Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
-{: important}
-
-
 ### Sample Terraform code
 {: #kms-key-ds-sample}
 
@@ -94,7 +90,7 @@ Review the output parameters that are exported.
 |`keys.name`|String|The name for the key. |
 |`keys.id`|String|The unique ID for the key. |
 |`keys.crn`|String|The CRN of the key. |
-|`keys.standard_key`|String|Set the flag `true` in case of standard key, and `false` for root key. Default value is **false**.|
+|`keys.standard_key`|String|Set the flag `true` for standard key, and `false` for root key. Default value is **false**.|
 
 ## `ibm_kp_key`
 {: #kp-key}
@@ -145,4 +141,4 @@ Review the output parameters that you can access after you retrieved your data s
 | `keys.name`|String| The name of the key.|
 | `keys.id`|String| The unique identifier of the key.|
 | `keys.crn`|String| The CRN of the key.|
-| `keys.standard_key` |Boolean|Set the flag `true` in case of standard key, and `false` for root key. Default value is **false**. |
+| `keys.standard_key` |Boolean|Set the flag `true` for standard key, and `false` for root key. Default value is **false**. |
