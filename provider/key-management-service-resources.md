@@ -40,6 +40,10 @@ subcollection: terraform
 Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources. This resource can be used for keys in both Key Protect and Hyper Protect Crypto Service (HPCS).
 {: shortdesc}
 
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+{: important}
+
+
 ## `ibm_kms_key`
 {: #kms-key}
 
@@ -48,9 +52,6 @@ Provide a key management service resource for Hyper Protect Crypto Services and 
 
 After creating an  Hyper Protect Crypto Service instance you need to initialize the instance properly with the crypto units, in order to create, or manage Hyper Protect Crypto Service keys. For more information about how to initialize the Hyper Protect Crypto Service instance, see [Initialize Hyper Protect Crypto](/docs/hs-crypto?topic=hs-crypto-initialize-hsm). 
 {: note}
-
-Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
-{: important}
 
 
 ### Sample Terraform code
@@ -115,7 +116,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #kms-key-import}
 
-`ibm_kms_key` can be imported using the `id` and `crn`.
+`ibm_kms_key` can be imported by using the `id` and `crn`.
 
 ```
 terraform import ibm_kms_key.crn crn:v1:bluemix:public:kms:us-south:a/faf6addbf6bf4768hhhhe342a5bdd702:05f5bf91-ec66-462f-80eb-8yyui138a315:key:52448f62-9272-4d29-a515-15019e3e5asd
@@ -128,11 +129,11 @@ terraform import ibm_kms_key.crn crn:v1:bluemix:public:kms:us-south:a/faf6addbf6
 Create, or delete a Key Protect standard or root key.  
 {: shortdesc}
 
-`ibm_kp_key` resource will be deprecated shortly, as a replacement, you can use `ibm_kms_key` resource.
-{: important}
-
 To use the `ibm_kp_key` resource, the region parameter in the `provider.tf` file must be set to the same region that your Key Protect service instance. If region parameter is not specified, `us-south` is used as default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
 {: note}
+
+`ibm_kp_key` resource will be deprecated shortly, as a replacement, you can use `ibm_kms_key` resource.
+{: important}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
