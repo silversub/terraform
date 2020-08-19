@@ -94,7 +94,7 @@ Review the output parameters that are exported.
 |`keys.name`|String|The name for the key. |
 |`keys.id`|String|The unique ID for the key. |
 |`keys.crn`|String|The CRN of the key. |
-|`keys.standard_key`|String|The flag sets `true` in case of standard key, and sets `false` for root key.|
+|`keys.standard_key`|String|Set the flag `true` in case of standard key, and `false` for root key. Default value is **false**.|
 
 ## `ibm_kp_key`
 {: #kp-key}
@@ -145,4 +145,4 @@ Review the output parameters that you can access after you retrieved your data s
 | `keys.name`|String| The name of the key.|
 | `keys.id`|String| The unique identifier of the key.|
 | `keys.crn`|String| The CRN of the key.|
-| `keys.standard_key` |Boolean|The flag sets `true` in case of standard key, and sets `false` for root key. |
+| `keys.standard_key` |Boolean|Set the flag `true` in case of standard key, and `false` for root key. Default value is **false**. |
