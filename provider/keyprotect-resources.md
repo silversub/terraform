@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-17"
+lastupdated: "2020-08-19"
 
-keywords: terraform provider plugin, terraform key protect, terraform kp, terraform root key 
+keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, HPCS
 
 subcollection: terraform
 
@@ -34,10 +34,10 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 
 
-# Key Protect resources
-{: #kp-resources}
+# Key Management Service resources
+{: #kms-resources}
 
-Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources. 
+Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources. This resource can be used for keys in both Key Protect and Hyper Protect Crypto Service (HPCS).
 {: shortdesc}
 
 ## `ibm_kms_key`
@@ -127,6 +127,9 @@ terraform import ibm_kms_key.crn crn:v1:bluemix:public:kms:us-south:a/faf6addbf6
 
 Create, or delete a Key Protect standard or root key.  
 {: shortdesc}
+
+`ibm_kp_key` resource is in plan to deprecate shortly, as a replacement, you can use `ibm_kms_key` resource.
+{: important}
 
 To use the `ibm_kp_key` resource, the region parameter in the `provider.tf` file must be set to the same region that your Key Protect service instance is in. If no region parameter is specified, `us-south` is used by default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
 {: note}
