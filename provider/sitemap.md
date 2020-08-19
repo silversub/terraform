@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-17"
+lastupdated: "2020-08-19"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -213,8 +213,8 @@ subcollection: terraform
   </tbody>
   </table> 
   
-  ## Key Protect
-  {: #ibm-key-protect}
+  ## Key Management Service
+  {: #ibm-kms}
   
   <table>
     <thead>
@@ -223,8 +223,8 @@ subcollection: terraform
   </thead>
   <tbody>
     <tr>
- <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kp-resources#kms-key)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kp-resources#kp-key)</li></ul></td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kp-data-sources#kms-key-ds)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kp-data-sources#kp-key)</li></ul></td>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kms-resources#kms-key)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kms-resources#kp-key)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kms-data-sources)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kms-data-sources#kp-key)</li></ul></td>
     </tr>
   </tbody>
   </table> 
