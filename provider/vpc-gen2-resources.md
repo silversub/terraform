@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-17" 
+lastupdated: "2020-08-20" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -555,7 +555,7 @@ terraform import ibm_is_lb.example <lb_ID>
 
 Create, update, or delete a listener for a VPC load balancer.
 
-When provisioning the load balancer listener along with load balancer pool or pool member, use [explicit dependencies](https://learn.hashicorp.com/tutorials/terraform/aws-dependency){: external} on the resources or perform the terraform apply with parallelism 1. 
+When provisioning the load balancer listener along with load balancer pool or pool member, use explicit dependencies on the resources or perform the terraform apply with parallelism 1. 
 {: note}
 
 ### Sample Terraform code
