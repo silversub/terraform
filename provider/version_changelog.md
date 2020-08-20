@@ -2,10 +2,11 @@
 
 copyright:
   years: 2014, 2020
-lastupdated: "2020-07-27"
+lastupdated: "2020-08-20"
 
 keywords: terraform, terraform provider release, terraform provider versions
-subcollection: containers
+
+subcollection: terraform
 
 ---
 
