@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-19"
+lastupdated: "2020-08-20"
 
-keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, HPCS
+keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, hpcs
 
 subcollection: terraform
 
