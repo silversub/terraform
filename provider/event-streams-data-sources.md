@@ -51,9 +51,6 @@ Before you start working with your resource, make sure to review the [required p
 Import the name of an existing event streams topic as a read-only data source. Then, You can reference the fields of the data source in other resources within the same configuration by using interpolation syntax. 
 {: shortdesc}
 
- Creating topic needs manager role, as a writer role, you cannot create topic.
- {: important}
-
 ### Sample Terraform code
 {: #event-stream-ds-sample}
 
