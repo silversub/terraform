@@ -51,9 +51,6 @@ Before you start working with your resource, make sure to review the [required p
 Import the name of an existing event streams topic as a read-only data source. Then, You can reference the fields of the data source in other resources within the same configuration by using interpolation syntax. 
 {: shortdesc}
 
-The owner of the `ibmcloud_api_key` has permission to create Event Streams instance under specified resource group. However, you need the **Manager** role to create the instance in order to create topic.
- {: important}
-
 ### Sample Terraform code
 {: #event-stream-ds-sample}
 
