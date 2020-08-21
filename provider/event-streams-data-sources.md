@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-12"
+lastupdated: "2020-08-21"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event streams topic
 
@@ -48,8 +48,11 @@ Before you start working with your resource, make sure to review the [required p
 ## ibm_event_streams_topic
 {: #event-streams-topic}
 
-Import the name of an existing event streams topic as a read-only data source. Then, You can  reference the fields of the data source in other resources within the same configuration by using interpolation syntax.
+Import the name of an existing event streams topic as a read-only data source. Then, You can reference the fields of the data source in other resources within the same configuration by using interpolation syntax. 
 {: shortdesc}
+
+ Creating topic needs manager role, as a writer role, you cannot create topic.
+ {: important}
 
 ### Sample Terraform code
 {: #event-stream-ds-sample}
