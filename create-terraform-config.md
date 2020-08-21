@@ -243,7 +243,14 @@ Cloning GitHub repository in {{site.data.keyword.bplong_notm}} is allowed only t
 -	Blocked extension: `.php5` `.pht` `.phtml` `.shtml` `.asa` `.cer` `.asax` `.swf` `.xap` `.tfstate` `.tfstate.backup`
 -	Allowed image extension: `.tif` `.tiff` `.gif` `.png` `.bmp` `.jpg` `.jpeg` 
 
-The following image shows an example of how your Terraform template could look like in a GitHub repository. 
 
-<img src="images/gh-repo-structure.png" alt="Sample GitHub setup for a Terraform configuration" width="800" style="width: 800px; border-style: none"/>
+The directory structure of the Terraform template in the GitHub repository looks like listed in the table with the last updated time.
+
+| File | Description |
+|----|-----|
+| README.md | Create README.md |
+| main.tf | Create main.tf |
+| output.tf | Create output.tf |
+| provider.tf | Create provider.tf |
+| variables.tf | Create variables.tf |
 
