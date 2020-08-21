@@ -97,7 +97,7 @@ resource "ibm_event_streams_topic" "es_topic_1" {
 Create topic on an existing event streams instance.
 {: shortdesc}
 
- You can create topic, only when you are in manager role. As a writer role topic cannot be created.
+ Creating topic needs manager role, as a writer role, you cannot create topic.
  {: important}
 
 ```
