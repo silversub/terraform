@@ -97,7 +97,7 @@ resource "ibm_event_streams_topic" "es_topic_1" {
 Create topic on an existing event streams instance.
 {: shortdesc}
 
- Creating topic needs manager role, as a writer role, you cannot create topic.
+The owner of the `ibmcloud_api_key` has permission to create Event Streams instance under specified resource group. However, you need the Manager role to the create instance in order to create topic.
  {: important}
 
 ```
