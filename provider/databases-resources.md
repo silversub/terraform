@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-20"
+lastupdated: "2020-08-21"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -55,7 +55,7 @@ To create a {{site.data.keyword.databases-for}} instance, you must specify the `
 ### Sample Terraform code
 {: #db-sample}
 
-To find an example for configuring a virtual server instance that connects to a postgresql database, see [here](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-database).
+To find an example for configuring a virtual server instance that connects to a PostgreSQL database, see [here](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-database).
 
 ```
 data "ibm_resource_group" "group" {

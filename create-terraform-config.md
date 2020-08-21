@@ -2,11 +2,11 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-24"
+lastupdated: "2020-08-21"
 
 keywords: terraform template guidelines, terraform config file guidelines, sample terraform files, terraform provider, terraform variables, terraform input variables, terraform template
 
-subcollection: schematics
+subcollection: terraform
 
 ---
 
@@ -119,7 +119,7 @@ To configure the `provider` block:
 Use `resource` blocks to define the {{site.data.keyword.cloud_notm}} resources that you want to manage with {{site.data.keyword.bplong_notm}}. 
 {: shortdesc}
 
-To support a multi-cloud approach, Terraform works with multiple cloud providers. A cloud provider is responsible for understanding the resources that you can provision, their API, and the methods to expose these resources in the cloud. To make this knowledge available to users, every supported cloud provider must provide a CLI plug-in for Terraform that users can use to work with the resources. To find an overview of the resources that you can provision in {{site.data.keyword.cloud_notm}}, see the [{{site.data.keyword.cloud_notm}} Provider plug-in for Terraform reference](/docs/terraform?topic=terraform-index-of-terraform-resources-and-data-sources){: external}. 
+To support a multi-cloud approach, Terraform works with multiple cloud providers. A cloud provider is responsible for understanding the resources that you can provision, their API, and the methods to expose these resources in the cloud. To make this knowledge available to users, every supported cloud provider must provide a CLI plug-in for Terraform that users can use to work with the resources. To find an overview of the resources that you can provision in {{site.data.keyword.cloud_notm}}, see the [{{site.data.keyword.cloud_notm}} Provider plug-in for Terraform reference](/docs/terraform?topic=terraform-index-of-terraform-resources-and-data-sources). 
 
 Example infrastructure code for provisioning a VPC: 
 ```
@@ -243,7 +243,14 @@ Cloning GitHub repository in {{site.data.keyword.bplong_notm}} is allowed only t
 -	Blocked extension: `.php5` `.pht` `.phtml` `.shtml` `.asa` `.cer` `.asax` `.swf` `.xap` `.tfstate` `.tfstate.backup`
 -	Allowed image extension: `.tif` `.tiff` `.gif` `.png` `.bmp` `.jpg` `.jpeg` 
 
-The following image shows an example of how your Terraform template could look like in a GitHub repository. 
 
-<img src="images/gh-repo-structure.png" alt="Sample GitHub setup for a Terraform configuration" width="800" style="width: 800px; border-style: none"/>
+The directory structure of the Terraform template in the GitHub repository looks like listed in the table with the last updated time.
+
+| File | Description |
+|----|-----|
+| README.md | Create README.md |
+| main.tf | Create main.tf |
+| output.tf | Create output.tf |
+| provider.tf | Create provider.tf |
+| variables.tf | Create variables.tf |
 

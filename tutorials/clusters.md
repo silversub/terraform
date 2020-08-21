@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-18"
+lastupdated: "2020-08-21"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -358,7 +358,7 @@ Add zones to the default worker pool in your cluster that you created in lessson
    </tr>
      <tr>
    <td><code>resource.ibm_container_worker_pool_zone_attachment.public_vlan_id</code></td>
-   <td>Enter the ID of an existing public VLAN that you have in the zone that you want to add to the cluster. If you do not have a public VLAN in that zone yet, remove this parameter from your configuration file. A ppublic VLAN is automatically created for you. To list available VLANs in a zone, run <code>ibmcloud ks vlan ls --zone &lt;zone&gt;</code>. </td>
+   <td>Enter the ID of an existing public VLAN that you have in the zone that you want to add to the cluster. If you do not have a public VLAN in that zone yet, remove this parameter from your configuration file. A public VLAN is automatically created for you. To list available VLANs in a zone, run <code>ibmcloud ks vlan ls --zone &lt;zone&gt;</code>. </td>
    </tr>
   </tbody>
   </table>
