@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-13"
+lastupdated: "2020-08-21"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -96,6 +96,9 @@ resource "ibm_event_streams_topic" "es_topic_1" {
 
 Create topic on an existing event streams instance.
 {: shortdesc}
+
+ You can create topic, only when you are in manager role. As a writer role topic cannot be created.
+ {: important}
 
 ```
 data "ibm_resource_instance" "es_instance_2" {
