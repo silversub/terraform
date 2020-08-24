@@ -193,9 +193,9 @@ Review the output parameters that you can access after your resource is created.
 |`namespace`|String| The name of the function namespace.|
 |`version`|String|Semantic version of the item.|
 |`annotations`|List|All annotations to describe the action, including those set by you or by IBM Cloud Functions.|
-|`parameters`|List|All parameters passed to the action when the action is invoked, including those set by you or by IBM Cloud Functions.|
+|`parameters`|List|All parameters passed to the action when the action is invoked, including those set by you or by the IBM Cloud Functions.|
 |`action_id`|String|The action ID.|
-|`target_endpoint_url` | String | the target endpoint URL of the action. |
+|`target_endpoint_url` | String | The target endpoint URL of the action. |
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
