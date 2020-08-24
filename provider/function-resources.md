@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-14"
+lastupdated: "2020-08-24"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless, terraform namespace
 
@@ -79,8 +79,9 @@ The following example shows how to pass parameters to an action.
 
 ```
 resource "ibm_function_action" "nodehellowithparameter" {
-  name = "hellonodeparam"
-
+  name      = "hellonodeparam"
+  namespace = "function-namespace-name"
+  
   exec {
     kind = "nodejs:6"
     code = file("hellonodewithparameter.js")
@@ -93,7 +94,10 @@ resource "ibm_function_action" "nodehellowithparameter" {
         "value":"India"
     }
         ]
-        EOF
+
+EOF
+
+}
 ```
 
 #### Packaging an action as a Node.js module
@@ -104,14 +108,14 @@ The following example packages a JavaScript action to a module.
 
 ``` 
 resource "ibm_function_action" "nodezip" {
-  name = "nodezip"
+  name      = "nodezip"
+  namespace = "function-namespace-name"
 
   exec {
     kind = "nodejs:6"
     code = base64encode(file("nodeaction.zip"))
   }
 }
-
 ```
 
 #### Creating action sequences
@@ -122,14 +126,14 @@ The following example creates an action sequence.
 
 ``` 
 resource "ibm_function_action" "swifthello" {
-  name = "actionsequence"
+  name      = "actionsequence"
+  namespace = "function-namespace-name"
 
   exec {
-    kind = "sequence"
-    components = ["/whisk.system/utils/split","/whisk.system/utils/sort"]
+    kind       = "sequence"
+    components = ["/whisk.system/utils/split", "/whisk.system/utils/sort"]
   }
 }
-
 ```
 
 ### Creating Docker actions
@@ -140,14 +144,15 @@ The following example creates a Docker action.
 
 ``` 
 resource "ibm_function_action" "swifthello" {
-  name = "dockeraction"
+  name      = "dockeraction"
+  namespace = "function-namespace-name"
 
   exec {
-    kind = "janesmith/blackboxdemo"
-    image = file("helloSwift.swift")
+    kind   = "blackbox"	
+    image  = "janesmith/blackboxdemo"
+    code   = file("helloSwift.swift")
   }
 }
-
 ```
 
 ### Input parameters

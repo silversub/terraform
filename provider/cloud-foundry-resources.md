@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-24"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -37,7 +37,7 @@ subcollection: terraform
 # Cloud Foundry resources
 {: #cloud-foundry-resources}
 
-Review the [Cloud Foundry](/docs/cloud-foundry-public?topic=cloud-foundry-what-is-cloud-foundry) resources that you can create, modify, or delete. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
+Review the [Cloud Foundry](/docs/cloud-foundry-public?topic=cloud-foundry-public-getting-started) resources that you can create, modify, or delete. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
