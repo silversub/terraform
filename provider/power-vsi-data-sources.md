@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-26"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -189,18 +189,21 @@ Review the output parameters that you can access after you retrieved your data s
 | `addresses.network_name`|String|The network name of the instance. |
 | `addresses.type`|String| The type of the network. |
 | `addresses.externalip`|String| The external IP address of the instance.|
+|`health_status`|String|The health of the instance.|
 | `id` | String | The unique identifier of the instance. |
 | `state` | String | The state of the instance.|
 | `memory`|String|The amount of memory that is allocated to the instance.|
 | `min_processors`|Integer|The minimum number of processors that must be allocated to the instance.| 
 | `max_processors`|Integer|The maximum number of processors that can be allocated to the instance without shutting down or rebooting the LPAR.|
+| `max_virtual_cores` | Integer | The maximum value that you increase without a reboot. |
 | `min_memory`|Integer|The minimum amount of memory that must be allocated to the instance.|
 | `max_memory`|Integer|The maximum amount of memory that can be allocated to the instance without shutting down or rebooting the LPAR.|
+| `min_virtual_cores` | Integer |The minimum cores assigned to an instance.|
 |`processors`|String|The number of processors that are allocated to the instance.|
-|`status`|String|The status of the instance.|
 |`proctype`|String|The procurement type of the instance. Supported values are `shared` and `dedicated`. |
+|`status`|String|The status of the instance.|
+| `virtual_cores_assigned` | Integer | The virtual cores that are assigned to the instance. |
 |`volumes`|List of strings|The list of volume IDs that are attached to the instance. |
-|`health_status`|String|The health of the instance.|
 
 
 
