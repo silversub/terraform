@@ -493,7 +493,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `size` | Integer | The size of the volume in gigabytes. |
 | `state` | String | The state of the volume. |
 | `type` | String | The disk type that is used for the volume. |
-| `wwn` | String | The world wide name (`wwn`) of the volume. |
+| `wwn` | String | The world wide name of the volume. |
 
 
 
