@@ -41,6 +41,56 @@ Before you start working with your data source, make sure to review the [require
 {: important}
 
 
+You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}.
+{: note}
+
+## ibm_is_floating_ip
+{: #floating-ip-ds}
+
+Retrieve the information about VPC floating IP. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #floating-ip-ds-sample}
+
+The following example retrieves information about the VPC floating IP.
+{: shortdesc}
+
+```
+
+ data "ibm_is_floating_ip" "test" {
+      name   = "test-fp"
+ }
+
+```
+
+### Input parameters
+{: #floating-ip-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required/ optional|Description|
+|----|-----------|--------|----------------------|
+|`name`|String|Required|The name of the floating IP.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #floating-ip-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`id`|String|The unique identifier of the floating IP.|
+|`address`|String|The floating IP address that is created.|
+|`status`|String|Provisioning status of the floating IP address.|
+|`tags`|String|The tags associated with VPC.|
+|`target`|String|The ID of the network interface used to allocate the floating IP address.|
+|`zone`|String|The zone name where to create the floating IP address.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
 
 ## `ibm_is_image`
 {: #vpc-image}
