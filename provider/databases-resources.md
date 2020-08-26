@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-21"
+lastupdated: "2020-08-26"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -88,6 +88,27 @@ value = ibm_database.<your_database>.connectionstrings.0.composed
 }
 
 ```
+### Sample2 Terraform code
+{: #db-time-recovery-sample}
+
+To find an example for configuring point in time recovery time by using `ibm_database` resource. 
+{: shortdesc}
+
+```
+data "ibm_resource_group" "group" {
+  name = "<your_group>"
+}
+
+resource "ibm_database" "test_acc" {
+  resource_group_id                    = data.ibm_resource_group.group.id
+  name                                 = "<your_database_name>"
+  service                              = "databases-for-postgresql"
+  plan                                 = "standard"
+  location                             = "eu-gb"
+  point_in_time_recovery_time          = "2020-04-20T05:27:36Z"
+  point_in_time_recovery_deployment_id = "crn:v1:bluemix:public:databases-for-postgresql:us-south:a/4448261269a14562b839e0a3019ed980:0b8c37b0-0f01-421a-bb32-056c6565b461::"
+}
+```
 
 ```
 provider "ibm" {
@@ -95,6 +116,8 @@ provider "ibm" {
   region           = "eu-gb"
 }
 ```
+For more information of an example related to a VSI configuration to connect to a PostgreSQL database, refer [VSI configured connection](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-database){: external}.
+{: note}
 
 ### Input parameters
 {: #db-input}
@@ -107,7 +130,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------| --------|
 |`name`|String|Required|A descriptive name that is used to identify the database instance. The name must not include spaces.| No |
 |`plan`|String|Required|The name of the service plan that you choose for your instance. Supported values are `standard`. | No |
-|`location`|String|Required|The location where you want to deploy your instance. The location must match the `region` parameter that you specify in the `provider` block of your Terraform configuration file. | No |
+|`location`|String|Required|The location where you want to deploy your instance. The location must match the `region` parameter that you specify in the `provider` block of your Terraform configuration file. The default value is `us-south`. Currently supported regions are `us-south`, `us-east`, `eu-gb`, `eu-de`, `au-syd`, `jp-tok`, `oslo01`. | No |
 |`resource_group_id`|String|Optional| The ID of the resource group where you want to create the instance. To retrieve this value, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. If no value is provided, the `default` resource group is used.| No |
 |`tags`|Array of strings|Optional|A list of tags that you want to add to your instance. | No |
 |`service`|String|Required| The type of {{site.data.keyword.databases-for}} that you want to create. Only the following services are currently accepted: `databases-for-etcd`, `databases-for-postgresql`, `databases-for-redis`, `databases-for-elasticsearch`, `messages-for-rabbitmq`, and `databases-for-mongodb`.| No |
@@ -117,10 +140,10 @@ Review the input parameters that you can specify for your resource.
 |`members_disk_allocation_mb`|Integer|Optional|The amount of disk space for the database, split across all members. If not specified, the default setting of the database service is used, which can vary by database type. | No |
 |`members_cpu_allocation_count`|Integer|Optional|Enables and allocates the number of specified dedicated cores to your deployment.| No |
 |`backup_id`|String|Optional|The CRN of a backup resource to restore from. The backup must have been created by a database deployment with the same service ID. The backup is loaded after provisioning and the new deployment starts up that uses that data. A backup CRN is in the format `crn:v1:<…>:backup:`. If omitted, the database is provisioned empty.| No |
-|`key_protect_key`|String|Optional|The CRN of a Key Protect root key that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>:key:`. You can specify the root key during the database creation only. After the database is created, you cannot update the root key. | Yes |
-|`key_protect_instance`|String|Optional|The CRN of a Key Protect instance that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>::`.| No |
-|`guid`|String|Optional|The unique identifier of the database instance.| No |
 |`remote_leader_id`|String|Optional|A CRN of the leader database to make the replica(read-only) deployment. The leader database must have been created by a database deployment with the same service ID. A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment using asynchronous replication. For more information, see [Configuring Read-only Replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).| No |
+|`key_protect_key`|String|Optional|The CRN of a Key Protect root key that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>:key:`. You can specify the root key during the database creation only. After the database is created, you cannot update the root key. Refer [Disk encryption](/docs/cloud-databases?topic=cloud-databases-key-protect#using-the-key-protect-key) documentation for more information. | Yes |
+|`backup_encryption_key_crn`| String | Optional | The CRN of a key protect key, that you want to use for encrypting disk that holds deployment backups. A key protect CRN is in the format `crn:v1:<...>:key:`. Backup_encryption_key_crn can be added only at the time of creation and no update support  are available.| Yes |
+|`key_protect_instance`|String|Optional|The CRN of a key protect instance that you want to use for disk encryption. A key protect CRN is in the format `crn:v1:<…>::`.| Yes |
 |`point_in_time_recovery_deployment_id`|String|Optional|The ID of the source deployment that you want to recover back to.| No |
 |`point_in_time_recovery_time`|String|Optional|The timestamp in UTC format that you want to restore to. To retrieve the timestamp, run the `ibmcloud cdb postgresql earliest-pitr-timestamp <deployment name or CRN>` command. For more information, see [Point-in-time Recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr). | No |
 |`service_endpoints`|String|Optional|Specify if you want to enable the public, private, or both service endpoints. Supported values are `public`, `private`, or `public-and-private`. The default is `public`.| No |
@@ -130,6 +153,7 @@ Review the input parameters that you can specify for your resource.
 |`whitelist`|List of objects|Optional|A list of IP addresses to whitelist for the database. Multiple blocks are allowed. | No |
 |`whitelist.address`|String|Optional|The IP address or range of database client addresses to be whitelisted in CIDR format. Example: `172.168.1.2/32`.| No |
 |`whitelist.description`|String|Optional|A description for the whitelist range. | No |
+|`guid`|String|Optional|The unique identifier of the database instance.| No |
 
 ### Output parameters
 {: #db-output}
@@ -158,12 +182,18 @@ The following timeouts are defined for this resource.
 ### Import
 {: #db-import}
 
-The database instance can be imported using the CRN. To import the resource, you must specify the `region` parameter in the `provider` block of your Terraform configuration file. If the region is not specified, `us-south` is used by default. 
+The database instance can be imported using the CRN. To import the resource, you must specify the `region` parameter in the `provider` block of your Terraform configuration file. If the region is not specified, `us-south` is used by default. A Terraform refresh or apply of the data source will fail, if the database instance is not in the same region as configured in the provider or its alias.
 
+**Syntax**
 ```
 terraform import ibm_database.my_db <crn>
 ```
 {: pre}
+
+**Example**
+```
+terraform import ibm_database.my_db crn:v1:bluemix:public:databases-for-postgresql:us-south:a/4ea1882a2d3401ed1e459979941966ea:79226bd4-4076-4873-b5ce-b1dba48ff8c4::
+```
 
 Import requires a minimal Terraform config file to allow importing.
 
