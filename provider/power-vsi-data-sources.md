@@ -490,9 +490,10 @@ Review the output parameters that you can access after you retrieved your data s
 | ------------- |-------------| -------------- |
 | `bootable` | Boolean | If set to **true**, the Power Systems Virtual Server instance can boot from this volume. If set to **false**, this volume is not used during the boot process of the instance. |
 | `id` | String | The unique identifier of the volume. |
-| `size` | Integer | The size of this volume in gigabytes. |
+| `size` | Integer | The size of the volume in gigabytes. |
 | `state` | String | The state of the volume. |
-| `type` | String | The disk type that is used for this volume. |
+| `type` | String | The disk type that is used for the volume. |
+| `wwn` | String | The world wide name (`wwn`) of the volume. |
 
 
 
