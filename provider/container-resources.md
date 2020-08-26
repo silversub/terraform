@@ -1080,12 +1080,6 @@ terraform import ibm_container_vpc_cluster.cluster aaaaaaaaa1a1a1a1aaa1a
 Create or delete a worker pool for a VPC cluster. 
 {: shortdesc}
 
-If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
-1. Invokes the cluster deletion.
-2. Waits for the cluster deletion to complete.
-3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
-{: important}
-
 ### Sample Terraform code
 {: #vpc-worker-pool-sample}
 
