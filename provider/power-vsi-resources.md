@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-08-26"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -113,11 +113,13 @@ resource "ibm_pi_instance" "test-instance" {
     pi_processors         = "2"
     pi_instance_name      = "test-vm"
     pi_proc_type          = "shared"
-    pi_image_id           = data.ibm_pi_image.powerimages.id
+    pi_image_id           = "${data.ibm_pi_image.powerimages.id}'
     pi_network_ids        = [data.ibm_pi_public_network.dsnetwork.id]
     pi_key_pair_name      = ibm_pi_key.key.key_id
     pi_sys_type           = "s922"
     pi_cloud_instance_id  = "11a1111a-aaaa-1aa1-a111-11aaa1aaa11"
+    pi_pin_policy         = "none"
+    pi_health_status      = "WARNING"
 }
 ```
 
@@ -143,6 +145,7 @@ Review the input parameters that you can specify for your resource.
 | `pi_replication_scheme` | String | Optional | The replication scheme that you want to set (prefix/suffix). |
 | `pi_sys_type` | String | Required | The type of system on which to create the VM (s922/e880/any). | 
 | `pi_user_data` | String | Optional | The base64-encoded form of the user data (cloud-init) to pass to the instance during creation. | 
+| `pi_virtual_cores_assigned` | Integer | Optional | Specify the number of virtual cores to be assigned. |
 | `pi_volume_ids` | String | Required | The list of volume IDs that you want to attach to the instance during creation. |
 
 ### Output parameters
@@ -162,15 +165,18 @@ Review the output parameters that you can access after your resource is created.
 | `addresses.externalip`|String|The external IP address of the instance.|
 | `id`|String|The unique identifier of the instance. The ID is composed of `<power_instance_id>/<instance_id>`.|
 | `instance_id` | String | The unique identifier of the instance. | 
+| `pin_policy` |String|The pinning policy of the instance. |
 | `progress` | Float | Specifies the overall progress of the instance deployment process in percentage. |
 | `status` | String | The status of the instance. |
 | `health_status`|String|The health status of the VM.|
 | `migratable`|Boolean|Indicates if the VM is migratable or not.|
 | `max_processors`| Integer| The maximum number of processors that can be allocated to the instance with shutting down or rebooting the LPAR.|
+| `max_virtual_cores` | Integer | The maximum number of virtual cores. |
 | `min_processors` | Float | The minimum number of processors that the instance can have. | 
 | `min_memory` |Integer| The minimum memory that was allocated to the instance.|
 | `max_memory`|Integer|The maximum amount of memory that can be allocated to the instance without shutting down or rebotting the LPAR.|
-| `pin_policy` |String|The pinning policy of the instance. |
+| `min_virtual_cores` | Integer |The minimum number of virtual cores. |
+
 
 ### Timeouts
 {: #power-instance-timeout}
@@ -190,6 +196,11 @@ The resource can be imported by using the ID that is composed of `<power_instanc
 terraform import ibm_pi_instance.example <power_instance_id>/<instance_id>
 ```
 {: pre}
+
+**Example**
+```
+terraform import ibm_pi_instance.example d7bec597-4726-451f-8453-e62e6f19c32c/cea6651a-bc0a-4438-9f8a-a0770456f3ebb
+```
 
 
 
