@@ -249,12 +249,6 @@ To create a worker pool or add worker nodes and zones to a worker pool, use the 
 For step-by-step instructions for how to create an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster, see [Creating single and multizone Kubernetes and OpenShift clusters](/docs/terraform?topic=terraform-tutorial-tf-clusters). 
 {: tip}
 
-If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
-1. Invokes the cluster deletion.
-2. Waits for the cluster deletion to complete.
-3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
-{: important}
-
 ### Sample Terraform code
 {: #container-cluster-sample}
 
@@ -538,12 +532,6 @@ Supported features include:
 - Public service endpoint
 - Private service endpoint
 
-If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
-1. Invokes the cluster deletion.
-2. Waits for the cluster deletion to complete.
-3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
-{: important}
-
 ### Sample Terraform code
 {: #container-cluster-feature-sample}
 
@@ -790,12 +778,6 @@ The following timeouts are defined for this resource.
 
 Enable or disable an Application Load Balancer (ALB) for a VPC cluster. 
 {: shortdesc}
-
-If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
-1. Invokes the cluster deletion.
-2. Waits for the cluster deletion to complete.
-3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
-{: important}
 
 ### Sample Terraform code
 {: #vpc-alb-sample}
