@@ -397,6 +397,7 @@ Review the output parameters that you can access after your resource is created.
 | `id` | String | The unique identifier of the volume. The ID is composed of `<power_instance_id>/<volume_id>`.| 
 | `status` | String | The status of the volume. | 
 | `volume_id`|String|The unique identifier of the volume. |
+| `wwn` | Sring | The world wide name of the volume. |
 
 ### Timeouts
 {: #power-volume-timeout}
