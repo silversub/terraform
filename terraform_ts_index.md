@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-25"
+lastupdated: "2020-08-26"
 
 keywords: Terraform help, Terraform troubleshooting, ansible help, ansible troubleshooting
 
@@ -44,7 +44,7 @@ If you run into an issue with the {{site.data.keyword.cloud_notm}} Terraform pro
 
 - **GitHub**: The {{site.data.keyword.cloud_notm}} Terraform provider plug-in is managed as an open-source project where you can submit [issues](https://github.com/IBM-Cloud/terraform-provider-ibm/issues){: external} for the development team. 
 - **Slack**: To chat about issues or provider configurations, you can reach out to the development team in the [IBM Cloud Schematics Slack](https://ibm-cloud-schematics.slack.com/){: external}. If you do not have access to this Slack, [request an invitation to this Slack](https://cloud.ibm.com/schematics/slack){: external}.	 
-- **IBM Support**: If you run into an issue with the {{site.data.keyword.cloud_notm}} Terraform provider plug-in when using {{site.data.keyword.bplong_notm}}, you can also contact IBM Support by [Opening a support case](/docs/get-support?topic=get-support-getting-customer-support#using-avatar).
+- **IBM Support**: If you run into an issue with the {{site.data.keyword.cloud_notm}} Terraform provider plug-in when using {{site.data.keyword.bplong_notm}}, you can also contact IBM Support by [Opening a support case](/docs/get-support?topic=get-support-getting-customer-support).
 - **StackOverflow**: Post your question on [Stack Overflow](http://stackoverflow.com/search?q=ibm-cloud-infrastructure+terraform){: external} and tag your question with `ibm-cloud-infrastructure` and `terraform`.
 
 </br>
