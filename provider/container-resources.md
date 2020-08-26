@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-24" 
+lastupdated: "2020-08-26" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -454,7 +454,7 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 | ------------- |-------------| ----- | -------------- | ------- |
 | `datacenter` | String | Required | The datacenter where you want to provision the worker nodes. The zone that you choose must be supported in the region where you want to create the cluster. To find supported zones, run `ibmcloud ks zones`. | Yes |
 | `default_pool_size` | Integer | Optional | The number of worker nodes that you want to add to the default worker pool. | No |
-| `disk_encryption` | Boolean | Optional | If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks for worker node](https://cloud.ibm.com/docs/containers?topic=containers-security#workernodes).| Yes |
+| `disk_encryption` | Boolean | Optional | If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks for worker node](/docs/containers?topic=containers-security#workernodes).| Yes |
 | `entitlement`|String|Optional|If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, enter `entitlement` to create your cluster with that entitlement so that you are not charged twice for the {{site.data.keyword.openshiftshort}} license. Note that this option can be set only when you create the cluster. After the cluster is created, the cost for the {{site.data.keyword.openshiftshort}} license occurred and you cannot disable this charge. | No |
 | `hardware` | String | Optional | The level of hardware isolation for your worker node. Use `dedicated` to have available physical resources dedicated to you only, or `shared` to allow physical resources to be shared with other IBM customers. This option is available for virtual machine worker node flavors only. | Yes |
 | `gateway_enabled`|Boolean|Optional|Set to **true** if you want to automatically create a gateway-enabled cluster. If `gateway_enabled` is set to **true**, then `private_service_endpoint` must be set to **true** at the same time.| No |
@@ -842,6 +842,12 @@ To create a VPC cluster, make sure to include the VPC infrastructure generation 
 {: important}
 
 You cannot create a free cluster in {{site.data.keyword.bpfull_notm}}.
+{: important}
+
+If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the resource.
+1. Invokes the cluster deletion.
+2. Waits for the cluster deletion to complete.
+3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
 {: important}
 
 ### Sample Terraform code
