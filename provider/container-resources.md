@@ -844,7 +844,7 @@ To create a VPC cluster, make sure to include the VPC infrastructure generation 
 You cannot create a free cluster in {{site.data.keyword.bpfull_notm}}.
 {: important}
 
-If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
+If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the resource.
 1. Invokes the cluster deletion.
 2. Waits for the cluster deletion to complete.
 3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
