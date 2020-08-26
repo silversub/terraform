@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-25" 
+lastupdated: "2020-08-26" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -246,14 +246,14 @@ You cannot create a free cluster in {{site.data.keyword.bpfull_notm}}.
 To create a worker pool or add worker nodes and zones to a worker pool, use the `ibm_container_worker_pool` and `ibm_container_worker_pool_zone` resources. 
 {: tip}
 
-In order to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
+For step-by-step instructions for how to create an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster, see [Creating single and multizone Kubernetes and OpenShift clusters](/docs/terraform?topic=terraform-tutorial-tf-clusters). 
+{: tip}
+
+If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
 1. Invokes the cluster deletion.
 2. Waits for the cluster deletion to complete.
 3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
-{: note}
-
-For step-by-step instructions for how to create an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster, see [Creating single and multizone Kubernetes and OpenShift clusters](/docs/terraform?topic=terraform-tutorial-tf-clusters). 
-{: tip}
+{: important}
 
 ### Sample Terraform code
 {: #container-cluster-sample}
@@ -538,11 +538,11 @@ Supported features include:
 - Public service endpoint
 - Private service endpoint
 
-In order to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
+If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
 1. Invokes the cluster deletion.
 2. Waits for the cluster deletion to complete.
 3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
-{: note}
+{: important}
 
 ### Sample Terraform code
 {: #container-cluster-feature-sample}
@@ -791,11 +791,11 @@ The following timeouts are defined for this resource.
 Enable or disable an Application Load Balancer (ALB) for a VPC cluster. 
 {: shortdesc}
 
-In order to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
+If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
 1. Invokes the cluster deletion.
 2. Waits for the cluster deletion to complete.
 3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
-{: note}
+{: important}
 
 ### Sample Terraform code
 {: #vpc-alb-sample}
@@ -862,11 +862,11 @@ To create a VPC cluster, make sure to include the VPC infrastructure generation 
 You cannot create a free cluster in {{site.data.keyword.bpfull_notm}}.
 {: important}
 
-In order to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
+If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
 1. Invokes the cluster deletion.
 2. Waits for the cluster deletion to complete.
 3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
-{: note}
+{: important}
 
 ### Sample Terraform code
 {: #vpc-cluster-sample}
@@ -1098,11 +1098,11 @@ terraform import ibm_container_vpc_cluster.cluster aaaaaaaaa1a1a1a1aaa1a
 Create or delete a worker pool for a VPC cluster. 
 {: shortdesc}
 
-In order to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
+If you want to delete a VPC cluster and their associated load balancer. The following order is followed by the services.
 1. Invokes the cluster deletion.
 2. Waits for the cluster deletion to complete.
 3. Verifies for the load balancer that is associated with the cluster and waits for the associated load balancer to delete successfully.
-{: note}
+{: important}
 
 ### Sample Terraform code
 {: #vpc-worker-pool-sample}
