@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-21"
+lastupdated: "2020-08-28"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -319,6 +319,7 @@ Add zones to the default worker pool in your cluster that you created in lessson
     zone            = "dal12"
     private_vlan_id = "<private_vlan_ID_dal12>"
     public_vlan_id  = "<public_vlan_ID_dal12>"
+    resource_group_id = data.ibm_resource_group.resource_group.id
    }
    
    resource "ibm_container_worker_pool_zone_attachment" "dal13" {
@@ -327,6 +328,7 @@ Add zones to the default worker pool in your cluster that you created in lessson
     zone            = "dal13"
     private_vlan_id = "<private_vlan_ID_dal13>"
     public_vlan_id  = "<public_vlan_ID_dal13>"
+    resource_group_id = data.ibm_resource_group.resource_group.id
    }
    ```
    {: codeblock}
@@ -465,6 +467,7 @@ Adding a worker pool only does not create any worker nodes. To create worker nod
     zone            = "dal10"
     private_vlan_id = "<private_vlan_ID_dal10>"
     public_vlan_id  = "<public_vlan_ID_dal10>"
+    resource_group_id = data.ibm_resource_group.resource_group.id
    }
    
    resource "ibm_container_worker_pool_zone_attachment" "tfwp-dal12" {
@@ -473,6 +476,7 @@ Adding a worker pool only does not create any worker nodes. To create worker nod
     zone            = "dal12"
     private_vlan_id = "<private_vlan_ID_dal12>"
     public_vlan_id  = "<public_vlan_ID_dal12>"
+    resource_group_id = data.ibm_resource_group.resource_group.id
    }
    
    resource "ibm_container_worker_pool_zone_attachment" "tfwp-dal13" {
@@ -481,6 +485,7 @@ Adding a worker pool only does not create any worker nodes. To create worker nod
     zone            = "dal13"
     private_vlan_id = "<private_vlan_ID_dal13>"
     public_vlan_id  = "<public_vlan_ID_dal13>"
+    resource_group_id = data.ibm_resource_group.resource_group.id
    }   
    ```
    {: codeblock}
@@ -661,6 +666,7 @@ The default worker pool is automatically created when the cluster is created. Be
     zone            = "dal12"
     private_vlan_id = "<private_vlan_ID_dal12>"
     public_vlan_id  = "<public_vlan_ID_dal12>"
+    resource_group_id = data.ibm_resource_group.resource_group.id
    } 
 
    resource "ibm_container_worker_pool_zone_attachment" "dal13" {
@@ -669,6 +675,7 @@ The default worker pool is automatically created when the cluster is created. Be
     zone            = "dal13"
     private_vlan_id = "<private_vlan_ID_dal13>"
     public_vlan_id  = "<public_vlan_ID_dal13>"
+    resource_group_id = data.ibm_resource_group.resource_group.id
    }
    ```
    {: codeblock}
