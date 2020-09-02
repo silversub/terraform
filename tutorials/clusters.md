@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-28"
+lastupdated: "2020-09-02"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -245,7 +245,7 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
 
    ------------------------------------------------------------------------
 
-   An execution plan has been generated and is shown below.
+   An execution plan has been generated and is shown.
    Resource actions are indicated with the following symbols:
      + create
 
@@ -378,7 +378,7 @@ Add zones to the default worker pool in your cluster that you created in lessson
 
    ------------------------------------------------------------------------
 
-   An execution plan has been generated and is shown below.
+   An execution plan has been generated and is shown.
    Resource actions are indicated with the following symbols:
      + create
 
