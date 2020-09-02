@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-04"
+lastupdated: "2020-09-02"
 
 keywords: Add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, Terraform, provision resources
 
@@ -89,7 +89,7 @@ Looking for other resource types? Find a complete list of supported resource typ
 
    The following providers do not have any version constraints in configuration, so the latest version was installed.
 
-   To prevent automatic upgrades to new major versions that may contain breaking changes, it is recommended to add version = "..." constraints to the corresponding provider blocks in configuration, with the constraint strings suggested below.
+   To prevent automatic upgrades to new major versions that may contain breaking changes, it is recommended to add version = "..." constraints to the corresponding provider blocks in configuration, with the constraint strings suggested.
 
    * provider.ibm: version = "~> 0.11"
 
@@ -112,7 +112,7 @@ Looking for other resource types? Find a complete list of supported resource typ
    Refreshing Terraform state in-memory prior to plan...
    The refreshed state will be used to calculate this plan, but will not be persisted to local or remote state storage.
 
-   An execution plan has been generated and is shown below.
+   An execution plan has been generated and is shown here.
    Resource actions are indicated with the following symbols:
      + create
 
@@ -292,7 +292,7 @@ You can update your resources by changing your Terraform configuration file and 
 
    ---------------------------------------------------------------
 
-   An execution plan has been generated and is shown below.
+   An execution plan has been generated and is shown here.
    Resource actions are indicated with the following symbols:
     ~ update in-place
 
@@ -339,7 +339,7 @@ You can use Terraform to remove {{site.data.keyword.cloud_notm}} resources if yo
    Example output: 
    ```
    ibm_compute_vm_instance.vm1: Refreshing state... (ID: 60948867)
-   An execution plan has been generated and is shown below.
+   An execution plan has been generated and is shown here.
    Resource actions are indicated with the following symbols:
      - destroy
 
