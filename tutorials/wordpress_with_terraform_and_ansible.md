@@ -358,7 +358,7 @@ In this lesson, you deploy the classic virtual server instances and the {{site.d
       Plan: 20 to add, 0 to change, 0 to destroy.
 
       Do you want to perform these actions?
-        Terraform will perform the actions described above.
+        Terraform will perform the actions described.
         Only 'yes' will be accepted to approve.
 
         Enter a value: 
