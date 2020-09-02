@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-17"
+lastupdated: "2020-09-02"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
@@ -156,7 +156,7 @@ To use Terraform to provision {{site.data.keyword.cloud_notm}} classic infrastru
       Example output: 
       ```
       Usage: terraform [-version] [-help] <command> [args]
-      The available commands for execution are listed below.
+      The available commands for execution are listed.
       The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and docs before usage.
       Common commands:
           apply              Builds or changes infrastructure
@@ -381,7 +381,7 @@ In this lesson, you deploy the classic infrastructure virtual server instances, 
       ```
       data.template_cloudinit_config.db_userdata: Refreshing state...
       data.template_cloudinit_config.app_userdata: Refreshing state...
-      An execution plan has been generated and is shown below.
+      An execution plan has been generated and is shown.
       Resource actions are indicated with the following symbols:
         + create
       Terraform will perform the following actions:
@@ -532,7 +532,7 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.cloud_notm}} clas
    < Content-Length: 0
    < Content-Type: test/html; charset=UTF-8
    <
-   * Connection #0 to host app101 left intact
+   * Connection #0 to host app101 is intact
    ```
    {: screen}
     
