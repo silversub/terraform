@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-26"
+lastupdated: "2020-09-02"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -42,7 +42,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -58,7 +58,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
    <tr>
@@ -74,7 +74,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
 <tr>
@@ -90,7 +90,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
   <tr>
@@ -106,7 +106,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
   <tr>
@@ -122,7 +122,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -139,7 +139,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -155,7 +155,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -171,7 +171,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -187,7 +187,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -203,7 +203,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -219,7 +219,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -235,7 +235,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -251,7 +251,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -267,7 +267,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -283,7 +283,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -299,7 +299,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -315,7 +315,7 @@ subcollection: terraform
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -325,13 +325,13 @@ subcollection: terraform
   </tbody>
   </table>
   
- ## VPC infrastructure (Gen 1 compute)
+ ## VPC infrastructure (Generation 1 compute)
  {: #ibm-vpc-infrastructure-gen-1}
   
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
@@ -341,13 +341,13 @@ subcollection: terraform
   </tbody>
   </table>
   
-  ## VPC infrastructure (Gen 2 compute)
+  ## VPC infrastructure (Generation 2 compute)
  {: #ibm-vpc-infrastructure-gen-2}
   
   <table>
     <thead>
     <th style="width:180px">Resources</th>
-    <th style="width:150px">Data Sources</th>
+    <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
