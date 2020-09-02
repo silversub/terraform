@@ -141,7 +141,7 @@ data "ibm_container_cluster_config" "cluster_foo" {
 }
 ```
 
-#### Example for downloading the TLS certificates and permission files for the cluster administrator in a classic or VPC  {{site.data.keyword.containerlong_notm}} cluster
+** Example for downloading the TLS certificates and permission files for the cluster administrator in a classic or VPC  {{site.data.keyword.containerlong_notm}} cluster **
 
 ```
 data "ibm_container_cluster_config" "mycluster" {
@@ -164,7 +164,7 @@ resource "kubernetes_namespace" "example" {
 }
 ```
 
-#### Example for connecting to the cluster by using the cluster host and token in a classic or VPC  {{site.data.keyword.containerlong_notm}} cluster
+** Example for connecting to the cluster by using the cluster host and token in a classic or VPC  {{site.data.keyword.containerlong_notm}} cluster **
 
 ```
 data "ibm_container_cluster_config" "mycluster" {
@@ -185,7 +185,7 @@ resource "kubernetes_namespace" "example" {
 }
 ```
 
-#### Example for downloading the TLS certificates and permission files for the cluster administrator in a classic {{site.data.keyword.openshiftlong_notm}} cluster
+** Example for downloading the TLS certificates and permission files for the cluster administrator in a classic {{site.data.keyword.openshiftlong_notm}} cluster **
 
 ```
 data "ibm_container_cluster_config" "mycluster" {
@@ -207,7 +207,7 @@ resource "kubernetes_namespace" "example" {
 }
 ```
 
-#### Example for connecting to the cluster by using the cluster host and token in a classic {{site.data.keyword.openshiftlong_notm}} cluster
+** Example for connecting to the cluster by using the cluster host and token in a classic {{site.data.keyword.openshiftlong_notm}} cluster **
 
 ```
 data "ibm_container_cluster_config" "mycluster" {
