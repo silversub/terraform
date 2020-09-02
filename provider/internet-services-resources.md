@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-07"
+lastupdated: "2020-09-02"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -638,7 +638,7 @@ Review the input parameters that you can specify for your resource.
 |`check_regions`|Array|Required| A list of regions (specified by region code) from which to run health checks. If the list is empty, all regions are included, but you must use the Enterprise plan. This is the default setting. Region codes can be found on the [Cloudflare’s website](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/#geo-steering-enterprise-plans-only){: external}.
 |`description`|String|Optional|A description for your origin pool. | 
 |`enabled`|Boolean|Required|If set to **true**, this pool is enabled and can receive incoming network traffic. Disabled pools do not receive network traffic and are excluded from health checks. Disabling a pool causes any load balancers that use the pool to failover to the next pool (if applicable).|
-|`minimum_origins`|Integer|Optional| The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.|
+|`minimum_origins`|Integer|Optional| The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls within this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.|
 |`monitor`|String|Optional|The ID of the monitor to use for health checking origins within this pool.|
 |`notification_email`|String|Optional|The email address to send health status notifications to. This can be an individual mailbox or a mailing list.|
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-24"
+lastupdated: "2020-09-02"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, single site, single zone
 
@@ -142,7 +142,7 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} classic infrast
       ```
       Usage: terraform [-version] [-help] <command> [args]
 
-      The available commands for execution are listed below.
+      The available commands for execution are listed.
       The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and docs before usage.
 
       Common commands:
@@ -343,7 +343,7 @@ In this lesson, you deploy the classic virtual server instances and the {{site.d
       data.template_cloudinit_config.db_userdata: Refreshing state...
       data.template_cloudinit_config.app_userdata: Refreshing state...
 
-      An execution plan has been generated and is shown below.
+      An execution plan has been generated and is shown.
       Resource actions are indicated with the following symbols:
         + create
 
@@ -358,7 +358,7 @@ In this lesson, you deploy the classic virtual server instances and the {{site.d
       Plan: 20 to add, 0 to change, 0 to destroy.
 
       Do you want to perform these actions?
-        Terraform will perform the actions described above.
+        Terraform will perform the actions described.
         Only 'yes' will be accepted to approve.
 
         Enter a value: 
@@ -513,7 +513,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
    < Content-Length: 0
    < Content-Type: test/html; charset=UTF-8
    <
-   * Connection #0 to host app101 left intact
+   * Connection #0 to host app101 is intact
    ```
    {: screen}
     

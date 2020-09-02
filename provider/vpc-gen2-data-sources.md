@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-26"
+lastupdated: "2020-09-02"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -645,8 +645,8 @@ Review the output parameters that are exported.
 |`rules.protocol`|String|The type of the protocol `all`, `icmp`, `tcp`, `udp`.   |
 |`rules.type`|String|The ICMP traffic type to allow.  |
 |`rules.code`|String|The ICMP traffic code to allow.  |
-|`rules.port_max`|Integer|The inclusive upper bound of TCP/UDP port range.  |
-|`rules.port_min`|Integer|The inclusive lower bound of TCP/UDP port range. |
+|`rules.port_max`|Integer|The TCP/UDP port range that includes the maximum bound. |
+|`rules.port_min`|Integer|The TCP/UDP port range that includes the minimum bound. |
 |`protocol`|Integer| The type of the protocol rules `ALL`, `ICMP`, `UDP`, `TCP` |
 {: caption="Table 1. Available output parameters" caption-side="top"}
 

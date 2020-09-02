@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-26"
+lastupdated: "2020-09-02"
 
 keywords: Terraform help, Terraform troubleshooting, ansible help, ansible troubleshooting
 
@@ -50,6 +50,6 @@ If you run into an issue with the {{site.data.keyword.cloud_notm}} Terraform pro
 </br>
 If you have general questions about Terraform or Ansible, you can use one of the following channels: 
 
-- **Reddit**:  Subscribe to the [Terraform channel on Reddit ![External link icon](../icons/launch-glyph.svg "External link icon")](https://www.reddit.com/r/Terraform/){:new_window} and browse through this channel to read about user issues and how they resolved them. 
+- **Reddit**:  Subscribe to the [Terraform channel on Reddit](https://www.reddit.com/r/Terraform/){: external} and browse through this channel to read about user issues and how they resolved them. 
 - **Open source community**: Get help from the open source community by searching for information on the internet or by asking questions in forums and on websites that support these tools.
 

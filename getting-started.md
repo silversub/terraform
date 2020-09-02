@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-17"
+lastupdated: "2020-09-02"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -91,7 +91,7 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       ```
       Usage: terraform [-version] [-help] <command> [args]
 
-      The available commands for execution are listed below.
+      The available commands for execution are listed.
       The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and docs before usage.
 
       Common commands:
@@ -497,7 +497,7 @@ To create a VPC and a virtual server instance:
 
    The following providers do not have any version constraints in configuration, so the latest version was installed.
 
-   To prevent automatic upgrades to new major versions that may contain breaking changes, it is recommended to add version = "..." constraints to the corresponding provider blocks in configuration, with the constraint strings suggested below.
+   To prevent automatic upgrades to new major versions that may contain breaking changes, it is recommended to add version = "..." constraints to the corresponding provider blocks in configuration, with the constraint strings suggested.
 
    * provider.ibm: version = "~> 0.11"
 
@@ -521,7 +521,7 @@ To create a VPC and a virtual server instance:
    The refreshed state will be used to calculate this plan, but will not be
    persisted to local or remote state storage.
 
-   An execution plan has been generated and is shown below.
+   An execution plan has been generated and is shown.
    Resource actions are indicated with the following symbols:
      + create
 
@@ -850,7 +850,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
 
    The following providers do not have any version constraints in configuration, so the latest version was installed.
 
-   To prevent automatic upgrades to new major versions that may contain breaking changes, it is recommended to add version = "..." constraints to the corresponding provider blocks in configuration, with the constraint strings suggested below.
+   To prevent automatic upgrades to new major versions that may contain breaking changes, it is recommended to add version = "..." constraints to the corresponding provider blocks in configuration, with the constraint strings suggested.
 
    * provider.ibm: version = "~> 0.11"
 
@@ -873,7 +873,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    Refreshing Terraform state in-memory prior to plan...
    The refreshed state will be used to calculate this plan, but will not be persisted to local or remote state storage.
 
-   An execution plan has been generated and is shown below.
+   An execution plan has been generated and is shown.
    Resource actions are indicated with the following symbols:
      + create
 
