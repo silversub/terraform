@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-17"
+lastupdated: "2020-09-02"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -106,7 +106,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `vlans.subnets.cidr` | String | The IP address CIDR of the subnet. |
 | `vlans.subnets.ips` | List of strings | The IP addresses that belong to the subnet. |
 | `vlans.subnets.isbyoip`| Boolean | If set to **true**, you provided your own IP address range for the subnet. If set to **false**, the default IP address range is used. |
-| `vlans.subnets.is_public` | Boolean | If set to **ture**, the VLAN is public. If set to **false**, the VLAN is private. | 
+| `vlans.subnets.is_public` | Boolean | If set to **true**, the VLAN is public. If set to **false**, the VLAN is private. | 
 | `workers` | List of objects | A list of worker nodes that belong to the cluster. | 
 | `worker_pools` | List of objects | A list of worker pools that exist in the cluster.|
 | `worker_pools.machine_type` | String | The machine type that is used for the worker nodes in the worker pool. |
