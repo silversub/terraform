@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-20" 
+lastupdated: "2020-09-02" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -1213,8 +1213,8 @@ Review the output parameters that you can access after your resource is created.
 |`rules.protocol`|String|The type of the protocol `all`, `icmp`, `tcp`, `udp`.   |
 |`rules.type`|String|The ICMP traffic type to allow.  |
 |`rules.code`|String|The ICMP traffic code to allow.  |
-|`rules.port_max`|Integer|The inclusive upper bound of TCP/UDP port range.  |
-|`rules.port_min`|Integer|The inclusive lower bound of TCP/UDP port range. |
+|`rules.port_max`|Integer|The TCP/UDP port range that includes the maximum bound. |
+|`rules.port_min`|Integer|The TCP/UDP port range that includes the minimum bound. |
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -1307,11 +1307,11 @@ Review the input parameters that you can specify for your resource.
 |`icmp.type`|Integer|Required|The ICMP traffic type to allow. Valid values from 0 to 254.  | No |
 |`icmp.code`|Integer|Optional|The ICMP traffic code to allow. Valid values from 0 to 255.| No |
 |`tcp`|List of objects|Optional|A nested block describing the `tcp` protocol of this security group rule.  | No |
-|`tcp.port_min`|Integer|Required| The inclusive lower bound of TCP port range. Valid values are from 1 to 65535.  | No |
-|`tcp.port_max`|Integer|Required| The inclusive upper bound of TCP port range. Valid values are from 1 to 65535.| No |
+|`tcp.port_min`|Integer|Required| The TCP port range that includes the minimum bound. Valid values are from 1 to 65535.  | No |
+|`tcp.port_max`|Integer|Required| The TCP port range that includes the maximum bound. Valid values are from 1 to 65535.| No |
 |`udp`|List of objects| Optional| A nested block describing the `udp` protocol of this security group rule.  | No |
-|`udp.port_min`|Integer|Required|The inclusive lower bound of UDP port range. Valid values are from 1 to 65535.  | No |
-|`udp.port_max`|Integer|Required|The inclusive upper bound of UDP port range. Valid values are from 1 to 65535. **NOTE**: If any of the `icmp` , `tcp` or `udp` is not specified it creates a rule with protocol `ALL`. | No |
+|`udp.port_min`|Integer|Required|The UDP port range that includes minimum bound. Valid values are from 1 to 65535.  | No |
+|`udp.port_max`|Integer|Required|The UDP port range that includes maximum bound. Valid values are from 1 to 65535. **NOTE**: If any of the `icmp` , `tcp` or `udp` is not specified it creates a rule with protocol `ALL`. | No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
