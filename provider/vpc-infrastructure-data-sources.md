@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform vpc gen 1 compute, terraform vpc, terraform gen 1 resources, terraform vpc subnet, generation 1 compute terraform
 
@@ -507,7 +507,7 @@ Review the output parameters that you can access after you retrieve your data so
 | ------------- |-------------| -------------- |
 | `is` | String | The ID of the public gateway. | 
 | `status` | String | The status of the gateway. |
-| `vpc` | String | The vpc ID of the gateway. |
+| `vpc` | String | The VPC ID of the gateway. |
 | `zone` | String | The public gateway zone name. |
 | `floating_ip` | String | Lists the nested block describing the floating IP of the gateway.  with **id** and **address**. |
 | `floating_ip.id` | String | The ID of the floating IP that is bound to the public gateway. |
@@ -704,7 +704,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `fingerprint` | String | The SHA256 fingerprint of the public key. | 
 | `id` | String | The ID of the SSH key. | 
 | `length` | String | The length of the SSH key. | 
-| `type` | String | The cryptosystem that is used by the SSH key. | 
+| `type` | String | The crypto system that is used by the SSH key. | 
 
 
 
