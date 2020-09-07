@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
 
@@ -424,7 +424,6 @@ data "ibm_is_instance_profiles" "ds_instance_profiles" {
 
 ```
 
-
 ### Input parameters
 {: #vpc-instance-profiles-input}
 
@@ -498,7 +497,7 @@ Review the output parameters that you can access after you retrieve your data so
 | ------------- |-------------| -------------- |
 | `is` | String | The ID of the public gateway. | 
 | `status` | String | The status of the gateway. |
-| `vpc` | String | The vpc ID of the gateway. |
+| `vpc` | String | The VPC ID of the gateway. |
 | `zone` | String | The public gateway zone name. |
 | `floating_ip` | String | Lists the nested block describing the floating IP of the gateway.  with **id** and **address**. |
 | `floating_ip.id` | String | The ID of the floating IP that is bound to the public gateway. |
@@ -694,7 +693,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`id`|String|The id of the SSH key.|
 |`fingerprint`| String| The SHA256 fingerprint of the public key.|
 |`length`|String|The length of the SSH key.|
-|`type`|String|The cryptosystem that is used by this key.|
+|`type`|String|The crypto system that is used by this key.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
