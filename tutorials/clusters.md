@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-07"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -223,7 +223,7 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    </tbody>
    </table>
    
-2. Initilize the Terraform CLI. 
+2. Initialize the Terraform CLI. 
    ```
    terraform init
    ```
@@ -303,12 +303,12 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    
 </br>
    
-Congratulations! You created your single zone {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster. 
+You have now completed the tutorial! You created your single zone {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster. 
  
 ## Lesson 3: Convert your single zone cluster into a multizone cluster
 {: #multizone}
  
-Add zones to the default worker pool in your cluster that you created in lessson 1. By adding zones, the same number of worker nodes that you created in lesson 2 are spread across these zones converting your single zone cluster into a multizone cluster. 
+Add zones to the default worker pool in your cluster that you created in lesson 1. By adding zones, the same number of worker nodes that you created in lesson 2 are spread across these zones converting your single zone cluster into a multizone cluster. 
 {: shortdesc}
 
 1. Open your Terraform configuration file and add the following content to your configuration. For each zone that you want to add, you must add a separate `ibm_container_worker_pool_zone_attachment` resource. 
@@ -449,7 +449,7 @@ Create another worker pool in your cluster and add zones to the worker pool to a
 Adding a worker pool only does not create any worker nodes. To create worker nodes, you must use the `ibm_container_worker_pool_zone_attachement` resource to add zones to your worker pool. 
 {: note}
 
-1. Open your existing Terraform configuration file and add the following content to your configuration. The `ibm_container_worker_pool` resource creates a worker pool in your cluster with a desired size of two worker nodes per zone. To start creating the worker nodes in each zone, you must add an `ibm_container_worker_pool_zone_attachment` resource for every zone where you want to create worker nodes. 
+1. Open your existing Terraform configuration file and add the following content to your configuration. The `ibm_container_worker_pool` resource creates a worker pool in your cluster with a size of two worker nodes per zone that you want. To start creating the worker nodes in each zone, you must add an `ibm_container_worker_pool_zone_attachment` resource for every zone where you want to create worker nodes. 
    ```
    resource "ibm_container_worker_pool" "workerpool" {
      worker_pool_name = "tf-workerpool"
@@ -525,7 +525,7 @@ Adding a worker pool only does not create any worker nodes. To create worker nod
    </tr>   
       <tr>
    <td><code>data.ibm_container_worker_pool_zone_attachment.worker_pool</code></td>
-   <td>Enter the ID of the new worker pool where you want to add the zone. The ID is returned as a concatenated string in the format <code>&lt;cluster_name_id&gt;/&lt;worker_pool_id&gt;</code>. To receive the worker pool ID, you must split the string after the <code>/</code>, put both strings into a list, and use the Terraform <code>element</code> funtion to retrieve the worker pool ID. </td>
+   <td>Enter the ID of the new worker pool where you want to add the zone. The ID is returned as a concatenated string in the format <code>&lt;cluster_name_id&gt;/&lt;worker_pool_id&gt;</code>. To receive the worker pool ID, you must split the string after the <code>/</code>, put both strings into a list, and use the Terraform <code>element</code> function to retrieve the worker pool ID. </td>
    </tr>
    </tbody>
    </table>
@@ -582,7 +582,7 @@ Adding a worker pool only does not create any worker nodes. To create worker nod
 You can remove the default worker pool from your cluster. 
 {: shortdesc}
 
-The default worker pool is automatically created when the cluster is created. Because you do not explicitely specify the default worker pool in your configuration file, you cannot remove this worker pool by removing the `ibm_container_worker_pool` resource from your file. Instead, you use the `local-exec` Terraform provisioner to run an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} command against your cluster to remove the default worker pool. 
+The default worker pool is automatically created when the cluster is created. Because you do not explicitly specify the default worker pool in your configuration file, you cannot remove this worker pool by removing the `ibm_container_worker_pool` resource from your file. Instead, you use the `local-exec` Terraform provisioner to run an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} command against your cluster to remove the default worker pool. 
 
 1. Open your Terraform configuration and add the following content. To run a command against your cluster, you embed the `local-exec` provisioner in a Terraform [`null_resource`](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource){: external}. 
    
@@ -625,7 +625,7 @@ The default worker pool is automatically created when the cluster is created. Be
    ```
    {: screen}
    
-4. Remove the defaul worker pool from your cluster. Note that although the command completes within a few seconds, the deletion of your default worker pool and all associated worker nodes continues in the background and takes a few minutes to complete. 
+4. Remove the default worker pool from your cluster. Note that although the command completes within a few seconds, the deletion of your default worker pool and all associated worker nodes continues in the background and takes a few minutes to complete. 
    ```
    terraform apply
    ```
