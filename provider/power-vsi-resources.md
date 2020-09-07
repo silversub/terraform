@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-26"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -138,7 +138,7 @@ Review the input parameters that you can specify for your resource.
 | `pi_memory` | Float | Required | The amount of memory that you want to assign to your instance in gigabytes. |
 | `pi_network_ids` | String | Required | The list of network IDs that you want to assign to the instance. | 
 | `pi_pin_policy` | String | Optional | Select the pinning policy for your Power Systems Virtual Server instance. Supported values are `soft`, `hard`, and `none`. You can choose to soft pin (`soft`) or hard pin (`hard`) a virtual server to the physical host where it runs. When you soft pin an instance for high availability, the instance automatically migrates back to the original host once the host is back to its operating state. If the instance has a licensing restriction with the host, the hard pin option restricts the movement of the instance during remote restart, automated remote restart, DRO, and live partition migration. The default pinning policy is `none`.| 
-| `pi_processors` | Float | Required | The number of vCPUs to assign to the VM (as visibile within the guest operating system). | 
+| `pi_processors` | Float | Required | The number of vCPUs to assign to the VM (as visible within the guest operating system). | 
 | `pi_proc_type` | String | Required | The type of processor mode in which the VM will run (shared/dedicated). |
 | `pi_replicants` | Float | Optional | The number of instances that you want to provision with the same configuration. If this parameter is not set,  `1` is used by default. |
 | `pi_replication_policy` | String | Optional | The replication policy that you want to use. If this parameter is not set, `none` is used by default. | 
@@ -169,12 +169,12 @@ Review the output parameters that you can access after your resource is created.
 | `progress` | Float | Specifies the overall progress of the instance deployment process in percentage. |
 | `status` | String | The status of the instance. |
 | `health_status`|String|The health status of the VM.|
-| `migratable`|Boolean|Indicates if the VM is migratable or not.|
-| `max_processors`| Integer| The maximum number of processors that can be allocated to the instance with shutting down or rebooting the LPAR.|
+| `migratable`|Boolean|Indicates if the VM can be migratable.|
+| `max_processors`| Integer| The maximum number of processors that can be allocated to the instance with shutting down or rebooting the `LPAR`.|
 | `max_virtual_cores` | Integer | The maximum number of virtual cores. |
 | `min_processors` | Float | The minimum number of processors that the instance can have. | 
 | `min_memory` |Integer| The minimum memory that was allocated to the instance.|
-| `max_memory`|Integer|The maximum amount of memory that can be allocated to the instance without shutting down or rebotting the LPAR.|
+| `max_memory`|Integer|The maximum amount of memory that can be allocated to the instance without shut down or reboot the `LPAR`.|
 | `min_virtual_cores` | Integer |The minimum number of virtual cores. |
 
 
@@ -237,7 +237,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required/ optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The cloud instance ID for this account. | 
-| `pi_key_name` | Integer | Requried | The name of the SSH key that you uploaded to {{site.data.keyword.cloud_notm}}. 
+| `pi_key_name` | Integer | Required | The name of the SSH key that you uploaded to {{site.data.keyword.cloud_notm}}. 
 | `pi_ssh_key` | String | Required | The value of the public SSH key. | 
 | `pi_creation_date`|String|Optional|The date when the SSH key was created.|
 
@@ -397,7 +397,7 @@ Review the output parameters that you can access after your resource is created.
 | `id` | String | The unique identifier of the volume. The ID is composed of `<power_instance_id>/<volume_id>`.| 
 | `status` | String | The status of the volume. | 
 | `volume_id`|String|The unique identifier of the volume. |
-| `wwn` | Sring | The world wide name of the volume. |
+| `wwn` | String | The world wide name of the volume. |
 
 ### Timeouts
 {: #power-volume-timeout}
