@@ -84,7 +84,7 @@ resource "ibm_cos_bucket" "flex-us-south" {
 Complete the following steps to provision a HPCS, initialize the service and Key Management.
 {: shortdesc}
 
-**Step 1: Provision the service using `ibm_resource_instance`.**
+**Step 1: Provision the service by using `ibm_resource_instance`.**
 
  ```
  resource "ibm_resource_instance" "hpcs"{
@@ -106,7 +106,7 @@ Complete the following steps to provision a HPCS, initialize the service and Key
     - the {{site.data.keyword.cloud_notm}} Trusted Key Entry CLI plug-in to initialize your service instance.
     For more information, about initialize the service instance, refer [Initialize your service instance](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started#initialize-crypto).
  
- **Step 3: Manage your keys using `ibm_kms_key`**
+ **Step 3: Manage your keys by using `ibm_kms_key`**
  
   ```
   resource "ibm_kms_key" "key" {
@@ -229,7 +229,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #kp-key-import}
 
-`ibm_kp_key` can be imported using the `id` and `crn`.
+`ibm_kp_key` can be imported by using the `id` and `crn`.
 
 ```
 terraform import ibm_kp_key.crn crn:v1:bluemix:public:kms:us-south:a/faf6addbf6bf4768hhhhe342a5bdd702:05f5bf91-ec66-462f-80eb-8yyui138a315:key:52448f62-9272-4d29-a515-15019e3e5asd
