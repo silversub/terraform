@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-04"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, HPCS
 
@@ -37,7 +37,7 @@ subcollection: terraform
 # Key Management Service resources
 {: #kms-resources}
 
-Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources.
+Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources. This resource can be used for management of keys in both Key Protect and Hyper Protect Crypto Service (HPCS).
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
@@ -111,7 +111,7 @@ Review the output parameters that you can access after your resource is created.
 |`crn`|String|The CRN of the key.|
 |`status`|String|The status of the key.|
 |`key_id`|String|The ID of the key.|
-|`type`|String|The type of the key kms or HPCS.|
+|`type`|String|The type of the key KMS or HPCS.|
 
 ### Import
 {: #kms-key-import}
