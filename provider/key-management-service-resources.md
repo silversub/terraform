@@ -37,7 +37,7 @@ subcollection: terraform
 # Key Management Service resources
 {: #kms-resources}
 
-Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources. This resource can be used for management of keys in both Key Protect and Hyper Protect Crypto Service (HPCS).
+Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources.
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
@@ -47,7 +47,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_kms_key`
 {: #kms-key}
 
-Provide a key management service resource for Hyper Protect Crypto Services and Key Protect services. This allows standard and root keys to be created and deleted. The region parameter in the `provider.tf` file must be set. If region parameter is not specified, `us-south` is used as default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
+This resource can be used for management of keys in both Key Protect and Hyper Protect Crypto Service (HPCS). It allows standard and root keys to be created and deleted. The region parameter in the `provider.tf` file must be set. If region parameter is not specified, `us-south` is used as default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
 {: shortdesc}
 
 After creating an  Hyper Protect Crypto Service instance you need to initialize the instance properly with the crypto units, in order to create, or manage Hyper Protect Crypto Service keys. For more information, about how to initialize the Hyper Protect Crypto Service instance, see [Initialize Hyper Protect Crypto](/docs/hs-crypto?topic=hs-crypto-initialize-hsm) only for HPCS instance. 
