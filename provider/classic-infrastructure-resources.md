@@ -2559,7 +2559,7 @@ The following attributes are exported:
 
 Provides a resource for an IBM Cloud network gateway appliance. This resource allows a network gateway to be created, updated, and deleted.  
 
-A network gateway can be created in standalone mode and HA mode with both members, with either the same or different configurations.
+A network gateway can be created in stand-alone mode and HA mode with both members, with either the same or different configurations.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Gateway).
 
@@ -2568,7 +2568,7 @@ For more information about getting started, see the [IBM Virtual Router Applianc
 ### Sample Terraform code
 {: #network-gateway-sample}
 
-#### Standalone configuration
+#### Standa-lone configuration
 
 ```
 resource "ibm_network_gateway" "gateway" {
@@ -2953,7 +2953,7 @@ The following attributes are exported:
 The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) for certain actions:
 
 - **create**: (Defaults to 10 mins) Used when creating the VLAN.
-- **delete**: (Defaults to 10 mins) Used when deleting the VLAN. There might be some resources(like Virtual Guests) on the VLAN. The VLAN delete request is issued once there are no Virtual Guests on the VLAN.
+- **delete**: (Defaults to 10 mins) Used when deleting the VLAN. There might be some resources (like Virtual Guests) on the VLAN. The VLAN delete request is issued once there are no Virtual Guests on the VLAN.
 
 
 ## `ibm_network_vlan_spanning`
@@ -3106,7 +3106,7 @@ The following arguments are supported:
 |Name| Data type | Required/ Optional | Description | Forces new resource |
 |----|-----------| ------ | ----- | ----------|
 |`direction`| String | Required | The direction of traffic. Accepted values: `ingress` or `egress`.| No |
-|`ether_type`| String | Optional | The IP version. Accepted values  (case sensitive): `IPv4` or `IPv6`. Default value: 'IPv4'.| No |
+|`ether_type`| String | Optional | The IP version. Accepted values  (case sensitive): `IPv4` or `IPv6`. Default value: `IPv4`.| No |
 |`port_range_min`| Integer | Optional | The start of the port range for allowed traffic.| No |
 |`port_range_max`| Integer | Optional | The end of the port range for allowed traffic.| No |
 |`protocol`| String | Optional |  The IP protocol type. Accepted values (case sensitive): `icmp`,`tcp`, or `udp`.| No |
@@ -3132,7 +3132,7 @@ The following attributes are exported:
 
 Provides a block storage resource. This allows iSCSI-based Endurance and Performance block storage to be created, updated, and deleted. Fore more information about Block storage, see [Learn about Block Storage](/docs/BlockStorage?topic=BlockStorage-About). 
 
-Block storage can be accessed and mounted through a Multipath I/O (MPIO) Internet Small Computer System Interface (iSCSI) connection.
+Block storage can be accessed and mounted through a Multipath Input Output Internet Small Computer System Interface (iSCSI) connection.
 
 ### Sample Terraform code
 {: #storage-block-sample}
@@ -3612,8 +3612,8 @@ The following arguments are supported:
 |`orderApproverEmailAddress`|(Required, string) The email of approver to approve SSL certificate request.|
 |`organization_information`| (Required, set) Organization information from issuer belongs to.	|
 |`organization_information.org_address`|(Required, string) Organization address of the issuer.		|
-|`organization_information.org_address.org_addressLine1`|(Required, string) The address of organization who is requesting for ssl certificate.		|
-|`organization_information.org_address.org_addressLine2`|(optional, string) The address of organization who is requesting for ssl certificate.		|
+|`organization_information.org_address.org_addressLine1`|(Required, string) The address of organization who is requesting for SSL certificate.		|
+|`organization_information.org_address.org_addressLine2`|(optional, string) The address of organization who is requesting for SSL certificate.		|
 |`organization_information.org_address.org_city`|(Required, string) The city of organization which is requesting for SSL certificate .		|
 |`organization_information.org_address.org_postalCode`|(Required, integer) The postal code for the city of organization.		|
 |`organization_information.org_address.org_state`|(Required, string) The two letter state code of organization who is requesting for SSL certificate. Allowed value for country which doesn't have states is `OT`.		|
