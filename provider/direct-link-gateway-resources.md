@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-19"
+lastupdated: "2020-09-07"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -96,8 +96,8 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The unique user-defined name for the gateway. For example, `myGateway`.| No |
 |`speed_mbps`|Integer|Required|The gateway speed in MBPS. For example, `10.254.30.78/30`.| No |
 |`type`|String|Required|The gateway type, allowed values are `dedicated` and `connect`.| Yes |
-|`bgp_cer_cidr`|String|Optional|The BGP customer edge router CIDR. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can be ommitted and a CIDR is selected automatically. For example, `10.254.30.78/30`.| Yes |
-|`bgp_ibm_cidr`|String|Optional|The {{site.data.keyword.IBM_notm}} BGP ASN. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can be ommitted and a CIDR is selected automatically. For example: `10.254.30.77/30`.| Yes |
+|`bgp_cer_cidr`|String|Optional|The BGP customer edge router CIDR. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can exclude and a CIDR is selected automatically. For example, `10.254.30.78/30`.| Yes |
+|`bgp_ibm_cidr`|String|Optional|The {{site.data.keyword.IBM_notm}} BGP ASN. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can exclude and a CIDR is selected automatically. For example: `10.254.30.77/30`.| Yes |
 |`resource_group`|String|Optional|The resource group. If unspecified, the account's default resource group is used.| Yes |
 |`carrier_name`|String|Required|The carrier name. Constraints are 1 ≤ length ≤ 128, Value must match regular expression ^[a-z][A-Z][0-9][ -_]$. For example, `myCarrierName`.| Yes |
 |`cross_connect_router`|String|Required|The cross connect router. For example, `xcr01.dal03`.| Yes |
@@ -146,7 +146,7 @@ terraform import ibm_dl_gateway.example 5ffda12064634723b079acdb018ef308
 ## `ibm_dl_virtual_connection`
 {: #dl-vc}
 
-Create, update, or delete a direct link gateway virtual connection by using the direck link gateway resource.
+Create, update, or delete a direct link gateway virtual connection by using the direct link gateway resource.
 {: shortdesc}
 
 ### Sample Terraform code
