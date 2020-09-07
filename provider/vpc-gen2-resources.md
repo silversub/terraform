@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02" 
+lastupdated: "2020-09-07" 
 
 keywords: terraform provider plugin, terraform vpc gen 2 resources, terraform vpc generation 2, terraform vpc subnet, terraform vpc generation 2 compute
 
@@ -143,7 +143,7 @@ Review the input parameters that you can specify for your resource.
 
 | Input parameter | Data type | Required/ optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
-| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPsec peers. Available options are `md5`, `sha1`, or `sha256`. | No |
+| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate `IPsec` peers. Available options are `md5`, `sha1`, or `sha256`. | No |
 | `dh_group` | Integer | Required | Enter the Diffie-Hellman group that you want to use for the encryption key. Available options are `2`, `5`, or `14`. | No |
 | `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. | No |
 | `ike_version` | Integer | Optional | Enter the IKE protocol version that you want to use. Available options are `1`, or `2`. | No |
@@ -417,13 +417,13 @@ resource "ibm_is_ipsec_policy" "example" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Foces new resource |
+| Input parameter | Data type | Required/ optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ---------- |
-| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate IPsec peers. Available options are `md5`, `sha1`, or `sha256`. | No |
+| `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate `IPsec` peers. Available options are `md5`, `sha1`, or `sha256`. | No |
 | `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. |  No |
 | `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 3600 seconds is used. | No |
 | `name` | String | Required | Enter the name for your IPSec policy. | No |
-| `pfs` | String | Required | Enter the Perfect Forward Secrecy (PFS) protocol that you want to use during a session. Available options are `disabled`, `group_2`, `group_5`, and `group_14`. | No |
+| `pfs` | String | Required | Enter the Perfect Forward Secrecy protocol that you want to use during a session. Available options are `disabled`, `group_2`, `group_5`, and `group_14`. | No |
 | `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IPSec policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IPSec policy is created in the `default` resource group. |  Yes |
 
 ### Output parameters
@@ -555,7 +555,7 @@ terraform import ibm_is_lb.example <lb_ID>
 
 Create, update, or delete a listener for a VPC load balancer.
 
-When provisioning the load balancer listener along with load balancer pool or pool member, use explicit dependencies on the resources or perform the terraform apply with parallelism 1. 
+When provisioning the load balancer listener along with load balancer pool or pool member, use explicit dependencies on the resources or perform the Terraform apply with parallelism 1. 
 {: note}
 
 ### Sample Terraform code
@@ -846,7 +846,7 @@ terraform import ibm_is_lb_listener_policy.example <loadbalancer_ID>/<listener_I
 The following timeouts are configured for the resource: 
 
 - **Create**: The creation of the resource is considered failed if no response is received for 10 minutes. 
-- **Update**: The updaet of the resource is considered failed if no response is received for 10 minutes. 
+- **Update**: The update of the resource is considered failed if no response is received for 10 minutes. 
 - **Delete**: The deletion of the resource is considered failed if no response is received for 10 minutes. 
 
 
@@ -889,7 +889,7 @@ Review the input parameters that you can specify for your resource.
 |`health_retries`|Integer|Required|The health check max retries.| No |
 |`health_timeout`|Integer|Required|The health check timeout in seconds.| No |
 |`health_type`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.| No |
-|`health_monitor_url`|String|Optional|The health check url. This option is applicable only to the HTTP `health-type`.| No |
+|`health_monitor_url`|String|Optional|The health check URL. This option is applicable only to the HTTP `health-type`.| No |
 |`health_monitor_port`|Integer|Optional|The health check port number.|  No |
 |`session_persistence_type`|String|Optional|The session persistence type. Only `source_ip` is supported.| No |
 
@@ -1147,7 +1147,7 @@ Review the output parameters that you can access after your resource is created.
 | ------------- |-------------| -------------- |
 | `floating_ip` | List | A list of floating IP addresses that are assigned to the public gateway. |
 | `floating_ip.id`|String| The unique identifier that was assigned to the floating IP address.|
-| `floating_ip.address`|String|The IP address that was assigned to the public gatway.|
+| `floating_ip.address`|String|The IP address that was assigned to the public gateway.|
 | `id` | String | The unique identifier that was assigned to your public gateway. |
 | `status` | String | The provisioning status of your public gateway. |
 
@@ -1779,7 +1779,7 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required/ optional|Description|Forces new resource |
 |----|-----------|-----------|---------------------| ------ |
 |`name`|String|Required|The name of the route that you want to create.| No |
-|`vpc`|String|Requied|The ID of the VPC where you want to create the route. |  Yes |
+|`vpc`|String|Required|The ID of the VPC where you want to create the route. |  Yes |
 |`zone`|String|Required|The name of the VPC zone where you want to create the route.| Yes |
 |`destination`|String|Required|The destination IP address or CIDR that network traffic from your VPC must match to be routed to the `next_hop`.| Yes |
 |`next_hop`|String|Required|The IP address where network traffic is sent next.| No |
@@ -1793,7 +1793,7 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the VPC route. The ID is composed of `<vpc_id>/<vpc_route_id>`.|
-|`status`|Strign|The status of the VPC route.|
+|`status`|String|The status of the VPC route.|
 
 ### Import
 {: #vpc-route-import}
@@ -1841,7 +1841,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the VPN gateway.| No |
 |`subnet`|String|Required|The unique identifier for this subnet.| Yes |
 |`resource_group`|String|Optional| The resource group where the VPN gateway to be created.| Yes |
-|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gatway. Tags can help you find your VPN gateway more easily later.| No |
+|`tags`|List of strings|Optional|A list of tags that you want to add to your VPN gateway. Tags can help you find your VPN gateway more easily later.| No |
 
 ### Output parameters
 {: #vpn-gateway-output}
