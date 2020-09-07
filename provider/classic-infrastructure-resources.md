@@ -2322,18 +2322,18 @@ The following attributes are exported:
 ## `ibm_lb_vpx_ha`
 {: #lb-vpx-ha}
 
-Configure a high availability (HA) pair with two NetscalerVPX devices. The two NetscalerVPXs must be version 10.5 and located in the same subnet. A primary NetscalerVPX provides load balancing services in active mode, and a secondary NetscalerVPX provides load balancing services when the primary NetscalerVPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748){: external} and the [KnowledgeLayer NetScaler docs](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
+Configure a high availability (HA) pair with two NetscalerVPX devices. The two NetscalerVPXs must be version 10.5 and located in the same subnet. A primary NetscalerVPX provides load balancing services in active mode, and a secondary NetscalerVPX provides load balancing services when the primary NetscalerVPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748){: external} and the [Knowledge layer Netscaler docs](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
 
-**NOTE**: This resource only supports NetScaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
+**NOTE**: This resource only supports Netscaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
-The two NetScaler VPXs use the same password in HA mode. When you create this resource, Terraform changes the password of the secondary NetScaler VPX to the password of the primary NetScaler VPX. When you destroy this resource, Terraform restores the original password of the secondary NetScaler VPX.
+The two Netscaler VPXs use the same password in HA mode. When you create this resource, Terraform changes the password of the secondary Netscaler VPX to the password of the primary Netscaler VPX. When you destroy this resource, Terraform restores the original password of the secondary Netscaler VPX.
 
 ### Sample Terraform code
 {: #lb-vpx-ha-sample}
 
 ```
 
-## Create a primary NetScaler VPX
+## Create a primary Netscaler VPX
 resource "ibm_lb_vpx" "test_pri" {
     datacenter = "lon02"
     speed = 10
@@ -2343,7 +2343,7 @@ resource "ibm_lb_vpx" "test_pri" {
 }
 
 
-## Create a secondary NetScaler VPX in the same subnets
+## Create a secondary Netscaler VPX in the same subnets
 resource "ibm_lb_vpx" "test_sec" {
     datacenter = "lon02"
     speed = 10
@@ -2356,7 +2356,7 @@ resource "ibm_lb_vpx" "test_sec" {
     private_subnet = ibm_lb_vpx.test_pri.private_subnet
 
 
-## Configure high availability with the primary and secondary NetScaler VPXs
+## Configure high availability with the primary and secondary Netscaler VPXs
 resource "ibm_lb_vpx_ha" "test_ha" {
     primary_id = ibm_lb_vpx.test_pri.id
     secondary_id = ibm_lb_vpx.test_sec.id
@@ -2371,10 +2371,10 @@ The following arguments are supported:
 
 |Name| Data type | Required/ Optional | Description| Forces new resource |
 |----|-----------| ------ | ----- | ----------|
-|`primary_id`| String | Required | The ID of the primary NetScaler VPX.| Yes |
-|`secondary_id`| String | Required | The ID of the secondary NetScaler VPX.| Yes |
-|`stay_secondary`|Boolean | Optional | Specifies whether the secondary NetScaler VPX will  take over the service. Set this argument to `true` to prevent the secondary NetScaler VPX from taking over the service even if the primary NetScaler VPX fails. For additional details, see the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support docs](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
-|`tags`|Array of strings | Optional | Tags associated with the high availability NetScaler VPX pair instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
+|`primary_id`| String | Required | The ID of the primary Netscaler VPX.| Yes |
+|`secondary_id`| String | Required | The ID of the secondary Netscaler VPX.| Yes |
+|`stay_secondary`|Boolean | Optional | Specifies whether the secondary Netscaler VPX will  take over the service. Set this argument to `true` to prevent the secondary NetScaler VPX from taking over the service even if the primary NetScaler VPX fails. For additional details, see the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support docs](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
+|`tags`|Array of strings | Optional | Tags associated with the high availability Netscaler VPX pair instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2384,7 +2384,7 @@ The following attributes are exported:
 
 |Name|Description|
 |----|-----------|
-|`id`|The unique identifier of the high availability NetScaler VPX pair.|
+|`id`|The unique identifier of the high availability Netscaler VPX pair.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -2395,7 +2395,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancer services. This allows VPX load balancer services to be created, updated, and deleted. For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service).  
 
-**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
+**NOTE**: If you use Netscaler VPX 10.5, Terraform uses Netscaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 ### Sample Terraform code
 {: #vpx-svc-sample}
@@ -2424,12 +2424,12 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`name`| String | Required |The ID of the VPX load balancer service.| Yes |
 |`vip_id`| String | Required |The ID of the VPX load balancer virtual IP address to which the service is assigned.| Yes |
-|`destination_ip_address`| String | Required | The IP address of the server to which traffic directs. If you use NetScaler VPX 10.1, you must indicate a public IP address in an IBM Cloud Classic Infrastructure (SoftLayer) account. If you use NetScaler VPX 10.5, you can use any IP address.| Yes |
+|`destination_ip_address`| String | Required | The IP address of the server to which traffic directs. If you use Netscaler VPX 10.1, you must indicate a public IP address in an IBM Cloud Classic Infrastructure (SoftLayer) account. If you use Netscaler VPX 10.5, you can use any IP address.| Yes |
 |`destination_port`| Integer | Required |The destination port of the server to which traffic directs.| No |
-|`weight`| Integer | Required | The percentage of the total connection limit allocated to the load balancer between all your services. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.       **NOTE**: If you use NetScaler VPX 10.5, the weight value is ignored.| No |
-|`connection_limit`| Integer | Required |The connection limit for this service. Acceptable values are `0`-`4294967294`. See the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/11/reference/netscaler-command-reference/basic/service.html) for details.| No |
+|`weight`| Integer | Required | The percentage of the total connection limit allocated to the load balancer between all your services. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.       **NOTE**: If you use Netscaler VPX 10.5, the weight value is ignored.| No |
+|`connection_limit`| Integer | Required |The connection limit for this service. Acceptable values are `0`-`4294967294`. See the [Citrix Netscaler docs](https://docs.citrix.com/en-us/netscaler/11/reference/netscaler-command-reference/basic/service.html) for details.| No |
 |`health_check`| String | Required |The health check type. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.| No |
-|`usip`| String | Optional | Whether the service reports the source IP of the client to the service being load balanced. Acceptable values are `YES` or `NO`. The default value is `NO`. See the [Citrix NetScaler docs](https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/11.0/configuration/basic/service/service) for more details.       **NOTE**: This argument is only available for VPX 10.5.| No |
+|`usip`| String | Optional | Whether the service reports the source IP of the client to the service being load balanced. Acceptable values are `YES` or `NO`. The default value is `NO`. See the [Citrix Netscaler docs](https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/11.0/configuration/basic/service/service) for more details.       **NOTE**: This argument is only available for VPX 10.5.| No |
 |`tags`| Array of strings | Optional | Tags associated with the VPX load balancer service instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2451,12 +2451,12 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancer virtual IP addresses. This allows VPX load balancer virtual IP addresses to be created, updated, and deleted.  
 
-**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
+**NOTE**: If you use Netscaler VPX 10.5, Terraform uses Netscaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 ### Sample Terraform code
 {: #lb-vpx-vip-sample}
 
-The following example configuration supports NetScaler VPX 10.1 and 10.5:
+The following example configuration supports Netscaler VPX 10.1 and 10.5:
 
 ```
 resource "ibm_lb_vpx_vip" "testacc_vip" {
@@ -2469,7 +2469,7 @@ resource "ibm_lb_vpx_vip" "testacc_vip" {
 }
 ```
 
-The following example configuration supports only NetScaler VPX 10.5. Additional options for the `load_balancing_method` and `persistence` arguments are shown. A private IP address can be used for the `virtual_ip_address` argument.
+The following example configuration supports only Netscaler VPX 10.5. Additional options for the `load_balancing_method` and `persistence` arguments are shown. A private IP address can be used for the `virtual_ip_address` argument.
 
 ```
 resource "ibm_lb_vpx_vip" "testacc_vip" {
@@ -2487,7 +2487,7 @@ NetScaler VPX 10.5 also supports SSL offload. If you set the `type` argument to 
 
 ```
 
-## Create a NetScaler VPX 10.5
+## Create a Netscaler VPX 10.5
 resource "ibm_lb_vpx" "test" {
     datacenter = "lon02"
     speed = 10
@@ -2532,12 +2532,12 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`name`| String | Required |The ID of the VPX load balancer virtual IP address.| Yes |
 |`nad_controller_id`| Integer | Required | The ID of the VPX load balancer that the virtual IP address is assigned to.| Yes |
-|`load_balancing_method`| String | Required | See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use NetScaler VPX 10.5, see the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for additional methods that you can use.| No |
-|`persistence`| String | Optional |Applies to NetScaler VPX 10.5 only. See the available persistence types in the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-persistence-wrapper-con/ns-lb-persistence-about-con.html).  | No |
+|`load_balancing_method`| String | Required | See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use Netscaler VPX 10.5, see the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for additional methods that you can use.| No |
+|`persistence`| String | Optional |Applies to Netscaler VPX 10.5 only. See the available persistence types in the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-persistence-wrapper-con/ns-lb-persistence-about-con.html).  | No |
 |`virtual_ip_address`| String | Required |The public IP address for the VPX load balancer virtual IP.| No |
 |`source_port`|Integer | Required | The source port for the VPX load balancer virtual IP address.| No |
 |`type`| String | Required | The connection type for the VPX load balancer virtual IP address. Accepted values are `HTTP`, `FTP`, `TCP`, `UDP`, `DNS`, and `SSL`. If you set the type to `SSL`, then `security_certificate_id` provides certification for SSL offload services.| Yes |
-|`security_certificate_id`| Integer | Optional | Applies to NetScaler VPX 10.5 only. The ID of a security certificate you want to use. This argument provides security certification for SSL offload services. For additional information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).| Yes |
+|`security_certificate_id`| Integer | Optional | Applies to Netscaler VPX 10.5 only. The ID of a security certificate you want to use. This argument provides security certification for SSL offload services. For additional information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).| Yes |
 |`tags`| Array of strings | Optional | Tags associated with the VPX load balancer virtual IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2854,7 +2854,7 @@ The following arguments are supported:
 
 |Name| Data type | Required/ Optional | Description |
 |----|-----------| ------ | ----- |
-|`routes_to`| String | Required | The destination IP address that the public IP routes traffic through. The destination IP address can be a public IP address of IBM resources in the same account, such as a public IP address of a VM or public virtual IP addresses of NetScaler VPXs.|
+|`routes_to`| String | Required | The destination IP address that the public IP routes traffic through. The destination IP address can be a public IP address of IBM resources in the same account, such as a public IP address of a VM or public virtual IP addresses of Netscaler VPXs.|
 |`notes`| String | Optional | Descriptive text to associate with the public IP instance.|
 |`tags`| Array of strings | Optional | Tags associated with the public IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -3388,7 +3388,7 @@ public portable subnets, private portable subnets, and public static subnets wit
 The portable IPv4 subnet is created as a secondary subnet on a VLAN. IP addresses in the portable subnet can be assigned as secondary IP 
 addresses for IBM resources in the VLAN. Because each portable subnet has a default gateway IP address, network IP address, and broadcast IP address, the number of usable IP addresses is `capacity` - 3. A `capacity` of 4 means that the number of usable IP addresses is 1; a `capacity` of 8 means that the number of usable IP addresses is 5. For example, consider a portable subnet of `10.0.0.0/30` that has `10.0.0.1` as a default gateway IP address, `10.0.0.0` as a network IP address, and `10.0.0.3` as a broadcast IP address. Only `10.0.0.2` can be assigned to IBM resources as a secondary IP address. 
 
-The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
+The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and Netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
 
 Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](/docs/subnets?topic=subnets-about-subnets-and-ips).
 
@@ -3475,7 +3475,7 @@ The following arguments are supported:
 |`ip_version`| Integer | Optional | The IP version of the subnet. Accepted values are 4 and 6.| Yes |
 |`capacity`| Integer | Required | The size of the subnet. <ul><li>Accepted values for a public portable IPv4 subnet are 4, 8, 16, and 32. </li><li> Accepted values for a private portable IPv4 subnet are 4, 8, 16, 32, and 64. </li><li>Accepted values for a public static IPv4 subnet are 1, 2, 4, 8, 16, and 32. </li><li>Accepted value for a public portable IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided. </li><li>Accepted value for a public static IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided.</li></ul>| Yes |
 |`vlan_id`| Integer | Optional | The VLAN ID for portable subnet. You can configure both public and private VLAN ID. You can find accepted values in the [SoftLayer VLAN documentation](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.| Yes |
-|`endpoint_ip`| String | Optional | The target primary IP address for a static subnet. Only public IP addresses of virtual servers, bare metal servers, and netscaler VPXs can be configured as an `endpoint_ip`. The `static subnet` will be created on the VLAN where the `endpoint_ip` is located.| Yes |
+|`endpoint_ip`| String | Optional | The target primary IP address for a static subnet. Only public IP addresses of virtual servers, bare metal servers, and Netscaler VPXs can be configured as an `endpoint_ip`. The `static subnet` will be created on the VLAN where the `endpoint_ip` is located.| Yes |
 |`notes`| String | Optional | Descriptive text or comments about the subnet.| No |
 |`tags`| Array of Strings | Optional |  Tags associated with the subnet instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
