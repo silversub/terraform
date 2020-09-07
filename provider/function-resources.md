@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-24"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless, terraform namespace
 
@@ -167,11 +167,11 @@ Review the input parameters that you can specify for your resource.
 |`namespace`|String|Required|The name of the function namespace.| No |
 |`limits`|List of objects|Optional|A nested block to describe assigned limits. | No |
 |`limits.timeout`|Integer|Optional|The timeout limit to terminate the action, specified in milliseconds. Default value: `60000`.    | No |
-|`limits.memory`|Integer|Optional|The maximum memory for the action, specified in MBs. Default value: `256`.    | No |
-|`limits.log_size`|Integer|Optional|The maximum log size for the action, specified in MBs. Default value: `10`.| No |
+|`limits.memory`|Integer|Optional|The maximum memory for the action, specified in megabyte. Default value: `256`.    | No |
+|`limits.log_size`|Integer|Optional|The maximum log size for the action, specified in megabyte. Default value: `10`.| No |
 |`exec`|List of objects|Required|A nested block to describe executable binaries.  | No |
 |`exec.image`|String|Optional| When using the `blackbox` executable, the name of the container image name.        **NOTE**: Conflicts with `exec.components`, `exec.code`.    | No |
-|`exec.init`|String|Optional| When using `nodejs`, the optional zipfile reference.        **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
+|`exec.init`|String|Optional| When using `nodejs`, the optional archive reference.        **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
 |`exec.code`|String|Optional| When not using the `blackbox` executable, the code to execute.       **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
 |`exec.kind`|String|Required|The type of action. You can find supported kinds in the [IBM Cloud Functions docs](/docs/openwhisk?topic=openwhisk-runtimes).    | No |
 |`exec.main`|String|Optional|The name of the action entry point (function or fully-qualified method name, when applicable).       **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
@@ -201,7 +201,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #fn-action-import}
 
-`ibm_function_action` can be imported using the namespace and actionID.
+`ibm_function_action` can be imported using the namespace and action ID.
 
 Example:
 
