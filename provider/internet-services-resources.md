@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -296,7 +296,7 @@ Review the input parameters that you can specify for your resource.
 |`data`|Map|Optional|A map of attributes that constitute the record value. This value is required for `LOC`, `CAA` and `SRV` record types. |
 |`priority`|String|Optional|The priority of the record.|
 |`proxied`|Boolean|Optional|Indicates if the record receives origin protection by {{site.data.keyword.cis_full_notm}}. The default value is **false**.|
-|`ttl`|Integer|Optional|The time to live (TTL) in seconds for how long the resolved DNS record entry is cached before the IP address of the DNS entry must be looked up again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is unproxied, you can enter a value that is 120 or greater. |
+|`ttl`|Integer|Optional|The time to live (TTL) in seconds for how long the resolved DNS record entry is cached before the IP address of the DNS entry must be looked up again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is not in proxy, you can enter a value that is 120 or greater. |
 
 ### Output parameters
 {: #cis-dns-record-output}
@@ -461,7 +461,7 @@ Review the input parameters that you can specify for your resource.
 |`description`|String|Optional|A description of the global load balancer. |
 |`enabled`|Boolean|Optional|If set to **true**, the load balancer is enabled and can receive network traffic. If set to **false**, the load balancer is not enabled.|
 |`proxied`|Boolean|Optional|Indicates if the host name receives origin protection by {{site.data.keyword.cis_full_notm}}. The default value is **false**.|
-|`ttl`|Integer|Optional|The time to live (TTL) in seconds for how long the load balancer must cache a resolved IP address for a DNS entry before the load balancer must look up the IP address again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is unproxied, you can enter a value that is 120 or greater. |
+|`ttl`|Integer|Optional|The time to live (TTL) in seconds for how long the load balancer must cache a resolved IP address for a DNS entry before the load balancer must look up the IP address again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is not in proxy, you can enter a value that is 120 or greater. |
 |`region_pools`| Set of Strings | Optional | A set of containing mappings of region and country codes to the list of pool of IDs. IDs are ordered by their failover priority.|
 |`region_pools.region`| String | Required | Enter a region code. Should not specify the multiple entries with the same region. |
 |`region_pools.pool_ids`| String | Required | A list of pool IDs in failover priority for the provided region.|
@@ -742,23 +742,23 @@ Review the input parameters that you can specify for your resource.
 |`domain_id`|String|Required|The ID of the domain where you want to add a rate limit. |
 |`threshold`|Integer|Required|The number of requests received within a specific time period (`period`) before connections to the domain are refused. The threshold value must be between 2 and 1000000. |
 |`period`|Integer|Required|The period of time in seconds where incoming requests to a domain are counted. If the number of requests exceeds the `threshold`, then connections to the domain are refused. The `period` value must be between 1 and 3600. | 
-|`match`|List of matching rules|Optional|A list of characteristics that incoming network traffic must match to be counted towards the `threshold`. | 
-|`match.request`|List of request characteristics|Optional|A list of characteristics that the incoming request must match to be counted towards the `threshold`. If this list is not provided, all incoming requests are counted towards the `threshold`.|
+|`match`|List of matching rules|Optional|A list of characteristics that incoming network traffic must match the `threshold` count. | 
+|`match.request`|List of request characteristics|Optional|A list of characteristics that the incoming request match the `threshold` count. If this list is not provided, all incoming requests are matched the count of the `threshold`.|
 |`match.request.url`|String|Optional|The URL that the request uses. Wildcard domains are expanded to match applicable traffic, query strings are not matched. You can use `*` to apply the rule to all URLs. The maximum length of this value can be 1024.|
-|`match.request.schemes`|Set of strings|Optional|The scheme of the request that determines the desired protocol. Supported values are `HTTPS`, `HTTP,HTTPS`, and `ALL`. |
-|`match.request.methods`|Set of strings|Optional|The HTTP methods that the incoming request can use to be counted towards the `threshold`. Supported values are `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, and `ALL`. You can also combine multiple methods and seperate them with a comma. For example `POST,PUT`. |
-|`response`|List of HTTP responses|Optional|A list of HTTP responses that outgoing packets must match before they can be returned to the client. If an incoming request matches the request criteria, but the reponse does not match the response criteria, then the request packet is not counted towards the `threshold`.| 
-|`response.status`|Set of integers|Optional|The HTTP status that the response must have so that the request is counted towards the `threshold`. You can specify one (`403`) or multiple (`401,403`) HTTP response codes. The value that you enter must be between 100 and 999. |
-|`response.header`|List of response headers|Optional|A list of HTTP response headers that the response packet must match so that the original request is counted towards the `threshold`.|
+|`match.request.schemes`|Set of strings|Optional|The scheme of the request that determines the protocol that you want. Supported values are `HTTPS`, `HTTP,HTTPS`, and `ALL`. |
+|`match.request.methods`|Set of strings|Optional|The HTTP methods that the incoming request that match the `threshold` count. Supported values are `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, and `ALL`. You can also combine multiple methods and separate them with a comma. For example `POST,PUT`. |
+|`response`|List of HTTP responses|Optional|A list of HTTP responses that outgoing packets must match before they can be returned to the client. If an incoming request matches the request criteria, but the response does not match the response criteria, then the request packet is not counted with the `threshold`.| 
+|`response.status`|Set of integers|Optional|The HTTP status that the response must have so that the request is matched with the `threshold` count. You can specify one (`403`) or multiple (`401,403`) HTTP response codes. The value that you enter must be between 100 and 999. |
+|`response.header`|List of response headers|Optional|A list of HTTP response headers that the response packet must match so that the original request is matched with the `threshold` count.|
 |`response.header.name`|String|Optional|The name of the HTTP response header.|
 |`response.header.op`|String|Optional|The operator that you want to apply to your HTTP response header. Supported values are `eq` (equals) and `ne` (not equals). |
 |`response.header.value`|String|Optional|The value that the HTTP response header must match. |
 |`action`|List of actions|Required|A list of actions that you want to perform when incoming requests exceed the specified `threshold`.|
 |`action.mode`|String|Required|The type of action that you want to perform. Supported values are `simulate`, `ban`, `challenge`, or `js_challenge`. For more information about each type, see [Configure response](/docs/cis?topic=cis-cis-rate-limiting#rate-limiting-configure-response).|
 |`action.timeout`|Integer|Optional|The time to wait in seconds before the action is performed. The timeout must be equal or greater than the `period` and can be provided only for actions of type `simulate` or `ban`. The value that you enter must be between 10 and 86400.|
-|`action.response`|List of reponse information|Optional|A list of information that you want to return to the client, such as the `content-type` and specific body information. The information provided in this parameter overrides the default HTML error page that is returned to the client. You can use this option only for actions of type `simulate` or `ban`.  |
+|`action.response`|List of response information|Optional|A list of information that you want to return to the client, such as the `content-type` and specific body information. The information provided in this parameter overrides the default HTML error page that is returned to the client. You can use this option only for actions of type `simulate` or `ban`.  |
 |`action.response.content_type`|String|Optional|The `content-type` of the body that you want to return. Supported values are `text/plain`, `text/xml`, and `application/json`.|
-|`action.response.body`|String|Optional|The body of the reponse that you want to return to the client. The information that you provide must match the `action.response.content_type` that you specified. The value that you enter can have a maximum length of 1024.|
+|`action.response.body`|String|Optional|The body of the response that you want to return to the client. The information that you provide must match the `action.response.content_type` that you specified. The value that you enter can have a maximum length of 1024.|
 |`disabled`|Boolean|Optional|Set to **true** to disable rate limiting for a domain and **false** to enable rate limiting.|
 |`description`|String|Optional|Enter a description for your rate limiting rule. |
 |`correlate`|List of NAT-based rate limits|Optional|Enable NAT-based rate limiting.|

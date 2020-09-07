@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27" 
+lastupdated: "2020-09-07" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -158,7 +158,7 @@ Review the output parameters that you can access after your resource is created.
 |`guid`|String|The GUID of the resource instance.|
 |`status`|String|The status of resource instance.|
 |`extensions`|String|The extended metadata as a map associated with the resource instance.|
-|`dashboard_url`|String|The dashboard url of the new resource instance.|
+|`dashboard_url`|String|The dashboard URL of the new resource instance.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -183,7 +183,7 @@ Review the output parameters that you can access after your resource is created.
 Create, update, or delete service credentials for an IAM-enabled service. 
 {: shortdesc}
 
-By default, the `ibm_resource_key` resource creates service credentials that use the public service endpoint of a service. To create service credentials that use the private service endpoint instead, you must explicitly define that by using the `parameter` input paramter. Note that your service might not support private service endpoints yet. 
+By default, the `ibm_resource_key` resource creates service credentials that use the public service endpoint of a service. To create service credentials that use the private service endpoint instead, you must explicitly define that by using the `parameter` input parameter. Note that your service might not support private service endpoints yet. 
 {: note}
 
 ### Sample Terraform code

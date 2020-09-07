@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-19"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, HPCS
 
@@ -37,7 +37,7 @@ subcollection: terraform
 # Key Management Service resources
 {: #kms-resources}
 
-Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources. This resource can be used for keys in both Key Protect and Hyper Protect Crypto Service (HPCS).
+Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources. This resource can be used for management of keys in both Key Protect and Hyper Protect Crypto Service (HPCS).
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
@@ -50,11 +50,11 @@ Before you start working with your resource, make sure to review the [required p
 Provide a key management service resource for Hyper Protect Crypto Services and Key Protect services. This allows standard and root keys to be created and deleted. The region parameter in the `provider.tf` file must be set. If region parameter is not specified, `us-south` is used as default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
 {: shortdesc}
 
-After creating an  Hyper Protect Crypto Service instance you need to initialize the instance properly with the crypto units, in order to create, or manage Hyper Protect Crypto Service keys. For more information about how to initialize the Hyper Protect Crypto Service instance, see [Initialize Hyper Protect Crypto](/docs/hs-crypto?topic=hs-crypto-initialize-hsm). 
+After creating an  Hyper Protect Crypto Service instance you need to initialize the instance properly with the crypto units, in order to create, or manage Hyper Protect Crypto Service keys. For more information, about how to initialize the Hyper Protect Crypto Service instance, see [Initialize Hyper Protect Crypto](/docs/hs-crypto?topic=hs-crypto-initialize-hsm) only for HPCS instance. 
 {: note}
 
 
-### Sample Terraform code
+### Example usage to provision Key Protect service and Key Management
 {: #kms-key-sample}
 
 ```
@@ -68,7 +68,7 @@ resource "ibm_kms_key" "test" {
   instance_id  = ibm_resource_instance.kms_instance.guid
   key_name     = "key-name"
   standard_key = false
-  force_delete =true
+  force_delete = true
 }
 resource "ibm_cos_bucket" "flex-us-south" {
   bucket_name          = "atest-bucket"
@@ -78,6 +78,44 @@ resource "ibm_cos_bucket" "flex-us-south" {
   key_protect          = ibm_kms_key.test.id
 }
 ```
+### Example usage to provision HPCS and Key Management
+{: #hpcs-key-sample}
+
+Complete the following steps to provision a HPCS, initialize the service and Key Management.
+{: shortdesc}
+
+**Step 1: Provision the service by using `ibm_resource_instance`.**
+
+ ```
+ resource "ibm_resource_instance" "hpcs"{
+  name = "hpcsservice"
+  service = "hs-crypto"
+  plan = "standard"
+  location = "us-south"
+  parameters = {
+      units = 2
+  }
+}
+
+ ```
+ **Step 2: Initialize your service instance manually.**
+ 
+ 1. To manage your keys, you need to initialize your service instance.
+ 2. The two options that are provided to initialize a service instance are: 
+    - the IBM HPCS management utilities by using master key parts stored on smart card.
+    - the {{site.data.keyword.cloud_notm}} Trusted Key Entry CLI plug-in to initialize your service instance.
+    For more information, about initialize the service instance, refer [Initialize your service instance](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started#initialize-crypto).
+ 
+ **Step 3: Manage your keys by using `ibm_kms_key`**
+ 
+  ```
+  resource "ibm_kms_key" "key" {
+  instance_id  = ibm_resource_instance.hpcs.guid
+  key_name     = var.key_name
+  standard_key = false
+  force_delete = true
+}
+  ```
 
 ### Input parameters
 {: #kms-key-input}
@@ -96,7 +134,7 @@ Review the input parameters that you can specify for your resource.
 |`force_delete`|Boolean|Optional|If set to **true**, Key Protect forces the deletion of a root or standard key, even if this key is still in use, such as to protect an {{site.data.keyword.cos_full_notm}} bucket. Note that the key cannot be deleted if the protected cloud resource is set up with a retention policy. Successful deletion includes the removal of any registrations that are associated with the key. Default value: **false**.| No |
 |`iv_value`|String|Optional| Used with import tokens. The initialization vector (IV) that is generated when you encrypt a nonce. The IV value is required to decrypt the encrypted nonce value that you provide when you make a key import request to the service. To generate an IV, encrypt the nonce by running `ibmcloud kp import-token encrypt-nonce`. Only for imported root key.|  Yes |
 
-You need to set `terraform destroy` force_delete flag after the provisioning keys is initiated. Later, a `terraform apply` is used prior to terraform destroy for force_delete flag to take effect.
+You need to set `terraform destroy` a force_delete flag after the provisioning keys is initiated. Later, a `terraform apply` is used before the `terraform destroy` for force_delete flag to take effect.
 {: note}
 
 ### Output parameters
@@ -111,7 +149,7 @@ Review the output parameters that you can access after your resource is created.
 |`crn`|String|The CRN of the key.|
 |`status`|String|The status of the key.|
 |`key_id`|String|The ID of the key.|
-|`type`|String|The type of the key kms or HPCS.|
+|`type`|String|The type of the key KMS or HPCS.|
 
 ### Import
 {: #kms-key-import}
@@ -191,7 +229,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #kp-key-import}
 
-`ibm_kp_key` can be imported using the `id` and `crn`.
+`ibm_kp_key` can be imported by using the `id` and `crn`.
 
 ```
 terraform import ibm_kp_key.crn crn:v1:bluemix:public:kms:us-south:a/faf6addbf6bf4768hhhhe342a5bdd702:05f5bf91-ec66-462f-80eb-8yyui138a315:key:52448f62-9272-4d29-a515-15019e3e5asd

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-19"
+lastupdated: "2020-09-07"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -151,7 +151,7 @@ Review the output parameters that you can access after your resource is created.
 |`gateways.location_display_name`|String|Long name of the gateway location.|
 |`gateways.location_name`|String|The location name of the gateway.|
 |`gateways.metered`|String|Metered billing option. If set `true` gateway usage is billed per GB. Otherwise, flat rate is charged for the gateway.|
-|`gateways.name`|String| The uniqure user defined name of the gateway.|
+|`gateways.name`|String| The unique user defined name of the gateway.|
 |`gateways.operational_status`|String|The gateway operational status|
 |`gateways.resource_group`|String|The resource group identifier.|
 |`gateways.speed_mbps`|String|The gateway speed in MBPS.|
@@ -211,7 +211,7 @@ Review the output parameters that you can access after your resource is created.
 |`locations.location_type`|String|The location type.|
 |`locations.market`|String|The market location.|
 |`locations.market_geography`|String|The location geography.|
-|`locations.mzr`|Boolean|Is location a multi-zone region(MZR).|
+|`locations.mzr`|Boolean|Is location a multi-zone region.|
 |`locations.vpc_region`|String| The location VPC region.|
 
 ## ibm_dl_offering_speeds

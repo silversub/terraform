@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-07"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -86,7 +86,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `albs.enable` | Boolean | Indicates if the ALB is enabled (**true**) or disabled (**false**) in the cluster. |
 | `albs.state` | String | The state of the ALB. Supported values are `enabled` or `disabled`. | 
 | `albs.num_of_instances`| Integer | The number of ALB replicas. | 
-| `albs.alb_ip` | String | BYOIP VIP to use for application load balancer (ALB). Currently supported only for private application load balancer (ALB).| 
+| `albs.alb_ip` | String | BYOIP VIP to use for application load balancer. Currently supported only for private application load balancer.| 
 | `albs.resize` | Boolean |  Indicate whether resizing should be done. | 
 | `albs.disable_deployment` | Boolean |  Indicate whether to disable deployment only on disable application load balancer (ALB).|
 | `bounded_services` | List of strings | A list of {{site.data.keyword.cloud_notm}} services that are bounded to the cluster. |
@@ -453,7 +453,7 @@ Retrieve information about a VPC cluster in {{site.data.keyword.containerlong_no
 ### Sample Terraform code
 {: #container-vpc-cluster-sample}
 
-The following example shows how to retrieve informaion about a VPC cluster that is named `mycluster`. 
+The following example shows how to retrieve information about a VPC cluster that is named `mycluster`. 
 
 ```
 data "ibm_container_vpc_cluster" "cluster" {

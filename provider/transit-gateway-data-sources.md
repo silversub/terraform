@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-19"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform transit gateway, terraform  transit gateways,  terraform transit gateway location, transit gateway locations, transit gateway, transit location
 
@@ -95,9 +95,9 @@ Review the output parameters that you can access after you retrieved your data s
 | `status` | String | The gateway status.|
 | `resource_group` | String | The resource group identifier.|
 | `connections.name` | String | The user-defined name for the transit gateway connection.|
-| `connections.network_type` | String | The type of network connected with the connection. Possible values are `classic` or `vpc`. |
+| `connections.network_type` | String | The type of network connected with the connection. Possible values are `classic` or `VPC`. |
 | `connections.network_id` | String | The ID of the network being connected with the connection. |
-| `connections.id` | String | The unique identifier for the transit gateway connection to network either `vpc` or `classic`).|
+| `connections.id` | String | The unique identifier for the transit gateway connection to network either `VPC` or `classic`).|
 | `connections.created_at` | String | The date and time the connection is created.|
 | `connections.updated_at` | String | The date and time the connection is last updated.|
 | `connections.status` | String | The current configuration state of the connection. Possible values are `attached`, `failed,` `pending`, `deleting`.|
@@ -110,7 +110,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_tg_gateways`
 {: #tg-gateways-ds}
  
-Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastructure transit gatewasy as a read only data source.
+Imports the information of an existing {{site.data.keyword.cloud_notm}} infrastructure transit gateway as a read only data source.
 {: shortdesc}
 
 ### Sample Terraform code

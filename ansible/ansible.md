@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+last updated: "2020-09-07"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 

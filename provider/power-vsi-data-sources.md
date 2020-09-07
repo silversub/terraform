@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-26"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -133,10 +133,10 @@ Review the output parameters that you can access after you retrieved your data s
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 | `image_info` | List of images | A list of all supported images. | 
-| `image_info.href` | String | The href of this image. | 
-| `image_info.id` | String | The unique identifier for the image. | 
-| `image_info.name`| String | The name of the image. |
-| `image_info.state` | String | The state of the image. |
+| `image_info.href` | String | The hyper link of an image. | 
+| `image_info.id` | String | The unique identifier of an image. | 
+| `image_info.name`| String | The name of an image. |
+| `image_info.state` | String | The state of an image. |
 
 
 
@@ -194,10 +194,10 @@ Review the output parameters that you can access after you retrieved your data s
 | `state` | String | The state of the instance.|
 | `memory`|String|The amount of memory that is allocated to the instance.|
 | `min_processors`|Integer|The minimum number of processors that must be allocated to the instance.| 
-| `max_processors`|Integer|The maximum number of processors that can be allocated to the instance without shutting down or rebooting the LPAR.|
+| `max_processors`|Integer|The maximum number of processors that can be allocated to the instance without shutting down or rebooting the `LPAR`.|
 | `max_virtual_cores` | Integer | The maximum value that you increase without a reboot. |
 | `min_memory`|Integer|The minimum amount of memory that must be allocated to the instance.|
-| `max_memory`|Integer|The maximum amount of memory that can be allocated to the instance without shutting down or rebooting the LPAR.|
+| `max_memory`|Integer|The maximum amount of memory that can be allocated to the instance without shutting down or rebooting the `LPAR`.|
 | `min_virtual_cores` | Integer |The minimum cores assigned to an instance.|
 |`processors`|String|The number of processors that are allocated to the instance.|
 |`proctype`|String|The procurement type of the instance. Supported values are `shared` and `dedicated`. |
@@ -546,5 +546,5 @@ Review the output parameters that you can access after you retrieved your data s
 | `instance_volumes.state` | String | The state of the volume. |
 | `instance_volumes.type` | String | The disk type that is used for this volume. |
 |`instance_volumes.bootable`|Boolean|Indicates if the volume is bootable (**true**) or not (**false**). |
-|`instance_volumes.href`|String|The href of the volume. |
+|`instance_volumes.href`|String|The hyper link of the volume. |
 

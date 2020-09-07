@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -238,7 +238,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the autoscaling policy.| No |
 |`scale_type`|String|Required|The scale type for the autoscaling policy. Accepted values are `ABSOLUTE`, `RELATIVE`, and `PERCENT`.| No |
 |`scale_amount`|Integer|Required|A count of the scaling actions to perform upon any trigger hit.| No |
-|`cooldown`|Integer|Optional|The duration, expressed in seconds, that the policy waits after the last action date before performing another scaling action. If you do not provide a value, the `scale_group` cooldown applies.| No |
+|`cooldown`|Integer|Optional|The duration, expressed in seconds, that the policy waits after the last action date before performing another scaling action. If you do not provide a value, the `scale_group` cool down applies.| No |
 |`scale_group_id`|Integer|Required| The ID of the autoscaling group that is associated with the policy.| Yes |
 |`triggers`|Array of strings|Optional| The triggers to check for this group.| No |
 |`tags`|Array of strings|Optional|The tags that you want to add to the autoscaling policy. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
@@ -601,7 +601,7 @@ The following arguments are supported:
 |----|-----------| ----|-----------| -----------| 
 |`name`| String | Required | The descriptive name used to identify a placement group.| No |
 |`datacenter`| String | Required | The datacenter in which you want to provision the placement group.| Yes |
-|`pod`| String | Required |  The data center pod where you want to create the placement group. To find the pod, run `ibmcloud sl placement-group create-options` and select one of the **Backend Router ID** for the data center where you want to create the placement group. | Yes |
+|`pod`| String | Required |  The data center pod where you want to create the placement group. To find the pod, run `ibmcloud sl placement-group create-options` and select one of the **Back-end Router ID** for the data center where you want to create the placement group. | Yes |
 |`rule`| String | Optional | The rule of the placement group. Default `SPREAD`. | Yes |
 |`tags`| Array of Strings | Optional | Tags associated with the placement group.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -913,7 +913,7 @@ The following attributes are exported:
 
 ### Additional Notes
 
-In SoftLayer, there is a delay when user logins are deleted from SoftLayer backend systems. SoftLayer acknowledges delete requests and immediately updates the user status to `CANCEL_PENDING`. The actual deletion from the SoftLayer system processes at an unspecified time in the future.This delay may be significant, especially during your project's testing phase. You may receive an error if you create a user login, then delete it, and then create it again. This results in an error because the SoftLayer backend has not completely processed the previous delete operation. If you want create, delete, and re-create a user login, you must specify a new, globally-unique username in your subsequent requests.
+In SoftLayer, there is a delay when user logins are deleted from SoftLayer back-end systems. SoftLayer acknowledges delete requests and immediately updates the user status to `CANCEL_PENDING`. The actual deletion from the SoftLayer system processes at an unspecified time in the future.This delay may be significant, especially during your project's testing phase. You may receive an error if you create a user login, then delete it, and then create it again. This results in an error because the SoftLayer back-end has not completely processed the previous delete operation. If you want create, delete, and re-create a user login, you must specify a new, globally-unique username in your subsequent requests.
 
 
 
@@ -1109,7 +1109,7 @@ Review the input parameters that you can specify for your resource.
 |`public_security_group_ids`|Array of integers|Optional|The ids of security groups to apply on the public interface.This attribute can't be updated. You can can use this parameter to add a security groups to your virtual server instance when you create it. If you want to add or remove security groups later, you must use the `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource, you might experience errors. So use one of these consistently for a particular virtual server instance.| Yes |
 |`public_subnet`|String|Optional| The public subnet for the public network interface of the instance. Accepted values are primary public networks. You can find accepted values in the [subnets doc](https://cloud.ibm.com/classic/network/subnets).| Yes |
 |`private_subnet`|String|Optional| The private subnet for the private network interface of the instance. Accepted values are primary private networks. You can find accepted values in the [subnets doc](https://cloud.ibm.com/classic/network/subnets).| Yes |
-|`disks`|Array of integers|Optional| The numeric disk sizes (in GBs) for the instance's block device and disk image settings. The default value is the smallest available capacity for the primary disk. If you specify an image template, the template provides the disk capacity. If you specify the `flavorKeyName`, first disk is provided by the flavor.| No |
+|`disks`|Array of integers|Optional| The numeric disk sizes in GBs for the instance's block device and disk image settings. The default value is the smallest available capacity for the primary disk. If you specify an image template, the template provides the disk capacity. If you specify the `flavorKeyName`, first disk is provided by the flavor.| No |
 |`user_metadata`|String|Optional|Arbitrary data to be made available to the computing instance.| Yes |
 |`notes`|String|Optional| Descriptive text of up to 1000 characters about the VM instance.| No |
 |`ssh_key_ids`|Array of integers|Optional| The SSH key IDs to install on the computing instance when the instance provisions.      **NOTE:** If you don't know the ID(s) for your SSH keys, you can reference your SSH keys by their labels.| No |
@@ -1121,9 +1121,9 @@ Review the input parameters that you can specify for your resource.
 |`ipv6_static_enabled`|Boolean|Optional|The public static IPv6 address block of `/64`. The default value is `false`.| No |
 |`secondary_ip_count`|Integer|Optional| Specifies secondary public IPv4 addresses. Accepted values are `4` and `8`.|  Yes |
 |`wait_time_minutes`|Integer|Optional| The duration, expressed in minutes, to wait for the VM instance to become available before declaring it as created. It is also the same amount of time waited for no active transactions before proceeding with an update or deletion. The default value is `90`.| No |
-|`public_bandwidth_limited`|Integer|Optional| Allowed public network traffic(GB) per month. It can be greater than 0 when the server is a monthly based server. Defaults to the smallest available capacity for the public bandwidth are used.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_unlimited`.| Yes |
-|`public_bandwidth_unlimited`|Boolean|Optional|  Allowed unlimited public network traffic(GB) per month for a monthly based server. The `network_speed` should be 100 Mbps. Default value: `false`.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_limited`.| Yes |
-|`evault`|Integer|Optional|Allowed evault(GB) per month for monthly based servers.| Yes |
+|`public_bandwidth_limited`|Integer|Optional| Allowed public network traffic in GB per month. It can be greater than 0 when the server is a monthly based server. Defaults to the smallest available capacity for the public bandwidth are used.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_unlimited`.| Yes |
+|`public_bandwidth_unlimited`|Boolean|Optional|  Allowed unlimited public network traffic in GB per month for a monthly based server. The `network_speed` should be 100 Mbps. Default value: `false`.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_limited`.| Yes |
+|`evault`|Integer|Optional|Allowed `Evault` in GB per month for monthly based servers.| Yes |
 |`datacenter_choice`|List of objects|Optional|A nested block to describe datacenter choice options to retry on different data centers and VLANs. Nested `datacenter_choice` blocks must have the following structure:    | No |
 |`datacenter_choice.datacenter`|String|Required|The datacenter in which you want to provision the instance.    | No |
 |`datacenter_choice.public_vlan_id`|String|Optional|The public VLAN ID for the public network interface of the instance. Accepted values are in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.    | No |
@@ -1196,9 +1196,6 @@ The following attributes are exported:
 |`serial`|A unique number denoting the latest revision of the domain.|
 |`update_date`|The date that the domain record was last updated.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
-
-
-
 
 ## `ibm_dns_domain_registration_nameservers`
 {: #dns-register}
@@ -1310,7 +1307,7 @@ The following attributes are exported:
 ## `ibm_dns_reverse_record`
 {: #dns-rev-rec}
 
-Provides a single DNS reverse record managed on IBM Cloud Classic Infrastructure (SoftLayer). Record contain general information about the reverse record, such as the hostname, ip address and time to leave(ttl).
+Provides a single DNS reverse record managed on IBM Cloud Classic Infrastructure (SoftLayer). Record contain general information about the reverse record, such as the hostname, ip address and time to leave.
 
 The IBM Cloud Classic Infrastructure (SoftLayer) object  [SoftLayer_Dns_Domain_ResourceRecord](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord) is used for most create-retrieve-update-delete (`CRUD`) operations.
 
@@ -1535,7 +1532,7 @@ The following arguments are supported:
 |`expire`| Integer | Optional | The duration, expressed in seconds, that a secondary name server (or servers) holds a zone before it is no longer considered authoritative.| No |
 |`host`| String | Required |The host defined by a resource record. The `@` symbol denotes a wildcard.| No |
 |`minimum_ttl`|Integer| Optional | The duration, expressed in seconds, that a domain's resource records are valid. This is also known as a minimum time to live (TTL), and can be overridden by an individual resource record's TTL.|
-|`mx_priority`| Integer | Optional | The priority of the mail exchanger that delivers mail for a domain. This is useful in cases where a domain has more than one mail exchanger. A lower number denotes a higher priority, and mail will attempt to deliver through the highest priority exchanger before moving to lower priority exchangers. The default value is `0`.| No |
+|`mx_priority`| Integer | Optional | The priority of the mail exchanger that delivers mail for a domain. This is useful in cases where a domain has more than one mail exchanger. A lower number denotes a higher priority, and mail will attempt to deliver through the highest priority exchanger before moving to lower priority exchanger. The default value is `0`.| No |
 |`refresh`|Integer|Optional| The duration, expressed in seconds, that a secondary name server waits to check the domain's primary name server for a new copy of a DNS zone. If a zone file has changed, the secondary DNS server updates its copy of the zone to match the primary DNS server's zone.| No |
 |`responsible_person`| String | Required | The email address of the person responsible for a domain. Replace the `@` symbol in the address with a `.`. For example: root@example.org would be expressed as `root.example.org.`.| No |
 |`retry`| Integer | Optional | The duration, expressed in seconds, that the domain's primary name server (or servers) waits before attempting to refresh the domain's zone with the secondary name server. A failed attempt to refresh by a secondary name server triggers the retry action.| No |
@@ -1816,8 +1813,8 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-----------|---------------------|
 |`datacenter`|String|Required|The data center in which the IPSec VPN resides.|
-|`phase_one`|Map|Optional|The key-value parameters for phaseOne negotiation.|
-|`phase_two`|Map|Optional|The key-value parameters for phaseTwo negotiation.|
+|`phase_one`|Map|Optional|The key-value parameters for phase One negotiation.|
+|`phase_two`|Map|Optional|The key-value parameters for phase Two negotiation.|
 |`address_translation`|Map|Optional|The key-value parameters for creating an address translation.|
 |`Preshared_Key`|String|Optional|A key used so that peers authenticate each other. This key is hashed by using the phase one encryption and phase one authentication.|
 |`Customer_Peer_IP`|String|Optional|The remote end of a network tunnel. This end of the network tunnel resides on an outside network and will be sending and receiving the IPSec packets.
@@ -1870,7 +1867,7 @@ The following arguments are supported:
 
 |Name| Data type | Required/ Optional | Description| Forces new resource |
 |----|-----------| ------ | ----- | ----------|
-|`connections`|Integer | Required |The number of connections for the local load balancer. Only incremental upgrade is supported . For downgrade, please open the softlayer support ticket.| No |
+|`connections`|Integer | Required |The number of connections for the local load balancer. Only incremental upgrade is supported . For downgrade, please open the SoftLayer support ticket.| No |
 |`datacenter`| String | Required | The data center for the local load balancer.| Yes |
 |`ha_enabled`|Boolean|Required|Specifies whether the local load balancer must be HA-enabled.| Yes |
 |`security_certificate_id`| Integer | Optional | The ID of the security certificate associated with the local load balancer.| Yes |
@@ -1956,14 +1953,14 @@ The following arguments are supported:
 |`type`| String | Optional | Specify whether this load balancer is a public or internal facing load balancer. Accepted values are `PUBLIC` or `PRIVATE`. The default is 'PUBLIC'.| Yes |
 |`subnets`| Array | Required | The subnet where the load balancer will be provisioned. Only one subnet is supported.| Yes |
 |`protocols`| Array | Optional | A nested block describing the protocols assigned to load balancer.   | Yes |
-|`protocols.frontend_protocol`| String | Required | The frontend protocol. Accepted values are 'TCP', 'HTTP', and 'HTTPS'.  |  No |
-|`protocols.frontend_port`| Integer | Required |The frontend protocol port number. The port number must be in the range of 1-65535.  | No |
-|`protocols.backend_protocol`| String | Required | The backend protocol. Accepted values are 'TCP', 'HTTP', and 'HTTPS'.  | No |
-|`protocols.backend_port`| Integer | Required |The backend protocol port number. The port number must be in the range of 1-65535.  | No |
+|`protocols.frontend_protocol`| String | Required | The front-end protocol. Accepted values are 'TCP', 'HTTP', and 'HTTPS'.  |  No |
+|`protocols.frontend_port`| Integer | Required |The front-end protocol port number. The port number must be in the range of 1-65535.  | No |
+|`protocols.backend_protocol`| String | Required | The back-end protocol. Accepted values are 'TCP', 'HTTP', and 'HTTPS'.  | No |
+|`protocols.backend_port`| Integer | Required |The back-end protocol port number. The port number must be in the range of 1-65535.  | No |
 |`protocols.load_balancing_method`| String | Optional | The load balancing algorithm. Accepted values are 'round_robin', 'weighted_round_robin', and 'least_connection'. The default is 'round_robin'.  | No |
 |`protocols.session_stickiness`| String | Optional | The SOURCE_IP for session stickiness.  | No |
 |`protocols.max_conn`| Integer | Optional | The maximum number of connections the listener can accept. The number must be 1-64000.  | No |
-|`protocols.tls_certificate_id`| Integer | Optional | The ID of the SSL/TLS certificate being used for a protocol. This ID should be specified when `frontend protocol` has a value of `HTTPS`.| No |
+|`protocols.tls_certificate_id`| Integer | Optional | The ID of the SSL/TLS certificate being used for a protocol. This ID should be specified when `front-end protocol` has a value of `HTTPS`.| No |
 |`ssl_ciphers`| list | Optional |The comma separated list of SSL Ciphers. You can find list of supported ciphers [SSL_offload](/docs/loadbalancer-service?topic=loadbalancer-service-ssl-offload-with-ibm-cloud-load-balancer).| No |
 |`use_system_public_ip_pool`| Boolean | Optional | Applicable for public load balancer only. It specifies whether the public IP addresses are allocated from system public IP pool or public subnet from the account ordering the load balancer. Default Value is `true`.| No |
 |`wait_time_minutes`| Integer | Required | The duration, expressed in minutes, to wait for the LBaaS instance to become available before declaring it as created. It is also the same amount of time waited for deletion to finish. The default value is `90`.| No |
@@ -2049,8 +2046,8 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`monitor_id`| String | Required | Health Monitor unique identifier. The monitor id can be imported from either the `ibm_lbaas` resource or datasource. Example: `ibm_lbaas.lbaas.health_monitors.X.monitor_id` or `data.ibm_lbaas.lbaas.health_monitors.X.monitor_id`| Yes |
 |`lbaas_id`| String | Required | LBaaS unique identifier| Yes |
-|`protocol`| String | Required | Backends protocol| No |
-|`port`| Integer | Required | Backends port| No |
+|`protocol`| String | Required | The back-end protocol| No |
+|`port`| Integer | Required | The back-end port| No |
 |`interval`| Integer | Optional | Interval in seconds to perform | No |
 |`max_retries`|Integer | Optional | Maximum retries| No |
 |`timeout`| Integer | Optional | Health check methods timeout in | No |
@@ -2084,7 +2081,7 @@ terraform import ibm_lbaas_health_monitor.example 988-454f-45vf-454542/d343f-f44
 ## `ibm_lbaas_server_instance_attachment`
 {: #instance-attachment}
 
-Provides a resource for attaching the server instance to IBM cloud load balancer. This allows to attach, detach and update server instances as loadbalancer members to IBM cloud load balancer. A `depends_on` statement is required for the associated load balancer to ensure that attach and detach only occur after and before load balancer creation and deletion. If you do not specify the `depends_on` parameter, intermittent attach failures will occur on creation and load balancer deletion will fail. Typically when apply or destroy is rerun the operation will be successful. 
+Provides a resource for attaching the server instance to IBM cloud load balancer. This allows to attach, detach and update server instances as LoadBalancer members to IBM cloud load balancer. A `depends_on` statement is required for the associated load balancer to ensure that attach and detach only occur after and before load balancer creation and deletion. If you do not specify the `depends_on` parameter, intermittent attach failures will occur on creation and load balancer deletion will fail. Typically when apply or destroy is rerun the operation will be successful. 
 
 
  
@@ -2194,7 +2191,7 @@ The following arguments are supported:
 |`enabled`| Integer | Required | Specifies whether you want to enable the load balancer service. The default value is `false`.| No |
 |`health_check_type`| String | Required | The health check type for the load balancer service.| No |
 |`weight`| Integer | Required | The weight for the load balancer service.| No |
-|`tags`| Arrya of Strings | Optional | Tags associated with the local load balancer service instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
+|`tags`| Array of Strings | Optional | Tags associated with the local load balancer service instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 
@@ -2257,7 +2254,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancers. This allows VPX load balancers to be created, updated, and deleted.  
 
-**NOTE**: IBM VPX load balancers consist of Citrix NetScaler VPX devices (virtual), which are currently priced on a per-month basis. Use caution when creating the resource because the cost for an entire month is incurred immediately upon creation. For more information about pricing, see the [network appliance docs](https://www.ibm.com/cloud/network-appliances). Under the Citrix log, click **See more pricing** for a current price matrix.
+**NOTE**: IBM VPX load balancers consist of Citrix NetscalerVPX devices (virtual), which are currently priced on a per-month basis. Use caution when creating the resource because the cost for an entire month is incurred immediately upon creation. For more information about pricing, see the [network appliance docs](https://www.ibm.com/cloud/network-appliances). Under the Citrix log, click **See more pricing** for a current price matrix.
 
 You can also use the following REST URL to get a listing of VPX choices along with version numbers, speed, and plan type:
 
@@ -2322,18 +2319,18 @@ The following attributes are exported:
 ## `ibm_lb_vpx_ha`
 {: #lb-vpx-ha}
 
-Configure a high availability (HA) pair with two NetScaler VPX devices. The two NetScaler VPXs must be version 10.5 and located in the same subnet. A primary NetScaler VPX provides load balancing services in active mode, and a secondary NetScaler VPX provides load balancing services when the primary NetScaler VPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748){: external} and the [KnowledgeLayer NetScaler docs](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
+Configure a high availability (HA) pair with two NetscalerVPX devices. The two NetscalerVPXs must be version 10.5 and located in the same subnet. A primary NetscalerVPX provides load balancing services in active mode, and a secondary NetscalerVPX provides load balancing services when the primary NetscalerVPX fails. For additional details, refer to the  [Citrix support docs](https://support.citrix.com/article/CTX116748){: external} and the [Knowledge layer Netscaler docs](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
 
-**NOTE**: This resource only supports NetScaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
+**NOTE**: This resource only supports Netscaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
-The two NetScaler VPXs use the same password in HA mode. When you create this resource, Terraform changes the password of the secondary NetScaler VPX to the password of the primary NetScaler VPX. When you destroy this resource, Terraform restores the original password of the secondary NetScaler VPX.
+The two Netscaler VPXs use the same password in HA mode. When you create this resource, Terraform changes the password of the secondary Netscaler VPX to the password of the primary Netscaler VPX. When you destroy this resource, Terraform restores the original password of the secondary Netscaler VPX.
 
 ### Sample Terraform code
 {: #lb-vpx-ha-sample}
 
 ```
 
-## Create a primary NetScaler VPX
+## Create a primary Netscaler VPX
 resource "ibm_lb_vpx" "test_pri" {
     datacenter = "lon02"
     speed = 10
@@ -2343,7 +2340,7 @@ resource "ibm_lb_vpx" "test_pri" {
 }
 
 
-## Create a secondary NetScaler VPX in the same subnets
+## Create a secondary Netscaler VPX in the same subnets
 resource "ibm_lb_vpx" "test_sec" {
     datacenter = "lon02"
     speed = 10
@@ -2356,7 +2353,7 @@ resource "ibm_lb_vpx" "test_sec" {
     private_subnet = ibm_lb_vpx.test_pri.private_subnet
 
 
-## Configure high availability with the primary and secondary NetScaler VPXs
+## Configure high availability with the primary and secondary Netscaler VPXs
 resource "ibm_lb_vpx_ha" "test_ha" {
     primary_id = ibm_lb_vpx.test_pri.id
     secondary_id = ibm_lb_vpx.test_sec.id
@@ -2371,10 +2368,10 @@ The following arguments are supported:
 
 |Name| Data type | Required/ Optional | Description| Forces new resource |
 |----|-----------| ------ | ----- | ----------|
-|`primary_id`| String | Required | The ID of the primary NetScaler VPX.| Yes |
-|`secondary_id`| String | Required | The ID of the secondary NetScaler VPX.| Yes |
-|`stay_secondary`|Boolean | Optional | Specifies whether the secondary NetScaler VPX will  take over the service. Set this argument to `true` to prevent the secondary NetScaler VPX from taking over the service even if the primary NetScaler VPX fails. For additional details, see the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support docs](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
-|`tags`|Array of strings | Optional | Tags associated with the high availability NetScale VPX pair instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
+|`primary_id`| String | Required | The ID of the primary Netscaler VPX.| Yes |
+|`secondary_id`| String | Required | The ID of the secondary Netscaler VPX.| Yes |
+|`stay_secondary`|Boolean | Optional | Specifies whether the secondary Netscaler VPX will  take over the service. Set this argument to `true` to prevent the secondary NetScaler VPX from taking over the service even if the primary NetScaler VPX fails. For additional details, see the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support docs](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
+|`tags`|Array of strings | Optional | Tags associated with the high availability Netscaler VPX pair instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2384,7 +2381,7 @@ The following attributes are exported:
 
 |Name|Description|
 |----|-----------|
-|`id`|The unique identifier of the high availability NetScale VPX pair.|
+|`id`|The unique identifier of the high availability Netscaler VPX pair.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -2395,7 +2392,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancer services. This allows VPX load balancer services to be created, updated, and deleted. For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service).  
 
-**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
+**NOTE**: If you use Netscaler VPX 10.5, Terraform uses Netscaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 ### Sample Terraform code
 {: #vpx-svc-sample}
@@ -2424,12 +2421,12 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`name`| String | Required |The ID of the VPX load balancer service.| Yes |
 |`vip_id`| String | Required |The ID of the VPX load balancer virtual IP address to which the service is assigned.| Yes |
-|`destination_ip_address`| String | Required | The IP address of the server to which traffic directs. If you use NetScaler VPX 10.1, you must indicate a public IP address in an IBM Cloud Classic Infrastructure (SoftLayer) account. If you use NetScaler VPX 10.5, you can use any IP address.| Yes |
+|`destination_ip_address`| String | Required | The IP address of the server to which traffic directs. If you use Netscaler VPX 10.1, you must indicate a public IP address in an IBM Cloud Classic Infrastructure (SoftLayer) account. If you use Netscaler VPX 10.5, you can use any IP address.| Yes |
 |`destination_port`| Integer | Required |The destination port of the server to which traffic directs.| No |
-|`weight`| Integer | Required | The percentage of the total connection limit allocated to the load balancer between all your services. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.       **NOTE**: If you use NetScaler VPX 10.5, the weight value is ignored.| No |
-|`connection_limit`| Integer | Required |The connection limit for this service. Acceptable values are `0`-`4294967294`. See the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/11/reference/netscaler-command-reference/basic/service.html) for details.| No |
+|`weight`| Integer | Required | The percentage of the total connection limit allocated to the load balancer between all your services. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.       **NOTE**: If you use Netscaler VPX 10.5, the weight value is ignored.| No |
+|`connection_limit`| Integer | Required |The connection limit for this service. Acceptable values are `0`-`4294967294`. See the [Citrix Netscaler docs](https://docs.citrix.com/en-us/netscaler/11/reference/netscaler-command-reference/basic/service.html) for details.| No |
 |`health_check`| String | Required |The health check type. See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.| No |
-|`usip`| String | Optional | Whether the service reports the source IP of the client to the service being load balanced. Acceptable values are `YES` or `NO`. The default value is `NO`. See the [Citrix NetScaler docs](https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/11.0/configuration/basic/service/service) for more details.       **NOTE**: This argument is only available for VPX 10.5.| No |
+|`usip`| String | Optional | Whether the service reports the source IP of the client to the service being load balanced. Acceptable values are `YES` or `NO`. The default value is `NO`. See the [Citrix Netscaler docs](https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/11.0/configuration/basic/service/service) for more details.       **NOTE**: This argument is only available for VPX 10.5.| No |
 |`tags`| Array of strings | Optional | Tags associated with the VPX load balancer service instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2451,12 +2448,12 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancer virtual IP addresses. This allows VPX load balancer virtual IP addresses to be created, updated, and deleted.  
 
-**NOTE**: If you use NetScaler VPX 10.5, Terraform uses NetScaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
+**NOTE**: If you use Netscaler VPX 10.5, Terraform uses Netscaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
 ### Sample Terraform code
 {: #lb-vpx-vip-sample}
 
-The following example configuration supports NetScaler VPX 10.1 and 10.5:
+The following example configuration supports Netscaler VPX 10.1 and 10.5:
 
 ```
 resource "ibm_lb_vpx_vip" "testacc_vip" {
@@ -2469,7 +2466,7 @@ resource "ibm_lb_vpx_vip" "testacc_vip" {
 }
 ```
 
-The following example configuration supports only NetScaler VPX 10.5. Additional options for the `load_balancing_method` and `persistence` arguments are shown. A private IP address can be used for the `virtual_ip_address` argument.
+The following example configuration supports only Netscaler VPX 10.5. Additional options for the `load_balancing_method` and `persistence` arguments are shown. A private IP address can be used for the `virtual_ip_address` argument.
 
 ```
 resource "ibm_lb_vpx_vip" "testacc_vip" {
@@ -2487,7 +2484,7 @@ NetScaler VPX 10.5 also supports SSL offload. If you set the `type` argument to 
 
 ```
 
-## Create a NetScaler VPX 10.5
+## Create a Netscaler VPX 10.5
 resource "ibm_lb_vpx" "test" {
     datacenter = "lon02"
     speed = 10
@@ -2532,12 +2529,12 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`name`| String | Required |The ID of the VPX load balancer virtual IP address.| Yes |
 |`nad_controller_id`| Integer | Required | The ID of the VPX load balancer that the virtual IP address is assigned to.| Yes |
-|`load_balancing_method`| String | Required | See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use NetScaler VPX 10.5, see the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for additional methods that you can use.| No |
-|`persistence`| String | Optional |Applies to NetScaler VPX 10.5 only. See the available persistence types in the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-persistence-wrapper-con/ns-lb-persistence-about-con.html).  | No |
+|`load_balancing_method`| String | Required | See the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use Netscaler VPX 10.5, see the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for additional methods that you can use.| No |
+|`persistence`| String | Optional |Applies to Netscaler VPX 10.5 only. See the available persistence types in the [Citrix docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-persistence-wrapper-con/ns-lb-persistence-about-con.html).  | No |
 |`virtual_ip_address`| String | Required |The public IP address for the VPX load balancer virtual IP.| No |
 |`source_port`|Integer | Required | The source port for the VPX load balancer virtual IP address.| No |
 |`type`| String | Required | The connection type for the VPX load balancer virtual IP address. Accepted values are `HTTP`, `FTP`, `TCP`, `UDP`, `DNS`, and `SSL`. If you set the type to `SSL`, then `security_certificate_id` provides certification for SSL offload services.| Yes |
-|`security_certificate_id`| Integer | Optional | Applies to NetScaler VPX 10.5 only. The ID of a security certificate you want to use. This argument provides security certification for SSL offload services. For additional information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).| Yes |
+|`security_certificate_id`| Integer | Optional | Applies to Netscaler VPX 10.5 only. The ID of a security certificate you want to use. This argument provides security certification for SSL offload services. For additional information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).| Yes |
 |`tags`| Array of strings | Optional | Tags associated with the VPX load balancer virtual IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2559,7 +2556,7 @@ The following attributes are exported:
 
 Provides a resource for an IBM Cloud network gateway appliance. This resource allows a network gateway to be created, updated, and deleted.  
 
-A network gateway can be created in standalone mode and HA mode with both members, with either the same or different configurations.
+A network gateway can be created in stand-alone mode and HA mode with both members, with either the same or different configurations.
 
 For additional details, see the [IBM Cloud Classic Infrastructure (SoftLayer) API docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Gateway).
 
@@ -2568,7 +2565,7 @@ For more information about getting started, see the [IBM Virtual Router Applianc
 ### Sample Terraform code
 {: #network-gateway-sample}
 
-#### Standalone configuration
+#### Standa-lone configuration
 
 ```
 resource "ibm_network_gateway" "gateway" {
@@ -2854,7 +2851,7 @@ The following arguments are supported:
 
 |Name| Data type | Required/ Optional | Description |
 |----|-----------| ------ | ----- |
-|`routes_to`| String | Required | The destination IP address that the public IP routes traffic through. The destination IP address can be a public IP address of IBM resources in the same account, such as a public IP address of a VM or public virtual IP addresses of NetScaler VPXs.|
+|`routes_to`| String | Required | The destination IP address that the public IP routes traffic through. The destination IP address can be a public IP address of IBM resources in the same account, such as a public IP address of a VM or public virtual IP addresses of Netscaler VPXs.|
 |`notes`| String | Optional | Descriptive text to associate with the public IP instance.|
 |`tags`| Array of strings | Optional | Tags associated with the public IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -2953,7 +2950,7 @@ The following attributes are exported:
 The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) for certain actions:
 
 - **create**: (Defaults to 10 mins) Used when creating the VLAN.
-- **delete**: (Defaults to 10 mins) Used when deleting the VLAN. There might be some resources(like Virtual Guests) on the VLAN. The VLAN delete request is issued once there are no Virtual Guests on the VLAN.
+- **delete**: (Defaults to 10 mins) Used when deleting the VLAN. There might be some resources (like Virtual Guests) on the VLAN. The VLAN delete request is issued once there are no Virtual Guests on the VLAN.
 
 
 ## `ibm_network_vlan_spanning`
@@ -3106,7 +3103,7 @@ The following arguments are supported:
 |Name| Data type | Required/ Optional | Description | Forces new resource |
 |----|-----------| ------ | ----- | ----------|
 |`direction`| String | Required | The direction of traffic. Accepted values: `ingress` or `egress`.| No |
-|`ether_type`| String | Optional | The IP version. Accepted values  (case sensitive): `IPv4` or `IPv6`. Default value: 'IPv4'.| No |
+|`ether_type`| String | Optional | The IP version. Accepted values  (case sensitive): `IPv4` or `IPv6`. Default value: `IPv4`.| No |
 |`port_range_min`| Integer | Optional | The start of the port range for allowed traffic.| No |
 |`port_range_max`| Integer | Optional | The end of the port range for allowed traffic.| No |
 |`protocol`| String | Optional |  The IP protocol type. Accepted values (case sensitive): `icmp`,`tcp`, or `udp`.| No |
@@ -3125,14 +3122,12 @@ The following attributes are exported:
 |`id`|The unique identifier of the security group rule.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
-
-
 ## `ibm_storage_block`
 {: #storage-block}
 
 Provides a block storage resource. This allows iSCSI-based Endurance and Performance block storage to be created, updated, and deleted. Fore more information about Block storage, see [Learn about Block Storage](/docs/BlockStorage?topic=BlockStorage-About). 
 
-Block storage can be accessed and mounted through a Multipath I/O (MPIO) Internet Small Computer System Interface (iSCSI) connection.
+Block storage can be accessed and mounted through a Multipath Input Output Internet Small Computer System Interface (iSCSI) connection.
 
 ### Sample Terraform code
 {: #storage-block-sample}
@@ -3213,12 +3208,12 @@ The following attributes are exported:
 ## `ibm_storage_evault`
 {: #storage-evault}
 
-Provides an evault storage resource. This allows [IBM Cloud Backup](/docs/Backup?topic=Backup-getting-started) storage to be created, updated, and deleted.
+Provides an Evault storage resource. This allows [IBM Cloud Backup](/docs/Backup?topic=Backup-getting-started) storage to be created, updated, and deleted.
 
 ### Sample Terraform code
 {: #storage-evault-sample}
 
-In the following example, you can create 20G of evault storage 
+In the following example, you can create 20G of Evault storage 
 
 ```
 resource "ibm_storage_evault" "test" {
@@ -3235,11 +3230,11 @@ The following arguments are supported:
 
 |Name| Data type | Required/ Optional | Description | Forces new resource |
 |----|-----------| ------ | ----- | ----------|
-|`datacenter`| String | Required |The data center where you want to provision the evault storage instance.| Yes |
+|`datacenter`| String | Required |The data center where you want to provision the Evault storage instance.| Yes |
 |`capacity`| Integer | Required | The amount of storage capacity you want to allocate, specified in gigabytes.| No |
 |`virtual_instance_id`| Integer | Optional | The id of the virtual instance.     **NOTE**: Conflicts with `hardware_instance_id`.| Yes |
 |`hardware_instance_id`| Integer | Optional | The id of the hardware instance.     **NOTE**: Conflicts with `virtual_instance_id`.| Yes |
-|`tags`| Array of strings | Optional | Tags associated with the storage evault instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
+|`tags`| Array of strings | Optional | Tags associated with the storage Evault instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3252,7 +3247,7 @@ The following attributes are exported:
 |`id`|The unique identifier of the evault.|
 |`username`|The username of the evault.|
 |`password`|The password of the evault.|
-|`service_resource_name`|The name of a evault storage network resource.|
+|`service_resource_name`|The name of a Evault storage network resource.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -3388,7 +3383,7 @@ public portable subnets, private portable subnets, and public static subnets wit
 The portable IPv4 subnet is created as a secondary subnet on a VLAN. IP addresses in the portable subnet can be assigned as secondary IP 
 addresses for IBM resources in the VLAN. Because each portable subnet has a default gateway IP address, network IP address, and broadcast IP address, the number of usable IP addresses is `capacity` - 3. A `capacity` of 4 means that the number of usable IP addresses is 1; a `capacity` of 8 means that the number of usable IP addresses is 5. For example, consider a portable subnet of `10.0.0.0/30` that has `10.0.0.1` as a default gateway IP address, `10.0.0.0` as a network IP address, and `10.0.0.3` as a broadcast IP address. Only `10.0.0.2` can be assigned to IBM resources as a secondary IP address. 
 
-The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
+The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, bare metal servers, and Netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
 
 Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](/docs/subnets?topic=subnets-about-subnets-and-ips).
 
@@ -3475,7 +3470,7 @@ The following arguments are supported:
 |`ip_version`| Integer | Optional | The IP version of the subnet. Accepted values are 4 and 6.| Yes |
 |`capacity`| Integer | Required | The size of the subnet. <ul><li>Accepted values for a public portable IPv4 subnet are 4, 8, 16, and 32. </li><li> Accepted values for a private portable IPv4 subnet are 4, 8, 16, 32, and 64. </li><li>Accepted values for a public static IPv4 subnet are 1, 2, 4, 8, 16, and 32. </li><li>Accepted value for a public portable IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided. </li><li>Accepted value for a public static IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided.</li></ul>| Yes |
 |`vlan_id`| Integer | Optional | The VLAN ID for portable subnet. You can configure both public and private VLAN ID. You can find accepted values in the [SoftLayer VLAN documentation](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want and noting the ID in the resulting URL. You can also refer to a VLAN by name using a data source.| Yes |
-|`endpoint_ip`| String | Optional | The target primary IP address for a static subnet. Only public IP addresses of virtual servers, bare metal servers, and netscaler VPXs can be configured as an `endpoint_ip`. The `static subnet` will be created on the VLAN where the `endpoint_ip` is located.| Yes |
+|`endpoint_ip`| String | Optional | The target primary IP address for a static subnet. Only public IP addresses of virtual servers, bare metal servers, and Netscaler VPXs can be configured as an `endpoint_ip`. The `static subnet` will be created on the VLAN where the `endpoint_ip` is located.| Yes |
 |`notes`| String | Optional | Descriptive text or comments about the subnet.| No |
 |`tags`| Array of Strings | Optional |  Tags associated with the subnet instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -3612,8 +3607,8 @@ The following arguments are supported:
 |`orderApproverEmailAddress`|(Required, string) The email of approver to approve SSL certificate request.|
 |`organization_information`| (Required, set) Organization information from issuer belongs to.	|
 |`organization_information.org_address`|(Required, string) Organization address of the issuer.		|
-|`organization_information.org_address.org_addressLine1`|(Required, string) The address of organization who is requesting for ssl certificate.		|
-|`organization_information.org_address.org_addressLine2`|(optional, string) The address of organization who is requesting for ssl certificate.		|
+|`organization_information.org_address.org_addressLine1`|(Required, string) The address of organization who is requesting for SSL certificate.		|
+|`organization_information.org_address.org_addressLine2`|(optional, string) The address of organization who is requesting for SSL certificate.		|
 |`organization_information.org_address.org_city`|(Required, string) The city of organization which is requesting for SSL certificate .		|
 |`organization_information.org_address.org_postalCode`|(Required, integer) The postal code for the city of organization.		|
 |`organization_information.org_address.org_state`|(Required, string) The two letter state code of organization who is requesting for SSL certificate. Allowed value for country which doesn't have states is `OT`.		|
