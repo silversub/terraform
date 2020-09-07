@@ -106,16 +106,16 @@ Complete the following steps to provision an HPCS, initialize the service and Ke
     - The {{site.data.keyword.cloud_notm}} Trusted Key Entry CLI plug-in to initialize your service instance.
     For more information, about initialize the service instance, refer [Initialize your service instance](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started#initialize-crypto).
     
- **Step 3: Manage your keys by using `ibm_kms_key`**
+**Step 3: Manage your keys by using `ibm_kms_key`**
  
-  ```
+```
   resource "ibm_kms_key" "key" {
   instance_id  = ibm_resource_instance.hpcs.guid
   key_name     = var.key_name
   standard_key = false
   force_delete = true
 }
-  ```
+```
 
 ### Input parameters
 {: #kms-key-input}
