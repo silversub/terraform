@@ -238,7 +238,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the autoscaling policy.| No |
 |`scale_type`|String|Required|The scale type for the autoscaling policy. Accepted values are `ABSOLUTE`, `RELATIVE`, and `PERCENT`.| No |
 |`scale_amount`|Integer|Required|A count of the scaling actions to perform upon any trigger hit.| No |
-|`cooldown`|Integer|Optional|The duration, expressed in seconds, that the policy waits after the last action date before performing another scaling action. If you do not provide a value, the `scale_group` cooldown applies.| No |
+|`cooldown`|Integer|Optional|The duration, expressed in seconds, that the policy waits after the last action date before performing another scaling action. If you do not provide a value, the `scale_group` cool down applies.| No |
 |`scale_group_id`|Integer|Required| The ID of the autoscaling group that is associated with the policy.| Yes |
 |`triggers`|Array of strings|Optional| The triggers to check for this group.| No |
 |`tags`|Array of strings|Optional|The tags that you want to add to the autoscaling policy. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
@@ -3230,11 +3230,11 @@ The following arguments are supported:
 
 |Name| Data type | Required/ Optional | Description | Forces new resource |
 |----|-----------| ------ | ----- | ----------|
-|`datacenter`| String | Required |The data center where you want to provision the evault storage instance.| Yes |
+|`datacenter`| String | Required |The data center where you want to provision the Evault storage instance.| Yes |
 |`capacity`| Integer | Required | The amount of storage capacity you want to allocate, specified in gigabytes.| No |
 |`virtual_instance_id`| Integer | Optional | The id of the virtual instance.     **NOTE**: Conflicts with `hardware_instance_id`.| Yes |
 |`hardware_instance_id`| Integer | Optional | The id of the hardware instance.     **NOTE**: Conflicts with `virtual_instance_id`.| Yes |
-|`tags`| Array of strings | Optional | Tags associated with the storage evault instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
+|`tags`| Array of strings | Optional | Tags associated with the storage Evault instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3247,7 +3247,7 @@ The following attributes are exported:
 |`id`|The unique identifier of the evault.|
 |`username`|The username of the evault.|
 |`password`|The password of the evault.|
-|`service_resource_name`|The name of a evault storage network resource.|
+|`service_resource_name`|The name of a Evault storage network resource.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
