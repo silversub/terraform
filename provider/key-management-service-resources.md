@@ -81,10 +81,10 @@ resource "ibm_cos_bucket" "flex-us-south" {
 ### Example usage to provision HPCS and Key Management
 {: #hpcs-key-sample}
 
-Complete the following steps to provision a HPCS, initialize the service and Key Management.
+Complete the following steps to provision an HPCS, initialize the service and Key Management:
 {: shortdesc}
 
-**Step 1: Provision the service by using `ibm_resource_instance`.**
+**Step 1: Provision the service by using `ibm_resource_instance`**
 
  ```
  resource "ibm_resource_instance" "hpcs"{
@@ -98,14 +98,14 @@ Complete the following steps to provision a HPCS, initialize the service and Key
 }
 
  ```
- **Step 2: Initialize your service instance manually.**
+ **Step 2: Initialize your service instance manually**
  
  1. To manage your keys, you need to initialize your service instance.
  2. The two options that are provided to initialize a service instance are: 
-    - the IBM HPCS management utilities by using master key parts stored on smart card.
-    - the {{site.data.keyword.cloud_notm}} Trusted Key Entry CLI plug-in to initialize your service instance.
+    - The IBM HPCS management utilities by using master key parts stored on smart card.
+    - The {{site.data.keyword.cloud_notm}} Trusted Key Entry CLI plug-in to initialize your service instance.
     For more information, about initialize the service instance, refer [Initialize your service instance](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started#initialize-crypto).
- 
+    
  **Step 3: Manage your keys by using `ibm_kms_key`**
  
   ```
