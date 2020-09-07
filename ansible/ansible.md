@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-last updated: "2020-09-07"
+  lastupdated: "2020-09-07"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -153,7 +153,7 @@ Install Ansible on your local machine to automate the deployment of your apps.
    ansible 2.9.9
    config file = None
    configured module search path = ['/Users/ibm/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-   ansible python module location = /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/ansible
+   Ansible python module location = /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/ansible
    executable location = /Library/Frameworks/Python.framework/Versions/3.8/bin/ansible
    python version = 3.8.3 (v3.8.3:6f8c8320e9, May 13 2020, 16:29:34) [Clang 6.0 (clang-600.0.57)]
    ```

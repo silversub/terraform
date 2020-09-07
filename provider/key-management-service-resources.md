@@ -37,7 +37,7 @@ subcollection: terraform
 # Key Management Service resources
 {: #kms-resources}
 
-Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources. This resource can be used for management of keys in both Key Protect and Hyper Protect Crypto Service (HPCS).
+Create, modify, or delete [{{site.data.keyword.cloud_notm}} Key Protect](/docs/key-protect?topic=key-protect-about) resources.
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
@@ -47,7 +47,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_kms_key`
 {: #kms-key}
 
-Provide a key management service resource for Hyper Protect Crypto Services and Key Protect services. This allows standard and root keys to be created and deleted. The region parameter in the `provider.tf` file must be set. If region parameter is not specified, `us-south` is used as default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
+This resource can be used for management of keys in both Key Protect and Hyper Protect Crypto Service (HPCS). It allows standard and root keys to be created and deleted. The region parameter in the `provider.tf` file must be set. If region parameter is not specified, `us-south` is used as default. If the region in the `provider.tf` file is different from the Key Protect instance, the instance cannot be retrieved by Terraform and the Terraform action fails. 
 {: shortdesc}
 
 After creating an  Hyper Protect Crypto Service instance you need to initialize the instance properly with the crypto units, in order to create, or manage Hyper Protect Crypto Service keys. For more information, about how to initialize the Hyper Protect Crypto Service instance, see [Initialize Hyper Protect Crypto](/docs/hs-crypto?topic=hs-crypto-initialize-hsm) only for HPCS instance. 
@@ -81,10 +81,10 @@ resource "ibm_cos_bucket" "flex-us-south" {
 ### Example usage to provision HPCS and Key Management
 {: #hpcs-key-sample}
 
-Complete the following steps to provision a HPCS, initialize the service and Key Management.
+Complete the following steps to provision an HPCS, initialize the service and Key Management:
 {: shortdesc}
 
-**Step 1: Provision the service by using `ibm_resource_instance`.**
+**Step 1: Provision the service by using `ibm_resource_instance`**
 
  ```
  resource "ibm_resource_instance" "hpcs"{
@@ -98,14 +98,14 @@ Complete the following steps to provision a HPCS, initialize the service and Key
 }
 
  ```
- **Step 2: Initialize your service instance manually.**
+ **Step 2: Initialize your service instance manually**
  
  1. To manage your keys, you need to initialize your service instance.
  2. The two options that are provided to initialize a service instance are: 
-    - the IBM HPCS management utilities by using master key parts stored on smart card.
-    - the {{site.data.keyword.cloud_notm}} Trusted Key Entry CLI plug-in to initialize your service instance.
+    - The IBM HPCS management utilities by using master key parts stored on smart card.
+    - The {{site.data.keyword.cloud_notm}} Trusted Key Entry CLI plug-in to initialize your service instance.
     For more information, about initialize the service instance, refer [Initialize your service instance](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started#initialize-crypto).
- 
+    
  **Step 3: Manage your keys by using `ibm_kms_key`**
  
   ```

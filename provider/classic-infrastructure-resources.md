@@ -263,7 +263,7 @@ Review the output parameters that you can access after your resource is created.
 ## `ibm_compute_bare_metal`
 {: #bm}
 
-Provides a bare metal resource. This allows bare metal servers to be created, updated, and deleted. This resource supports both monthly bare metal servers and hourly bare metal servers. For more detail on bare metal severs, refer to the [IBM Cloud bare metal server page](https://www.ibm.com/cloud-computing/bluemix/bare-metal-servers).
+Provides a bare metal resource. This allows bare metal servers to be created, updated, and deleted. This resource supports both monthly bare metal servers and hourly bare metal servers. For more details, on bare metal severs, refer [IBM Cloud bare metal server page](https://www.ibm.com/cloud/bare-metal-servers).
 
 
 ### Sample Terraform code
