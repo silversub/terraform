@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform dns, terraform vpc dns, terraform private dns
 
@@ -76,7 +76,7 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-----------|---------------------|
 |`instance_id`|String|Required|The ID of the IBM Cloud DNS service instance where you want to add a permitted network.|
-|`zone_id`|String|Requried|The ID of the private DNS zone where you want to add the permitted network.|
+|`zone_id`|String|Required|The ID of the private DNS zone where you want to add the permitted network.|
 |`vpc_crn`|String|Required|The CRN of the VPC that you want to add as a permitted network.|
 |`type`|String|Required|The type of permitted network that you want to add. Supported values are `vpc`.|
 
@@ -186,8 +186,8 @@ Review the input parameters that you can specify for your resource.
 |`priority`|Integer|Required for `SRV` records|If you create an `SRV` record, enter the priority of the record.|
 |`weight`|Integer|Required for `SRV` records|If you create an `SRV` record, enter the weight of the record. The weight is considered when multiple records with the same priority exist. A higher value is associated with a higher weight and a higher chance of being considered among records with the same priority.|
 |`port`|Integer|Required for `SRV` records|If you create an `SRV` record, enter the TCP or UDP port of the target server. |
-|`service`|String|Required for `SRV` records|If you create an `SRV` record, enter the name of the desired service. The name must start with an underscore (`_`).|
-|`protocol`|String|Required for `SRV` records|If you create an `SRV` record, enter the name of the desired protocol. |
+|`service`|String|Required for `SRV` records|If you create an `SRV` record, enter the name of the service that you want. The name must start with an underscore (`_`).|
+|`protocol`|String|Required for `SRV` records|If you create an `SRV` record, enter the name of the protocol that you want. |
 
 ### Output parameters
 {: #dns-record-output}
@@ -245,7 +245,7 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required/ optional|Description|
 |----|-----------|-----------|---------------------|
-|`name`|String|Requierd|The name of the DNS zone that you want to create.| 
+|`name`|String|Required|The name of the DNS zone that you want to create.| 
 |`instance_id`|String|Required|The ID of the IBM Cloud DNS service instance where you want to create a DNS zone.|
 |`description`|String|Optional|The description of the DNS zone.|
 |`label`|String|Optional|The label of the DNS zone.| 
