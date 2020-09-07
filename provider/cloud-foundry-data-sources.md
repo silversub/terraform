@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-09-07"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -480,7 +480,7 @@ Retrieve information about a service plan for a Cloud Foundry service.
 ### Sample Terraform code
 {: #cf-service-plan-sample}
 
-The following example retrieves information about the `Lite` service plan for the CloudantNOSQLDB service. 
+The following example retrieves information about the `Lite` service plan for the `CloudantNOSQLDB` service. 
 
 ```
 data "ibm_service_plan" "service_plan" {
