@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-03"
+lastupdated: "2020-09-07"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -74,7 +74,7 @@ Review what parameters you can set in the `provider` block of your Terraform con
 |`generation`|Required for VPC infrastructure|The generation of Virtual Private Cloud infrastructure that you want to use. Supported values are `1` for VPC generation 1, and `2` for VPC generation 2 infrastructure. If this value is not specified, `2` is used by default. You can specify the generation in your `provider` block or retrieve the value from the `IC_GENERATION` or `IBMCLOUD_GENERATION` environment variables. If both environment variables are defined, `IC_GENERATION` takes precedence.|
 |`max_retries`|Optional|The maximum number of times that a request to the {{site.data.keyword.cloud_notm}} infrastructure API is sent before the request is considered failed. The default value is `10`. Use this parameter when you receive network-related timeouts or rate limit exceeded error codes. You can specify the number in your `provider` block or retrieve the value from the `MAX_RETRIES` environment variable.|
 |`region`|Optional|The {{site.data.keyword.cloud_notm}} region where you want to create your resources. If this value is not specified, `us-south` is used by default. You can specify the region in the `provider` block or retrieve the value from the `IBMCLOUD_REGION` or `IC_REGION` environment variables. If both environment variables are specified, `IC_REGION` takes precedence.|
-|`resource_group`|Optional|The ID of the resource group that you want to use for your {{site.data.keyword.cloud_notm}} resources. To retrieve the ID, run `ibmcloud resource groups`. You can specify the resource group in the `provider` block or retrieve the value from the `IC_RESOURCE_GROUP` or `IBMCLOUD_RESOURCE_GROUP` environment variables. If both environment variables are defined, `IC_RESOURCE_GROUP` takes precendence. |
+|`resource_group`|Optional|The ID of the resource group that you want to use for your {{site.data.keyword.cloud_notm}} resources. To retrieve the ID, run `ibmcloud resource groups`. You can specify the resource group in the `provider` block or retrieve the value from the `IC_RESOURCE_GROUP` or `IBMCLOUD_RESOURCE_GROUP` environment variables. If both environment variables are defined, `IC_RESOURCE_GROUP` takes precedence. |
 |`zone`|Required for Power Systems|The zone of an {{site.data.keyword.cloud_notm}} region where you want to create Power System resources. This value is required if you want to work with resources in a multizone-capable region. For example, if you want to work in the `eu-de` region, you must enter `eu-de-1` or `eu-de-2`. You can specify the zone in the `provider` block or retrieve the value from the `IC_ZONE` or `IBMCLOUD_ZONE` environment variables. If both environment variables are specified, `IC_ZONE` takes precedence.| 
 
 
@@ -101,7 +101,7 @@ provider "ibm" {
 ### Terraform variables file
 {: #tf-variables}
 
-You can retrieve the values for the provider input parmeters from a Terraform variables file (`terraform.tfvars`) that you created on your local machine.
+You can retrieve the values for the provider input parameters from a Terraform variables file (`terraform.tfvars`) that you created on your local machine.
 {: shortdesc}
 
 1. Create the Terraform variables file `terraform.tfvars` on your local machine. 
@@ -127,7 +127,7 @@ You can retrieve the values for the provider input parmeters from a Terraform va
 
 You can retrieve the values for the provider input parameters from environment variables that you set on your local machine. Make sure that you use the [correct name for an environment variable](#provider-parameter-ov) so that Terraform can automatically read these when you run a `terraform apply`, `plan`, or `destroy` action. For example, to specify a classic infrastructure user name, use `IAAS_CLASSIC_USERNAME`. 
 
-1. Add an empty `provider` block to your Terrafrom configuration file.
+1. Add an empty `provider` block to your Terraform configuration file.
    ```
    provider "ibm" {}
    ```
