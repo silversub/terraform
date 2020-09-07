@@ -1123,7 +1123,7 @@ Review the input parameters that you can specify for your resource.
 |`wait_time_minutes`|Integer|Optional| The duration, expressed in minutes, to wait for the VM instance to become available before declaring it as created. It is also the same amount of time waited for no active transactions before proceeding with an update or deletion. The default value is `90`.| No |
 |`public_bandwidth_limited`|Integer|Optional| Allowed public network traffic in GB per month. It can be greater than 0 when the server is a monthly based server. Defaults to the smallest available capacity for the public bandwidth are used.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_unlimited`.| Yes |
 |`public_bandwidth_unlimited`|Boolean|Optional|  Allowed unlimited public network traffic in GB per month for a monthly based server. The `network_speed` should be 100 Mbps. Default value: `false`.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_limited`.| Yes |
-|`evault`|Integer|Optional|Allowed `evault` in GB per month for monthly based servers.| Yes |
+|`evault`|Integer|Optional|Allowed `Evault` in GB per month for monthly based servers.| Yes |
 |`datacenter_choice`|List of objects|Optional|A nested block to describe datacenter choice options to retry on different data centers and VLANs. Nested `datacenter_choice` blocks must have the following structure:    | No |
 |`datacenter_choice.datacenter`|String|Required|The datacenter in which you want to provision the instance.    | No |
 |`datacenter_choice.public_vlan_id`|String|Optional|The public VLAN ID for the public network interface of the instance. Accepted values are in the [VLAN doc](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want to use and note the ID number in the browser URL. You can also refer to a VLAN by name using a data source.    | No |
@@ -1196,9 +1196,6 @@ The following attributes are exported:
 |`serial`|A unique number denoting the latest revision of the domain.|
 |`update_date`|The date that the domain record was last updated.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
-
-
-
 
 ## `ibm_dns_domain_registration_nameservers`
 {: #dns-register}
@@ -3125,8 +3122,6 @@ The following attributes are exported:
 |`id`|The unique identifier of the security group rule.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
-
-
 ## `ibm_storage_block`
 {: #storage-block}
 
@@ -3213,12 +3208,12 @@ The following attributes are exported:
 ## `ibm_storage_evault`
 {: #storage-evault}
 
-Provides an evault storage resource. This allows [IBM Cloud Backup](/docs/Backup?topic=Backup-getting-started) storage to be created, updated, and deleted.
+Provides an Evault storage resource. This allows [IBM Cloud Backup](/docs/Backup?topic=Backup-getting-started) storage to be created, updated, and deleted.
 
 ### Sample Terraform code
 {: #storage-evault-sample}
 
-In the following example, you can create 20G of evault storage 
+In the following example, you can create 20G of Evault storage 
 
 ```
 resource "ibm_storage_evault" "test" {
