@@ -134,7 +134,7 @@ Review the input parameters that you can specify for your resource.
 |`force_delete`|Boolean|Optional|If set to **true**, Key Protect forces the deletion of a root or standard key, even if this key is still in use, such as to protect an {{site.data.keyword.cos_full_notm}} bucket. Note that the key cannot be deleted if the protected cloud resource is set up with a retention policy. Successful deletion includes the removal of any registrations that are associated with the key. Default value: **false**.| No |
 |`iv_value`|String|Optional| Used with import tokens. The initialization vector (IV) that is generated when you encrypt a nonce. The IV value is required to decrypt the encrypted nonce value that you provide when you make a key import request to the service. To generate an IV, encrypt the nonce by running `ibmcloud kp import-token encrypt-nonce`. Only for imported root key.|  Yes |
 
-You need to set `terraform destroy` a force_delete flag after the provisioning keys is initiated. Later, a `terraform apply` is used before the terraform destroy for force_delete flag to take effect.
+You need to set `terraform destroy` a force_delete flag after the provisioning keys is initiated. Later, a `terraform apply` is used before the `terraform destroy` for force_delete flag to take effect.
 {: note}
 
 ### Output parameters
