@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-08"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -689,4 +689,4 @@ The default worker pool is automatically created when the cluster is created. Be
 </br>
 
 **What's next?**</br>
-Congratulations! You successfully created a multizone {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster, added a worker pool, and removed the default worker pool from your cluster. Explore the learning paths for administrators in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-learning-path-admin) and [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-learning-path-admin) to learn how you can further protect your cluster, add persistent storage, set up integrations, add logging and monitoring capabilities, and more. 
+Great job! You successfully created a multizone {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster, added a worker pool, and removed the default worker pool from your cluster. Explore the learning paths for administrators in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-learning-path-admin) and [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-learning-path-admin) to learn how you can further protect your cluster, add persistent storage, set up integrations, add logging and monitoring capabilities, and more. 

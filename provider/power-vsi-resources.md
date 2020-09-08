@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-08"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -169,7 +169,7 @@ Review the output parameters that you can access after your resource is created.
 | `progress` | Float | Specifies the overall progress of the instance deployment process in percentage. |
 | `status` | String | The status of the instance. |
 | `health_status`|String|The health status of the VM.|
-| `migratable`|Boolean|Indicates if the VM can be migratable.|
+| `migratable`|Boolean|Indicates the VM is migrated or not.|
 | `max_processors`| Integer| The maximum number of processors that can be allocated to the instance with shutting down or rebooting the `LPAR`.|
 | `max_virtual_cores` | Integer | The maximum number of virtual cores. |
 | `min_processors` | Float | The minimum number of processors that the instance can have. | 
