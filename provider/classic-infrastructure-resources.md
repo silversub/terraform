@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-08"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform bare metal server
 
@@ -781,9 +781,6 @@ The following attributes are exported:
 |`validity_days`|The number of days remaining in the validity period for the certificate.|
 |`validity_end`|The UTC timestamp representing the end of the certificate's validity period.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
-
-
-
 
 ## `ibm_compute_user`
 {: #compute-user}
@@ -2370,7 +2367,7 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`primary_id`| String | Required | The ID of the primary Netscaler VPX.| Yes |
 |`secondary_id`| String | Required | The ID of the secondary Netscaler VPX.| Yes |
-|`stay_secondary`|Boolean | Optional | Specifies whether the secondary Netscaler VPX will  take over the service. Set this argument to `true` to prevent the secondary NetScaler VPX from taking over the service even if the primary NetScaler VPX fails. For additional details, see the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support docs](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
+|`stay_secondary`|Boolean | Optional | Specifies whether the secondary Netscaler VPX will  take over the service. Set this argument to `true` to prevent the secondary NetScaler VPX from taking over the service even if the primary Netscaler VPX fails. For additional details, see the [Citrix NetScaler docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support docs](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
 |`tags`|Array of strings | Optional | Tags associated with the high availability Netscaler VPX pair instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2480,7 +2477,7 @@ resource "ibm_lb_vpx_vip" "testacc_vip" {
 }
 ```
 
-NetScaler VPX 10.5 also supports SSL offload. If you set the `type` argument to `SSL` and configure the `security_certificate_id` argument, then the `virtual_ip_address` argument provides the `HTTPS` protocol. The following example shows an SSL-offload configuration:
+Netscaler VPX 10.5 also supports SSL offload. If you set the `type` argument to `SSL` and configure the `security_certificate_id` argument, then the `virtual_ip_address` argument provides the `HTTPS` protocol. The following example shows an SSL-offload configuration:
 
 ```
 
@@ -2938,10 +2935,10 @@ The following attributes are exported:
 |`child_resource_count`|A count of the resources, such as virtual servers and other network components, that are connected to the VLAN.|
 |`subnets`|The collection of subnets associated with the VLAN.    |
 |`subnets.subnet`|The subnet for the VLAN.    |
-|`subnets.subnet-type`|A subnet can be one of several types. `PRIMARY, ADDITIONAL_PRIMARY, SECONDARY, ROUTED_TO_VLAN, SECONDARY_ON_VLAN, STORAGE_NETWORK, and STATIC_IP_ROUTED`. A `PRIMARY` subnet is the primary network bound to a VLAN within the softlayer network. An `ADDITIONAL_PRIMARY` subnet is bound to a network VLAN to augment the pool of available primary IP addresses that may be assigned to a server. A `SECONDARY` subnet is any of the secondary subnet's bound to a VLAN interface. A `ROUTED_TO_VLAN` subnet is a portable subnet that can be routed to any server on a VLAN. A `SECONDARY_ON_VLAN` subnet also doesn't exist as a VLAN interface, but is routed directly to a VLAN instead of a single IP address by SoftLayer's.    |
+|`subnets.subnet-type`|A subnet can be one of several types. `PRIMARY, ADDITIONAL_PRIMARY, SECONDARY, ROUTED_TO_VLAN, SECONDARY_ON_VLAN, STORAGE_NETWORK, and STATIC_IP_ROUTED`. A `PRIMARY` subnet is the primary network bound to a VLAN within the SoftLayer network. An `ADDITIONAL_PRIMARY` subnet is bound to a network VLAN to augment the pool of available primary IP addresses that may be assigned to a server. A `SECONDARY` subnet is any of the secondary subnet's bound to a VLAN interface. A `ROUTED_TO_VLAN` subnet is a portable subnet that can be routed to any server on a VLAN. A `SECONDARY_ON_VLAN` subnet also doesn't exist as a VLAN interface, but is routed directly to a VLAN instead of a single IP address by SoftLayer's.    |
 |`subnets.subnet-size`|The size of the subnet for the VLAN.    |
 |`subnets.gateway`|A subnet's gateway address.    |
-|`subnets.cidr`|A subnet's Classless Inter-Domain Routing prefix. This is a number between 0 and 32 signifying the number of bits in a subnet's netmask. |
+|`subnets.cidr`|A subnet's Classless Inter-Domain Routing prefix. This is a number between 0 and 32 signifying the number of bits in a subnet's mask. |
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Timeouts
@@ -3244,9 +3241,9 @@ The following attributes are exported:
 
 |Name|Description|
 |----|-----------|
-|`id`|The unique identifier of the evault.|
-|`username`|The username of the evault.|
-|`password`|The password of the evault.|
+|`id`|The unique identifier of the Evault.|
+|`username`|The username of the Evault.|
+|`password`|The password of the Evault.|
 |`service_resource_name`|The name of a Evault storage network resource.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
