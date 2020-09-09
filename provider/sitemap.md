@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-09"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -57,9 +57,9 @@ subcollection: terraform
   
   <table>
     <thead>
-    <th style="width:180px">Resources</th>
-    <th style="width:150px">Data sources</th>
-  </thead>
+     <th style="width:180px">Resources</th>
+     <th style="width:150px">Data sources</th>
+    </thead>
   <tbody>
    <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_certificate_manager_import`](/docs/terraform?topic=terraform-cert-manager-resources#cert-manager)</li><li style="margin:0px; padding:0px">[`ibm_certificate_manager_order`](/docs/terraform?topic=terraform-cert-manager-resources#certmanager-order)</li></ul></td>
@@ -266,8 +266,8 @@ subcollection: terraform
   
   <table>
     <thead>
-    <th style="width:180px">Resources</th>
-    <th style="width:150px">Data sources</th>
+      <th style="width:180px">Resources</th>
+      <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
