@@ -298,8 +298,8 @@ subcollection: terraform
   
   <table>
     <thead>
-    <th style="width:180px">Resources</th>
-    <th style="width:150px">Data sources</th>
+      <th style="width:180px">Resources</th>
+      <th style="width:150px">Data sources</th>
   </thead>
   <tbody>
     <tr>
