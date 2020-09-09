@@ -1,14 +1,15 @@
----  
+---
 
 copyright:
   years: 2017, 2020
-  lastupdated: "2020-09-07"
+lastupdated: "2020-09-09"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
 subcollection: terraform
 
 ---
+
 {:beta: .beta}
 {:codeblock: .codeblock}
 {:deprecated: .deprecated}
