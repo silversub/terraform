@@ -208,7 +208,7 @@ terraform init
 |Cloud functions|`IBMCLOUD_NAMESPACE_API_ENDPOINT`|`https://us-south.functions.cloud.ibm.com/api/v1`|
 |Containers|`IBMCLOUD_CS_API_ENDPOINT`|`https://containers.test.cloud.ibm.com/global`|
 |CIS|`IBMCLOUD_CIS_API_ENDPOINT`|`https://api.cis.test.cloud.ibm.com`|
-|DirectLink|`IBMCLOUD_DL_API_ENDPOINT`|`https://directlink.test.cloud.ibm.com/v1`|
+|Direct Link|`IBMCLOUD_DL_API_ENDPOINT`|`https://directlink.test.cloud.ibm.com/v1`|
 |GHoST / Tagging|`IBMCLOUD_GT_API_ENDPOINT`|`https://tags.global-search-tagging.test.cloud.ibm.com`|
 |HPCS|`IBMCLOUD_HPCS_API_ENDPOINT`| `https://zcryptobroker.stage1.mybluemix.net/crypto_v2/` |
 |IAM|`IBMCLOUD_IAM_API_ENDPOINT`|`https://iam.test.cloud.ibm.com`|
