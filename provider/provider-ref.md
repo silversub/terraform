@@ -190,7 +190,7 @@ You can configure the {{site.data.keyword.cloud_notm}} provider for Terraform to
 {: shortdesc}
 
 1. Setup the Terraform engine and an {{site.data.keyword.cloud_notm}} provider, in {{site.data.keyword.cloud_notm}} virtual machine by using private VLAN. And provision the enabled Virtual Routing and Forwarding (VRF) account. For information about the {{site.data.keyword.bplong_notm}} private end points, see [{{site.data.keyword.bplong_notm}} endpoint prerequisites](/docs/schematics?topic=schematics-private-endpoints#private-network-prereqs).
-2. Export the following environment variables on your local machine. For more information about supported private service endpoints for each {{site.data.keyword.cloud_notm}} service, see [Use service endpoints](/docs/account?topic=account-vrf-service-endpoint).
+2. Export the following environment variables on your local machine. For more information about supported private service endpoints for each {{site.data.keyword.cloud_notm}} service to support in production, see [Use service endpoints](/docs/account?topic=account-vrf-service-endpoint).
 3. Initialize the Terraform CLI to load the environment variables that you set.
 
 ```
