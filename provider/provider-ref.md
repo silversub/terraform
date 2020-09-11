@@ -198,7 +198,7 @@ terraform init
 ```
 {: pre}
 
-<production>
+
   
 |Service|Environment variable key|Public service endpoint for staging|
 |-------------|--------|-----------------------|
@@ -226,6 +226,5 @@ terraform init
 |VPC Gen1|`IBMCLOUD_IS_API_ENDPOINT`|`https://us-south-stage01.iaasdev.cloud.ibm.com`|
 |VPC Gen2|`IBMCLOUD_IS_NG_API_ENDPOINT`|`https://us-south-stage01.iaasdev.cloud.ibm.com`|
 
-</production>
 
 
