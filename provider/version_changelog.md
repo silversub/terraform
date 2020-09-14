@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2020
-lastupdated: "2020-08-20"
+lastupdated: "2020-09-14"
 
 keywords: terraform, terraform provider release, terraform provider versions
 
@@ -40,7 +40,63 @@ subcollection: terraform
 View information for updates to the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {:shortdesc}
 
+## Changelog for 1.12.0, released 14 September 2020
+{: #changelog-v1120}
+
+The following table shows the changes that are included in version 1.12.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.11.2 | 1.12.0 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.11.2](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.12.0){: external}.|
+{: caption="Terraform provider 1.12.0" caption-side="top"}
+
+## Changelog for 1.11.2, released 3 September 2020
+{: #changelog-v1112}
+
+The following table shows the changes that are included in version 1.11.2 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.11.1 | 1.11.2 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.11.2](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.11.2){: external}.|
+{: caption="Terraform provider 1.11.2" caption-side="top"}
+
+## Changelog for 1.11.1, released 28 August 2020
+{: #changelog-v1111}
+
+The following table shows the changes that are included in version 1.11.1 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.11.0 | 1.11.1 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.11.1](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.11.1){: external}.|
+{: caption="Terraform provider 1.11.1" caption-side="top"}
+
+## Changelog for 1.11.0, released 25 August 2020
+{: #changelog-v1110}
+
+The following table shows the changes that are included in version 1.11.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.10.0 | 1.11.0 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.11.0](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.11.0){: external}.|
+{: caption="Terraform provider 1.11.0" caption-side="top"}
+
+## Changelog for 1.10.0, released 6 August 2020
+{: #changelog-v1100}
+
+The following table shows the changes that are included in version 1.10.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.9.0 | 1.10.0 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.10.0](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.10.0){: external}.|
+{: caption="Terraform provider 1.10.0" caption-side="top"}
+
 ## Changelog for 1.9.0, released 22 July 2020
+{: #changelog-v190}
 
 The following table shows the changes that are included in version 1.9.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -51,6 +107,7 @@ The following table shows the changes that are included in version 1.9.0 of the 
 {: caption="Terraform provider 1.9.0" caption-side="top"}
 
 ## Changelog for 1.8.0, released 23 June 2020
+{: #changelog-v180}
 
 The following table shows the changes that are included in version 1.8.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -61,6 +118,7 @@ The following table shows the changes that are included in version 1.8.0 of the 
 {: caption="Terraform provider 1.8.0" caption-side="top"}
 
 ## Changelog for 1.7.1, released 11 June 2020
+{: #changelog-v171}
 
 The following table shows the changes that are included in version 1.7.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -72,6 +130,7 @@ The following table shows the changes that are included in version 1.7.0 of the 
 
 
 ## Changelog for 1.7.0, released 29 May 2020
+{: #changelog-v170}
 
 The following table shows the changes that are included in version 1.7.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -82,6 +141,7 @@ The following table shows the changes that are included in version 1.7.0 of the 
 {: caption="Terraform provider 1.7.0" caption-side="top"}
 
 ## Changelog for 1.6.0, released 20 May 2020
+{: #changelog-v160}
 
 The following table shows the changes that are included in version 1.6.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -92,6 +152,7 @@ The following table shows the changes that are included in version 1.6.0 of the 
 {: caption="Terraform provider 1.6.0" caption-side="top"}
 
 ## Changelog for 1.5.3, released 19 May 2020
+{: #changelog-v153}
 
 The following table shows the changes that are included in version 1.5.3 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -102,6 +163,7 @@ The following table shows the changes that are included in version 1.5.3 of the 
 {: caption="Terraform provider 1.5.3" caption-side="top"}
 
 ## Changelog for 1.5.2, released 7 May 2020
+{: #changelog-v152}
 
 The following table shows the changes that are included in version 1.5.2 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -112,6 +174,7 @@ The following table shows the changes that are included in version 1.5.2 of the 
 {: caption="Terraform provider 1.5.2" caption-side="top"}
 
 ## Changelog for 1.5.1, released 4 May 2020
+{: #changelog-v151}
 
 The following table shows the changes that are included in version 1.5.1 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -122,6 +185,7 @@ The following table shows the changes that are included in version 1.5.1 of the 
 {: caption="Terraform provider 1.5.1" caption-side="top"}
 
 ## Changelog for 1.5.0, released 29 April 2020
+{: #changelog-v150}
 
 The following table shows the changes that are included in version 1.5.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -132,6 +196,7 @@ The following table shows the changes that are included in version 1.5.0 of the 
 {: caption="Terraform provider 1.5.0" caption-side="top"}
 
 ## Changelog for 1.4.0, released 16 April 2020
+{: #changelog-v140}
 
 The following table shows the changes that are included in version 1.4.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -142,6 +207,7 @@ The following table shows the changes that are included in version 1.4.0 of the 
 {: caption="Terraform provider 1.4.0" caption-side="top"}
 
 ## Changelog for 1.3.0, released 2 April 2020
+{: #changelog-v130}
 
 The following table shows the changes that are included in version 1.3.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -152,6 +218,7 @@ The following table shows the changes that are included in version 1.3.0 of the 
 {: caption="Terraform provider 1.3.0" caption-side="top"}
 
 ## Changelog for 1.2.6, released 26 March 2020
+{: #changelog-v126}
 
 The following table shows the changes that are included in version 1.2.6 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -172,6 +239,7 @@ The following table shows the changes that are included in version 1.2.5 of the 
 {: caption="Terraform provider 1.2.5" caption-side="top"}
 
 ## Changelog for 1.2.4, released 10 March 2020
+{: #changelog-v124}
 
 The following table shows the changes that are included in version 1.2.4 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -182,6 +250,7 @@ The following table shows the changes that are included in version 1.2.4 of the 
 {: caption="Terraform provider 1.2.4" caption-side="top"}
 
 ## Changelog for 1.2.3, released 3 March 2020
+{: #changelog-v123}
 
 The following table shows the changes that are included in version 1.2.3 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}
@@ -192,6 +261,7 @@ The following table shows the changes that are included in version 1.2.3 of the 
 {: caption="Terraform provider 1.2.3" caption-side="top"}
 
 ## Changelog for 1.2.2, released 26 February 2020
+{: #changelog-v122}
 
 The following table shows the changes that are included in version 1.2.2 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {: shortdesc}

@@ -344,7 +344,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_dns_domain_registration`
 {: classic-domain-reg}
 
-Retrieve information about a domain registration from the IBM DNS Domain Registration Service. The domain must initially be registered via the UI of the IBM Cloud DNS Registration Service. Typically the Domain Registration data source is used in configuration with global load-balancing services, , for example, Cloudflare, Akamai or IBM Cloud Internet Services (Cloudflare). For additional usage instructions see the resource `ibm_dns_domain_registration_nameservers`. 
+Retrieve information about a domain registration from the IBM DNS Domain Registration Service. The domain must initially be registered via the UI of the IBM Cloud DNS Registration Service. Typically the Domain Registration data source is used in configuration with global load-balancing services, , for example, Cloudflare, Akamai or IBM Cloud Internet Services (Cloudflare). For more information, see the resource `ibm_dns_domain_registration_nameservers`. 
 
 ### Sample Terraform code
 {: classic-domain-reg-sample}
@@ -412,7 +412,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`id`|String|The unique identifier of the secondary.|
 |`transfer_frequency`|Integer|Signifies how often a secondary DNS zone transferred in minutes.|
 |`master_ip_address`|String|The IP address of the master name server where a secondary DNS zone is transferred from.|
-|`status_id`|String|The current status of a secondary DNS record.|
+|`status_id`|String|The status of a secondary DNS record.|
 |`status_text`|String|The textual representation of a secondary DNS zone's status.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
@@ -470,7 +470,7 @@ Review the output parameters that you can access after you retrieved your data s
 |----|-----------|---------|
 |`description`|String|A description of the load balancer.|
 |`datacenter`|String|The data center where load balancer is located.|
-|`protocols`|List of objects|A nested block describing the protocols assigned to the load balancer.   |
+|`protocols`|List of objects|A nested block describes the protocols that are assigned to the load balancer.   |
 |`protocols.frontend_protocol`|String|The front-end protocol.  |
 |`protocols.frontend_port`|Integer|The front-end protocol port number.  |
 |`protocols.backend_protocol`|String|The backend protocol.  |
@@ -478,28 +478,28 @@ Review the output parameters that you can access after you retrieved your data s
 |`protocols.load_balancing_method`|String|The load-balancing algorithm.  |
 |`protocols.session_stickiness`|Boolean|Session stickiness.  |
 |`protocols.max_conn`|Integer|The number of connections the listener can accept.  |
-|`protocols.tls_certificate_id`|String|The ID of the SSL/TLS certificate being used for a protocol.  |
+|`protocols.tls_certificate_id`|String|The ID of the SSL/TLS certificate used for a protocol.  |
 |`protocol_id`|String|The UUID of a load balancer protocol.|
-|`server_instances`|List of objects|A nested block describing the server instances for this load balancer.  |
+|`server_instances`|List of objects|A nested block describes the server instances for this load balancer.  |
 |`server_instances.private_ip_address`|String|The private IP address of a load balancer member.  |
 |`server_instances.weight`|String|The weight of a load balancer member.  |
 |`server_instances.status`|String|Specifies the status of a load balancer member as `UP` or `DOWN`.  |
 |`server_instances.member_id`|String|The UUID of a load balancer member.|
-|`health_monitors`|List of objects|A nested block describing the health_monitors assigned to the load balancer. |
+|`health_monitors`|List of objects|A nested block describes the health_monitors assigned to the load balancer. |
 |`health_monitors.protocol`|String|The backend protocol.  |
 |`health_monitors.port`|String| The backend port.  |
 |`health_monitors.interval`|Integer|The interval in seconds to perform the health check.    |
 |`health_monitors.max_retries`|Integer| The maximum retries before the load balancer are considered unhealthy.  |
 |`health_monitors.timeout`|String| The health check method.  |
-|`health_monitors.url_path`|String| If monitor is "HTTP", this specifies URL path.  |
+|`health_monitors.url_path`|String| If monitor is "HTTP", it specifies the URL path.  |
 |`health_monitors.monitor_id`|String| The health monitor UUID.|
 |`type`|String|Specifies whether a load balancer is public or private.|
 |`status`|String|Specifies the operation status of the load balancer as `online` or `offline`.|
 |`vip`|String|The virtual IP address of the load balancer.|
-|`server_instances_up`|Integer|The number of service instances which are in the `UP` health state.|
-|`server_instances_down`|Integer|The number of service instances which are in the `DOWN` health state.|
+|`server_instances_up`|Integer|The number of service instances, that are in the `UP` health state.|
+|`server_instances_down`|Integer|The number of service instances, that are in the `DOWN` health state.|
 |`active_connections`|Integer|The number of total established connections.|
-|`use_system_public_ip_pool`|String|It specifies whether the public IP addresses are allocated from system public IP pool or public subnet from the account ordering the load balancer.|
+|`use_system_public_ip_pool`|String|It specifies whether the public IP addresses are allocated from system public IP pool or public subnet from the account order of the load balancer.|
 |`ssl_ciphers`|Array|The list of ssl offloads.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
@@ -542,10 +542,10 @@ Review the output parameters that you can access after you retrieved your data s
 |`subnets`|List of objects|The collection of subnets associated with the VLAN.    |
 |`subnets.id`|String|The ID of the subnet.      |
 |`subnets.subnet`|String|The subnet for the VLAN.    |
-|`subnets.subnet-type`|String|A subnet can be one of several types. `PRIMARY, ADDITIONAL_PRIMARY, SECONDARY, ROUTED_TO_VLAN, SECONDARY_ON_VLAN, STORAGE_NETWORK, and STATIC_IP_ROUTED`. A `PRIMARY` subnet is the primary network bound to a VLAN within the IBM Cloud network. An `ADDITIONAL_PRIMARY` subnet is bound to a network VLAN to augment the pool of available primary IP addresses that may be assigned to a server. A `SECONDARY` subnet is any of the secondary subnets bound to a VLAN interface. A `ROUTED_TO_VLAN` subnet is a portable subnet that can be routed to any server on a VLAN. A `SECONDARY_ON_VLAN` subnet also doesn't exist as a VLAN interface, but is routed directly to a VLAN instead of a single IP address.    |
+|`subnets.subnet-type`|String|A subnet can be one of several types. `PRIMARY, ADDITIONAL_PRIMARY, SECONDARY, ROUTED_TO_VLAN, SECONDARY_ON_VLAN, STORAGE_NETWORK, and STATIC_IP_ROUTED`. A `PRIMARY` subnet is the primary network that is bound to a VLAN within the IBM Cloud network. An `ADDITIONAL_PRIMARY` subnet is bound to a network VLAN to augment the pool of available primary IP addresses that might be assigned to a server. A `SECONDARY` subnet is any of the secondary subnets bound to a VLAN interface. A `ROUTED_TO_VLAN` subnet is a portable subnet that can be routed to any server on a VLAN. A `SECONDARY_ON_VLAN` subnet also doesn't exist as a VLAN interface, but is routed directly to a VLAN instead of a single IP address.    |
 |`subnets.subnet-size`|String|The size of the subnet for the VLAN.    |
-|`subnets.gateway`|String|A subnet's gateway address.    |
-|`subnets.cidr`|Integer| A subnet's Classless Inter-Domain Routing prefix. This is a number between 0 and 32 signifying the number of bits in a subnet's mask. |
+|`subnets.gateway`|String|A subnet gateway address.    |
+|`subnets.cidr`|Integer| A subnet Classless Inter-Domain Routing prefix. The number in the range of 0 - 32 signifying the number of bits in a subnet mask. |
 |`virtual_guests`|List of objects|A nested block describes the VSIs attached to the VLAN. |
 |`virtual_guests.id`|String|The ID of the virtual guest.  |
 |`virtual_guests.domain`|String|The domain of the virtual guest.  |
@@ -581,7 +581,7 @@ Review the input parameters that you can specify for your data source.
 |----|-----------|-----------|----------------------|
 |`name`|String|Required|The name of the security group.|
 |`description`|String|Optional|The description of the security group.|
-|`most_recent`|Boolean|Optional|If more than one security group has the same name or description, you can set this argument to `true` to import only the most recent security group. **NOTE**: The search must return only one match, otherwise Terraform fails. Ensure that your name and description combinations are specific enough to return a single security group key only, or set the `most_recent` argument to `true`.|
+|`most_recent`|Boolean|Optional|If more than one security group has the same name or description, you can set this argument to `true` to import only the most recent security group. **NOTE**: The search must return only one match for Terraform to be success. Ensure that your name and description combinations are specific enough to return a single security group key only, or set the `most_recent` argument to `true`.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters

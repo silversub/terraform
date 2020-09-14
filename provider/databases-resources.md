@@ -109,6 +109,47 @@ resource "ibm_database" "test_acc" {
   point_in_time_recovery_deployment_id = "crn:v1:bluemix:public:databases-for-postgresql:us-south:a/4448261269a14562b839e0a3019ed980:0b8c37b0-0f01-421a-bb32-056c6565b461::"
 }
 ```
+### Sample3 Terraform code by using auto_scaling
+{: #auto-scaling}
+
+```
+resource "ibm_database" "autoscale" {
+    resource_group_id            = data.ibm_resource_group.group.id
+    name                         = "redis"
+    service                      = "databases-for-redis"
+    plan                         = "standard"
+    location                     = "us-south"
+    service_endpoints            = "private"
+    auto_scaling {
+        cpu {
+            rate_increase_percent       = 20
+            rate_limit_count_per_member = 20
+            rate_period_seconds         = 900
+            rate_units                  = "count"
+        }
+        disk {
+            capacity_enabled             = true
+            free_space_less_than_percent = 15
+            io_above_percent             = 85
+            io_enabled                   = true
+            io_over_period               = "15m"
+            rate_increase_percent        = 15
+            rate_limit_mb_per_member     = 3670016
+            rate_period_seconds          = 900
+            rate_units                   = "mb"
+        }
+         memory {
+            io_above_percent         = 90
+            io_enabled               = true
+            io_over_period           = "15m"
+            rate_increase_percent    = 10
+            rate_limit_mb_per_member = 114688
+            rate_period_seconds      = 900
+            rate_units               = "mb"
+        }
+    }
+}
+```
 
 ```
 provider "ibm" {
@@ -154,6 +195,30 @@ Review the input parameters that you can specify for your resource.
 |`whitelist.address`|String|Optional|The IP address or range of database client addresses to be whitelisted in CIDR format. Example, `172.168.1.2/32`.| No |
 |`whitelist.description`|String|Optional|A description for the whitelist range. | No |
 |`guid`|String|Optional|The unique identifier of the database instance.| No |
+|`auto_scaling`|List|Optional|Configure rules to allow your database to automatically increase its resources. Single block of autoscaling is allowed at once.|No|
+|`auto_scaling.cpu`|List|Optional|Single block of CPU is allowed at once by CPU autoscaling.|No|
+|`auto_scaling.cpu.rate_increase_percent`|Integer|Optional|Auto scaling rate in increase percent.|No|
+|`auto_scaling.cpu.rate_limit_count_per_member`|Integer|Optional|Auto scaling rate limit in count per number.|No|
+|`auto_scaling.cpu.rate_period_seconds`|Integer|Optional|Period seconds of the auto scaling rate.|No|
+|`auto_scaling.cpu.rate_units`|String|Optional|Auto scaling rate in units.|No|
+|`auto_scaling.disk`|List|Optional|Single block of disk is allowed at once in disk auto scaling.|No|
+|`auto_scaling.disk.capacity_enabled`|Bool|Optional|Auto scaling scalar enables or disables the scalar capacity.|No|
+|`auto_scaling.disk.free_space_less_than_percent`|Integer|Optional|Auto scaling scalar capacity free space less than percent.|No|
+|`auto_scaling.disk.io_above_percent`|Integer|Optional|Auto scaling scalar I/O utilization above percent.|No|
+|`auto_scaling.disk.io_enabled`|Bool|Optional|Auto scaling scalar I/O utilization enabled.|No|
+|`auto_scaling.disk.rate_increase_percent`|Integer|Optional|Auto scaling rate increase percent.|No|
+|`auto_scaling.disk.rate_limit_mb_per_member`|Integer|Optional|Auto scaling rate limit in mega bytes per member.|No|
+|`auto_scaling.disk.rate_period_seconds`|Integer|Optional|Auto scaling rate period in seconds.|No|
+|`auto_scaling.disk.rate_units`|String|Optional|Auto scaling rate in units.|No|
+|`auto_scaling.memory`|List|Optional|Memory Auto Scaling in single block of memory is allowed at once.|No|
+|`auto_scaling.io_above_percent`|Integer|Optional|Auto scaling scalar I/O utilization above percent.|No|
+|`auto_scaling.io_enabled`|Bool|Optional|Auto scaling scalar I/O utilization enabled.|No|
+|`auto_scaling.io_over_period`|String|Optional|Auto scaling scalar I/O utilization over period.|No|
+|`auto_scaling.rate_increase_percent`|Integer|Optional|Auto scaling rate in increase percent.|No|
+|`auto_scaling.rate_limit_mb_per_member`|Integer|Optional|Auto scaling rate limit in mega bytes per member.|No|
+|`auto_scaling.rate_period_seconds`|Integer|Optional|Auto scaling rate period in seconds.|No|
+|`auto_scaling.rate_units`|String|Optional|Auto scaling rate in units.|No|
+
 
 ### Output parameters
 {: #db-output}
@@ -179,10 +244,18 @@ The following timeouts are defined for this resource.
 - **Update** The update of the instance is considered failed when no response is received for 20 minutes.
 - **Delete** The deletion of the instance is considered failed when no response is received for 10 minutes.
 
+ICD create instance typically takes between 10 - 20 minutes. Delete and update takes a minute. Provisioning time is unpredictable. If the apply fails due to a timout, import the database resource once the create is completed.
+{: note}
+
+
 ### Import
 {: #db-import}
 
-The database instance can be imported by using the CRN. To import the resource, you must specify the `region` parameter in the `provider` block of your Terraform configuration file. If the region is not specified, `us-south` is used by default. A Terraform refresh or apply fails, if the database instance is not in the same region as configured in the provider or its alias.
+The database instance can be imported by using the ID, that is formed from the CRN. To import the resource, you must specify the `region` parameter in the `provider` block of your Terraform configuration file. If the region is not specified, `us-south` is used by default. A Terraform refresh or apply fails, if the database instance is not in the same region as configured in the provider or its alias.
+
+CRN is a 120 digit character string of the form -  `crn:v1:bluemix:public:databases-for-postgresql:us-south:a/4ea1882a2d3401ed1e459979941966ea:79226bd4-4076-4873-b5ce-b1dba48ff8c4::`
+{: important}
+
 
 **Syntax**
 ```

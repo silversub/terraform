@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-24"
+lastupdated: "2020-09-14"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -240,7 +240,7 @@ Because Terraform supports multiple cloud providers, you must specify IBM as you
    </tbody>
    </table>
 
-4. In the same directory, create a Terraform provider configuration file that is named `provider.tf`. Use this file to specify IBM as your cloud provider and to reference the credentials from your `terraform.tfvars` file. To reference a variable, declare the variable first, and then retrieve the value of the variable by using Terraform interpolation syntax. You can also specify additional variables in this file that you did not include in your `terraform.tfvars` file. 
+4. In the same directory, create a Terraform provider configuration file that is named `provider.tf`. Use this file to specify IBM as your cloud provider and to reference the credentials from your `terraform.tfvars` file. To reference a variable, declare the variable first, and then retrieve the value of the variable by using Terraform interpolation syntax. You can also specify more variables in this file that you did not include in your `terraform.tfvars` file. 
    ```
    variable "ibmcloud_api_key" {}
    variable "iaas_classic_username" {}

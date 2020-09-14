@@ -95,7 +95,7 @@ Review the input parameters that you can specify for your resource.
 |`health_check_http_endpoint`|String|Optional|The endpoint that you want to use to determine if the app is healthy. |
 |`health_check_type`|String| Optional|The type of health check that you want to perform. Supported values are `port`, and `process`. The default values is `port`. |
 |`health_check_timeout`|Integer|Optional| The number of seconds to wait for the health check to respond during the start of your app before the health check is considered failed. |
-|`tags`|Array of strings| Optional| The tags that you want to add to your app instance. Tags can help you find your app more easily.  **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|`tags`|Array of strings| Optional| The tags that you want to add to your app instance. Tags can help you find your app more easily.  **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpointat this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters

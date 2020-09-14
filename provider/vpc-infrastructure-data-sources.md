@@ -509,7 +509,7 @@ Review the output parameters that you can access after you retrieve your data so
 | `status` | String | The status of the gateway. |
 | `vpc` | String | The VPC ID of the gateway. |
 | `zone` | String | The public gateway zone name. |
-| `floating_ip` | String | Lists the nested block describing the floating IP of the gateway.  with **id** and **address**. |
+| `floating_ip` | String | Lists the nested block describes the floating IP of the gateway.  with **id** and **address**. |
 | `floating_ip.id` | String | The ID of the floating IP that is bound to the public gateway. |
 | `floating_ip.address` | String | The IP address of the floating IP that is bound to the public gateway. |
 
@@ -647,7 +647,7 @@ Review the output parameters that are exported.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the security group.|
-|`rules`|List of objects|A nested block describing the rules of the attributes. |
+|`rules`|List of objects|A nested block describes the rules of the attributes. |
 |`rules.rule_id`| String|ID of the rule.  |
 |`rules.direction`|String|Direction of traffic to enforce, either inbound or outbound. |
 |`rules.ip_version`|String|IP version: IPv4 or IPv6.  |

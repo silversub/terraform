@@ -134,7 +134,7 @@ Operational_status(gateway operational status) and loa_reject_reason(LOA reject 
 ### Import
 {: #dl-gwy-import}
 
-The `ibm_dl_gateway` can be imported using gateway id. 
+The `ibm_dl_gateway` can be imported using gateway ID. 
 
 **Example**
 

@@ -364,8 +364,8 @@ Review the input parameters that you can specify for your resource.
 |`boot_volume`|List|Optional|A list of boot volumes for an instance.| No |
 |`boot_volume.name`|String|Optional|The name of the boot volume.| No |
 |`boot_volume.encryption`|String|Optional|The type of encryption to use for the boot volume.| No |
-|`keys`|List|Required|A comma separated list of SSH keys that you want to add to your instance.| No |
-|`primary_network_interface`|List|Required|A nested block describing the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
+|`keys`|List|Required|A comma-separated list of SSH keys that you want to add to your instance.| No |
+|`primary_network_interface`|List|Required|A nested block describes the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
 |`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
 |`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
 |`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
@@ -1241,7 +1241,7 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the security group.|
-|`rules`|List of objects|A nested block describing the rules of this security group. |
+|`rules`|List of objects|A nested block describes the rules of this security group. |
 |`rules.direction`| String|The direction of the traffic either `inbound` or `outbound`.  |
 |`rules.ip_version`|String|IP version either `ipv4` or `ipv6`.  |
 |`rules.remote`|String|Security group id, an IP address, a CIDR block, or a single security group identifier.  |
@@ -1339,13 +1339,13 @@ Review the input parameters that you can specify for your resource.
 |`direction`|String|Required|The direction of the traffic either `inbound` or `outbound`.| No |
 |`remote`|String|Optional|Security group id, an IP address, a CIDR block, or a single security group identifier.| No |
 |`ip_version`|String|Optional|The IP version either `IPv4` or `IPv6`. Default `IPv4`.| No |
-|`icmp`|List of objects|Optional|A nested block describing the `icmp` protocol of this security group rule.  | No |
+|`icmp`|List of objects|Optional|A nested block describes the `icmp` protocol of this security group rule.  | No |
 |`icmp.type`|Integer|Required|The ICMP traffic type to allow. Valid values from 0 to 254.  | No |
 |`icmp.code`|Integer|Optional|The ICMP traffic code to allow. Valid values from 0 to 255.| No |
-|`tcp`|List of objects|Optional|A nested block describing the `tcp` protocol of this security group rule.  | No |
+|`tcp`|List of objects|Optional|A nested block describes the `tcp` protocol of this security group rule.  | No |
 |`tcp.port_min`|Integer|Required| The TCP port range that includes minimum bound. Valid values are from 1 to 65535.  | No |
 |`tcp.port_max`|Integer|Required| The TCP port range that includes maximum bound. Valid values are from 1 to 65535.| No |
-|`udp`|List of objects| Optional| A nested block describing the `udp` protocol of this security group rule.  | No |
+|`udp`|List of objects| Optional| A nested block describes the `udp` protocol of this security group rule.  | No |
 |`udp.port_min`|Integer|Required|The UDP port range that includes minimum bound. Valid values are from 1 to 65535.  | No |
 |`udp.port_max`|Integer|Required|The UDP port range that includes maximum bound. Valid values are from 1 to 65535. **NOTE**: If any of the `icmp` , `tcp` or `udp` is not specified it creates a rule with protocol `ALL`. | No |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -1420,11 +1420,11 @@ Review the output parameters that you can access after your resource is created.
 |`status`|String|The status of the volume.|
 |`subnet`|String|The Subnet ID.|
 |`type`|String|The type of this network interface as it relates to a instance.|
-|`security_groups`|List of objects|A nested block describing the security groups of this network interface.|
+|`security_groups`|List of objects|A nested block describes the security groups of this network interface.|
 |`security_groups.id`|String|The ID of this security group.	|
 |`security_groups.crn`|String|The CRN of this security group.	|
 |`security_groups.name`|String|The name of this security group.|
-|`floating_ips`|List of objects|A nested block describing the floating IPs of this network interface. |
+|`floating_ips`|List of objects|A nested block describes the floating IPs of this network interface. |
 |`floating_ips.id`|String|The ID of this floating IP.  |
 |`floating_ips.crn`|String|The CRN of this floating IP.  |
 |`floating_ips.name`|String|The name of this floating IP.  |

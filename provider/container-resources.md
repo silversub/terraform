@@ -1022,13 +1022,13 @@ Review the input parameters that you can specify for your resource.
 |`flavor`|String|Required|The flavor of the VPC worker node that you want to use. | Yes |
 |`name`|String|Required|The name of the cluster.| Yes |
 |`vpc_id`|String|Required|The ID of the VPC that you want to use for your cluster. To list available VPCs, run `ibmcloud is vpcs`. | Yes |
-|`zones`|List|Required|A nested block describing the zones of this VPC cluster. | No |
+|`zones`|List|Required|A nested block describes the zones of this VPC cluster. | No |
 |`zones.subnet_id`|String|Required|The VPC subnet to assign the cluster.| Yes |
 |`zones.name`|String|Required|The name of the zone| Yes |
-|`disable_public_service_endpoint`|Boolean|Optional|Disable the public service endpoint to prevent public access to the Kubernetes master. Default value 'true’.| No |
+|`disable_public_service_endpoint`|Boolean|Optional|Disable the public service endpoint to prevent public access to the Kubernetes master. Default value is 'true’.| No |
 |`kube_version`|String|Optional| Specify the Kubernetes version, including the major.minor version. If you do not include this flag, the default version is used. To see available versions, run `ibmcloud ks versions`.| No |
 |`update_all_workers`|Boolean|Optional| Set to true, if you want to update workers Kubernetes version with the cluster kube_version.| No |
-|`pod_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for pods. The subnet must have a CIDR of at least `/23` or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#cs_subnets). Default value: `172.30.0.0/16`.| Yes |
+|`pod_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for pods. The subnet must have a CIDR of at least `/23` or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#cs_subnets). Default value is `172.30.0.0/16`.| Yes |
 |`service_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for services. The subnet must be at least ’/24’ or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#cs_messages). Default value: `172.21.0.0/16`.| Yes |
 |`worker_count`|Integer|Optional| The number of worker nodes per zone in the default worker pool. Default value `1`.| Yes |
 |`worker_labels`|Map|Optional| Labels on all the workers in the default worker pool.| No |
@@ -1111,7 +1111,7 @@ Review the input parameters that you can specify for your resource.
 |`vpc_id`|String|Required|The ID of the VPC.| Yes |
 |`worker_count`|Integer|Required| The number of worker nodes per zone in the worker pool.| No |
 |`flavor`|String|Required|The flavor of the worker node.| Yes |
-|`zones`|List|Required|A nested block describing the zones of this worker pool. | No |
+|`zones`|List|Required|A nested block describes the zones of this worker pool. | No |
 |`zones.subnet_id`|String|Required|The subnet that you want to use for your worker pool.| No |
 |`zones.name`|String|Required|The name of the zone.| No |
 |`labels`|Map|Optional|A list of labels that you want to add to all the worker nodes in the worker pool.| No |

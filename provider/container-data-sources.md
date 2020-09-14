@@ -254,7 +254,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `calico_config_file_path` | String | The path on your local machine where your Calico configuration files and certificates are downloaded to. |
 | `config_file_path` | String | The path on your local machine where the cluster configuration file and certificates are downloaded to.| 
 | `id` | String | The unique identifier of the cluster configuration. |
-| `admin_key`|String|The admin key of the cluster configuration. Note that this key is case sensitive. |
+| `admin_key`|String|The admin key of the cluster configuration. Note that this key is case-sensitive. |
 |`admin_certificate`|String|The admin certificate of the cluster configuration.|
 |`ca_certificate`|String|The cluster CA certificate of the cluster configuration.|
 |`host`|String|The host name of the cluster configuration.|
@@ -626,7 +626,7 @@ Review the output parameters that you can access after you retrieved your data s
 * `vpc_id` -  The Id of VPC 
 * `worker_count` - The number of worker nodes per zone in the worker pool.
 * `flavor` - The flavour of the worker node.
-* `zones` - A nested block describing the zones of this worker_pool. Nested zones blocks have the following structure:
+* `zones` - A nested block describes the zones of this worker_pool. Nested zones blocks have the following structure:
   * `subnet-id` -  The worker pool subnet to assign the cluster. 
   * `name` -  Name of the zone.
 * `labels` -  Labels on all the workers in the worker pool.

@@ -95,7 +95,7 @@ The resource do not wait for the available status, if you are provisioning the c
 ### Import
 {: #connection-r-import}
 
-`ibm_tg_connection` can be imported by using transit gateway id and connection id.
+`ibm_tg_connection` can be imported by using transit gateway id and connection ID.
 
 **Example**
 ```
@@ -152,7 +152,7 @@ Review the input parameters that you can specify for your resource.
 ### Import
 {: #gateway-import}
 
-`ibm_tg_gateway` can be imported by using transit gateway id and connection id.
+`ibm_tg_gateway` can be imported by using transit gateway id and connection ID.
 
 **Example**
 ```
