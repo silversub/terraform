@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform dns service, terraform dns, terraform private dns
 
@@ -96,7 +96,7 @@ data "ibm_dns_permitted_networks" "test" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`instance_id`|String|Required|The ID of the private DNS service instance where you created permitted networks.|
 |`zone_id`|String|Required|The ID of the zone where you added the permitted networks.|
@@ -144,7 +144,7 @@ data "ibm_dns_resource_records" "ds_pdns_resource_records" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`instance_id`|String|Required|The ID of the private DNS service instance.|
 |`zone_id`|String|Required|The ID of the zone that you added to the private DNS service instance.|
@@ -186,7 +186,7 @@ data "ibm_dns_zones" "ds_pdnszones" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`instance_id`|String|Required|The ID of the private DNS service instance.|
 

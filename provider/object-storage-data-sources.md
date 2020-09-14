@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform provider cos, terraform resources cos, terraform resources object storage, create bucket with terraform
 
@@ -85,7 +85,7 @@ output "bucket_private_endpoint" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `bucket_name` | String | Required | The name of the bucket. |
 | `bucket_region` | String | Required | The region of the bucket. |

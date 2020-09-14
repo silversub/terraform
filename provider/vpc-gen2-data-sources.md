@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-11"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -70,7 +70,7 @@ The following example retrieves information about the VPC floating IP.
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`name`|String|Required|The name of the floating IP.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -118,7 +118,7 @@ data "ibm_is_image" "ds_image" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`name`|String|Required|The name of the image.|
 |`visibility`|String|Optional|The visibility of the image. Accepted values are `public` or `private`.|
@@ -239,7 +239,7 @@ data "ibm_is_instance" "ds_instance" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|Required|The name of the {{site.data.keyword.vsi_is_short}} instance that you want to retrieve. |
 |`private_key`|String|Optional|The private key of an SSH key that you want to add to your {{site.data.keyword.vsi_is_short}} instance during creation in PEM format. SSH keys are used by virtual servers to identify a user or device through public-key cryptography. For more information about how to create SSH keys and upload them to {{site.data.keyword.cloud_notm}}, see [Locating or generating your SSH key](/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys). The SSH key is used to decrypt the default administrator password in Windows if Windows is installed as the operating system on your {{site.data.keyword.vsi_is_short}} instance.|
@@ -391,7 +391,7 @@ data "ibm_is_instance_profile" "profile" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`name`|String|Required|The name for this virtual server instance profile.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -482,7 +482,7 @@ data "ibm_is_public_gateway" "testacc_dspgw"{
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `name` | String | Required | The name of the gateway. | 
 | `resource_group` | String | Optional | The resource group ID of the public gateway. **Note** This parameter is supported only for VPC Gen 2 infrastructure. |
@@ -499,7 +499,7 @@ Review the output parameters that you can access after you retrieve your data so
 | `status` | String | The status of the gateway. |
 | `vpc` | String | The VPC ID of the gateway. |
 | `zone` | String | The public gateway zone name. |
-| `floating_ip` | String | Lists the nested block describing the floating IP of the gateway.  with **id** and **address**. |
+| `floating_ip` | String | Lists the nested block describes the floating IP of the gateway.  with **id** and **address**. |
 | `floating_ip.id` | String | The ID of the floating IP that is bound to the public gateway. |
 | `floating_ip.address` | String | The IP address of the floating IP that is bound to the public gateway. |
 
@@ -531,7 +531,7 @@ data "ibm_is_region" "ds_region" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`name`|String|Required|The name of the region.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -623,7 +623,7 @@ data "ibm_is_security_group" "sg1_rule" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------| 
 |`name`|String|Required|The name of the security group.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -637,7 +637,7 @@ Review the output parameters that are exported.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the security group.|
-|`rules`|List of objects|A nested block describing the rules of the attributes. |
+|`rules`|List of objects|A nested block describes the rules of the attributes. |
 |`rules.rule_id`| String|ID of the rule.  |
 |`rules.direction`|String|Direction of traffic to enforce, either inbound or outbound. |
 |`rules.ip_version`|String|IP version: IPv4 or IPv6.  |
@@ -677,7 +677,7 @@ data "ibm_is_ssh_key" "ds_key" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`name`|String|Required|The name of the SSH key.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -729,7 +729,7 @@ data "ibm_is_subnet" "ds_subnet" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`identifier`|String|Required|The ID of the subnet.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -825,7 +825,7 @@ data "ibm_is_vpc" "ds_vpc" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`name`|String|Required|The name of the VPC.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -881,7 +881,7 @@ data "ibm_is_zone" "ds_zone" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`name`|String|Required|The name of the zone.|
 |`region`|String|Required| The name of the region.|
@@ -923,7 +923,7 @@ data "ibm_is_zones" "ds_zones" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`region`|String|Required|The name of the region.|
 |`status`|String|Optional|Filter the list by status of zones.|

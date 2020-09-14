@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-24"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -77,7 +77,7 @@ resource "ibm_app" "app" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|The name of the app that you want to create, update, or delete. You can retrieve the value by running the `ibmcloud app list` command in the {{site.data.keyword.cloud_notm}} CLI.|
 |`memory`|Integer|Optional|The amount of memory, specified in megabytes, that is allocated to each instance. If you don't specify a value, the system assigns pre-defined values based on the app quota. You can check the default values by running `ibmcloud cf org <org-name>`. The command lists the quotas that are defined in your Cloud Foundry organization and space. If space quotas are defined, you can see them by running `ibmcloud cf space-quota <space-quota-name>`, where `<quota-name>` is the name of the quota. To check the organization quotas, run `ibmcloud cf quota <quota-name>`.|
@@ -95,7 +95,7 @@ Review the input parameters that you can specify for your resource.
 |`health_check_http_endpoint`|String|Optional|The endpoint that you want to use to determine if the app is healthy. |
 |`health_check_type`|String| Optional|The type of health check that you want to perform. Supported values are `port`, and `process`. The default values is `port`. |
 |`health_check_timeout`|Integer|Optional| The number of seconds to wait for the health check to respond during the start of your app before the health check is considered failed. |
-|`tags`|Array of strings| Optional| The tags that you want to add to your app instance. Tags can help you find your app more easily.  **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|`tags`|Array of strings| Optional| The tags that you want to add to your app instance. Tags can help you find your app more easily.  **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpointat this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -142,7 +142,7 @@ resource "ibm_app_domain_private" "domain" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|------------|------------------------|
 |`name`|String| Required| The name of the private domain.|
 |`org_guid`|String|Required|The GUID of the Cloud Foundry organization where you want to create the domain. You can retrieve the value from data source `ibm_org` or by running the `ibmcloud iam orgs --guid` command in the {{site.data.keyword.cloud_notm}} CLI. |
@@ -189,7 +189,7 @@ resource "ibm_app_domain_shared" "domain" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|------------|------------------------|
 |`name`|String|Required|The name of the domain.|
 |`router_group_guid`|String|Optional|The GUID of the router group.|
@@ -244,7 +244,7 @@ resource "ibm_app_route" "route" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|------------|------------------------|
 |`domain_guid`|String|Required|The GUID of the associated domain. You can retrieve the value from data source `ibm_app_domain_shared` or `ibm_app_domain_private`.|
 |`space_guid`|String|Required| The GUID of the Cloud Foundry space where you want to create the route. You can retrieve the value from data source `ibm_space` or by running the `ibmcloud iam space <space_name> --guid` command in the {{site.data.keyword.cloud_notm}} CLI. |
@@ -295,7 +295,7 @@ resource "ibm_org" "testacc_org" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|------------|------------------------|
 |`name`|String|Required|The descriptive name used of the Cloud Foundry organization. The name must be unique in {{site.data.keyword.cloud_notm}}. |
 |`org_quota_definition_guid`|String|Optional|The GUID for the quota that is assigned to organization. The quota sets memory, service, and instance limits for the organization.|
@@ -365,7 +365,7 @@ resource "ibm_service_instance" "service_instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|------------|------------------------|
 |`name`|String|Required|A descriptive name for the service instance.|
 |`space_guid`|String|Required|The GUID of the Cloud Foundry space where you want to create the service. You can retrieve the value from data source `ibm_space`.|
@@ -420,7 +420,7 @@ resource "ibm_service_key" "serviceKey" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|------------|------------------------|
 |`name`|String|Required|A descriptive name for the service key.|
 |`parameters`|Map|Optional|Arbitrary parameters to pass along to the service broker. Must be a JSON object.|
@@ -469,7 +469,7 @@ resource "ibm_space" "space" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|------------|------------------------|
 |`name`|String|Required|The descriptive name for the space.|
 |`org`|String|Required|The name of the Cloud Foundry organization to which this space belongs.|

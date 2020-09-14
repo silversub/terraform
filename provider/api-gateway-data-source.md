@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform api gateway
 
@@ -66,7 +66,7 @@ data "ibm_api_gateway" "apigateway" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`service_instance_crn`|String|Required|The CRN of the API Gateway service instance. |
 

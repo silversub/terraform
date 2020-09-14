@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-08"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform certificate manager, terraform cert manager, terraform certificate
 
@@ -98,7 +98,7 @@ resource "ibm_api_gateway_endpoint" "endpoint"{
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`service_instance_crn`|String|Required|The CRN of the service instance.|
 |`name`|String|Required|The name of the API Gateway endpoint. This value is optional when you create an API Gateway endpoint, but required when you update the endpoint.|
@@ -164,7 +164,7 @@ resource "ibm_api_gateway_endpoint_subscription" "subs" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`artifact_id`|String|Required|The ID of an API endpoint.| 
 |`client_id`|String|Optional|The API key to generate an API key for the subscription. The generated API key represents the ID of a subscription.| 

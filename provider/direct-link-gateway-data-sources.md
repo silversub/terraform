@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -67,7 +67,7 @@ Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructur
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|Required|The unique user-defined name for the gateway. |
 
@@ -109,7 +109,7 @@ Review the output parameters that you can access after your resource is created.
 |`virtual_connections.name`|String|The unique user-defined name of the only virtual connection in the gateway.| 
 |`virtual_connections.status`|String| The status of the virtual connection. Possible values are `pending`,`attached`,`approval_pending`,`rejected`,`expired`,`deleting`,`detached_by_network_pending`,`detached_by_network`.|
 |`virtual_connections.type`|String|The virtual connection type. Possible values are `classic`,`vpc`.|
-|`virtual_connections.network_account`|String|For virtual connections across two different {{site.data.keyword.cloud_notm}} accounts. Network_account indicates the account you own the target network. For example: `00aa14a2e0fb102c8995ebefhhhf8655556`
+|`virtual_connections.network_account`|String|For virtual connections across two different {{site.data.keyword.cloud_notm}} accounts. Network_account indicates the account you own the target network. For example, `00aa14a2e0fb102c8995ebefhhhf8655556`
 |`virtual_connections.network_id`|String| The unique identifier of the target network. For type `vpc`, virtual connections is the CRN of the target VPC. This field do not apply for type `classic` connections. For example, `crn:v1:bluemix:public:is:us-east:a/28e4d90ac7504be69447111122223333::vpc:aaa81ac8-5e96-42a0-a4b7-6c2e2dbb`|
 
 ## ibm_dl_gateways
@@ -191,7 +191,7 @@ Import the details of valid locations for the specified direct link offering.
 Retrieve the input parameters that you need to specify for the data source. 
 {: shortdesc}
 
-| Input parameter | Data type |Required/ Optional | Description |
+| Input parameter | Data type |Required / optional | Description |
 | ------------- |-------------| --------------|-------------- |
 |`offering_type`| String | Required|The direct link offering type. Possible values are `dedicated`,`connect`.| 
 
@@ -273,7 +273,7 @@ Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructur
 Retrieve the input parameters that you need to specify for the data source. 
 {: shortdesc}
 
-| Input parameter | Data type |Required/ Optional | Description |
+| Input parameter | Data type |Required / optional | Description |
 | ------------- |-------------| --------------|-------------- |
 |`port_id`| String | Required|The unique ID for the direct link port.| 
 
@@ -353,7 +353,7 @@ data "ibm_dl_routers" "test_dl_routers" {
 The input parameters that you need to specify for the data source. 
 {: shortdesc}
 
-| Input parameter | Data type |Required/ Optional | Description |
+| Input parameter | Data type |Required / optional | Description |
 | ------------- |-------------| --------------|-------------- |
 |`offering_type`|String|Required|The direct link offering type. Only `dedicated` is supported in this API.|
 |`location_name`|String|Required|The name of the direct link location.|

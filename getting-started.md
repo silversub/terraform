@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -600,7 +600,7 @@ To create a VPC and a virtual server instance:
 
    Plan: 6 to add, 0 to change, 0 to destroy.
 
-   Note: You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions will be performed if "terraform apply" is subsequently run.
+   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions will be performed if "terraform apply" is subsequently run.
    ```
    {: screen}
    
@@ -922,7 +922,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
 
    Plan: 1 to add, 0 to change, 0 to destroy.
    ------------------------------------------------------------------------
-   Note: You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions will be performed if "terraform apply" is subsequently run.
+   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions will be performed if "terraform apply" is subsequently run.
    ```
    {: screen}
    

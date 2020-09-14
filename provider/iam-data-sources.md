@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -63,7 +63,7 @@ data "ibm_iam_access_group" "accgroup" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-------|----------|
 |`access_group_name`|String|Optional|The name of the access group that you want to retrieve details for. If no access group is specified, all access groups that exist in the {{site.data.keyword.cloud_notm}} account are returned.| 
 
@@ -143,7 +143,7 @@ data "ibm_iam_role_actions" "test" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-------|----------|
 |`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported actions. For account management services, you can find supported values in the [documentation](/docs/account?topic=account-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
 
@@ -181,7 +181,7 @@ data "ibm_iam_roles" "test" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-------|----------|
 |`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported IAM roles. For account management services, you can find supported values in the [documentation](/docs/account?topic=account-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
 
@@ -221,7 +221,7 @@ data "ibm_iam_service_id" "ds_serviceID" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-------|----------|
 |`name`|String| Required|The name of the service.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -276,7 +276,7 @@ data "ibm_iam_service_policy" "testacc_ds_service_policy" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|---------|---------------------|
 |`iam_service_id`|String|Required| The UUID of the service ID.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -288,15 +288,14 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|-------------|
-|`policies`|List of objects|A nested block describing IAM service policies that are assigned to a service ID. |
+|`policies`|List of objects|A nested block describes IAM service policies that are assigned to a service ID. |
 |`policies.id`|String|The unique identifier of the IAM service policy. The id is composed of \<iam_service_id\>/\<service_policy_id\>  |
-|`policies.roles`| String|The roles that are assigned to the policy.	|
-|`policies.resources`| List of objects| A nested block describing the resources in the policy.		|
-|`policies.resources.service`|The service name of the policy definition. 		|
-|`policies.resources.resource_instance_id`|The ID of resource instance of the policy definition.		|
-|`policies.resources.region`|The region of the policy definition.		|
-|`policies.resources.resource_type`|The resource type of the policy definition.		|
-|`policies.resources.resource`|The resource of the policy definition.		|
+|`policies.roles`| String|The roles that are assigned to the policy.|
+|`policies.resources`| List of objects| A nested block describes the resources in the policy.|`policies.resources.service`|The service name of the policy definition. |
+|`policies.resources.resource_instance_id`|The ID of resource instance of the policy definition.|
+|`policies.resources.region`|The region of the policy definition.|
+|`policies.resources.resource_type`|The resource type of the policy definition.|
+|`policies.resources.resource`|The resource of the policy definition.|
 |`policies.resources.resource_group_id`|The ID of the resource group.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
@@ -333,7 +332,7 @@ data "ibm_iam_user_policy" "testacc_ds_user_policy" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|---------------|-------------------|
 |`ibm_id`|String|Required| The IBMid or email address of the user.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -346,10 +345,10 @@ The following attributes are exported:
 
 |Name|Data type|Description|
 |----|-----------|-------------|
-|`policies`|List|A nested block describing IAM Policies assigned to user. |
+|`policies`|List|A nested block describes IAM Policies assigned to user. |
 |`policies.id`|String|The unique identifier of the IAM user policy. The ID is composed of \<ibm_id\>/\<user_policy_id\>.  |
 |`policies.roles`| String|The roles that are assigned to the policy.	|
-|`policies.resources`| List of objects| A nested block describing the resources in the policy.|
+|`policies.resources`| List of objects| A nested block describes the resources in the policy.|
 |`policies.resources.service`|String|The service name of the policy definition. 		|
 |`policies.resources.resource_instance_id`|String}The ID of resource instance of the policy definition.		|
 |`policies.resources.region`|String|The region of the policy definition.		|
@@ -383,7 +382,7 @@ data "ibm_iam_user_profile" "user_profle" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|---------------|-------------------|
 |`id`|String|Required| The IBMid or email address of the user.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -431,7 +430,7 @@ The following attributes are exported:
 |`users`| String|List of all IAM users. Each user profile has following list of arguments. |
 |`users.iam_id`| String|The Id of the IAM user. |
 |`users.realm`| String|The realm of the user.  |
-|`users.user_id`| String|The user ID used for login. |
+|`users.user_id`| String|The user ID used for log in. |
 |`users.firstname`| String|The first name of the user. |
 |`users.lastname`| String|The last name of the user. |
 |`users.state`| String|The state of the user. |

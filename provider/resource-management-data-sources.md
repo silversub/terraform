@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform resource group, terraform resource management, terraform iam services
 
@@ -70,7 +70,7 @@ data "ibm_resource_group" "group" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------------|-----------------------------|
 |`name`|String|Optional|The name of the resource group. You can retrieve the value by running the `ibmcloud resource groups` command. If you set this option, do not specify `is_default` at the same time. |
 |`is_default`|Boolean|Optional|If set to **true**, you retrieve information about the default resource group. If set to **false**, you retrieve information about a resource group other than default. The default value is `false`. If you set this option, do not specify `name` at the same time. |
@@ -115,7 +115,7 @@ data "ibm_resource_instance" "testacc_ds_resource_instance" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------------|-----------------------------|
 |`name`|String|Required|The name of the resource instance.|
 |`resource_group_id`|String|Optional|The ID of the resource group where the service instance exists. If no value is specified, the `default` resource group is used by default. |
@@ -162,12 +162,12 @@ data "ibm_resource_key" "resourceKeydata" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------------|-----------------------------|
 |`name`|String|Required|The name of the resource key. You can retrieve the value by running the `ibmcloud resource service-keys` command.|
 |`resource_instance_id`|String|Optional|The ID of the resource instance that the resource key is associated with. You can retrieve the value by running the `ibmcloud resource service-instances` command. If you set this option, do not specify `resource_alias_id` at the same time. |
 |`resource_alias_id`|String|Optional|The ID of the resource alias that the resource key is associated with. You can retrieve the value by running the `ibmcloud resource service-alias` command. If you set this option, do not specify `resource_instance_id` at the same time.|
-|`most_recent`|Boolean|Optional|If there are multiple resource keys, you can set this argument to `true` to import only the most recently created key.|
+|`most_recent`|Boolean|Optional|For multiple resource keys, you can set this argument to `true` to import only the most recently created key.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -205,7 +205,7 @@ data "ibm_resource_quota" "rsquotadata" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------------|-----------------------------|
 |`name`|String|Required|The name of the quota for the service instance. You can retrieve the value by running the `ibmcloud resource quotas` command.|
 {: caption="Table. Available input parameters" caption-side="top"}

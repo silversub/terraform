@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07" 
+lastupdated: "2020-09-14" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -64,11 +64,11 @@ resource "ibm_resource_group" "resourceGroup" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|The name of the resource group.|
 |`quota_id`|String|Removed|The ID of the quota. You can refer to a quota by name using the resource quota data source.|
-|`tags`|Array of strings|Optional|Tags associated with the resource group instance. The tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.|
+|`tags`|Array of strings|Optional|Tags associated with the resource group instance. The tags are managed locally and not stored on the IBM Cloud Service Endpointat this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -87,7 +87,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #rg-import}
 
-`ibm_resource_group` can be imported using resource group id. 
+`ibm_resource_group` can be imported using resource group ID. 
 
 ```
 terraform import ibm_resource_group.example <resource_group_ID>
@@ -135,7 +135,7 @@ resource "ibm_resource_instance" "resource_instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|Forces new resource|
+|Name|Data type|Required / optional|Description|Forces new resource|
 |----|-----------|-----------|---------------------|------|
 |`name`|String|Required|A descriptive name used to identify the resource instance.| No |
 |`service`|String|Required|The name of the service offering. You can retrieve the value by installing the `catalogs-management` CLI plug-in and running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search` command.| Yes |
@@ -287,14 +287,14 @@ resource "ibm_resource_key" "resourceKey" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------|----------|
 |`name`|String|Required| A descriptive name used to identify a resource key.| Yes |
 |`role`|String|Required|The name of the user role. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.| Yes |
 |`parameters`|Map|Optional|Arbitrary parameters to pass to the resource in JSON format. If you want to create service credentials by using the private service endpoint, include the `service-endpoints =  "private"` parameter. | Yes |
 |`resource_instance_id`|String|Optional|The ID of the resource instance associated with the resource key. **NOTE**: Conflicts with `resource_alias_id`.| Yes |
 |`resource_alias_id`|String|Optional|The ID of the resource alias associated with the resource key. **NOTE**: Conflicts with `resource_instance_id`.| Yes |
-|`tags`|Array of strings|Optional|Tags associated with the resource key instance. Tags are managed locally and not stored on the IBM Cloud service endpoint at this moment.| No |
+|`tags`|Array of strings|Optional|Tags associated with the resource key instance. Tags are managed locally and not stored on the IBM Cloud Service Endpointat this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -66,7 +66,7 @@ data "ibm_container_cluster" "cluster" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `cluster_name_id` | String | Required | The name or ID of the cluster that you want to retrieve.  |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
@@ -233,7 +233,7 @@ resource "kubernetes_namespace" "example" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `admin` | Boolean | Optional | If set to **true**, the Kubernetes configuration for cluster administrators is downloaded. The default is **false**. |
 | `cluster_name_id` | String | Required | The name or ID of the cluster that you want to log in to. | 
@@ -254,7 +254,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `calico_config_file_path` | String | The path on your local machine where your Calico configuration files and certificates are downloaded to. |
 | `config_file_path` | String | The path on your local machine where the cluster configuration file and certificates are downloaded to.| 
 | `id` | String | The unique identifier of the cluster configuration. |
-| `admin_key`|String|The admin key of the cluster configuration. Note that this key is case sensitive. |
+| `admin_key`|String|The admin key of the cluster configuration. Note that this key is case-sensitive. |
 |`admin_certificate`|String|The admin certificate of the cluster configuration.|
 |`ca_certificate`|String|The cluster CA certificate of the cluster configuration.|
 |`host`|String|The host name of the cluster configuration.|
@@ -284,7 +284,7 @@ data "ibm_container_cluster_worker" "cluster" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To find the resource group, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. If this parameter is not provided, the `default` resource group is used.|
 | `worker_id` | String | Required | The ID of the worker node for which you want to retrieve information. To find the ID, run `ibmcloud ks worker ls --cluster <cluster_name_or_ID>`. 
@@ -329,7 +329,7 @@ data "ibm_container_cluster_versions" "cluster_versions" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To find the resource group, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. If this parameter is not provided, the `default` resource group is used.|
 
@@ -369,7 +369,7 @@ data "ibm_container_worker_pool" "testacc_ds_worker_pool"{
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `cluster` | String | Required | The name or ID of the cluster.|
 | `worker_pool_name` | String | Required | The name of the worker pool that need to be retrieved.|
@@ -420,7 +420,7 @@ data "ibm_container_vpc_cluster_alb" "alb" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `alb_id` | String | Required | The name or ID of the application load balancer. |
 
@@ -468,7 +468,7 @@ data "ibm_container_vpc_cluster" "cluster" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `cluster_name_id` | String | Required | The name or ID of the VPC cluster that you want to retrieve.  |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
@@ -543,7 +543,7 @@ data "ibm_container_cluster_worker" "worker_foo" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `cluster_name_id` | String | Required | The name or ID of the cluster that the worker node belongs to. |
 | `worker_id` | String | Required | The ID of the worker node for which you want to retrieve information. To find the ID, run `ibmcloud ks worker ls --cluster <cluster_name_or_ID>`. 
@@ -592,7 +592,7 @@ data "ibm_container_vpc_cluster_worker_pool" "testacc_ds_worker_pool" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `worker_pool_name` | String | Required | The name of the worker pool. |
 | `cluster` | String | Required | The name or id of the cluster. |
@@ -626,7 +626,7 @@ Review the output parameters that you can access after you retrieved your data s
 * `vpc_id` -  The Id of VPC 
 * `worker_count` - The number of worker nodes per zone in the worker pool.
 * `flavor` - The flavour of the worker node.
-* `zones` - A nested block describing the zones of this worker_pool. Nested zones blocks have the following structure:
+* `zones` - A nested block describes the zones of this worker_pool. Nested zones blocks have the following structure:
   * `subnet-id` -  The worker pool subnet to assign the cluster. 
   * `name` -  Name of the zone.
 * `labels` -  Labels on all the workers in the worker pool.

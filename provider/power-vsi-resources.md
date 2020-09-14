@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-08"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -69,7 +69,7 @@ resource "ibm_pi_image" "testacc_image  "{
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`pi_image_name`|String|Required|The name of the image. |
 |`pi_image_id`|String|Required|The ID of the image. | 
@@ -91,8 +91,8 @@ Review the output parameters that you can access after your resource is created.
 
 The following timeouts are defined for this resource: 
 
-- **Create:** The creation of the image is considered failed if no response is received for 60 minutes. 
-- **Delete:** The deletion of the image is considered failed if no response is received for 60 minutes. 
+- **Create** The creation of the image is considered failed if no response is received for 60 minutes. 
+- **Delete** The deletion of the image is considered failed if no response is received for 60 minutes. 
 
 
 ## `ibm_pi_instance`
@@ -129,7 +129,7 @@ resource "ibm_pi_instance" "test-instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The cloud instance ID of your account. |
 | `pi_image_id` | String | Required | The ID of the image that you want to use for your Power Systems Virtual Server instance. The image determines the operating system that is installed in your instance. To list available images, run the `ibmcloud pi images` command. |
@@ -234,7 +234,7 @@ resource "ibm_pi_key" "testacc_sshkey" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The cloud instance ID for this account. | 
 | `pi_key_name` | Integer | Required | The name of the SSH key that you uploaded to {{site.data.keyword.cloud_notm}}. 
@@ -306,7 +306,7 @@ resource "ibm_pi_network" "power_networks" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The cloud instance ID for this account. |
 | `pi_network_name` | String | Required | The name of the network. |
@@ -378,7 +378,7 @@ resource "ibm_pi_volume" "testacc_volume"{
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The cloud instance ID for this account. |
 | `pi_volume_name` | String | Required |  The name of the volume. |

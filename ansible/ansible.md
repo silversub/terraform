@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-09"
+lastupdated: "2020-09-14"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -215,7 +215,7 @@ To run Ansible operations against your infrastructure:
    ```
    {: pre}
    
-2. Create an Ansible configuration file that is named `ansible.cfg` with the following content. In this example, SSH **host_key_checking** is disabled to avoid errors during SSH login as virtual servers in {{site.data.keyword.cloud_notm}} can reuse IP addresses when they are deleted and re-created. For more information, see [Host Key Checking](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html#host-key-checking). 
+2. Create an Ansible configuration file that is named `ansible.cfg` with the following content. In this example, SSH **host_key_checking** is disabled to avoid errors during SSH log in as virtual servers in {{site.data.keyword.cloud_notm}} can reuse IP addresses when they are deleted and re-created. For more information, see [Host Key Checking](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html#host-key-checking). 
    ```
    [defaults]
    host_key_checking = false

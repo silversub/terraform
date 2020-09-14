@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform dns, terraform vpc dns, terraform private dns
 
@@ -73,7 +73,7 @@ resource "ibm_dns_permitted_network" "test-pdns-permitted-network-nw" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`instance_id`|String|Required|The ID of the IBM Cloud DNS service instance where you want to add a permitted network.|
 |`zone_id`|String|Required|The ID of the private DNS zone where you want to add the permitted network.|
@@ -174,7 +174,7 @@ resource "ibm_dns_resource_record" "test-pdns-resource-record-txt" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`instance_id`|String|Required|The ID of the IBM Cloud DNS service instance where you want to create the DNS record.|
 |`zone_id`|String|Required|The ID of the DNS zone where you want to create a DNS record.|
@@ -243,7 +243,7 @@ resource "ibm_dns_zone" "pdns-1-zone" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|The name of the DNS zone that you want to create.| 
 |`instance_id`|String|Required|The ID of the IBM Cloud DNS service instance where you want to create a DNS zone.|

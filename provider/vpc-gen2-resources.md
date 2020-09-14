@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-11" 
+lastupdated: "2020-09-14" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -83,7 +83,7 @@ resource "ibm_is_floating_ip" "testacc_floatingip" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `name` | String | Required | Enter a name for the floating IP address. | 
 | `target` | String | Optional | Enter the ID of the network interface that you want to use to allocate the IP address. If you specify this option, do not specify `zone` at the same time. | 
@@ -141,7 +141,7 @@ Review the input parameters that you can specify for your resource.
 {: shortdesc}
 
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
 | `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate `IPsec` peers. Available options are `md5`, `sha1`, or `sha256`. | No |
 | `dh_group` | Integer | Required | Enter the Diffie-Hellman group that you want to use for the encryption key. Available options are `2`, `5`, or `14`. | No |
@@ -304,7 +304,7 @@ resource "ibm_is_instance" "testacc_instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
 |`name`|String|Optional|The instance name.| No |
 |`vpc`|String|Required|The ID of the VPC where you want to create the instance.| Yes |
@@ -314,8 +314,8 @@ Review the input parameters that you can specify for your resource.
 |`boot_volume`|List|Optional|A list of boot volumes for an instance.| No |
 |`boot_volume.name`|String|Optional|The name of the boot volume.| No |
 |`boot_volume.encryption`|String|Optional|The type of encryption to use for the boot volume.| No |
-|`keys`|List|Required|A comma separated list of SSH keys that you want to add to your instance.| No |
-|`primary_network_interface`|List|Required|A nested block describing the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
+|`keys`|List|Required|A comma-separated list of SSH keys that you want to add to your instance.| No |
+|`primary_network_interface`|List|Required|A nested block describes the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
 |`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
 |`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
 |`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
@@ -417,7 +417,7 @@ resource "ibm_is_ipsec_policy" "example" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ---------- |
 | `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate `IPsec` peers. Available options are `md5`, `sha1`, or `sha256`. | No |
 | `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. |  No |
@@ -462,7 +462,7 @@ resource "ibm_is_image" "test_is_images" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ----- |
 |`name`|String|Required|The descriptive name used to identify an image.| No |
 |`href`|String|Required| The path of an image to be uploaded.| No |
@@ -509,7 +509,7 @@ resource "ibm_is_lb" "lb" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------- |
 |`name`|String|Required|The name of the VPC load balancer.| No |
 |`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.| No |
@@ -598,7 +598,7 @@ resource "ibm_is_lb_pool_member" "webapptier-lb-pool-member-zone1" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------- |
 |`lb`|String|Required|The load balancer unique identifier.| Yes |
 |`port`|Integer|Required|The listener port number. Valid range 1 to 65535.| No |
@@ -716,7 +716,7 @@ resource "ibm_is_lb_listener_policy" "lb_listener_policy" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ----- |
 |`lb`|String|Required|The ID of the load balancer for which you want to create a load balancer listener policy.|  Yes |
 |`listener`|String|Required|The ID of the load balancer listener.| Yes |
@@ -808,7 +808,7 @@ resource "ibm_is_lb_listener_policy_rule" "lb_listener_policy_rule" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource | 
+|Name|Data type|Required / optional|Description| Forces new resource | 
 |----|-----------|-----------|---------------------| ------ |
 |`lb`|String|Required|The ID of the load balancer for which you want to create a listener policy rule.| Yes |
 |`listener`|String|Required|The ID of the load balancer listener for which you want to create a policy rule.|  Yes |
@@ -879,11 +879,11 @@ Review the input parameters that you can specify for your resource.
 {: shortdesc}
 
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------ |
 |`name`|String|Required| The name of the pool.| No |
 |`lb` |String|Required|The load balancer unique identifier.| Yes |
-|`algorithm`|String|Required|The load balancing algorithm. Supported values are `round_robin`, `weighted_round_robin`, or `least_connections`.| No |
+|`algorithm`|String|Required|The load-balancing algorithm. Supported values are `round_robin`, `weighted_round_robin`, or `least_connections`.| No |
 |`protocol`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.| No |
 |`health_delay`|Integer|Required|The health check interval in seconds. Interval must be greater than `timeout` value.| No |
 |`health_retries`|Integer|Required|The health check max retries.| No |
@@ -948,13 +948,13 @@ resource "ibm_is_lb_pool_member" "testacc_lb_mem" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| --------- |
 |`pool`|String|Required| The load balancer pool unique identifier.| Yes |
 |`lb`|String|Required| The load balancer unique identifier.| Yes |
 |`port`|Integer|Required| The port number of the application running in the server member.| No |
 |`target_address`|String|Required|The IP address of the pool member.| No |
-|`weight`|Integer|Optional| Weight of the server member. This option takes effect only when the load balancing algorithm of its belonging pool is `weighted_round_robin`.| No |
+|`weight`|Integer|Optional| Weight of the server member. This option takes effect only when the load-balancing algorithm of its belonging pool is `weighted_round_robin`.| No |
 
 ### Output parameters
 {: #lb-pool-member-output}
@@ -1036,7 +1036,7 @@ resource "ibm_is_network_acl" "isExampleACL" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------------ |
 |`name`|String|Required|The name of the network ACL.| No |
 |`vpc`|String|Optional|The VPC ID. This parameter is required if you want to create a network ACL for a Gen 2 VPC.| Yes |
@@ -1125,7 +1125,7 @@ resource "ibm_is_public_gateway" "testacc_gateway" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------ |
 | `name` | String| Required | Enter a name for your public gateway. | No |
 | `vpc` | String | Required | Enter the ID of the VPC, for which you want to create a public gateway. To list available VPCs, run `ibmcloud is vpcs`.  | Yes |
@@ -1190,7 +1190,7 @@ resource "ibm_is_security_group" "testacc_security_group" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------- |
 |`name`|String|Optional|The security group name.| No |
 |`vpc`|String|Required|The VPC ID. | Yes |
@@ -1206,7 +1206,7 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the security group.|
-|`rules`|List of objects|A nested block describing the rules of this security group. |
+|`rules`|List of objects|A nested block describes the rules of this security group. |
 |`rules.direction`| String|The direction of the traffic either `inbound` or `outbound`.  |
 |`rules.ip_version`|String|IP version either `ipv4` or `ipv6`.  |
 |`rules.remote`|String|Security group id, an IP address, a CIDR block, or a single security group identifier.  |
@@ -1297,19 +1297,19 @@ resource "ibm_is_security_group_rule" "testacc_security_group_rule_all" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| -------- |
 |`group`|String|Required|The security group ID.| Yes |
 |`direction`|String|Required|The direction of the traffic either `inbound` or `outbound`.| No |
 |`remote`|String|Optional|Security group id, an IP address, a CIDR block, or a single security group identifier.| No |
 |`ip_version`|String|Optional|The IP version either `IPv4` or `IPv6`. Default `IPv4`.| No |
-|`icmp`|List of objects|Optional|A nested block describing the `icmp` protocol of this security group rule.  | No |
+|`icmp`|List of objects|Optional|A nested block describes the `icmp` protocol of this security group rule.  | No |
 |`icmp.type`|Integer|Required|The ICMP traffic type to allow. Valid values from 0 to 254.  | No |
 |`icmp.code`|Integer|Optional|The ICMP traffic code to allow. Valid values from 0 to 255.| No |
-|`tcp`|List of objects|Optional|A nested block describing the `tcp` protocol of this security group rule.  | No |
+|`tcp`|List of objects|Optional|A nested block describes the `tcp` protocol of this security group rule.  | No |
 |`tcp.port_min`|Integer|Required| The TCP port range that includes the minimum bound. Valid values are from 1 to 65535.  | No |
 |`tcp.port_max`|Integer|Required| The TCP port range that includes the maximum bound. Valid values are from 1 to 65535.| No |
-|`udp`|List of objects| Optional| A nested block describing the `udp` protocol of this security group rule.  | No |
+|`udp`|List of objects| Optional| A nested block describes the `udp` protocol of this security group rule.  | No |
 |`udp.port_min`|Integer|Required|The UDP port range that includes minimum bound. Valid values are from 1 to 65535.  | No |
 |`udp.port_max`|Integer|Required|The UDP port range that includes maximum bound. Valid values are from 1 to 65535. **NOTE**: If any of the `icmp` , `tcp` or `udp` is not specified it creates a rule with protocol `ALL`. | No |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -1360,7 +1360,7 @@ resource "ibm_is_security_group_network_interface_attachment" "sgnic" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------ |
 |`security_group`|String|Required|The security group ID.|  Yes |
 |`network_interface`|String|Required|The network interface ID. | Yes |
@@ -1384,11 +1384,11 @@ Review the output parameters that you can access after your resource is created.
 |`status`|String|The status of the volume.|
 |`subnet`|String|The Subnet ID.|
 |`type`|String|The type of this network interface as it relates to a instance.|
-|`security_groups`|List of objects|A nested block describing the security groups of this network interface.|
+|`security_groups`|List of objects|A nested block describes the security groups of this network interface.|
 |`security_groups.id`|String|The ID of this security group.	|
 |`security_groups.crn`|String|The CRN of this security group.	|
 |`security_groups.name`|String|The name of this security group.|
-|`floating_ips`|List of objects|A nested block describing the floating IPs of this network interface. |
+|`floating_ips`|List of objects|A nested block describes the floating IPs of this network interface. |
 |`floating_ips.id`|String|The ID of this floating IP.  |
 |`floating_ips.crn`|String|The CRN of this floating IP.  |
 |`floating_ips.name`|String|The name of this floating IP.  |
@@ -1439,7 +1439,7 @@ resource "ibm_is_subnet" "testacc_subnet" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|Forces new resource |
+|Name|Data type|Required / optional|Description|Forces new resource |
 |----|-----------|-----------|---------------------|-------|
 |`ipv4_cidr_block`|String|Optional|The IPv4 range of the subnet.| Yes |
 |`total_ipv4_address_count`|String|Optional|The total number of IPv4 addresses. Either `ipv4_cid_block` or `total_pv4_address_count` input parameters must be provided in the resource.| Yes |
@@ -1513,7 +1513,7 @@ resource "ibm_is_ssh_key" "isExampleKey" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| -------- |
 |`name`|String|Required| The user-defined name for this key.| No |
 |`public_key`|String|Required|The public SSH key.| Yes |
@@ -1586,7 +1586,7 @@ Review the input parameters that you can specify for your resource.
 {: shortdesc}
 
 
-|Name|Data type|Required/ optional|Description|Forces new resource|
+|Name|Data type|Required / optional|Description|Forces new resource|
 |----|-----------|-----------|---------------------| ------- |
 |`name`|String|Required|The user-defined name for this volume.| No |
 |`profile`|String|Required|The profile to use for this volume.| Yes |
@@ -1649,7 +1649,7 @@ resource "ibm_is_vpc" "testacc_vpc" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |Forces new resource|
+| Input parameter | Data type | Required / optional | Description |Forces new resource|
 | ------------- |-------------| ----- | -------------- |-----|
 | `classic_access` | Boolean | Optional | Specify if you want to create a VPC that can connect to classic infrastructure resources. Enter **true** to set up private network connectivity from your VPC to classic infrastructure resources that are created in the same {{site.data.keyword.cloud_notm}} account, and **false** to disable this access. If you choose to not set up this access, you cannot enable it after the VPC is created. Make sure to review the [prerequisites](/docs/vpc-on-classic-network?topic=vpc-on-classic-setting-up-access-to-your-classic-infrastructure-from-vpc#vpc-prerequisites) before you create a VPC with classic infrastructure access. Note that you can enable one VPC for classic infrastructure access per {{site.data.keyword.cloud_notm}} account only. | No |
 |`address_prefix_management`|String|Optional|Indicates whether a default address prefix should be created automatically (`auto`) or manually (`manual`) for each zone in this VPC. Default value `auto`.| No |
@@ -1716,7 +1716,7 @@ resource "ibm_is_vpc_address_prefix" "testacc_vpc_address_prefix" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|Forces new resource |
+|Name|Data type|Required / optional|Description|Forces new resource |
 |----|-----------|-----------|---------------------|------|
 |`name`|String|Required| The address prefix name.| No |
 |`vpc`|String|Required|The VPC ID. | Yes |
@@ -1776,7 +1776,7 @@ resource "ibm_is_vpc_route" "myroute" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|Forces new resource |
+|Name|Data type|Required / optional|Description|Forces new resource |
 |----|-----------|-----------|---------------------| ------ |
 |`name`|String|Required|The name of the route that you want to create.| No |
 |`vpc`|String|Required|The ID of the VPC where you want to create the route. |  Yes |
@@ -1836,7 +1836,7 @@ resource "ibm_is_vpn_gateway" "testacc_vpn_gateway" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------ |
 |`name`|String|Required|The name of the VPN gateway.| No |
 |`subnet`|String|Required|The unique identifier for this subnet.| Yes |
@@ -1899,7 +1899,7 @@ resource "ibm_is_vpn_gateway_connection" "VPNGatewayConnection" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|Forces new resource |
+|Name|Data type|Required / optional|Description|Forces new resource |
 |----|-----------|-----------|---------------------|----------|
 |`name`|String|Required|The name of the VPN gateway connection.| No |
 |`vpn_gateway`|String|Required| The unique identifier of the VPN gateway.| Yes |
