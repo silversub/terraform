@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-08"
+lastupdated: "2020-09-14"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -194,7 +194,7 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    </tr>
     <tr>
    <td><code>resource.ibm_container_cluster.hardware</code></td>
-     <td>Decide if you want to provision your virtual worker nodes on <code>shared</code> or <code>dedicated</code> hardware.  Shared hardware can be used for virtual worker nodes only. Bare metal machines are always dedicated to you. For more information about shared and dedicated hardware, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-planning_worker_nodes#vm) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-planning_worker_nodes#vm) documentation.  </td>
+     <td>Decide if you want to provision your virtual worker nodes on <code>shared</code> or <code>dedicated</code> hardware.  Shared hardware can be used for virtual worker nodes only. Bare Metal machines are always dedicated to you. For more information about shared and dedicated hardware, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-planning_worker_nodes#vm) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-planning_worker_nodes#vm) documentation.  </td>
    </tr>
     <tr>
    <td><code>resource.ibm_container_cluster.public_vlan_id</code></td>
@@ -517,7 +517,7 @@ Adding a worker pool only does not create any worker nodes. To create worker nod
    </tr>
       <tr>
    <td><code>resource.ibm_container_worker_pool.hardware</code></td>
-   <td>Decide if you want to provision your virtual worker nodes on <code>shared</code> or <code>dedicated</code> hardware.  Shared hardware can be used for virtual worker nodes only. Bare metal machines are always dedicated to you. For more information about shared and dedicated hardware, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-planning_worker_nodes#vm) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-planning_worker_nodes#vm) documentation.</td>
+   <td>Decide if you want to provision your virtual worker nodes on <code>shared</code> or <code>dedicated</code> hardware.  Shared hardware can be used for virtual worker nodes only. Bare Metal machines are always dedicated to you. For more information about shared and dedicated hardware, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-planning_worker_nodes#vm) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-planning_worker_nodes#vm) documentation.</td>
    </tr>
    <tr>
    <td><code>resource.ibm_container_worker_pool.resource_group_id</code></td>

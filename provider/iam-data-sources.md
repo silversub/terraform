@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -63,7 +63,7 @@ data "ibm_iam_access_group" "accgroup" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-------|----------|
 |`access_group_name`|String|Optional|The name of the access group that you want to retrieve details for. If no access group is specified, all access groups that exist in the {{site.data.keyword.cloud_notm}} account are returned.| 
 
@@ -143,7 +143,7 @@ data "ibm_iam_role_actions" "test" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-------|----------|
 |`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported actions. For account management services, you can find supported values in the [documentation](/docs/account?topic=account-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
 
@@ -181,7 +181,7 @@ data "ibm_iam_roles" "test" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-------|----------|
 |`service`|String|Required|The name of the {{site.data.keyword.cloud_notm}} service for which you want to list supported IAM roles. For account management services, you can find supported values in the [documentation](/docs/account?topic=account-account-services#api-acct-mgmt). For other services, run the `ibmcloud catalog service-marketplace` command and retrieve the value from the **Name** column of your CLI output.|
 
@@ -221,7 +221,7 @@ data "ibm_iam_service_id" "ds_serviceID" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-------|----------|
 |`name`|String| Required|The name of the service.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -276,7 +276,7 @@ data "ibm_iam_service_policy" "testacc_ds_service_policy" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|---------|---------------------|
 |`iam_service_id`|String|Required| The UUID of the service ID.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -333,7 +333,7 @@ data "ibm_iam_user_policy" "testacc_ds_user_policy" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|---------------|-------------------|
 |`ibm_id`|String|Required| The IBMid or email address of the user.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -383,7 +383,7 @@ data "ibm_iam_user_profile" "user_profle" {
 
 Review the input parameters that you can specify for your data source.
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|---------------|-------------------|
 |`id`|String|Required| The IBMid or email address of the user.|
 {: caption="Table. Available input parameters" caption-side="top"}

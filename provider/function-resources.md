@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless, terraform namespace
 
@@ -161,7 +161,7 @@ resource "ibm_function_action" "swifthello" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | --------|
 |`name`|String|Required|The name of the action.| Yes |
 |`namespace`|String|Required|The name of the function namespace.| No |
@@ -203,7 +203,7 @@ Review the output parameters that you can access after your resource is created.
 
 `ibm_function_action` can be imported using the namespace and action ID.
 
-Example:
+**Example**
 
 ```
 terraform import ibm_function_action.nodeAction <namespace>:<action_id>
@@ -249,7 +249,7 @@ resource "ibm_function_package" "package" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
 |`name`|String|Required|The name of the namespace.| No |
 |`description`|String|Optional|The description of the namespace.| No|
@@ -276,7 +276,7 @@ Review the output parameters that you can access after your resource is created.
 Namespace import will not return the value for `resource_group_id` attribute.
 {: note}
 
-Syntax:
+**Syntax**
 
 ```
 terraform import ibm_function_namespace.namespace <namespaceID>
@@ -284,7 +284,7 @@ terraform import ibm_function_namespace.namespace <namespaceID>
 ```
 {: pre}
 
-Example:
+**Example**
 
 ```
 terraform import ibm_function_namespace.namespace 4cf78bb1-2298-413f-8575-2464948a344b
@@ -378,7 +378,7 @@ EOF
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
 |`name`|String|Required|The name of the package.| Yes |
 |`namespace`|String|Required|The name of the function namespace.| No|
@@ -400,7 +400,7 @@ Review the output parameters that you can access after your resource is created.
 |`namespace`|String| The name of the function namespace.|
 |`version`|String|Semantic version of the item.|
 |`annotations`|String|All annotations to describe the package, including those set by you or by IBM Cloud Functions.|
-|`parameters`|String|All parameters passed to the package, including those set by you or by IBM Cloud Functions.### Import`ibm_function_package` can be imported using the ID.Example:```$ terraform import ibm_function_package.sample hello```|
+|`parameters`|String|All parameters passed to the package, including those set by you or by IBM Cloud Functions.### Import`ibm_function_package` can be imported using the ID. For example, ```$ terraform import ibm_function_package.sample hello```|
 |`package_id`|String|The package ID.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
@@ -462,7 +462,7 @@ resource "ibm_function_rule" "rule" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------ |
 |`name`|String|Required|The name of the rule.| Yes |
 |`namespace`|String|Required|The name of the function namespace.| No|
@@ -491,7 +491,7 @@ Review the output parameters that you can access after your resource is created.
 
 `ibm_function_rule` can be imported using the ID.
 
-Example: 
+**Example**
 ```
 terraform import ibm_function_rule.sampleRule alarmrule
 ```
@@ -580,7 +580,7 @@ resource "ibm_function_trigger" "feedtrigger" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | -------- |
 |`name`|String|Required|The name of the trigger.| Yes |
 |`namespace`|String|Required|The name of the function namespace.| No |
@@ -613,7 +613,7 @@ Review the output parameters that you can access after your resource is created.
 
 `ibm_function_trigger` can be imported using the ID.
 
-Example:
+**Example**
 ```
 terraform import ibm_function_trigger.trigger alaram
 ```

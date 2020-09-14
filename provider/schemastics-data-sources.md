@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-07-27"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform schematics data source, terraform schematics workspace 
 
@@ -65,7 +65,7 @@ data "ibm_schematics_workspace" "test" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`workspace_id`|String|Required|The ID of the Schematics workspace. You can retrieve this information by running `ibmcloud terraform workspace list`. |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -118,7 +118,7 @@ data "ibm_schematics_output" "test" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`workspace_id`|String|Required|The ID of the Schematics workspace. You can retrieve this information by running `ibmcloud terraform workspace list`. |
 |`template_id`|String|Required|The ID of the template that the workspace uses. This value must be retrieved from the `ibm_schematics_workspace` data source and set to `data.ibm_schematics_workspace.vpc.template_id.0`. |
@@ -162,7 +162,7 @@ data "ibm_schematics_state" "test" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`workspace_id`|String|Required|The ID of the Schematics workspace. You can retrieve this information by running `ibmcloud terraform workspace list`. |
 |`template_id`|String|Required|The of the template that the workspace uses. |

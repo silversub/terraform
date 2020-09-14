@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -68,7 +68,7 @@ resource "ibm_iam_access_group" "accgrp" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `description` | String | Optional | The description of the access group. |
 | `name` | String | Required | The name of the access group. |
@@ -130,7 +130,7 @@ resource "ibm_iam_access_group_members" "accgroupmem" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `access_group_id` | String | Required | The ID of the access group. | 
 | `ibm_ids` | Array of strings | Optional | A list of IBM IDs that you want to add to or remove from the access group. | 
@@ -362,7 +362,7 @@ resource "ibm_iam_access_group_policy" "policy_kube" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| -------- |
 |`access_group_id`|String|Required|The ID of the access group.| Yes |
 | `roles`|List|Required| A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`. | No |
@@ -434,12 +434,12 @@ resource "ibm_iam_access_group_dynamic_rule" "rule1" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|The name of the dynamic rule for the IAM access group.|
 |`access_group_id`|String|Required|The ID of the access group.|
 |`expiration`|Integer|Required|The number of hours that authenticated users can work in IBM Cloud before they must refresh their access. This value must be between 1 and 24. |
-|`identity_provider`|String|Required|Enter the URI for your identity provider. This is the SAML `entity ID` field, which is sometimes referred to as the issuer ID, for the identity provider as part of the federation configuration for onboarding with IBMid. Example: `https://idp.example.org/SAML2`.|
+|`identity_provider`|String|Required|Enter the URI for your identity provider. This is the SAML `entity ID` field, which is sometimes referred to as the issuer ID, for the identity provider as part of the federation configuration for onboarding with IBMid. For example, `https://idp.example.org/SAML2`.|
 |`conditions`|List of rule conditions|Required|A list of conditions that the rule must satisfy.|
 |`conditions.claim`|String|Required|The key value to evaluate the condition against. The key that you enter depends on what key-value pairs your identity provider provides. For example, your identity provider might include a key that is named `blueGroups` and that holds all the user groups that have access. To apply a condition for a specific user group within the `blueGroups` key, you specify `blueGroups` as your claim and add the value that you are looking for in `conditions.value`. |
 |`conditions.operator`|String|Required|The operation to perform on the claim. Supported values are `EQUALS`, `EQUALS_IGNORE_CASE`, `IN`, `NOT_EQUALS_IGNORE_CASE`, `NOT_EQUALS`, and `CONTAINS`.|
@@ -554,7 +554,7 @@ resource "ibm_iam_authorization_policy" "policy" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------ |
 |`source_service_name`|String|Required|The source service name.| Yes |
 |`target_service_name`|String|Required|The target service name.| Yes |
@@ -608,7 +608,7 @@ resource "ibm_iam_authorization_policy_detach" "policy" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Name | Data type | Required/ optional|Description | Forces new resource |
+| Name | Data type | Required / optional|Description | Forces new resource |
 |----|-----------|-----------|---------------------| ---------|
 |`authorization_policy_id`|String|Required|The authorization policy ID.| Yes |
 
@@ -651,7 +651,7 @@ resource "ibm_iam_custom_role" "customrole" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|The name of the custom role.|
 |`display_name`|String|Required|The display name of the custom role.|
@@ -698,7 +698,7 @@ resource "ibm_iam_service_id" "serviceID" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|The name of the service ID.|
 |`description` |String|Optional|The description of the service ID.|
@@ -867,7 +867,7 @@ resource "ibm_iam_service_policy" "policy" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------- |
 |`iam_service_id`|String|Required|The UUID of the service ID.| Yes |
 |`roles`|List|Required|A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.| No |
@@ -1029,7 +1029,7 @@ resource "ibm_iam_user_policy" "policy" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| --------- |
 |`ibm_id`|String|Required| The IBMid or email address of the user.| Yes |
 |`roles`|List|Required| A comma separated list of roles. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.| No |
@@ -1300,7 +1300,7 @@ resource "ibm_iam_user_invite" "invite_user" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`users`|List|Required|A comma separated list of user email IDs.|
 |`access_groups`|List|Optional|A comma separated list of access group IDs.|

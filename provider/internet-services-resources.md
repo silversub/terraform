@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -79,7 +79,7 @@ resource "ibm_cis" "cis_instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|A descriptive name for your {{site.data.keyword.cis_full_notm}} instance.|
 |`plan`|String|Required|The name of the plan for your instance. To retrieve this value, run `ibmcloud catalog service internet-svcs`. |
@@ -151,7 +151,7 @@ resource "ibm_cis" "instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`domain`|String|Required|The DNS domain name that you want to add to your {{site.data.keyword.cis_full_notm}} instance. |
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
@@ -215,7 +215,7 @@ resource "ibm_cis_domain_settings" "test" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`domain_id`|String|Required|The ID of the domain that you want to customize. |
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
@@ -286,13 +286,13 @@ resource "ibm_cis_dns_record" "example" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`domain_id`|String|Required|The ID of the domain for which you want to add a DNS record. |
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
-|`name`|String|Required|The name of the record, like for example `www`.|
+|`name`|String|Required|The name of the record, like, for example, `www`.|
 |`type`|String|Required|The type of the record. Allowed values are `A`, `AAAA`, `CNAME`, `NS`, `MX`, `TXT`, `LOC`, `SRV`, `SPF`, or `CAA`. |
-|`content`|String|Optional|The value of the record, like for example `192.168.127.127`. |
+|`content`|String|Optional|The value of the record, like, for example, `192.168.127.127`. |
 |`data`|Map|Optional|A map of attributes that constitute the record value. This value is required for `LOC`, `CAA` and `SRV` record types. |
 |`priority`|String|Optional|The priority of the record.|
 |`proxied`|Boolean|Optional|Indicates if the record receives origin protection by {{site.data.keyword.cis_full_notm}}. The default value is **false**.|
@@ -372,7 +372,7 @@ resource "ibm_cis_firewall" "lockdown" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance where you want to create the firewall.|
 |`domain_id`|String|Required|The ID of the domain where you want to apply the firewall rules.|
@@ -451,11 +451,11 @@ resource "ibm_cis_origin_pool" "example" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`domain_id`|String|Required|The ID of the domain for which you want to add a global load balancer. |
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
-|`name`|String|Required|The DNS name to associate with the load balancer. This values can be a hostname, like `www`, or the fully qualified domain name, such as `www.example.com`. `example.com` is also accepted.|
+|`name`|String|Required|The DNS name to associate with the load balancer. This value can be a hostname, like `www`, or the fully qualified domain name, such as `www.example.com`. `example.com` is also accepted.|
 |`fallback_pool_id`|String|Required|The ID of the pool to use when all other pools are considered unhealthy. |
 |`default_pools_ids`|String|Required|A list of pool IDs that are ordered by their failover priority. |
 |`description`|String|Optional|A description of the global load balancer. |
@@ -537,12 +537,12 @@ resource "ibm_cis_healthcheck" "test" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`allow_insecure`|Boolean|Optional|If set to **true**, the certificate is not validated when the health check uses HTTPS. If set to **false**, the certificate is validated, even if the health check uses HTTPS. The default value is **false**.|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
 |`expected_body`|String|Required|A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. A null value of “” is allowed to match on any content. |
-|`expected_codes`|String|Required|The expected HTTP response code or code range of the health check. Example: 200.|
+|`expected_codes`|String|Required|The expected HTTP response code or code range of the health check. For example, 200.|
 |`follow_redirects`|Boolean|Optional|If set to **true**, a redirect is followed when a redirect is returned by the origin pool. Is set to **false**, redirects from the origin pool are not followed.|
 |`method`|String|Optional|The HTTP method to use for the health check. Default: `GET`.|
 |`timeout`|Integer|Optional|The timeout in seconds before marking the health check as failed. Default: 5.|
@@ -627,7 +627,7 @@ resource "ibm_cis_origin_pool" "example" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
 |`name`|String|Required|A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.|
@@ -736,7 +736,7 @@ resource "ibm_cis_rate_limit" "ratelimit" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`cis_id`|String|Required|The ID of the IBM Cloud Internet Services instance. |
 |`domain_id`|String|Required|The ID of the domain where you want to add a rate limit. |

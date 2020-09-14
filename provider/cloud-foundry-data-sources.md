@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -173,7 +173,7 @@ data "ibm_app_domain_private" "private_domain" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------|--------|
 |`name`|String|Required|The name of the private domain that is assigned to the app.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -214,7 +214,7 @@ data "ibm_app_domain_shared" "shared_domain" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------|--------|
 |`name`|String|Required| The name of the shared domain.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -258,12 +258,12 @@ data "ibm_app_route" "route" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------|--------|
 |`domain_guid`|String| Required| The GUID of the domain that the route belongs to. You can retrieve the value from the `ibm_app_domain_shared` data source.|
 |`space_guid`|String|Required|The GUID of the space that the route belongs to. You can retrieve the value from the `ibm_space` data source or by running the `ibmcloud iam space <space-name> --guid` command in the {{site.data.keyword.cloud_notm}} CLI.|
 |`host`|String|Optional| The host name of the route. Required for shared domains.|
-|`port`|String|Optional| The port of the route. This values is supported for TCP router group domains only.|
+|`port`|String|Optional| The port of the route. This value is supported for TCP router group domains only.|
 |`path`|String|Optional| The path for a route. Paths must contain 2-128 characters. Paths must start with a forward slash (/). Paths must not contain a question mark (?).|
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -302,7 +302,7 @@ data "ibm_org" "orgdata" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------|--------|
 |`org`|String| Required| The name of the {{site.data.keyword.cloud_notm}} organization. You can retrieve the value by running the `ibmcloud iam orgs` command.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -343,7 +343,7 @@ data "ibm_org_quota" "orgquotadata" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|-----------|-------------------|
 |`name`|String|Required| The name of the quota plan for the Cloud Foundry organization. You can retrieve the value by running the `ibmcloud cf quotas` command in the {{site.data.keyword.cloud_notm}} CLI.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -399,7 +399,7 @@ data "ibm_service_instance" "serviceInstance" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------------|------------------------|
 |`name`|String|Required| The name of the service instance. You can retrieve the value by running the `ibmcloud service list` command.|
 |`space_guid`|String|Required|The GUID of the Cloud Foundry space where the service instance is deployed to. You can retrieve the value from data source `ibm_space`.|
@@ -451,7 +451,7 @@ data "ibm_service_key" "serviceKeydata" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`name`|String|Required|The name of the service key. You can retrieve the value by running the `ibmcloud service keys` command in the {{site.data.keyword.cloud_notm}} CLI.|
 |`service_instance_name`|String|Required| The name of the service instance that the service key is associated with. You can retrieve the value by running the `ibmcloud service list` command in the {{site.data.keyword.cloud_notm}} CLI.|
@@ -495,7 +495,7 @@ data "ibm_service_plan" "service_plan" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|------------|-----------------------------|
 |`service`|String| Required|The name of the service offering. You can retrieve the name of the service by running the `ibmcloud service offerings` command in the {{site.data.keyword.cloud_notm}} CLI.|
 |`plan`|String|Required| The name of the plan type supported by the service. You can retrieve the plan type by running the `ibmcloud service offerings` command in the {{site.data.keyword.cloud_notm}} CLI.|
@@ -540,7 +540,7 @@ Review the input parameters that you can specify for your data source.
 {: shortdesc}
 
 
-|Name|Data type| Required/ optional|Description|
+|Name|Data type| Required / optional|Description|
 |----|-----------|--------|-------------------|
 |`org`|String|Required| The name of your Cloud Foundry organization that the space belongs to. You can retrieve the value by running the `ibmcloud iam orgs` command in the {{site.data.keyword.cloud_notm}} CLI.|
 |`space`|String|Required| The name of your Cloud Foundry space. You can retrieve the value by running the `ibmcloud iam spaces` command in the IBM Cloud CLI.|

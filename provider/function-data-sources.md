@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-10"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action
 
@@ -68,7 +68,7 @@ data "ibm_function_action" "nodehello" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|Required|The name of the action.|
 |`namespace`|String|Required|The name of the function namespace.|
@@ -124,7 +124,7 @@ data "ibm_function_namespace" "test_namespace" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | 
+| Input parameter | Data type | Required / optional | Description | 
 | ------------- |-------------| ----- | -------------- | 
 |`name`|String|Required|The name of the namespace. |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -167,7 +167,7 @@ data "ibm_function_package" "package" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|Required|The name of the package.|
 |`namespace`|String|Required|The name of the function namespace.|
@@ -214,7 +214,7 @@ data "ibm_function_rule" "rule" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|Required|The name of the rule.|
 |`namespace`|String|Required|The name of the function namespace.|
@@ -262,7 +262,7 @@ data "ibm_function_trigger" "trigger" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|Required|The name of the trigger.|
 |`namespace`|String|Required|The name of the function namespace.|

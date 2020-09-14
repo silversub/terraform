@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-06"
+lastupdated: "2020-09-14"
 
 keywords: Terraform, configuration files, resources, what is Terraform, automation, automate
 
@@ -49,7 +49,7 @@ Learn the basics about Terraform by reviewing the following key terms.
 
 <dl>
 <dt>Resources</dt>
-<dd>Resources are infrastructure components or services that you can provision in a cloud environment. Typical examples are bare metal servers, virtual servers, auto-scaling groups, load balancers, or software-defined networking components. Every cloud provider supports different types of resources that you can provision with Terraform. </dd>
+<dd>Resources are infrastructure components or services that you can provision in a cloud environment. Typical examples are Bare Metal servers, virtual servers, auto-scaling groups, load balancers, or software-defined networking components. Every cloud provider supports different types of resources that you can provision with Terraform. </dd>
 <dt>Terraform configuration</dt>
 <dd>A Terraform configuration is a set of files that define which resources you want to provision with a specific cloud provider. You can write Terraform configurations in HashiCorp Configuration Language(HCL) or JSON syntax.</dd>
 </dl>

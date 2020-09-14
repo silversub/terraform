@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -177,7 +177,7 @@ The following timeouts are defined for this resource.
 
 - **Create** The creation of the instance is considered failed when no response is received for 60 minutes.
 - **Update** The update of the instance is considered failed when no response is received for 20 minutes.
-- **Delete:** The deletion of the instance is considered failed when no response is received for 10 minutes.
+- **Delete** The deletion of the instance is considered failed when no response is received for 10 minutes.
 
 ### Import
 {: #db-import}

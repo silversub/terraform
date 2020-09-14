@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform transit gateway, terraform  transit gateways,  terraform transit gateway location, transit gateway locations, transit gateway, transit location
 
@@ -74,7 +74,7 @@ data "ibm_tg_gateway" "ds_tggateway" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `name` | String | Required | The name of the gateway. |
 
@@ -181,7 +181,7 @@ data "ibm_tg_location" "ds_tg_location" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `name` | String | Required | The name of the transit gateway location. |
 

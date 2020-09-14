@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07" 
+lastupdated: "2020-09-14" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -64,7 +64,7 @@ resource "ibm_resource_group" "resourceGroup" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|
+|Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|The name of the resource group.|
 |`quota_id`|String|Removed|The ID of the quota. You can refer to a quota by name using the resource quota data source.|
@@ -135,7 +135,7 @@ resource "ibm_resource_instance" "resource_instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description|Forces new resource|
+|Name|Data type|Required / optional|Description|Forces new resource|
 |----|-----------|-----------|---------------------|------|
 |`name`|String|Required|A descriptive name used to identify the resource instance.| No |
 |`service`|String|Required|The name of the service offering. You can retrieve the value by installing the `catalogs-management` CLI plug-in and running the `ibmcloud catalog service-marketplace` or `ibmcloud catalog search` command.| Yes |
@@ -287,7 +287,7 @@ resource "ibm_resource_key" "resourceKey" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------|----------|
 |`name`|String|Required| A descriptive name used to identify a resource key.| Yes |
 |`role`|String|Required|The name of the user role. Valid roles are `Writer`, `Reader`, `Manager`, `Administrator`, `Operator`, `Viewer`, and `Editor`.| Yes |

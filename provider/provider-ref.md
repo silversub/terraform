@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-11"
+lastupdated: "2020-09-14"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -62,7 +62,7 @@ Review what information you must provide in the `provider` block to work with a 
 Review what parameters you can set in the `provider` block of your Terraform configuration file.
 {: shortdesc}
 
-|Input parameter|Required/ optional|Description|
+|Input parameter|Required / optional|Description|
 |-------------|--------|-----------------------|
 |`iaas_classic_api_key`|Required for classic infrastructure|The API key to access classic {{site.data.keyword.cloud_notm}} infrastructure. For more information about how to retrieve your API key, see [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys). This value is required when you want to work with classic infrastructure resources. You can specify the API key in the `provider` block or retrieve the value from the `IAAS_CLASSIC_API_KEY` environment variable.|
 |`iaas_classic_username`|Required for classic infrastructure|The user name to access classic {{site.data.keyword.cloud_notm}} infrastructure. For more information about how to retrieve your user name, see [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys). This value is required when you want to work with classic infrastructure resources. You can specify the user name in the `provider` block or retrieve the value from the `IAAS_CLASSIC_USERNAME` environment variable.|

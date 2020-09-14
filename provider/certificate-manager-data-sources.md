@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform api gateway
 
@@ -71,7 +71,7 @@ data "ibm_certificate_manager_certificates" "certs"{
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`certificate_manager_instance_id`|String|Required|The CRN of the Certificate Manager service instance. |
 |`name`|String|Required|The display name for the certificate.|

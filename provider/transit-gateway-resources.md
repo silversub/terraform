@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform transit gateway resource, terraform transit gateway, transit gateway resource, transit gateway
 
@@ -71,12 +71,12 @@ resource "ibm_tg_connection" "test_ibm_tg_connection"{
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
 | `gateway` | String | Required | Enter the transit gateway identifier. | Yes |
 | `name` | String| Optional | Enter a name. If unentered, the default name is provided based on the network type, such as `vpc` for network type VPC and `classic` for network type classic. | No|
 | `network_type` | String | Required | Enter the network type. Allowed values are `classic` and `vpc`. | Yes |
-| `network_id` |  String | Optional | Enter the ID of the network being connected through this connection. This parameter is required for network type 'vpc', the CRN of the VPC to be connected. This field is required to be unspecified for network type 'classic'. For example: crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b | Yes |
+| `network_id` |  String | Optional | Enter the ID of the network being connected through this connection. This parameter is required for network type 'vpc', the CRN of the VPC to be connected. This field is required to be unspecified for network type 'classic'. For example, crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b | Yes |
 
 ### Output parameters
 {: #tg-connection-r-output}
@@ -131,9 +131,9 @@ resource "ibm_tg_gateway" "new_tg_gw"{
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description | Forces new resource |
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
-| `name` | String | Required | The unique user-defined name for the gateway. For example: `myGateway` | No |
+| `name` | String | Required | The unique user-defined name for the gateway. For example, `myGateway` | No |
 | `location` | Integer| Optional | The location of the transit gateway. For example, `us-south` | Yes |
 | `global` | Boolean | Required | The gateways with global routing (true) to connect to the networks outside their associated region. | No |
 | `resource_group` |  String | Optional | The resource group ID where the transit gateway to be created. | Yes |

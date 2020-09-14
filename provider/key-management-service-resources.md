@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, HPCS
 
@@ -123,7 +123,7 @@ Complete the following steps to provision an HPCS, initialize the service and Ke
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------- |
 |`instance_id`|String|Required|The HPCS or key-protect instance GUID.| Yes |
 |`key_name`|String|Required|The name of the key.| Yes |
@@ -203,7 +203,7 @@ resource "ibm_cos_bucket" "flex-us-south" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required/ optional|Description| Forces new resource |
+|Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------- |
 |`key_protect_id`|String|Required|The Key Protect service instance ID.| Yes |
 |`key_name`|String|Required|The name of the key.| Yes |

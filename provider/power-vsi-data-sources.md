@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-14"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -72,7 +72,7 @@ data "ibm_pi_image" "ds_image" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The cloud instance ID associated with the account. | 
 | `pi_image_name` | String | Required | The ID of the image. To find supported images, run the `ibmcloud pi images` command. |
@@ -120,7 +120,7 @@ data "ibm_pi_images" "ds_images" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The cloud instance ID that is associated with the account. | 
 
@@ -168,7 +168,7 @@ data "ibm_pi_instance" "ds_instance" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The service instance associated with the account. |
 | `pi_instance_name` | String | Required | The name of the instance. |
@@ -236,7 +236,7 @@ data "ibm_pi_instance" "ds_instance" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The service instance associated with the account. |
 | `pi_instance_name` | String | Required | The name of the instance. |
@@ -285,7 +285,7 @@ data "ibm_pi_key" "ds_instance" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The service instance associated with the account. |
 | `pi_key_name` | String | Required | The name of the key.|
@@ -332,7 +332,7 @@ data "ibm_pi_network" "ds_network" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The service instance associated with the account. |
 | `pi_network_name` | String | Required | The name of the network.|
@@ -381,7 +381,7 @@ data "ibm_pi_public_network" "ds_public_network" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The service instance associated with the account. |
 
@@ -426,7 +426,7 @@ data "ibm_pi_tenant" "ds_tenant" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The ID of the Power Systems Virtual Server instance for which you want to retrieve tenants. |
 
@@ -475,7 +475,7 @@ data "ibm_pi_volume" "ds_volume" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The ID of the Power Systems Virtual Server instance for which you want to retrieve volume details. |
 | `pi_volume_name` | String | Required | The name of the volume for which you want to retrieve detailed information. |
@@ -524,7 +524,7 @@ data "ibm_pi_instance_volumes" "ds_volumes" {
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
 
-| Input parameter | Data type | Required/ optional | Description |
+| Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `pi_cloud_instance_id` | String | Required | The ID of the Power Systems Virtual Server instance for which you want to retrieve volume details. |
 | `pi_volume_name` | String | Required | The name of the volume for which you want to retrieve detailed information. |
