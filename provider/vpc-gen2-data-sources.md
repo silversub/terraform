@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-11"
 
-keywords: terraform provider plugin, terraform vpc gen 2, terraform vpc, gen 2 compute terraform, terraform vpc subnet
+keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
 subcollection: terraform
 
