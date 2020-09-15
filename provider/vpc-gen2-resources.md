@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14" 
+lastupdated: "2020-09-15" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -40,6 +40,104 @@ subcollection: terraform
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
 
+
+## `ibm_is_flow_log`
+{: #ibm_is_flow_log}
+
+Create, update, delete and suspend the flow log resource.
+{: shortdesc}
+
+### Sample Terraform code
+{: #ibm_is_flow-sample}
+
+```
+resource "ibm_is_instance" "testacc_instance" {
+  name    = "testinstance"
+  image   = "7eb4e35b-4257-56f8-d7da-326d85452591"
+  profile = "b-2x8"
+
+  primary_network_interface {
+    port_speed = "1000"
+    subnet     = "70be8eae-134c-436e-a86e-04849f84cb34"
+  }
+
+  vpc  = "01eda778-b822-43a2-816d-d30713df5e13"
+  zone = "us-south-1"
+  keys = ["eac87f33-0c00-4da7-aa66-dc2d972148bd"]
+}
+
+
+data "ibm_resource_group" "instance_group" {
+  name = var.resource_group
+}
+
+resource "ibm_resource_instance" "instance1" {
+  name              = "cos-instance"
+  resource_group_id = data.ibm_resource_group.instance_group.id
+  service           = "cloud-object-storage"
+  plan              = "standard"
+  location          = "global"
+}
+
+resource "ibm_cos_bucket" "bucket1" {
+   bucket_name          = "us-south-bucket-vpc1"
+   resource_instance_id = ibm_resource_instance.instance1.id
+   region_location = var.region
+   storage_class = "standard"
+}
+
+resource ibm_is_flow_log test_flowlog {
+  depends_on = [ibm_cos_bucket.bucket1]
+  name = "test-instance-flow-log"
+  target = ibm_is_instance.testacc_instance.id
+  active = true
+  storage_bucket = ibm_cos_bucket.bucket1.bucket_name
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #ibm_is_flow-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------- |
+| `name` | String | Required | The unique user-defined name for the flow log collector.| No |
+| `target` | String | Required | The ID of the target to collect flow logs. If the target is an instance, subnet, or VPC, flow logs is not collected for any network interfaces within the target that are more specific flow log collector. | Yes |
+| `storage_bucket` | String | Required | The name of the COS bucket where the collected flows will be logged. The bucket must exist and an IAM service authorization must grant {{site.data.keyword.cloud_notm}} flow logs resources of VPC infrastructure services writer access to the bucket. | Yes |
+| `active` | String | Optional | Indicates whether the collector is active. If `false`, this collector is created in inactive mode. Default value is true. | No |
+| `resource_group` | String | Optional | The resource group ID where the flow log is created. | Yes |
+| `tags` | Array of Strings | Optional | The tags associated with the flow log. | No |
+
+### Output parameters
+{: #ibm-is-flow-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `created_at`| String| The date and time that the flow log collector created. |
+| `crn` | String | The CRN of the flow log collector. |
+| `href` | String | The URL of the flow log collector. |
+| `id` | String | The unique identifier of the flow log collector. |
+| `lifecycle_state` | String | The lifecycle state of the flow log collector. |
+| `name`| String | The user-defined name of the flow log collector. |
+| `vpc` | String | The VPC of the flow log collector that is associated. |
+
+### Import
+{: #ibm-is-flow-import}
+
+`ibm_is_flow_log` can be imported using VPC flow log ID.
+
+**Example**
+
+```
+terraform import ibm_is_flow_log.example d7bec597-4726-451f-8a53-e62e6f19c32c
+```
 
 ## `ibm_is_floating_ip`
 {: #provider-floating-ip}
