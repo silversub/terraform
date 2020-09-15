@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-15"
 
 keywords: terraform provider plugin, terraform gen 1 compute, terraform gen 1 resources, terraform  generation 1 compute terraform
 
@@ -737,6 +737,24 @@ data "ibm_is_subnet" "ds_subnet" {
 	identifier = ibm_is_subnet.mysubnet_resource.id
 }
 ```
+The following example retrieves the subnet information by the subnet ID.
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "test"
+}
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "test-subnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "192.168.0.0/1"
+}
+
+data "ibm_is_subnet" "ds_subnet" {
+  identifier = ibm_is_subnet.testacc_subnet.id
+}
+```
 
 ### Input parameters
 {: #subnet-input}
@@ -747,6 +765,7 @@ Review the input parameters that you can specify for your data source.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `identifier` | String | Required | The ID of the subnet. To list subnets in your account, run the `ibmcloud is subnets` command. | 
+|`name`|String|Optional|The name of the subnet.|
 
 ### Output parameters
 {: #subnet-output}
@@ -767,6 +786,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `total_ipv4_address_count` | Integer | The total number of IPv4 addresses. |
 | `vpc` | String | The ID of the VPC that the subnet is attached to. |
 | `zone` | String | The name of the zone where the subnet is provisioned. |
+|`resource_group`|String|The subnet resource group.|
 
 
 

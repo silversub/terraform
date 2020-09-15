@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-15"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -304,7 +304,7 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|------|--------|
-|`org`|String| Required| The name of the {{site.data.keyword.cloud_notm}} organization. You can retrieve the value by running the `ibmcloud iam orgs` command.|
+|`name`|String|Optional|The name of the {{site.data.keyword.cloud_notm}} organization.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -532,6 +532,17 @@ data "ibm_space" "spaceData" {
   org   = "myorg"
 }
 ```
+The following example shows how you can use the data source to reference the space ID in the `ibm_service_instance` resource.
+
+```
+resource "ibm_service_instance" "service_instance" {
+  name       = "test"
+  space_guid = data.ibm_space.spaceData.id
+  service    = "speech_to_text"
+  plan       = "lite"
+  tags       = ["cluster-service", "cluster-bind"]
+}
+```
 
 ### Input parameters
 {: #cf-space-input}
@@ -544,6 +555,7 @@ Review the input parameters that you can specify for your data source.
 |----|-----------|--------|-------------------|
 |`org`|String|Required| The name of your Cloud Foundry organization that the space belongs to. You can retrieve the value by running the `ibmcloud iam orgs` command in the {{site.data.keyword.cloud_notm}} CLI.|
 |`space`|String|Required| The name of your Cloud Foundry space. You can retrieve the value by running the `ibmcloud iam spaces` command in the IBM Cloud CLI.|
+|`name`|String|Optional| The name of your space.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
