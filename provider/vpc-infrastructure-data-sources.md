@@ -764,7 +764,7 @@ Review the input parameters that you can specify for your data source.
 
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `identifier` | String | Required | The ID of the subnet. To list subnets in your account, run the `ibmcloud is subnets` command. | 
+| `identifier` | String | Optional | The ID of the subnet. To list subnets in your account, run the `ibmcloud is subnets` command. | 
 |`name`|String|Optional|The name of the subnet.|
 
 ### Output parameters
