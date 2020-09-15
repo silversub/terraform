@@ -44,6 +44,69 @@ Before you start working with your resource, make sure to review the [required p
 {: important}
 
 
+## `ibm_container_addons`
+{: #container-addon}
+
+Enable, update or disable a single addon or a set of addons.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-addon-sample}
+
+```
+resource "ibm_container_addons" "addons" {
+  cluster = ibm_container_vpc_cluster.cluster.name
+  addons {
+    name    = "istio"
+    version = "1.6"
+  }
+}
+
+```
+
+### Input parameters
+{: #container-addon-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | -------- |
+| `cluster` | String | Required | The name or ID of the cluster. |
+| `addons` | Set | Required | Set of addons that needs to be enabled. |
+| `addons.name` | String | Optional | The addon name such as `istio`.|
+| `addons.version`| String | Optional | The addon version except the default version. This is required when you want to update the addon to specified version. |
+
+### Output parameters
+{: #container-alb-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `addons` | String | The details of an enabled addons. |
+| `addons.allowed_upgrade_versions` | String | The versions that the addon is upgraded to.|
+| `addons.deprecated` | String | Determines if the addon version is deprecated.|
+| `addons.health_state` | String | The health state of an addon, such as critical or pending. |
+| `addons.health_status` | String | The health status of an addon, provides a description of the state in the form of error message.|
+| `addons.min_kube_version` | String | The minimum Kubernetes version of the addon. |
+| `addons.min_ocp_version` | String | The minimum OpenShift version of the addon. |
+| `supported_kube_range` | String | The supported Kubernetes version range of the addon. |
+| `target_version`| String | The addon target version. |
+| `vlan_spanning_required`| String | The VLAN spanning required for multi-zone clusters.|
+
+
+### Timeouts
+{: #container-addon-timeout}
+
+The following timeouts are defined for this resource. 
+{: shortdesc}
+
+* **Create** The enablement of the addons is considered `failed` if no response is received for 20 minutes.
+* **Update** The enablement of the addons is considered `failed` if no response is received for 20 minutes.
+
+
 ## `ibm_container_alb`
 {: #container-alb}
 
@@ -54,8 +117,6 @@ For more information about Ingress ALBs, see [About Ingress ALBs](/docs/containe
 
 ### Sample Terraform code
 {: #container-alb-sample}
-
-The following 
 
 ```
 resource ibm_container_alb alb {

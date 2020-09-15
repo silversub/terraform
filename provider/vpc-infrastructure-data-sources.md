@@ -518,6 +518,77 @@ Review the output parameters that you can access after you retrieve your data so
 
 
 
+## `ibm_is_lb`
+{: #ibm-is-lb}
+
+Import the details of an existing IBM VPC Load Balancer as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #ibm-is-lb-sample}
+
+The following example shows how you can retrieve information about the `us-south` region. 
+{: shortdesc}
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "testvpc"
+}
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "testsubnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "10.240.0.0/24"
+}
+
+resource "ibm_is_lb" "testacc_lb" {
+  name    = "testlb"
+  subnets = [ibm_is_subnet.testacc_subnet.id]
+}
+
+data "ibm_is_lb" "ds_lb" {
+  name = ibm_is_lb.testacc_lb.name
+}
+```
+
+### Input parameters
+{: #ibm-is-lb-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `name` | String | Required | The name of the load balancer. | 
+
+
+### Output parameters
+{: #ibm-is-lb-dsoutput}
+
+Review the output parameters that you can access after you retrieve your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `id` | String | The ID of the load balancer. |
+| `subnets` | String | The ID of the subnets to provision this load balancer. |
+| `listeners` | String | The ID of the listeners attached to this load balancer. |
+| `pools` | String | The ID of the Pools attached to this load balancer. |
+| `type` | String | The type of the load balancer. |
+| `resource_group` | String | The resource group where the load balancer is created. |
+| `tags` | String | The tags associated with the load balancer. |
+| `public_ips` | String | The public IP addresses assigned to this load balancer.|
+| `private_ips` | String | The private IP addresses assigned to this load balancer.|
+| `status` | String | The status of load balancer.|
+| `operating_status` | String | The operating status of this load balancer.|
+| `hostname` | String | Fully qualified domain name assigned to this load balancer.|
+
+
+
+
+
+
 ## `ibm_is_region`
 {: #region}
 
