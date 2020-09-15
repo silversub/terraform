@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-15"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -59,6 +59,13 @@ data "ibm_container_cluster" "cluster" {
   cluster_name_id = "mycluster"
 }
 ```
+The following example retrieves the name of the cluster.
+
+```
+data "ibm_container_cluster" "cluster_foo" {
+  name = "FOO"
+}
+```
 
 ### Input parameters
 {: #container-cluster-input}
@@ -68,7 +75,9 @@ Review the input parameters that you can specify for your data source.
 
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `cluster_name_id` | String | Required | The name or ID of the cluster that you want to retrieve.  |
+| `alb_type` | String | Optional | Filters the  `albs` based on type. The valid values are `private`, `public`, and `all`. The default value is `all`. |
+| `cluster_name_id` | String | Required | The name or ID of the cluster that you want to retrieve.  (Deprecated)|
+|`name` | String | Optional | The name or ID of the cluster.|
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
 
 ### Output parameters
@@ -462,6 +471,15 @@ data "ibm_container_vpc_cluster" "cluster" {
 }
 ```
 
+The following example show how to retrieve name of the cluster.
+
+```
+data "ibm_container_vpc_cluster" "cluster" {
+  name  = "no-zones-tf"
+  resource_group_id = data.ibm_resource_group.group.id
+}
+```
+
 ### Input parameters
 {: #container-vpc-cluster-input}
 
@@ -471,6 +489,7 @@ Review the input parameters that you can specify for your data source.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `cluster_name_id` | String | Required | The name or ID of the VPC cluster that you want to retrieve.  |
+| `name` | String | Optional | The name or ID of the cluster. |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
 
 ### Output parameters
