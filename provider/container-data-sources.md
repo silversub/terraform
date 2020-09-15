@@ -418,7 +418,7 @@ Import the details of a Kubernetes cluster ALB on an {{site.data.keyword.cloud_n
 In the following example you can configure an ALB.
 
 ```
-data "ibm_container_vpc_cluster_alb" "alb" {
+data "ibm_container_vpc_alb" "alb" {
   alb_id = "public-cr083d810e501d4c73b42184eab5a7ad56-alb"
 }
 ```
@@ -488,7 +488,8 @@ Review the input parameters that you can specify for your data source.
 
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `cluster_name_id` | String | Required | The name or ID of the VPC cluster that you want to retrieve.  |
+| `cluster_name_id` | String | Required | The name or ID of the VPC cluster that you want to retrieve. (Deprecated) |
+| `alb_type` | String | Optional | The ALB type of a cluster. |
 | `name` | String | Optional | The name or ID of the cluster. |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
 
