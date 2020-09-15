@@ -600,7 +600,7 @@ Import the details of a Kubernetes cluster worker pool on an {{site.data.keyword
 In the following example, you can create a worker pool for a VPC cluster.
 
 ```
-data "ibm_container_vpc_cluster_worker_pool" "testacc_ds_worker_pool" {
+data "ibm_container_vpc_worker_pool" "testacc_ds_worker_pool" {
     cluster = "cluster_name"
     worker_pool_name = i"worker_pool_name
 }
