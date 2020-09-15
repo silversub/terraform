@@ -70,8 +70,8 @@ resource "ibm_container_addons" "addons" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-| Input parameter | Data type | Required / optional | Description | Forces new resource |
-| ------------- |-------------| ----- | -------------- | -------- |
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
 | `cluster` | String | Required | The name or ID of the cluster. |
 | `addons` | Set | Required | Set of addons that needs to be enabled. |
 | `addons.name` | String | Optional | The addon name such as `istio`.|

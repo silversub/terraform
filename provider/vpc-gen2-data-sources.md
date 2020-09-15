@@ -91,6 +91,49 @@ Review the output parameters that you can access after you retrieved your data s
 |`zone`|String|The zone name where to create the floating IP address.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
+## `ibm_is_flow_logs`
+{: #ibm-is-flow-logs}
+
+Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure flow logs as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #ibm-is-flow-sample}
+
+
+```
+data "ibm_is_flow_logs" "ds_flow_logs" {
+}
+
+```
+
+### Input parameters
+{: #ibm-is-lb-dsinput}
+
+There is no input parameters.
+{: shortdesc}
+
+
+### Output parameters
+{: #ibm-is-flow-dsoutput}
+
+Review the output parameters that you can access after you retrieve your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `flow_log_collectors` | String | Lists all the flow logs in the {{site.data.keyword.cloud_notm}}. |
+| `flow_log_collectors.active` | String | Indicates whether the collector is active. |
+| `flow_log_collectors.created_at` | String | The data and time the flow log created. |
+| `flow_log_collectors.crn` | String | The CRN of the flow log collector. |
+| `flow_log_collectors.href` | String | The URL of the flow log collector. |
+| `flow_log_collectors.id` | String | The unique identifier of the flow log collector. |
+| `flow_log_collectors.lifecycle_state` | String | The lifecycle state of the flow log collector. |
+| `flow_log_collectors.name` | String | The flow log collector name. |
+| `flow_log_collectors.resource_group` | String | The resource group of the flow log. |
+| `flow_log_collectors.storage_bucket` | String | The COS bucket name where the flow logs are logged. |
+| `flow_log_collectors.target` | String | The target ID that the flow log collector collects the flow logs. |
+| `flow_log_collectors.vpc` | String | The VPC of the flow log collector that are associated. |
 
 ## `ibm_is_image`
 {: #vpc-image}
