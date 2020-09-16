@@ -1159,7 +1159,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`templates.volume_attachments`|String|A nested block describes the storage volume configuration for the template. |
 |`templates.volume_attachments.name`|String|The name of the boot volume. |
 |`templates.volume_attachments.volume`|String|The storage volume ID created in VPC. |
-|`templates.volume_attachments.delete_volume_on_instance_delete`|String|You can configure to delete the storage volume to delete based on instance deletion. |
+|`templates.volume_attachments.delete_volume_on_instance_delete`|Boolean|You can configure to delete the storage volume to delete based on instance deletion. |
 |`templates.user_data` | String|The user data provided for the instance. |
 {: caption="Table 1. Available output parameters" caption-side="top"}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-15" 
+lastupdated: "2020-09-16" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -489,6 +489,341 @@ The following timeouts are defined for the instance:
 terraform import ibm_is_instance.example a1aaa111-1111-111a-1a11-a11a1a11a11a
 ```
 {: pre}
+
+
+## `ibm_is_instance_group`
+{: #vpc-is-instance-grp}
+
+Create, update, or delete an instance group on VPC.
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-is-instance-sample}
+
+The following example creates an instance in a VPC generation-2 infrastructure
+
+```
+provider "ibm" {
+  generation = 2
+}
+
+resource "ibm_is_vpc" "vpc2" {
+  name = "vpc2test"
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name            = "subnet2"
+  vpc             = ibm_is_vpc.vpc2.id
+  zone            = "us-south-2"
+  ipv4_cidr_block = "10.240.64.0/28"
+}
+
+resource "ibm_is_ssh_key" "sshkey" {
+  name       = "ssh1"
+  public_key = "SSH KEY"
+}
+
+resource "ibm_is_instance_template" "instancetemplate1" {
+  name    = "testtemplate"
+  image   = "r006-14140f94-fcc4-11e9-96e7-a72723715315"
+  profile = "bx2-8x32"
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.subnet2.id
+  }
+
+  vpc  = ibm_is_vpc.vpc2.id
+  zone = "us-south-2"
+  keys = [ibm_is_ssh_key.sshkey.id]
+}
+
+resource "ibm_is_instance_group" "instance_group" {
+  name              = "testgroup"
+  instance_template = ibm_is_instance_template.instancetemplate1.id
+  instance_count    = 2
+  subnets           = [ibm_is_subnet.subnet2.id]
+
+  //User can configure timeouts
+  timeouts {
+    create = "15m"
+    delete = "15m"
+    update = "10m"
+  }
+}
+```
+
+
+### Input parameters
+{: #vpc-is-instance-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------- |
+|`name`|String|Required|The instance  group name.| Yes |
+|`instance_template`|String|Required| The ID of the instance template to create the instance group.| Yes |
+|`instance_count`|Integer|Required|The number of instances to create in the instance group.| No |
+|`resource_group`|String|Optional|The resource group ID.| No |
+|`subnets`|List|Required|The list of subnet IDs used by the instances. | No |
+|`application_port`|Integer|Optional|The instance group uses when scaling up instances to supply the port for the Load Balancer pool member. | No |
+|`load_balancer`|String|Optional|The load Balancer ID.| No |
+|`load_balancer_pool`|String|Optional|The load Balancer pool ID.| No |
+
+### Output parameters
+{: #instance-group-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of an instance group.|
+|`managers`|String|List of managers associated with the instance group.|
+|`vpc`|String|The VPC ID.|
+|`status`|String|Status of an instance group.|
+
+### Import
+{: #instance-group-import}
+
+`ibm_is_instance_group` can be imported by using the instance group ID.
+
+```
+terraform import ibm_is_instance_group.instance_group r006-14140f94-fcc4-11e9-96e7-a72723715315
+```
+{: pre}
+
+## `ibm_is_instance_group_manager`
+{: #vpc-is-instance-grp-manager}
+
+Create, update, or delete an instance group manager on VPC of an instance group.
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-is-instance-grpmanager-sample}
+
+The following example creates an instance group manager.
+
+```
+provider "ibm" {
+  generation = 2
+}
+
+resource "ibm_is_vpc" "vpc2" {
+  name = "vpc2test"
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name            = "subnet2"
+  vpc             = ibm_is_vpc.vpc2.id
+  zone            = "us-south-2"
+  ipv4_cidr_block = "10.240.64.0/28"
+}
+
+resource "ibm_is_ssh_key" "sshkey" {
+  name       = "ssh1"
+  public_key = "SSH_KEY"
+}
+
+resource "ibm_is_instance_template" "instancetemplate1" {
+  name    = "testtemplate"
+  image   = "r006-14140f94-fcc4-11e9-96e7-a72723715315"
+  profile = "bx2-8x32"
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.subnet2.id
+  }
+
+  vpc  = ibm_is_vpc.vpc2.id
+  zone = "us-south-2"
+  keys = [ibm_is_ssh_key.sshkey.id]
+}
+
+resource "ibm_is_instance_group" "instance_group" {
+  name              = "testgroup"
+  instance_template = ibm_is_instance_template.instancetemplate1.id
+  instance_count    = 2
+  subnets           = [ibm_is_subnet.subnet2.id]
+
+  //User can configure timeouts
+  timeouts {
+    create = "15m"
+    delete = "15m"
+	update = "10m"
+  }
+}
+
+resource "ibm_is_instance_group_manager" "instance_group_manager" {
+  name                 = "testmanager"
+  aggregation_window   = 120
+  instance_group       = ibm_is_instance_group.instance_group.id
+  cooldown             = 300
+  manager_type         = "autoscale"
+  enable_manager       = true
+  max_membership_count = 2
+  min_membership_count = 1
+}
+```
+
+
+### Input parameters
+{: #vpc-is-instance-grpmanager-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`name`|String|Optional|The name of the instance group manager.|
+|`enable_manager`|Boolean|Optional| Enable or disbale the instance group manager. Default value is `true`. |
+|`instance_group`|String|Required|The instance group ID where instance group manager is created. |
+|`manager_type`|String|Optional|The type of instance group manager. Default value is `autoscale`. |
+|`aggregation_window`|Integer|Optional|The time window in seconds to aggregate metrics prior to evaluation. |
+|`cooldown`|Integer|Optional|The duration of time in seconds to pause further scale actions after scaling has taken place. |
+|`max_membership_count`|Integer|Required|The maximum number of members in a managed instance group. |
+|`min_membership_count`|Integer|Optional|The minimum number of members in a managed instance group. Default value is `1`.|
+
+### Output parameters
+{: #instance-group-manager-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID in the combination of instance group ID and instance group manager ID.|
+|`policies`|String|List of policies associated with the instance group manager.|
+|`manager_id`|String|The ID of the instance group manager.|
+
+### Import
+{: #instance-group-manager-import}
+
+`ibm_is_instance_group_manager` can be imported by using the instance group ID and instance group manager ID.
+
+```
+terraform import ibm_is_instance_group_manager.manager r006-eea6b0b7-babd-47a8-82c5-ad73d1e10bef/r006-160b9a68-58c8-4ec3-84b0-ad553ccb1e5a
+```
+{: pre}
+
+## `ibm_is_instance_group_manager_policy`
+{: #vpc-is-instance-grp-manager-policy}
+
+Create, update, or delete a policy of an instance group manager.
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-is-instance-grpmanager-policy-sample}
+
+The following example creates a policy for an instance group manager.
+
+```
+provider "ibm" {
+  generation = 2
+}
+
+resource "ibm_is_vpc" "vpc2" {
+  name = "vpc2test"
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name            = "subnet2"
+  vpc             = ibm_is_vpc.vpc2.id
+  zone            = "us-south-2"
+  ipv4_cidr_block = "10.240.64.0/28"
+}
+
+resource "ibm_is_ssh_key" "sshkey" {
+  name       = "ssh1"
+  public_key = "SSH_KEY"
+}
+
+resource "ibm_is_instance_template" "instancetemplate1" {
+  name    = "testtemplate"
+  image   = "r006-14140f94-fcc4-11e9-96e7-a72723715315"
+  profile = "bx2-8x32"
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.subnet2.id
+  }
+
+  vpc  = ibm_is_vpc.vpc2.id
+  zone = "us-south-2"
+  keys = [ibm_is_ssh_key.sshkey.id]
+}
+
+resource "ibm_is_instance_group" "instance_group" {
+  name              = "testgroup"
+  instance_template = ibm_is_instance_template.instancetemplate1.id
+  instance_count    = 2
+  subnets           = [ibm_is_subnet.subnet2.id]
+
+  //User can configure timeouts
+  timeouts {
+    create = "15m"
+    delete = "15m"
+    update = "10m"
+  }
+}
+
+resource "ibm_is_instance_group_manager" "instance_group_manager" {
+  name                 = "testmanager"
+  aggregation_window   = 120
+  instance_group       = ibm_is_instance_group.instance_group.id
+  cooldown             = 300
+  manager_type         = "autoscale"
+  enable_manager       = true
+  max_membership_count = 2
+  min_membership_count = 1
+}
+
+resource "ibm_is_instance_group_manager_policy" "cpuPolicy" {
+  instance_group         = ibm_is_instance_group.instance_group.id
+  instance_group_manager = ibm_is_instance_group_manager.instance_group_manager.manager_id
+  metric_type            = "cpu"
+  metric_value           = 70
+  policy_type            = "target"
+  name                   = "testpolicy"
+}
+```
+
+
+
+### Input parameters
+{: #vpc-is-instance-grpmanager-policy-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`name`|String|Optional|The name of the policy.|
+|`policy_type`|String|Required| The type of metric to evaluate. |
+|`instance_group`|String|Required|The instance group ID. |
+|`instance_group_manager`|String|Required|The instance group manager ID for policy creation. |
+|`metric_type`|String|Required|The type of metric to evaluate. The possible values for metric types are `cpu`, `memory`, `network_in`, and `network_out`. |
+|`metric_value`|Integer|Required|The metric value to evaluate. |
+
+### Output parameters
+{: #instance-group-manager-policy-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID in the combination of instance group ID, instance group manager ID, and instance group manager policy ID.|
+|`policy_id`|String|The policy ID. |
+
+### Import
+{: #instance-group-manager-policy-import}
+
+`ibm_is_instance_group_manager_policy` can be imported by using instance group ID, insatnce group manager ID and instance group manager policy ID.
+
+```
+terraform import ibm_is_instance_group_manager_policy.policy r006-eea6b0b7-babd-47a8-82c5-ad73d1e10bef/r006-160b9a68-58c8-4ec3-84b0-ad553ccb1e5a/r006-94d99d1d-be65-4939-9006-1a1a767245b5
+```
+{: pre}
+
 
 ## `ibm_is_ipsec_policy`
 {: #provider-ipsec}
@@ -1722,6 +2057,121 @@ Review the output parameters that you can access after your resource is created.
 |`create`|(Default 10 minutes) Used for Creating Instance.|
 |`delete`|(Default 10 minutes) Used for Deleting Instance.|
 {: caption="Table. Available timeout configuration options" caption-side="top"}
+
+
+## `ibm_is_instance_template`
+{: #vpc-is-instance-template}
+
+Create, update, or delete an instance template on VPC.
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-is-instance-template-sample}
+
+The following example creates an instance template in a VPC generation-2 infrastructure
+
+```
+provider "ibm" {
+  generation = 2
+}
+
+resource "ibm_is_vpc" "vpc2" {
+  name = "vpc2test"
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name            = "subnet2"
+  vpc             = ibm_is_vpc.vpc2.id
+  zone            = "us-south-2"
+  ipv4_cidr_block = "10.240.64.0/28"
+}
+
+resource "ibm_is_ssh_key" "sshkey" {
+  name       = "ssh1"
+  public_key = "SSH KEY"
+}
+
+resource "ibm_is_instance_template" "instancetemplate1" {
+  name    = "testtemplate"
+  image   = "r006-14140f94-fcc4-11e9-96e7-a72723715315"
+  profile = "bx2-8x32"
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.subnet2.id
+  }
+
+  vpc  = ibm_is_vpc.vpc2.id
+  zone = "us-south-2"
+  keys = [ibm_is_ssh_key.sshkey.id]
+
+  boot_volume {
+    name                             = "testbootvol"
+    size                             = 16
+    profile                          = "custom"
+    delete_volume_on_instance_delete = true
+  }
+}
+```
+### Input parameters
+{: #vpc-is-instance-template-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------ |
+|`templates.id`|String|Required|The ID of the instance template. | No |
+|`name`|String|Required|The name of the instance template. | No |
+|`image`|String|Required|The ID of the image to create the template.| No |
+|`profile`|String|Required|The number of instances created in the instance group. | No |
+|`vpc`|String|Required|The VPC ID that the instance templates needs to be created.| No |
+|`zone`|String|Required|The name of the zone. | No |
+|`keys`|List|Required|List of SSH key IDs used to allow log in user to the instances. | No |
+|`resource_group`|String|Optional|The resource group ID. | Yes |
+|`primary_network_interfaces`|List| Required |A nested block describes the primary network interface for the template. | No |
+|`primary_network_interfaces.subnet`|String|Required |The VPC subnet to assign to the interface. | Yes |
+|`primary_network_interfaces.name`|String|Optional|The name of the interface. | No |
+|`primary_network_interfaces.security_groups`|List | Optional|List of security groups of the subnet. | No |
+|`primary_network_interfaces.primary_ipv4_address`|String|Optional|The IPv4 address assigned to the primary network interface. | No |
+|`network_interfaces`|List|Optional|A nested block describes the network interfaces for the template. | No |
+|`network_interfaces.subnet`|String|Required|The VPC subnet to assign to the interface. | Yes |
+|`network_interfaces.name`|String| Optional |The name of the interface. | No |
+|`network_interfaces.security_groups`|List|Optional|List of security groups of  the subnet. | No |
+|`network_interfaces.primary_ipv4_address`|String|Optional|The IPv4 address assigned to the network interface. | No |
+|`boot_volume`|List|Optional|A nested block describes the boot volume configuration for the template. | No |
+|`boot_volume.encryption`|String|Optional|The encryption key CRN to encrypt the boot volume attached. | No |
+|`boot_volume.name`|String|Optional|The name of the boot volume. | No |
+|`boot_volume.size`|String|Optional|The boot volume size to configure in giga bytes. | No |
+|`boot_volume.iops`|String|Optional|The IOPS for the boot volume. | No |
+|`boot_volume.profile`|String|Optional|The profile for the boot volume configuration. | No |
+|`boot_volume.delete_volume_on_instance_delete`|Boolean|Optional|You can configure to delete the boot volume based on instance deletion. | No |
+|`volume_attachments`|List|Optional|A nested block describes the storage volume configuration for the template. | No |
+|`volume_attachments.name`|String|Required|The name of the boot volume. | No |
+|`volume_attachments.volume`|String|Required|The storage volume ID created in VPC. | No |
+|`volume_attachments.delete_volume_on_instance_delete`|Boolean|Required|You can configure to delete the storage volume to delete based on instance deletion. | No |
+|`user_data` | String|Optional|The user data provided for the instance. | No |
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+### Output parameters
+{: #instance-template-output}
+
+Review the output parameters that you can access after your resource is created.
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of an instance template.|
+
+### Import
+{: #instance-template-import}
+
+`ibm_is_instance_template` can be imported by using instance template ID
+
+```
+terraform import ibm_is_instance_template.template r006-14140f94-fcc4-1349-96e7-a72734715115
+```
+{: pre}
+
 
 ## `ibm_is_vpc` 
 {: #provider-vps}
