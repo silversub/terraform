@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14" 
+lastupdated: "2020-09-15" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -44,6 +44,69 @@ Before you start working with your resource, make sure to review the [required p
 {: important}
 
 
+## `ibm_container_addons`
+{: #container-addon}
+
+Enable, update or disable a single addon or a set of addons.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-addon-sample}
+
+```
+resource "ibm_container_addons" "addons" {
+  cluster = ibm_container_vpc_cluster.cluster.name
+  addons {
+    name    = "istio"
+    version = "1.6"
+  }
+}
+
+```
+
+### Input parameters
+{: #container-addon-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `cluster` | String | Required | The name or ID of the cluster. |
+| `addons` | Set | Required | Set of addons that needs to be enabled. |
+| `addons.name` | String | Optional | The addon name such as `istio`.|
+| `addons.version`| String | Optional | The addon version. Omit the version that you want to use as the default version.This is required when you want to update the addon to specified version. |
+
+### Output parameters
+{: #container-addon-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `addons` | String | The details of an enabled addons. |
+| `addons.allowed_upgrade_versions` | String | The versions that the addon is upgraded to.|
+| `addons.deprecated` | String | Determines if the addon version is deprecated.|
+| `addons.health_state` | String | The health state of an addon, such as critical or pending. |
+| `addons.health_status` | String | The health status of an addon, provides a description of the state in the form of error message.|
+| `addons.min_kube_version` | String | The minimum Kubernetes version of the addon. |
+| `addons.min_ocp_version` | String | The minimum OpenShift version of the addon. |
+| `addons.supported_kube_range` | String | The supported Kubernetes version range of the addon. |
+| `addons.target_version`| String | The addon target version. |
+| `addons.vlan_spanning_required`| String | The VLAN spanning required for multi-zone clusters.|
+| `id` | String | The Id of the addons. |
+
+
+### Timeouts
+{: #container-addon-timeout}
+
+The following timeouts are defined for this resource. 
+{: shortdesc}
+
+* **Create** The enablement of the addons is considered `failed` if no response is received for 20 minutes.
+* **Update** The enablement of the addons is considered `failed` if no response is received for 20 minutes.
+
 ## `ibm_container_alb`
 {: #container-alb}
 
@@ -54,8 +117,6 @@ For more information about Ingress ALBs, see [About Ingress ALBs](/docs/containe
 
 ### Sample Terraform code
 {: #container-alb-sample}
-
-The following 
 
 ```
 resource ibm_container_alb alb {
@@ -259,28 +320,101 @@ The following example creates a single zone {{site.data.keyword.containerlong_no
 
 ```
 resource "ibm_container_cluster" "testacc_cluster" {
-  name            = "mycluster"
+  name            = "test"
   datacenter      = "dal10"
-  machine_type    = "b3c.4x16"
+  machine_type    = "free"
   hardware        = "shared"
-  public_vlan_id  = "123456"
-  private_vlan_id = "654321"
+  public_vlan_id  = "vlan"
+  private_vlan_id = "vlan"
   subnet_id       = ["1154643"]
 
-  default_pool_size      = 1
+  default_pool_size = 1
 
-  webhook = [{
+  webhook {
     level = "Normal"
-    type = "slack"
-    url = "https://hooks.slack.com/services/yt7rebjhgh2r4rd44fjk"
+    type  = "slack"
+    url   = "https://hooks.slack.com/services/yt7rebjhgh2r4rd44fjk"
   }
- ]
 }
 ```
 {: codeblock}
 
-#### Classic {{site.data.keyword.openshiftlong_notm}} cluster
+#### Creating Kubernetes cluster
 
+Create the Kubernetes cluster with a default worker pool with 2 workers and one standalone worker as mentioned by worker number.
+{: shortdesc}
+
+```
+resource "ibm_container_cluster" "testacc_cluster" {
+  name            = "test"
+  datacenter      = "dal10"
+  machine_type    = "free"
+  hardware        = "shared"
+  public_vlan_id  = "<public_vlan_ID>"
+  private_vlan_id = "<private_vlan_ID>"
+  subnet_id       = ["1154643"]
+
+  default_pool_size = 2
+  worker_num        = 1
+  webhook {
+    level = "Normal"
+    type  = "slack"
+    url   = "https://hooks.slack.com/services/yt7rebjhgh2r4rd44fjk"
+  }
+}
+```
+#### Create a gateway enabled Kubernetes cluster
+
+```
+resource "ibm_container_cluster" "testacc_cluster" {
+  name            = "testgate"
+  gateway_enabled = true
+  datacenter      = "dal10"
+  machine_type    = "b3c.4x16"
+  hardware        = "shared"
+  private_vlan_id = "<private_vlan_ID>"
+  private_service_endpoint = true
+  no_subnet = false
+}
+```
+#### Creating a KMS enabled Kubernetes cluster
+
+```
+resource "ibm_container_cluster" "cluster" {
+  name              = "myContainerClsuter"
+  datacenter        = "dal10"
+  no_subnet         = true
+  default_pool_size = 2
+  hardware          = "shared"
+  resource_group_id = data.ibm_resource_group.testacc_ds_resource_group.id
+  machine_type      = "b2c.16x64"
+  public_vlan_id    = "<public_vlan_ID>"
+  private_vlan_id   = "<private_vlan_ID>"
+  kms_config {
+    instance_id = "12043812-757f-4e1e-8436-6af3245e6a69"
+    crk_id = "0792853c-b9f9-4b35-9d9e-ffceab51d3c1"
+    private_endpoint = false
+  }
+}
+```
+#### Creating an {{site.data.keyword.openshiftlong_notm}} Cluster 
+
+Create the {{site.data.keyword.openshiftlong_notm}} cluster with default worker pool entitlement.
+```
+resource "ibm_container_cluster" "cluster" {
+  name              = "test-openshift-cluster"
+  datacenter        = "dal10"
+  default_pool_size = 3
+  machine_type      = "b3c.4x16"
+  hardware          = "shared"
+  kube_version      = "4.3_openshift"
+  public_vlan_id    = "<public_vlan_ID>"
+  private_vlan_id   = "<private_vlan_ID>"
+  entitlement = "cloud_pak"
+}
+```
+
+#### Classic {{site.data.keyword.openshiftlong_notm}} cluster
 ```
 resource "ibm_container_cluster" "cluster" {
   name              = "mycluster"
@@ -440,10 +574,6 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 ```
 {: codeblock}
 
-
-
-
-
 ### Input parameters
 {: #container-cluster-input}
 
@@ -456,8 +586,13 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 | `default_pool_size` | Integer | Optional | The number of worker nodes that you want to add to the default worker pool. | No |
 | `disk_encryption` | Boolean | Optional | If set to **true**, the worker node disks are set up with an AES 256-bit encryption. If set to **false**, the disk encryption for the worker node is disabled. For more information, see [Encrypted disks for worker node](/docs/containers?topic=containers-security#workernodes).| Yes |
 | `entitlement`|String|Optional|If you purchased an {{site.data.keyword.cloud_notm}} Cloud Pak that includes an entitlement to run worker nodes that are installed with OpenShift Container Platform, enter `entitlement` to create your cluster with that entitlement so that you are not charged twice for the {{site.data.keyword.openshiftshort}} license. Note that this option can be set only when you create the cluster. After the cluster is created, the cost for the {{site.data.keyword.openshiftshort}} license occurred and you cannot disable this charge. | No |
+| `force_delete_storage`|Boolean|Optional|If set to `true`,force the removal of persistent storage associated with the cluster during cluster deletion. Default value is `false`. **NOTE** If `force_delete_storage` parameter is used after provisioning the cluster, then, you need to execute `terraform apply` before `terraform destroy` for `force_delete_storage` parameter to take effect. | No |
 | `hardware` | String | Optional | The level of hardware isolation for your worker node. Use `dedicated` to have available physical resources dedicated to you only, or `shared` to allow physical resources to be shared with other IBM customers. This option is available for virtual machine worker node flavors only. | Yes |
 | `gateway_enabled`|Boolean|Optional|Set to **true** if you want to automatically create a gateway-enabled cluster. If `gateway_enabled` is set to **true**, then `private_service_endpoint` must be set to **true** at the same time.| No |
+| `kms_config`|List|Optional|Used to attach a Key Protect instance to a cluster. Nested `kms_config` block have `instance_id`, `crk_id`, `private_endpoint` structure.| No |
+| `kms_config.instance_id`|List|Optional|The GUID of the Key Protect instance.| No |
+| `kms_config.crk_id`|List|Optional|The ID of the customer root key (CRK).| No |
+| `kms_config.private_endpoint`|Boolean|Optional|Set to `true` to configure the KMS private service endpoint. Default value is `false`.| No |
 | `kube_version` | String | Optional | The Kubernetes or OpenShift version that you want to set up in your cluster. If the version is not specified, the default version in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-cs_versions) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-openshift_versions#version_types) is used. For example, to specify Kubernetes version 1.16, enter `1.16`. For OpenShift clusters, you can specify version `3.11_openshift` or `4.3.1_openshift`.| No |
 | `machine_type` | String | Optional | The machine type for your worker node. The machine type determines the amount of memory, CPU, and disk space that is available to the worker node. For an overview of supported machine types, see [Planning your worker node setup](/docs/containers?topic=containers-planning_worker_nodes). | Yes |
 | `name` | String | Required | The name of the cluster. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions. The cluster name and the region in which the cluster is deployed form the fully qualified domain name for the Ingress subdomain. To ensure that the Ingress subdomain is unique within a region, the cluster name might be truncated and appended with a random value within the Ingress domain name. | Yes |
@@ -519,8 +654,17 @@ Review the output parameters that you can access after your resource is created.
 | `worker_pools.zones.public_vlan` | String | The ID of the private VLAN that is used in that zone. |
 | `worker_pools.zones.worker_count` | Integer | The number of worker nodes that are attached to the zone. |
 | `workers_info` | List of objects | A list of worker nodes that belong to the cluster. |
-| `workers_info.pool_name` | String | The name of the worker pool the worker node belongs to. | 
+| `workers_info.pool_name` | String | The name of the worker pool the worker node belongs to. |
 
+### Timeouts
+{: #container-cluster-timeout}
+
+The following timeouts configuration are defined for `ibm_container_alb` resource.
+{: shortdesc}
+
+* **Create** The enablement of the feature is considered `failed` if no response is received for 90 minutes.
+* **Delete** The delete of the feature is considered `failed` if no response is received for 45 minutes.
+* **Update** The update of the feature is considered `failed` if no response is received for 45 minutes.
 
 ## `ibm_container_cluster_feature`
 {: #container-cluster-feature}
@@ -1011,6 +1155,34 @@ resource "ibm_container_vpc_cluster" "cluster" {
 ```
 {: codeblock}
 
+
+
+#### Creating a KMS enables Kubernetes cluster
+{: #kms-enables-kubernetes}
+
+```
+resource "ibm_container_vpc_cluster" "cluster" {
+  name              = "cluster2"
+  vpc_id            = "${ibm_is_vpc.vpc1.id}"
+  flavor            = "bx2.2x8"
+  worker_count      = "1"
+  wait_till         = "OneWorkerNodeReady"
+  resource_group_id = "${data.ibm_resource_group.resource_group.id}"
+  zones {
+    subnet_id = "${ibm_is_subnet.subnet1.id}"
+    name      = "us-south-1"
+  }
+
+  kms_config {
+      instance_id = "12043812-757f-4e1e-8436-6af3245e6a69"
+      crk_id = "0792853c-b9f9-4b35-9d9e-ffceab51d3c1"
+      private_endpoint = false
+  }
+}
+```
+{: codeblock}
+
+
 ### Input parameters
 {: #vpc-cluster-input}
 
@@ -1036,6 +1208,17 @@ Review the input parameters that you can specify for your resource.
 |`tags`|Array of strings|Optional|A list of tags that you want to associate with your VPC cluster. **Note**: For users on account to add tags to a resource, they must be assigned the [appropriate permissions]/docs/account?topic=account-access). | No |
 |`cos_instance_crn`|String|Optional|Required for OpenShift clusters only. The standard cloud object storage instance CRN to back up the internal registry in your OpenShift on VPC Gen 2 cluster.| No |
 |`wait_till`|String|Optional|The creation of a cluster can take a few minutes (for virtual servers) or even hours (for Bare Metal servers) to complete. To avoid long wait times when you run your Terraform code, you can specify the stage when you want Terraform to mark the cluster resource creation as completed. Depending on what stage you choose, the cluster creation might not be fully completed and continues to run in the background. However, your Terraform code can continue to run without waiting for the cluster to be fully created. Supported stages are: <ul><li><strong>MasterNodeReady</strong>: Terraform marks the creation of your cluster complete when the cluster master is in a <code>ready</code> state.</li><li><strong>OneWorkerNodeReady</strong>: Terraform marks the creation of your cluster complete when the master and at least one worker node are in a <code>ready</code> state.</li><li><strong>IngressReady</strong>: Terraform marks the creation of your cluster complete when the cluster master and all worker nodes are in a <code>ready</code> state, and the Ingress subdomain is fully set up.</li></ul> If you do not specify this option, <code>IngressReady</code> is used by default. You can set this option only when the cluster is created. If this option is set during a cluster update or deletion, the parameter is ignored by the Terraform provider. | No |
+|`kms_config`|List|Optional|Use to attach a Key Protect instance to a cluster. Nested `kms_config` block has an `instance_id`, `crk_id`, `private_endpoint`.| No |
+|`kms_config.instance_id`|List|Optional|The GUID of the Key Protect instance.| No |
+|`kms_config.crk_id`|List|Optional|The ID of the customer root key (CRK).| No |
+|`kms_config.private_endpoint`|Boolean|Optional|Set `true` to configure the KMS private service endpoint. Default value is `false`.| No |
+|`entitlement`|String|Optional|The {{site.data.keyword.openshiftshort}} cluster entitlement avoids the OCP licence charges incurred. Use Cloud Pak with OCP Licence entitlement to create the {{site.data.keyword.openshiftshort}}cluster. **NOTE** <ul><li> It is set only the first time creation of the cluster, further modifications are not impacted. </li></ul> <ul><li> Set this argument to `cloud_pak` only if you use the cluster with a Cloud Pak that has an {{site.data.keyword.openshiftshort}} entitlement.</li></ul>| No |
+| `force_delete_storage`|Boolean|Optional|If set to `true`,force the removal of persistent storage associated with the cluster during cluster deletion. Default value is `false`. **NOTE** If `force_delete_storage` parameter is used after provisioning the cluster, then, you need to execute `terraform apply` before `terraform destroy` for `force_delete_storage` parameter to take effect. | No |
+
+**Note**
+
+1. For users on account to add tags to a resource, you need to assign the right access. For more information about tags, see [Tags permission](/docs/account?topic=account-access).
+2. `wait_till` is set only for the first time creation of the resource, further modification are not impacted.
 
 ### Output parameters
 {: #vpc-cluster-output}

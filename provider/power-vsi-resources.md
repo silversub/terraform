@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-15"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -349,6 +349,133 @@ terraform import ibm_pi_network.example <power_instance_id>/<network_id>
 
 
 
+
+
+## `ibm_pi_network_port`
+{: #pi-networkport}
+
+Creates or updates network port in the Power Virtual Server Cloud.
+{: shortdesc}
+
+### Sample Terraform code
+{: #pi-network-sample}
+
+```
+resource "ibm_pi_network_port" "test-network-port" {
+    pi_network_name             = "Zone1-CFN"
+    pi_cloud_instance_id  = "51e1879c-bcbe-4ee1-a008-49cdba0eaf60"
+    pi_network_port_description         = "IP Reserved for Oracle RAC "
+}
+```
+
+### Input parameters
+{: #pi-network-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`pi_instance_name`|String|Required|The name of the VM. |
+|`pi_cloud_instance_id`|String|Required|The cloud_instance_id of the account. | 
+|`pi_network_port_description`|String|Optional|The description for the Network Port.|
+
+### Output parameters
+{: #pi-network-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The unique identifier of the instance. The ID is composed of <power_network_port_id>/<id>.|
+|`ipaddress`|String|The unique identifier of the instance.|
+|`macaddress`|String|The MAC address of the port.|
+|`status`|String|The status of the port.|
+|`portid`|String|The ID of the port.|
+
+### Timeouts
+{: #pi-network-timeout}
+
+The following timeouts are defined for this resource:
+
+- **Create** The creation of the network port is considered failed if no response is received for 60 minutes.
+- **Delete** The deletion of the network port is considered failed if no response is received for 60 minutes.
+
+### Import
+{: #pi-network-import}
+
+`ibm_pi_network_port` can be imported using `power_instance_id` and `port_id`.
+
+**Example**
+
+```
+terraform import ibm_pi_network_port.example d7bec597-4726-451f-8a63-e62e6f19c32c/cea6651a-bc0a-4438-9f8a-a0770bbf3ebb
+```
+## `ibm_pi_snapshot`
+{: #pi-snapshot}
+
+Creates, updates, deletes, and manages snapshots in the Power Virtual Server Cloud.
+{: shortdesc}
+
+### Sample Terraform code
+{: #pi-snapshot-sample}
+
+```
+resource "ibm_pi_snapshot" "testacc_snapshot"{
+  pi_instance_name       = test-instance
+  pi_snapshot_name       = test-snapshot
+  pi_volume_ids       = ["volumeid1","volumeid2"]
+  description  = "Testing snapshot for instance"
+  pi_cloud_instance_id = "<value of the cloud_instance_id>"
+}
+```
+
+### Input parameters
+{: #pi-snapshot-input}
+
+Review the input parameters that you can specify for your resource.
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`pi_instance_name`|String|Required|The name of the instance you want to take a snapshot of. |
+|`pi_snapshot_name`|String|Required|The unique name of the snapshot. |
+|`description`|String|Optional|The description for the snapshot.|
+|`pi_volume_ids`|String|Optional|The volume ID, if none provided then all volumes of the instance will be part of the snapshot.|
+|`pi_cloud_instance_id`|String|Required|The cloud instance ID for this account.|
+
+
+### Output parameters
+{: #pi-snapshot-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The unique identifier of the snapshot. The ID is composed of <power_instance_id>/<pi_snap_shot_id>.|
+|`volume_snapshots`|String|A map of the source and target volumes.|
+
+### Timeouts
+{: #pi-snapshot-timeout}
+
+The following timeouts are defined for this resource:
+
+- **Create** The creation of the snapshot is considered failed, if no response is received for 60 minutes.
+- **Delete** The deletion of the snapshot is considered failed, if no response is received for 60 minutes.
+- **Update** The updation of the snapshot is considered failed, if no response is received for 60 minutes.
+
+### Import
+{: #pi-snapshot-import}
+
+`ibm_pi_snapshot` can be imported by using `power_instance_id` and `pi_snap_shot_id`.
+
+**Example**
+
+```
+terraform import ibm_pi_snapshot.example d7bec597-4726-451f-8a63-e62e6f19c32c/cea6651a-bc0a-4438-9f8a-a0770bbf3ebb
+```
 
 ## `ibm_pi_volume`
 {: #power-volume}

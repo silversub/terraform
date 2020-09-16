@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-15"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -150,6 +150,7 @@ resource "ibm_database" "autoscale" {
     }
 }
 ```
+**provider.tf**
 
 ```
 provider "ibm" {

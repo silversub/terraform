@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-15"
 
 keywords: terraform provider plugin, terraform gen 1 compute, terraform gen 1 resources, terraform  generation 1 compute terraform
 
@@ -518,6 +518,77 @@ Review the output parameters that you can access after you retrieve your data so
 
 
 
+## `ibm_is_lb`
+{: #ibm-is-lb}
+
+Import the details of an existing IBM VPC Load Balancer as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #ibm-is-lb-sample}
+
+The following example shows how you can retrieve information about the `us-south` region. 
+{: shortdesc}
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "testvpc"
+}
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "testsubnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "10.240.0.0/24"
+}
+
+resource "ibm_is_lb" "testacc_lb" {
+  name    = "testlb"
+  subnets = [ibm_is_subnet.testacc_subnet.id]
+}
+
+data "ibm_is_lb" "ds_lb" {
+  name = ibm_is_lb.testacc_lb.name
+}
+```
+
+### Input parameters
+{: #ibm-is-lb-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `name` | String | Required | The name of the load balancer. | 
+
+
+### Output parameters
+{: #ibm-is-lb-dsoutput}
+
+Review the output parameters that you can access after you retrieve your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `id` | String | The ID of the load balancer. |
+| `subnets` | String | The ID of the subnets to provision this load balancer. |
+| `listeners` | String | The ID of the listeners attached to this load balancer. |
+| `pools` | String | The ID of the Pools attached to this load balancer. |
+| `type` | String | The type of the load balancer. |
+| `resource_group` | String | The resource group where the load balancer is created. |
+| `tags` | String | The tags associated with the load balancer. |
+| `public_ips` | String | The public IP addresses assigned to this load balancer.|
+| `private_ips` | String | The private IP addresses assigned to this load balancer.|
+| `status` | String | The status of load balancer.|
+| `operating_status` | String | The operating status of this load balancer.|
+| `hostname` | String | Fully qualified domain name assigned to this load balancer.|
+
+
+
+
+
+
 ## `ibm_is_region`
 {: #region}
 
@@ -737,6 +808,24 @@ data "ibm_is_subnet" "ds_subnet" {
 	identifier = ibm_is_subnet.mysubnet_resource.id
 }
 ```
+The following example retrieves the subnet information by the subnet ID.
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "test"
+}
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "test-subnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "192.168.0.0/1"
+}
+
+data "ibm_is_subnet" "ds_subnet" {
+  identifier = ibm_is_subnet.testacc_subnet.id
+}
+```
 
 ### Input parameters
 {: #subnet-input}
@@ -746,7 +835,8 @@ Review the input parameters that you can specify for your data source.
 
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `identifier` | String | Required | The ID of the subnet. To list subnets in your account, run the `ibmcloud is subnets` command. | 
+| `identifier` | String | Optional | The ID of the subnet. To list subnets in your account, run the `ibmcloud is subnets` command. | 
+|`name`|String|Optional|The name of the subnet.|
 
 ### Output parameters
 {: #subnet-output}
@@ -767,6 +857,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `total_ipv4_address_count` | Integer | The total number of IPv4 addresses. |
 | `vpc` | String | The ID of the VPC that the subnet is attached to. |
 | `zone` | String | The name of the zone where the subnet is provisioned. |
+|`resource_group`|String|The subnet resource group.|
 
 
 

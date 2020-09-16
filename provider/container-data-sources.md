@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-15"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -43,6 +43,189 @@ Before you start working with your data source, make sure to review the [require
 {: important}
 
 
+
+## `ibm_container_addons`
+{: #container-addons}
+
+Retrieve information about all the addons that are enables on a cluster.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-addon-sample}
+
+The following example retrieves information of an addons.
+
+```
+data "ibm_container_addons" "addons" {
+  cluster= ibm_container_addons.addons.cluster
+}
+```
+
+### Input parameters
+{: #container-addon-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `cluster` | String | Required | The name or ID of the cluster.|
+
+### Output parameters
+{: #container-addon-dsoutput}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `addons` | String | The details of an enabled addons. |
+| `addons.name` | String | The addon name such as `istio`. |
+| `addons.version` | String | The addon version. Omit the version, if you need to use the default version. |
+| `addons.allowed_upgrade_versions` | String | The versions that the addon is upgraded to.|
+| `addons.deprecated` | String | Determines if the addon version is deprecated.|
+| `addons.health_state` | String | The health state of an addon, such as critical or pending. |
+| `addons.health_status` | String | The health status of an addon, provides a description of the state in the form of error message.|
+| `addons.min_kube_version` | String | The minimum Kubernetes version of the addon. |
+| `addons.min_ocp_version` | String | The minimum OpenShift version of the addon. |
+| `addons.supported_kube_range` | String | The supported Kubernetes version range of the addon. |
+| `addons.target_version`| String | The addon target version. |
+| `addons.vlan_spanning_required`| String | The VLAN spanning required for multi-zone clusters.|
+| `id` | String | The ID of an addons. |
+
+
+## `ibm_container_alb`
+{: #container-alb-ds}
+
+Retrieve information about all the Kubernetes cluster ALB on {{site.data.keyword.cloud_notm}} as a read-only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-alb-dssample}
+
+The following example retrieves information of an ALB.
+
+```
+data "ibm_container_alb" "alb" {
+  alb_id = "public-cr083d810e501d4c73b42184eab5a7ad56-alb"
+}
+```
+
+### Input parameters
+{: #container-alb-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `alb_id` | String | Required | The ID of the ALB. |
+
+### Output parameters
+{: #container-alb-dsoutput}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `alb_type` | String | The ALB type. |
+| `cluster` | String | The name of the cluster. |
+| `name` | String | The name of the ALB. |
+| `user_ip` | String | The IP address assigned by the user.|
+| `id` | String | The ALB ID.|
+| `zone` | String | The name of the zone. |
+| `enable` | String | Enable an ALB for the cluster. |
+| `disable_deployment` | String | Disable the ALB deployment details. |
+
+## `ibm_container_alb_cert`
+{: #container-albcert-ds}
+
+Retrieve information about all the Kubernetes cluster ALB certificate on {{site.data.keyword.cloud_notm}} as a read-only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-albcert-dssample}
+
+The following example retrieves information of an ALB cert.
+
+```
+data "ibm_container_alb_cert" "cert" {
+  secret_name = "test-sec"
+  cluster_id  = "myCluster"
+}
+```
+
+### Input parameters
+{: #container-albcert-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `cluster_id` | String | Required | The cluster ID. |
+| `secret_name` | String | Required | The name of the ALB certificate secret. |
+
+### Output parameters
+{: #container-albcert-dsoutput}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `cert_crn` | String | The certificate CRN. |
+| `cloud_cert_instance_id` | String | The Cloud certificate instance ID from which certificate is downloaded. |
+| `cluster_crn` | String | The cluster CRN. |
+| `domain_name` | String | The domain name of the certificate. |
+| `expires_on` | String | The expiry date of the certificate.|
+| `id` | String | The ALB cert ID. The ID is composed of `<cluster_name_id>/<secret_name>`.|
+| `issuer_name` | String | The issuer name of the certificate. |
+
+## `ibm_container_bind_service`
+{: #container-bind-ds}
+
+Retrieve information of a service attached to {{site.data.keyword.cloud_notm}} cluster.
+{: shortdesc}
+
+### Sample Terraform code
+{: #container-bind-dssample}
+
+The following example retrieves service information attached to a cluster.
+
+```
+data "ibm_container_bind_service" "bind_service" {
+  cluster_name_id       = "cluster_name"
+  service_instance_name = "service_name"
+  namespace_id          = "default"
+}
+```
+
+### Input parameters
+{: #container-bind-dsinput}
+
+Review the input parameters that you can specify for your data source.
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `cluster_name_id` | String | Required | The name or Id of the cluster. |
+| `namespace_id` | String | Required | The Kubernetes namespace. |
+| `service_instance_name` | String | Optional | The name of the service that is attached to the cluster. This conflicts with the `service_instance_id` parameter. |
+| `service_instance_id` | String | Optional | The Id of the service that is attached to the cluster. This conflicts with the `service_instance_name` parameter. |
+
+### Output parameters
+{: #container-bind-dsoutput}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `id` | String | The unique Id of the bind service resource. The ID is composed of `<cluster_name_id>/<service_instance_name or service_instance_id>/<namespace_id/>`.|
+| `issuer_name` | String | The service key name. |
+
 ## `ibm_container_cluster`
 {: #container-cluster}
 
@@ -59,6 +242,13 @@ data "ibm_container_cluster" "cluster" {
   cluster_name_id = "mycluster"
 }
 ```
+The following example retrieves the name of the cluster.
+
+```
+data "ibm_container_cluster" "cluster_foo" {
+  name = "FOO"
+}
+```
 
 ### Input parameters
 {: #container-cluster-input}
@@ -68,7 +258,9 @@ Review the input parameters that you can specify for your data source.
 
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `cluster_name_id` | String | Required | The name or ID of the cluster that you want to retrieve.  |
+| `alb_type` | String | Optional | Filters the  `albs` based on type. The valid values are `private`, `public`, and `all`. The default value is `all`. |
+| `cluster_name_id` | String | Required | The name or ID of the cluster that you want to retrieve.  (Deprecated)|
+|`name` | String | Optional | The name or ID of the cluster.|
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
 
 ### Output parameters
@@ -409,7 +601,7 @@ Import the details of a Kubernetes cluster ALB on an {{site.data.keyword.cloud_n
 In the following example you can configure an ALB.
 
 ```
-data "ibm_container_vpc_cluster_alb" "alb" {
+data "ibm_container_vpc_alb" "alb" {
   alb_id = "public-cr083d810e501d4c73b42184eab5a7ad56-alb"
 }
 ```
@@ -462,6 +654,15 @@ data "ibm_container_vpc_cluster" "cluster" {
 }
 ```
 
+The following example show how to retrieve name of the cluster.
+
+```
+data "ibm_container_vpc_cluster" "cluster" {
+  name  = "no-zones-tf"
+  resource_group_id = data.ibm_resource_group.group.id
+}
+```
+
 ### Input parameters
 {: #container-vpc-cluster-input}
 
@@ -470,7 +671,9 @@ Review the input parameters that you can specify for your data source.
 
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `cluster_name_id` | String | Required | The name or ID of the VPC cluster that you want to retrieve.  |
+| `cluster_name_id` | String | Required | The name or ID of the VPC cluster that you want to retrieve. (Deprecated) |
+| `alb_type` | String | Optional | The ALB type of a cluster. |
+| `name` | String | Optional | The name or ID of the cluster. |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
 
 ### Output parameters
@@ -580,7 +783,7 @@ Import the details of a Kubernetes cluster worker pool on an {{site.data.keyword
 In the following example, you can create a worker pool for a VPC cluster.
 
 ```
-data "ibm_container_vpc_cluster_worker_pool" "testacc_ds_worker_pool" {
+data "ibm_container_vpc_worker_pool" "testacc_ds_worker_pool" {
     cluster = "cluster_name"
     worker_pool_name = i"worker_pool_name
 }

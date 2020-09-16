@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-16"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -91,6 +91,49 @@ Review the output parameters that you can access after you retrieved your data s
 |`zone`|String|The zone name where to create the floating IP address.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
+## `ibm_is_flow_logs`
+{: #ibm-is-flow-logs}
+
+Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure flow logs as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #ibm-is-flow-sample}
+
+
+```
+data "ibm_is_flow_logs" "ds_flow_logs" {
+}
+
+```
+
+### Input parameters
+{: #ibm-is-lb-dsinput}
+
+There is no input parameters.
+{: shortdesc}
+
+
+### Output parameters
+{: #ibm-is-flow-dsoutput}
+
+Review the output parameters that you can access after you retrieve your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `flow_log_collectors` | String | Lists all the flow logs in the {{site.data.keyword.cloud_notm}}. |
+| `flow_log_collectors.active` | String | Indicates whether the collector is active. |
+| `flow_log_collectors.created_at` | String | The data and time the flow log created. |
+| `flow_log_collectors.crn` | String | The CRN of the flow log collector. |
+| `flow_log_collectors.href` | String | The URL of the flow log collector. |
+| `flow_log_collectors.id` | String | The unique identifier of the flow log collector. |
+| `flow_log_collectors.lifecycle_state` | String | The lifecycle state of the flow log collector. |
+| `flow_log_collectors.name` | String | The flow log collector name. |
+| `flow_log_collectors.resource_group` | String | The resource group of the flow log. |
+| `flow_log_collectors.storage_bucket` | String | The COS bucket name where the flow logs are logged. |
+| `flow_log_collectors.target` | String | The target ID that the flow log collector collects the flow logs. |
+| `flow_log_collectors.vpc` | String | The VPC of the flow log collector that are associated. |
 
 ## `ibm_is_image`
 {: #vpc-image}
@@ -299,6 +342,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`keys.id`|String|The ID of the SSH key.|
 |`keys.name`|String|The name of the SSH key that you entered when you uploaded the key to {{site.data.keyword.cloud_notm}}.|
 
+
 ## `ibm_is_instances`
 {: #instances}
 
@@ -365,6 +409,192 @@ Review the output parameters that you can access after you retrieved your data s
 |`instances.volume_attachments.crn`|String|The CRN of the volume that is associated with the volume attachment.|
 
 
+## `ibm_is_instance_group`
+{: #instance-group}
+
+Retrieve the details for all Gen 2 {{site.data.keyword.vsi_is_short}} instance group in your account.
+{: shortdesc}
+
+### Sample Terraform code
+{: #instance-group-sample}
+
+```
+data "ibm_is_instance_group" "instance_group_data" {
+	name =  ibm_is_instance_group.instance_group.name
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #instance-group-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`name`|String|Required|The name of an instance group.|
+
+
+### Output parameters
+{: #instance-group-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|Object|The ID of an instance group. |
+| `managers` | String | List of managers associated with the instance group.|
+| `vpc` | String | The VPC ID. |
+| `status` | String | The status of an instance group. |
+| `instance_template` | String |The ID of an instance template to create an instance group. |
+| `instance_count` | String | The number of instances created in an instance group. |
+| `resource_group`| String | The resource group ID. |
+| `subnets`| String | The list of subnet IDs used by an instances. |
+| `application_port` | String | Scales an instances to supply the port for the Load Balancer pool member. |
+| `load_balancer_pool` | String | The Load Balancer pool ID.|
+
+
+## `ibm_is_instance_group_managers`
+{: #instance-group-managers}
+
+Retrieve all the instance group managers information of an instance group.
+{: shortdesc}
+
+### Sample Terraform code
+{: #instance-group-managers-sample}
+
+In the following example, you can retrieve a list of instance group managers information.
+
+```
+data "ibm_is_instance_group_managers" "instance_group_managers" {
+    instance_group = "r006-76740f94-fcc4-11e9-96e7-a77723715315"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #instance-group-managers-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`instance_group`|String|Required|The instance group ID where the instance group manager is created.|
+
+### Output parameters
+{: #instance-group-managers-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source.
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `instance_group_managers` | List of String | Nested block with list of instance manager properties. |
+|`instance_group_managers.id`|Object|This ID is the combination of instance group ID, and instance group manager ID. |
+|`instance_group_managers.manager_type`|String| The type of an instance group manager. |
+|`instance_group_managers.aggregation_window`|String|The time window in seconds to aggregate metrics prior to evaluation. |
+|`instance_group_managers.manager_id`|String|The instance group manager ID. |
+|`instance_group_managers.policies`|String|List of policies associated with the instance group manager. |
+|`instance_group_managers.cooldown`|The duration of time in seconds to pause further scale actions after scaling has taken place. |
+|`instance_group_managers.max_membership_count`|String|The maximum number of members in a managed instance group. |
+|`instance_group_managers.min_membership_count`|String|The minimum number of members in a managed instance group. |
+
+## `ibm_is_instance_group_manager_policy`
+{: #instance-group-managerpolicy}
+
+Retrieve the policy information of an instance group manager.
+{: shortdesc}
+
+### Sample Terraform code
+{: #instance-group-manager-policy-sample}
+
+In the following example, you can retrieve a policy information of an instance group manager.
+
+```
+data "ibm_is_instance_group_manager_policy" "instance_group_manager_policy" {
+  instance_group = "r006-76770f94-f7654-11e9-96e7-a77724435315"
+  instance_group_manager = "r006-76770f94-f8764-11e9-96e7-a77726534315"
+	name = "testpolicy
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #instance-group-manager-policy-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`name`|String|Required|The name of the policy.|
+|`instance_group`|String|Required|The instance group ID.|
+|`instance_group_manager`|String|Required|The instance group manager ID|
+
+
+### Output parameters
+{: #instance-group-manager-policy-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source.
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|Object|This ID is the combination of instance group ID, instance group manager ID and instance group manager policy ID. |
+| `policy_type` | String | The type of metric to evaluate. |
+| `metric_type` | String | The type of metric to evaluate. The possible values are `cpu`, `memory`, `network_in` and `network_out`. |
+| `metric_value` | String |The metric value to evaluate. |
+| `policy_id` | String | The policy ID. |
+
+## `ibm_is_instance_group_manager_policies`
+{: #instance-group-managerpolicies}
+
+Retrieve the details for all Gen 2 {{site.data.keyword.vsi_is_short}} instance group manager policies in your account.
+{: shortdesc}
+
+### Sample Terraform code
+{: #instance-group-manager-sample}
+
+In the following example, you can retrieve a policy information of an instance group manager.
+
+```
+data "ibm_is_instance_group_manager_policy" "instance_group_manager_policy" {
+  instance_group = "r006-76770f94-f7654-11e9-96e7-a77724435315"
+  instance_group_manager = "r006-76770f94-f8764-11e9-96e7-a77726534315"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #instance-group-manager-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`instance_group`|String|Required|The instance group ID.|
+|`instance_group_manager`|String|Required|The instance group manager ID|
+
+
+### Output parameters
+{: #instance-group-manager-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source.
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|Object|This ID is the combination of instance group ID, instance group manager ID and instance group manager policy ID. |
+| `name` | String | The policy name.|
+| `policy_type` | String | The type of metric to evaluate. |
+| `metric_type` | String | The type of metric to evaluate. The possible values are `cpu`, `memory`, `network_in` and `network_out`. |
+| `metric_value` | String |The metric value to evaluate. |
+| `policy_id` | String | The policy ID. |
+
 ## `ibm_is_instance_profile`
 {: #vpc-instance-profile}
 
@@ -380,7 +610,7 @@ The following example retrieves information about the `bx2-2x8` instance profile
 ```
 
 data "ibm_is_instance_profile" "profile" {
-	name = "bx2-2x8"
+	name = "b-2x8"
 }
 
 ```
@@ -418,7 +648,6 @@ Retrieve information about supported virtual server instance profiles.
 {: #vpc-instance-profiles-sample}
 
 ```
-
 data "ibm_is_instance_profiles" "ds_instance_profiles" {
 }
 
@@ -427,7 +656,7 @@ data "ibm_is_instance_profiles" "ds_instance_profiles" {
 ### Input parameters
 {: #vpc-instance-profiles-input}
 
-No input parameters are required for this data source.
+This data source does not support any input parameters.
 {: shortdesc}
 
 ### Output parameters
@@ -484,24 +713,95 @@ Review the input parameters that you can specify for your data source.
 
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `name` | String | Required | The name of the gateway. | 
+| `name` | String | Required | The name of the gateway. |
 | `resource_group` | String | Optional | The resource group ID of the public gateway. **Note** This parameter is supported only for VPC Gen 2 infrastructure. |
 
 ### Output parameters
 {: #public-gwy-g2-dsoutput}
 
-Review the output parameters that you can access after you retrieve your data source. 
+Review the output parameters that you can access after you retrieve your data source.
 {: shortdesc}
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-| `is` | String | The ID of the public gateway. | 
+| `is` | String | The ID of the public gateway. |
 | `status` | String | The status of the gateway. |
 | `vpc` | String | The VPC ID of the gateway. |
 | `zone` | String | The public gateway zone name. |
 | `floating_ip` | String | Lists the nested block describes the floating IP of the gateway.  with **id** and **address**. |
 | `floating_ip.id` | String | The ID of the floating IP that is bound to the public gateway. |
 | `floating_ip.address` | String | The IP address of the floating IP that is bound to the public gateway. |
+
+
+
+
+
+
+## `ibm_is_lb`
+{: #ibm-is-lb}
+
+Import the details of an existing IBM VPC Load Balancer as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #ibm-is-lb-sample}
+
+The following example shows how you can retrieve information about the `us-south` region. 
+{: shortdesc}
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "testvpc"
+}
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "testsubnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "10.240.0.0/24"
+}
+
+resource "ibm_is_lb" "testacc_lb" {
+  name    = "testlb"
+  subnets = [ibm_is_subnet.testacc_subnet.id]
+}
+
+data "ibm_is_lb" "ds_lb" {
+  name = ibm_is_lb.testacc_lb.name
+}
+```
+
+### Input parameters
+{: #ibm-is-lb-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+| `name` | String | Required | The name of the load balancer. | 
+
+
+### Output parameters
+{: #ibm-is-lb-dsoutput}
+
+Review the output parameters that you can access after you retrieve your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+| `id` | String | The ID of the load balancer. |
+| `subnets` | String | The ID of the subnets to provision this load balancer. |
+| `listeners` | String | The ID of the listeners attached to this load balancer. |
+| `pools` | String | The ID of the Pools attached to this load balancer. |
+| `type` | String | The type of the load balancer. |
+| `resource_group` | String | The resource group where the load balancer is created. |
+| `tags` | String | The tags associated with the load balancer. |
+| `public_ips` | String | The public IP addresses assigned to this load balancer.|
+| `private_ips` | String | The private IP addresses assigned to this load balancer.|
+| `status` | String | The status of load balancer.|
+| `operating_status` | String | The operating status of this load balancer.|
+| `hostname` | String | Fully qualified domain name assigned to this load balancer.|
 
 
 
@@ -798,6 +1098,75 @@ Review the output parameters that you can access after you retrieved your data s
 |`subnets.resource_group`|String|The resource group that the subnet belongs to.|
 |`subnets.vpc`|String|The ID of the VPC that this subnet belongs to.|
 |`subnets.zone`|String|The zone where the subnet was created.|
+
+## `ibm_is_instance_templates`
+{: #vpc-instance-templates}
+
+Retrieve information about all the instance template in an account. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-instance-templates-sample}
+
+The following example, you can fetch information of list of the instance templates VPC gen-2 infrastructure.
+{: shortdesc}
+
+```
+data "ibm_is_instance_templates" "instancetemplates" {	   
+}
+```
+
+### Input parameters
+{: #vpc-instance-templates-input}
+
+This data source does not support any input parameters.
+{: shortdesc}
+
+### Output parameters
+{: #vpc-instance-templates-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`templates`|List of objects|List of templates.  |
+|`templates.id`|String|The ID of the instance template. |
+|`templates.name`|String|The name of the instance template. |
+|`templates.image`|String|The ID of the image to create the template.|
+|`templates.profile`|String|The number of instances created in the instance group. |
+|`templates.vpc`|String|The VPC ID that the instance templates needs to be created.|
+|`templates.zone`|String|The name of the zone. |
+|`templates.keys`|String|List of SSH key IDs used to allow log in user to the instances. |
+|`templates.resource_group`|String|The resource group ID. |
+|`templates.primary_network_interfaces`|String|A nested block describes the primary network interface for the template. |
+|`templates.primary_network_interfaces.subnet`|String|The VPC subnet to assign to the interface. |
+|`templates.primary_network_interfaces.name`|String|The name of the interface. |
+|`templates.primary_network_interfaces.security_groups`|String|List of security groups of the subnet. |
+|`templates.primary_network_interfaces.primary_ipv4_address`|String|The IPv4 address assigned to the primary network interface. |
+|`templates.network_interfaces`|String|A nested block describes the network interfaces for the template. |
+|`templates.network_interfaces.subnet`|String|The VPC subnet to assign to the interface. |
+|`templates.network_interfaces.name`|String|The name of the interface. |
+|`templates.network_interfaces.security_groups`|String|List of security groups of  the subnet. |
+|`templates.network_interfaces.primary_ipv4_address`|String|The IPv4 address assigned to the network interface. |
+|`templates.boot_volume`|String|A nested block describes the boot volume configuration for the template. |
+|`templates.boot_volume.encryption`|String|The encryption key CRN to encrypt the boot volume attached. |
+|`templates.boot_volume.name`|String|The name of the boot volume. |
+|`templates.boot_volume.size`|String|The boot volume size to configure in giga bytes. |
+|`templates.boot_volume.iops`|String|The IOPS for the boot volume. |
+|`templates.boot_volume.profile`|String|The profile for the boot volume configuration. |
+|`templates.boot_volume.delete_volume_on_instance_delete`|String|You can configure to delete the boot volume based on instance deletion. |
+|`templates.volume_attachments`|String|A nested block describes the storage volume configuration for the template. |
+|`templates.volume_attachments.name`|String|The name of the boot volume. |
+|`templates.volume_attachments.volume`|String|The storage volume ID created in VPC. |
+|`templates.volume_attachments.delete_volume_on_instance_delete`|Boolean|You can configure to delete the storage volume to delete based on instance deletion. |
+|`templates.user_data` | String|The user data provided for the instance. |
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+
+
+
+
 
 ## `ibm_is_vpc`
 {: #vpc}
