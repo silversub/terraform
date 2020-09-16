@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-15"
+lastupdated: "2020-09-16"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -517,7 +517,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_space`
 {: #cf-space}
 
-Retrieve information about an existing Cloud Foundry space. 
+Retrieve information about an existing Cloud Foundry space.
 {: shortdesc}
 
 ### Sample Terraform code
@@ -553,8 +553,8 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type| Required / optional|Description|
 |----|-----------|--------|-------------------|
-|`org`|String|Required| The name of your Cloud Foundry organization that the space belongs to. You can retrieve the value by running the `ibmcloud iam orgs` command in the {{site.data.keyword.cloud_notm}} CLI.|
-|`space`|String|Required| The name of your Cloud Foundry space. You can retrieve the value by running the `ibmcloud iam spaces` command in the IBM Cloud CLI.|
+|`org`|String|Required| The name of your Cloud Foundry organization that the space belongs to. You can retrieve the value by running the `ibmcloud iam orgs` command in the {{site.data.keyword.cloud_notm}} CLI. (Deprecated)|
+|`space`|String|Required| The name of your Cloud Foundry space. You can retrieve the value by running the `ibmcloud iam spaces` command in the IBM Cloud CLI. (Deprecated)|
 |`name`|String|Optional| The name of your space.|
 {: caption="Table. Available input parameters" caption-side="top"}
 

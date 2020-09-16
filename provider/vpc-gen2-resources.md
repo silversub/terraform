@@ -825,6 +825,119 @@ terraform import ibm_is_instance_group_manager_policy.policy r006-eea6b0b7-babd-
 {: pre}
 
 
+## `ibm_is_instance_template`
+{: #vpc-is-instance-template}
+
+Create, update, or delete an instance template on VPC.
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-is-instance-template-sample}
+
+The following example creates an instance template in a VPC generation-2 infrastructure
+
+```
+provider "ibm" {
+  generation = 2
+}
+
+resource "ibm_is_vpc" "vpc2" {
+  name = "vpc2test"
+}
+
+resource "ibm_is_subnet" "subnet2" {
+  name            = "subnet2"
+  vpc             = ibm_is_vpc.vpc2.id
+  zone            = "us-south-2"
+  ipv4_cidr_block = "10.240.64.0/28"
+}
+
+resource "ibm_is_ssh_key" "sshkey" {
+  name       = "ssh1"
+  public_key = "SSH KEY"
+}
+
+resource "ibm_is_instance_template" "instancetemplate1" {
+  name    = "testtemplate"
+  image   = "r006-14140f94-fcc4-11e9-96e7-a72723715315"
+  profile = "bx2-8x32"
+
+  primary_network_interface {
+    subnet = ibm_is_subnet.subnet2.id
+  }
+
+  vpc  = ibm_is_vpc.vpc2.id
+  zone = "us-south-2"
+  keys = [ibm_is_ssh_key.sshkey.id]
+
+  boot_volume {
+    name                             = "testbootvol"
+    size                             = 16
+    profile                          = "custom"
+    delete_volume_on_instance_delete = true
+  }
+}
+```
+### Input parameters
+{: #vpc-is-instance-template-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description | Forces new resource |
+| ------------- |-------------| ----- | -------------- | ------ |
+|`templates.id`|String|Required|The ID of the instance template. | No |
+|`name`|String|Required|The name of the instance template. | No |
+|`image`|String|Required|The ID of the image to create the template.| No |
+|`profile`|String|Required|The number of instances created in the instance group. | No |
+|`vpc`|String|Required|The VPC ID that the instance templates needs to be created.| No |
+|`zone`|String|Required|The name of the zone. | No |
+|`keys`|List|Required|List of SSH key IDs used to allow log in user to the instances. | No |
+|`resource_group`|String|Optional|The resource group ID. | Yes |
+|`primary_network_interfaces`|List| Required |A nested block describes the primary network interface for the template. | No |
+|`primary_network_interfaces.subnet`|String|Required |The VPC subnet to assign to the interface. | Yes |
+|`primary_network_interfaces.name`|String|Optional|The name of the interface. | No |
+|`primary_network_interfaces.security_groups`|List | Optional|List of security groups of the subnet. | No |
+|`primary_network_interfaces.primary_ipv4_address`|String|Optional|The IPv4 address assigned to the primary network interface. | No |
+|`network_interfaces`|List|Optional|A nested block describes the network interfaces for the template. | No |
+|`network_interfaces.subnet`|String|Required|The VPC subnet to assign to the interface. | Yes |
+|`network_interfaces.name`|String| Optional |The name of the interface. | No |
+|`network_interfaces.security_groups`|List|Optional|List of security groups of  the subnet. | No |
+|`network_interfaces.primary_ipv4_address`|String|Optional|The IPv4 address assigned to the network interface. | No |
+|`boot_volume`|List|Optional|A nested block describes the boot volume configuration for the template. | No |
+|`boot_volume.encryption`|String|Optional|The encryption key CRN to encrypt the boot volume attached. | No |
+|`boot_volume.name`|String|Optional|The name of the boot volume. | No |
+|`boot_volume.size`|String|Optional|The boot volume size to configure in giga bytes. | No |
+|`boot_volume.iops`|String|Optional|The IOPS for the boot volume. | No |
+|`boot_volume.profile`|String|Optional|The profile for the boot volume configuration. | No |
+|`boot_volume.delete_volume_on_instance_delete`|Boolean|Optional|You can configure to delete the boot volume based on instance deletion. | No |
+|`volume_attachments`|List|Optional|A nested block describes the storage volume configuration for the template. | No |
+|`volume_attachments.name`|String|Required|The name of the boot volume. | No |
+|`volume_attachments.volume`|String|Required|The storage volume ID created in VPC. | No |
+|`volume_attachments.delete_volume_on_instance_delete`|Boolean|Required|You can configure to delete the storage volume to delete based on instance deletion. | No |
+|`user_data` | String|Optional|The user data provided for the instance. | No |
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+### Output parameters
+{: #instance-template-output}
+
+Review the output parameters that you can access after your resource is created.
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`id`|String|The ID of an instance template.|
+
+### Import
+{: #instance-template-import}
+
+`ibm_is_instance_template` can be imported by using instance template ID
+
+```
+terraform import ibm_is_instance_template.template r006-14140f94-fcc4-1349-96e7-a72734715115
+```
+{: pre}
+
 ## `ibm_is_ipsec_policy`
 {: #provider-ipsec}
 
@@ -2057,120 +2170,6 @@ Review the output parameters that you can access after your resource is created.
 |`create`|(Default 10 minutes) Used for Creating Instance.|
 |`delete`|(Default 10 minutes) Used for Deleting Instance.|
 {: caption="Table. Available timeout configuration options" caption-side="top"}
-
-
-## `ibm_is_instance_template`
-{: #vpc-is-instance-template}
-
-Create, update, or delete an instance template on VPC.
-{: shortdesc}
-
-### Sample Terraform code
-{: #vpc-is-instance-template-sample}
-
-The following example creates an instance template in a VPC generation-2 infrastructure
-
-```
-provider "ibm" {
-  generation = 2
-}
-
-resource "ibm_is_vpc" "vpc2" {
-  name = "vpc2test"
-}
-
-resource "ibm_is_subnet" "subnet2" {
-  name            = "subnet2"
-  vpc             = ibm_is_vpc.vpc2.id
-  zone            = "us-south-2"
-  ipv4_cidr_block = "10.240.64.0/28"
-}
-
-resource "ibm_is_ssh_key" "sshkey" {
-  name       = "ssh1"
-  public_key = "SSH KEY"
-}
-
-resource "ibm_is_instance_template" "instancetemplate1" {
-  name    = "testtemplate"
-  image   = "r006-14140f94-fcc4-11e9-96e7-a72723715315"
-  profile = "bx2-8x32"
-
-  primary_network_interface {
-    subnet = ibm_is_subnet.subnet2.id
-  }
-
-  vpc  = ibm_is_vpc.vpc2.id
-  zone = "us-south-2"
-  keys = [ibm_is_ssh_key.sshkey.id]
-
-  boot_volume {
-    name                             = "testbootvol"
-    size                             = 16
-    profile                          = "custom"
-    delete_volume_on_instance_delete = true
-  }
-}
-```
-### Input parameters
-{: #vpc-is-instance-template-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-| Input parameter | Data type | Required / optional | Description | Forces new resource |
-| ------------- |-------------| ----- | -------------- | ------ |
-|`templates.id`|String|Required|The ID of the instance template. | No |
-|`name`|String|Required|The name of the instance template. | No |
-|`image`|String|Required|The ID of the image to create the template.| No |
-|`profile`|String|Required|The number of instances created in the instance group. | No |
-|`vpc`|String|Required|The VPC ID that the instance templates needs to be created.| No |
-|`zone`|String|Required|The name of the zone. | No |
-|`keys`|List|Required|List of SSH key IDs used to allow log in user to the instances. | No |
-|`resource_group`|String|Optional|The resource group ID. | Yes |
-|`primary_network_interfaces`|List| Required |A nested block describes the primary network interface for the template. | No |
-|`primary_network_interfaces.subnet`|String|Required |The VPC subnet to assign to the interface. | Yes |
-|`primary_network_interfaces.name`|String|Optional|The name of the interface. | No |
-|`primary_network_interfaces.security_groups`|List | Optional|List of security groups of the subnet. | No |
-|`primary_network_interfaces.primary_ipv4_address`|String|Optional|The IPv4 address assigned to the primary network interface. | No |
-|`network_interfaces`|List|Optional|A nested block describes the network interfaces for the template. | No |
-|`network_interfaces.subnet`|String|Required|The VPC subnet to assign to the interface. | Yes |
-|`network_interfaces.name`|String| Optional |The name of the interface. | No |
-|`network_interfaces.security_groups`|List|Optional|List of security groups of  the subnet. | No |
-|`network_interfaces.primary_ipv4_address`|String|Optional|The IPv4 address assigned to the network interface. | No |
-|`boot_volume`|List|Optional|A nested block describes the boot volume configuration for the template. | No |
-|`boot_volume.encryption`|String|Optional|The encryption key CRN to encrypt the boot volume attached. | No |
-|`boot_volume.name`|String|Optional|The name of the boot volume. | No |
-|`boot_volume.size`|String|Optional|The boot volume size to configure in giga bytes. | No |
-|`boot_volume.iops`|String|Optional|The IOPS for the boot volume. | No |
-|`boot_volume.profile`|String|Optional|The profile for the boot volume configuration. | No |
-|`boot_volume.delete_volume_on_instance_delete`|Boolean|Optional|You can configure to delete the boot volume based on instance deletion. | No |
-|`volume_attachments`|List|Optional|A nested block describes the storage volume configuration for the template. | No |
-|`volume_attachments.name`|String|Required|The name of the boot volume. | No |
-|`volume_attachments.volume`|String|Required|The storage volume ID created in VPC. | No |
-|`volume_attachments.delete_volume_on_instance_delete`|Boolean|Required|You can configure to delete the storage volume to delete based on instance deletion. | No |
-|`user_data` | String|Optional|The user data provided for the instance. | No |
-{: caption="Table 1. Available output parameters" caption-side="top"}
-
-### Output parameters
-{: #instance-template-output}
-
-Review the output parameters that you can access after your resource is created.
-{: shortdesc}
-
-| Output parameter | Data type | Description |
-| ------------- |-------------| -------------- |
-|`id`|String|The ID of an instance template.|
-
-### Import
-{: #instance-template-import}
-
-`ibm_is_instance_template` can be imported by using instance template ID
-
-```
-terraform import ibm_is_instance_template.template r006-14140f94-fcc4-1349-96e7-a72734715115
-```
-{: pre}
 
 
 ## `ibm_is_vpc` 
