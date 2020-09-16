@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-16"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -270,7 +270,8 @@ Provides a Bare Metal resource. This allows Bare Metal servers to be created, up
 {: #bm-sample}
 
 #### Hourly Bare Metal server
-When the `ibm_compute_bare_metal` resource definition has a `fixed_config_preset` attribute, Terraform creates an hourly Bare Metal server. Hardware specifications are predefined in the `fixed_config_preset` attribute and cannot be modified. The following example shows you how to create a new hourly Bare Metal server.
+When the `ibm_compute_bare_metal` resource definition has a `fixed_config_preset` attribute, Terraform creates an hourly Bare Metal server. The monthly bare metal server resource provides options to configure process, memory, network, disk, and RAID. You can also assign VLANs and subnets for the target monthly bare metal server.  Hardware specifications are predefined in the `fixed_config_preset` attribute and cannot be modified. To configure the monthly bare metal server, you must provide additional attributes such as `package_key_name`, `proecss_key_name`, `disk_key_names`, and `os_key_name`. The following example shows you how to create a new hourly Bare Metal server.
+{: shortdesc}
 
 ##### Example of an hourly Bare Metal server
 ```
