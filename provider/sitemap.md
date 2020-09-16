@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-09"
+lastupdated: "2020-09-16"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -268,7 +268,7 @@ subcollection: terraform
     <thead>
       <th style="width:180px">Resources</th>
       <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
        <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_pi_image`](/docs/terraform?topic=terraform-power-vsi#power-image)</li><li style="margin:0px; padding:0px">[`ibm_pi_instance`](/docs/terraform?topic=terraform-power-vsi#power-instance)</li><li style="margin:0px; padding:0px">[`ibm_pi_key`](/docs/terraform?topic=terraform-power-vsi#ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_pi_network`](/docs/terraform?topic=terraform-power-vsi#power-network)</li><li style="margin:0px; padding:0px">[`ibm_pi_volume`](/docs/terraform?topic=terraform-power-vsi#power-volume)</li></ul></td>
@@ -300,7 +300,7 @@ subcollection: terraform
     <thead>
       <th style="width:180px">Resources</th>
       <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
        <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">N/A</li></ul></td>
