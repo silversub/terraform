@@ -107,7 +107,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
   <tr>
     <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_app`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-app)</li><li style="margin:0px; padding:0px">[`ibm_app_domain_private`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-private-domain)</li><li style="margin:0px; padding:0px">[`ibm_app_domain_shared`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-shared-domain)</li><li style="margin:0px; padding:0px">[`ibm_app_route`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-route)</li><li style="margin:0px; padding:0px">[`ibm_org`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-org)</li><li style="margin:0px; padding:0px">[`ibm_service_instance`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-service)</li><li style="margin:0px; padding:0px">[`ibm_service_key`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-service-key)</li><li style="margin:0px; padding:0px">[`ibm_space`](/docs/terraform?topic=terraform-cloud-foundry-resources#cf-space)</li></ul></td>
@@ -123,7 +123,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dl_gateway`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-gwy)</li><li style="margin:0px; padding:0px">[`ibm_dl_virtual_connection`](/docs/terraform?topic=terraform-dl-gateway-resource#dl-vc)</li></li></ul></td>
@@ -140,7 +140,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_dns_permitted_network`](/docs/terraform?topic=terraform-dns-resources#dns-permitted-network)</li><li style="margin:0px; padding:0px">[`ibm_dns_resource_record`](/docs/terraform?topic=terraform-dns-resources#dns-record)</li><li style="margin:0px; padding:0px">[`ibm_dns_zone`](/docs/terraform?topic=terraform-dns-resources#dns-zone)</li></ul></td>
@@ -156,7 +156,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample)</li><li style="margin:0px; padding:0px">[`ibm_event_streams_topic`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample2)</li><li style="margin:0px; padding:0px">[`kafka_consumer_app`](/docs/terraform?topic=terraform-event-streams-resources#event-stream-sample3)</li></ul></td>
@@ -172,7 +172,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_function_action`](/docs/terraform?topic=terraform-function-resources#fn-action)</li><li style="margin:0px; padding:0px">[`ibm_function_namespace`](/docs/terraform?topic=terraform-function-resources#fn-namespace)</li><li style="margin:0px; padding:0px">[`ibm_function_package`](/docs/terraform?topic=terraform-function-resources#fn-package)</li><li style="margin:0px; padding:0px">[`ibm_function_rule`](/docs/terraform?topic=terraform-function-resources#fn-rule)</li><li style="margin:0px; padding:0px">[`ibm_function_trigger`](/docs/terraform?topic=terraform-function-resources#fn-trigger)</li></ul></td>
@@ -204,7 +204,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_cis`](/docs/terraform?topic=terraform-cis-resources#cis)</li><li style="margin:0px; padding:0px">[`ibm_cis_domain`](/docs/terraform?topic=terraform-cis-resources#cis-domain)</li><li style="margin:0px; padding:0px">[`ibm_cis_domain_settings`](/docs/terraform?topic=terraform-cis-resources#cis-domain-settings)</li><li style="margin:0px; padding:0px">[`ibm_cis_dns_record`](/docs/terraform?topic=terraform-cis-resources#cis-dns-record)</li><li style="margin:0px; padding:0px">[`ibm_cis_firewall`](/docs/terraform?topic=terraform-cis-resources#cis-firewall)</li><li style="margin:0px; padding:0px">[`ibm_cis_global_load_balancer`](/docs/terraform?topic=terraform-cis-resources#cis-global-lb)</li><li style="margin:0px; padding:0px">[`ibm_cis_healthcheck`](/docs/terraform?topic=terraform-cis-resources#cis-health)</li><li style="margin:0px; padding:0px">[`ibm_cis_origin_pool`](/docs/terraform?topic=terraform-cis-resources#cis-origin-pool)</li><li style="margin:0px; padding:0px">[`ibm_cis_rate_limit`](/docs/terraform?topic=terraform-cis-resources#rate-limit)</li></ul></td>
@@ -220,7 +220,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kms-resources#kms-key)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kms-resources#kp-key)</li></ul></td>
@@ -236,7 +236,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_container_addons`](/docs/terraform?topic=terraform-container-resources#container-addon)</li><li style="margin:0px; padding:0px">[`ibm_container_alb`](/docs/terraform?topic=terraform-container-resources#container-alb)</li><li style="margin:0px; padding:0px">[`ibm_container_alb_cert`](/docs/terraform?topic=terraform-container-resources#container-alb-cert)</li><li style="margin:0px; padding:0px">[`ibm_container_bind_service`](/docs/terraform?topic=terraform-container-resources#container-bind)</li><li style="margin:0px; padding:0px">[`ibm_container_cluster`](/docs/terraform?topic=terraform-container-resources#container-cluster)</li><li style="margin:0px; padding:0px">[`ibm_container_cluster_feature`](/docs/terraform?topic=terraform-container-resources#container-cluster-feature)</li><li style="margin:0px; padding:0px">[`ibm_container_worker_pool`](/docs/terraform?topic=terraform-container-resources#container-pool)</li><li style="margin:0px; padding:0px">[`ibm_container_worker_pool_zone_attachment`](/docs/terraform?topic=terraform-container-resources#container-pool-zone)</li><li style="margin:0px; padding:0px">[`ibm_container_vpc_alb`](/docs/terraform?topic=terraform-container-resources#vpc-alb)</li><li style="margin:0px; padding:0px">[`ibm_container_vpc_cluster`](/docs/terraform?topic=terraform-container-resources#vpc-cluster)</li><li style="margin:0px; padding:0px">[`ibm_container_vpc_worker_pool`](/docs/terraform?topic=terraform-container-resources#vpc-worker-pool)</li></ul></td>
@@ -252,7 +252,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_cos_bucket`](/docs/terraform?topic=terraform-object-storage-resources#cos-bucket)</li></ul></td>
@@ -266,8 +266,8 @@ subcollection: terraform
   
   <table>
     <thead>
-      <th style="width:180px">Resources</th>
-      <th style="width:150px">Data sources</th>
+    <th style="width:180px">Resources</th>
+    <th style="width:150px">Data sources</th>
     </thead>
   <tbody>
     <tr>
@@ -284,7 +284,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
        <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_resource_group`](/docs/terraform?topic=terraform-resource-mgmt-resources#rg)</li><li style="margin:0px; padding:0px">[`ibm_resource_instance`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-instance)</li><li style="margin:0px; padding:0px">[`ibm_resource_key`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-key)</li></ul></td>
@@ -298,8 +298,8 @@ subcollection: terraform
   
   <table>
     <thead>
-      <th style="width:180px">Resources</th>
-      <th style="width:150px">Data sources</th>
+     <th style="width:180px">Resources</th>
+     <th style="width:150px">Data sources</th>
     </thead>
   <tbody>
     <tr>
@@ -316,7 +316,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_tg_connection`](/docs/terraform?topic=terraform-tg-resource#tg-connection)</li><li style="margin:0px; padding:0px">[`ibm_tg_gateway`](/docs/terraform?topic=terraform-tg-resource#tg-gateway-resource)</li></ul></td>
@@ -332,7 +332,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_is_floating_ip`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-floating-ip)</li><li style="margin:0px; padding:0px">[`ibm_is_ike_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-ike-policy)</li><li style="margin:0px; padding:0px">[`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen1-resources#image)</li><li style="margin:0px; padding:0px">[`ibm_is_instance`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-instance)</li><li style="margin:0px; padding:0px">[`ibm_is_ipsec_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-ipsec)</li><li style="margin:0px; padding:0px">[`ibm_is_lb`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener_policy`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener-policy)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener_policy_rule`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-listener-policy-rule)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_pool`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-pool)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen1-resources#lb-pool-member)</li><li style="margin:0px; padding:0px">[`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen1-resources#network-acl)</li><li style="margin:0px; padding:0px">[`ibm_is_public_gateway`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-public-gateway)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group_rule`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group-rule)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group_network_interface_attachment`](/docs/terraform?topic=terraform-vpc-gen1-resources#sec-group-netint)</li><li style="margin:0px; padding:0px">[`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen1-resources#subnet)</li><li style="margin:0px; padding:0px">[`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen1-resources#ssh-key)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen1-resources#provider-vps)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc_address_prefix`](/docs/terraform?topic=terraform-vpc-gen1-resources#address-prefix)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc_route`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpc-route)</li><li style="margin:0px; padding:0px">[`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway)</li><li style="margin:0px; padding:0px">[`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen1-resources#vpn-gateway-connection)</li><li style="margin:0px; padding:0px">[`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen1-resources#volume)</li></ul></td>
@@ -348,7 +348,7 @@ subcollection: terraform
     <thead>
     <th style="width:180px">Resources</th>
     <th style="width:150px">Data sources</th>
-  </thead>
+    </thead>
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_is_floating_ip`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-floating-ip)</li><li style="margin:0px; padding:0px">[`ibm_is_flow_log`](/docs/terraform?topic=terraform-vpc-gen2-resources#ibm_is_flow_log)</li><li style="margin:0px; padding:0px">[`ibm_is_ike_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-ike-policy)</li><li style="margin:0px; padding:0px">[`ibm_is_image`](/docs/terraform?topic=terraform-vpc-gen2-resources#image)</li><li style="margin:0px; padding:0px">[`ibm_is_instance`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-instance)</li><li style="margin:0px; padding:0px">[`is_instance_group`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpc-is-instance-grp)</li><li style="margin:0px; padding:0px">[`is_instance_group_manager`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpc-is-instance-grp-manager)</li><li style="margin:0px; padding:0px">[`is_instance_group_manager_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpc-is-instance-grp-manager-policy)</li><li style="margin:0px; padding:0px">[`ibm_is_ipsec_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-ipsec)</li><li style="margin:0px; padding:0px">[`ibm_is_lb`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener_policy`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener-policy)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_listener_policy_rule`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-listener-policy-rule)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_pool`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-pool)</li><li style="margin:0px; padding:0px">[`ibm_is_lb_pool_member`](/docs/terraform?topic=terraform-vpc-gen2-resources#lb-pool-member)</li><li style="margin:0px; padding:0px">[`ibm_is_network_acl`](/docs/terraform?topic=terraform-vpc-gen2-resources#network-acl)</li><li style="margin:0px; padding:0px">[`ibm_is_public_gateway`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-public-gateway)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group_rule`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group-rule)</li><li style="margin:0px; padding:0px">[`ibm_is_security_group_network_interface_attachment`](/docs/terraform?topic=terraform-vpc-gen2-resources#sec-group-netint)</li><li style="margin:0px; padding:0px">[`ibm_is_subnet`](/docs/terraform?topic=terraform-vpc-gen2-resources#subnet)</li><li style="margin:0px; padding:0px">[`ibm_is_ssh_key`](/docs/terraform?topic=terraform-vpc-gen2-resources#ssh-key)</li><li style="margin:0px; padding:0px">[`is_instance_template`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpc-is-instance-template)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc`](/docs/terraform?topic=terraform-vpc-gen2-resources#provider-vps)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc_address_prefix`](/docs/terraform?topic=terraform-vpc-gen2-resources#address-prefix)</li><li style="margin:0px; padding:0px">[`ibm_is_vpc_route`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpc-route)</li><li style="margin:0px; padding:0px">[`ibm_is_vpn_gateway`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway)</li><li style="margin:0px; padding:0px">[`ibm_is_vpn_gateway_connection`](/docs/terraform?topic=terraform-vpc-gen2-resources#vpn-gateway-connection)</li><li style="margin:0px; padding:0px">[`ibm_is_volume`](/docs/terraform?topic=terraform-vpc-gen2-resources#volume)</li></ul></td>
