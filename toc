@@ -72,6 +72,7 @@ Terraform
          provider/vpc-gen2-data-sources.md   
    
     [Sample Terraform templates](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples)
+    template_ov.md
     [Terraform documentation](https://www.terraform.io/docs/)
     [Terraform CLI reference](https://www.terraform.io/docs/commands/index.html)
     [Architecture reference: Highly available, secured, and managed Kubernetes environment](https://github.com/ibm-cloud-architecture/refarch-public-iaas-iks)
