@@ -2,11 +2,16 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-17"
+lastupdated: "2020-09-18"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
 subcollection: terraform
+
+content-type: tutorial
+services: terraform, openshift
+account-plan: 
+completion-time: 3h
 
 ---
 
@@ -32,10 +37,14 @@ subcollection: terraform
 {:tsCauses: .tsCauses}
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
+{:step: data-tutorial-type='step'}
 
 
 # Tutorial: Using Terraform to manage your own Red Hat OpenShift Container Platform on IBM Cloud classic infrastructure
 {: #redhat}
+{: toc-content-type="tutorial"}
+{: toc-services="terraform, openshift"}
+{: toc-completion-time="3h"}
 
 Use this tutorial to create your own highly available Red Hat® OpenShift Container Platform 3.11 environment on IBM® Cloud classic infrastructure by using Terraform. 
 {: shortdesc}
@@ -67,11 +76,6 @@ In this tutorial, you set up Red Hat OpenShift Container Platform version 3.11 o
 - Provision {{site.data.keyword.cloud_notm}} classic infrastructure for your Red Hat OpenShift Container Platform components by using Terraform. 
 - Install Red Hat OpenShift Container Platform on {{site.data.keyword.cloud_notm}} classic infrastructure. 
 - Deploy the `nginx` app in your OpenShift cluster and expose this app to the public. 
-
-## Time required
-{: #time}
-
-2 - 3 hours
 
 ## Audience
 {: #audience}

@@ -2,11 +2,16 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-18"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
 subcollection: terraform
+
+content-type: tutorial
+services: containers, terraform, openshift
+account-plan: 
+completion-time: 2h
 
 ---
 
@@ -32,11 +37,15 @@ subcollection: terraform
 {:tsCauses: .tsCauses}
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
+{:step: data-tutorial-type='step'}
 
 
 
 # Creating single and multizone Kubernetes and OpenShift clusters
 {: #tutorial-tf-clusters}
+{: toc-content-type="tutorial"}
+{: toc-services="containers, terraform, openshift"}
+{: toc-completion-time="2h"}
 
 Use this tutorial to create single and multizone clusters with [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-iks-overview) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-roks-overview), and deploy your own set of compute hosts in the public cloud where you can run and manage highly available containerized apps.
 
@@ -58,11 +67,6 @@ In this tutorial, you will:
 - Convert your single zone cluster into a multizone cluster for higher availability.
 - Add a new worker pool to the cluster.
 - Remove the default worker pool that is automatically set up during cluster creation.
-
-## Time required
-{: #cluster-tutorial-time}
-
-2 hours
 
 ## Audience
 {: #cluster-tutorial-audience}
