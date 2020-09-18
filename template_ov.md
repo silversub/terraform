@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-17"
+lastupdated: "2020-09-18"
 
 keywords: terraform templates, schematics template
 
@@ -144,7 +144,7 @@ All Terraform templates use the Terraform version 0.12 format.
   <tr>
     <td><code>ibm-key-management-service</code></td>
       <td>Create an {{site.data.keyword.cos_full_notm}} service instance with a bucket to store your data and provide a key management service resource for Hyper Protect Crypto Services and Key Protect service instance with a root key. This allow access between these services with an IBM Cloud Identity and Access Management policy.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_kms_key</code></li><li style="margin:0px; padding:0px"><code>ibm_kp_key</code></li></ul></td>
-      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms)<br> <br>[Deploy to {{site.data.keyword.bplong_notm}}](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms&terraform_version=terraform_v0.12</td>
+      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms)<br> <br>[Deploy to {{site.data.keyword.bplong_notm}}](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms&terraform_version=terraform_v0.12)</td>
   </tr>
   </tbody>
   </table>
