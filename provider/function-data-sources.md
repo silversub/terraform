@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action
 
@@ -89,9 +89,9 @@ Review the output parameters that you can access after you retrieved your data s
 |`annotations`|List|Annotations to describe the action, including those set by you or by IBM Cloud Functions.|
 |`parameters`|List| Parameters passed to the action when the action is invoked, including those set by you or by IBM Cloud Functions.|
 |`limits`|A list of objects| A nested block to describe assigned limits. |
-|`limits.timeout`|Integer|The timeout limit to terminate the action, specified in milliseconds. Default value: `60000`.    |
-|`limits.memory`|Integer|The maximum memory for the action, specified in megabytes. Default value: `256`.    |
-|`limits.log_size`|Integer|The maximum log size for the action, specified in megabytes. Default value: `10`.|
+|`limits.timeout`|Integer|The timeout limit to terminate the action, specified in milliseconds. Default value is `60000`.    |
+|`limits.memory`|Integer|The maximum memory for the action, specified in megabytes. Default value is `256`.    |
+|`limits.log_size`|Integer|The maximum log size for the action, specified in megabytes. Default value is `10`.|
 |`exec`|List of objects|A nested block to describe executable binaries.     |
 |`exec.image`|String|When using the `blackbox` executable, the name of the container image name.    |
 |`exec.init`|String|When using `nodejs`, the optional reference to the compressed file.    |

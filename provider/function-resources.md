@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless, terraform namespace
 
@@ -167,9 +167,9 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The name of the action.| Yes |
 |`namespace`|String|Required|The name of the function namespace.| No |
 |`limits`|List of objects|Optional|A nested block to describe assigned limits. | No |
-|`limits.timeout`|Integer|Optional|The timeout limit to terminate the action, specified in milliseconds. Default value: `60000`.    | No |
-|`limits.memory`|Integer|Optional|The maximum memory for the action, specified in megabyte. Default value: `256`.    | No |
-|`limits.log_size`|Integer|Optional|The maximum log size for the action, specified in megabyte. Default value: `10`.| No |
+|`limits.timeout`|Integer|Optional|The timeout limit to terminate the action, specified in milliseconds. Default value is `60000`.    | No |
+|`limits.memory`|Integer|Optional|The maximum memory for the action, specified in megabyte. Default value is `256`.    | No |
+|`limits.log_size`|Integer|Optional|The maximum log size for the action, specified in megabyte. Default value is `10`.| No |
 |`exec`|List of objects|Required|A nested block to describe executable binaries.  | No |
 |`exec.image`|String|Optional| When using the `blackbox` executable, the name of the container image name.        **NOTE**: Conflicts with `exec.components`, `exec.code`.    | No |
 |`exec.init`|String|Optional| When using `nodejs`, the optional archive reference.        **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |

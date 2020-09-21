@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -77,16 +77,16 @@ Review the input parameters that you can specify for your resource.
 |`vendor_name`|String|Required| Only `akamai` is supported for now.| Yes |
 |`origin_type`|String|Required|The type of storage to use. Valid values are `HOST_SERVER` or `OBJECT_STORAGE`.| Yes |
 |`origin_address`|String|Required|The IP address for the domain mapping.| No |
-|`protocol`|String|Optional|The protocol to use. Default value: `HTTP`.| Yes |
-|`http_port`|Integer|Optional|The port to be opened up. Default value: 80. This option can be set only if you use `HTTP` or `HTTPS` as the `protocol`. | No |
-|`https_port`|Integer|Optional|The HTTPS port. Default value: 0. This option can be set only if you use `HTTP` or `HTTPS` as the `protocol`.| No |
+|`protocol`|String|Optional|The protocol to use. Default value is `HTTP`.| Yes |
+|`http_port`|Integer|Optional|The port to be opened up. Default value is 80. This option can be set only if you use `HTTP` or `HTTPS` as the `protocol`. | No |
+|`https_port`|Integer|Optional|The HTTPS port. Default value is 0. This option can be set only if you use `HTTP` or `HTTPS` as the `protocol`.| No |
 |`bucket_name`|String|Required|If `origin_type` is set to `OBJECT_STORAGE`, you must provide the name of the bucket to use.| No |
 |`certificate_type`|String|Conditional|The type of certificate to use. This value is required if `protocol` is set to `HTTPS`. Valid values are `SHARED_SAN_CERT` or `WILDCARD_CERT`.| Yes |
 |`header`|String|Optional|The header for the CDN.| No |
 |`respect_headers`|Boolean|Optional| If set to **true**, the TTL settings in the origin override CDN TTL settings.| No |
 |`file_extension`|String|Optional|If `origin_type` is set to `OBJECT_STORAGE`, you can specify the file extensions that you want to cache. | No |
 |`performance_configuration`|String|Optional|The performance configuration. Default is `General web delivery`.| No |
-|`cache_key_query_rule`|String|Optional|The rule for caching keys. Valid values are `include-all` (includes all query arguments), `ignore-all` (ignores all query arguments), `ignore: space separated query-args` (ignores specific query arguments). Default value: `include-all`. | No |
+|`cache_key_query_rule`|String|Optional|The rule for caching keys. Valid values are `include-all` (includes all query arguments), `ignore-all` (ignores all query arguments), `ignore: space separated query-args` (ignores specific query arguments). Default value is `include-all`. | No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -1121,7 +1121,7 @@ Review the input parameters that you can specify for your resource.
 |`secondary_ip_count`|Integer|Optional| Specifies secondary public IPv4 addresses. Accepted values are `4` and `8`.|  Yes |
 |`wait_time_minutes`|Integer|Optional| The duration, expressed in minutes, to wait for the VM instance to become available before declaring it as created. It is also the same amount of time waited for no active transactions before proceeding with an update or deletion. The default value is `90`.| No |
 |`public_bandwidth_limited`|Integer|Optional| Allowed public network traffic in GB per month. It can be greater than 0 when the server is a monthly based server. Defaults to the smallest available capacity for the public bandwidth are used.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_unlimited`.| Yes |
-|`public_bandwidth_unlimited`|Boolean|Optional|  Allowed unlimited public network traffic in GB per month for a monthly based server. The `network_speed` should be 100 Mbps. Default value: `false`.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_limited`.| Yes |
+|`public_bandwidth_unlimited`|Boolean|Optional|  Allowed unlimited public network traffic in GB per month for a monthly based server. The `network_speed` should be 100 Mbps. Default value is `false`.       **NOTE**: Conflicts with `private_network_only` and `public_bandwidth_limited`.| Yes |
 |`evault`|Integer|Optional|Allowed `Evault` in GB per month for monthly based servers.| Yes |
 |`datacenter_choice`|List of objects|Optional|A nested block to describe datacenter choice options to retry on different data centers and VLANs. Nested `datacenter_choice` blocks must have the following structure:    | No |
 |`datacenter_choice.datacenter`|String|Required|The datacenter in which you want to provision the instance.    | No |
@@ -2644,16 +2644,16 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`name`| String | Required | The name of the gateway.| No |
 |`ssh_key_ids`| List | Optional | The SSH key IDs to install on the gateway when the gateway gets created.| Yes |
-|`post_install_script_uri`| String | Optional | The URI of the script to be downloaded and executed after the gateway installation is complete. Default value: `nil`. | Yes |
+|`post_install_script_uri`| String | Optional | The URI of the script to be downloaded and executed after the gateway installation is complete. Default value is `nil`. | Yes |
 |`members`| List | Required | A nested block describes the hardware members of this network gateway. | No |
 |`members.hostname`| String | Optional | Hostname of the member.  | Yes |
 |`members.domain`| String | Required |The domain of the member  | Yes |
 |`members.notes`|String | Optional | Descriptive text of up to 1000 characters about the member.  | Yes |
 |`members.datacenter`| String | Required | The data center in which you want to provision the member.  | Yes |
-|`members.network_speed`| Integer | Optional |The connection speed (in Mbps) for the member network components. Default value: `100`.  | Yes |
-|`members.redundant_power_supply`| Boolean | Optional | When the value is `true`, more power supply is provided. Default value: `false`  | Yes |
-|`members.tcp_monitoring`| Boolean | Optional |Whether to enable TCP monitoring for the member. Default value: `false`.  | Yes |
-|`members.process_key_name`| String | Optional | The process key name for the member. Default value:  `INTEL_SINGLE_XEON_1270_3_40_2`. Refer to the same attribute on the `ibm_compute_bare_metal` resource.  | Yes |
+|`members.network_speed`| Integer | Optional |The connection speed (in Mbps) for the member network components. Default value is `100`.  | Yes |
+|`members.redundant_power_supply`| Boolean | Optional | When the value is `true`, more power supply is provided. Default value is `false`  | Yes |
+|`members.tcp_monitoring`| Boolean | Optional |Whether to enable TCP monitoring for the member. Default value is `false`.  | Yes |
+|`members.process_key_name`| String | Optional | The process key name for the member. Default value is  `INTEL_SINGLE_XEON_1270_3_40_2`. Refer to the same attribute on the `ibm_compute_bare_metal` resource.  | Yes |
 |`members.package_key_name`| String | Optional | The key name for the network gateway package. You can find available package key names in the SoftLayer API URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_GATEWAY"}}}`, that uses your API key as the password. Default value is `NETWORK_GATEWAY_APPLIANCE`. The default value will allow to order Single processor Multi-Core Servers. Use `2U_NETWORK_GATEWAY_APPLIANCE_1O_GBPS` for ordering Dual processor Multi-Core Servers.  | Yes |
 |`members.os_key_name`| String | Optional | The os key name for member. Default value is  `OS_VYATTA_5600_5_X_UP_TO_1GBPS_SUBSCRIPTION_EDITION_64_BIT`. Refer to the same attribute on the `ibm_compute_bare_metal` resource.  | Yes |
 |`members.redundant_network`| Boolean | Optional | When the value is `true`, two physical network interfaces are provided with a bonding configuration. Default value is `false`.   | Yes |
@@ -2672,8 +2672,8 @@ The following arguments are supported:
 |`members.disk_key_names`| List | Optional |  Provide the disk key name. Refer to the same attribute in the `ibm_compute_bare_metal` resource.  | Yes |
 |`members.public_vlan_id`| Integer | Optional | ID of the public VLAN.  | Yes |
 |`members.private_vlan_id`| Integer | Optional |  ID of the private VLAN.       **NOTE**: If there are two members in this gateway, then both should have same value for `public_vlan_id` and `private_vlan_id`. | Yes |
-|`members.ipv6_enabled`| Boolean | Optional | Whether to enable IPv6. Default value: `true`.  | Yes |
-|`members.private_network_only`| Boolean | Optional |  Whether to enable a private network only. Default value: `false`.| Yes |
+|`members.ipv6_enabled`| Boolean | Optional | Whether to enable IPv6. Default value is `true`.  | Yes |
+|`members.private_network_only`| Boolean | Optional |  Whether to enable a private network only. Default value is `false`.| Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2756,7 +2756,7 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`gateway_id`| Integer | Required | The ID of the network gateway.| Yes |
 |`network_vlan_id`| Integer | Required | The ID of the network VLAN to associate with the network gateway.| Yes |
-|`bypass`| Boolean | Optional |Indicates if the VLAN should be in bypass or routed mode. Default value: `true`. |  No |
+|`bypass`| Boolean | Optional |Indicates if the VLAN should be in bypass or routed mode. Default value is `true`. |  No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3102,7 +3102,7 @@ The following arguments are supported:
 |Name| Data type | Required / optional | Description | Forces new resource |
 |----|-----------| ------ | ----- | ----------|
 |`direction`| String | Required | The direction of traffic. Accepted values: `ingress` or `egress`.| No |
-|`ether_type`| String | Optional | The IP version. Accepted values  (case-sensitive): `IPv4` or `IPv6`. Default value: `IPv4`.| No |
+|`ether_type`| String | Optional | The IP version. Accepted values  (case-sensitive): `IPv4` or `IPv6`. Default value is `IPv4`.| No |
 |`port_range_min`| Integer | Optional | The start of the port range for allowed traffic.| No |
 |`port_range_max`| Integer | Optional | The end of the port range for allowed traffic.| No |
 |`protocol`| String | Optional |  The IP protocol type. Accepted values (case-sensitive): `icmp`,`tcp`, or `udp`.| No |
