@@ -539,7 +539,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #lb-import}
 
-`ibm_is_lb` can be imported using the load balancer ID. 
+`ibm_is_lb` can be imported by using the load balancer ID. 
 
 ```
 terraform import ibm_is_lb.example <lb_ID>
@@ -625,7 +625,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #lb-listener-import}
 
-`ibm_is_lb_listener` can be imported using the load balancer ID and listener ID.
+`ibm_is_lb_listener` can be imported by using the load balancer ID and listener ID.
 
 ```
 terraform import ibm_is_lb_listener.example <loadbalancer_ID>/<listener_ID>
@@ -973,7 +973,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #lb-pool-member-import}
 
-`ibm_is_lb_pool_member` can be imported using the load balancer ID, pool ID, pool member ID.
+`ibm_is_lb_pool_member` can be imported by using the load balancer ID, pool ID, pool member ID.
 
 ```
 terraform import ibm_is_lb_pool_member.example <loadbalancer_ID>/<pool_ID>/<pool_member_ID>
@@ -1257,7 +1257,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #sec-group-import}
 
-`ibm_is_security_group` can be imported using load balancer ID. 
+`ibm_is_security_group` can be imported by using load balancer ID. 
 
 ```
 terraform import ibm_is_security_group.example a1aaa111-1111-111a-1a11-a11a1a11a11a
@@ -1366,7 +1366,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #sec-group-rule-import}
 
-`ibm_is_security_group_rule` can be imported using security group ID and security group rule ID.
+`ibm_is_security_group_rule` can be imported by using security group ID and security group rule ID.
 
 ```
 terraform import ibm_is_security_group_rule.example d7bec597-4726-451f-8a63-e62e6f19c32c/cea6651a-bc0a-4438-9f8a-a0770bbf3ebb
@@ -1425,7 +1425,7 @@ Review the output parameters that you can access after your resource is created.
 |`security_groups.id`|String|The ID of this security group.	|
 |`security_groups.crn`|String|The CRN of this security group.	|
 |`security_groups.name`|String|The name of this security group.|
-|`floating_ips`|List of objects|A nested block describes the floating IPs of this network interface. |
+|`floating_ips`|List of objects|A nested block describes the floating IP's of this network interface. |
 |`floating_ips.id`|String|The ID of this floating IP.  |
 |`floating_ips.crn`|String|The CRN of this floating IP.  |
 |`floating_ips.name`|String|The name of this floating IP.  |
@@ -1505,7 +1505,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #subnet-import}
 
-`ibm_is_subnet` can be imported using the ID. 
+`ibm_is_subnet` can be imported by using the ID. 
 
 ```
 terraform import ibm_is_subnet.example <subnet_ID>
@@ -1573,7 +1573,7 @@ Review the output parameters that you can access after your resource is created.
 
 ### Import
 
-`ibm_is_ssh_key` can be imported using the SSH key ID. 
+`ibm_is_ssh_key` can be imported by using the SSH key ID. 
 
 ```
 terraform import ibm_is_ssh_key.example <ssh_key_ID>
@@ -1775,7 +1775,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #address-prefix-import}
 
-The resource can be imported using using the VPC ID and VPC address prefix ID.
+The resource can be imported by using the VPC ID and VPC address prefix ID.
 
 ```
 terraform import ibm_is_vpc_address_prefix.example <vpc_ID>/<address_prefix_ID>
@@ -1893,7 +1893,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #vpn-gateway-import}
 
-`ibm_is_vpn_gateway` can be imported using the VPN gateway ID. 
+`ibm_is_vpn_gateway` can be imported by using the VPN gateway ID. 
 
 ```
 terraform import ibm_is_vpn_gateway.example <vpn_gateway_ID>
@@ -1963,7 +1963,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #vpn-gateway-connection-import}
 
-`ibm_is_vpn_gateway_connection` can be imported using the VPN gateway ID and the VPN gateway connection ID. 
+`ibm_is_vpn_gateway_connection` can be imported by using the VPN gateway ID and the VPN gateway connection ID. 
 
 ```
 terraform import ibm_is_vpn_gateway_connection.example <vpn_gateway_ID>/<vpn_gateway_connection_ID>

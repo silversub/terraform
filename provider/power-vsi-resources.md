@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -59,7 +59,7 @@ Create, update, or delete for a Power Systems Virtual Server image.
 ```
 resource "ibm_pi_image" "testacc_image  "{
   pi_image_name       = "7200-03-02"
-  pi_image_id         = [ "image id obtained from the datasource"]
+  pi_image_id         = [ "image ID obtained from the datasource"]
   pi_cloud_instance_id = "<value of the cloud_instance_id>"
 }
 ```
@@ -406,7 +406,7 @@ The following timeouts are defined for this resource:
 ### Import
 {: #pi-network-import}
 
-`ibm_pi_network_port` can be imported using `power_instance_id` and `port_id`.
+`ibm_pi_network_port` can be imported by using `power_instance_id` and `port_id`.
 
 **Example**
 
@@ -539,7 +539,7 @@ The following timeouts are defined for this resource.
 ### Import
 {: #power-volume-import}
 
-The resource can be imported using the ID that is composed of `<power_instance_id>/<volume_id>`.
+The resource can be imported by using the ID that is composed of `<power_instance_id>/<volume_id>`.
 
 ```
 terraform import ibm_pi_volume.example <power_instance_id>/<volume_id>

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -93,7 +93,7 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       Usage: terraform [-version] [-help] <command> [args]
 
       The available commands for execution are listed.
-      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and docs before usage.
+      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and Docs  before usage.
 
       Common commands:
           apply              Builds or changes infrastructure

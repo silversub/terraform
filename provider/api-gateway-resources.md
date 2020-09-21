@@ -50,7 +50,7 @@ Create, update, or delete an API endpoint for an API gateway.
 ### Sample Terraform code
 {: #api-gw-endpoint-sample}
 
-#### Example for a single  API Docs as input
+#### Example for a single  API Docs  as input
 
 ```
 resource "ibm_resource_instance" "apigateway"{
@@ -71,7 +71,7 @@ resource "ibm_api_gateway_endpoint" "endpoint"{
 {: codeblock}
 
 
-#### Example for a directory of  API Docs as input
+#### Example for a directory of  API Docs  as input
 
 ```
 resource "ibm_resource_instance" "apigateway"{

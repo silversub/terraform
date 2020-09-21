@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -75,7 +75,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       Usage: terraform [-version] [-help] <command> [args]
 
       The available commands for execution are listed below.
-      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and docs before usage.
+      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and Docs  before usage.
 
       Common commands:
           apply              Builds or changes infrastructure
@@ -165,7 +165,7 @@ With the release of Terraform version 0.12, the syntax for configuration files c
    any constructs that may need to be adjusted for correct operation with
    Terraform v0.12.
 
-   We recommend using this command in a clean version control work tree, so that
+   We recommend to use this command in a clean version control work tree, so that
    you can easily see the proposed changes as a diff against the latest commit.
    If you have uncommited changes already present, we recommend aborting this
    command and dealing with them before running this command again.

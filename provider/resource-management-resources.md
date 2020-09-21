@@ -68,8 +68,8 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|The name of the resource group.|
-|`quota_id`|String|Removed|The ID of the quota. You can refer to a quota by name using the resource quota data source.|
-|`tags`|Array of strings|Optional|Tags associated with the resource group instance. The tags are managed locally and not stored on the IBM Cloud Service Endpointat this moment.|
+|`quota_id`|String|Removed|The ID of the quota. You can refer to a quota by using the resource quota data source name.|
+|`tags`|Array of strings|Optional|Tags associated with the resource group instance. The tags are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -190,7 +190,7 @@ By default, the `ibm_resource_key` resource creates service credentials that use
 ### Sample Terraform code
 {: #resource-key-sample}
 
-#### Creating credentials for a resource without using a service ID
+#### Creating credentials for a resource without a service ID
 
 ```
 data "ibm_resource_instance" "resource_instance" {
@@ -295,7 +295,7 @@ Review the input parameters that you can specify for your resource.
 |`parameters`|Map|Optional|Arbitrary parameters to pass to the resource in JSON format. If you want to create service credentials by using the private service endpoint, include the `service-endpoints =  "private"` parameter. | Yes |
 |`resource_instance_id`|String|Optional|The ID of the resource instance associated with the resource key. **NOTE**: Conflicts with `resource_alias_id`.| Yes |
 |`resource_alias_id`|String|Optional|The ID of the resource alias associated with the resource key. **NOTE**: Conflicts with `resource_instance_id`.| Yes |
-|`tags`|Array of strings|Optional|Tags associated with the resource key instance. Tags are managed locally and not stored on the IBM Cloud Service Endpointat this moment.| No |
+|`tags`|Array of strings|Optional|Tags associated with the resource key instance. Tags are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters

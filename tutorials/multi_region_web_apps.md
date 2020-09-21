@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
@@ -161,7 +161,7 @@ To use Terraform to provision {{site.data.keyword.cloud_notm}} classic infrastru
       ```
       Usage: terraform [-version] [-help] <command> [args]
       The available commands for execution are listed.
-      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and docs before usage.
+      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and Docs  before usage.
       Common commands:
           apply              Builds or changes infrastructure
           console            Interactive console for Terraform interpolations

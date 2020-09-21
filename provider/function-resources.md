@@ -174,7 +174,7 @@ Review the input parameters that you can specify for your resource.
 |`exec.image`|String|Optional| When using the `blackbox` executable, the name of the container image name.        **NOTE**: Conflicts with `exec.components`, `exec.code`.    | No |
 |`exec.init`|String|Optional| When using `nodejs`, the optional archive reference.        **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
 |`exec.code`|String|Optional| When not using the `blackbox` executable, the code to execute.       **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
-|`exec.kind`|String|Required|The type of action. You can find supported kinds in the [IBM Cloud Functions docs](/docs/openwhisk?topic=openwhisk-runtimes).    | No |
+|`exec.kind`|String|Required|The type of action. You can find supported kinds in the [IBM Cloud Functions Docs ](/docs/openwhisk?topic=openwhisk-runtimes).    | No |
 |`exec.main`|String|Optional|The name of the action entry point (function or fully-qualified method name, when applicable).       **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
 |`exec.components`|String|Optional|The list of fully qualified actions. **NOTE**: Conflicts with `exec.code`, `exec.image`.| No |
 |`publish`|Boolean|Optional|Action visibility.| No |
@@ -202,7 +202,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #fn-action-import}
 
-`ibm_function_action` can be imported using the namespace and action ID.
+`ibm_function_action` can be imported by using the namespace and action ID.
 
 **Example**
 
@@ -338,7 +338,7 @@ EOF
 }
 ```
 
-#### Create a package using a binding
+#### Create a package by using a binding
 {: #package-service-binding}
 
 The following example shows how to bind a package. 
@@ -401,7 +401,7 @@ Review the output parameters that you can access after your resource is created.
 |`namespace`|String| The name of the function namespace.|
 |`version`|String|Semantic version of the item.|
 |`annotations`|String|All annotations to describe the package, including those set by you or by IBM Cloud Functions.|
-|`parameters`|String|All parameters passed to the package, including those set by you or by IBM Cloud Functions.### Import`ibm_function_package` can be imported using the ID. For example, ```$ terraform import ibm_function_package.sample hello```|
+|`parameters`|String|All parameters passed to the package, including those set by you or by IBM Cloud Functions.### Import`ibm_function_package` can be imported by using the ID. For example, ```$ terraform import ibm_function_package.sample hello```|
 |`package_id`|String|The package ID.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
@@ -490,7 +490,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #fn_rule-import}
 
-`ibm_function_rule` can be imported using the ID.
+`ibm_function_rule` can be imported by using the ID.
 
 **Example**
 ```
@@ -612,7 +612,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #fn-trigger-import}
 
-`ibm_function_trigger` can be imported using the ID.
+`ibm_function_trigger` can be imported by using the ID.
 
 **Example**
 ```

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -991,7 +991,7 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|-------------|
-|`id`|String|The id of the SSH key.|
+|`id`|String|The ID of the SSH key.|
 |`fingerprint`| String| The SHA256 fingerprint of the public key.|
 |`length`|String|The length of the SSH key.|
 |`type`|String|The crypto system that is used by this key.|
