@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-07"
+lastupdated: "2020-09-18"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -32,6 +32,7 @@ subcollection: terraform
 {:tsCauses: .tsCauses}
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
+{:step: data-tutorial-type='step'}
 
 
 # Internet Services data sources

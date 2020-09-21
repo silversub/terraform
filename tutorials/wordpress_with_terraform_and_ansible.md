@@ -2,11 +2,16 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-18"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, single site, single zone
 
 subcollection: terraform
+
+content-type: tutorial
+services: terraform, virtual-servers
+account-plan: 
+completion-time: 1h
 
 ---
 
@@ -32,10 +37,14 @@ subcollection: terraform
 {:tsCauses: .tsCauses}
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
+{:step: data-tutorial-type='step'}
 
 
 # Tutorial: Deploying WordPress on IBM Cloud classic infrastructure with Terraform and Ansible
 {: #deploy_wordpress}
+{: toc-content-type="tutorial"}
+{: toc-services="terraform, virtual-servers"}
+{: toc-completion-time="1h"}
 
 Use this tutorial to automate the provisioning of classic infrastructure resources in {{site.data.keyword.Bluemix_notm}} by using Terraform and the deployment of WordPress on those resources with Ansible.  
 {: shortdesc}
@@ -84,11 +93,6 @@ In this tutorial, you use Terraform to deploy {{site.data.keyword.Bluemix_notm}}
 - Import classic infrastructure resource information from Terraform to Ansible. 
 - Deploy a sample WordPress app on your {{site.data.keyword.Bluemix_notm}} classic infrastructure with Ansible. 
 - Use Ansible to finalize the setup of your WordPress app. 
-
-## Time required
-{: #time_single_site_wordpress}
-
-60 minutes
 
 ## Audience
 {: #audience_single_site_wordpress}

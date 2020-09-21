@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-18"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cos bucket, terraform get object storage resources
 
@@ -32,6 +32,7 @@ subcollection: terraform
 {:tsCauses: .tsCauses}
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
+{:step: data-tutorial-type='step'}
 
 
 # Object Storage resources

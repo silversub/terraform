@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-14"
+lastupdated: "2020-09-18"
 
 keywords: terraform provider plugin, terraform provider cos, terraform resources cos, terraform resources object storage, create bucket with terraform
 
@@ -32,6 +32,7 @@ subcollection: terraform
 {:tsCauses: .tsCauses}
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
+{:step: data-tutorial-type='step'}
 
 
 # Object Storage data sources

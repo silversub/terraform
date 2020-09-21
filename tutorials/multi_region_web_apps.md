@@ -2,11 +2,16 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-18"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
 subcollection: terraform
+
+content-type: tutorial
+services: terraform, virtual-servers
+account-plan: 
+completion-time: 1h
 
 ---
 
@@ -32,10 +37,14 @@ subcollection: terraform
 {:tsCauses: .tsCauses}
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
+{:step: data-tutorial-type='step'}
 
  
 # Tutorial: Deploying WordPress in a highly available, cross-region web site architecture with Terraform and Ansible  
 {: #multi_region}
+{: toc-content-type="tutorial"}
+{: toc-services="terraform, virtual-servers"}
+{: toc-completion-time="1h"}
 
 Use this tutorial to provision a highly available web site architecture across multiple regions on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform. Then, deploy a single instance of WordPress and replicate WordPress across the two regions to explore the security and resiliency features of {{site.data.keyword.cloud_notm}} Security Groups, DNS, Web Application Firewall (WAF), and global and local load balancers. With this setup, you can create a resilient, secure, and scalable web environment with highly available web sites that use custom DNS domain names. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 {: shortdesc}
@@ -94,11 +103,6 @@ In this tutorial, you use Terraform to deploy a highly available {{site.data.key
 - Deploy a sample WordPress app across {{site.data.keyword.cloud_notm}} regions on your {{site.data.keyword.cloud_notm}} classic infrastructure with Ansible. 
 - Use Ansible to finalize the setup of your WordPress app across both regions. 
 - Explore the high availability capabilities of the multi-region WordPress architecture.  
-
-## Time required
-{: #time_multi_region}
-
-60 minutes
 
 ## Audience
 {: #audience_multi_region}
