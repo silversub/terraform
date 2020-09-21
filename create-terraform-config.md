@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform template guidelines, terraform config file guidelines, sample terraform files, terraform provider, terraform variables, terraform input variables, terraform template
 
@@ -195,7 +195,7 @@ When you declare an input variable, you must provide a name for your variable an
 **Is there a character limit for input variables?** </br>
 Yes. If you define input variables in your Terraform configuration file, keep in mind that the value that you enter for these variables can be up to 2049 characters. If your input variable requires a value that exceeds this limit, the value is truncated after 2049 characters. 
 
-Example variable declaration without a default value: 
+Example variable declaration without a Default value is 
 ```
 variable "datacenter" {
   type        = "string"
@@ -204,7 +204,7 @@ variable "datacenter" {
 ```
 {: codeblock}
 
-Example variable declaration with a default value: 
+Example variable declaration with a Default value is 
 ```
 variable "datacenter" {
   type        = "string"

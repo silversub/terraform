@@ -75,7 +75,7 @@ Review the input parameters that you can specify for your resource.
 | `name` | String | Required | The name of the access group. |
 | `tags` | Array of strings | Optional|The list of tags that you want to associated with your access group. |
 
-`Tags` are managed locally and not stored on the IBM Cloud Service Endpointat this moment.
+`Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.
 {: note}
 
 ### Output parameters
@@ -153,7 +153,7 @@ Review the output parameters that you can access after your resource is created.
 
 ### Import
 
-`ibm_iam_access_group_members` can be imported using access group ID and random id, eg
+`ibm_iam_access_group_members` can be imported by using access group ID and random id, eg
 
 ```
 $ terraform import ibm_iam_access_group_members.example AccessGroupId-5391772e-1207-45e8-b032-2a21941c11ab/2018-10-04 06:27:40.041599641 +0000 UTC
@@ -293,7 +293,7 @@ resource "ibm_iam_access_group_policy" "policy" {
 
 ```
 
-#### Access Group Policy using resource and resource type 
+#### Access Group Policy by using resource and resource type 
 
 ```
 resource "ibm_iam_access_group" "accgrp" {
@@ -316,7 +316,7 @@ resource "ibm_iam_access_group_policy" "policy" {
 
 ```
 
-#### Access Group Policy using attributes
+#### Access Group Policy by using attributes
 
 ```
 resource "ibm_iam_access_group" "accgrp" {
@@ -376,7 +376,7 @@ Review the input parameters that you can specify for your resource.
 |`resources.resource_group_id`|String|Optional|The ID of the resource group. To retrieve the ID, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. | No |
 |`resources.attributes`|Map|Optional|Set resource attributes in the form of `name=value,name=value`.  If you set this option, do not specify `account_management` at the same time. | No |
 |`account_management`|Boolean|Optional|Gives access to all account management services if set to `true`. Default value `false`. If you set this option, do not specify `resources` at the same time. | No |
-|`tags` |Array of Strings|Optional|A list of tags that you want to add to the access group policy. Tags are managed locally and not stored on the IBM Cloud Service Endpointat this moment.| No |
+|`tags` |Array of Strings|Optional|A list of tags that you want to add to the access group policy. Tags are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 
 ### Output parameters
 {: #iam-access-group-policy-output}
@@ -444,7 +444,7 @@ Review the input parameters that you can specify for your resource.
 |`conditions`|List of rule conditions|Required|A list of conditions that the rule must satisfy.|
 |`conditions.claim`|String|Required|The key value to evaluate the condition against. The key that you enter depends on what key-value pairs your identity provider provides. For example, your identity provider might include a key that is named `blueGroups` and that holds all the user groups that have access. To apply a condition for a specific user group within the `blueGroups` key, you specify `blueGroups` as your claim and add the value that you are looking for in `conditions.value`. |
 |`conditions.operator`|String|Required|The operation to perform on the claim. Supported values are `EQUALS`, `EQUALS_IGNORE_CASE`, `IN`, `NOT_EQUALS_IGNORE_CASE`, `NOT_EQUALS`, and `CONTAINS`.|
-|`conditions.value`|String|Required|The value that the claim is compared to using the `conditions.operator`.|
+|`conditions.value`|String|Required|The value that the claim is compared by using the `conditions.operator`.|
 
 ### Output parameters
 {: #iam-group-dynamic-rule-output}
@@ -460,7 +460,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import 
 {: #iam-group-dynamic-rule-import}
 
-The dynamic rule can be imported using the access group ID and rule ID. 
+The dynamic rule can be imported by using the access group ID and rule ID. 
 
 ```
 terraform import ibm_iam_access_group_dynamic_rule.example <access_group_ID>/<rule_ID>
@@ -703,7 +703,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`name`|String|Required|The name of the service ID.|
 |`description` |String|Optional|The description of the service ID.|
-|`tags`|Array of strings|Optional| A list of tags that you want to add to the service ID. The tags are managed locally and not stored on the IBM Cloud Service Endpointat this moment.|
+|`tags`|Array of strings|Optional| A list of tags that you want to add to the service ID. The tags are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.|
 
 ### Output parameters
 {: #iam-service-id-output}
@@ -745,7 +745,7 @@ resource "ibm_iam_service_policy" "policy" {
 
 ```
 
-#### Service Policy using service with region
+#### Service Policy by using service with region
 
 ```
 resource "ibm_iam_service_id" "serviceID" {
@@ -763,7 +763,7 @@ resource "ibm_iam_service_policy" "policy" {
 }
 
 ```
-#### Service Policy using resource instance 
+#### Service Policy by using resource instance 
 
 ```
 resource "ibm_iam_service_id" "serviceID" {
@@ -789,7 +789,7 @@ resource "ibm_iam_service_policy" "policy" {
 
 ```
 
-#### Service Policy using resource group
+#### Service Policy by using resource group
 
 ```
 resource "ibm_iam_service_id" "serviceID" {
@@ -812,7 +812,7 @@ resource "ibm_iam_service_policy" "policy" {
 
 ```
 
-#### Service Policy using resource and resource type 
+#### Service Policy by using resource and resource type 
 
 ```
 resource "ibm_iam_service_id" "serviceID" {
@@ -835,7 +835,7 @@ resource "ibm_iam_service_policy" "policy" {
 
 ```
 
-#### Service Policy using attributes 
+#### Service Policy by using attributes 
 
 ```
 resource "ibm_iam_service_id" "serviceID" {
@@ -881,7 +881,7 @@ Review the input parameters that you can specify for your resource.
 |`resources.resource_group_id`|String|Optional| The ID of the resource group. To retrieve the value, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. | No |
 |`resources.attributes`|Map|Optional| A set of resource attributes in the format `name=value,name=value`. If you set this option, do not specify `account_management` at the same time.| No |
 |`account_management`|Boolean|Optional|Gives access to all account management services if set to `true`. Default value `false`. If you set this option, do not set `resources` at the same time. | No |
-|`tags` |Array of strings|Optional| A list of tags that are associated with the service policy instance.  Tags are managed locally and not stored on the IBM Cloud Service Endpointat this moment.| No |
+|`tags` |Array of strings|Optional| A list of tags that are associated with the service policy instance.  Tags are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 
 ### Output parameters
 {: #iam-service-policy-output}
@@ -891,13 +891,13 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-|`id` |String|The unique identifier of the service policy. The id is composed of `<iam_service_id>/<service_policy_id>`.|
+|`id` |String|The unique identifier of the service policy. The ID is composed of `<iam_service_id>/<service_policy_id>`.|
 |`version` |String|The version of the service policy.|
 
 ### Import
 {: #iam-service-policy-import}
 
-The service policy can be imported using the service ID and service policy ID.
+The service policy can be imported by using the service ID and service policy ID.
 
 ```
 $ terraform import ibm_iam_service_policy.example <service_ID>/<service_policy_ID>
@@ -927,7 +927,7 @@ resource "ibm_iam_user_policy" "policy" {
 
 ```
 
-#### User Policy using service with region
+#### User Policy by using service with region
 
 ```
 resource "ibm_iam_user_policy" "policy" {
@@ -940,7 +940,7 @@ resource "ibm_iam_user_policy" "policy" {
 }
 
 ```
-#### User Policy using resource instance 
+#### User Policy by using resource instance 
 
 ```
 resource "ibm_resource_instance" "instance" {
@@ -962,7 +962,7 @@ resource "ibm_iam_user_policy" "policy" {
 
 ```
 
-#### User Policy using resource group 
+#### User Policy by using resource group 
 
 ```
 data "ibm_resource_group" "group" {
@@ -981,7 +981,7 @@ resource "ibm_iam_user_policy" "policy" {
 
 ```
 
-#### User Policy using resource group
+#### User Policy by using resource group
 
 ```
 data "ibm_resource_group" "group" {
@@ -1000,7 +1000,7 @@ resource "ibm_iam_user_policy" "policy" {
 
 ```
 
-#### User Policy using attributes 
+#### User Policy by using attributes 
 
 ```
 data "ibm_resource_group" "group" {
@@ -1043,7 +1043,7 @@ Review the input parameters that you can specify for your resource.
 |`resources.resource_group_id`|String|Optional| The ID of the resource group. To retrieve the value, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. | No |
 |`resources.attributes`|Map|Optional| A set of resource attributes in the format `name=value,name=value`. If you set this option, do not specify `account_management` at the same time.| No |
 |`account_management`|Boolean|Optional|Gives access to all account management services if set to `true`. Default value `false`. If you set this option, do not set `resources` at the same time. | No |
-|`tags` |Array of strings|Optional| A list of tags that are associated with the service policy instance.  Tags are managed locally and not stored on the IBM Cloud Service Endpointat this moment.| No |
+|`tags` |Array of strings|Optional| A list of tags that are associated with the service policy instance.  Tags are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 
 
 ### Output parameters
@@ -1054,7 +1054,7 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-|`id` |String|The unique identifier of the user policy. The id is composed of `<ibm_id>/<user_policy_id>`.|
+|`id` |String|The unique identifier of the user policy. The ID is composed of `<ibm_id>/<user_policy_id>`.|
 |`version` |String|The version of the user policy.|
 
 
@@ -1173,7 +1173,7 @@ resource "ibm_iam_user_invite" "invite_user" {
 }
 ```
 
-#### Inviting batch of users with user policy using service with region
+#### Inviting batch of users with user policy by using service with region
 
 ```
 resource "ibm_iam_user_invite" "invite_user" {
@@ -1187,7 +1187,7 @@ resource "ibm_iam_user_invite" "invite_user" {
 }
 ```
 
-#### Inviting batch of users with user policy using resource instance
+#### Inviting batch of users with user policy by using resource instance
 
 ```
 resource "ibm_resource_instance" "instance" {
@@ -1209,7 +1209,7 @@ resource "ibm_iam_user_invite" "invite_user" {
 }
 ```
 
-#### Inviting batch of users with user policy using resource group
+#### Inviting batch of users with user policy by using resource group
 
 ```
 data "ibm_resource_group" "group" {
@@ -1228,7 +1228,7 @@ resource "ibm_iam_user_invite" "invite_user" {
 }
 ```
 
-#### Inviting batch of users with user policy using resource and resource type
+#### Inviting batch of users with user policy by using resource and resource type
 
 ```
 data "ibm_resource_group" "group" {
@@ -1247,7 +1247,7 @@ resource "ibm_iam_user_invite" "invite_user" {
 }
 ```
 
-#### Inviting batch of users with user policy using attributes
+#### Inviting batch of users with user policy by using attributes
 
 ```
 data "ibm_resource_group" "group" {

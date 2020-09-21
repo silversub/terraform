@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -93,7 +93,7 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       Usage: terraform [-version] [-help] <command> [args]
 
       The available commands for execution are listed.
-      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and docs before usage.
+      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and Docs  before usage.
 
       Common commands:
           apply              Builds or changes infrastructure
@@ -149,7 +149,7 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       ```
       2018/09/25 17:30:14 {{site.data.keyword.cloud_notm}} Provider version 0.11.3  fdc4aa0f0547177f3ea8b14c7a58a849e240f64a
       This binary is a plugin. These are not meant to be executed directly.
-      Please execute the program that consumes these plugins, which will load any plugins automatically
+      Please execute the program that consumes these plugins, which loads any plugins automatically
       ```
       {: screen}
 
@@ -506,7 +506,7 @@ To create a VPC and a virtual server instance:
 
    You may now begin working with Terraform. Try running "terraform plan" to see any changes that are required for your infrastructure. All Terraform commands should now work.
 
-   If you ever set or change modules or backend configuration for Terraform, rerun this command to reinitialize your working directory. If you forget, other commands will detect it and remind you to do so if necessary.
+   If you ever set or change modules or backend configuration for Terraform, rerun this command to reinitialize your working directory. If you forget, other commands detect it and remind you to do so if necessary.
    ```
    {: screen}
    
@@ -519,14 +519,14 @@ To create a VPC and a virtual server instance:
    Example output: 
    ```
    Refreshing Terraform state in-memory prior to plan...
-   The refreshed state will be used to calculate this plan, but will not be
+   The refreshed state be used to calculate this plan, but not be
    persisted to local or remote state storage.
 
    An execution plan has been generated and is shown.
    Resource actions are indicated with the following symbols:
      + create
 
-   Terraform will perform the following actions:
+   Terraform performs the following actions:
 
      + ibm_is_floating_ip.fip1
          id:                                               <computed>
@@ -601,7 +601,7 @@ To create a VPC and a virtual server instance:
 
    Plan: 6 to add, 0 to change, 0 to destroy.
 
-   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions will be performed if "terraform apply" is subsequently run.
+   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions be performed if "terraform apply" is subsequently run.
    ```
    {: screen}
    
@@ -859,7 +859,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
 
    You may now begin working with Terraform. Try running "terraform plan" to see any changes that are required for your infrastructure. All Terraform commands should now work.
 
-   If you ever set or change modules or backend configuration for Terraform, rerun this command to reinitialize your working directory. If you forget, other commands will detect it and remind you to do so if necessary.
+   If you ever set or change modules or backend configuration for Terraform, rerun this command to reinitialize your working directory. If you forget, other commands detects it and remind you to do so if necessary.
    ```
    {: screen}
    
@@ -872,13 +872,13 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    Example output: 
    ```
    Refreshing Terraform state in-memory prior to plan...
-   The refreshed state will be used to calculate this plan, but will not be persisted to local or remote state storage.
+   The refreshed state be used to calculate this plan, but not be persisted to local or remote state storage.
 
    An execution plan has been generated and is shown.
    Resource actions are indicated with the following symbols:
      + create
 
-   Terraform will perform the following actions:
+   Terraform performs the following actions:
 
      + ibm_compute_vm_instance.vm1
          id:                           <computed>
@@ -923,7 +923,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
 
    Plan: 1 to add, 0 to change, 0 to destroy.
    ------------------------------------------------------------------------
-   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions will be performed if "terraform apply" is subsequently run.
+   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions be performed if "terraform apply" is subsequently run.
    ```
    {: screen}
    

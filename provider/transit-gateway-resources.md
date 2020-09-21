@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform transit gateway resource, terraform transit gateway, transit gateway resource, transit gateway
 
@@ -96,7 +96,7 @@ The resource do not wait for the available status, if you are provisioning the c
 ### Import
 {: #connection-r-import}
 
-`ibm_tg_connection` can be imported by using transit gateway id and connection ID.
+`ibm_tg_connection` can be imported by using transit gateway ID and connection ID.
 
 **Example**
 ```
@@ -153,7 +153,7 @@ Review the input parameters that you can specify for your resource.
 ### Import
 {: #gateway-import}
 
-`ibm_tg_gateway` can be imported by using transit gateway id and connection ID.
+`ibm_tg_gateway` can be imported by using transit gateway ID and connection ID.
 
 **Example**
 ```

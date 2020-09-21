@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18" 
+lastupdated: "2020-09-21" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -111,7 +111,7 @@ The following timeouts are defined for this resource.
 ## `ibm_container_alb`
 {: #container-alb}
 
-Enable or disable an Ingres application load balancer (ALB) that is set up in your cluster. ALBs are used to set up HTTP or HTTPS load balancing for containerized apps that are deployed into an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster. 
+Enable or disable an Ingres application load balancer (ALB) that is set up in your cluster. ALBs are used to set up HTTP or HTTPS load-balancing for containerized apps that are deployed into an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster. 
 {: shortdesc}
 
 For more information about Ingress ALBs, see [About Ingress ALBs](/docs/containers?topic=containers-ingress-about). 
@@ -213,7 +213,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #container-alb-cert-import}
 
-ibm_container_alb_cert can be imported using cluster_id, secret_name eg
+ibm_container_alb_cert can be imported by using cluster_id, secret_name eg
 
 ```
 $ terraform import ibm_container_alb_cert.example 166179849c9a469581f28939874d0c82/mysecret
@@ -283,7 +283,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #container-bind-import}
 
-ibm_container_bind_service can be imported using cluster_name_id, service_instance_name or service_instance_id and namespace_id, eg
+ibm_container_bind_service can be imported by using cluster_name_id, service_instance_name or service_instance_id and namespace_id, eg
 
 ```
 $ terraform import ibm_container_bind_service.example mycluster/myservice/default
@@ -815,7 +815,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #container-feature-import}
 
-ibm_container_worker_pool can be imported using cluster_name_id, worker_pool_id eg
+ibm_container_worker_pool can be imported by using cluster_name_id, worker_pool_id eg
 
 ```
 $ terraform import ibm_container_worker_pool.example mycluster/5c4f4d06e0dc402084922dea70850e3b-7cafe35
@@ -1202,10 +1202,10 @@ Review the input parameters that you can specify for your resource.
 |`kube_version`|String|Optional| Specify the Kubernetes version, including the major.minor version. If you do not include this flag, the default version is used. To see available versions, run `ibmcloud ks versions`.| No |
 |`update_all_workers`|Boolean|Optional| Set to true, if you want to update workers Kubernetes version with the cluster kube_version.| No |
 |`pod_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for pods. The subnet must have a CIDR of at least `/23` or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#cs_subnets). Default value is `172.30.0.0/16`.| Yes |
-|`service_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for services. The subnet must be at least ’/24’ or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#cs_messages). Default value: `172.21.0.0/16`.| Yes |
+|`service_subnet`|String|Optional|Specify a custom subnet CIDR to provide private IP addresses for services. The subnet must be at least ’/24’ or larger. For more information, see the [documentation](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli#cs_messages). Default value is `172.21.0.0/16`.| Yes |
 |`worker_count`|Integer|Optional| The number of worker nodes per zone in the default worker pool. Default value `1`.| Yes |
 |`worker_labels`|Map|Optional| Labels on all the workers in the default worker pool.| No |
-|`resource_group_id`|String|Optional|The ID of the resource group. You can retrieve the value by running `ibmcloud resource groups` or using the `ibm_resource_group` data source. If no value is provided, the `default` resource group is used. | Yes |
+|`resource_group_id`|String|Optional|The ID of the resource group. You can retrieve the value by running `ibmcloud resource groups` or by using the `ibm_resource_group` data source. If no value is provided, the `default` resource group is used. | Yes |
 |`tags`|Array of strings|Optional|A list of tags that you want to associate with your VPC cluster. **Note**: For users on account to add tags to a resource, they must be assigned the [appropriate permissions]/docs/account?topic=account-access). | No |
 |`cos_instance_crn`|String|Optional|Required for OpenShift clusters only. The standard cloud object storage instance CRN to back up the internal registry in your OpenShift on VPC Gen 2 cluster.| No |
 |`wait_till`|String|Optional|The creation of a cluster can take a few minutes (for virtual servers) or even hours (for Bare Metal servers) to complete. To avoid long wait times when you run your Terraform code, you can specify the stage when you want Terraform to mark the cluster resource creation as completed. Depending on what stage you choose, the cluster creation might not be fully completed and continues to run in the background. However, your Terraform code can continue to run without waiting for the cluster to be fully created. Supported stages are: <ul><li><strong>MasterNodeReady</strong>: Terraform marks the creation of your cluster complete when the cluster master is in a <code>ready</code> state.</li><li><strong>OneWorkerNodeReady</strong>: Terraform marks the creation of your cluster complete when the master and at least one worker node are in a <code>ready</code> state.</li><li><strong>IngressReady</strong>: Terraform marks the creation of your cluster complete when the cluster master and all worker nodes are in a <code>ready</code> state, and the Ingress subdomain is fully set up.</li></ul> If you do not specify this option, <code>IngressReady</code> is used by default. You can set this option only when the cluster is created. If this option is set during a cluster update or deletion, the parameter is ignored by the Terraform provider. | No |

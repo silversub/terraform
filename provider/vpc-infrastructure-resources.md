@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform gen 1, terraform generation 1 compute
 
@@ -370,7 +370,7 @@ Review the input parameters that you can specify for your resource.
 |`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
 |`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
 |`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
-|`network_interfaces`|List|Optional|A list of additional network interfaces that are set up for the instance.| Yes |
+|`network_interfaces`|List|Optional|A list of more network interfaces that are set up for the instance.| Yes |
 |`network_interfaces.name`|String|Optional|The name of the network interface.| No |
 |`network_interfaces.subnet`|String|Required|The ID of the subnet.| No |
 |`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
@@ -405,7 +405,7 @@ Review the output parameters that you can access after your resource is created.
 |`primary_network_interface.subnet`|String|The ID of the subnet that the primary network interface is attached to.
 |`primary_network_interface.security_groups`|List of strings|A list of security groups that are used in the primary network interface.|
 |`primary_network_interface.primary_ipv4_address`|String|The primary IPv4 address.|
-|`network_interfaces`|List of additional network interfaces|A list of additional network interfaces that are attached to the instance.|
+|`network_interfaces`|List of more network interfaces|A list of more network interfaces that are attached to the instance.|
 |`network_interfaces.id`|String|The ID of the network interface.|
 |`network_interfaces.name`|String|The name of the network interface.|
 |`network_interfaces.subnet`|String|The ID of the subnet.|
@@ -447,7 +447,7 @@ terraform import ibm_is_instance.example a1aaa111-1111-111a-1a11-a11a1a11a11a
 ## `ibm_is_ipsec_policy`
 {: #provider-ipsec}
 
-Create, update, or cancel an IPSec policy. 
+Create, update, or cancel an IPsec policy. 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -474,9 +474,9 @@ Review the input parameters that you can specify for your resource.
 | `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate `IPsec` peers. Available options are `md5`, `sha1`, or `sha256`. | No |
 | `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. |  No |
 | `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 3600 seconds is used. | No |
-| `name` | String | Required | Enter the name for your IPSec policy. | No |
+| `name` | String | Required | Enter the name for your IPsec policy. | No |
 | `pfs` | String | Required | Enter the Perfect Forward Secrecy protocol that you want to use during a session. Available options are `disabled`, `group_2`, `group_5`, and `group_14`. | No |
-| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IPSec policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IPSec policy is created in the `default` resource group. |  Yes |
+| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IPsec policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IPsec policy is created in the `default` resource group. |  Yes |
 
 ### Output parameters
 {: #ipsec-policy-output}
@@ -486,10 +486,10 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-| `encapsulation_mode` | String | The encapsulation mode that was set for your IPSec policy. Only `tunnel` is supported. |
-| `id` | String | The unique identifier of the IPSec policy that you created. |
-| `transform_protocol` | String | The transform protocol that is used in your IPSec policy. Only the `esp` protocol is supported that uses the triple DES (3DES) encryption algorithm to encrypt your data. |
-| `vpn_connections`| List | A collection of VPN connections that use the IPSec policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
+| `encapsulation_mode` | String | The encapsulation mode that was set for your IPsec policy. Only `tunnel` is supported. |
+| `id` | String | The unique identifier of the IPsec policy that you created. |
+| `transform_protocol` | String | The transform protocol that is used in your IPsec policy. Only the `esp` protocol is supported that uses the triple DES (3DES) encryption algorithm to encrypt your data. |
+| `vpn_connections`| List | A collection of VPN connections that use the IPsec policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
 
 ## `ibm_is_lb`
 {: #lb}
@@ -539,7 +539,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #lb-import}
 
-`ibm_is_lb` can be imported using the load balancer ID. 
+`ibm_is_lb` can be imported by using the load balancer ID. 
 
 ```
 terraform import ibm_is_lb.example <lb_ID>
@@ -625,7 +625,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #lb-listener-import}
 
-`ibm_is_lb_listener` can be imported using the load balancer ID and listener ID.
+`ibm_is_lb_listener` can be imported by using the load balancer ID and listener ID.
 
 ```
 terraform import ibm_is_lb_listener.example <loadbalancer_ID>/<listener_ID>
@@ -973,7 +973,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #lb-pool-member-import}
 
-`ibm_is_lb_pool_member` can be imported using the load balancer ID, pool ID, pool member ID.
+`ibm_is_lb_pool_member` can be imported by using the load balancer ID, pool ID, pool member ID.
 
 ```
 terraform import ibm_is_lb_pool_member.example <loadbalancer_ID>/<pool_ID>/<pool_member_ID>
@@ -1257,7 +1257,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #sec-group-import}
 
-`ibm_is_security_group` can be imported using load balancer ID. 
+`ibm_is_security_group` can be imported by using load balancer ID. 
 
 ```
 terraform import ibm_is_security_group.example a1aaa111-1111-111a-1a11-a11a1a11a11a
@@ -1366,7 +1366,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #sec-group-rule-import}
 
-`ibm_is_security_group_rule` can be imported using security group ID and security group rule ID.
+`ibm_is_security_group_rule` can be imported by using security group ID and security group rule ID.
 
 ```
 terraform import ibm_is_security_group_rule.example d7bec597-4726-451f-8a63-e62e6f19c32c/cea6651a-bc0a-4438-9f8a-a0770bbf3ebb
@@ -1425,7 +1425,7 @@ Review the output parameters that you can access after your resource is created.
 |`security_groups.id`|String|The ID of this security group.	|
 |`security_groups.crn`|String|The CRN of this security group.	|
 |`security_groups.name`|String|The name of this security group.|
-|`floating_ips`|List of objects|A nested block describes the floating IPs of this network interface. |
+|`floating_ips`|List of objects|A nested block describes the floating IP's of this network interface. |
 |`floating_ips.id`|String|The ID of this floating IP.  |
 |`floating_ips.crn`|String|The CRN of this floating IP.  |
 |`floating_ips.name`|String|The name of this floating IP.  |
@@ -1505,7 +1505,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #subnet-import}
 
-`ibm_is_subnet` can be imported using the ID. 
+`ibm_is_subnet` can be imported by using the ID. 
 
 ```
 terraform import ibm_is_subnet.example <subnet_ID>
@@ -1573,7 +1573,7 @@ Review the output parameters that you can access after your resource is created.
 
 ### Import
 
-`ibm_is_ssh_key` can be imported using the SSH key ID. 
+`ibm_is_ssh_key` can be imported by using the SSH key ID. 
 
 ```
 terraform import ibm_is_ssh_key.example <ssh_key_ID>
@@ -1775,7 +1775,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #address-prefix-import}
 
-The resource can be imported using using the VPC ID and VPC address prefix ID.
+The resource can be imported by using the VPC ID and VPC address prefix ID.
 
 ```
 terraform import ibm_is_vpc_address_prefix.example <vpc_ID>/<address_prefix_ID>
@@ -1893,7 +1893,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #vpn-gateway-import}
 
-`ibm_is_vpn_gateway` can be imported using the VPN gateway ID. 
+`ibm_is_vpn_gateway` can be imported by using the VPN gateway ID. 
 
 ```
 terraform import ibm_is_vpn_gateway.example <vpn_gateway_ID>
@@ -1947,7 +1947,7 @@ Review the input parameters that you can specify for your resource.
 |`interval`|Integer|Optional| Dead peer detection interval in seconds. Default 30.| No |
 |`timeout`|Integer|Optional| Dead peer detection timeout in seconds. Default 120.| No |
 |`ike_policy`|String|Optional|The ID of the IKE policy.| No |
-|`ipsec_policy`|String|Optional| The ID of the IPSec policy.| No |
+|`ipsec_policy`|String|Optional| The ID of the IPsec policy.| No |
 
 ### Output parameters
 {: #vpn-gateway-connection-output}
@@ -1963,7 +1963,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #vpn-gateway-connection-import}
 
-`ibm_is_vpn_gateway_connection` can be imported using the VPN gateway ID and the VPN gateway connection ID. 
+`ibm_is_vpn_gateway_connection` can be imported by using the VPN gateway ID and the VPN gateway connection ID. 
 
 ```
 terraform import ibm_is_vpn_gateway_connection.example <vpn_gateway_ID>/<vpn_gateway_connection_ID>

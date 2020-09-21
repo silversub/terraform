@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -86,7 +86,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       Usage: terraform [-version] [-help] <command> [args]
 
       The available commands for execution are listed below.
-      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and docs before usage.
+      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and Docs  before usage.
 
       Common commands:
           apply              Builds or changes infrastructure
@@ -142,7 +142,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       ```
       2018/09/25 17:30:14 {{site.data.keyword.cloud_notm}} Provider version 0.11.3  fdc4aa0f0547177f3ea8b14c7a58a849e240f64a
       This binary is a plugin. These are not meant to be executed directly.
-      Please execute the program that consumes these plugins, which will load any plugins automatically
+      Please execute the program that consumes these plugins, which loads any plugins automatically
       ```
       {: screen}
       
@@ -171,18 +171,18 @@ With the release of Terraform version 0.12, the syntax for configuration files c
    
    Example output: 
    ```
-   This command will rewrite the configuration files in the given directory so
-   that they use the new syntax features from Terraform v0.12, and will identify
+   This command rewrites the configuration files in the given directory so
+   that they use the new syntax features from Terraform v0.12, and identify
    any constructs that may need to be adjusted for correct operation with
    Terraform v0.12.
 
-   We recommend using this command in a clean version control work tree, so that
+   We recommend to use this command in a clean version control work tree, so that
    you can easily see the proposed changes as a diff against the latest commit.
    If you have uncommited changes already present, we recommend aborting this
    command and dealing with them before running this command again.
 
    Would you like to upgrade the module in the current directory?
-     Only 'yes' will be accepted to confirm.
+     Only 'yes' is accepted to confirm.
 
      Enter a value: yes
 

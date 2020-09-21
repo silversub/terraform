@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -49,7 +49,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_dl_gateway`
 {: #dl-gwy}
 
-Create, update, or delete a direct link gateway using the direct link gateway resource.
+Create, update, or delete a direct link gateway by using the direct link gateway resource.
 {: shortdesc}
 
 ### Sample Terraform code
@@ -129,13 +129,13 @@ Review the output parameters that you can access after your resource is created.
 |`provider_api_managed`|String|Indicates whether gateway changes need to be made via a provider portal.|
 |`operational_status`|String|The gateway operational status. For gateways pending LOA approval, patch operational_status to the appropriate value to approve or reject its LOA. For example, `loa_accepted`.|
 
-Operational_status(gateway operational status) and loa_reject_reason(LOA reject reason) cannot be updated using Terraform as the status and reason keeps changing with the different workflow actions.
+Operational_status(gateway operational status) and loa_reject_reason(LOA reject reason) cannot be updated by using Terraform as the status and reason keeps changing with the different workflow actions.
 {: note}
 
 ### Import
 {: #dl-gwy-import}
 
-The `ibm_dl_gateway` can be imported using gateway ID. 
+The `ibm_dl_gateway` can be imported by using gateway ID. 
 
 **Example**
 
@@ -195,7 +195,7 @@ Review the output parameters that you can access after your resource are exporte
 ### Import
 {: #dl-gwyvc-import}
 
-The `ibm_dl_gateway_vc` can be imported using direct link gateway id and direct link gateway virtual connection ID.
+The `ibm_dl_gateway_vc` can be imported by using direct link gateway ID and direct link gateway virtual connection ID.
 
 **Example**
 

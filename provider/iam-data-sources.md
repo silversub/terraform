@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -88,7 +88,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`groups.rules.conditions`|List of rule conditions|A list of conditions that the rule must satisfy.|
 |`groups.rules.conditions.claim`|String|The key value to evaluate the condition against. The key depends on what key-value pairs your identity provider provides. For example, your identity provider might include a key that is named `blueGroups` and that holds all the user groups that have access. To apply a condition for a specific user group within the `blueGroups` key, you specify `blueGroups` as your claim and add the value that you are looking for in `conditions.value`. |
 |`groups.rules.conditions.operator`|String|The operation to perform on the claim. Supported values are `EQUALS`, `QUALS_IGNORE_CASE`, `IN`, `NOT_EQUALS_IGNORE_CASE`, `NOT_EQUALS`, and `CONTAINS`.|
-|`groups.rules.conditions.value`|String|The value that the claim is compared to using the `groups.rules.conditions.operator`.|
+|`groups.rules.conditions.value`|String|The value that the claim is compared to by using the `groups.rules.conditions.operator`.|
 |`groups.rules.rule_id`|String|The ID of the dynamic rule.|
 
 
@@ -290,7 +290,7 @@ Review the output parameters that you can access after you retrieved your data s
 |Name|Data type|Description|
 |----|-----------|-------------|
 |`policies`|List of objects|A nested block describes IAM service policies that are assigned to a service ID. |
-|`policies.id`|String|The unique identifier of the IAM service policy. The id is composed of \<iam_service_id\>/\<service_policy_id\>  |
+|`policies.id`|String|The unique identifier of the IAM service policy. The ID is composed of \<iam_service_id\>/\<service_policy_id\>  |
 |`policies.roles`| String|The roles that are assigned to the policy.|
 |`policies.resources`| List of objects| A nested block describes the resources in the policy.|`policies.resources.service`|The service name of the policy definition. |
 |`policies.resources.resource_instance_id`|The ID of resource instance of the policy definition.|
@@ -396,7 +396,7 @@ The following attributes are exported:
 
 |Name|Data type|Description|
 |----|-----------|-------------|
-|`allowed_ip_addresses`|List|List of invited users IPs to access the IBM cloud console. |
+|`allowed_ip_addresses`|List|List of invited users IP's to access the IBM cloud console. |
 |`id`|String|The unique identifier or email address of the IAM user. |
 |`firstname`| String|The first name of the user. |
 |`lastname`| String| The last name of the user.|

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -799,7 +799,7 @@ Review the input parameters that you can specify for your data source.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `worker_pool_name` | String | Required | The name of the worker pool. |
-| `cluster` | String | Required | The name or id of the cluster. |
+| `cluster` | String | Required | The name or ID of the cluster. |
 
 ### Output parameters
 {: #container-vpc-workerpool-output}
@@ -826,7 +826,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `isolation` | String | Isolation for the worker node.|
 
 
-* `id` - The unique identifier of the worker pool resource. The id is composed of \<cluster_name_id\>/\<worker_pool_id\>.<br/>
+* `id` - The unique identifier of the worker pool resource. The ID is composed of \<cluster_name_id\>/\<worker_pool_id\>.<br/>
 * `vpc_id` -  The Id of VPC 
 * `worker_count` - The number of worker nodes per zone in the worker pool.
 * `flavor` - The flavour of the worker node.

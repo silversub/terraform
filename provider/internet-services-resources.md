@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -113,7 +113,7 @@ The following timeouts are defined for this resource.
 ### Import
 {: #cis-import}
 
-The {{site.data.keyword.cis_full_notm}} instance can be imported using the `crn`. 
+The {{site.data.keyword.cis_full_notm}} instance can be imported by using the `crn`. 
 
 ```
 terraform import ibm_cis.myorg <crn>
@@ -176,8 +176,8 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-domain-import}
 
-The {{site.data.keyword.cis_full_notm}} domain can be imported using the domain ID and service instance CRN. The ID is formed from the Domain ID of the domain concatenated using a `:` character with the CRN (Cloud Resource Name).
-The Domain ID and CRN will be located on the **Overview** page of the Internet Services instance under the Domain heading of the UI, or via using the `ibmcloud cis` CLI commands.
+The {{site.data.keyword.cis_full_notm}} domain can be imported by using the domain ID and service instance CRN. The ID is formed from the Domain ID of the domain concatenated by using a `:` character with the CRN (Cloud Resource Name).
+The Domain ID and CRN will be located on the **Overview** page of the Internet Services instance under the Domain heading of the UI, or via the `ibmcloud cis` CLI commands.
 The domain ID is a 32 digit character string in the format `1aaa11111aa1a1a1111aaa111111a11a`. CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::`.
 
 ```
@@ -488,7 +488,7 @@ Review the output parameters that you can access after your resource is created.
 {: #cis-global-lb-import}
 
 The DNS record can be imported by using the `id`. The ID is formed from the global load balancer ID, the domain ID, and the CRN (Cloud Resource Name). All values are concatenated with a `:` character.
-The Domain ID and CRN are located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
+The Domain ID and CRN are located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via the `ibmcloud cis` CLI.
 
 - **Domain ID**: The domain ID is a 32 digit character string of the format `1aaa11111aa1a1a1111aaa111111a11a`.
 - **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
@@ -663,7 +663,7 @@ Review the output parameters that you can access after your resource is created.
 {: #cis-origin-pool-import}
 
 The origin pool can be imported by using the `id`. The ID is formed from the origin pool ID and the CRN (Cloud Resource Name). All values are concatenated with a `:` character.
-The CRN can be located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
+The CRN can be located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via the `ibmcloud cis` CLI.
 
 - **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
 - **Origin pool ID**: The origin pool ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a origin pool is not available via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-pools`.

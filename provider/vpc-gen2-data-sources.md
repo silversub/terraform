@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -319,10 +319,10 @@ Review the output parameters that you can access after you retrieved your data s
 |`primary_network_interface.subnet`|String|The ID of the subnet that is used in the primary network interface.|
 |`primary_network_interface.security_groups`|List|A list of security groups that were created for the interface.|
 |`primary_network_interface.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
-|`network_interfaces`|Object|A list of additional network interfaces that the instance uses.|
-|`network_interfaces.id`|String|The ID of the additional network interface.|
-|`network_interfaces.name`|String|The name of the additional network interface.|
-|`network_interfaces.subnet`|String|The ID of the subnet that is used in the additional network interface.|
+|`network_interfaces`|Object|A list of more network interfaces that the instance uses.|
+|`network_interfaces.id`|String|The ID of the more network interface.|
+|`network_interfaces.name`|String|The name of the more network interface.|
+|`network_interfaces.subnet`|String|The ID of the subnet that is used in the more network interface.|
 |`network_interfaces.security_groups`|List|A list of security groups that were created for the interface.|
 |`network_interfaces.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
 |`boot_volume`|Object|A list of boot volumes that were created for the instance.|
@@ -390,10 +390,10 @@ Review the output parameters that you can access after you retrieved your data s
 |`instances.primary_network_interface.subnet`|String|The ID of the subnet that is used in the primary network interface.|
 |`instances.primary_network_interface.security_groups`|List|A list of security groups that were created for the interface.|
 |`instances.primary_network_interface.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
-|`instances.network_interfaces`|Object|A list of additional network interfaces that the instance uses.|
-|`instances.network_interfaces.id`|String|The ID of the additional network interface.|
-|`instances.network_interfaces.name`|String|The name of the additional network interface.|
-|`instances.network_interfaces.subnet`|String|The ID of the subnet that is used in the additional network interface.|
+|`instances.network_interfaces`|Object|A list of more network interfaces that the instance uses.|
+|`instances.network_interfaces.id`|String|The ID of the more network interface.|
+|`instances.network_interfaces.name`|String|The name of the more network interface.|
+|`instances.network_interfaces.subnet`|String|The ID of the subnet that is used in the more network interface.|
 |`instances.network_interfaces.security_groups`|List|A list of security groups that were created for the interface.|
 |`instances.network_interfaces.primary_ipv4_address`|String|The IPv4 address range that the subnet uses.|
 |`instances.boot_volume`|Object|A list of boot volumes that were created for the instance.|
@@ -991,7 +991,7 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|-------------|
-|`id`|String|The id of the SSH key.|
+|`id`|String|The ID of the SSH key.|
 |`fingerprint`| String| The SHA256 fingerprint of the public key.|
 |`length`|String|The length of the SSH key.|
 |`type`|String|The crypto system that is used by this key.|
