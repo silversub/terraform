@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform gen 1, terraform generation 1 compute
 
@@ -447,7 +447,7 @@ terraform import ibm_is_instance.example a1aaa111-1111-111a-1a11-a11a1a11a11a
 ## `ibm_is_ipsec_policy`
 {: #provider-ipsec}
 
-Create, update, or cancel an IPSec policy. 
+Create, update, or cancel an IPsec policy. 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -474,9 +474,9 @@ Review the input parameters that you can specify for your resource.
 | `authentication_algorithm` | String | Required | Enter the algorithm that you want to use to authenticate `IPsec` peers. Available options are `md5`, `sha1`, or `sha256`. | No |
 | `encryption_algorithm` | String | Required | Enter the algorithm that you want to use to encrypt data. Available options are: `triple_des`, `aes128`, or `aes256`. |  No |
 | `key_lifetime` | Integer | Optional | Enter the time in seconds that your encryption key can be used before it expires. You must enter a number between 300 and 86400. If you do not specify this option, 3600 seconds is used. | No |
-| `name` | String | Required | Enter the name for your IPSec policy. | No |
+| `name` | String | Required | Enter the name for your IPsec policy. | No |
 | `pfs` | String | Required | Enter the Perfect Forward Secrecy protocol that you want to use during a session. Available options are `disabled`, `group_2`, `group_5`, and `group_14`. | No |
-| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IPSec policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IPSec policy is created in the `default` resource group. |  Yes |
+| `resource_group` | String | Optional | Enter the ID of the resource group where you want to create the IPsec policy. To list available resource groups, run `ibmcloud resource groups`. If you do not specify a resource group, the IPsec policy is created in the `default` resource group. |  Yes |
 
 ### Output parameters
 {: #ipsec-policy-output}
@@ -486,10 +486,10 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-| `encapsulation_mode` | String | The encapsulation mode that was set for your IPSec policy. Only `tunnel` is supported. |
-| `id` | String | The unique identifier of the IPSec policy that you created. |
-| `transform_protocol` | String | The transform protocol that is used in your IPSec policy. Only the `esp` protocol is supported that uses the triple DES (3DES) encryption algorithm to encrypt your data. |
-| `vpn_connections`| List | A collection of VPN connections that use the IPSec policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
+| `encapsulation_mode` | String | The encapsulation mode that was set for your IPsec policy. Only `tunnel` is supported. |
+| `id` | String | The unique identifier of the IPsec policy that you created. |
+| `transform_protocol` | String | The transform protocol that is used in your IPsec policy. Only the `esp` protocol is supported that uses the triple DES (3DES) encryption algorithm to encrypt your data. |
+| `vpn_connections`| List | A collection of VPN connections that use the IPsec policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
 
 ## `ibm_is_lb`
 {: #lb}
@@ -1947,7 +1947,7 @@ Review the input parameters that you can specify for your resource.
 |`interval`|Integer|Optional| Dead peer detection interval in seconds. Default 30.| No |
 |`timeout`|Integer|Optional| Dead peer detection timeout in seconds. Default 120.| No |
 |`ike_policy`|String|Optional|The ID of the IKE policy.| No |
-|`ipsec_policy`|String|Optional| The ID of the IPSec policy.| No |
+|`ipsec_policy`|String|Optional| The ID of the IPsec policy.| No |
 
 ### Output parameters
 {: #vpn-gateway-connection-output}

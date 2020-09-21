@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform provider plugin, terraform certificate manager, terraform cert manager, terraform certificate
 
@@ -50,7 +50,7 @@ Create, update, or delete an API endpoint for an API gateway.
 ### Sample Terraform code
 {: #api-gw-endpoint-sample}
 
-#### Example for a single API doc as input
+#### Example for a single  API Docs as input
 
 ```
 resource "ibm_resource_instance" "apigateway"{
@@ -71,7 +71,7 @@ resource "ibm_api_gateway_endpoint" "endpoint"{
 {: codeblock}
 
 
-#### Example for a directory of API docs as input
+#### Example for a directory of  API Docs as input
 
 ```
 resource "ibm_resource_instance" "apigateway"{
