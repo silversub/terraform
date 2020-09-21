@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18" 
+lastupdated: "2020-09-21" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -2143,7 +2143,7 @@ Review the input parameters that you can specify for your resource.
 |`encryption_key`|String|Optional|The key to use for encrypting this volume.| Yes |
 |`resource_group`|String|Optional|The resource group ID for this volume.| Yes |
 |`resource_controller_url`|String|Optional|The URL of the IBM Cloud dashboard that can be used to explore and view details about this instance.| Yes |
-|`tags`|List of strings|A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.| No |
+|`tags`|List of strings| Optional |A list of tags that you want to add to your volume. Tags can help you find your volume more easily later.| No |
 
 {: caption="Table. Available input parameters" caption-side="top"}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -981,7 +981,7 @@ resource "ibm_iam_user_policy" "policy" {
 
 ```
 
-#### User Policy using resource and resource type 
+#### User Policy using resource group
 
 ```
 data "ibm_resource_group" "group" {
