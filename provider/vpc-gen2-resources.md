@@ -418,7 +418,7 @@ Review the input parameters that you can specify for your resource.
 |`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
 |`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
 |`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
-|`network_interfaces`|List|Optional|A list of additional network interfaces that are set up for the instance.| Yes |
+|`network_interfaces`|List|Optional|A list of more network interfaces that are set up for the instance.| Yes |
 |`network_interfaces.name`|String|Optional|The name of the network interface.| No |
 |`network_interfaces.subnet`|String|Required|The ID of the subnet.| No |
 |`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
@@ -453,7 +453,7 @@ Review the output parameters that you can access after your resource is created.
 |`primary_network_interface.subnet`|String|The ID of the subnet that the primary network interface is attached to.
 |`primary_network_interface.security_groups`|List of strings|A list of security groups that are used in the primary network interface.|
 |`primary_network_interface.primary_ipv4_address`|String|The primary IPv4 address.|
-|`network_interfaces`|List of additional network interfaces|A list of additional network interfaces that are attached to the instance.|
+|`network_interfaces`|List of more network interfaces|A list of more network interfaces that are attached to the instance.|
 |`network_interfaces.id`|String|The ID of the network interface.|
 |`network_interfaces.name`|String|The name of the network interface.|
 |`network_interfaces.subnet`|String|The ID of the subnet.|

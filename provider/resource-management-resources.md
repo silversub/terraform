@@ -212,7 +212,7 @@ resource "ibm_resource_key" "resourceKey" {
 
 #### Creating credentials for a service ID
 
-The `ibm_resource_instance` resource does not support creating service credentials for a service ID. However, you can pass in a service ID as an additional parameter to create credentials for a service ID. 
+The `ibm_resource_instance` resource does not support creating service credentials for a service ID. However, you can pass in a service ID as an more parameter to create credentials for a service ID. 
 
 ```
 data "ibm_resource_instance" "resource_instance" {

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: Add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, Terraform, provision resources
 
@@ -98,7 +98,7 @@ Looking for other resource types? Find a complete list of supported resource typ
 
    You may now begin working with Terraform. Try running "terraform plan" to see any changes that are required for your infrastructure. All Terraform commands should now work.
 
-   If you ever set or change modules or backend configuration for Terraform, rerun this command to reinitialize your working directory. If you forget, other commands will detect it and remind you to do so if necessary.
+   If you ever set or change modules or backend configuration for Terraform, rerun this command to reinitialize your working directory. If you forget, other commands detects it and remind you to do so if necessary.
    ```
    {: screen}
    
@@ -108,16 +108,16 @@ Looking for other resource types? Find a complete list of supported resource typ
    ```
    {: pre}
 
-   Example output: 
+   Example output:
    ```
    Refreshing Terraform state in-memory prior to plan...
-   The refreshed state will be used to calculate this plan, but will not be persisted to local or remote state storage.
+   The refreshed state be used to calculate this plan, but not be persisted to local or remote state storage.
 
    An execution plan has been generated and is shown here.
    Resource actions are indicated with the following symbols:
      + create
 
-   Terraform will perform the following actions:
+   Terraform perform the following actions:
 
      + ibm_compute_vm_instance.vm1
          id:                           <computed>
@@ -162,7 +162,7 @@ Looking for other resource types? Find a complete list of supported resource typ
 
    Plan: 1 to add, 0 to change, 0 to destroy.
    ------------------------------------------------------------------------
-   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions will be performed if "terraform apply" is subsequently run.
+   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions be performed if "terraform apply" is subsequently run.
    ```
    {: screen}
    
@@ -287,7 +287,7 @@ You can update your resources by changing your Terraform configuration file and 
    Example output: 
    ```
    Refreshing Terraform state in-memory prior to plan...
-   The refreshed state will be used to calculate this plan, but will not be persisted to local or remote state storage.
+   The refreshed state be used to calculate this plan, but not be persisted to local or remote state storage.
 
    ibm_compute_vm_instance.vm1: Refreshing state... (ID: 51404681)
 
@@ -297,7 +297,7 @@ You can update your resources by changing your Terraform configuration file and 
    Resource actions are indicated with the following symbols:
     ~ update in-place
 
-   Terraform will perform the following actions:
+   Terraform performs the following actions:
 
     ~ ibm_compute_vm_instance.vm1
     network_speed: "10" => "100"
@@ -344,15 +344,15 @@ You can use Terraform to remove {{site.data.keyword.cloud_notm}} resources if yo
    Resource actions are indicated with the following symbols:
      - destroy
 
-   Terraform will perform the following actions:
+   Terraform performs the following actions:
 
      - ibm_compute_vm_instance.vm1
 
    Plan: 0 to add, 0 to change, 1 to destroy.
 
    Do you really want to destroy?
-     Terraform will destroy all your managed infrastructure, as shown above.
-     There is no undo. Only 'yes' will be accepted to confirm.
+     Terraform destroys all your managed infrastructure, as shown above.
+     There is no undo. Only 'yes' is accepted to confirm.
 
      Enter a value: yes
 

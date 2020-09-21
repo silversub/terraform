@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-21"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -44,7 +44,7 @@ Review what credentials and information you need to provide to work with {{site.
 ## Required input parameters for each resource category
 {: #required-parameters}
 
-Review what information you must provide in the `provider` block to work with a specific resource category. The values in this table are required values. To retrieve the values or view additional parameters that you can specify, see the [Supported input parameters](#provider-parameter-ov). 
+Review what information you must provide in the `provider` block to work with a specific resource category. The values in this table are required values. To retrieve the values or view more parameters that you can specify, see the [Supported input parameters](#provider-parameter-ov). 
 {: shortdesc}
 
 |Resource|Required input parameters|
@@ -157,7 +157,7 @@ You can add multiple `provider` configurations within the same Terraform configu
 
 Creating multiple `provider` configurations is useful when you want to use different input parameters, such as different regions, zones, infrastructure generations, or accounts to create the {{site.data.keyword.cloud_notm}} resources in your Terraform configuration file. For more information, see [Multiple Provider Instances](https://www.terraform.io/docs/configuration/providers.html#alias-multiple-provider-instances){: external}. 
 
-1. In your Terraform configuration or `provider.tf` file, create multiple provider blocks with the same provider name. The provider configuration without an alias is considered the default provider configuration and is used for every resource where you do not specify a specific provider configuration. Any additional provider configurations must include an alias so that you can reference this provider from your resource definition.
+1. In your Terraform configuration or `provider.tf` file, create multiple provider blocks with the same provider name. The provider configuration without an alias is considered the default provider configuration and is used for every resource where you do not specify a specific provider configuration. Any more provider configurations must include an alias so that you can reference this provider from your resource definition.
    ```
    provider "ibm" {
      ibmcloud_api_key    = var.ibmcloud_api_key

@@ -271,7 +271,7 @@ Provides a Bare Metal resource. This allows Bare Metal servers to be created, up
 {: #bm-sample}
 
 #### Hourly Bare Metal server
-When the `ibm_compute_bare_metal` resource definition has a `fixed_config_preset` attribute, Terraform creates an hourly Bare Metal server. The monthly bare metal server resource provides options to configure process, memory, network, disk, and RAID. You can also assign VLANs and subnets for the target monthly bare metal server.  Hardware specifications are predefined in the `fixed_config_preset` attribute and cannot be modified. To configure the monthly bare metal server, you must provide additional attributes such as `package_key_name`, `proecss_key_name`, `disk_key_names`, and `os_key_name`. The following example shows you how to create a new hourly Bare Metal server.
+When the `ibm_compute_bare_metal` resource definition has a `fixed_config_preset` attribute, Terraform creates an hourly Bare Metal server. The monthly bare metal server resource provides options to configure process, memory, network, disk, and RAID. You can also assign VLANs and subnets for the target monthly bare metal server.  Hardware specifications are predefined in the `fixed_config_preset` attribute and cannot be modified. To configure the monthly bare metal server, you must provide more attributes such as `package_key_name`, `proecss_key_name`, `disk_key_names`, and `os_key_name`. The following example shows you how to create a new hourly Bare Metal server.
 {: shortdesc}
 
 ##### Example of an hourly Bare Metal server
@@ -387,7 +387,7 @@ Review the input parameters that you can specify for your resource.
 |`notes`|String|Optional|Notes to associate with the instance.| No |
 |`ssh_key_ids`|Array of integers|Optional|The SSH key IDs to install on the compute instance when the instance is provisioned. **Note:** If you don't know the IDs for your SSH keys, you can reference your SSH keys by their labels.| Yes |
 |`post_install_script_uri`|String|Optional|The URI of the script to be downloaded and executed after installation is complete.| Yes |
-|`tags`|Array of strings|Optional| Tags associated with this Bare Metal server. Permitted characters include: A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.| No |
+|`tags`|Array of strings|Optional| Tags associated with this Bare Metal server. Permitted characters includes A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.| No |
 |`file_storage_ids`|Array of integers|Optional|File storage to which this computing instance has access. File storage must be in the same data center as the Bare Metal server. If you use this argument to authorize, access to file storage, do not use the `allowed_hardware_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage be added twice.| No |
 |`block_storage_ids`|Array of integers|Optional|Block storage to which this computing instance has access. Block storage must be in the same data center as the Bare Metal server. If you use this argument to authorize, access to block storage, do not use the `allowed_hardware_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage be added twice.#### Arguments common to hourly and monthly server|  No |
 
@@ -405,7 +405,7 @@ Review the input parameters that you can specify for your resource.
 |`unbonded_network`|Boolean|Optional|When the value is `true`, two physical network interfaces are provided without a bonding configuration. The default value is `false`.|
 |`network_speed`|Integer|Optional|The connection speed, expressed in Mbps,  for the instance's network components. The default value is `100`.|
 |`private_network_only`|Boolean|Optional|Specifies whether the instance has only access to the private network. When the value is `true`, a compute instance has only access to the private network. The default value is `false`.|
-|`extended_hardware_testing`|Boolean|Optional|Enable the extended hardware testing while ordering the Bare Metal server. The default value is `false`. **Note**: Enabling the `extended_hardware_testing` will cause considerable delays in the deployment.|
+|`extended_hardware_testing`|Boolean|Optional|Enable the extended hardware testing while the Bare Metal server. The default value is `false`. **Note**: Enabling the `extended_hardware_testing` cause considerable delays in the deployment.|
 |`ipv6_enabled`|Boolean|Optional|The primary public IPv6 address. The default value is `false`.|
 |`ipv6_static_enabled`|Boolean|Optional|The public static IPv6 address block of `/64`. The default value is `false`.|
 |`secondary_ip_count`|Integer|Optional|Specifies secondary public IPv4 addresses. Accepted values are `4` and `8`.|
@@ -418,7 +418,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`fixed_config_preset`|String|Required|The configuration preset with which you want to provision the Bare Metal server. This preset governs the type of CPU, number of cores, amount of RAM, and number of hard disks that the Bare Metal server has. To see the available presets, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. Find the key called `fixedConfigurationPresets`. The presets are identified by the key names.|
 |`os_reference_code`|String|Optional|An operating system reference code that provisions the computing instance. To see available OS reference codes, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode), that uses your API key as the password.         **NOTE**: Conflicts with `image_template_id`.  |
-|`software_guard_extensions`|Boolean|Optional|The Software Guard Extensions product will be added to a compatible server package, selecting Intel SGX-enabled BIOS and hardware. The default value is `false`.#### Arguments for monthly Bare Metal servers|
+|`software_guard_extensions`|Boolean|Optional|The Software Guard Extensions product is added to a compatible server package, selecting Intel SGX-enabled BIOS and hardware. The default value is `false`.#### Arguments for monthly Bare Metal servers|
 
 #### Input parameters for monthly Bare Metal servers
 
@@ -439,7 +439,7 @@ Review the input parameters that you can specify for your resource.
 |`storage_groups.hard_drives`|Array of integers|Required|The index of hard disks for RAID configuration. The index starts at 0. For example, the array [0,1] is an index of two hard disks.    |
 |`storage_groups.array_size`|Integer|Optional| The target RAID disk size, specific in gigabytes.    |
 |`storage_groups.partition_template_id`|String|Optional| The partition template ID for the OS disk. Templates are different based on the target OS. To get the partition template ID, first find the OS ID in the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/getAllObjects). Then replace <OS_ID> with your OS ID in the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/<OS_ID>/getPartitionTemplates`. Select your template ID in resulting available partition template IDs.  |
-|`software_guard_extensions`|Boolean|Optional| The Software Guard Extensions product will be added to a compatible server package, selecting Intel SGX-enabled BIOS and hardware. The default value is `false`.|
+|`software_guard_extensions`|Boolean|Optional| The Software Guard Extensions product is added to a compatible server package, selecting Intel SGX-enabled BIOS and hardware. The default value is `false`.|
 |`restricted_network`|Boolean|Optional| The non-datacenter restricted port speed. The default value is `false`.|
 |`tcp_monitoring`|Boolean|Optional| When the value is `false`, a ping monitoring service is provided. When the value is `true`, a ping monitoring service and a TCP monitoring service are provided.#### Arguments for quote-based Bare Metal servers|
 
@@ -559,7 +559,7 @@ The following arguments are supported:
 |`query_type_id`| Integer | Required | The ID of the query type.| No |
 |`response_action_id`| Integer | Required, | The ID of the response action to take if the monitor fails. Accepted values are `1` or `2`.| No |
 |`wait_cycles`| Integer | Optional | The number of five-minute cycles to wait before the response action is taken.| No |
-|`notified_users`| Array of Integers | Optional | The list of user IDs that will be notified.| No |
+|`notified_users`| Array of Integers | Optional | The list of user IDs that is notified.| No |
 |`tags`| Array of Integers | Optional | Tags associated with the monitoring instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -571,7 +571,7 @@ The following attributes are exported:
 |Name|Description|
 |----|-----------|
 |`id`|The unique identifier of the monitor.|
-|`notified_users`|The list of user IDs that will be notified.|
+|`notified_users`|The list of user IDs that is notified.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -1201,7 +1201,7 @@ The following attributes are exported:
 
 Configures the (custom) name servers associated with a DNS domain registration managed by the IBM Cloud DNS Registration Service. The default IBM Cloud name servers specified when the domain was initially registered are replaced with the values passed when this resource is created. 
 
-This resource is typically used in conjunction with IBM Cloud Internet Services to enable DNS services for the domain to be managed via IBM Cloud Internet Services. All further configuration of the domain is then performed by using the Cloud Internet Services resource instances. To transfer management control, the IBM Cloud DNS domain registration is updated with the Internet Services specific name servers. This step is required before the domain in Cloud Internet Services becomes active and will start serving web traffic. Using interpolation syntax, the computed name servers of the CIS resource are passed into this resource. 
+This resource is typically used in conjunction with IBM Cloud Internet Services to enable DNS services for the domain to be managed via IBM Cloud Internet Services. All further configuration of the domain is then performed by using the Cloud Internet Services resource instances. To transfer management control, the IBM Cloud DNS domain registration is updated with the Internet Services specific name servers. This step is required before the domain in Cloud Internet Services becomes active and start serving web traffic. Using interpolation syntax, the computed name servers of the CIS resource are passed into this resource. 
 
 
 ### Sample Terraform code
@@ -1531,7 +1531,7 @@ The following arguments are supported:
 |`expire`| Integer | Optional | The duration, expressed in seconds, that a secondary name server (or servers) holds a zone before it is no longer considered authoritative.| No |
 |`host`| String | Required |The host defined by a resource record. The `@` symbol denotes a wildcard.| No |
 |`minimum_ttl`|Integer| Optional | The duration, expressed in seconds, that a domain's resource records are valid. This is also known as a minimum time to live (TTL), and can be overridden by an individual resource record's TTL.|
-|`mx_priority`| Integer | Optional | The priority of the mail exchanger that delivers mail for a domain. This is useful in cases where a domain has more than one mail exchanger. A lower number denotes a higher priority, and mail will attempt to deliver through the highest priority exchanger before moving to lower priority exchanger. The default value is `0`.| No |
+|`mx_priority`| Integer | Optional | The priority of the mail exchanger that delivers mail for a domain. This is useful in cases where a domain has more than one mail exchanger. A lower number denotes a higher priority, and mail attempt to deliver through the highest priority exchanger before moving to lower priority exchanger. The default value is `0`.| No |
 |`refresh`|Integer|Optional| The duration, expressed in seconds, that a secondary name server waits to check the domain's primary name server for a new copy of a DNS zone. If a zone file has changed, the secondary DNS server updates its copy of the zone to match the primary DNS server's zone.| No |
 |`responsible_person`| String | Required | The email address of the person responsible for a domain. Replace the `@` symbol in the address with a `.`. For example, root@example.org would be expressed as `root.example.org.`.| No |
 |`retry`| Integer | Optional | The duration, expressed in seconds, that the domain's primary name server (or servers) waits before attempting to refresh the domain's zone with the secondary name server. A failed attempt to refresh by a secondary name server triggers the retry action.| No |
@@ -1540,7 +1540,7 @@ The following arguments are supported:
 |`txt`| String | Optional | Used for text records.| No |
 |`service`| String | Required |`SRV` records only. The symbolic name of the service.| No |
 |`protocol`| String | Required |`SRV` records only. The protocol of the service that you want to use, such as `TCP` or `UDP`.| No |
-|`port`| Integer | Required |`SRV` records only. The TCP or UDP port on which the service will be found.| No |
+|`port`| Integer | Required |`SRV` records only. The TCP or UDP port on which the service be found.| No |
 |`priority`| Integer | Required | `SRV` records only. The priority of the target host. The lowest numerical value is given the highest priority. The default value is `0`.| No |
 |`weight`| Integer | Required | `SRV` records only. A relative weight for records that have the same priority. The default value is `0`.| No |
 |`tags`| Array of Strings | Optional | Tags associated with the DNS domain record instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
@@ -1677,7 +1677,7 @@ Provides rules for firewall resources in IBM. One rule resource is allowed per f
 
 When a rules resource is created, it cannot be deleted. IBM does not allow entire rule deletion.
 
-Firewalls should have at least one rule. If Terraform destroys the rules resources, _permit from any to any with TCP, UDP, ICMP, GRE, PPTP, ESP, and HA_ rules will be configured.
+Firewalls should have at least one rule. If Terraform destroys the rules resources, _permit from any to any with TCP, UDP, ICMP, GRE, PPTP, ESP, and HA_ rule to be configured.
 
 ### Sample Terraform code
 {: #firewall-policy-sample}
@@ -1816,11 +1816,11 @@ Review the input parameters that you can specify for your resource.
 |`phase_two`|Map|Optional|The key-value parameters for phase Two negotiation.|
 |`address_translation`|Map|Optional|The key-value parameters for creating an address translation.|
 |`Preshared_Key`|String|Optional|A key used so that peers authenticate each other. This key is hashed by using the phase one encryption and phase one authentication.|
-|`Customer_Peer_IP`|String|Optional|The remote end of a network tunnel. This end of the network tunnel resides on an outside network and will be sending and receiving the IPsec packets.
+|`Customer_Peer_IP`|String|Optional|The remote end of a network tunnel. This end of the network tunnel resides on an outside network and be sending and receiving the IPsec packets.
 |`internal_subnet_id`|Map|Optional|The ID of the network device on which the VPN configurations have to be applied. When a private subnet is associated, the network tunnel will allow the customer (remote) network to access the private subnet.|
-|`remote_subnet_id`|Map|Optional|The ID of the customer owned device on which the network configuration has to be applied. When a remote subnet is associated, a network tunnel will allow the customer (remote) network to communicate with the private and service subnets on the SoftLayer network which are on the other end of this network tunnel.
+|`remote_subnet_id`|Map|Optional|The ID of the customer owned device on which the network configuration has to be applied. When a remote subnet is associated, a network tunnel allows the customer (remote) network to communicate with the private and service subnets on the SoftLayer network which are on the other end of this network tunnel.
 |`remote_subnet`|Map|Optional|The key-value parameters for creating a customer subnet.|
-|`service_subnet_id`|String|Optional|The ID of the service subnet which is to be associated to the network tunnel. When a service subnet is associated, a network tunnel will allow the customer (remote) network to communicate with the private and service subnets on the SoftLayer network which are on the other end of this network tunnel. Service subnets provide access to SoftLayer services such as the customer management portal and the SoftLayer API.|
+|`service_subnet_id`|String|Optional|The ID of the service subnet which is to be associated to the network tunnel. When a service subnet is associated, a network tunnel allows the customer (remote) network to communicate with the private and service subnets on the SoftLayer network which are on the other end of this network tunnel. Service subnets provide access to SoftLayer services such as the customer management portal and the SoftLayer API.|
 
 ### Output parameters
 {: #ipsec-vpn-output}
@@ -2528,12 +2528,12 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`name`| String | Required |The ID of the VPX load balancer virtual IP address.| Yes |
 |`nad_controller_id`| Integer | Required | The ID of the VPX load balancer that the virtual IP address is assigned to.| Yes |
-|`load_balancing_method`| String | Required | See the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use Netscaler VPX 10.5, see the [Citrix Docs ](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for additional methods that you can use.| No |
+|`load_balancing_method`| String | Required | See the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use Netscaler VPX 10.5, see the [Citrix Docs ](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for more methods that you can use.| No |
 |`persistence`| String | Optional |Applies to Netscaler VPX 10.5 only. See the available persistence types in the [Citrix Docs ](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-persistence-wrapper-con/ns-lb-persistence-about-con.html).  | No |
 |`virtual_ip_address`| String | Required |The public IP address for the VPX load balancer virtual IP.| No |
 |`source_port`|Integer | Required | The source port for the VPX load balancer virtual IP address.| No |
 |`type`| String | Required | The connection type for the VPX load balancer virtual IP address. Accepted values are `HTTP`, `FTP`, `TCP`, `UDP`, `DNS`, and `SSL`. If you set the type to `SSL`, then `security_certificate_id` provides certification for SSL offload services.| Yes |
-|`security_certificate_id`| Integer | Optional | Applies to Netscaler VPX 10.5 only. The ID of a security certificate you want to use. This argument provides security certification for SSL offload services. For additional information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).| Yes |
+|`security_certificate_id`| Integer | Optional | Applies to Netscaler VPX 10.5 only. The ID of a security certificate you want to use. This argument provides security certification for SSL offload services. For more information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).| Yes |
 |`tags`| Array of strings | Optional | Tags associated with the VPX load balancer virtual IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -3384,7 +3384,7 @@ addresses for IBM resources in the VLAN. Because each portable subnet has a defa
 
 The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, Bare Metal servers, and Netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
 
-Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For additional detail, refer to [IPv6 address](/docs/subnets?topic=subnets-about-subnets-and-ips).
+Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For more detail, refer to [IPv6 address](/docs/subnets?topic=subnets-about-subnets-and-ips).
 
 ### Sample Terraform code of portable subnet
 {: #subnet-sample}
