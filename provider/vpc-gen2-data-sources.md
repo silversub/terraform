@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-23"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -791,18 +791,42 @@ Review the output parameters that you can access after you retrieve your data so
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
+| `hostname` | String | Fully qualified domain name assigned to this load balancer.|
 | `id` | String | The ID of the load balancer. |
-| `subnets` | String | The ID of the subnets to provision this load balancer. |
 | `listeners` | String | The ID of the listeners attached to this load balancer. |
-| `pools` | String | The ID of the Pools attached to this load balancer. |
-| `type` | String | The type of the load balancer. |
-| `resource_group` | String | The resource group where the load balancer is created. |
-| `tags` | String | The tags associated with the load balancer. |
+| `operating_status` | String | The operating status of this load balancer.|
+| `pools` | String | List all the Pools attached to this load balancer. |
+| `pools.algorithm` | String | The load balancing algorithm. |
+| `pools.created_at` | String |The date and time pool was created. |
+| `pools.href` | String | The pool's canonical URL. |
+| `pools.id` | String | The unique identifier for this load balancer pool. |
+| `pools.name` | String | The user-defined name for this load balancer pool. |
+| `pools.protocol` | String | The protocol used for this load balancer pool. |
+| `pools.provisioning_status` | String | The provisioning status of this pool. |
+| `pools.health_monitor` | String | The health monitor of this pool. |
+| `pools.health_monitor.delay` | String | The health check interval in seconds. Interval must be greater than timeout value. |
+| `pools.health_monitor.max_retries` | String | The health check max retries. |
+| `pools.health_monitor.timeout` | String | The health check timeout in seconds. |
+| `pools.health_monitor.type` | String | The protocol type of this load balancer pool health monitor. |
+| `pools.health_monitor.url_path` | String | The health monitor of this pool. |
+| `pools.health_monitor` | String | The health check URL. This is applicable only to HTTP type of health monitor. |
+| `pools.instance_group` | String | The instance group that is managing this pool. |
+| `pools.instance_group.crn` | String | The CRN for this instance group. |
+| `pools.instance_group.href` | String |  The URL for this instance group. |
+| `pools.instance_group.id` | String | The unique identifier for this instance group. |
+| `pools.instance_group.name` | String | The user-defined name for this instance group. |
+| `pools.members` | String | The backend server members of the pool. |
+| `pools.members.href` | String | The canonical URL of the member. |
+| `pools.members.id` | String | The unique identifier for this load balancer pool member. |
+| `pools.session_persistence` | String | The session persistence of this pool. |
+| `pools.session_persistence.type` | String | The session persistence type. |
 | `public_ips` | String | The public IP addresses assigned to this load balancer.|
 | `private_ips` | String | The private IP addresses assigned to this load balancer.|
+| `resource_group` | String | The resource group where the load balancer is created. |
+| `subnets` | String | The ID of the subnets to provision this load balancer. |
 | `status` | String | The status of load balancer.|
-| `operating_status` | String | The operating status of this load balancer.|
-| `hostname` | String | Fully qualified domain name assigned to this load balancer.|
+| `tags` | String | The tags associated with the load balancer. |
+| `type` | String | The type of the load balancer. |
 
 
 
@@ -1032,7 +1056,8 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
-|`identifier`|String|Required|The ID of the subnet.|
+|`identifier`|String|Optional|The ID of the subnet.|
+|`name`|String|Optional|The name of the subnet.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
