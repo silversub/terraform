@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-23"
 
 keywords: terraform provider plugin, terraform gen 1, terraform generation 1 compute
 
@@ -368,10 +368,12 @@ Review the input parameters that you can specify for your resource.
 |`keys`|List|Required|A comma-separated list of SSH keys that you want to add to your instance.| No |
 |`primary_network_interface`|List|Required|A nested block describes the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
 |`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
+|`primary_network_interface.primary_ipv4_address`|Strings|Optional|The IPV4 address of the interface.| Yes |
 |`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
 |`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
 |`network_interfaces`|List|Optional|A list of more network interfaces that are set up for the instance.| Yes |
 |`network_interfaces.name`|String|Optional|The name of the network interface.| No |
+|`network_interface.primary_ipv4_address`|Strings|Optional|The IPV4 address of the interface.| Yes |
 |`network_interfaces.subnet`|String|Required|The ID of the subnet.| No |
 |`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
 |`volumes`|List|Optional|A comma separated list of volume IDs to attach to the instance.| No |
