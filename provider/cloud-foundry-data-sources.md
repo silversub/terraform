@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-23"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -306,6 +306,7 @@ Review the input parameters that you can specify for your data source.
 |Name|Data type|Required / optional|Description|
 |----|-----------|------|--------|
 |`name`|String|Optional|The name of the {{site.data.keyword.cloud_notm}} organization.|
+|`org`|String|Deprecated|The name of the {{site.data.keyword.cloud_notm}} organization.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -554,9 +555,9 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type| Required / optional|Description|
 |----|-----------|--------|-------------------|
-|`org`|String|Required| The name of your Cloud Foundry organization that the space belongs to. You can retrieve the value by running the `ibmcloud iam orgs` command in the {{site.data.keyword.cloud_notm}} CLI. (Deprecated)|
-|`space`|String|Required| The name of your Cloud Foundry space. You can retrieve the value by running the `ibmcloud iam spaces` command in the IBM Cloud CLI. (Deprecated)|
 |`name`|String|Optional| The name of your space.|
+|`org`|String|Deprecated| The name of your Cloud Foundry organization that the space belongs to. You can retrieve the value by running the `ibmcloud iam orgs` command in the {{site.data.keyword.cloud_notm}} CLI. |
+|`space`|String|Deprecated| The name of your Cloud Foundry space. You can retrieve the value by running the `ibmcloud iam spaces` command in the IBM Cloud CLI. |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -567,8 +568,8 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|--------------------|
-|`id`|String|The unique identifier of the space.  |
-|`managers`|String|The email addresses (associated with IBMid) of the users who have a manager role in this space.|
 |`auditors`|String|The email addresses (associated with IBMid) of the users who have an auditor role in this space.|
 |`developers`|String|The email addresses (associated with IBMid) of the users who have a developer role in this space.|
+|`id`|String|The unique identifier of the space.  |
+|`managers`|String|The email addresses (associated with IBMid) of the users who have a manager role in this space.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
