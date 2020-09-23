@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-23"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -225,7 +225,7 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 | `id` | String | The unique Id of the bind service resource. The ID is composed of `<cluster_name_id>/<service_instance_name or service_instance_id>/<namespace_id/>`.|
-| `issuer_name` | String | The service key name. |
+| `service_key_name` | String | The service key name. |
 
 ## `ibm_container_cluster`
 {: #container-cluster}
@@ -260,7 +260,7 @@ Review the input parameters that you can specify for your data source.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `alb_type` | String | Optional | Filters the  `albs` based on type. The valid values are `private`, `public`, and `all`. The default value is `all`. |
-| `cluster_name_id` | String | Required | The name or ID of the cluster that you want to retrieve.  (Deprecated)|
+| `cluster_name_id` | String | Deprecated | The name or ID of the cluster that you want to retrieve. |
 |`name` | String | Optional | The name or ID of the cluster.|
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
 
@@ -672,7 +672,7 @@ Review the input parameters that you can specify for your data source.
 
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `cluster_name_id` | String | Required | The name or ID of the VPC cluster that you want to retrieve. (Deprecated) |
+| `cluster_name_id` | String | Deprecated | The name or ID of the VPC cluster that you want to retrieve. |
 | `alb_type` | String | Optional | The ALB type of a cluster. |
 | `name` | String | Optional | The name or ID of the cluster. |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
@@ -824,16 +824,3 @@ Review the output parameters that you can access after you retrieved your data s
 | `resource_group_id` | String | The ID of the resource group. |
 | `provider` | String | Provider Details of the worker Pool. |
 | `isolation` | String | Isolation for the worker node.|
-
-
-* `id` - The unique identifier of the worker pool resource. The ID is composed of \<cluster_name_id\>/\<worker_pool_id\>.<br/>
-* `vpc_id` -  The Id of VPC 
-* `worker_count` - The number of worker nodes per zone in the worker pool.
-* `flavor` - The flavour of the worker node.
-* `zones` - A nested block describes the zones of this worker_pool. Nested zones blocks have the following structure:
-  * `subnet-id` -  The worker pool subnet to assign the cluster. 
-  * `name` -  Name of the zone.
-* `labels` -  Labels on all the workers in the worker pool.
-* `resource_group_id` -  The ID of the resource group.
-* `provider` -  Provider Details of the worker Pool.
-* `isolation` -  Isolation for the worker node
