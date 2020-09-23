@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-23"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -214,12 +214,13 @@ Review the input parameters that you can specify for your resource.
 |`auto_scaling.disk.rate_units`|String|Optional|Auto scaling rate in units.|No|
 |`auto_scaling.memory`|List|Optional|Memory Auto Scaling in single block of memory is allowed at once.|No|
 |`auto_scaling.io_above_percent`|Integer|Optional|Auto scaling scalar I/O utilization above percent.|No|
-|`auto_scaling.io_enabled`|Bool|Optional|Auto scaling scalar I/O utilization enabled.|No|
-|`auto_scaling.io_over_period`|String|Optional|Auto scaling scalar I/O utilization over period.|No|
-|`auto_scaling.rate_increase_percent`|Integer|Optional|Auto scaling rate in increase percent.|No|
-|`auto_scaling.rate_limit_mb_per_member`|Integer|Optional|Auto scaling rate limit in mega bytes per member.|No|
-|`auto_scaling.rate_period_seconds`|Integer|Optional|Auto scaling rate period in seconds.|No|
-|`auto_scaling.rate_units`|String|Optional|Auto scaling rate in units.|No|
+|`auto_scaling.memory.io_enabled`|Bool|Optional|Auto scaling scalar I/O utilization enabled.|No|
+|`auto_scaling.memory.io_over_period`|String|Optional|Auto scaling scalar I/O utilization over period.|No|
+|`auto_scaling.memory.rate_increase_percent`|Integer|Optional|Auto scaling rate in increase percent.|No|
+|`auto_scaling.memory.rate_limit_mb_per_member`|Integer|Optional|Auto scaling rate limit in mega bytes per member.|No|
+|`auto_scaling.memory.rate_period_seconds`|Integer|Optional|Auto scaling rate period in seconds.|No|
+|`auto_scaling.memory.rate_units`|String|Optional|Auto scaling rate in units.|No|
+|
 
 
 ### Output parameters
