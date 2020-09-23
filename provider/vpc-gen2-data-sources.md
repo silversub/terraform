@@ -1057,7 +1057,7 @@ Review the input parameters that you can specify for your data source.
 |Name|Data type| Required / optional|Description|
 |----|-----------|--------|----------------------|
 |`identifier`|String|Optional|The ID of the subnet.|
-|`identifier`|String|Optional|The name of the subnet.|
+|`name`|String|Optional|The name of the subnet.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
