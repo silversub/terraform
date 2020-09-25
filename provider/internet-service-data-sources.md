@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-25"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -137,7 +137,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_cis_ip_addresses`
 {: #cis_ip}
 
-Import a list of all IP addresses that the CIS proxy uses. The CIS proxy uses these IP addresses for both `client-to-proxy` and `proxy-to-origin` communication. You can reference the IP addresses by using Terraform interpolation syntax to configure and whitelist IP addresses in firewalls, network ACLs, and security groups. 
+Import a list of all IP addresses that the CIS proxy uses. The CIS proxy uses these IP addresses for both `client-to-proxy` and `proxy-to-origin` communication. You can reference the IP addresses by using Terraform interpolation syntax to configure and allowed IP addresses in firewalls, network ACLs, and security groups. 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -164,8 +164,8 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|----------|
-| `ipv4_cidrs` | String | The IPv4 address ranges that the CIS proxy uses and that you can reference to configure and whitelist IP addresses in firewalls, network ACLs, and security groups. |
-| `ipv6_cidrs` | String | The IPv6 address ranges that the CIS proxy uses and that you can reference to configure and whitelist IP addresses in firewalls, network ACLs, and security groups.|
+| `ipv4_cidrs` | String | The IPv4 address ranges that the CIS proxy uses and that you can reference to configure and allowed IP addresses in firewalls, network ACLs, and security groups. |
+| `ipv6_cidrs` | String | The IPv6 address ranges that the CIS proxy uses and that you can reference to configure and allowed IP addresses in firewalls, network ACLs, and security groups.|
 
 
 ## `ibm_cis_rate_limit`

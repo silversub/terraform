@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-09-25"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -501,7 +501,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`server_instances_down`|Integer|The number of service instances, that are in the `DOWN` health state.|
 |`active_connections`|Integer|The number of total established connections.|
 |`use_system_public_ip_pool`|String|It specifies whether the public IP addresses are allocated from system public IP pool or public subnet from the account order of the load balancer.|
-|`ssl_ciphers`|Array|The list of ssl offloads.|
+|`ssl_ciphers`|Array|The list of SSL offloads.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ## `ibm_network_vlan`

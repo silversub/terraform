@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-23"
+lastupdated: "2020-09-25"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -193,9 +193,9 @@ Review the input parameters that you can specify for your resource.
 |`users`|List of objects|Optional|A list of users that you want to create on the database. Multiple blocks are allowed. | No |
 |`users.name`|String|Optional|The user ID to add to the database instance. The user ID must be in the range 5 - 32 characters.| No |
 |`users.password`|String|Optional|The password for the user ID. The password must be in the range 10 - 32 characters.| No |
-|`whitelist`|List of objects|Optional|A list of IP addresses to whitelist for the database. Multiple blocks are allowed. | No |
+|`whitelist`|List of objects|Optional|A list of allowed IP addresses for the database. Multiple blocks are allowed. | No |
 |`whitelist.address`|String|Optional|The IP address or range of database client addresses to be whitelisted in CIDR format. Example, `172.168.1.2/32`.| No |
-|`whitelist.description`|String|Optional|A description for the whitelist range. | No |
+|`whitelist.description`|String|Optional|A description for the allowed IP addresses range. | No |
 |`guid`|String|Optional|The unique identifier of the database instance.| No |
 |`auto_scaling`|List|Optional|Configure rules to allow your database to automatically increase its resources. Single block of autoscaling is allowed at once.|No|
 |`auto_scaling.cpu`|List|Optional|Single block of CPU is allowed at once by CPU autoscaling.|No|
@@ -209,7 +209,7 @@ Review the input parameters that you can specify for your resource.
 |`auto_scaling.disk.io_above_percent`|Integer|Optional|Auto scaling scalar I/O utilization above percent.|No|
 |`auto_scaling.disk.io_enabled`|Bool|Optional|Auto scaling scalar I/O utilization enabled.|No|
 |`auto_scaling.disk.rate_increase_percent`|Integer|Optional|Auto scaling rate increase percent.|No|
-|`auto_scaling.disk.rate_limit_mb_per_member`|Integer|Optional|Auto scaling rate limit in mega bytes per member.|No|
+|`auto_scaling.disk.rate_limit_mb_per_member`|Integer|Optional|Auto scaling rate limit in megabytes per member.|No|
 |`auto_scaling.disk.rate_period_seconds`|Integer|Optional|Auto scaling rate period in seconds.|No|
 |`auto_scaling.disk.rate_units`|String|Optional|Auto scaling rate in units.|No|
 |`auto_scaling.memory`|List|Optional|Memory Auto Scaling in single block of memory is allowed at once.|No|
@@ -217,7 +217,7 @@ Review the input parameters that you can specify for your resource.
 |`auto_scaling.memory.io_enabled`|Bool|Optional|Auto scaling scalar I/O utilization enabled.|No|
 |`auto_scaling.memory.io_over_period`|String|Optional|Auto scaling scalar I/O utilization over period.|No|
 |`auto_scaling.memory.rate_increase_percent`|Integer|Optional|Auto scaling rate in increase percent.|No|
-|`auto_scaling.memory.rate_limit_mb_per_member`|Integer|Optional|Auto scaling rate limit in mega bytes per member.|No|
+|`auto_scaling.memory.rate_limit_mb_per_member`|Integer|Optional|Auto scaling rate limit in megabytes per member.|No|
 |`auto_scaling.memory.rate_period_seconds`|Integer|Optional|Auto scaling rate period in seconds.|No|
 |`auto_scaling.memory.rate_units`|String|Optional|Auto scaling rate in units.|No|
 |
@@ -247,7 +247,7 @@ The following timeouts are defined for this resource.
 - **Update** The update of the instance is considered failed when no response is received for 20 minutes.
 - **Delete** The deletion of the instance is considered failed when no response is received for 10 minutes.
 
-ICD create instance typically takes between 10 - 20 minutes. Delete and update takes a minute. Provisioning time is unpredictable. If the apply fails due to a timout, import the database resource once the create is completed.
+ICD create instance typically takes between 10 - 20 minutes. Delete and update takes a minute. Provisioning time is unpredictable. If the apply fails due to a timeout, import the database resource once the create is completed.
 {: note}
 
 

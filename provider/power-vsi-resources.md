@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-25"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -465,7 +465,7 @@ The following timeouts are defined for this resource:
 
 - **Create** The creation of the snapshot is considered failed, if no response is received for 60 minutes.
 - **Delete** The deletion of the snapshot is considered failed, if no response is received for 60 minutes.
-- **Update** The updation of the snapshot is considered failed, if no response is received for 60 minutes.
+- **Update** The update of the snapshot is considered failed, if no response is received for 60 minutes.
 
 ### Import
 {: #pi-snapshot-import}

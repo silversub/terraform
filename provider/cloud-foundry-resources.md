@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-25"
 
 keywords: terraform provider plugin, terraform cloud foundry, terraform cf resources, terraform cf org, terraform cf space
 
@@ -475,9 +475,9 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|The descriptive name for the space.|
 |`org`|String|Required|The name of the Cloud Foundry organization to which this space belongs.|
 |`space_quota`|String|Optional|The name of the space quota definition that is associated with the space.|
-|`managers`|Set|Optional|The email addresses (associated with IBMids) of the users to whom you want to give a manager role in this space. Users with the manager role can invite users, manage users, and enable features for the given space.|
-|`developers`|Set|Optional|The email addresses (associated with IBMids) of the users to whom you want to give a developer role in this space. Users with the developer role can create apps and services, manage apps and services, and see logs and reports in the given space.|
-|`auditors`|Set|Optional| The email addresses (associated with IBMids) of the users to whom you want to give an auditor role in this space. Users with the auditor role can view logs, reports, and settings in the given space.  |
+|`managers`|Set|Optional|The email addresses (associated with IBM IDs) of the users to whom you want to give a manager role in this space. Users with the manager role can invite users, manage users, and enable features for the given space.|
+|`developers`|Set|Optional|The email addresses (associated with IBM IDs) of the users to whom you want to give a developer role in this space. Users with the developer role can create apps and services, manage apps and services, and see logs and reports in the given space.|
+|`auditors`|Set|Optional| The email addresses (associated with IBM IDs) of the users to whom you want to give an auditor role in this space. Users with the auditor role can view logs, reports, and settings in the given space.  |
 |`tags`|Array of strings|Optional|The tags that you want to add to the space. Tags can help you find the space more easily later. |
 {: caption="Table. Available input parameters" caption-side="top"}
 
