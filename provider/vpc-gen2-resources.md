@@ -596,6 +596,16 @@ terraform import ibm_is_instance_group.instance_group r006-14140f94-fcc4-11e9-96
 ```
 {: pre}
 
+### Timeouts
+{: #is-instance-group-timeout}
+
+The following timeouts are defined for this resource. 
+{: shortdesc}
+
+- **create**: The creation of the instance group is considered `failed` if no response is received for 15 minutes.
+- **delete**: The deletion of the instance group is considered `failed` if no response is received for 15 minutes.
+- **update**: The creation of the instance group is considered `failed` if no response is received for 10 minutes. 
+
 ## `ibm_is_instance_group_manager`
 {: #vpc-is-instance-grp-manager}
 
@@ -1302,6 +1312,16 @@ The resource can be imported by using the ID. The ID is composed of `<lb_ID>/<li
 terraform import ibm_is_lb_listener_policy.example <lb_ID>/<listener_ID>/<policy_ID>
 ```
 {: pre}
+
+### Timeouts
+{: #listener-policy-timeout}
+
+The following timeouts are defined for this resource. 
+{: shortdesc}
+
+- **create**: The creation of the load balancer listener policy is considered `failed` if no response is received for 10 minutes. 
+- **delete**: The deletion of the load balancer listener policy is considered `failed` if no response is received for 10 minutes.
+- **update**: The creation of the load balancer listener policy is considered `failed` if no response is received for 10 minutes. 
 
 ## `ibm_is_lb_listener_policy_rule`
 {: #lb-listener-policy-rule}

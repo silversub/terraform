@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-25"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -147,9 +147,10 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       
       Example output: 
       ```
-      2018/09/25 17:30:14 {{site.data.keyword.cloud_notm}} Provider version 0.11.3  fdc4aa0f0547177f3ea8b14c7a58a849e240f64a
+      2020/09/25 20:48:22 IBM Cloud Provider version 1.12.0
       This binary is a plugin. These are not meant to be executed directly.
-      Please execute the program that consumes these plugins, which loads any plugins automatically
+      Please execute the program that consumes these plugins, which will
+      load any plugins automatically
       ```
       {: screen}
 
