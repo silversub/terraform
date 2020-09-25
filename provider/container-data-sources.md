@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-23"
+lastupdated: "2020-09-25"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -48,13 +48,13 @@ Before you start working with your data source, make sure to review the [require
 ## `ibm_container_addons`
 {: #container-addons}
 
-Retrieve information about all the addons that are enables on a cluster.
+Retrieve information about all the add-ons that are enables on a cluster.
 {: shortdesc}
 
 ### Sample Terraform code
 {: #container-addon-sample}
 
-The following example retrieves information of an addons.
+The following example retrieves information of an add-ons.
 
 ```
 data "ibm_container_addons" "addons" {
@@ -80,19 +80,19 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-| `addons` | String | The details of an enabled addons. |
-| `addons.name` | String | The addon name such as `istio`. |
-| `addons.version` | String | The addon version. Omit the version, if you need to use the default version. |
-| `addons.allowed_upgrade_versions` | String | The versions that the addon is upgraded to.|
-| `addons.deprecated` | String | Determines if the addon version is deprecated.|
-| `addons.health_state` | String | The health state of an addon, such as critical or pending. |
-| `addons.health_status` | String | The health status of an addon, provides a description of the state in the form of error message.|
-| `addons.min_kube_version` | String | The minimum Kubernetes version of the addon. |
-| `addons.min_ocp_version` | String | The minimum OpenShift version of the addon. |
-| `addons.supported_kube_range` | String | The supported Kubernetes version range of the addon. |
-| `addons.target_version`| String | The addon target version. |
+| `addons` | String | The details of an enabled add-ons. |
+| `addons.name` | String | The add-on name such as `istio`. |
+| `addons.version` | String | The add-on version. Omit the version, if you need to use the default version. |
+| `addons.allowed_upgrade_versions` | String | The versions that the add-on is upgraded to.|
+| `addons.deprecated` | String | Determines if the add-on version is deprecated.|
+| `addons.health_state` | String | The health state of an add-on, such as critical or pending. |
+| `addons.health_status` | String | The health status of an add-on, provides a description of the state in the form of error message.|
+| `addons.min_kube_version` | String | The minimum Kubernetes version of the add-on. |
+| `addons.min_ocp_version` | String | The minimum OpenShift version of the add-on. |
+| `addons.supported_kube_range` | String | The supported Kubernetes version range of the add-on. |
+| `addons.target_version`| String | The add-on target version. |
 | `addons.vlan_spanning_required`| String | The VLAN spanning required for multi-zone clusters.|
-| `id` | String | The ID of an addons. |
+| `id` | String | The ID of an add-ons. |
 
 
 ## `ibm_container_alb`

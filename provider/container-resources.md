@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21" 
+lastupdated: "2020-09-25" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -48,7 +48,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_container_addons`
 {: #container-addon}
 
-Enable, update or disable a single addon or a set of addons.
+Enable, update or disable a single add-on or a set of add-ons.
 {: shortdesc}
 
 ### Sample Terraform code
@@ -74,9 +74,9 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `cluster` | String | Required | The name or ID of the cluster. |
-| `addons` | Set | Required | Set of addons that needs to be enabled. |
-| `addons.name` | String | Optional | The addon name such as `istio`.|
-| `addons.version`| String | Optional | The addon version. Omit the version that you want to use as the default version.This is required when you want to update the addon to specified version. |
+| `addons` | Set | Required | Set of add-ons that needs to be enabled. |
+| `addons.name` | String | Optional | The add-on name such as `istio`.|
+| `addons.version`| String | Optional | The add-on version. Omit the version that you want to use as the default version.This is required when you want to update the add-on to specified version. |
 
 ### Output parameters
 {: #container-addon-output}
@@ -86,17 +86,17 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
-| `addons` | String | The details of an enabled addons. |
-| `addons.allowed_upgrade_versions` | String | The versions that the addon is upgraded to.|
-| `addons.deprecated` | String | Determines if the addon version is deprecated.|
-| `addons.health_state` | String | The health state of an addon, such as critical or pending. |
-| `addons.health_status` | String | The health status of an addon, provides a description of the state in the form of error message.|
-| `addons.min_kube_version` | String | The minimum Kubernetes version of the addon. |
-| `addons.min_ocp_version` | String | The minimum OpenShift version of the addon. |
-| `addons.supported_kube_range` | String | The supported Kubernetes version range of the addon. |
-| `addons.target_version`| String | The addon target version. |
+| `addons` | String | The details of an enabled add-ons. |
+| `addons.allowed_upgrade_versions` | String | The versions that the add-on is upgraded to.|
+| `addons.deprecated` | String | Determines if the add-on version is deprecated.|
+| `addons.health_state` | String | The health state of an add-on, such as critical or pending. |
+| `addons.health_status` | String | The health status of an add-on, provides a description of the state in the form of error message.|
+| `addons.min_kube_version` | String | The minimum Kubernetes version of the add-on. |
+| `addons.min_ocp_version` | String | The minimum OpenShift version of the add-on. |
+| `addons.supported_kube_range` | String | The supported Kubernetes version range of the add-on. |
+| `addons.target_version`| String | The add-on target version. |
 | `addons.vlan_spanning_required`| String | The VLAN spanning required for multi-zone clusters.|
-| `id` | String | The Id of the addons. |
+| `id` | String | The Id of the add-ons. |
 
 
 ### Timeouts
@@ -105,8 +105,8 @@ Review the output parameters that you can access after your resource is created.
 The following timeouts are defined for this resource. 
 {: shortdesc}
 
-* **Create** The enablement of the addons is considered `failed` if no response is received for 20 minutes.
-* **Update** The enablement of the addons is considered `failed` if no response is received for 20 minutes.
+* **Create** The enablement of the add-ons is considered `failed` if no response is received for 20 minutes.
+* **Update** The enablement of the add-ons is considered `failed` if no response is received for 20 minutes.
 
 ## `ibm_container_alb`
 {: #container-alb}
@@ -199,7 +199,8 @@ Review the input parameters that you can specify for your resource.
 ### Output parameters
 {: #container-alb-cert-output}
 
-Review the output parameters that you can access after your resource is created. {: shortdesc}
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
@@ -272,7 +273,8 @@ Review the input parameters that you can specify for your resource.
 ### Output parameters
 {: #container-bind-output}
 
-Review the output parameters that you can access after your resource is created. {: shortdesc}
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
 
 | Output parameter | Data type | Description |
 | ------------ |-------------| -------------- |
@@ -342,7 +344,7 @@ resource "ibm_container_cluster" "testacc_cluster" {
 
 #### Creating Kubernetes cluster
 
-Create the Kubernetes cluster with a default worker pool with 2 workers and one standalone worker as mentioned by worker number.
+Create the Kubernetes cluster with a default worker pool with 2 workers and one stand-alone worker as mentioned by worker number.
 {: shortdesc}
 
 ```
@@ -578,7 +580,7 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 ### Input parameters
 {: #container-cluster-input}
 
-	Review the input parameters that you can specify for your resource. 
+Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
 | Input parameter | Data type | Required / optional | Description | Forces new resource |
@@ -616,7 +618,8 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
 ### Output parameters
 {: #container-cluster-output}
 
-Review the output parameters that you can access after your resource is created. {: shortdesc}
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
 
 | Output parameter | Data type | Description |
 | ------------ |-------------| -------------- |
@@ -800,7 +803,8 @@ Review the input parameters that you can specify for your resource.
 ### Output parameters
 {: #container-feature-output}
 
-Review the output parameters that you can access after your resource is created. {: shortdesc}
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
 
 | Output parameter | Data type | Description |
 | ------------ |-------------| -------------- |
@@ -1213,7 +1217,7 @@ Review the input parameters that you can specify for your resource.
 |`kms_config.instance_id`|List|Optional|The GUID of the Key Protect instance.| No |
 |`kms_config.crk_id`|List|Optional|The ID of the customer root key (CRK).| No |
 |`kms_config.private_endpoint`|Boolean|Optional|Set `true` to configure the KMS private service endpoint. Default value is `false`.| No |
-|`entitlement`|String|Optional|The {{site.data.keyword.openshiftshort}} cluster entitlement avoids the OCP licence charges incurred. Use Cloud Pak with OCP Licence entitlement to create the {{site.data.keyword.openshiftshort}}cluster. **NOTE** <ul><li> It is set only the first time creation of the cluster, further modifications are not impacted. </li></ul> <ul><li> Set this argument to `cloud_pak` only if you use the cluster with a Cloud Pak that has an {{site.data.keyword.openshiftshort}} entitlement.</li></ul>| No |
+|`entitlement`|String|Optional|The {{site.data.keyword.openshiftshort}} cluster entitlement avoids the OCP license charges incurred. Use Cloud Pak with OCP Licence entitlement to create the {{site.data.keyword.openshiftshort}}cluster. **NOTE** <ul><li> It is set only the first time creation of the cluster, further modifications are not impacted. </li></ul> <ul><li> Set this argument to `cloud_pak` only if you use the cluster with a Cloud Pak that has an {{site.data.keyword.openshiftshort}} entitlement.</li></ul>| No |
 | `force_delete_storage`|Boolean|Optional|If set to `true`,force the removal of persistent storage associated with the cluster during cluster deletion. Default value is `false`. **NOTE** If `force_delete_storage` parameter is used after provisioning the cluster, then, you need to execute `terraform apply` before `terraform destroy` for `force_delete_storage` parameter to take effect. | No |
 
 **Note**

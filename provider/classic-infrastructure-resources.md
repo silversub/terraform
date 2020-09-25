@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-22"
+lastupdated: "2020-09-25"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -1784,13 +1784,13 @@ The following attributes are exported:
 ## `ibm_ipsec_vpn`
 {: #ipsec-vpn}
 
-Create, update, or delete an IPSecVPN resource.
+Create, update, or delete an IPSec VPN resource.
 {: shortdesc}
 
 ### Sample Terraform code
 {: #ipsec-vpn-sample}
 
-The following example creates an IPSecVPN resource. 
+The following example creates an IPSec VPN resource. 
 {: shortdesc}
 
 ```
@@ -1811,12 +1811,12 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
-|`datacenter`|String|Required|The data center in which the IPSecVPN resides.|
+|`datacenter`|String|Required|The data center in which the IPSec VPN resides.|
 |`phase_one`|Map|Optional|The key-value parameters for phase One negotiation.|
 |`phase_two`|Map|Optional|The key-value parameters for phase Two negotiation.|
 |`address_translation`|Map|Optional|The key-value parameters for creating an address translation.|
 |`Preshared_Key`|String|Optional|A key used so that peers authenticate each other. This key is hashed by using the phase one encryption and phase one authentication.|
-|`Customer_Peer_IP`|String|Optional|The remote end of a network tunnel. This end of the network tunnel resides on an outside network and be sending and receiving the IPsec packets.
+|`Customer_Peer_IP`|String|Optional|The remote end of a network tunnel. This end of the network tunnel resides on an outside network and be sending and receiving the IPSec packets.
 |`internal_subnet_id`|Map|Optional|The ID of the network device on which the VPN configurations have to be applied. When a private subnet is associated, the network tunnel will allow the customer (remote) network to access the private subnet.|
 |`remote_subnet_id`|Map|Optional|The ID of the customer owned device on which the network configuration has to be applied. When a remote subnet is associated, a network tunnel allows the customer (remote) network to communicate with the private and service subnets on the SoftLayer network which are on the other end of this network tunnel.
 |`remote_subnet`|Map|Optional|The key-value parameters for creating a customer subnet.|
@@ -1830,8 +1830,8 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String|The computed ID of the IPSecVPN device that is created. |
-|`name`|String|The computed name of the IPSecVPN device that is created.|
+|`id`|String|The computed ID of the IPSec VPN device that is created. |
+|`name`|String|The computed name of the IPSec VPN device that is created.|
 |`internal_peer_ip_address`|String|The local end of a network tunnel. This end of the network tunnel resides on the SoftLayer networks and allows access to remote end of the tunnel to subnets on SoftLayer networks.|
  
 
@@ -3207,12 +3207,12 @@ The following attributes are exported:
 ## `ibm_storage_evault`
 {: #storage-evault}
 
-Provides an Evault storage resource. This allows [IBM Cloud Backup](/docs/Backup?topic=Backup-getting-started) storage to be created, updated, and deleted.
+Provides an EVault  storage resource. This allows [IBM Cloud Backup](/docs/Backup?topic=Backup-getting-started) storage to be created, updated, and deleted.
 
 ### Sample Terraform code
 {: #storage-evault-sample}
 
-In the following example, you can create 20G of Evault storage.
+In the following example, you can create 20G of EVault  storage.
 
 ```
 resource "ibm_storage_evault" "test" {
@@ -3229,11 +3229,11 @@ The following arguments are supported:
 
 |Name| Data type | Required / optional | Description | Forces new resource |
 |----|-----------| ------ | ----- | ----------|
-|`datacenter`| String | Required |The data center where you want to provision the Evault storage instance.| Yes |
+|`datacenter`| String | Required |The data center where you want to provision the EVault  storage instance.| Yes |
 |`capacity`| Integer | Required | The amount of storage capacity you want to allocate, specified in gigabytes.| No |
 |`virtual_instance_id`| Integer | Optional | The ID of the virtual instance.     **NOTE**: Conflicts with `hardware_instance_id`.| Yes |
 |`hardware_instance_id`| Integer | Optional | The ID of the hardware instance.     **NOTE**: Conflicts with `virtual_instance_id`.| Yes |
-|`tags`| Array of strings | Optional | Tags associated with the storage Evault instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
+|`tags`| Array of strings | Optional | Tags associated with the storage EVault  instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3243,10 +3243,10 @@ The following attributes are exported:
 
 |Name|Description|
 |----|-----------|
-|`id`|The unique identifier of the Evault.|
-|`username`|The username of the Evault.|
-|`password`|The password of the Evault.|
-|`service_resource_name`|The name of an Evault storage network resource.|
+|`id`|The unique identifier of the EVault .|
+|`username`|The username of the EVault .|
+|`password`|The password of the EVault .|
+|`service_resource_name`|The name of an EVault  storage network resource.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
