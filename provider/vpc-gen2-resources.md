@@ -678,7 +678,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|Optional|The name of the instance group manager.|
-|`enable_manager`|Boolean|Optional| Enable or disbale the instance group manager. Default value is `true`. |
+|`enable_manager`|Boolean|Optional| Enable or disable the instance group manager. Default value is `true`. |
 |`instance_group`|String|Required|The instance group ID where instance group manager is created. |
 |`manager_type`|String|Optional|The type of instance group manager. Default value is `autoscale`. |
 |`aggregation_window`|Integer|Optional|The time window in seconds to aggregate metrics prior to evaluation. |
@@ -820,7 +820,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #instance-group-manager-policy-import}
 
-`ibm_is_instance_group_manager_policy` can be imported by using instance group ID, insatnce group manager ID and instance group manager policy ID.
+`ibm_is_instance_group_manager_policy` can be imported by using instance group ID, instance group manager ID and instance group manager policy ID.
 
 ```
 terraform import ibm_is_instance_group_manager_policy.policy r006-eea6b0b7-babd-47a8-82c5-ad73d1e10bef/r006-160b9a68-58c8-4ec3-84b0-ad553ccb1e5a/r006-94d99d1d-be65-4939-9006-1a1a767245b5

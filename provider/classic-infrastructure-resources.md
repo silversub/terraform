@@ -2253,7 +2253,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancers. This allows VPX load balancers to be created, updated, and deleted.  
 
-**NOTE**: IBM VPX load balancers consist of Citrix NetscalerVPX devices (virtual), which are currently priced on a per-month basis. Use caution when creating the resource because the cost for an entire month is incurred immediately upon creation. For more information about pricing, see the [network appliance Docs ](https://www.ibm.com/cloud/network-appliances). In the Citrix log, click **See more pricing** for a current price matrix.
+**NOTE**: IBM VPX load balancers consist of `Citrix NetscalerVPX` devices (virtual), which are currently priced on a per-month basis. Use caution when creating the resource because the cost for an entire month is incurred immediately upon creation. For more information about pricing, see the [network appliance Docs ](https://www.ibm.com/cloud/network-appliances). In the Citrix log, click **See more pricing** for a current price matrix.
 
 You can also use the following REST URL to get a listing of VPX choices along with version numbers, speed, and plan type:
 
@@ -2318,11 +2318,11 @@ The following attributes are exported:
 ## `ibm_lb_vpx_ha`
 {: #lb-vpx-ha}
 
-Configure a high availability (HA) pair with two NetscalerVPX devices. The two NetscalerVPXs must be version 10.5 and located in the same subnet. A primary NetscalerVPX provides load-balancing services in active mode, and a secondary NetscalerVPX provides load-balancing services when the primary NetscalerVPX fails. For more information, refer to the  [Citrix support Docs  ](https://support.citrix.com/article/CTX116748){: external} and the [Knowledge layer Netscaler Docs ](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
+Configure a high availability (HA) pair with two `NetscalerVPX` devices. The two NetscalerVPXs must be version 10.5 and located in the same subnet. A primary `NetscalerVPX` provides load-balancing services in active mode, and a secondary `NetscalerVPX` provides load-balancing services when the primary `NetscalerVPX` fails. For more information, refer to the  [Citrix support Docs  ](https://support.citrix.com/article/CTX116748){: external} and the [Knowledge layer Netscaler Docs ](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
 
 **NOTE**: This resource only supports Netscaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
-The two Netscaler VPXs use the same password in HA mode. When you create this resource, Terraform changes the password of the secondary Netscaler VPX to the password of the primary Netscaler VPX. When you destroy this resource, Terraform restores the original password of the secondary Netscaler VPX.
+The two NetscalerVPXs use the same password in HA mode. When you create this resource, Terraform changes the password of the secondary Netscaler VPX to the password of the primary Netscaler VPX. When you destroy this resource, Terraform restores the original password of the secondary Netscaler VPX.
 
 ### Sample Terraform code
 {: #lb-vpx-ha-sample}
@@ -2352,7 +2352,7 @@ resource "ibm_lb_vpx" "test_sec" {
     private_subnet = ibm_lb_vpx.test_pri.private_subnet
 
 
-## Configure high availability with the primary and secondary Netscaler VPXs
+## Configure high availability with the primary and secondary `NetscalerVPXs`
 resource "ibm_lb_vpx_ha" "test_ha" {
     primary_id = ibm_lb_vpx.test_pri.id
     secondary_id = ibm_lb_vpx.test_sec.id
@@ -2369,7 +2369,7 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`primary_id`| String | Required | The ID of the primary Netscaler VPX.| Yes |
 |`secondary_id`| String | Required | The ID of the secondary Netscaler VPX.| Yes |
-|`stay_secondary`|Boolean | Optional | Specifies whether the secondary Netscaler VPX will  take over the service. Set this argument to `true` to prevent the secondary NetScaler VPX from taking over the service even if the primary Netscaler VPX fails. For more information, see the [Citrix NetScaler Docs ](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support Docs  ](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
+|`stay_secondary`|Boolean | Optional | Specifies whether the secondary Netscaler VPX will  take over the service. Set this argument to `true` to prevent the secondary Netscaler VPX from taking over the service even if the primary Netscaler VPX fails. For more information, see the [Citrix Netscaler Docs ](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support Docs  ](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
 |`tags`|Array of strings | Optional | Tags associated with the high availability Netscaler VPX pair instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2850,7 +2850,7 @@ The following arguments are supported:
 
 |Name| Data type | Required / optional | Description |
 |----|-----------| ------ | ----- |
-|`routes_to`| String | Required | The destination IP address that the public IP routes traffic through. The destination IP address can be a public IP address of IBM resources in the same account, such as a public IP address of a VM or public virtual IP addresses of Netscaler VPXs.|
+|`routes_to`| String | Required | The destination IP address that the public IP routes traffic through. The destination IP address can be a public IP address of IBM resources in the same account, such as a public IP address of a VM or public virtual IP addresses of `NetscalerVPXs`.|
 |`notes`| String | Optional | Descriptive text to associate with the public IP instance.|
 |`tags`| Array of strings | Optional | Tags associated with the public IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -3382,7 +3382,7 @@ public portable subnets, private portable subnets, and public static subnets wit
 The portable IPv4 subnet is created as a secondary subnet on a VLAN. IP addresses in the portable subnet can be assigned as secondary IP 
 addresses for IBM resources in the VLAN. Because each portable subnet has a default gateway IP address, network IP address, and broadcast IP address, the number of usable IP addresses is `capacity` - 3. A `capacity` of 4 means that the number of usable IP addresses is 1; a `capacity` of 8 means that the number of usable IP addresses is 5. For example, consider a portable subnet of `10.0.0.0/30` that has `10.0.0.1` as a default gateway IP address, `10.0.0.0` as a network IP address, and `10.0.0.3` as a broadcast IP address. Only `10.0.0.2` can be assigned to IBM resources as a secondary IP address. 
 
-The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, Bare Metal servers, and Netscaler VPXs. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
+The static IPv4 subnet provides secondary IP addresses for primary IP addresses. It provides secondary IP addresses for IBM resources such as virtual servers, Bare Metal servers, and `NetscalerVPXs`. Consider a virtual server that requires secondary IP addresses. Users can create a static subnet on the public IP address of the virtual server. Unlike the portable subnet, the number of usable IP addresses for the static subnet is the same as the value of `capacity`. For example, when a static subnet of `10.0.0.0/30` has a `capacity` of 4, then four IP addresses (10.0.0.0 - 10.0.0.3) can be used as secondary IP addresses. 
 
 Both the public portable IPv6 subnet and the public static IP only accept `64` as a value for the `capacity` attribute. They provide 2^64 IP addresses. For more detail, refer to [IPv6 address](/docs/subnets?topic=subnets-about-subnets-and-ips).
 
@@ -3469,7 +3469,7 @@ The following arguments are supported:
 |`ip_version`| Integer | Optional | The IP version of the subnet. Accepted values are 4 and 6.| Yes |
 |`capacity`| Integer | Required | The size of the subnet. <ul><li>Accepted values for a public portable IPv4 subnet are 4, 8, 16, and 32. </li><li> Accepted values for a private portable IPv4 subnet are 4, 8, 16, 32, and 64. </li><li>Accepted values for a public static IPv4 subnet are 1, 2, 4, 8, 16, and 32. </li><li>Accepted value for a public portable IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided. </li><li>Accepted value for a public static IPv6 subnet is 64. A /64 block is created and 2^64 IP addresses are provided.</li></ul>| Yes |
 |`vlan_id`| Integer | Optional | The VLAN ID for portable subnet. You can configure both public and private VLAN ID. You can find accepted values in the [SoftLayer VLAN documentation](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want and noting the ID in the resulting URL. You can also refer to a VLAN name by using a data source.| Yes |
-|`endpoint_ip`| String | Optional | The target primary IP address for a static subnet. Only public IP addresses of virtual servers, Bare Metal servers, and Netscaler VPXs can be configured as an `endpoint_ip`. The `static subnet` will be created on the VLAN where the `endpoint_ip` is located.| Yes |
+|`endpoint_ip`| String | Optional | The target primary IP address for a static subnet. Only public IP addresses of virtual servers, Bare Metal servers, and `NetscalerVPXs` can be configured as an `endpoint_ip`. The `static subnet` will be created on the VLAN where the `endpoint_ip` is located.| Yes |
 |`notes`| String | Optional | Descriptive text or comments about the subnet.| No |
 |`tags`| Array of Strings | Optional |  Tags associated with the subnet instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -3482,7 +3482,7 @@ The following attributes are exported:
 |Name|Description|
 |----|-----------|
 |`id`|The unique identifier of the subnet.|
-|`subnet_cidr`|The IP address/cidr format (ex. 10.10.10.10/28), which you can use to get an available IP address in `subnet`.|
+|`subnet_cidr`|The IP address / CIDR format (ex. 10.10.10.10/28), which you can use to get an available IP address in `subnet`.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 

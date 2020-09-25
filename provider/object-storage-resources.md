@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-25"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cos bucket, terraform get object storage resources
 
@@ -210,7 +210,7 @@ Review the output parameters that you can access after your resource is created.
 
 The `ibm_cos_bucket` resource can be imported by using the `id`. The ID is formed from the `CRN` (Cloud Resource Name), the `bucket type` which must be `ssl` for single_site_location, `rl` for region_location or `crl` for cross_region_location, and the bucket location. The `CRN` and bucket location can be found on the portal.
 
-id = $CRN:meta:$buckettype:$bucketlocation
+id = `$CRN:meta:$buckettype:$bucketlocation`
 
 
 ```

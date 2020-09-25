@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-09-25"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -221,7 +221,7 @@ terraform init
 |Resource controller|`IBMCLOUD_RESOURCE_CONTROLLER_API_ENDPOINT`|`https://resource-controller.test.cloud.ibm.com`|
 |Resource catalog|`IBMCLOUD_RESOURCE_CATALOG_API_ENDPOINT`|`https://globalcatalog.test.cloud.ibm.com`|
 |Schematics|`IBMCLOUD_SCHEMATICS_API_ENDPOINT`|`https://schematics.test.cloud.ibm.com`|
-|Transist Gateway|`IBMCLOUD_TG_API_ENDPOINT`| `https://transit.test.cloud.ibm.com/v1`|
+|Transit Gateway|`IBMCLOUD_TG_API_ENDPOINT`| `https://transit.test.cloud.ibm.com/v1`|
 |UAA|`IBMCLOUD_UAA_ENDPOINT`|`https://login.stage1.ng.bluemix.net/UAALoginServerWAR`|
 |User management|`IBMCLOUD_USER_MANAGEMENT_ENDPOINT`|`https://user-management.test.cloud.ibm.co`|
 |VPC Gen1|`IBMCLOUD_IS_API_ENDPOINT`|`https://us-south-stage01.iaasdev.cloud.ibm.com`|

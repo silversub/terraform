@@ -193,9 +193,9 @@ Review the input parameters that you can specify for your resource.
 |`users`|List of objects|Optional|A list of users that you want to create on the database. Multiple blocks are allowed. | No |
 |`users.name`|String|Optional|The user ID to add to the database instance. The user ID must be in the range 5 - 32 characters.| No |
 |`users.password`|String|Optional|The password for the user ID. The password must be in the range 10 - 32 characters.| No |
-|`whitelist`|List of objects|Optional|A list of IP addresses to whitelist for the database. Multiple blocks are allowed. | No |
+|`whitelist`|List of objects|Optional|A list of allowed IP addresses for the database. Multiple blocks are allowed. | No |
 |`whitelist.address`|String|Optional|The IP address or range of database client addresses to be whitelisted in CIDR format. Example, `172.168.1.2/32`.| No |
-|`whitelist.description`|String|Optional|A description for the whitelist range. | No |
+|`whitelist.description`|String|Optional|A description for the allowed IP addresses range. | No |
 |`guid`|String|Optional|The unique identifier of the database instance.| No |
 |`auto_scaling`|List|Optional|Configure rules to allow your database to automatically increase its resources. Single block of autoscaling is allowed at once.|No|
 |`auto_scaling.cpu`|List|Optional|Single block of CPU is allowed at once by CPU autoscaling.|No|

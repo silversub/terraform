@@ -711,7 +711,8 @@ Review the input parameters that you can specify for your resource.
 ### Output parameters
 {: #container-cluster-feature-output}
 
-Review the output parameters that you can access after your resource is created. {: shortdesc}
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
 
 | Output parameter | Data type | Description |
 | ------------ |-------------| -------------- |
