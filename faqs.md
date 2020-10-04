@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-10-04"
 
 keywords: terraform faqs, softlayer, iaas
 
@@ -94,5 +94,42 @@ If the Terraform operation does not complete due to a timeout, wait for the reso
 </tr>
 </tbody>
 </table>
-  
-  
+
+## How do I setup IBM Terraform provider for Terraform version 0.13.0?
+{: #ibm-terraform-provider-v13}
+{: faq}
+
+Complete the following steps can be used in IBM Terraform provider to support Terraform version 0.13.0:
+
+1. From the HashiCorp site, [download version 0.13.x](https://releases.hashicorp.com/terraform/0.13.0/)
+2. Include the shared Terraform block in the `providers.tf` file.
+
+  **Syntax**
+
+  ```
+  terraform {
+    required_providers {
+      ibm = {
+        source = "IBM-Cloud/ibm"
+        version = "<provider version>"
+       }
+     }
+   }
+  ```
+
+  **Example**
+
+  ```
+  terraform {
+    required_providers {
+      ibm = {
+        source = "IBM-Cloud/ibm"
+        version = "0.13.0"
+       }
+     }
+   }
+  ```
+3. If you are using terraform modules, the shared Terraform block to be used in all the module folders that is been used.
+
+Detailed steps in the IBM Terraform getting start documentation will be published shortly.
+{: note}
