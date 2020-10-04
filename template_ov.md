@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-10-04"
 
 keywords: terraform templates, schematics template
 
@@ -37,11 +37,25 @@ subcollection: terraform
 
 
 
-# Sample Terraform templates for IBM Cloud
+# Sample Terraform templates and deploy to {{site.data.keyword.bplong_notm}}
 {: #sample_terraformtemplates}
 
 All Terraform templates use the Terraform version 0.12 format.
 {: note}
+
+The sample Terraform templates and deploy to IBM Cloud button is an efficient way to access the templates and experience to deploy the {{site.data.keyword.bplong_notm}} to create workspace. When you click the deploy to {{site.data.keyword.bplong_notm}} link, the workspace is created.
+
+When you click the button, these actions occur:
+
+  1. If the person does not have an active IBM Cloud account, they must create an account. They can create a trial account or a real account.
+
+  2. The person can select a region, resource group (available in the Dallas, Washington, London, Frankfurt, and Tokyo regions) or organization and space (available in the Dallas, London, and Frankfurt regions), and app name by clicking the deploy to {{site.data.keyword.bplong_notm}} link.
+
+  3. The app deploys and creates a workspace in the IBM Cloud organization that you select.
+
+  4. To execute generate plan successfully, you need to configure the required variable configuration.
+
+
 
 ## API Gateway templates
 {: #api-gwy-template}
@@ -85,7 +99,6 @@ All Terraform templates use the Terraform version 0.12 format.
 	</table>
 
 
-
 ## Direct Link templates
 {: #dl-template}
 
@@ -103,7 +116,6 @@ All Terraform templates use the Terraform version 0.12 format.
   </tr>
   </tbody>
   </table>
-
 
 
 ## Identity & Access (IAM) templates
@@ -126,11 +138,8 @@ All Terraform templates use the Terraform version 0.12 format.
       <td>Create an access policy in IBM Cloud Identity and Access Management (IAM) to grant permissions for a resource group to a user.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_iam_user_policy</code></li></ul></td>
 	  <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-policy) <br> <br>[Deploy to {{site.data.keyword.bplong_notm}}](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-policy&terraform_version=terraform_v0.12)</td>
   </tr>
-  
   </tbody>
   </table>
-
-
 
 ## Key Management Service templates
 {: #kms-template}
@@ -150,4 +159,4 @@ All Terraform templates use the Terraform version 0.12 format.
   </tbody>
   </table>
 
-  
+
