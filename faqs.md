@@ -101,7 +101,7 @@ If the Terraform operation does not complete due to a timeout, wait for the reso
 
 Complete the following steps can be used in IBM Terraform provider to support Terraform version 0.13.0:
 
-1. From the HashiCorp site, [download version 0.13.x](https://releases.hashicorp.com/terraform/0.13.0/)
+1. From the HashiCorp site, [download version 0.13.x](https://releases.hashicorp.com/terraform/0.13.0/){: external}
 2. Include the shared Terraform block in the `providers.tf` file.
 
   **Syntax**
