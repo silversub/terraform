@@ -369,9 +369,9 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
+|`action_name`|String|Required|The action name of an edge functions action.|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
 |`domain_id`|String|Required|The ID of the domain to add the edge functions action.|
-|`action_name`|String|Required|The action name of an edge functions action.|
 |`script`|String|Required|The script of an edge functions action.|
 
 
@@ -391,7 +391,7 @@ Review the output parameters that you can access after your resource is created.
 The `ibm_cis_edge_functions_action` resource can be imported by using the ID. The ID is composed from an edge functions action name or script name, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character.
 {: shortdesc}
 
-The domain ID and CRN are located on the overview page of the Internet Services instance in the domain heading of the UI, or by using the {{site.data.keyword.cloud_notm}} cis CLI commands.
+The domain ID and CRN are located on the overview page of the Internet Services instance in the domain heading of the UI, or by using the {{site.data.keyword.cloud_notm}} CIS CLI commands.
 Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
 CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
 Edge functions action name or script name is a string: `sample_script`.
@@ -408,6 +408,81 @@ terraform import ibm_cis_edge_functions_action.test_action <action_name>:<domain
 
 ```
 terraform import ibm_cis_edge_functions_action.test_action sample_script:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
+## `ibm_cis_edge_functions_trigger`
+{: #cis-edge-functions-trigger}
+
+Create, update, or delete an edge functions trigger for a domain to include in your CIS edge functions trigger resource.
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis-edge-functions-trigger-sample}
+
+The example to add an edge functions trigger to the domain.
+
+```
+# Add a Edge Functions Trigger to the domain
+resource "ibm_cis_edge_functions_trigger" "test_trigger" {
+  cis_id      = ibm_cis_edge_functions_action.test_action.cis_id
+  domain_id   = ibm_cis_edge_functions_action.test_action.domain_id
+  action_name = ibm_cis_edge_functions_action.test_action.action_name
+  pattern_url = "example.com/*"
+}
+```
+{: pre}
+
+### Input parameters
+{: #cis-edge-functions-trigger-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`action_name`|String|Optional|An action name of the edge functions action on which the trigger associates. If it is not specified, then the trigger will be disabled.|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the domain to add the edge functions trigger.|
+|`pattern_url`|String|Required|The domain name pattern on which the edge function action trigger should be executed.|
+
+### Output parameters
+{: #cis-edge-functions-trigger-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`action_name`|String|An edge functions action Script name.|
+|`id`|String|The action ID with a combination of `<trigger_id>`,`<domain_id>`,`<cis_id>` attributes concatented withe `:`.|
+|`pattern_url`|String|The Route pattern. It is a domain name on which the action is performed.|
+|`request_limit_fail_open`|String|An action request limit fail open.|
+|`trigger_id`|String|The route ID of an action trigger.|
+
+### Import
+{: #cis-edge-functions-action-import}
+
+The `ibm_cis_edge_functions_trigger` resource can be imported by using the ID. The ID is composed from an edge functions trigger route ID, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character.
+{: shortdesc}
+
+The domain ID and CRN are located on the overview page of the Internet Services instance in the domain heading of the UI, or by using the {{site.data.keyword.cloud_notm}} CIS CLI commands.
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+Edge functions trigger route ID is a 32 digit character string of the form: `48996f0da6ed76251b475971b097205c`.
+{: note}
+
+**Syntax**
+
+```
+terraform import ibm_cis_edge_functions_trigger.test_trigger <trigger_id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_edge_functions_trigger.test_trigger 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
 ```
 {: pre}
 

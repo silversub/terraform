@@ -182,6 +182,50 @@ Review the output parameters that you can access after you retrieved your data s
 | `routes.request_limit_fail_open` | String | An action request limit fail open.|
 | `routes.trigger_id` | String | The Trigger ID of an action.|
 
+
+## `ibm_cis_edge_functions_triggers`
+{: #cis-edge-functions-triggers-ds}
+
+Retrieve information about an existing {{site.data.keyword.cis_full_notm}} edge function triggers resource.
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis-edge-functions-triggers-dssample}
+
+The following example retrieves information about an {{site.data.keyword.cis_full_notm}} edge function actions resource.
+{: shortdesc}
+
+```
+data "ibm_cis_edge_functions_triggers" "test_triggers" {
+    cis_id    = data.ibm_cis.cis.id
+    domain_id = data.ibm_cis_domain.cis_domain.domain_id
+}
+```
+
+### Input parameters
+{: #cis-edge-functions-triggers-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+| `domain_id` | String | Required | The ID of the domain to add an edge functions triggers. |
+| `cis_id` | String | Required | The ID of the {{site.data.keyword.cis_full_notm}} instance. |
+
+### Output parameters
+{: #cis-edge-functions-triggers-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+| `action_name` | String | An action script for execution.|
+| `pattern_url` | String | The Route pattern. It is a domain name in which the action is performed.|
+| `request_limit_fail_open` | String | An action request limit fail open.|
+| `trigger_id` | String | The route ID of an action trigger.|
+
 ## `ibm_cis_ip_addresses`
 {: #cis_ip}
 
