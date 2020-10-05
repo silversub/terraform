@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-05"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -339,6 +339,77 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 
 
 
+
+## `ibm_cis_edge_functions_action`
+{: #cis-edge-functions-action}
+
+Create, update, or delete an edge functions action for a domain to include in your CIS edge functions action resource.
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis-edge-functions-action-sample}
+
+The example to add an edge functions action to the domain.
+
+```
+# Add a Edge Functions Action to the domain
+resource "ibm_cis_edge_functions_action" "test_action" {
+  cis_id      = data.ibm_cis.cis.id
+  domain_id   = data.ibm_cis_domain.cis_domain.domain_id
+  action_name = "sample-script"
+  script      = file("./script.js")
+}
+```
+
+### Input parameters
+{: #cis-edge-functions-action-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the domain to add the edge functions action.|
+|`action_name`|String|Required|The action name of an edge functions action.|
+|`script`|String|Required|The script of an edge functions action.|
+
+
+### Output parameters
+{: #cis-edge-functions-action-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The action ID with a combination of `<action_name>`,`<domain_id>`,`<cis_id>` attributes concatented withe `:`.|
+
+### Import
+{: #cis-edge-functions-action-import}
+
+The `ibm_cis_edge_functions_action` resource can be imported by using the ID. The ID is composed from an edge functions action name or script name, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character.
+{: shortdesc}
+
+The domain ID and CRN are located on the overview page of the Internet Services instance in the domain heading of the UI, or by using the {{site.data.keyword.cloud_notm}} cis CLI commands.
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+Edge functions action name or script name is a string: `sample_script`.
+{: note}
+
+**Syntax**
+
+```
+terraform import ibm_cis_edge_functions_action.test_action <action_name>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_edge_functions_action.test_action sample_script:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
 
 ## `ibm_cis_firewall`
 {: #cis-firewall}

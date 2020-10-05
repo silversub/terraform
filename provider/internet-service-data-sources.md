@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-25"
+lastupdated: "2020-10-05"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -133,6 +133,54 @@ Review the output parameters that you can access after you retrieved your data s
 | `status` | String | The status of your domain. Valid values are `active`, `pending`, `initializing`, `moved`, `deleted`, and `deactivated`. After creation, the status remains pending until the DNS Registrar is updated with the CIS name servers, exported in the ‘name_servers’ variable. |
 | `name_servers` | String | The IBM CIS assigned name servers, to be passed by interpolation to the resource dns_domain_registration_nameservers. |
 | `original_name_servers` | String | The name servers from when the Domain was initially registered with the DNS Registrar.|
+
+## `ibm_cis_edge_functions_actions`
+{: #cis-edge-functions-actions-ds}
+
+Retrieve information about an existing {{site.data.keyword.cis_full_notm}} edge function actions resource.
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis-edge-functions-actions-dssample}
+
+The following example retrieves information about an {{site.data.keyword.cis_full_notm}} edge function actions resource.
+{: shortdesc}
+
+```
+data "ibm_cis_edge_functions_actions" "test_actions" {
+    cis_id    = data.ibm_cis.cis.id
+    domain_id = data.ibm_cis_domain.cis_domain.domain_id
+}
+```
+
+### Input parameters
+{: #cis-edge-functions-actions-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+| `domain_id` | String | Required | The ID of the domain to add an edge functions action. |
+| `cis_id` | String | Required | The ID of the {{site.data.keyword.cis_full_notm}} instance. |
+
+### Output parameters
+{: #cis-edge-functions-actions-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+| `created_on` | String | An action created date. |
+| `etag` | String | An action E-Tag. |
+| `handler` | String | An action handler methods.  |
+| `modified_on` | String | An action modified date. |
+| `routes` | String | An action route detail.|
+| `routes.action_name` | String | An action route detail.|
+| `routes.pattern_url` | String | The Route pattern. It is a domain name in which the action is performed.|
+| `routes.request_limit_fail_open` | String | An action request limit fail open.|
+| `routes.trigger_id` | String | The Trigger ID of an action.|
 
 ## `ibm_cis_ip_addresses`
 {: #cis_ip}

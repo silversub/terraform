@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-23"
+lastupdated: "2020-10-05"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -827,6 +827,114 @@ Review the output parameters that you can access after you retrieve your data so
 | `status` | String | The status of load balancer.|
 | `tags` | String | The tags associated with the load balancer. |
 | `type` | String | The type of the load balancer. |
+
+
+
+
+
+
+## `ibm_is_lbs`
+{: #ibm-is-lbs}
+
+Import the details of an existing IBM VPC Load Balancers as a read only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #ibm-is-lbs-sample}
+
+The following example shows how you can declare the data. 
+{: shortdesc}
+
+```
+data "ibm_is_lbs" "ds_lbs" {
+ }
+```
+
+### Input parameters
+{: #ibm-is-lbs-dsinput}
+
+There is no input parameters for bim-is-lbs data source. 
+{: shortdesc}
+
+
+### Output parameters
+{: #ibm-is-lbs-dsoutput}
+
+Review the output parameters that you can access after you retrieve your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`load_balancers`|String|The Collection of load balancers.|
+|`loadbalancers.id`|String|The unique identifier of the load balancer.|
+|`loadbalancers.created_at`|String|The date and time this load balancer was created.|
+|`loadbalancers.crn`|String|The load balancer's CRN.|
+|`loadbalancers.name`|String|Name of the loadbalancer.|
+|`loadbalancers.subnets`|String|The subnets this load balancer is part of.|
+|`loadbalancers.subnets.crn`|String|The CRN for the subnet.|
+|`loadbalancers.subnets.id`|String|The unique identifier for this subnet.|
+|`loadbalancers.subnets.href`|String|The URL for this subnet.|
+|`loadbalancers.subnets.name`|String|The user-defined name for this subnet.|
+|`loadbalancers.hostname`|String|The Fully qualified domain name assigned to this load balancer.|
+|`loadbalancers.listeners`|String|The listeners of this load balancer.|
+|`loadbalancers.listeners.id`|String|The unique identifier for this load balancer listener.|
+|`loadbalancers.listeners.href`|String|The listener's canonical URL.|
+|`loadbalancers.operating_status`|String|The operating status of this load balancer.|
+|`loadbalancers.pools`|String|The pools of this load balancer.|
+|`loadbalancers.pools.href`|String|The pool's canonical URL.|
+|`loadbalancers.pools.id`|String|The unique identifier for this load balancer pool.|
+|`loadbalancers.pools.name`|String|The user-defined name for this load balancer pool.|
+|`loadbalancers.profile`|String|The profile to use for this load balancer.|
+|`loadbalancers.profile.family`|String|The product family this load balancer profile belongs to.|
+|`loadbalancers.profile.href`|String|The URL for this load balancer profile.|
+|`loadbalancers.profile.name`|String|The name for this load balancer profile.|
+|`loadbalancers.private_ips`|String|The private IP addresses assigned to this load balancer.|
+|`loadbalancers.provisioning_status`|String|The provisioning status of this load balancer. Possible values are: **active**, **create_pending**, **delete_pending**, **failed**, **maintenance_pending**, **update_pending**|
+|`loadbalancers.public_ips`|String|The public IP addresses assigned to this load balancer.|
+|`loadbalancers.resource_group`|String|The resource group where the load balancer is created.|
+|`loadbalancers.status`|String|The status of the load balancers.|
+|`loadbalancers.type`|String|The type of the load balancer.|
+|`loadbalancers.tags`|String|Tags associated with the load balancer.|
+
+
+
+
+
+
+## `ibm_is_lb_profiles`
+{: #ibm-is-lb-profiles}
+
+Retrieve information of an existing {{site.data.keyword.cloud_notm}} Infrastructure load balancer profiles.
+{: shortdesc}
+
+### Sample Terraform code
+{: #ibm-is-lb-profiles-sample}
+
+```
+
+data "ibm_is_lb_profiles" "ds_lb_profiles" {
+}
+
+```
+
+### Input parameters
+{: #ibm-is-lb-profiles-input}
+
+There is no input parameters that you can specify for your data source. 
+{: shortdesc}
+
+### Output parameters
+{: #ibm-is-lb-profiles-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`lb_profiles`|String|List of all load balancer profiles in the IBM Cloud Infrastructure.|
+|`lb_profiles.family`|String|The product family this load balancer profile belongs to.|
+|`lb_profiles.href`|String|The URL for this load balancer profile.|
+|`lb_profiles.name`|String|The name for this load balancer profile.|
 
 
 
