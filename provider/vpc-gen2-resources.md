@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-25" 
+lastupdated: "2020-10-05" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -405,29 +405,30 @@ Review the input parameters that you can specify for your resource.
 
 | Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
-|`name`|String|Optional|The instance name.| No |
-|`vpc`|String|Required|The ID of the VPC where you want to create the instance.| Yes |
-|`zone`|String|Required|The name of the VPC zone where you want to create the instance.| Yes |
-|`profile`|String|Required|The name of the profile that you want to use for your instance. To list supported profiles, run `ibmcloud is instance-profiles`.| Yes |
-|`image`|String|Required|The ID of the virtual server image that you want to use. To list supported images, run `ibmcloud is images`.| No |
 |`boot_volume`|List|Optional|A list of boot volumes for an instance.| No |
 |`boot_volume.name`|String|Optional|The name of the boot volume.| No |
 |`boot_volume.encryption`|String|Optional|The type of encryption to use for the boot volume.| No |
+|`force_recovery_time`|Integer|Optional|Define timeout (in minutes), to force the is_instance to recover from a perpetual "starting" state, during provisioning. And to force the is_instance to recover from a perpetual "stopping" state, during deprovisioning. **Note** The force_recovery_time is used to retry multiple times until timeout.|No|
+|`image`|String|Required|The ID of the virtual server image that you want to use. To list supported images, run `ibmcloud is images`.| No |
 |`keys`|List|Required|A comma-separated list of SSH keys that you want to add to your instance.| No |
-|`primary_network_interface`|List|Required|A nested block describes the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
-|`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
-|`primary_network_interface.primary_ipv4_address`|Strings|Optional|The IPV4 address of the interface.| Yes |
-|`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
-|`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
+|`name`|String|Optional|The instance name.| No |
 |`network_interfaces`|List|Optional|A list of more network interfaces that are set up for the instance.| Yes |
 |`network_interfaces.name`|String|Optional|The name of the network interface.| No |
 |`network_interface.primary_ipv4_address`|Strings|Optional|The IPV4 address of the interface.| Yes |
 |`network_interfaces.subnet`|String|Required|The ID of the subnet.| No |
 |`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
-|`volumes`|List|Optional|A comma separated list of volume IDs to attach to the instance.| No |
-|`user_data`|String|Optional|User data to transfer to the instance.| No |
+|`primary_network_interface`|List|Required|A nested block describes the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
+|`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
+|`primary_network_interface.primary_ipv4_address`|Strings|Optional|The IPV4 address of the interface.| Yes |
+|`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
+|`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
+|`profile`|String|Required|The name of the profile that you want to use for your instance. To list supported profiles, run `ibmcloud is instance-profiles`.| Yes |
 |`resource_group`|String|Optional|The ID of the resource group where you want to create the instance.| Yes |
 |`tags`|Array of strings|Optional|A list of tags that you want to add to your instance. Tags can help you find your instance more easily later.| No |
+|`user_data`|String|Optional|User data to transfer to the instance.| No |
+|`volumes`|List|Optional|A comma separated list of volume IDs to attach to the instance.| No |
+|`vpc`|String|Required|The ID of the VPC where you want to create the instance.| Yes |
+|`zone`|String|Required|The name of the VPC zone where you want to create the instance.| Yes |
 
 ### Output parameters
 {: #instance-output}
@@ -1071,10 +1072,11 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------- |
 |`name`|String|Required|The name of the VPC load balancer.| No |
-|`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.| No |
-|`type`|String|Optional|The type of the load balancer. Default value `public`. Supported values `public` and `private`.| Yes |
+|`profile`|String|Required|The profile to use for this load balancer. This is required for network load balancer.| Yes |
 |`resource_group`|String|Optional| The resource group where the load balancer to be created.| Yes |
+|`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.| No |
 |`tags`|Array of strings|Optional|A list of tags that you want to add to your load balancer. Tags can help you find the load balancer more easily later. | No |
+|`type`|String|Optional|The type of the load balancer. Default value `public`. Supported values `public` and `private`.| Yes |
 
 ### Output parameters
 {: #lb-output}
@@ -1084,12 +1086,12 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Data type|Description|
 |----|-----------|--------|
+|`hostname`|String|The fully qualified domain name assigned to this load balancer.|
 |`id`|String|The unique identifier of the load balancer.|
+|`operating_status`|String|The operating status of this load balancer.|
 |`public_ips`|String|The public IP addresses assigned to this load balancer.|
 |`private_ips`|String|The private IP addresses assigned to this load balancer.|
 |`status`|String|The status of the load balancer.|
-|`operating_status`|String|The operating status of this load balancer.|
-|`hostname`|String|The fully qualified domain name assigned to this load balancer.|
 
 ### Import
 {: #lb-import}
@@ -1501,6 +1503,7 @@ Create, update, or delete a pool member for a VPC load balancer.
 ### Sample Terraform code
 {: #lb-pool-member-sample}
 
+In the following example, you can create a load balancer pool member for application load balancer:
 ```
 resource "ibm_is_lb_pool_member" "testacc_lb_mem" {
   lb             = "daac2b08-fe8a-443b-9b06-1cef79922dce"
@@ -1510,7 +1513,17 @@ resource "ibm_is_lb_pool_member" "testacc_lb_mem" {
   weight         = 60
 }
 ```
+In the following example, you can create a load balancer pool member for network load balancer:
 
+```
+resource "ibm_is_lb_pool_member" "testacc_lb_mem" {
+  lb             = "daac2b08-fe8a-443b-9b06-1cef79922dce"
+  pool           = "f087d3bd-3da8-452d-9ce4-c1010c9fec04"
+  port           = 8080
+  target_id      = "54ad563a-0261-11e9-8317-bec54e704988"
+  weight         = 60
+}
+```
 ### Input parameters
 {: #lb-pool-member-input}
 
@@ -1519,10 +1532,11 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| --------- |
-|`pool`|String|Required| The load balancer pool unique identifier.| Yes |
 |`lb`|String|Required| The load balancer unique identifier.| Yes |
+|`pool`|String|Required| The load balancer pool unique identifier.| Yes |
 |`port`|Integer|Required| The port number of the application running in the server member.| No |
 |`target_address`|String|Required|The IP address of the pool member.| No |
+|`target_id`|String|Required|The unique identifier for the virtual server instance pool member. Required for network load balancer.|No|
 |`weight`|Integer|Optional| Weight of the server member. This option takes effect only when the load-balancing algorithm of its belonging pool is `weighted_round_robin`.| No |
 
 ### Output parameters
@@ -1534,8 +1548,8 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The unique identifier of the load balancer pool member.|
-|`href`|String|The member’s canonical URL.|
 |`health`|String|Health of the server member in the pool.|
+|`href`|String|The member’s canonical URL.|
 
 ### Import
 {: #lb-pool-member-import}
