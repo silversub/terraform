@@ -699,7 +699,9 @@ Review the input parameters that you can specify for your resource.
 |`retries`|Integer|Optional|The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.|
 |`type`|String|Optional|The protocol to use for the health check. Currently supported protocols are `http` and `https`. Default: `http`.
 |`description`|String|Optional|A description for your health check. |
-
+|`headers`|String|Optional|The health check headers. |
+|`headers.header`|String|Optional|The value of a header. |
+|`headers.values`|String|Optional|The list of values for a header field. `[expected_body]`, and `[expected_codes]` are required arguments when the type is `HTTP` or `HTTPS`. **Note** Header is not currently supported in this version of the provider.|
 
 ### Output parameter
 {: #cis-health-output}
@@ -712,6 +714,7 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String| The ID of the load balancer to monitor. |
 |`created_on`|String|The RFC3339 timestamp of when the health check was created. |
 |`modified_on`|String|The RFC3339 timestamp of when the health check was last modified. |
+|`monitor_id`|String| The load balancer monitor ID.|
 
 ### Import
 {: #cis-health-import}

@@ -226,6 +226,60 @@ Review the output parameters that you can access after you retrieved your data s
 | `request_limit_fail_open` | String | An action request limit fail open.|
 | `trigger_id` | String | The route ID of an action trigger.|
 
+## `ibm_cis_healthchecks`
+{: #cis-healthchecks}
+
+Retrieve information about an {{site.data.keyword.cis_full_notm}} global load balancer health monitor or check as a read-only data source.
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis-healthchecks-sample}
+
+The following example retrieves information about an {{site.data.keyword.cis_full_notm}} domain. 
+{: shortdesc}
+
+```
+data "ibm_cis_glb_health_checks" "test" {
+  cis_id = var.cis_crn
+}
+```
+
+### Input parameters
+{: #cis-healthchecks-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+| `cis_id` | String | Required | The resource CRN ID of the {{site.data.keyword.cis_full_notm}} on which zones were created. |
+
+### Output parameters
+{: #cis-healthchecks-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+| `allow_insecure` | String | Do not validate the certificate when healthcheck uses `HTTPS`.|
+| `created_on` | String | The RFC3339 timestamp of when the load balancer monitor was created.|
+| `description` | String | Free text description.|
+| `expected_body` | String | The requested body.|
+| `expected_codes` | String | The expected HTTP response code or code range of the health check. For example, `2xx`.|
+| `headers` | String | The health check header.|
+| `id` | String | The load balancer monitor ID and CRN. For example, `monitor_id:crn`.|
+| `interval` | String | The interval between each health check. Shorter intervals improve failover time, but can increase load on the origins as you check from multiple locations. The default value is `60`.|
+| `modified_on` | String | The RFC3339 timestamp of when the load balancer monitor was last modified.|
+| `monitor_id` | String | The load balancer monitor ID.|
+| `method` | String | The HTTP method to use for the health check.|
+| `path` | String | The endpoint path to health check.|
+| `port` | String | The TCP port to use for the health check.|
+| `retries` | String | The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. The default value is `2`.|
+| `timeout` | String | The timeout (in seconds) before marking the health check as failed. The default value is `5`.|
+| `type` | String | The protocol to use for the healthcheck. Currently supported protocols are `HTTP`, `HTTPS`, and `TCP`. The default value is `HTTP`.|
+| `follow_redirects` | String | Follow redirects if returned by the origin.|
+
 ## `ibm_cis_ip_addresses`
 {: #cis_ip}
 
