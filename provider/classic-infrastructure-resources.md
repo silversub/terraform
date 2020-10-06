@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-04"
+lastupdated: "2020-10-06"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -3665,4 +3665,3 @@ The following arguments are supported:
 |`billingContactSameAsTechnicalFlag` |(Required, bool)- If your technical contact details and billing contact details is the same then make this as true and skip details of billing contact. |
 |`administrativeAddressSameAsOrganizationFlag` |(Required, bool) - If administrative address is same as organization address then make this flag as true and skip address details.|
 |`billingAddressSameAsOrganizationFlag` |(Required, bool) - If billing address is same as organization address then make this flag as true and skip address details. |
-{: caption="Table. Available input parameters" caption-side="top"}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-06"
 
 keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, HPCS
 
@@ -105,7 +105,7 @@ Complete the following steps to provision an HPCS, initialize the service and Ke
  2. The two options that are provided to initialize a service instance are: 
     - The IBM HPCS management utilities by using master key parts stored on smart card.
     - The {{site.data.keyword.cloud_notm}} Trusted Key Entry CLI plug-in to initialize your service instance.
-    For more information, about initialize the service instance, refer [Initialize your service instance](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started#initialize-crypto).
+    For more information, about initialize the service instance, refer [Initialize your service instance](/docs/hs-crypto?topic=hs-crypto-get-started#initialize-crypto).
     
 **Step 3: Manage your keys by using `ibm_kms_key`**
  

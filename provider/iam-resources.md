@@ -982,7 +982,7 @@ resource "ibm_iam_user_policy" "policy" {
 
 ```
 
-#### User Policy by using resource group
+#### User Policy using resource and resource type
 
 ```
 data "ibm_resource_group" "group" {
