@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-06"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -713,9 +713,10 @@ Review the output parameters that you can access after your resource is created.
 
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
+|`crn` |String| The CRN of the service ID.|
+|`iam_id`| String|The IAM ID of the serviceID.  |
 |`id`|String|The unique identifier of the service ID.|
 |`version` |String| The version of the service ID.|
-|`crn` |String| The CRN of the service ID.|
 
 
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-25"
+lastupdated: "2020-10-06"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -46,13 +46,13 @@ Before you start working with your data source, make sure to review the [require
 
 
 ## `ibm_container_addons`
-{: #container-addons}
+{: #container-addons-ds}
 
 Retrieve information about all the add-ons that are enables on a cluster.
 {: shortdesc}
 
 ### Sample Terraform code
-{: #container-addon-sample}
+{: #container-addons-sample}
 
 The following example retrieves information of an add-ons.
 
@@ -63,7 +63,7 @@ data "ibm_container_addons" "addons" {
 ```
 
 ### Input parameters
-{: #container-addon-dsinput}
+{: #container-addons-dsinput}
 
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
@@ -73,7 +73,7 @@ Review the input parameters that you can specify for your data source.
 | `cluster` | String | Required | The name or ID of the cluster.|
 
 ### Output parameters
-{: #container-addon-dsoutput}
+{: #container-addons-dsoutput}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
@@ -93,6 +93,7 @@ Review the output parameters that you can access after your resource is created.
 | `addons.target_version`| String | The add-on target version. |
 | `addons.vlan_spanning_required`| String | The VLAN spanning required for multi-zone clusters.|
 | `id` | String | The ID of an add-ons. |
+|`resource_group_id`|String| The ID of the cluster resource group in which the addons is installed.|
 
 
 ## `ibm_container_alb`
