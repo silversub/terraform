@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-06"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -235,12 +235,13 @@ Review the output parameters that you can access after you retrieved your data s
 |Name|Data type|Description|
 |----|-----------|----------|
 |`service_ids`|List of objects| A nested block list of IAM service IDs. |
-|`service_ids.id`|String|The unique identifier of the service ID.  |
 |`service_ids.bound_to`| String|The service the service ID is bound to.  |
 |`service_ids.crn`| String|The CRN of the service ID.  |
 |`service_ids.description`| String|A description of the service ID.  |
-|`service_ids.version`| String|The version of the service ID.  |
+|`service_ids.iam_id`| String|The IAM ID of the serviceID.  |
+|`service_ids.id`|String|The unique identifier of the service ID.  |
 |`service_ids.locked`|Boolean| If set to **true**, the service ID is locked. |
+|`service_ids.version`| String|The version of the service ID.  |
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
