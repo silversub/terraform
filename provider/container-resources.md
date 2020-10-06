@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-25" 
+lastupdated: "2020-10-06" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -46,7 +46,7 @@ Before you start working with your resource, make sure to review the [required p
 
 
 ## `ibm_container_addons`
-{: #container-addon}
+{: #container-addons}
 
 Enable, update or disable a single add-on or a set of add-ons.
 {: shortdesc}
@@ -66,20 +66,21 @@ resource "ibm_container_addons" "addons" {
 ```
 
 ### Input parameters
-{: #container-addon-input}
+{: #container-addons-input}
 
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
-| `cluster` | String | Required | The name or ID of the cluster. |
-| `addons` | Set | Required | Set of add-ons that needs to be enabled. |
-| `addons.name` | String | Optional | The add-on name such as `istio`.|
-| `addons.version`| String | Optional | The add-on version. Omit the version that you want to use as the default version.This is required when you want to update the add-on to specified version. |
+| `addons` | Set | Required | Set of add-ons that needs to be enabled. |No|
+| `addons.name` | String | Optional | The add-on name such as `istio`.|No|
+| `addons.version`| String | Optional | The add-on version. Omit the version that you want to use as the default version.This is required when you want to update the add-on to specified version. |No|
+| `cluster` | String | Required | The name or ID of the cluster. |No|
+| `resource_group_id` | String | Optional | The ID of the resource group. You can retrieve the value from data source ibm_resource_group. If not provided defaults to default resource group.|Yes|
 
 ### Output parameters
-{: #container-addon-output}
+{: #container-addons-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
