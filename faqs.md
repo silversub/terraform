@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-05"
+lastupdated: "2020-10-06"
 
 keywords: terraform faqs, softlayer, iaas
 
@@ -132,5 +132,5 @@ Complete the following steps can be used in IBM Terraform provider to support Te
   ```
 3. If you are using terraform modules, the shared Terraform block to be used in all the module folders that is been used.
 
-Detailed steps in the IBM Terraform documentation will be published shortly.
-{: note}
+   Detailed steps in the IBM Terraform documentation will be published shortly.
+   {: note}
