@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-05"
+lastupdated: "2020-10-06"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -99,7 +99,7 @@ Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructur
 {: shortdesc}
 
 ### Sample Terraform code
-{: #ibm-is-flow-sample}
+{: #ibm-is-flowlogs-sample}
 
 
 ```
@@ -109,14 +109,14 @@ data "ibm_is_flow_logs" "ds_flow_logs" {
 ```
 
 ### Input parameters
-{: #ibm-is-lb-dsinput}
+{: #ibm-is-flowlogs-dsinput}
 
 There is no input parameters.
 {: shortdesc}
 
 
 ### Output parameters
-{: #ibm-is-flow-dsoutput}
+{: #ibm-is-flowlogs-dsoutput}
 
 Review the output parameters that you can access after you retrieve your data source. 
 {: shortdesc}

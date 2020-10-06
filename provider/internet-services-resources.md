@@ -383,12 +383,12 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String|The action ID with a combination of `<action_name>`,`<domain_id>`,`<cis_id>` attributes concatented withe `:`.|
+|`id`|String|The action ID with a combination of `<action_name>`,`<domain_id>`,`<cis_id>` attributes concatenate with colon (`:`).|
 
 ### Import
 {: #cis-edge-functions-action-import}
 
-The `ibm_cis_edge_functions_action` resource can be imported by using the ID. The ID is composed from an edge functions action name or script name, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character.
+The `ibm_cis_edge_functions_action` resource can be imported by using the ID. The ID is composed from an edge functions action name or script name, the domain ID of the domain and the CRN (Cloud Resource Name) is concatenated with colon (`:`).
 {: shortdesc}
 
 The domain ID and CRN are located on the overview page of the Internet Services instance in the domain heading of the UI, or by using the {{site.data.keyword.cloud_notm}} CIS CLI commands.
@@ -455,15 +455,15 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`action_name`|String|An edge functions action Script name.|
-|`id`|String|The action ID with a combination of `<trigger_id>`,`<domain_id>`,`<cis_id>` attributes concatented withe `:`.|
+|`id`|String|The action ID with a combination of `<trigger_id>`,`<domain_id>`,`<cis_id>` attributes concatenate with colon (`:`).|
 |`pattern_url`|String|The Route pattern. It is a domain name on which the action is performed.|
 |`request_limit_fail_open`|String|An action request limit fail open.|
 |`trigger_id`|String|The route ID of an action trigger.|
 
 ### Import
-{: #cis-edge-functions-action-import}
+{: #cis-edge-functions-trigger-import}
 
-The `ibm_cis_edge_functions_trigger` resource can be imported by using the ID. The ID is composed from an edge functions trigger route ID, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character.
+The `ibm_cis_edge_functions_trigger` resource can be imported by using the ID. The ID is composed from an edge functions trigger route ID, the domain ID of the domain and the CRN (Cloud Resource Name) is concatenated with colon (`:`).
 {: shortdesc}
 
 The domain ID and CRN are located on the overview page of the Internet Services instance in the domain heading of the UI, or by using the {{site.data.keyword.cloud_notm}} CIS CLI commands.
