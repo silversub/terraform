@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-05"
+lastupdated: "2020-10-06"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -392,8 +392,8 @@ The `ibm_cis_edge_functions_action` resource can be imported by using the ID. Th
 {: shortdesc}
 
 The domain ID and CRN are located on the overview page of the Internet Services instance in the domain heading of the UI, or by using the {{site.data.keyword.cloud_notm}} CIS CLI commands.
-Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
-CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`.
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`.
 Edge functions action name or script name is a string: `sample_script`.
 {: note}
 
@@ -467,8 +467,8 @@ The `ibm_cis_edge_functions_trigger` resource can be imported by using the ID. T
 {: shortdesc}
 
 The domain ID and CRN are located on the overview page of the Internet Services instance in the domain heading of the UI, or by using the {{site.data.keyword.cloud_notm}} CIS CLI commands.
-Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
-CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`.
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`.
 Edge functions trigger route ID is a 32 digit character string of the form: `48996f0da6ed76251b475971b097205c`.
 {: note}
 
