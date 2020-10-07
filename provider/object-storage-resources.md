@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-25"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cos bucket, terraform get object storage resources
 
@@ -48,7 +48,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_cos_bucket`
 {: #cos-bucket}
 
-Create or delete an {{site.data.keyword.cos_full_notm}} bucket. The bucket is used to store your data. For more information about configuration options, see [Create some buckets to store your data](/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage#gs-create-buckets). 
+Create or delete an {{site.data.keyword.cos_full_notm}} bucket. The bucket is used to store your data. For more information, about configuration options, see [Create some buckets to store your data](/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage#gs-create-buckets). 
 
 To create a bucket, you must provision an {{site.data.keyword.cos_full_notm}} instance first by using the [`ibm_resource_instance`](/docs/terraform?topic=terraform-resource-mgmt-resources#resource-instance) resource.
 {: note}
@@ -183,7 +183,7 @@ Review the input parameters that you can specify for your resource.
 | `resource_instance_id` | String | Required | The ID of the {{site.data.keyword.cos_full_notm}} service instance for which you want to create a bucket. |
 | `region_location` | String | Optional | The location of a regional bucket. Supported values are `au-syd`, `eu-de`, `eu-gb`, `jp-tok`, `us-east`, `us-south`. If you set this parameter, do not set `single_site_location` or `cross_region_location` at the same time. 
 | `single_site_location` | String | Optional | The location for a single site bucket. Supported values are: `ams03`, `che01`, `hkg02`, `mel01`, `mex01`, `mil01`, `mon01`, `osl01`, `sjc04`, `sao01`, `seo01`, and `tor01`. If you set this parameter, do not set `region_location` or `cross_region_location` at the same time. 
-| `storage_class` | String | Required | The storage class that you want to use for the bucket. Supported values are `standard`, `vault`, `cold`, `flex`, and `smart`. For more information about storage classes, see [Use storage classes](/docs/cloud-object-storage?topic=cloud-object-storage-classes). 
+| `storage_class` | String | Required | The storage class that you want to use for the bucket. Supported values are `standard`, `vault`, `cold`, `flex`, and `smart`. For more information, about storage classes, see [Use storage classes](/docs/cloud-object-storage?topic=cloud-object-storage-classes). 
 
 Make sure that you set `cross_region_location`, `region_location`, or `single_site_location` to specify that location where you want to create the bucket. 
 {: note}

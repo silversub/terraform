@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-10-07"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -46,7 +46,7 @@ Ansible does not use agents or a custom security infrastructure that must be pre
 
 Ansible models software packages, configuration, and services as resources on a managed host to ensure that the resource is in a specific state. To bring a resource to the required state, Ansible pushes modules to the managed host to run the required tasks. After the tasks are executed, the result is returned to the Ansible server and the module is removed from the managed host. You can use Ansible modules to execute a specific operation or group scripts and configurations in an Ansible playbook that you can execute. Ansible modules are idempotent such that executing the same playbook or operation multiple times returns the same result as resources are changed only if required. 
 
-For more information about Ansible, see:
+For more information, about Ansible, see:
 - [Ansible documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.ansible.com)
 - [Ansible introduction ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.tutorialspoint.com/ansible/ansible_introduction.htm)
 - [Ansible2 tutorial ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://serversforhackers.com/c/an-ansible2-tutorial)

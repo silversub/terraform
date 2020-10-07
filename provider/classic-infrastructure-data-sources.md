@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-25"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -75,7 +75,7 @@ Review the input parameters that you can specify for your data source.
 |----|-----------|-----------|----------------------|
 |`hostname`|String|Optional|The hostname of the Bare Metal server. If you specify the `hostname`, do not specify `global_identifier` at the same time. |
 |`domain`|String|Optional|The domain of the Bare Metal server. If you specify this option, do not specify `global_identifier` at the same time. |
-|`global_identifier`|String|Optional|The unique global identifier of the Bare Metal server. To see global identifier, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3.1/SoftLayer_Account/getHardware.json), that uses your API key as the password. If you specify this option, do not specify `hostname`, `domain`, or `most_recent` at the same time.|
+|`global_identifier`|String|Optional|The unique global identifier of the Bare Metal server. To see global identifier, log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3.1/SoftLayer_Account/getHardware.json), that uses your API key as the password. If you specify this option, do not specify `hostname`, `domain`, or `most_recent` at the same time.|
 |`most_recent`|Boolean|Optional|For multiple Bare Metal services, you can set this argument to `true` to import only the most recently created server. If you specify this option, do not specify `global_identifier` at the same time.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -364,7 +364,7 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|----------------------|
-|`name`|String|Required|The name of the DNS domain registration as it was defined in IBM Cloud Infrastructure DNS Registration Service (SoftLayer).|
+|`name`|String|Required|The name of the DNS domain registration as it was defined in IBM Cloud Infrastructure DNS Registration Service.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters

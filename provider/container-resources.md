@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-06" 
+lastupdated: "2020-10-07" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -115,7 +115,7 @@ The following timeouts are defined for this resource.
 Enable or disable an Ingres application load balancer (ALB) that is set up in your cluster. ALBs are used to set up HTTP or HTTPS load-balancing for containerized apps that are deployed into an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster. 
 {: shortdesc}
 
-For more information about Ingress ALBs, see [About Ingress ALBs](/docs/containers?topic=containers-ingress-about). 
+For more information, about Ingress ALBs, see [About Ingress ALBs](/docs/containers?topic=containers-ingress-about). 
 
 ### Sample Terraform code
 {: #container-alb-sample}
@@ -239,7 +239,7 @@ Bind an {{site.data.keyword.cloud_notm}} service to an {{site.data.keyword.conta
 To bind a service to your cluster, you must provision an instance of the service first.
 {: note}
 
-For more information about service binding, see [Adding services by using {{site.data.keyword.cloud_notm}} service binding](/docs/containers?topic=containers-service-binding). 
+For more information, about service binding, see [Adding services by using {{site.data.keyword.cloud_notm}} service binding](/docs/containers?topic=containers-service-binding). 
 
 ### Sample Terraform code
 {: #container-bind-sample}
@@ -302,7 +302,7 @@ Create, update, or delete an {{site.data.keyword.containerlong_notm}} or {{site.
 If you want to use this resource to update a cluster, make sure that you review the [version changelog](/docs/containers?topic=containers-changelog) for patch updates and the [version information and update information](/docs/containers?topic=containers-cs_versions) for major and minor changes. 
 {: important}
 
-If you want to create a VPC cluster, make sure to include the VPC infrastructure generation in the `provider` block of your Terraform configuration file. If you do not set this value, the generation is automatically set to 2. For more information about how to configure the `provider` block, see [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters). 
+If you want to create a VPC cluster, make sure to include the VPC infrastructure generation in the `provider` block of your Terraform configuration file. If you do not set this value, the generation is automatically set to 2. For more information, about how to configure the `provider` block, see [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters). 
 {: important}
 
 You cannot create a free cluster in {{site.data.keyword.bpfull_notm}}.
@@ -989,7 +989,7 @@ The following timeouts are defined for this resource.
 Create, update, or delete a VPC cluster. 
 {: shortdesc}
 
-To create a VPC cluster, make sure to include the VPC infrastructure generation in the `provider` block of your Terraform configuration file. If you do not set this value, the generation is automatically set to 2. For more information about how to configure the `provider` block, see [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters). 
+To create a VPC cluster, make sure to include the VPC infrastructure generation in the `provider` block of your Terraform configuration file. If you do not set this value, the generation is automatically set to 2. For more information, about how to configure the `provider` block, see [Overview of required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters). 
 {: important}
 
 You cannot create a free cluster in {{site.data.keyword.bpfull_notm}}.
@@ -1224,7 +1224,7 @@ Review the input parameters that you can specify for your resource.
 
 **Note**
 
-1. For users on account to add tags to a resource, you need to assign the right access. For more information about tags, see [Tags permission](/docs/account?topic=account-access).
+1. For users on account to add tags to a resource, you need to assign the right access. For more information, about tags, see [Tags permission](/docs/account?topic=account-access).
 2. `wait_till` is set only for the first time creation of the resource, further modification are not impacted.
 
 ### Output parameters

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-06"
+lastupdated: "2020-10-07"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -630,7 +630,7 @@ This resource does not provide output parameters.
 Create, update, or delete a custom IAM role. 
 {: shortdesc}
 
-For more information about IAM custom roles, see [Creating custom roles](/docs/account?topic=account-custom-roles).
+For more information, about IAM custom roles, see [Creating custom roles](/docs/account?topic=account-custom-roles).
 
 ### Sample Terraform code
 {: #iam-custom-role-sample}
@@ -1306,7 +1306,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`users`|List|Required|A comma separated list of user email IDs.|
 |`access_groups`|List|Optional|A comma separated list of access group IDs.|
-|`classic_infra_roles`|Map|Optional|A nested block describes the classic infrastructure roles for the inviting users. </br></br>**Note**: If you have an IBM Cloud Lite account, you cannot set classic infrastructure roles. For more information about Lite accounts, see [What's available?](/docs/account?topic=account-accounts#lite-account-features).|
+|`classic_infra_roles`|Map|Optional|A nested block describes the classic infrastructure roles for the inviting users. </br></br>**Note**: If you have an IBM Cloud Lite account, you cannot set classic infrastructure roles. For more information, about Lite accounts, see [What's available?](/docs/account?topic=account-accounts#lite-account-features).|
 |`classic_infra_roles.permissions`|List|Optional|A comma separated list of classic infrastructure permissions.|
 |`classic_infra_roles.permission_set`|String|Optional|The permission set to be applied. The valid permission sets are `noacess`, `viewonly`, `basicuser`, and `superuser`.|
 |`iam_policy`|List|Optional|A nested block describes the IAM policies for invited users. |

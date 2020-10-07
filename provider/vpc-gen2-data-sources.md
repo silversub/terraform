@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-06"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -286,7 +286,7 @@ Review the input parameters that you can specify for your data source.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`name`|String|Required|The name of the {{site.data.keyword.vsi_is_short}} instance that you want to retrieve. |
-|`private_key`|String|Optional|The private key of an SSH key that you want to add to your {{site.data.keyword.vsi_is_short}} instance during creation in PEM format. SSH keys are used by virtual servers to identify a user or device through public-key cryptography. For more information about how to create SSH keys and upload them to {{site.data.keyword.cloud_notm}}, see [Locating or generating your SSH key](/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys). The SSH key is used to decrypt the default administrator password in Windows if Windows is installed as the operating system on your {{site.data.keyword.vsi_is_short}} instance.|
+|`private_key`|String|Optional|The private key of an SSH key that you want to add to your {{site.data.keyword.vsi_is_short}} instance during creation in PEM format. SSH keys are used by virtual servers to identify a user or device through public-key cryptography. For more information, about how to create SSH keys and upload them to {{site.data.keyword.cloud_notm}}, see [Locating or generating your SSH key](/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys). The SSH key is used to decrypt the default administrator password in Windows if Windows is installed as the operating system on your {{site.data.keyword.vsi_is_short}} instance.|
 |`passphrase`|String|Optional|The passphrase that you used when you created your SSH key. If you did not enter a passphrase when you created the SSH key, do not provide this input parameter.|
 
 ### Output parameters
@@ -869,7 +869,7 @@ Review the output parameters that you can access after you retrieve your data so
 |`loadbalancers.id`|String|The unique identifier of the load balancer.|
 |`loadbalancers.created_at`|String|The date and time this load balancer was created.|
 |`loadbalancers.crn`|String|The load balancer's CRN.|
-|`loadbalancers.name`|String|Name of the loadbalancer.|
+|`loadbalancers.name`|String|Name of the load balancer.|
 |`loadbalancers.subnets`|String|The subnets this load balancer is part of.|
 |`loadbalancers.subnets.crn`|String|The CRN for the subnet.|
 |`loadbalancers.subnets.id`|String|The unique identifier for this subnet.|

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-25"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform gen 1, terraform generation 1 compute
 
@@ -167,7 +167,7 @@ Review the output parameters that you can access after your resource is created.
 ## `ibm_is_image`
 {: #image}
 
-Upload, update, or delete a custom virtual server instance image. For more information about how to create a custom image, see the [VPC documentation](/docs/vpc?topic=vpc-managing-images).
+Upload, update, or delete a custom virtual server instance image. For more information, about how to create a custom image, see the [VPC documentation](/docs/vpc?topic=vpc-managing-images).
 {: shortdesc}
 
 ### Sample Terraform code
@@ -1585,7 +1585,7 @@ terraform import ibm_is_ssh_key.example <ssh_key_ID>
 ## `ibm_is_volume`
 {: #volume}
 
-Create, update, or delete a VPC block storage volume. For more information about the VPC block storage volume, see [Getting started with VPC](/docs/vpc).
+Create, update, or delete a VPC block storage volume. For more information, about the VPC block storage volume, see [Getting started with VPC](/docs/vpc).
 {: shortdesc}
 
 ### Sample Terraform code
@@ -1787,7 +1787,7 @@ terraform import ibm_is_vpc_address_prefix.example <vpc_ID>/<address_prefix_ID>
 ## `ibm_is_vpc_route`
 {: #vpc-route}
 
-Create, update, or delete a VPC route. For more information about VPC routes, see [Setting up advanced routing in VPC](/docs/vpc?topic=vpc-advanced-routing).
+Create, update, or delete a VPC route. For more information, about VPC routes, see [Setting up advanced routing in VPC](/docs/vpc?topic=vpc-advanced-routing).
 {: shortdesc}
 
 ### Sample Terraform code

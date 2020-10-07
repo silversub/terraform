@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-05"
+lastupdated: "2020-10-07"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -262,7 +262,7 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|----------|
-| `allow_insecure` | String | Do not validate the certificate when healthcheck uses `HTTPS`.|
+| `allow_insecure` | String | Do not validate the certificate when health check uses `HTTPS`.|
 | `created_on` | String | The RFC3339 timestamp of when the load balancer monitor was created.|
 | `description` | String | Free text description.|
 | `expected_body` | String | The requested body.|
@@ -277,7 +277,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `port` | String | The TCP port to use for the health check.|
 | `retries` | String | The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. The default value is `2`.|
 | `timeout` | String | The timeout (in seconds) before marking the health check as failed. The default value is `5`.|
-| `type` | String | The protocol to use for the healthcheck. Currently supported protocols are `HTTP`, `HTTPS`, and `TCP`. The default value is `HTTP`.|
+| `type` | String | The protocol to use for the health check. Currently supported protocols are `HTTP`, `HTTPS`, and `TCP`. The default value is `HTTP`.|
 | `follow_redirects` | String | Follow redirects if returned by the origin.|
 
 ## `ibm_cis_ip_addresses`
@@ -369,7 +369,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`response.header.op`|String|The operator that applied to your HTTP response header. Supported values are `eq` (equals) and `ne` (not equals). |
 |`response.header.value`|String|The value that the HTTP response header must match. |
 |`action`|List of actions|A list of actions that you want to perform when incoming requests exceed the specified `threshold`.|
-|`action.mode`|String|The type of action that you want to perform. Supported values are `simulate`, `ban`, `challenge`, or `js_challenge`. For more information about each type, see [Configure response](/docs/cis?topic=cis-cis-rate-limiting#rate-limiting-configure-response).|
+|`action.mode`|String|The type of action that you want to perform. Supported values are `simulate`, `ban`, `challenge`, or `js_challenge`. For more information, about each type, see [Configure response](/docs/cis?topic=cis-cis-rate-limiting#rate-limiting-configure-response).|
 |`action.timeout`|Integer|The time to wait in seconds before the action is performed. The timeout must be equal to or greater than the `period` and is valid only for actions of type `simulate` or `ban`. The value can be between 10 and 86400.|
 |`action.response`|List of response information|A list of information that you want to return to the client, such as the `content-type` and specific body information. The information provided in this parameter overrides the default HTML error page that is returned to the client. This option is valid only for actions of type `simulate` or `ban`.  |
 |`action.response.content_type`|String|The `content-type` of the body that you want to return. Supported values are `text/plain`, `text/xml`, and `application/json`.|

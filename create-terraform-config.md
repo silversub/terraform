@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-07"
 
 keywords: terraform template guidelines, terraform config file guidelines, sample terraform files, terraform provider, terraform variables, terraform input variables, terraform template
 
@@ -229,7 +229,7 @@ resource ibm_container_cluster "test_cluster" {
 ```
 {: codeblock}
 
-For more information about variable configurations, see the [Terraform documentation](https://www.terraform.io/docs/configuration/variables.html){: external}.
+For more information, about variable configurations, see the [Terraform documentation](https://www.terraform.io/docs/configuration/variables.html){: external}.
 
 
 

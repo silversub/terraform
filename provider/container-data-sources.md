@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-06"
+lastupdated: "2020-10-07"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -93,7 +93,7 @@ Review the output parameters that you can access after your resource is created.
 | `addons.target_version`| String | The add-on target version. |
 | `addons.vlan_spanning_required`| String | The VLAN spanning required for multi-zone clusters.|
 | `id` | String | The ID of an add-ons. |
-|`resource_group_id`|String| The ID of the cluster resource group in which the addons is installed.|
+|`resource_group_id`|String| The ID of the cluster resource group in which the `addons` is installed.|
 
 
 ## `ibm_container_alb`

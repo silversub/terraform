@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform dns, terraform vpc dns, terraform private dns
 
@@ -41,7 +41,7 @@ subcollection: terraform
 Review the IBM Cloud DNS service resources that you can create, modify, or delete. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
 {: shortdesc}
 
-For more information about IBM Cloud DNS service, see [About DNS services](/docs/dns-svcs?topic=dns-svcs-about-dns-services).
+For more information, about IBM Cloud DNS service, see [About DNS services](/docs/dns-svcs?topic=dns-svcs-about-dns-services).
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}

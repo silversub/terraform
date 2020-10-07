@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform certificate manager, terraform cert manager, terraform certificate
 
@@ -50,7 +50,7 @@ Create, update, or delete an API endpoint for an API gateway.
 ### Sample Terraform code
 {: #api-gw-endpoint-sample}
 
-#### Example for a single  API Docs  as input
+#### Example for a single  API Documentation as input
 
 ```
 resource "ibm_resource_instance" "apigateway"{
@@ -71,7 +71,7 @@ resource "ibm_api_gateway_endpoint" "endpoint"{
 {: codeblock}
 
 
-#### Example for a directory of  API Docs  as input
+#### Example for a directory of  API Documentation as input
 
 ```
 resource "ibm_resource_instance" "apigateway"{
@@ -103,11 +103,11 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- |
 |`service_instance_crn`|String|Required|The CRN of the service instance.|
 |`name`|String|Required|The name of the API Gateway endpoint. This value is optional when you create an API Gateway endpoint, but required when you update the endpoint.|
-|`managed`|Boolean|Optional|If set to **true**, the endpoint is online. If set to **false**, the endpoint is offline. The default value is false. Note that the API endpoint cannot be shared if this value is set to **false**.|
+|`managed`|Boolean|Optional|If set to **true**, the endpoint is online. If set to **false**, the endpoint is offline. The default value is false. The API endpoint cannot be shared if this value is set to **false**.|
 |`open_api_doc_name`|String|Required|The API document that represents the endpoint. |
 |`routes`|List|Optional|The routes that you can invoke for an endpoint.|
 |`provider_id`|String|Optional|The provider ID of an API endpoint. Supported values are `user-defined`, and `whisk`. The default value is `user-defined`.|
-|`type`|String|Optional|The type of action that is performed on the API endpoint. Supported values are `share`, `unshare`, `manage`, and `unmanage`. The default value is `unshare`. Note that endpoint actions are performed by using the `type` parameter after the endpoint is created. As a consequence, endpoint actions are invoked during an endpoint update only.|
+|`type`|String|Optional|The type of action that is performed on the API endpoint. Supported values are `share`, `unshare`, `manage`, and `unmanage`. The default value is `unshare`. The endpoint actions are performed by using the `type` parameter after the endpoint is created. As a consequence, endpoint actions are invoked during an endpoint update only.|
 
 ### Output parameters
 {: #api-gw-endpoint-output}
@@ -120,7 +120,7 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String|The ID of the endpoint. The ID is composed of `<service_instance_crn>//<endpoint_ID>`.|
 |`endpoint_id`|String|The ID of the endpoint, also referred to as the artifact ID. |
 |`shared`|String|The shared status of an endpoint.|
-|`base_path`|String|The base path of an endpoint. Note that base paths must be unique.|
+|`base_path`|String|The base path of an endpoint. The base paths must be unique.|
 
 ### Import
 {: #api-gw-endpoint-import}
@@ -192,8 +192,8 @@ Review the output parameters that you can access after your resource is created.
 
 The `ibm_api_gateway_endpoint_subscription` resource can be imported by using the ID. The ID is composed of `<artifact_id>//<client_id>`.
 
-- **endpoint ID**: The endpoint ID can be retrieved programmatically via the API Gateway endpoint API.
-- **client ID**: The client ID is an auto-generated string. To view the client ID in the IBM Cloud console, you must enable **Application authentication** on the **Define and secure** page of the API Gateway service. The client ID of a particular subscription is available as an API key in the **Manage and Sharing** page of the API Gateway service.
+- **Endpoint ID**: The Endpoint ID can be retrieved programmatically via the API Gateway endpoint API.
+- **Client ID**: The Client ID is an auto-generated string. To view the client ID in the IBM Cloud console, you must enable **Application authentication** on the **Define and secure** page of the API Gateway service. The client ID of a particular subscription is available as an API key in the **Manage and Sharing** page of the API Gateway service.
 
 ```
 terraform import ibm_api_gateway_endpoint_subscription.subscription <artifact_id>//<client_id>

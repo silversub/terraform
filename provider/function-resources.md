@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless, terraform namespace
 
@@ -174,7 +174,7 @@ Review the input parameters that you can specify for your resource.
 |`exec.image`|String|Optional| When using the `blackbox` executable, the name of the container image name.        **NOTE**: Conflicts with `exec.components`, `exec.code`.    | No |
 |`exec.init`|String|Optional| When using `nodejs`, the optional archive reference.        **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
 |`exec.code`|String|Optional| When not using the `blackbox` executable, the code to execute.       **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
-|`exec.kind`|String|Required|The type of action. You can find supported kinds in the [IBM Cloud Functions Docs ](/docs/openwhisk?topic=openwhisk-runtimes).    | No |
+|`exec.kind`|String|Required|The type of action. You can find supported kinds in the [IBM Cloud Functions Docs](/docs/openwhisk?topic=openwhisk-runtimes).    | No |
 |`exec.main`|String|Optional|The name of the action entry point (function or fully-qualified method name, when applicable).       **NOTE**: Conflicts with `exec.components`, `exec.image`.    | No |
 |`exec.components`|String|Optional|The list of fully qualified actions. **NOTE**: Conflicts with `exec.code`, `exec.image`.| No |
 |`publish`|Boolean|Optional|Action visibility.| No |
@@ -216,7 +216,7 @@ terraform import ibm_function_action.nodeAction Namespace-01:nodezip
 ## `ibm_function_namespace`
 {: #fn-namespace}
 
-Create, update, or delete an IBM Cloud Functions namespace. For more information about managing namespace, see [Managing namespace](/docs/openwhisk?topic=openwhisk-namespaces). Then, you can create IAM managed namespaces to group entities such as actions, triggers or both.
+Create, update, or delete an IBM Cloud Functions namespace. For more information, about managing namespace, see [Managing namespace](/docs/openwhisk?topic=openwhisk-namespaces). Then, you can create IAM managed namespaces to group entities such as actions, triggers or both.
 
 ### Sample Terraform code
 {: #fn-namespace-sample}

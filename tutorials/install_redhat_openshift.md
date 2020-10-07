@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-07"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -571,7 +571,7 @@ During the deployment the following cluster components are set up and configured
 - 2 OpenShift Container Platform application nodes
 - 1 OpenShift Container Platform Bastion node
 
-For more information about Red Hat OpenShift Container Platform components, see the [Architecture Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.9/architecture/index.html).
+For more information, about Red Hat OpenShift Container Platform components, see the [Architecture Overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.openshift.com/container-platform/3.9/architecture/index.html).
 
 1. Retrieve the pool ID for your Red Hat account. 
    1. From the OpenShift installation directory `/go/bin/terraform-ibm-openshift` inside your container, log in to your Bastion node by using a secure shell. 
