@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-06"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -835,7 +835,7 @@ terraform import ibm_cis_origin_pool.myorg 1aaaa111111aa11111111111a1a11a1:crn:v
 ## `ibm_cis_rate_limit`
 {: #rate-limit}
 
-Create, update, or delete custom rate limits for an IBM Cloud Internet Services domain. For more information about rate limits, see [Rate limiting](/docs/cis?topic=cis-cis-rate-limiting).
+Create, update, or delete custom rate limits for an IBM Cloud Internet Services domain. For more information, about rate limits, see [Rate limiting](/docs/cis?topic=cis-cis-rate-limiting).
 {: shortdesc}
 
 Rate limiting rule can only be created when you have the enterprise plan for IBM Cloud Internet Services.
@@ -904,7 +904,7 @@ Review the input parameters that you can specify for your resource.
 |`response.header.op`|String|Optional|The operator that you want to apply to your HTTP response header. Supported values are `eq` (equals) and `ne` (not equals). |
 |`response.header.value`|String|Optional|The value that the HTTP response header must match. |
 |`action`|List of actions|Required|A list of actions that you want to perform when incoming requests exceed the specified `threshold`.|
-|`action.mode`|String|Required|The type of action that you want to perform. Supported values are `simulate`, `ban`, `challenge`, or `js_challenge`. For more information about each type, see [Configure response](/docs/cis?topic=cis-cis-rate-limiting#rate-limiting-configure-response).|
+|`action.mode`|String|Required|The type of action that you want to perform. Supported values are `simulate`, `ban`, `challenge`, or `js_challenge`. For more information, about each type, see [Configure response](/docs/cis?topic=cis-cis-rate-limiting#rate-limiting-configure-response).|
 |`action.timeout`|Integer|Optional|The time to wait in seconds before the action is performed. The timeout must be equal or greater than the `period` and can be provided only for actions of type `simulate` or `ban`. The value that you enter must be between 10 and 86400.|
 |`action.response`|List of response information|Optional|A list of information that you want to return to the client, such as the `content-type` and specific body information. The information provided in this parameter overrides the default HTML error page that is returned to the client. You can use this option only for actions of type `simulate` or `ban`.  |
 |`action.response.content_type`|String|Optional|The `content-type` of the body that you want to return. Supported values are `text/plain`, `text/xml`, and `application/json`.|

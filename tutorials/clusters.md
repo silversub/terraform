@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-10-07"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -54,7 +54,7 @@ In this tutorial, you create a standard classic {{site.data.keyword.containerlon
 - The cluster is created with the default worker pool.
 - All worker nodes are connected to a private and public VLAN. These public and private VLANs assign public and private IP addresses to the worker nodes.
 - All worker nodes are created with a virtual worker node flavor on shared hardware. If you want to use a different worker node flavor, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-planning_worker_nodes) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-planning_worker_nodes) documentation.
-- To allow access to your cluster from the internet and run public-facing app workloads in your cluster, the cluster is set up with both a public and a private service endpoint. For more information about how network traffic flows when a public and a private service endpoint is enabled, see Worker-to-master and user-to-master communication: Service endpoints in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-plan_clusters#workeruser-master) and [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-plan_clusters#workeruser-master). 
+- To allow access to your cluster from the internet and run public-facing app workloads in your cluster, the cluster is set up with both a public and a private service endpoint. For more information, about how network traffic flows when a public and a private service endpoint is enabled, see Worker-to-master and user-to-master communication: Service endpoints in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-plan_clusters#workeruser-master) and [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-plan_clusters#workeruser-master). 
 
 Keep in mind that creating a cluster incurs costs. Make sure to review [What am I charged for when I use {{site.data.keyword.containerlong_notm}}?](/docs/containers?topic=containers-faqs#charges) or [What am I charged for when I use {{site.data.keyword.openshiftlong_notm}}?](/docs/openshift?topic=openshift-faqs#charges) before you proceed.
 {: note}
@@ -198,7 +198,7 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    </tr>
     <tr>
    <td><code>resource.ibm_container_cluster.hardware</code></td>
-     <td>Decide if you want to provision your virtual worker nodes on <code>shared</code> or <code>dedicated</code> hardware.  Shared hardware can be used for virtual worker nodes only. Bare Metal machines are always dedicated to you. For more information about shared and dedicated hardware, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-planning_worker_nodes#vm) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-planning_worker_nodes#vm) documentation.  </td>
+     <td>Decide if you want to provision your virtual worker nodes on <code>shared</code> or <code>dedicated</code> hardware.  Shared hardware can be used for virtual worker nodes only. Bare Metal machines are always dedicated to you. For more information, about shared and dedicated hardware, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-planning_worker_nodes#vm) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-planning_worker_nodes#vm) documentation.  </td>
    </tr>
     <tr>
    <td><code>resource.ibm_container_cluster.public_vlan_id</code></td>
@@ -218,7 +218,7 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    </tr>
     <tr>
       <td><code>resource.ibm_container_cluster.public_service_endpoint</code></br><code>resource.ibm_container_cluster.private_service_endpoint</code></td>
-     <td>Enter <strong>true</strong> to enable the public and private service endpoint for your cluster. For more information about how network traffic flows when the public and private service endpoints are enabled, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-plan_clusters#workeruser-master) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-plan_clusters#workeruser-master) documentation.   </td>
+     <td>Enter <strong>true</strong> to enable the public and private service endpoint for your cluster. For more information, about how network traffic flows when the public and private service endpoints are enabled, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-plan_clusters#workeruser-master) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-plan_clusters#workeruser-master) documentation.   </td>
    </tr> 
    <tr>
    <td><code>resource.ibm_container_cluster.resource_group_id</code></td>
@@ -521,7 +521,7 @@ Adding a worker pool only does not create any worker nodes. To create worker nod
    </tr>
       <tr>
    <td><code>resource.ibm_container_worker_pool.hardware</code></td>
-   <td>Decide if you want to provision your virtual worker nodes on <code>shared</code> or <code>dedicated</code> hardware.  Shared hardware can be used for virtual worker nodes only. Bare Metal machines are always dedicated to you. For more information about shared and dedicated hardware, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-planning_worker_nodes#vm) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-planning_worker_nodes#vm) documentation.</td>
+   <td>Decide if you want to provision your virtual worker nodes on <code>shared</code> or <code>dedicated</code> hardware.  Shared hardware can be used for virtual worker nodes only. Bare Metal machines are always dedicated to you. For more information, about shared and dedicated hardware, see the [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-planning_worker_nodes#vm) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-planning_worker_nodes#vm) documentation.</td>
    </tr>
    <tr>
    <td><code>resource.ibm_container_worker_pool.resource_group_id</code></td>

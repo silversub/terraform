@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-06"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -97,8 +97,8 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String|The unique internal identifier of the cdn domain mapping.|
-|`status`|String|The Status of the cdn domain mapping.|
+|`id`|String|The unique internal identifier of the CDN domain mapping.|
+|`status`|String|The Status of the CDN domain mapping.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -141,7 +141,7 @@ resource "ibm_compute_autoscale_group" "test_scale_group" {
       hourly_billing = true
       os_reference_code = "DEBIAN_8_64"
 
-## Optional fields for virtual guest template (SoftLayer defaults apply):
+## Optional fields for virtual guest template ({{site.keyword.data.cloud_notm}} defaults apply):
       local_disk = false
       disks = [25]
       datacenter = "sng01"
@@ -171,7 +171,7 @@ Review the input parameters that you can specify for your resource.
 |`termination_policy`|String|Required|The termination policy for the autoscaling group.| No |
 |`virtual_guest_member_template`|Array of strings|Required|The template with which to create guest members. Only one template can be configured. You can find accepted values in the [`ibm_compute_vm_instance`](#vm) resource.| No |
 |`network_vlan_ids`|Array|Optional|The collection of VLAN IDs for the autoscaling group. You can find accepted values in the [VLAN console](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and notes the ID in the resulting URL. You can also refer to a VLAN name by using a data source.| No |
-|`virtual_server_id`|Integer|Optional|The ID of a virtual server in a local load balancer. You can find the ID with the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_VirtualIpAddress/<load_balancer_ID>/getObject?objectMask=virtualServers`. Replace `<load_balancer_ID>` with the ID of the target load balancer. **Note**: To view the load balancer ID. Log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys).| No |
+|`virtual_server_id`|Integer|Optional|The ID of a virtual server in a local load balancer. You can find the ID with the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_VirtualIpAddress/<load_balancer_ID>/getObject?objectMask=virtualServers`. Replace `<load_balancer_ID>` with the ID of the target load balancer. **Note**: To view the load balancer ID. Log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys).| No |
 |`port`|Integer|Optional|The port number in a local load balancer. For example, `8080`.| No |
 |`health_check`|Map|Optional|The type of health check in a local load balancer. For example, `HTTP`. You can also use this value to specify custom HTTP methods.| No |
 |`tags`|Array of strings|Optional|A list of tags that you want to add to the autoscaling group. Tags are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
@@ -387,7 +387,7 @@ Review the input parameters that you can specify for your resource.
 |`notes`|String|Optional|Notes to associate with the instance.| No |
 |`ssh_key_ids`|Array of integers|Optional|The SSH key IDs to install on the compute instance when the instance is provisioned. **Note:** If you don't know the IDs for your SSH keys, you can reference your SSH keys by their labels.| Yes |
 |`post_install_script_uri`|String|Optional|The URI of the script to be downloaded and executed after installation is complete.| Yes |
-|`tags`|Array of strings|Optional| Tags associated with this Bare Metal server. Permitted characters includes A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.| No |
+|`tags`|Array of strings|Optional| Tags associated with this Bare Metal server. Permitted characters include A-Z, 0-9, whitespace, `_` (underscore), `-` (hyphen), `.` (period), and `:` (colon). All other characters are removed.| No |
 |`file_storage_ids`|Array of integers|Optional|File storage to which this computing instance has access. File storage must be in the same data center as the Bare Metal server. If you use this argument to authorize, access to file storage, do not use the `allowed_hardware_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage be added twice.| No |
 |`block_storage_ids`|Array of integers|Optional|Block storage to which this computing instance has access. Block storage must be in the same data center as the Bare Metal server. If you use this argument to authorize, access to block storage, do not use the `allowed_hardware_ids` argument in the `ibm_storage_file` resource in order to prevent the same storage be added twice.#### Arguments common to hourly and monthly server|  No |
 
@@ -397,7 +397,7 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`datacenter`|String|Required|The data center in which you want to provision the instance.|
-|`gpu_key_name`|String|Optional|The key name for the primary Graphics Processing Unit (GPU). For example, `GPU_NVIDIA_GRID_K2`. Locate your package ID. See `package_key_name` attribute. To fetch the `PACKAGE_ID`, you need to access [Package ID](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={%22type%22:{%22keyName%22:{%22operation%22:%22BARE_METAL_CPU%22}}}){: external} URL to view the `ID`. Once you have the ID, for example provide `PACKAGE_ID` as `142`, fetch its details by accessing the URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/142/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]`. Select a gpu key name from the resulting available gpu key names where category code is `gpu0`. **Note**: To view the package ID. Log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys). |
+|`gpu_key_name`|String|Optional|The key name for the primary Graphics Processing Unit (GPU). For example, `GPU_NVIDIA_GRID_K2`. Locate your package ID. See `package_key_name` attribute. To fetch the `PACKAGE_ID`, you need to access [Package ID](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={%22type%22:{%22keyName%22:{%22operation%22:%22BARE_METAL_CPU%22}}}){: external} URL to view the `ID`. Once you have the ID, for example provide `PACKAGE_ID` as `142`, fetch its details by accessing the URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/142/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]`. Select a `GPU` key name from the resulting available `GPU` key names where category code is `gpu0`. **Note**: To view the package ID. Log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys). |
 |`gpu_secondary_key_name`|String|Optional|The key name for the secondary Graphics Processing Unit (GPU). For example, `GPU_NVIDIA_GRID_K2`. Key names can be fetched in the similar way as `gpu_key_name` and  category code is `gpu1`.|
 |`hourly_billing`|Boolean|Required|The billing type for the instance. When set to `true`, the compute instance is billed on hourly usage. Otherwise, the instance is billed monthly. The default value is `true`.|
 |`redundant_power_supply`|Boolean|Optional|When the value is `true`, more power supply is provided.|
@@ -416,9 +416,9 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
-|`fixed_config_preset`|String|Required|The configuration preset with which you want to provision the Bare Metal server. This preset governs the type of CPU, number of cores, amount of RAM, and number of hard disks that the Bare Metal server has. To see the available presets, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys).  You can search for `fixedConfigurationPresets` to view the presets key names. **Note** The `fixedConfigurationPresets` key names are displayed in the `JSON` or `txt` format.|
-|`os_reference_code`|String|Optional|An operating system reference code that provisions the computing instance. To see available OS reference codes, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode), that uses your API key as the password.         **NOTE**: Conflicts with `image_template_id`.  |
-|`software_guard_extensions`|Boolean|Optional|The Software Guard Extensions product is added to a compatible server package, selecting Intel SGX-enabled BIOS and hardware. The default value is `false`.#### Arguments for monthly Bare Metal servers|
+|`fixed_config_preset`|String|Required|The configuration preset with which you want to provision the Bare Metal server. This preset governs the type of CPU, number of cores, amount of RAM, and number of hard disks that the Bare Metal server has. To see the available presets, log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys).  You can search for `fixedConfigurationPresets` to view the presets key names. **Note**: The `fixedConfigurationPresets` key names are displayed in the `JSON` or `txt` format.|
+|`os_reference_code`|String|Optional|An operating system reference code that provisions the computing instance. To see available OS reference codes, log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode), that uses your API key as the password.         **NOTE**: Conflicts with `image_template_id`.  |
+|`software_guard_extensions`|Boolean|Optional|The Software Guard Extensions product is added to a compatible server package, selecting `Intel SGX-enabled BIOS` and `hardware`. The default value is `false`.|
 
 #### Input parameters for monthly Bare Metal servers
 
@@ -426,19 +426,19 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`public_vlan_id`|Integer|Optional|The public VLAN to be used for the public network interface of the instance. You can find accepted values in the [VLAN networks](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and notes the ID in the resulting URL.|
 |`private_vlan_id`|Integer|Optional|The private VLAN to be used for the private network interface of the instance. You can find accepted values in the [VLAN networks](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and notes the ID in the resulting URL.|
-|`public_subnet`|String|Optional|The public subnet to be used for the public network interface of the instance. Accepted values are primary public networks. You can find accepted values in the [subnets Docs ](https://cloud.ibm.com/classic/network/subnets).|
-|`private_subnet`|String|Optional|The private subnet to be used for the private network interface of the instance. Accepted values are primary private networks. You can find accepted values in the [subnets Docs ](https://cloud.ibm.com/classic/network/subnets).|
-|`package_key_name`|String|Optional|The key name for the monthly Bare Metal server's package. Only use this argument when you create a new monthly Bare Metal server. You can find available package key names in the SoftLayer API URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}`, that uses your API key as the password.|
-|`process_key_name`|String|Optional| The key name for the monthly Bare Metal server's process. Only use this argument when you create a new monthly Bare Metal server. To get a process key name, first find the package key name in the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). To fetch the `PACKAGE_ID`, you need to access [Package ID](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={%22type%22:{%22keyName%22:{%22operation%22:%22BARE_METAL_CPU%22}}}){: external} URL to view the `ID`. Once you have the ID, for example provide `PACKAGE_ID` as `142`. Then replace <PACKAGE_ID> with your package key name in the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/142/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]`. Select a process key name from the resulting available process key names. **Note**: To view the package ID. log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys).|
-|`disk_key_names`|Array of strings|Optional| The internal key names for the monthly Bare Metal server's disk. Only use this argument when you create a new monthly Bare Metal server. To get disk key names, first find the package key name in the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). Then replace <PACKAGE_NAME> with your package key name in the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/PACKAGE_NAME/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]). Select disk key names from the resulting available disk key names.|
-|`os_key_name`|String|Optional| The operating system key name that you want to use to provision the computing instance. To get disk key names, first find the package key name in the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). Then replace <PACKAGE_NAME> with your package key name in the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/<PACKAGE_NAME>/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]). Select an OS key name from the resulting available OS key names.|
-|`public_bandwidth`|Integer|Optional| The amount of public network traffic, specified in gigabytes, allowed per month. The value can be greater than 0 when `private_network_only` is set to `false` and the server is a monthly-based server.|
-|`memory`|Integer|Optional| The amount of memory, specified in gigabytes, for the server.|
+|`public_subnet`|String|Optional|The public subnet to be used for the public network interface of the instance. Accepted values are primary public networks. You can find accepted values in the [subnets Docs](https://cloud.ibm.com/classic/network/subnets).|
+|`private_subnet`|String|Optional|The private subnet to be used for the private network interface of the instance. Accepted values are primary private networks. You can find accepted values in the [subnets Docs](https://cloud.ibm.com/classic/network/subnets).|
+|`package_key_name`|String|Optional|The key name for the monthly Bare Metal server's package.Use this argument when you create a new monthly Bare Metal server. You can find available package key names in the {{site.keyword.data.cloud_notm}} API URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}`, that uses your API key as the password.|
+|`process_key_name`|String|Optional| The key name for the monthly Bare Metal server's process. Use this argument when you create a new monthly Bare Metal server. To get a process key name, first find the package key name in the [{{site.keyword.data.cloud_notm}}API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). To fetch the `PACKAGE_ID`, you need to access [Package ID](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={%22type%22:{%22keyName%22:{%22operation%22:%22BARE_METAL_CPU%22}}}){: external} URL to view the `ID`. Once you have the ID, for example provide `PACKAGE_ID` as `142`. Then, replace <PACKAGE_ID> with your package key name in the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/142/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]`. Select a process key name from the resulting available process key names. **Note**: To view the package ID. log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys).|
+|`disk_key_names`|Array of strings|Optional| The internal key names for the monthly Bare Metal server's disk. Use this argument when you create a new monthly Bare Metal server. To get disk key names, first find the package key name in the [{{site.keyword.data.cloud_notm}} API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). Then, replace <PACKAGE_NAME> with your package key name in the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/PACKAGE_NAME/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]). Select disk key names from the resulting available disk key names.|
+|`os_key_name`|String|Optional| The operating system key name that you want to use to provision the computing instance. To get disk key names, first find the package key name in the [{site.keyword.data.cloud_notm} API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). Then, replace <PACKAGE_NAME> with your package key name in the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/<PACKAGE_NAME>/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]). Select an OS key name from the resulting available OS key names.|
+|`public_bandwidth`|Integer|Optional| The amount of public network traffic, which is specified in gigabytes, allowed per month. The value can be greater than 0 when `private_network_only` is set to `false` and the server is a monthly based server.|
+|`memory`|Integer|Optional| The amount of memory, which is specified in gigabytes, for the server.|
 |`storage_groups`|List of objects|Optional| Configurations for RAID and partition.   |
-|`storage_groups.array_type_id`|Integer|Required|The RAID type. You can retrieve the value from the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Configuration_Storage_Group_Array_Type/getAllObjects).    |
+|`storage_groups.array_type_id`|Integer|Required|The RAID type. You can retrieve the value from the [{site.keyword.data.cloud_notm} API](https://api.softlayer.com/rest/v3/SoftLayer_Configuration_Storage_Group_Array_Type/getAllObjects).    |
 |`storage_groups.hard_drives`|Array of integers|Required|The index of hard disks for RAID configuration. The index starts at 0. For example, the array [0,1] is an index of two hard disks.    |
 |`storage_groups.array_size`|Integer|Optional| The target RAID disk size, specific in gigabytes.    |
-|`storage_groups.partition_template_id`|String|Optional| The partition template ID for the OS disk. Templates are different based on the target OS. To get the partition template ID, first find the OS ID in the [SoftLayer API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/getAllObjects). Then replace <OS_ID> with your OS ID in the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/<OS_ID>/getPartitionTemplates`. Select your template ID in resulting available partition template IDs.  |
+|`storage_groups.partition_template_id`|String|Optional| The partition template ID for the OS disk. Templates are different based on the target OS. To get the partition template ID, first find the OS ID in the [{site.keyword.data.cloud_notm} API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/getAllObjects). Then, replace <OS_ID> with your OS ID in the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/<OS_ID>/getPartitionTemplates`. Select your template ID in resulting available partition template IDs.  |
 |`software_guard_extensions`|Boolean|Optional| The Software Guard Extensions product is added to a compatible server package, selecting Intel SGX-enabled BIOS and hardware. The default value is `false`.|
 |`restricted_network`|Boolean|Optional| The non-datacenter restricted port speed. The default value is `false`.|
 |`tcp_monitoring`|Boolean|Optional| When the value is `false`, a ping monitoring service is provided. When the value is `true`, a ping monitoring service and a TCP monitoring service are provided.#### Arguments for quote-based Bare Metal servers|
@@ -449,8 +449,8 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`public_vlan_id`|Integer|Optional|The public VLAN to be used for the public network interface of the instance. You can find accepted values in the [VLAN network](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and notes the ID in the resulting URL.|
 |`private_vlan_id`|Integer|Optional|The private VLAN to be used for the private network interface of the instance. You can find accepted values in the [VLAN network](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and notes the ID in the resulting URL.|
-|`public_subnet`|String|Optional|The public subnet to be used for the public network interface of the instance. Accepted values are primary public networks. You can find accepted values in the [subnets Docs ](https://cloud.ibm.com/classic/network/subnets).|
-|`private_subnet`|String|Optional| The private subnet to be used for the private network interface of the instance. Accepted values are primary private networks. You can find accepted values in the [subnets Docs ](https://cloud.ibm.com/classic/network/subnets).|
+|`public_subnet`|String|Optional|The public subnet to be used for the public network interface of the instance. Accepted values are primary public networks. You can find accepted values in the [subnets Docs](https://cloud.ibm.com/classic/network/subnets).|
+|`private_subnet`|String|Optional| The private subnet to be used for the private network interface of the instance. Accepted values are primary private networks. You can find accepted values in the [subnets Docs](https://cloud.ibm.com/classic/network/subnets).|
 |`quote_id`|String|Optional|When you define `quote_id`, Terraform uses specifications in the quote to create a Bare Metal server. You can find the quote ID in the [IBM Cloud infrastructure customer portal](https://cloud.ibm.com/classic) by navigating to **Account > Sales > Quotes**.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -478,7 +478,7 @@ Review the output parameters that you can access after your resource is created.
 
 Provides a Dedicated Host resource. This allows dedicated host to be created, updated, and canceled.
 
-For more information please refer to the [SoftLayer  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Virtual_DedicatedHost).
+For more information, refer to the [{{site.keyword.data.cloud_notm}} API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Virtual_DedicatedHost).
 
 ### Sample Terraform code
 {: #dedicated-host-sample}
@@ -507,8 +507,8 @@ The following arguments are supported:
 |`domain`| String | Required | The domain of dedicated host.| Yes |
 |`router_hostname`| String | Required | The hostname of the primary router associated with the dedicated host.| Yes |
 |`hourly_billing`| Boolean | Optional | The billing type for the host. When set to `true`, the dedicated host is billed on hourly usage. Otherwise, the dedicated host is billed monthly. The default value is `true`.| Yes |
-|`flavor`| String | Optional | The flavor of dedicated host. Default value `56_CORES_X_242_RAM_X_1_4_TB`. [Log in to the IBM-Cloud Infrastructure (SoftLayer) API to see available flavor types](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/813/getItems.json). Use your API as the password to log in. Log in and find the key called `keyName`.| Yes |
-|`wait_time_minutes`| Integer | Optional | The duration, expressed in minutes, to wait for the dedicated host to become available before declaring it as created. The default value is `90`.| No |
+|`flavor`| String | Optional | The flavor of dedicated host. Default value `56_CORES_X_242_RAM_X_1_4_TB`. [Log in to the IBM-Cloud Infrastructure API to see available flavor types](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/813/getItems.json). Use your API as the password to log in. Log in and find the key called `keyName`.| Yes |
+|`wait_time_minutes`| Integer | Optional | The duration, expressed in minutes to wait for the dedicated host to become available before creation. The default value is `90`.| No |
 |`tags`| Array of String | Optional | Tags associated with the dedicated host.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -554,11 +554,11 @@ The following arguments are supported:
 
 |Name| Data type | Required / optional | Description| Forces new resource |
 |----|-----------| ------- | -------- | ------- |
-|`guest_id`| Integer | Required | The ID of the virtual guest you want to monitor.| Yes |
-|`ip_address`| String | Optional | The IP address you want to monitor.| No |
+|`guest_id`| Integer | Required | The ID of the virtual guest that you want to monitor.| Yes |
+|`ip_address`| String | Optional | The IP address that you want to monitor.| No |
 |`query_type_id`| Integer | Required | The ID of the query type.| No |
 |`response_action_id`| Integer | Required, | The ID of the response action to take if the monitor fails. Accepted values are `1` or `2`.| No |
-|`wait_cycles`| Integer | Optional | The number of five-minute cycles to wait before the response action is taken.| No |
+|`wait_cycles`| Integer | Optional | The number of 5-minute cycles to wait before the response action is taken.| No |
 |`notified_users`| Array of Integers | Optional | The list of user IDs that is notified.| No |
 |`tags`| Array of Integers | Optional | Tags associated with the monitoring instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -601,9 +601,9 @@ The following arguments are supported:
 
 |Name| Data type | Required / optional | Description| Forces new resource |
 |----|-----------| ----|-----------| -----------| 
-|`name`| String | Required | The descriptive name used to identify a placement group.| No |
+|`name`| String | Required | The descriptive that is used to identify a placement group.| No |
 |`datacenter`| String | Required | The datacenter in which you want to provision the placement group.| Yes |
-|`pod`| String | Required |  The data center pod where you want to create the placement group. To find the pod, run `ibmcloud sl placement-group create-options` and select one of the **Back-end Router ID** for the data center where you want to create the placement group. | Yes |
+|`pod`| String | Required |  The data center pod where you want to create the placement group. To find the pod, run `ibmcloud sl placement-group create-options` and select one of the **Back-end Router IDs** for the data center where you want to create the placement group. | Yes |
 |`rule`| String | Optional | The rule of the placement group. Default `SPREAD`. | Yes |
 |`tags`| Array of Strings | Optional | Tags associated with the placement group.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -626,16 +626,16 @@ The `timeouts` block allows you to specify [Timeouts](https://www.terraform.io/d
 
 |Name|Description|
 |----|-----------|
-|`delete`|(Defaults to 10 mins) Used when deleting the placement group. There might be Virtual Guest resources on the placement group. The placement group delete request is issued once there are no Virtual Guests on the placement group.|
+|`delete`|(Defaults to 10 mins) Used when you delete the placement group. There might be Virtual Guest resources on the placement group. The placement group delete request is issued once there are no Virtual Guests on the placement group.|
 {: caption="Table. Available timeout configuration options" caption-side="top"}
 
 
 ## `ibm_compute_provisioning_hook`
 {: #provision-hook}
 
-Provides provisioning hooks containing all the information needed to add a hook into a server or virtual provision and OS reload. This allows provisioning hooks to be created, updated, and deleted.
+Provides provisioning hooks that contains all the information that is needed to add a hook into a server or virtual provision and OS reload. This allows provisioning hooks to be created, updated, and deleted.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Provisioning_Hook).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Provisioning_Hook).
 
 ### Sample Terraform code
 {: #provision-hook-sample}
@@ -654,7 +654,7 @@ The following arguments are supported:
 
 |Name|Description|
 |----|-----------|
-|`name`|(Required, string) The descriptive name used to identify a provisioning hook.|
+|`name`|(Required, string) The descriptive name that is used to identify a provisioning hook.|
 |`uri`|(Required, string) The endpoint from which the script is downloaded or downloaded and executed.|
 |`tags`|(Optional, array of strings) Tags associated with the provisioning hook instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
@@ -677,7 +677,7 @@ The following attributes are exported:
 
 Provide an SSH key resource. This allows SSH keys to be created, updated, and deleted.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Security_Ssh_Key).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Security_Ssh_Key).
 
 ### Sample Terraform code
 {: #ssh-key-sample}
@@ -697,7 +697,7 @@ The following arguments are supported:
 
 |Name|Description|
 |----|-----------|
-|`label`|(Required, string) The descriptive name used to identify an SSH key.|
+|`label`|(Required, string) The descriptive name that is used to identify an SSH key.|
 |`public_key`|(Required, string) The public SSH key.|
 |`notes`|(Optional, string) Descriptive text about the SSH key.|
 |`tags`|(Optional, array of strings) Tags associated with the SSH Key instance.   **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.|
@@ -722,7 +722,7 @@ The following attributes are exported:
 
 Provides an SSL certificate resource. This allows SSL certificates to be created, updated, and deleted.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer) security certificates Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Security_Certificate).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer) security certificates Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Security_Certificate).
 
 ### Sample Terraform code
 {: #ssl-compute-cert-sample}
@@ -796,7 +796,7 @@ To access the SoftLayer portal, the user can log in with the username and passwo
 
 To access the SoftLayer API, the user can log in with the username and API key. An `api_key` is generated by SoftLayer when the `has_api_key` flag is `true`.
 
-If the SoftLayer API [`getBlueIdAuthenticationRequiredFlag`](https://api.softlayer.com/rest/v3/SoftLayer_Account/getBlueIdAuthenticationRequiredFlag) returns `false`, the account is a local account.
+If the {{site.keyword.data.cloud_notm}} API [`getBlueIdAuthenticationRequiredFlag`](https://api.softlayer.com/rest/v3/SoftLayer_Account/getBlueIdAuthenticationRequiredFlag) returns `false`, the account is a local account.
 
 #### Sample Terraform code
 {: #compute-user-sample}
@@ -837,7 +837,7 @@ To access the SoftLayer portal, the user can log in with the IBMid.
 
 To access the SoftLayer API, the user can log in with the username generated by SoftLayer and the API key. An `api_key` is generated by SoftLayer when the `has_api_key` flag is `true`.
 
-If the SoftLayer API  [`getBlueIdAuthenticationRequiredFlag`](https://api.softlayer.com/rest/v3/SoftLayer_Account/getBlueIdAuthenticationRequiredFlag)
+If the {{site.keyword.data.cloud_notm}} API [`getBlueIdAuthenticationRequiredFlag`](https://api.softlayer.com/rest/v3/SoftLayer_Account/getBlueIdAuthenticationRequiredFlag)
 returns `true`, the account is an IBMid.
 
 #### Example Usage
@@ -890,10 +890,10 @@ The following arguments are supported:
 |`last_name`|(Required, string) The user's last name.|
 |`username`|(Required for SoftLayer accounts, optional for IBMid accounts, string) A unique name to identify a user globally across all SoftLayer login. The username is also the user login. Once a username is created, it cannot be changed. You must define a username when the account is a SoftLayer account. The user name is generated by SoftLayer when the account is an IBMid account. For example, if an IBMid had an account number of `1234567` and an email address (IBMid) of `test@example.com`, then SoftLayer would generate `1234567_test@example.com` as the username. This argument is optional for an IBMid account.|
 |`password`|(Required for SoftLayer accounts, string) The initial password for the user account. The password is hashed and encoded before it is stored in the Terraform state file. For an IBMid account, the password argument is ignored. For a SoftLayer account, the password must conform to SoftLayer's password policies to avoid failures.  Valid passwords must meet the following rules: <ul><li>Be 8 to 20 characters in length.</li><li>Have a combination of uppercase and lowercase characters. </li><li>Contain at least one number. </li><li>Contain at least one of the following special characters: <code>_</code>, <code>-</code>, <code>&#124;</code>, <code>@</code>, <code>.</code>, <code>,</code>, <code>?</code>, <code>/</code>, <code>!</code>, <code>~</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>^</code>, <code>&</code>, <code>*</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, <code>=</code>.|
-|`permissions`|(Optional, string) Permissions assigned to this user. This is a set of zero or more string values. See the [SoftLayer  API Docs  for user permissions](https://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_CustomerPermission_Permission).|
+|`permissions`|(Optional, string) Permissions assigned to this user. This is a set of zero or more string values. See the [{{site.keyword.data.cloud_notm}} API Docs for user permissions](https://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_CustomerPermission_Permission).|
 |`state`|(Required, string) The state of a user's street address.|
-|`timezone`|(Required, string) The user's time zone as a short name value (e.g., "EST"). For accepted values, see the [SoftLayer  API Docs  for time zones](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Locale_Timezone).|
-|`user_status`|(Optional, string) The user's login status. You can find accepted values in the [SoftLayer  API Docs  for user status](http://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_Status). The default value is `ACTIVE`.|
+|`timezone`|(Required, string) The user's time zone as a short name value (e.g., "EST"). For accepted values, see the [{{site.keyword.data.cloud_notm}} API Docs for time zones](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Locale_Timezone).|
+|`user_status`|(Optional, string) The user's log in status. You can find accepted values in the [{{site.keyword.data.cloud_notm}} API Docs for user status](http://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_Status). The default value is `ACTIVE`.|
 |`tags`|(Optional, array of strings) Tags associated with the user account instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -922,7 +922,7 @@ In SoftLayer, there is a delay when user logins are deleted from SoftLayer back-
 
 Provides a resource for VM instances. This allows VM instances to be created, updated, and deleted.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/services/SoftLayer_Virtual_Guest).
+For more information, see the [IBM Cloud Classic Infrastructure API Docs](http://sldn.softlayer.com/reference/services/SoftLayer_Virtual_Guest).
 
 **NOTE**: Update is not supported when the `bulk_vms` parameter is used.
 
@@ -1088,7 +1088,7 @@ Review the input parameters that you can specify for your resource.
 |`bulk_vms.domain`|String|Required| The domain for the computing instance. If you set this option, do not specify `hostname` and `domain` at the same time.| Yes |
 |`cores`|Integer|Optional|The number of CPU cores that you want to allocate. If you set this option, do not specify `flavor_key_name` at the same time.| No |
 |`memory`|Integer|Optional|The amount of memory, expressed in megabytes, that you want to allocate. If you set this option, do not specify `flavor_key_name` at the same time.| No |
-|`flavor_key_name`|String|Optional|The flavor key name that you want to use to provision the instance. To see available key name, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest/getCreateObjectOptions.json), that uses your API key as the password. If you set this option, do not specify `cores` and `memory` at the same time.| No |
+|`flavor_key_name`|String|Optional|The flavor key name that you want to use to provision the instance. To see available key name, log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest/getCreateObjectOptions.json), that uses your API key as the password. If you set this option, do not specify `cores` and `memory` at the same time.| No |
 |`datacenter`|String|Optional|The data center in which you want to provision the instance. **NOTE**: If `dedicated_host_name` or `dedicated_host_id`    is provided then the datacenter should be same as the dedicated host datacenter.     If `placement_group_name` or `placement_group_id`    is provided then the datacenter should be same as the placement group datacenter.    Conflicts with `datacenter_choice`. | Yes |
 |`hourly_billing`|Boolean|Optional| The billing type for the instance. When set to `true`, the computing instance is billed on hourly usage. Otherwise, the instance is billed monthly. The default value is `true`.| Yes |
 |`local_disk`|Boolean|Optional|The disk type for the instance. When set to `true`, the disks for the computing instance are provisioned on the host that the instance runs. Otherwise, SAN disks are provisioned. The default value is `true`.| Yes |
@@ -1098,8 +1098,8 @@ Review the input parameters that you can specify for your resource.
 |`placement_group_id`|Integer|Optional|Specifies [placement group](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its ID. **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_name`, `dedicated_host_id` and `placement_group_name`.| Yes |
 |`placement_group_name`|String|Optional|Specifies [placement group](/docs/virtual-servers?topic=virtual-servers-dedicated-virtual-servers) for the instance by its name.        **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name` and `placement_group_id`| Yes |
 |`transient`|Boolean|Optional|Specifies whether to provision a transient virtual server. The default value is `false`. Transient instances cannot be upgraded or downgraded. Transient instances cannot use local storage.       **NOTE**: Conflicts with `dedicated_acct_host_only`, `dedicated_host_id`, `dedicated_host_name`, `cores`, `memory`, `public_bandwidth_limited` and `public_bandwidth_unlimited`| Yes |
-|`os_reference_code`|String|Optional|The operating system reference code that is used to provision the computing instance. To see available OS reference codes, log in to the [IBM Cloud Classic Infrastructure (SoftLayer) API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode), that uses your API key as the password.       **NOTE**: Conflicts with `image_id`.| Yes |
-|`image_id`|Integer|Optional| The image template ID you want to use to provision the computing instance. This is not the global identifier (UUID), but the image template group ID that should point to a valid global identifier. To retrieve the image template ID from the IBM Cloud infrastructure customer portal, navigate to **Devices > Manage > Images**, click the image that you want, and note the ID number in the resulting URL. **NOTE**: Conflicts with `os_reference_code`. | Yes |
+|`os_reference_code`|String|Optional|The operating system reference code that is used to provision the computing instance. To see available OS reference codes, log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3/SoftLayer_Virtual_Guest_Block_Device_Template_Group/getVhdImportSoftwareDescriptions.json?objectMask=referenceCode), that uses your API key as the password.       **NOTE**: Conflicts with `image_id`.| Yes |
+|`image_id`|Integer|Optional| The image template ID that you want to use to provision the computing instance. This is not the global identifier (UUID), but the image template group ID that should point to a valid global identifier. To retrieve the image template ID from the IBM Cloud infrastructure customer portal, navigate to **Devices > Manage > Images**, click the image that you want, and note the ID number in the resulting URL. **NOTE**: Conflicts with `os_reference_code`. | Yes |
 |`network_speed`|Integer|Optional|The connection speed (in Mbps) for the instance's network components. The default value is `100`| No |
 |`private_network_only`|Boolean|Optional|When set to `true`, a compute instance has only access to the private network. The default value is `false`.| Yes |
 |`private_security_group_ids`|Array of integers|Optional| The IDs of security groups to apply on the private interface. This attribute can't be updated. You can use this parameter to add a security group to your virtual server instance when you create it. If you want to add or remove security groups later, you must use the `ibm_network_interface_sg_attachment` resource. If you use this attribute in addition to `ibm_network_interface_sg_attachment` resource you might experience errors. So use one of these consistently for a particular virtual server instance.| Yes |
@@ -1359,7 +1359,7 @@ The SOA and NS records are automatically created by IBM Cloud Classic Infrastruc
 
 #### `A` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_AType) to properly implement the `A` record.
+Review the [IBM Cloud Classic Infrastructure Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_AType) to properly implement the `A` record.
 
 ```
 resource "ibm_dns_domain" "main" {
@@ -1378,7 +1378,7 @@ resource "ibm_dns_record" "www" {
 
 #### `AAAA` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_AaaaType) to properly implement the `AAAA` record.
+Review the [IBM Cloud Classic Infrastructure Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_AaaaType) to properly implement the `AAAA` record.
 
 ```
 resource "ibm_dns_record" "aaaa" {
@@ -1393,7 +1393,7 @@ resource "ibm_dns_record" "aaaa" {
 
 #### `CNAME` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ] to properly implement the `CNAME` record.
+Review the [IBM Cloud Classic Infrastructure Docs] to properly implement the `CNAME` record.
 
 ```
 resource "ibm_dns_record" "cname" {
@@ -1408,7 +1408,7 @@ resource "ibm_dns_record" "cname" {
 
 #### `NS` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_NsType) to properly implement the `NS` record.
+Review the [IBM Cloud Classic Infrastructure Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_NsType) to properly implement the `NS` record.
 
 ```
 resource "ibm_dns_record" "recordNS" {
@@ -1423,7 +1423,7 @@ resource "ibm_dns_record" "recordNS" {
 
 #### `MX` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_MxType) to properly implement the `MX` record.
+Review the [IBM Cloud Classic Infrastructure Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_MxType) to properly implement the `MX` record.
 
 ```
 resource "sibm_dns_record" "recordMX-1" {
@@ -1439,7 +1439,7 @@ resource "sibm_dns_record" "recordMX-1" {
 
 #### `SOA` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_SoaType) to properly implement the `SOA` record.
+Review the [IBM Cloud Classic Infrastructure Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_SoaType) to properly implement the `SOA` record.
 
 ```
 resource "ibm_dns_record" "recordSOA" {
@@ -1454,7 +1454,7 @@ resource "ibm_dns_record" "recordSOA" {
 
 #### `SPF` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_SpfType) to properly implement the `SPF` record.
+Review the [IBM Cloud Classic Infrastructure Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_SpfType) to properly implement the `SPF` record.
 
 ```
 resource "ibm_dns_record" "recordSPF" {
@@ -1469,7 +1469,7 @@ resource "ibm_dns_record" "recordSPF" {
 
 #### `TXT` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_TxtType/) to properly implement the `TXT` record.
+Review the [IBM Cloud Classic Infrastructure Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_TxtType/) to properly implement the `TXT` record.
 
 ```
 resource "ibm_dns_record" "recordTXT" {
@@ -1484,7 +1484,7 @@ resource "ibm_dns_record" "recordTXT" {
 
 #### `SRV` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_SrvType) to properly implement the `SRV` record.
+Review the [IBM Cloud Classic Infrastructure  Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_SrvType) to properly implement the `SRV` record.
 
 ```
 resource "ibm_dns_record" "recordSRV" {
@@ -1504,7 +1504,7 @@ resource "ibm_dns_record" "recordSRV" {
 
 #### `PTR` Record
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_PtrType/) to properly implement the `PTR` record.
+Review the [IBM Cloud Classic Infrastructure  Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Dns_Domain_ResourceRecord_PtrType/) to properly implement the `PTR` record.
 
 ```
 resource "ibm_dns_record" "recordPTR" {
@@ -1606,8 +1606,8 @@ The following attributes are exported:
 |`id`|The unique identifier of the VLAN.|
 |`location`|The location/datacenter of the created firewall device.|
 |`primary_ip:`|The public gateway IP address.|
-|`username:`|The username used to log in into the device, in case of Forti Gate Appliances.|
-|`password:`|The password used to log in into the device, in case of Forti Gate Appliances.|
+|`username:`|The username that is used to log in into the device, in case of Forti Gate Appliances.|
+|`password:`|The password that is used to log in into the device, in case of Forti Gate Appliances.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -1618,7 +1618,7 @@ The following attributes are exported:
 
 Create a firewall with multiple VLANs.
 
-For more information, see the [IBM Cloud (SoftLayer) multi VLAN firewall Request Docs ](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Container_Product_Order_Network_Protection_Firewall_Dedicated/).
+For more information, see the [IBM Cloud (SoftLayer) multi VLAN firewall Request Docs](https://sldn.softlayer.com/reference/datatypes/SoftLayer_Container_Product_Order_Network_Protection_Firewall_Dedicated/).
 
 ### Sample Terraform code
 {: #multivlan-firewall-sample}
@@ -1663,8 +1663,8 @@ The following attributes are exported:
 |`public_ip`|The public gateway IP address.|
 |`public_ipv6`|The public gateway IPv6 address.|
 |`private_ip`|The private gateway IP address.|
-|`username`|The username used to log in into the device.|
-|`password`|The password used to log in into the device.|
+|`username`|The username that is used to log in into the device.|
+|`password`|The password that is used to log in into the device.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -1746,7 +1746,7 @@ Provides a firewall in IBM. One firewall protects one public VLAN and provides i
 
 
 
-For more information about how to configure a firewall, see the [docs](/docs/hardware-firewall-shared?topic=hardware-firewall-shared-about-hardware-firewall-shared-).
+For more information, about how to configure a firewall, see the [docs](/docs/hardware-firewall-shared?topic=hardware-firewall-shared-about-hardware-firewall-shared-).
 
 ### Sample Terraform code
 {: #shared-fw-sample}
@@ -2158,7 +2158,7 @@ The following attributes are exported:
 
 Provides a resource for local load balancer services. This allows local load balancer services to be created, updated, and deleted.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_Service).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_Service).
 
 ### Sample Terraform code
 {: #lb-service-sample}
@@ -2201,7 +2201,7 @@ The following arguments are supported:
 
 Provides a resource for local load balancer service groups. This allows local load balancer service groups to be created, updated, and deleted.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_Service_Group).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller_LoadBalancer_Service_Group).
 
 ### Sample Terraform code
 {: #service-group-sample}
@@ -2253,7 +2253,7 @@ The following attributes are exported:
 
 Provides a resource for VPX load balancers. This allows VPX load balancers to be created, updated, and deleted.  
 
-**NOTE**: IBM VPX load balancers consist of `Citrix NetscalerVPX` devices (virtual), which are currently priced on a per-month basis. Use caution when creating the resource because the cost for an entire month is incurred immediately upon creation. For more information about pricing, see the [network appliance Docs ](https://www.ibm.com/cloud/network-appliances). In the Citrix log, click **See more pricing** for a current price matrix.
+**NOTE**: IBM VPX load balancers consist of `Citrix NetscalerVPX` devices (virtual), which are currently priced on a per-month basis. Use caution when creating the resource because the cost for an entire month is incurred immediately upon creation. For more information, about pricing, see the [network appliance Docs](https://www.ibm.com/cloud/network-appliances). In the Citrix log, click **See more pricing** for a current price matrix.
 
 You can also use the following REST URL to get a listing of VPX choices along with version numbers, speed, and plan type:
 
@@ -2264,7 +2264,7 @@ https://<userName>:<apiKey>@api.softlayer.com/rest/v3/SoftLayer_Product_Package/
 ### Sample Terraform code
 {: #lb-vpx-sample}
 
-Review the [IBM Cloud Classic Infrastructure (SoftLayer) Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller) for more information.
+Review the [IBM Cloud Classic Infrastructure  Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Application_Delivery_Controller) for more information.
 
 ```
 resource "ibm_lb_vpx" "test_vpx" {
@@ -2287,15 +2287,15 @@ The following arguments are supported:
 
 |Name| Data type | Required / optional | Description| Forces new resource |
 |----|-----------| ------ | ----- | ----------|
-|`datacenter`| String | Required |The data center in which you want to provision the VPX load balancer. You can find accepted values in the [data center Docs ](https://www.ibm.com/cloud/load-balancer).| Yes |
+|`datacenter`| String | Required |The data center in which you want to provision the VPX load balancer. You can find accepted values in the [data center Docs](https://www.ibm.com/cloud/load-balancer).| Yes |
 |`speed`|Integer | Required | The speed, expressed in Mbps. Accepted values are `10`, `200`, and `1000`.| Yes |
 |`version`| String | Required | The VPX load balancer version. Accepted values are `10.1`, `10.5`, `11.0`, `11.1` and `12.1`.| Yes |
 |`plan`| String | Required |The VPX load balancer plan. Accepted values are `Standard` and `Platinum`.| Yes |
 |`ip_count`| Integer | Required | The number of static public IP addresses assigned to the VPX load balancer. Accepted values are `1`,`2`, `4`, `8`, and `16`.| Yes |
 |`public_vlan_id`|Integer | Optional | The public VLAN ID that is used for the public network interface of the VPX load balancer. You can find accepted values in the [VLAN network](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want to use and noting the ID in the resulting URL. You can also refer to a VLAN name by using a data source.| Yes |
 |`private_vlan_id`|Integer | Optional | The private VLAN ID that is used for the private network interface of the VPX load balancer. You can find accepted values in the [VLAN network](https://cloud.ibm.com/classic/network/vlans) by clicking the VLAN that you want to use and noting the ID in the resulting URL. You can also refer to a VLAN name by using a data source.| Yes |
-|`public_subnet`|String | Optional| The public subnet that is used for the public network interface of the VPX load balancer. Accepted values are primary public networks. You can find accepted values in the [subnet Docs ](https://cloud.ibm.com/classic/network/subnets).| Yes |
-|`private_subnet`|String | Optional | Public subnet that is used for the private network interface of the VPX load balancer. Accepted values are primary private networks. You can find accepted values in the [subnet Docs ](https://cloud.ibm.com/classic/network/subnets).| Yes |
+|`public_subnet`|String | Optional| The public subnet that is used for the public network interface of the VPX load balancer. Accepted values are primary public networks. You can find accepted values in the [subnet Docs](https://cloud.ibm.com/classic/network/subnets).| Yes |
+|`private_subnet`|String | Optional | Public subnet that is used for the private network interface of the VPX load balancer. Accepted values are primary private networks. You can find accepted values in the [subnet Docs](https://cloud.ibm.com/classic/network/subnets).| Yes |
 |`tags`|Array of strings | Optional | Tags associated with the VPX load balancer instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2318,7 +2318,7 @@ The following attributes are exported:
 ## `ibm_lb_vpx_ha`
 {: #lb-vpx-ha}
 
-Configure a high availability (HA) pair with two `NetscalerVPX` devices. The two NetscalerVPXs must be version 10.5 and located in the same subnet. A primary `NetscalerVPX` provides load-balancing services in active mode, and a secondary `NetscalerVPX` provides load-balancing services when the primary `NetscalerVPX` fails. For more information, refer to the  [Citrix support Docs  ](https://support.citrix.com/article/CTX116748){: external} and the [Knowledge layer Netscaler Docs ](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
+Configure a high availability (HA) pair with two `NetscalerVPX` devices. The two NetscalerVPXs must be version 10.5 and located in the same subnet. A primary `NetscalerVPX` provides load-balancing services in active mode, and a secondary `NetscalerVPX` provides load-balancing services when the primary `NetscalerVPX` fails. For more information, refer to the  [Citrix support Docs  ](https://support.citrix.com/article/CTX116748){: external} and the [Knowledge layer Netscaler Docs](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
 
 **NOTE**: This resource only supports Netscaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
@@ -2369,7 +2369,7 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`primary_id`| String | Required | The ID of the primary Netscaler VPX.| Yes |
 |`secondary_id`| String | Required | The ID of the secondary Netscaler VPX.| Yes |
-|`stay_secondary`|Boolean | Optional | Specifies whether the secondary Netscaler VPX will  take over the service. Set this argument to `true` to prevent the secondary Netscaler VPX from taking over the service even if the primary Netscaler VPX fails. For more information, see the [Citrix Netscaler Docs ](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support Docs  ](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
+|`stay_secondary`|Boolean | Optional | Specifies whether the secondary Netscaler VPX will  take over the service. Set this argument to `true` to prevent the secondary Netscaler VPX from taking over the service even if the primary Netscaler VPX fails. For more information, see the [Citrix Netscaler Docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-system-wrapper-10-con/ns-nw-ha-intro-wrppr-con/ns-nw-ha-frcng-scndry-nd-sty-scndry-tsk.html) and the [Citrix support Docs  ](https://support.citrix.com/article/CTX116748). The default value is `false`.| No |
 |`tags`|Array of strings | Optional | Tags associated with the high availability Netscaler VPX pair instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2389,7 +2389,7 @@ The following attributes are exported:
 ## `ibm_lb_vpx_service`
 {: #vpx-svc}
 
-Provides a resource for VPX load balancer services. This allows VPX load balancer services to be created, updated, and deleted. For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service).  
+Provides a resource for VPX load balancer services. This allows VPX load balancer services to be created, updated, and deleted. For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service).  
 
 **NOTE**: If you use Netscaler VPX 10.5, Terraform uses Netscaler's [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) to manage the resource.  Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
@@ -2422,10 +2422,10 @@ The following arguments are supported:
 |`vip_id`| String | Required |The ID of the VPX load balancer virtual IP address to which the service is assigned.| Yes |
 |`destination_ip_address`| String | Required | The IP address of the server to which traffic directs. If you use Netscaler VPX 10.1, you must indicate a public IP address in an IBM Cloud Classic Infrastructure (SoftLayer) account. If you use Netscaler VPX 10.5, you can use any IP address.| Yes |
 |`destination_port`| Integer | Required |The destination port of the server to which traffic directs.| No |
-|`weight`| Integer | Required | The percentage of the total connection limit allocated to the load balancer between all your services. See the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.       **NOTE**: If you use Netscaler VPX 10.5, the weight value is ignored.| No |
-|`connection_limit`| Integer | Required |The connection limit for this service. Acceptable values are `0`-`4294967294`. See the [Citrix Netscaler Docs ](https://docs.citrix.com/en-us/netscaler/11/reference/netscaler-command-reference/basic/service.html) for details.| No |
-|`health_check`| String | Required |The health check type. See the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.| No |
-|`usip`| String | Optional | Whether the service reports the source IP of the client to the service being load balanced. Acceptable values are `YES` or `NO`. The default value is `NO`. See the [Citrix Netscaler Docs ](https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/11.0/configuration/basic/service/service) for more information.       **NOTE**: This argument is only available for VPX 10.5.| No |
+|`weight`| Integer | Required | The percentage of the total connection limit allocated to the load balancer between all your services. See the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.       **NOTE**: If you use Netscaler VPX 10.5, the weight value is ignored.| No |
+|`connection_limit`| Integer | Required |The connection limit for this service. Acceptable values are `0`-`4294967294`. See the [Citrix Netscaler Docs](https://docs.citrix.com/en-us/netscaler/11/reference/netscaler-command-reference/basic/service.html) for details.| No |
+|`health_check`| String | Required |The health check type. See the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_Service) for details.| No |
+|`usip`| String | Optional | Whether the service reports the source IP of the client to the service being load balanced. Acceptable values are `YES` or `NO`. The default value is `NO`. See the [Citrix Netscaler Docs](https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/11.0/configuration/basic/service/service) for more information.       **NOTE**: This argument is only available for VPX 10.5.| No |
 |`tags`| Array of strings | Optional | Tags associated with the VPX load balancer service instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2528,12 +2528,12 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`name`| String | Required |The ID of the VPX load balancer virtual IP address.| Yes |
 |`nad_controller_id`| Integer | Required | The ID of the VPX load balancer that the virtual IP address is assigned to.| Yes |
-|`load_balancing_method`| String | Required | See the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use Netscaler VPX 10.5, see the [Citrix Docs ](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for more methods that you can use.| No |
-|`persistence`| String | Optional |Applies to Netscaler VPX 10.5 only. See the available persistence types in the [Citrix Docs ](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-persistence-wrapper-con/ns-lb-persistence-about-con.html).  | No |
+|`load_balancing_method`| String | Required | See the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_LoadBalancer_VirtualIpAddress) for available methods. If you use Netscaler VPX 10.5, see the [Citrix Docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-customizing-lbalgorithms-wrapper-con.html) for more methods that you can use.| No |
+|`persistence`| String | Optional |Applies to Netscaler VPX 10.5 only. See the available persistence types in the [Citrix Docs](https://docs.citrix.com/en-us/netscaler/10-5/ns-tmg-wrapper-10-con/ns-lb-wrapper-con-10/ns-lb-persistence-wrapper-con/ns-lb-persistence-about-con.html).  | No |
 |`virtual_ip_address`| String | Required |The public IP address for the VPX load balancer virtual IP.| No |
 |`source_port`|Integer | Required | The source port for the VPX load balancer virtual IP address.| No |
 |`type`| String | Required | The connection type for the VPX load balancer virtual IP address. Accepted values are `HTTP`, `FTP`, `TCP`, `UDP`, `DNS`, and `SSL`. If you set the type to `SSL`, then `security_certificate_id` provides certification for SSL offload services.| Yes |
-|`security_certificate_id`| Integer | Optional | Applies to Netscaler VPX 10.5 only. The ID of a security certificate you want to use. This argument provides security certification for SSL offload services. For more information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).| Yes |
+|`security_certificate_id`| Integer | Optional | Applies to Netscaler VPX 10.5 only. The ID of a security certificate that you want to use. This argument provides security certification for SSL offload services. For more information, see the  [ibm_compute_ssl_certificate resource](#ssl-compute-cert).| Yes |
 |`tags`| Array of strings | Optional | Tags associated with the VPX load balancer virtual IP instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2557,9 +2557,9 @@ Provides a resource for an IBM Cloud network gateway appliance. This resource al
 
 A network gateway can be created in stand-alone mode and HA mode with both members, with either the same or different configurations.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Gateway).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Gateway).
 
-For more information about getting started, see the [IBM Virtual Router Appliance Docs ](/docs/gateway-appliance?topic=gateway-appliance-getting-started).
+For more information, about getting started, see the [IBM Virtual Router Appliance Docs](/docs/gateway-appliance?topic=gateway-appliance-getting-started).
 
 ### Sample Terraform code
 {: #network-gateway-sample}
@@ -2654,7 +2654,7 @@ The following arguments are supported:
 |`members.redundant_power_supply`| Boolean | Optional | When the value is `true`, more power supply is provided. Default value is `false`  | Yes |
 |`members.tcp_monitoring`| Boolean | Optional |Whether to enable TCP monitoring for the member. Default value is `false`.  | Yes |
 |`members.process_key_name`| String | Optional | The process key name for the member. Default value is  `INTEL_SINGLE_XEON_1270_3_40_2`. Refer to the same attribute on the `ibm_compute_bare_metal` resource.  | Yes |
-|`members.package_key_name`| String | Optional | The key name for the network gateway package. You can find available package key names in the SoftLayer API URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_GATEWAY"}}}`, that uses your API key as the password. Default value is `NETWORK_GATEWAY_APPLIANCE`. The default value will allow order Single processor Multi-Core Servers. Use `2U_NETWORK_GATEWAY_APPLIANCE_1O_GBPS` for ordering Dual processor Multi-Core Servers.  | Yes |
+|`members.package_key_name`| String | Optional | The key name for the network gateway package. You can find available package key names in the SoftLayer API URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_GATEWAY"}}}` that uses your API key as the password. Default value is `NETWORK_GATEWAY_APPLIANCE`. The default value will allow order Single processor multi-core Servers. Use `2U_NETWORK_GATEWAY_APPLIANCE_1O_GBPS` for ordering Dual processor multi-core Servers.  | Yes |
 |`members.os_key_name`| String | Optional | The os key name for member. Default value is  `OS_VYATTA_5600_5_X_UP_TO_1GBPS_SUBSCRIPTION_EDITION_64_BIT`. Refer to the same attribute on the `ibm_compute_bare_metal` resource.  | Yes |
 |`members.redundant_network`| Boolean | Optional | When the value is `true`, two physical network interfaces are provided with a bonding configuration. Default value is `false`.   | Yes |
 |`members.unbonded_network`| Boolean | Optional |  When the value is `true`, two physical network interfaces are provided without a bonding configuration. Default value is `false`.   | Yes |
@@ -2663,7 +2663,7 @@ The following arguments are supported:
 |`members.memory`| Integer | Required | The amount of memory, expressed in megabytes, that you want to allocate.  | Yes |
 |`members.storage_groups`| List | Optional | A nested block describes the storage group for the member of the network gateway. Nested `storage_groups` blocks have the following structure:      | Yes |
 |`members.storage_groups.array_type_id`| Integer | Required | The ID of the array type.      | No |
-|`members.storage_groups.hard_drives`| List | Required |The list of hard drive associated with the gateway member.      | No |
+|`members.storage_groups.hard_drives`| List | Required |The list of hard disk associated with the gateway member.      | No |
 |`members.storage_groups.array_size`| Integer | Optional | The size of the array.      | No |
 |`members.storage_groups.partition_template_id`| Integer | Optional | The partition template ID for the member.  | No |
 |`members.ssh_key_ids`| List | Optional |  The SSH key IDs to install on the member.  | Yes |
@@ -2711,9 +2711,9 @@ The following attributes are exported:
 
 Provide a resource to associate a VLAN with a network gateway. The VLANs can be disassociated or updated later to be bypassed or routed.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Gateway_Vlan).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Gateway_Vlan).
 
-For more information about getting started, see the [IBM Virtual Router Appliance Docs ](/docs/gateway-appliance?topic=gateway-appliance-getting-started).
+For more information, about getting started, see the [IBM Virtual Router Appliance Docs](/docs/gateway-appliance?topic=gateway-appliance-getting-started).
 
 ### Sample Terraform code
 {: #network-vlan-associate-sample}
@@ -2777,7 +2777,7 @@ The following attributes are exported:
 
 Provide a resource to attach security group to a network interface. This allows attachments to be created and deleted.
 
-For more information, see the [IBM Cloud Classic Infrastructure  (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Virtual_Network_SecurityGroup_NetworkComponentBinding).
+For more information, see the [IBM Cloud Classic Infrastructure  (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Virtual_Network_SecurityGroup_NetworkComponentBinding).
 
 ### Sample Terraform code
 {: #network-sg-attachment-sample}
@@ -2831,7 +2831,7 @@ ibm_network_interface_sg_attachment provides the following [Timeouts](https://ww
 
 Provides a public IP resource to route between servers. This allows public IP's to be created, updated, and deleted. Public IP's are not restricted to routing within the same data center.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Subnet_IpAddress_Global).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Subnet_IpAddress_Global).
 
 ### Sample Terraform code
 {: #public-ip-sample}
@@ -2869,6 +2869,7 @@ The following attributes are exported:
 
 ### Timeouts
 {: #public-ip-timeout}
+
 ibm_network_public_ip provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
 
 |Name|Description|
@@ -2888,7 +2889,7 @@ If you have a default SoftLayer account, you do not have permission to create a 
 
 You can manage existing VLANs with Terraform by using the `terraform import` command. The command requires the VLAN IDs, which you can find in the [IBM Cloud infrastructure customer portal](https://cloud.ibm.com/classic/network/vlans). After the VLAN IDs are imported into SoftLayer, the IDs provide useful information such as subnets and child resource counts. When you run the `terraform destroy` command, the billing item for the VLAN is deleted. The VLAN remains in SoftLayer until you delete remaining resources on the VLAN, such as virtual guests, secondary subnets, and firewalls.
 
-For more information please refer to the [SoftLayer  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Vlan).
+For more information, refer to the [{{site.keyword.data.cloud_notm}} API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Vlan).
 
 ### Sample Terraform code
 {: #vlan-sample}
@@ -3037,7 +3038,7 @@ The following attributes are exported:
 
 Provides a networking security group resource that controls access to the public and private interfaces of a virtual server instance. This resource allows security groups to be created, updated, and deleted. To create rules for the security group, use the `security_group_rule` resource.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_SecurityGroup).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_SecurityGroup).
 
 ### Sample Terraform code
 {: #sec-group-sample}
@@ -3056,7 +3057,7 @@ The following arguments are supported:
 
 |Name| Data type | Required / optional | Description | Forces new resource |
 |----|-----------| ------ | ----- | ----------|
-|`name`| String | Required | The descriptive name used to identify the security group.| Yes |
+|`name`| String | Required | The descriptive name that is used to identify the security group.| Yes |
 |`description`| String | Optional | Additional details to describe the security group.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -3078,7 +3079,7 @@ The following attributes are exported:
 
 Provide a rule for a security group. You can set the IP range to manage incoming (ingress) and outgoing (egress) traffic to a virtual server instance. This resource allows rules for security groups to be created, updated, and deleted. To create the security group, use the `security_group` resource.
 
-For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs ](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_SecurityGroup_Rule).
+For more information, see the [IBM Cloud Classic Infrastructure (SoftLayer)  API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_SecurityGroup_Rule).
 
 ### Sample Terraform code
 {: #sec-group-rule-sample}
@@ -3124,7 +3125,7 @@ The following attributes are exported:
 ## `ibm_storage_block`
 {: #storage-block}
 
-Provides a block storage resource. This allows iSCSI-based Endurance and Performance block storage to be created, updated, and deleted. For more information about Block storage, see [Learn about Block Storage](/docs/BlockStorage?topic=BlockStorage-About). 
+Provides a block storage resource. This allows iSCSI-based Endurance and Performance block storage to be created, updated, and deleted. For more information, about Block storage, see [Learn about Block Storage](/docs/BlockStorage?topic=BlockStorage-About). 
 
 Block storage can be accessed and mounted through a Multipath Input/Output Internet Small Computer System Interface (iSCSI) connection.
 
@@ -3175,9 +3176,9 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`type`| String | Required | The type of the storage. Accepted values are `Endurance` and `Performance`.| Yes |
 |`datacenter`| String | Required |The data center where you want to provision the block storage instance.| Yes |
-|`capacity`| Integer | Required | The amount of storage capacity you want to allocate, specified in gigabytes.|
+|`capacity`| Integer | Required | The amount of storage capacity that you want to allocate, specified in gigabytes.|
 |`iops`| Float | Required | The IOPS value for the storage. For supported values, see [Provisioning](/docs/BlockStorage?topic=BlockStorage-About#provisioning).| No |
-|`os_format_type`| String | Required | The OS type used to format the storage space. This OS type must match the OS type that connects to the LUN. [Log in to the IBM Cloud Classic Infrastructure (SoftLayer) API to see available OS format types](https://api.softlayer.com/rest/v3/SoftLayer_Network_Storage_Iscsi_OS_Type/getAllObjects/). Use your API as the password to log in. Log in and find the key called `name`.| Yes |
+|`os_format_type`| String | Required | The OS type used to format the storage space. This OS type must match the OS type that connects to the LUN. [Log in to the IBM Cloud Classic Infrastructure API to see available OS format types](https://api.softlayer.com/rest/v3/SoftLayer_Network_Storage_Iscsi_OS_Type/getAllObjects/). Use your API as the password to log in. Log in and find the key called `name`.| Yes |
 |`snapshot_capacity`| Integer | Optional | The amount of snapshot capacity to allocate, specified in gigabytes.| Yes |
 |`allowed_virtual_guest_ids`| Array of integers | Optional | The virtual guests that you want to give access to this instance. Virtual guests must be in the same data center as the block storage. You can also use this field to import the list of virtual guests that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_vm_instance` resource.| No |
 |`allowed_hardware_ids`| Array of integers | Optional | The Bare Metal servers that you want to give access to this instance. Bare Metal servers must be in the same data center as the block storage. You can also use this field to import the list of Bare Metal servers that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_bare_metal` resource.| No |
@@ -3212,7 +3213,7 @@ Provides an EVault  storage resource. This allows [IBM Cloud Backup](/docs/Backu
 ### Sample Terraform code
 {: #storage-evault-sample}
 
-In the following example, you can create 20G of EVault  storage.
+In the following example, you can create 20G of EVault storage.
 
 ```
 resource "ibm_storage_evault" "test" {
@@ -3230,10 +3231,10 @@ The following arguments are supported:
 |Name| Data type | Required / optional | Description | Forces new resource |
 |----|-----------| ------ | ----- | ----------|
 |`datacenter`| String | Required |The data center where you want to provision the EVault  storage instance.| Yes |
-|`capacity`| Integer | Required | The amount of storage capacity you want to allocate, specified in gigabytes.| No |
+|`capacity`| Integer | Required | The amount of storage capacity that you want to allocate, specified in gigabytes.| No |
 |`virtual_instance_id`| Integer | Optional | The ID of the virtual instance.     **NOTE**: Conflicts with `hardware_instance_id`.| Yes |
 |`hardware_instance_id`| Integer | Optional | The ID of the hardware instance.     **NOTE**: Conflicts with `virtual_instance_id`.| Yes |
-|`tags`| Array of strings | Optional | Tags associated with the storage EVault  instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
+|`tags`| Array of strings | Optional | Tags associated with the storage EVault instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -3243,10 +3244,10 @@ The following attributes are exported:
 
 |Name|Description|
 |----|-----------|
-|`id`|The unique identifier of the EVault .|
-|`username`|The username of the EVault .|
-|`password`|The password of the EVault .|
-|`service_resource_name`|The name of an EVault  storage network resource.|
+|`id`|The unique identifier of the EVault.|
+|`username`|The username of the EVault.|
+|`password`|The password of the EVault.|
+|`service_resource_name`|The name of an EVault storage network resource.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -3338,9 +3339,9 @@ The following arguments are supported:
 |----|-----------| ------ | ----- | ----------|
 |`type`| String | Required | The type of the storage. Accepted values are `Endurance` and `Performance`| Yes |
 |`datacenter`| String | Required |The data center where you want to provision the file storage instance.| Yes |
-|`capacity`| Integer | Required |The amount of storage capacity you want to allocate, expressed in gigabytes.| No |
+|`capacity`| Integer | Required |The amount of storage capacity that you want to allocate, expressed in gigabytes.| No |
 |`iops`| Float | Required | The IOPS value for the storage instance. For supported values, see [Provisioning](/docs/FileStorage?topic=FileStorage-about#provisioning). | No |
-|`snapshot_capacity`| Integer | Optional | The amount of snapshot capacity you want to allocate, expressed in gigabytes.| Yes |
+|`snapshot_capacity`| Integer | Optional | The amount of snapshot capacity that you want to allocate, expressed in gigabytes.| Yes |
 |`allowed_virtual_guest_ids`| Array of integers | Optional | The virtual guests that you want to give access to this instance. Virtual guests must be in the same data center as the block storage. You can also use this field to import the list of virtual guests that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_vm_instance` resource.| No |
 |`allowed_hardware_ids`| Array of integers | Optional | The Bare Metal servers that you want to give access to this instance. Bare Metal servers must be in the same data center as the block storage. You can also use this field to import the list of Bare Metal servers that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_bare_metal` resource.| No |
 |`allowed_subnets`| Array of integers | Optional | The subnets that you want to give access to this instance. Subnets must be in the same data center as the block storage.| No |
@@ -3662,6 +3663,6 @@ The following arguments are supported:
 |`billing_contact.billing_fax_number`|(Optional, string) Fax number for billing contact.|
 |`technicalContactSameAsOrgAddressFlag` |(Optional, bool) If your organization address and technical contact address are the same make this flag as true and skip technical contact address details.|
 |`administrativeContactSameAsTechnicalFlag` |(Required, bool)- If your technical contact details and administrative contact details are the same then make this as true and skip details of administrative contact.|
-|`billingContactSameAsTechnicalFlag` |(Required, bool)- If your technical contact details and billing contact details is the same then make this as true and skip details of billing contact. |
+|`billingContactSameAsTechnicalFlag` |(Required, bool)- If your technical contact details and billing contact details are the same then make this as true and skip details of billing contact. |
 |`administrativeAddressSameAsOrganizationFlag` |(Required, bool) - If administrative address is same as organization address then make this flag as true and skip address details.|
 |`billingAddressSameAsOrganizationFlag` |(Required, bool) - If billing address is same as organization address then make this flag as true and skip address details. |

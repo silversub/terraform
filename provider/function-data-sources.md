@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action
 
@@ -106,7 +106,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_function_namespace`
 {: #fn-namespace_ds}
 
-Import the details of an existing IBM Cloud Functions namespace. For more information about managing namespace, see [Managing namespace](/docs/openwhisk?topic=openwhisk-namespaces). 
+Import the details of an existing IBM Cloud Functions namespace. For more information, about managing namespace, see [Managing namespace](/docs/openwhisk?topic=openwhisk-namespaces). 
 
 ### Sample Terraform code
 {: #fn-namespace-ds-sample}
