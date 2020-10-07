@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-06"
+lastupdated: "2020-10-07"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -869,7 +869,7 @@ Review the output parameters that you can access after you retrieve your data so
 |`loadbalancers.id`|String|The unique identifier of the load balancer.|
 |`loadbalancers.created_at`|String|The date and time this load balancer was created.|
 |`loadbalancers.crn`|String|The load balancer's CRN.|
-|`loadbalancers.name`|String|Name of the loadbalancer.|
+|`loadbalancers.name`|String|Name of the load balancer.|
 |`loadbalancers.subnets`|String|The subnets this load balancer is part of.|
 |`loadbalancers.subnets.crn`|String|The CRN for the subnet.|
 |`loadbalancers.subnets.id`|String|The unique identifier for this subnet.|

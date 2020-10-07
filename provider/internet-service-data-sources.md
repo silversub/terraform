@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-05"
+lastupdated: "2020-10-07"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -262,7 +262,7 @@ Review the output parameters that you can access after you retrieved your data s
 
 |Name|Data type|Description|
 |----|-----------|----------|
-| `allow_insecure` | String | Do not validate the certificate when healthcheck uses `HTTPS`.|
+| `allow_insecure` | String | Do not validate the certificate when health check uses `HTTPS`.|
 | `created_on` | String | The RFC3339 timestamp of when the load balancer monitor was created.|
 | `description` | String | Free text description.|
 | `expected_body` | String | The requested body.|
@@ -277,7 +277,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `port` | String | The TCP port to use for the health check.|
 | `retries` | String | The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. The default value is `2`.|
 | `timeout` | String | The timeout (in seconds) before marking the health check as failed. The default value is `5`.|
-| `type` | String | The protocol to use for the healthcheck. Currently supported protocols are `HTTP`, `HTTPS`, and `TCP`. The default value is `HTTP`.|
+| `type` | String | The protocol to use for the health check. Currently supported protocols are `HTTP`, `HTTPS`, and `TCP`. The default value is `HTTP`.|
 | `follow_redirects` | String | Follow redirects if returned by the origin.|
 
 ## `ibm_cis_ip_addresses`
