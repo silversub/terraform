@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-04"
+lastupdated: "2020-10-07"
 
 keywords: terraform templates, schematics template
 
@@ -43,17 +43,35 @@ subcollection: terraform
 All Terraform templates use the Terraform version 0.12 format.
 {: note}
 
-The sample Terraform templates and deploy to IBM Cloud button is an efficient way to access the templates and experience to deploy the {{site.data.keyword.bplong_notm}} to create workspace. When you click the deploy to {{site.data.keyword.bplong_notm}} link, the workspace is created.
+The sample Terraform templates and deploy to {{site.data.keyword.bplong_notm}} link is an efficient way to access the templates and experience the auto deploy of the {{site.data.keyword.bplong_notm}} to create workspace.
+{: shortdesc}
 
-When you click the button, these actions occur:
+When you click the `Deploy to IBM Cloud Schematics` following actions occur:
 
-  1. If the person does not have an active IBM Cloud account, they must create an account. They can create a trial account or a real account.
+  1. If the user does not have an active {{site.data.keyword.cloud_notm}} account, you must create a trial account or a real account.
 
-  2. The person can select a region, resource group (available in the Dallas, Washington, London, Frankfurt, and Tokyo regions) or organization and space (available in the Dallas, London, and Frankfurt regions), and app name by clicking the deploy to {{site.data.keyword.bplong_notm}} link.
+  2. The user can select a region, resource group (available in the Dallas, Washington, London, Frankfurt, and Tokyo regions) or organization and space (available in the Dallas, London, and Frankfurt regions).
 
-  3. The app deploys and creates a workspace in the IBM Cloud organization that you select.
+  3. The auto deploy link creates a workspace in the {{site.data.keyword.bplong_notm}}.
 
-  4. To execute generate plan successfully, you need to configure the required variable configuration.
+  4. To execute `generate plan` successfully, you need to configure the required variables.
+
+## Auto deploy example
+{: #auto-deploy-example}
+
+Click [View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples){: external} hyperlink to access the public Git repository examples of an {{site.data.keyword.cloud_notm}} Terraform provider.
+
+Click [Deploy to IBM Cloud Schematics](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12){: external} hyperlink to deploy an example in the Schematics to create a workspace automatically.
+
+To automate the deployment into IBM Cloud Schematics, you can copy, paste the following snippet template URL in the browser URL.
+
+```
+https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12
+```
+{: pre}
+
+The URL must contains 2 parameters, first parameter has the name of the workspace and second parameter has the Terraform version. If you do not provide the two parameters, the `Deploy to IBM Cloud Schematics` link defaults to the repository's master branch.
+{: tip}
 
 
 
