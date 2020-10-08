@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-10-08"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -67,13 +67,19 @@ resource "ibm_resource_instance" "es_instance_1" {
   resource_group_id = data.ibm_resource_group.group.id
 
   # parameters = {
-  #   service-endpoint     = "private"                    # for enterprise instance
-  #   private_ip_allowlist = ["1.0.0.0/32", "1.0.0.1/32"] # for enterprise instance
+  #   service-endpoint     = "private"                    # for enterprise instance only, Options are: "public", "public-and-private", "private". Default is "public" when not specified.
+  #   private_ip_allowlist = ["1.0.0.0/32", "1.0.0.1/32"] # for enterprise instance only. Specify 1 or more IP range in CIDR format.
+  #   # document for private service endpoint and IP allow list to restrict access, refer [restrict access](/docs/EventStreams?topic=EventStreams-restrict_access).
+  #   throughput   = "150"  # for enterprise instance only. Options are: "150", "300", "450". Default is "150".
+  #   storage_size = "2048" # for enterprise instance only. Options are: "2048", "4096", "6144", "8192", "10240", "12288". Default is "2048".
+  #   # Note: When throughput is "300", storage_size starts from "4096",  when throughput is "450", storage_size starts from "6144".
+  #   # Document to support combinations of throughput and storage_size, refer [Event Streams scaling combinations](/docs/EventStreams?topic=EventStreams-ES_scaling_capacity#ES_scaling_combinations).
   # }
 
   # timeouts {
-  #   create = "15m" # use 3h when creating enterprise instance
-  #   update = "15m" # use 1h when updating enterprise instance
+  #   create = "15m" # use 3h when creating enterprise instance, add more 1h for each level
+  of non-default throughput, add more 30m for each level of non-default storage_size
+  #   update = "15m" # use 1h when updating enterprise instance, add more 1h for each level of non-default throughput, add more 30m for each level of non-default storage_size
   #   delete = "15m"
   # }
 }
@@ -154,10 +160,10 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
-|`resource_instance_id`|String|Required|The ID/CRN of the event streams service instance.|
+|`config`|Map|Optional|The configuration parameters of the topic. Supported configurations are: `cleanup.policy`, `retention.ms`, `retention.bytes`, `segment.bytes`, `segment.ms`, `segment.index.bytes`.|
 |`name`|String|Required|The name of the topic.|
 |`partitions`|Integer|Optional|The number of partitions of the topic. Default value is 1.|
-|`config`|Map|Optional|The configuration parameters of the topic. Supported configurations are: `cleanup.policy`, `retention.ms`, `retention.bytes`, `segment.bytes`, `segment.ms`, `segment.index.bytes`.|
+|`resource_instance_id`|String|Required|The ID/CRN of the event streams service instance.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -169,8 +175,8 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the topic in CRN format. For example, `crn:v1:bluemix:public:messagehub:us-south:a/6db1b0d0b5c54ee5c201552547febcd8:cb5a0252-8b8d-4390-b017-80b743d32839:topic:my-es-topic`|
-|`kafka_http_url`|String|The API endpoint for interacting with event streams REST API.|
 |`kafka_brokers_sasl`|Array of Strings|Kafka brokers uses for interacting with Kafka native API.|
+|`kafka_http_url`|String|The API endpoint for interacting with event streams REST API.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
@@ -189,3 +195,15 @@ terraform import ibm_event_streams_topic.es_topic <crn>
 ```
 terraform import ibm_event_streams_topic.es_topic crn:v1:bluemix:public:messagehub:us-south:a/6db1b0d0b5c54ee5c201552547febcd8:cb5a0252-8b8d-4390-b017-80b743d32839:topic:my-es-topic
 ```
+
+### Timeouts
+{: #event-streams-timeouts}
+
+Event streams provides the following time outs:
+
+|Name|Description|
+|----|-----------|
+|`create`| Defaults to 15 minutes. **Note**: Use `3h` when creating enterprise instance. Add more `1h` for each level of non-default throughtput and add additional `30m` for each level of non-default storage size.|
+|`delete`| Defaults to 15 minutes. |
+|`update`| Defaults to 15 minutes. **Note**: Use `1h` when updating enterprise instance. Add more `1h` for each level of non-default throughtput and add additional `30m` for each level of non-default storage size.|
+{: caption="Table. Available timeout configuration options" caption-side="top"}
