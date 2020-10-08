@@ -910,9 +910,9 @@ The following attributes are exported:
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 
-### Additional Notes
+### More Notes
 
-In SoftLayer, there is a delay when user logins are deleted from SoftLayer back-end systems. SoftLayer acknowledges delete requests and immediately updates the user status to `CANCEL_PENDING`. The actual deletion from the SoftLayer system processes at an unspecified time in the future. This delay may be significant, especially during your project's testing phase. You may receive an error if you create a user login, then delete it, and then create it again. This results in an error because the SoftLayer back-end has not completely processed the previous delete operation. If you want to create, delete, and re-create a user login, you must specify a new, globally-unique username in your subsequent requests.
+In SoftLayer, there is a delay when user logins are deleted from SoftLayer back-end systems. SoftLayer acknowledges delete requests and immediately updates the user status to `CANCEL_PENDING`. The actual deletion from the SoftLayer system processes at an unspecified time in the future. This delay might be significant, especially during your project's testing phase. You may receive an error if you create a user login, then delete it, and then create it again. This results in an error because the SoftLayer back-end has not completely processed the previous delete operation. If you want to create, delete, and re-create a user login, you must specify a new, globally-unique username in your subsequent requests.
 
 
 
@@ -2465,7 +2465,7 @@ resource "ibm_lb_vpx_vip" "testacc_vip" {
 }
 ```
 
-The following example configuration supports only Netscaler VPX 10.5. Additional options for the `load_balancing_method` and `persistence` arguments are shown. A private IP address can be used for the `virtual_ip_address` argument.
+The following example configuration supports only Netscaler VPX 10.5. More options for the `load_balancing_method` and `persistence` arguments are shown. A private IP address can be used for the `virtual_ip_address` argument.
 
 ```
 resource "ibm_lb_vpx_vip" "testacc_vip" {
@@ -3058,7 +3058,7 @@ The following arguments are supported:
 |Name| Data type | Required / optional | Description | Forces new resource |
 |----|-----------| ------ | ----- | ----------|
 |`name`| String | Required | The descriptive name that is used to identify the security group.| Yes |
-|`description`| String | Optional | Additional details to describe the security group.| No |
+|`description`| String | Optional | More details to describe the security group.| No |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
