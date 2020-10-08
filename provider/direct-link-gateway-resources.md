@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-08"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -52,8 +52,10 @@ Before you start working with your resource, make sure to review the [required p
 Create, update, or delete a direct link gateway by using the direct link gateway resource.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform code to create direct link of dedicated type
 {: #dl-gwy-sample}
+
+In the following example, you can create direct link of dedicated type:
 
 ```
 data "ibm_dl_routers" "test_dl_routers" {
@@ -81,6 +83,29 @@ resource ibm_dl_gateway test_dl_gateway {
 ```
 {: pre}
 
+### Sample Terraform code to create direct link of connect type
+{: #dl-gwy-sample2}
+
+In the following example, you can create direct link of connect type:
+{: shortdesc}
+
+```
+data "ibm_dl_ports" "test_ds_dl_ports" {
+ 
+ }
+resource "ibm_dl_gateway" "test_dl_connect" {
+  bgp_asn =  64999
+  bgp_base_cidr =  "169.254.0.0/16"
+  global = true
+  metered = false
+  name = "dl-connect-gw-1"
+  speed_mbps = 1000
+  type =  "connect"
+  port =  data.ibm_dl_ports.test_ds_dl_ports.ports[0].port_id
+}
+```
+{: pre}
+
 ### Input parameters
 {: #dl-gwy-input}
 
@@ -92,19 +117,19 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------| --------|
 |`bgp_asn`|Integer|Required|The BGP ASN of the gateway to be created. For example, `64999`.| Yes |
 |`bgp_base_cidr`|String|Required|The BGP base CIDR of the gateway to be created. For example, `10.254.30.76/30` | Yes |
-|`global`|Boolean|Required|Gateway with global routing as `true` can connect networks outside your associated region. | No |
-|`metered`|Boolean|Required|Metered billing option. If set `true` gateway usage is billed per GB. Otherwise, flat rate is charged for the gateway.| No |
-|`name`|String|Required|The unique user-defined name for the gateway. For example, `myGateway`.| No |
-|`speed_mbps`|Integer|Required|The gateway speed in MBPS. For example, `10.254.30.78/30`.| No |
-|`type`|String|Required|The gateway type, allowed values are `dedicated` and `connect`.| Yes |
 |`bgp_cer_cidr`|String|Optional|The BGP customer edge router CIDR. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can exclude and a CIDR is selected automatically. For example, `10.254.30.78/30`.| Yes |
 |`bgp_ibm_cidr`|String|Optional|The {{site.data.keyword.IBM_notm}} BGP ASN. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can exclude and a CIDR is selected automatically. For example, `10.254.30.77/30`.| Yes |
-|`resource_group`|String|Optional|The resource group. If unspecified, the account's default resource group is used.| Yes |
 |`carrier_name`|String|Required|The carrier name. Constraints are 1 ≤ length ≤ 128, Value must match regular expression ^[a-z][A-Z][0-9][ -_]$. For example, `myCarrierName`.| Yes |
 |`cross_connect_router`|String|Required|The cross connect router. For example, `xcr01.dal03`.| Yes |
 |`customer_name`|String|Required|The customer name is required for `dedicated` type. Constraints are 1 ≤ length ≤ 128, Value must match regular expression ^[a-z][A-Z][0-9][ -_]$. For example, `newCustomerName`.| Yes |
+|`global`|Boolean|Required|Gateway with global routing as `true` can connect networks outside your associated region. | No |
 |`location_name`|String|Required|The gateway location is required for `dedicated` type. For example, `dal03`.| Yes |
-
+|`name`|String|Required|The unique user-defined name for the gateway. For example, `myGateway`.| No |
+|`metered`|Boolean|Required|Metered billing option. If set `true` gateway usage is billed per GB. Otherwise, flat rate is charged for the gateway.| No |
+|`port`|String|Required|The gateway port for type is connect gateways. This parameter is required for Direct Link connect type.| Yes |
+|`resource_group`|String|Optional|The resource group. If unspecified, the account's default resource group is used.| Yes |
+|`speed_mbps`|Integer|Required|The gateway speed in MBPS. For example, `10.254.30.78/30`.| No |
+|`type`|String|Required|The gateway type, allowed values are `dedicated` and `connect`.| Yes |
 
 ### Output parameters
 {: #dl-gwy-output}
