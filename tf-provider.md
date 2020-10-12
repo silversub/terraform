@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-12"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -122,7 +122,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
    2. Extract the {{site.data.keyword.cloud_notm}} Provider package to retrieve the binary file.
    3. Create a hidden folder for your plug-in. The {{site.data.keyword.cloud_notm}} Provider plug-in is used only by the Terraform CLI and is not meant to be accessed by the user.  
       ```
-      mkdir -p $HOME/terraform.d/plugins
+      mkdir -p .terraform.d/
       ```
       {: pre}
       
