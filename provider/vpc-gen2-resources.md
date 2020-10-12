@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07" 
+lastupdated: "2020-10-12" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -1056,13 +1056,23 @@ Create, update, or delete a VPC load balancer.
 ### Sample Terraform code
 {: #lb-sample}
 
+An example to create an application load balancer:
+
 ```
 resource "ibm_is_lb" "lb" {
   name    = "loadbalancer1"
   subnets = ["04813493-15d6-4150-9948-6cc646cb67f2"]
 }
 ```
+An example to create a network load balancer:
 
+```
+resource "ibm_is_lb" "lb" {
+  name    = "loadbalancer1"
+  subnets = ["04813493-15d6-4150-9948-6cc646cb67f2"]
+  profile = "network-fixed"
+}
+```
 ### Input parameters
 {: #lb-input}
 
@@ -1098,10 +1108,16 @@ Review the output parameters that you can access after your resource is created.
 
 `ibm_is_lb` can be imported by using the load balancer ID. 
 
+**Syntax**
 ```
 terraform import ibm_is_lb.example <lb_ID>
 ```
 {: pre}
+
+**Example**
+```
+terraform import ibm_is_lb.example d7bec597-4726-451f-8a63-e62e6f19c32c
+```
 
 ### Timeouts
 {: #lb-timeout}
@@ -1555,6 +1571,8 @@ Review the output parameters that you can access after your resource is created.
 {: #lb-pool-member-import}
 
 `ibm_is_lb_pool_member` can be imported by using the load balancer ID, pool ID, pool member ID.
+
+**Example**
 
 ```
 terraform import ibm_is_lb_pool_member.example <loadbalancer_ID>/<pool_ID>/<pool_member_ID>
