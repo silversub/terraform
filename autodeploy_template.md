@@ -35,7 +35,8 @@ subcollection: terraform
 {:step: data-tutorial-type='step'}
 
 
-# Automating the deployment for {{site.data.keyword.cloud_notm}} Terraform provider in Schematics
+# Automating the deployment for {{site.data.keyword.cloud_notm}} Terraform provider template in Schematics
+{: #autodeploy_schematics_workspace}
 
 To automate the deployment of {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}, you need to follow the steps:
 
@@ -64,6 +65,7 @@ To automate the deployment of {{site.data.keyword.cloud_notm}} Terraform v0.12 p
 5. Cross check the parameters in the workspace UI and click `Create` button.
 
 ## Adding an image on deploy to {{site.data.keyword.bplong_notm}} hyperlink
+{: #add_an_image}
 
 You can add an image on `Deploy to {{site.data.keyword.cloud_notm}} Schematics` text by using the following syntax and example.
 
@@ -82,7 +84,7 @@ You can add an image on `Deploy to {{site.data.keyword.cloud_notm}} Schematics` 
 
 **Sample output**
 
-<a img src="/images/deploytoschematics.png"></a>
+<img src="/images/deploytoschematics.png" alt="Deploy to {{site.data.keyword.bplong_notm}}" width="100" style="width: 100px; border-style: none"/>
 
-To view the sample Terraform template examples, refer [Sample Terraform templates and deploy to {{site.data.keyword.bplong_notm}}](/docs/terraform?topic=terraform-sample_terraformtemplates#api-gwy-template).
+To view about the sample Terraform template examples, refer [Sample Terraform templates and deploy to {{site.data.keyword.bplong_notm}}](/docs/terraform?topic=terraform-sample_terraformtemplates#api-gwy-template).
 
