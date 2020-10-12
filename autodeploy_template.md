@@ -35,7 +35,7 @@ subcollection: terraform
 {:step: data-tutorial-type='step'}
 
 
-# Automating the deployment for {{site.data.keyword.cloud_notm}} Terraform provider in Schematics
+# Automating the deployment for {{site.data.keyword.cloud_notm}} Terraform provider template in Schematics
 {: #autodeploy_schematics_workspace}
 
 To automate the deployment of {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}, you need to follow the steps:
