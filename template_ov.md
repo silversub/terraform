@@ -65,7 +65,7 @@ When you click the `Deploy to IBM Cloud Schematics` following actions occur:
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:180px">Access</th>
+    <th style="width:200px">Access</th>
   </thead>
   <tbody>
     <tr>

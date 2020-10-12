@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-10-12"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -141,7 +141,7 @@ resource "ibm_compute_autoscale_group" "test_scale_group" {
       hourly_billing = true
       os_reference_code = "DEBIAN_8_64"
 
-## Optional fields for virtual guest template ({{site.keyword.data.cloud_notm}} defaults apply):
+## Optional fields for virtual guest template ({{site.data.keyword.cloud_notm}} defaults apply):
       local_disk = false
       disks = [25]
       datacenter = "sng01"
@@ -428,17 +428,17 @@ Review the input parameters that you can specify for your resource.
 |`private_vlan_id`|Integer|Optional|The private VLAN to be used for the private network interface of the instance. You can find accepted values in the [VLAN networks](https://cloud.ibm.com/classic/network/vlans). Click the VLAN that you want and notes the ID in the resulting URL.|
 |`public_subnet`|String|Optional|The public subnet to be used for the public network interface of the instance. Accepted values are primary public networks. You can find accepted values in the [subnets Docs](https://cloud.ibm.com/classic/network/subnets).|
 |`private_subnet`|String|Optional|The private subnet to be used for the private network interface of the instance. Accepted values are primary private networks. You can find accepted values in the [subnets Docs](https://cloud.ibm.com/classic/network/subnets).|
-|`package_key_name`|String|Optional|The key name for the monthly Bare Metal server's package.Use this argument when you create a new monthly Bare Metal server. You can find available package key names in the {{site.keyword.data.cloud_notm}} API URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}`, that uses your API key as the password.|
-|`process_key_name`|String|Optional| The key name for the monthly Bare Metal server's process. Use this argument when you create a new monthly Bare Metal server. To get a process key name, first find the package key name in the [{{site.keyword.data.cloud_notm}}API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). To fetch the `PACKAGE_ID`, you need to access [Package ID](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={%22type%22:{%22keyName%22:{%22operation%22:%22BARE_METAL_CPU%22}}}){: external} URL to view the `ID`. Once you have the ID, for example provide `PACKAGE_ID` as `142`. Then, replace <PACKAGE_ID> with your package key name in the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/142/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]`. Select a process key name from the resulting available process key names. **Note**: To view the package ID. log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys).|
-|`disk_key_names`|Array of strings|Optional| The internal key names for the monthly Bare Metal server's disk. Use this argument when you create a new monthly Bare Metal server. To get disk key names, first find the package key name in the [{{site.keyword.data.cloud_notm}} API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). Then, replace <PACKAGE_NAME> with your package key name in the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/PACKAGE_NAME/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]). Select disk key names from the resulting available disk key names.|
-|`os_key_name`|String|Optional| The operating system key name that you want to use to provision the computing instance. To get disk key names, first find the package key name in the [{site.keyword.data.cloud_notm} API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). Then, replace <PACKAGE_NAME> with your package key name in the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/<PACKAGE_NAME>/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]). Select an OS key name from the resulting available OS key names.|
+|`package_key_name`|String|Optional|The key name for the monthly Bare Metal server's package.Use this argument when you create a new monthly Bare Metal server. You can find available package key names in the {{site.data.keyword.cloud_notm}} API URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}`, that uses your API key as the password.|
+|`process_key_name`|String|Optional| The key name for the monthly Bare Metal server's process. Use this argument when you create a new monthly Bare Metal server. To get a process key name, first find the package key name in the [{{site.data.keyword.cloud_notm}}API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). To fetch the `PACKAGE_ID`, you need to access [Package ID](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={%22type%22:{%22keyName%22:{%22operation%22:%22BARE_METAL_CPU%22}}}){: external} URL to view the `ID`. Once you have the ID, for example provide `PACKAGE_ID` as `142`. Then, replace <PACKAGE_ID> with your package key name in the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/142/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]`. Select a process key name from the resulting available process key names. **Note**: To view the package ID. log in to the [IBM Cloud Classic Infrastructure API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware/getCreateObjectOptions.json) that uses your API key as the password. For more information, about creating classic infrastructure keys and locating your VPN username and password, refer [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys).|
+|`disk_key_names`|Array of strings|Optional| The internal key names for the monthly Bare Metal server's disk. Use this argument when you create a new monthly Bare Metal server. To get disk key names, first find the package key name in the [{{site.data.keyword.cloud_notm}} API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). Then, replace <PACKAGE_NAME> with your package key name in the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/PACKAGE_NAME/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]). Select disk key names from the resulting available disk key names.|
+|`os_key_name`|String|Optional| The operating system key name that you want to use to provision the computing instance. To get disk key names, first find the package key name in the [{site.data.keyword.cloud_notm} API](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/getAllObjects?objectFilter={"type":{"keyName":{"operation":"BARE_METAL_CPU"}}}). Then, replace <PACKAGE_NAME> with your package key name in the following [URL](https://api.softlayer.com/rest/v3/SoftLayer_Product_Package/<PACKAGE_NAME>/getItems?objectMask=mask[prices[id,categories[id,name,categoryCode],capacityRestrictionType,capacityRestrictionMinimum,capacityRestrictionMaximum,locationGroupId]]). Select an OS key name from the resulting available OS key names.|
 |`public_bandwidth`|Integer|Optional| The amount of public network traffic, which is specified in gigabytes, allowed per month. The value can be greater than 0 when `private_network_only` is set to `false` and the server is a monthly based server.|
 |`memory`|Integer|Optional| The amount of memory, which is specified in gigabytes, for the server.|
 |`storage_groups`|List of objects|Optional| Configurations for RAID and partition.   |
-|`storage_groups.array_type_id`|Integer|Required|The RAID type. You can retrieve the value from the [{site.keyword.data.cloud_notm} API](https://api.softlayer.com/rest/v3/SoftLayer_Configuration_Storage_Group_Array_Type/getAllObjects).    |
+|`storage_groups.array_type_id`|Integer|Required|The RAID type. You can retrieve the value from the [{site.data.keyword.cloud_notm} API](https://api.softlayer.com/rest/v3/SoftLayer_Configuration_Storage_Group_Array_Type/getAllObjects).    |
 |`storage_groups.hard_drives`|Array of integers|Required|The index of hard disks for RAID configuration. The index starts at 0. For example, the array [0,1] is an index of two hard disks.    |
 |`storage_groups.array_size`|Integer|Optional| The target RAID disk size, specific in gigabytes.    |
-|`storage_groups.partition_template_id`|String|Optional| The partition template ID for the OS disk. Templates are different based on the target OS. To get the partition template ID, first find the OS ID in the [{site.keyword.data.cloud_notm} API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/getAllObjects). Then, replace <OS_ID> with your OS ID in the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/<OS_ID>/getPartitionTemplates`. Select your template ID in resulting available partition template IDs.  |
+|`storage_groups.partition_template_id`|String|Optional| The partition template ID for the OS disk. Templates are different based on the target OS. To get the partition template ID, first find the OS ID in the [{site.data.keyword.cloud_notm} API](https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/getAllObjects). Then, replace <OS_ID> with your OS ID in the following URL `https://api.softlayer.com/rest/v3/SoftLayer_Hardware_Component_Partition_OperatingSystem/<OS_ID>/getPartitionTemplates`. Select your template ID in resulting available partition template IDs.  |
 |`software_guard_extensions`|Boolean|Optional| The Software Guard Extensions product is added to a compatible server package, selecting Intel SGX-enabled BIOS and hardware. The default value is `false`.|
 |`restricted_network`|Boolean|Optional| The non-datacenter restricted port speed. The default value is `false`.|
 |`tcp_monitoring`|Boolean|Optional| When the value is `false`, a ping monitoring service is provided. When the value is `true`, a ping monitoring service and a TCP monitoring service are provided.#### Arguments for quote-based Bare Metal servers|
@@ -478,7 +478,7 @@ Review the output parameters that you can access after your resource is created.
 
 Provides a Dedicated Host resource. This allows dedicated host to be created, updated, and canceled.
 
-For more information, refer to the [{{site.keyword.data.cloud_notm}} API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Virtual_DedicatedHost).
+For more information, refer to the [{{site.data.keyword.cloud_notm}} API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Virtual_DedicatedHost).
 
 ### Sample Terraform code
 {: #dedicated-host-sample}
@@ -796,7 +796,7 @@ To access the SoftLayer portal, the user can log in with the username and passwo
 
 To access the SoftLayer API, the user can log in with the username and API key. An `api_key` is generated by SoftLayer when the `has_api_key` flag is `true`.
 
-If the {{site.keyword.data.cloud_notm}} API [`getBlueIdAuthenticationRequiredFlag`](https://api.softlayer.com/rest/v3/SoftLayer_Account/getBlueIdAuthenticationRequiredFlag) returns `false`, the account is a local account.
+If the {{site.data.keyword.cloud_notm}} API [`getBlueIdAuthenticationRequiredFlag`](https://api.softlayer.com/rest/v3/SoftLayer_Account/getBlueIdAuthenticationRequiredFlag) returns `false`, the account is a local account.
 
 #### Sample Terraform code
 {: #compute-user-sample}
@@ -837,7 +837,7 @@ To access the SoftLayer portal, the user can log in with the IBMid.
 
 To access the SoftLayer API, the user can log in with the username generated by SoftLayer and the API key. An `api_key` is generated by SoftLayer when the `has_api_key` flag is `true`.
 
-If the {{site.keyword.data.cloud_notm}} API [`getBlueIdAuthenticationRequiredFlag`](https://api.softlayer.com/rest/v3/SoftLayer_Account/getBlueIdAuthenticationRequiredFlag)
+If the {{site.data.keyword.cloud_notm}} API [`getBlueIdAuthenticationRequiredFlag`](https://api.softlayer.com/rest/v3/SoftLayer_Account/getBlueIdAuthenticationRequiredFlag)
 returns `true`, the account is an IBMid.
 
 #### Example Usage
@@ -890,10 +890,10 @@ The following arguments are supported:
 |`last_name`|(Required, string) The user's last name.|
 |`username`|(Required for SoftLayer accounts, optional for IBMid accounts, string) A unique name to identify a user globally across all SoftLayer login. The username is also the user login. Once a username is created, it cannot be changed. You must define a username when the account is a SoftLayer account. The user name is generated by SoftLayer when the account is an IBMid account. For example, if an IBMid had an account number of `1234567` and an email address (IBMid) of `test@example.com`, then SoftLayer would generate `1234567_test@example.com` as the username. This argument is optional for an IBMid account.|
 |`password`|(Required for SoftLayer accounts, string) The initial password for the user account. The password is hashed and encoded before it is stored in the Terraform state file. For an IBMid account, the password argument is ignored. For a SoftLayer account, the password must conform to SoftLayer's password policies to avoid failures.  Valid passwords must meet the following rules: <ul><li>Be 8 to 20 characters in length.</li><li>Have a combination of uppercase and lowercase characters. </li><li>Contain at least one number. </li><li>Contain at least one of the following special characters: <code>_</code>, <code>-</code>, <code>&#124;</code>, <code>@</code>, <code>.</code>, <code>,</code>, <code>?</code>, <code>/</code>, <code>!</code>, <code>~</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>^</code>, <code>&</code>, <code>*</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, <code>=</code>.|
-|`permissions`|(Optional, string) Permissions assigned to this user. This is a set of zero or more string values. See the [{{site.keyword.data.cloud_notm}} API Docs for user permissions](https://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_CustomerPermission_Permission).|
+|`permissions`|(Optional, string) Permissions assigned to this user. This is a set of zero or more string values. See the [{{site.data.keyword.cloud_notm}} API Docs for user permissions](https://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_CustomerPermission_Permission).|
 |`state`|(Required, string) The state of a user's street address.|
-|`timezone`|(Required, string) The user's time zone as a short name value (e.g., "EST"). For accepted values, see the [{{site.keyword.data.cloud_notm}} API Docs for time zones](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Locale_Timezone).|
-|`user_status`|(Optional, string) The user's log in status. You can find accepted values in the [{{site.keyword.data.cloud_notm}} API Docs for user status](http://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_Status). The default value is `ACTIVE`.|
+|`timezone`|(Required, string) The user's time zone as a short name value (e.g., "EST"). For accepted values, see the [{{site.data.keyword.cloud_notm}} API Docs for time zones](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Locale_Timezone).|
+|`user_status`|(Optional, string) The user's log in status. You can find accepted values in the [{{site.data.keyword.cloud_notm}} API Docs for user status](http://sldn.softlayer.com/reference/datatypes/SoftLayer_User_Customer_Status). The default value is `ACTIVE`.|
 |`tags`|(Optional, array of strings) Tags associated with the user account instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
@@ -2889,7 +2889,7 @@ If you have a default SoftLayer account, you do not have permission to create a 
 
 You can manage existing VLANs with Terraform by using the `terraform import` command. The command requires the VLAN IDs, which you can find in the [IBM Cloud infrastructure customer portal](https://cloud.ibm.com/classic/network/vlans). After the VLAN IDs are imported into SoftLayer, the IDs provide useful information such as subnets and child resource counts. When you run the `terraform destroy` command, the billing item for the VLAN is deleted. The VLAN remains in SoftLayer until you delete remaining resources on the VLAN, such as virtual guests, secondary subnets, and firewalls.
 
-For more information, refer to the [{{site.keyword.data.cloud_notm}} API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Vlan).
+For more information, refer to the [{{site.data.keyword.cloud_notm}} API Docs](http://sldn.softlayer.com/reference/datatypes/SoftLayer_Network_Vlan).
 
 ### Sample Terraform code
 {: #vlan-sample}
