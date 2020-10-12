@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-09"
+lastupdated: "2020-10-12"
 
 keywords: terraform templates, schematics template
 
@@ -107,7 +107,7 @@ When you click the `Deploy to IBM Cloud Schematics` following actions occur:
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:120px">Access</th>
+    <th style="width:180px">Access</th>
   </thead>
   <tbody>
   <tr>
@@ -126,7 +126,7 @@ When you click the `Deploy to IBM Cloud Schematics` following actions occur:
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:120px">Access</th>
+    <th style="width:180px">Access</th>
   </thead>
   <tbody>
   <tr>
@@ -149,7 +149,7 @@ When you click the `Deploy to IBM Cloud Schematics` following actions occur:
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:120px">Access</th>
+    <th style="width:180px">Access</th>
   </thead>
   <tbody>
   <tr>
