@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07" 
+lastupdated: "2020-10-12" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -1144,7 +1144,7 @@ resource "ibm_resource_instance" "cos_instance" {
 }
 
 resource "ibm_container_vpc_cluster" "cluster" {
-  name              = "my_vpc_cluster" 
+  name              = "my_vpc_cluster"
   vpc_id            = "r006-abb7c7ea-aadf-41bd-94c5-b8521736fadf"
   kube_version 	    = "4.3_openshift"
 	flavor            = "bx2.16x64"
@@ -1152,13 +1152,11 @@ resource "ibm_container_vpc_cluster" "cluster" {
   entitlement       = "cloud_pak"
   cos_instance_crn  = ibm_resource_instance.cos_instance.id
   resource_group_id = "${data.ibm_resource_group.resource_group.id}"
-  zones = [
-      {
+  zones {
          subnet_id = "0717-0c0899ce-48ac-4eb6-892d-4e2e1ff8c9478"
          name = "us-south-1"
       }
-  ]
-}
+  }
 ```
 {: codeblock}
 
