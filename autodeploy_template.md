@@ -36,6 +36,7 @@ subcollection: terraform
 
 
 # Automating the deployment for {{site.data.keyword.cloud_notm}} Terraform provider in Schematics
+{: #autodeploy_schematics_workspace}
 
 To automate the deployment of {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}, you need to follow the steps:
 
@@ -64,6 +65,7 @@ To automate the deployment of {{site.data.keyword.cloud_notm}} Terraform v0.12 p
 5. Cross check the parameters in the workspace UI and click `Create` button.
 
 ## Adding an image on deploy to {{site.data.keyword.bplong_notm}} hyperlink
+{: #add_an_image}
 
 You can add an image on `Deploy to {{site.data.keyword.cloud_notm}} Schematics` text by using the following syntax and example.
 
