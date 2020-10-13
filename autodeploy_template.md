@@ -84,7 +84,7 @@ You can add an image on `Deploy to {{site.data.keyword.cloud_notm}} Schematics` 
 
 **Sample output**
 
-<img src="/images/deploytoschematics.png" alt="Deploy to {{site.data.keyword.bplong_notm}}" width="800" style="width: 800px; border-style: none"/>
+<img src="/images/deploytoschematics.png" alt="Deploy to {{site.data.keyword.bplong_notm}}" width="300" style="width: 300px; border-style: none"/>
 
 To view about the sample Terraform template examples, refer [Sample Terraform templates and deploy to {{site.data.keyword.bplong_notm}}](/docs/terraform?topic=terraform-sample_terraformtemplates#api-gwy-template).
 
