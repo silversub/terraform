@@ -78,7 +78,7 @@ You can add an image on `Deploy to {{site.data.keyword.cloud_notm}} Schematics` 
 **Sample example**
 
 ```
-<a href="https://test.cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a>
+<a href="https://test.cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a>
 ```
 {: pre}
 

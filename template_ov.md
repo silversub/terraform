@@ -71,7 +71,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
     <tr>
       <td><code>ibm-api-gateway</code></td>
       <td>Create an [IBM Cloud API Gateway](/docs/api-gateway?topic=api-gateway-whatis_apigw) service instance to set up an API for an IBM Cloud service of your choice. You can specify the API endpoint that you want to use to access your service, and define subscription keys so that developers can securely consume your API.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_resource_instance</code></li><li style="margin:0px; padding:0px"><code>ibm_api_gateway_endpoint</code></li><li style="margin:0px; padding:0px"><code>ibm_api_gateway</code></li><li style="margin:0px; padding:0px"><code>ibm_api_gateway_endpoint_subscription</code></li></ul></td>
-      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway)<br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway)<br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12"><img src="/images/autodeploy.png">Deploy to {{site.data.keyword.cloud_notm}}</a></td>
  </tr>
   </tbody>
   </table>
@@ -89,12 +89,12 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
  <tr>
    <td><code>ibm-certificate-manager-import</code></td>
       <td> Generate a TLS certificate and import this certificate into [IBM Cloud Certificate Manager](/docs/certificate-manager?topic=certificate-manager-about-certificate-manager).<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_resource_instance</code></li><li style="margin:0px; padding:0px"><code>ibm_certificate_manager_import</code></li><li style="margin:0px; padding:0px"><code>null_resource</code></li></ul></td>
-      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-certificate-manager/ibm-certificate-manager-import) <br> <br> <a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-certificate-manager/ibm-certificate-manager-import&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-certificate-manager/ibm-certificate-manager-import) <br> <br> <a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-certificate-manager/ibm-certificate-manager-import&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
   </tr>
  <tr>
    <td><code>ibm-certificate-manager-order</code></td>
       <td> Create an IBM Cloud Internet Services instance with a domain, and use [IBM Cloud Certificate Manager](/docs/certificate-manager?topic=certificate-manager-about-certificate-manager) to generate a TLS certificate for this domain.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_resource_instance</code></li><li style="margin:0px; padding:0px"><code>ibm_cis</code></li><li style="margin:0px; padding:0px"><code>ibm_cis_domain</code></li><li style="margin:0px; padding:0px"><code>ibm_certificate_manager_order</code></li></ul></td>
-     <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-certificate-manager/ibm-certificate-manager-order) <br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-certificate-manager/ibm-certificate-manager-order&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+     <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-certificate-manager/ibm-certificate-manager-order) <br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-certificate-manager/ibm-certificate-manager-order&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
 	  </tr>
 	</tbody>
 	</table>
@@ -112,7 +112,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
     <tr>
       <td><code>ibm-app</code></td>
       <td>Create and deploy a Cloud Foundry app in {{site.data.keyword.cloud_notm}}.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>null_resource</code></li><li style="margin:0px; padding:0px"><code>ibm_app_route</code></li><li style="margin:0px; padding:0px"><code>ibm_service_instance</code></li><li style="margin:0px; padding:0px"><code>ibm_service_key</code></li><li style="margin:0px; padding:0px"><code>ibm_app</code></li></ul></td>
-	    <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-app) <br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-app&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+	    <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-app) <br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-app&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
     </tr>
 </tbody>
 </table>
@@ -131,7 +131,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
   <tr>
     <td><code>ibm-dl-gateway</code></td>
       <td>Create a speed and reliable direct link gateways, virtual connections, offering information, routers, and ports by using the resources.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_dl_gateway</code></li><li style="margin:0px; padding:0px"><code>ibm_dl_virtual_connection</code></li><li style="margin:0px; padding:0px"><code>ibm_is_vpc</code></li></ul></td>
-      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-direct-link)<br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-direct-link&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-direct-link)<br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-direct-link&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
   </tr>
   </tbody>
   </table>
@@ -149,7 +149,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
   <tr>
     <td><code>ibm-event-streams</code></td>
       <td>Create a communication through an event streams instance, topic instance, or Kafka consumer application to connect an existing event stream instances and its topic instance by using {{site.data.keyword.bplong_notm}} workspace.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_resource_instance</code></li><li style="margin:0px; padding:0px"><code>ibm_event_streams_topic</code></li><li style="margin:0px; padding:0px"><code>kafka_consumer_app</code></li></ul></td>
-      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-event-streams)<br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-event-streams&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-event-streams)<br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-event-streams&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
   </tr>
   </tbody>
   </table>
@@ -179,7 +179,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
 	  <li style="margin:0px; padding:0px"><code>ibm_function_trigger</code></li>
 	  <li style="margin:0px; padding:0px"><code>ibm_function_rule</code></li>
 	  </ul></td>
-	     <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-function-cloudant-trigger)<br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-function-cloudant-trigger&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+	     <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-function-cloudant-trigger)<br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-function-cloudant-trigger&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
   </tr>
    </tbody>
   </table>
@@ -197,12 +197,12 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
   <tr>
     <td><code>ibm-iam-custom-role</code></td>
       <td>Create a custom role in IBM Cloud Identity and Access Management (IAM) for IBM Cloud Key Protect.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_iam_custom_role</code></li></ul></td>
-	  <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-custom-role)<br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-custom-role&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+	  <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-custom-role)<br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-custom-role&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
   </tr>
   <tr>
     <td><code>ibm-iam-policy</code></td>
       <td>Create an access policy in IBM Cloud Identity and Access Management (IAM) to grant permissions for a resource group to a user.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_iam_user_policy</code></li></ul></td>
-	  <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-policy) <br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-policy&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+	  <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-policy) <br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iam-policy&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
   </tr>
   </tbody>
   </table>
@@ -220,7 +220,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
   <tr>
     <td><code>ibm-key-management-service</code></td>
       <td>Create an {{site.data.keyword.cos_full_notm}} service instance with a bucket to store your data and provide a key management service resource for Hyper Protect Crypto Services and Key Protect service instance with a root key. This allow access between these services with an IBM Cloud Identity and Access Management policy.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_kms_key</code></li><li style="margin:0px; padding:0px"><code>ibm_kp_key</code></li></ul></td>
-      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms)<br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms)<br> <br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
   </tr>
   </tbody>
   </table>
@@ -238,7 +238,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
   <tr>
     <td><code>ibm-transit-gateway</code></td>
       <td>Create a transit gateways, list available connections, and locations for the gateways.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_tg_gateway</code></li><li style="margin:0px; padding:0px"><code>ibm_tg_connection</code></li><li style="margin:0px; padding:0px"><code>ibm_is_vpc</code></li></ul></td>
-      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-transit-gateway)<br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-transit-gateway&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a></td>
+      <td>[View GitHub repo](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-transit-gateway)<br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-transit-gateway&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a></td>
   </tr>
   </tbody>
   </table>
