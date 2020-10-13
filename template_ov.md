@@ -65,7 +65,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:200px">Access</th>
+    <th style="width:150px">Access</th>
   </thead>
   <tbody>
     <tr>
@@ -83,7 +83,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:180px">Access</th>
+    <th style="width:150px">Access</th>
   </thead>
   <tbody>
  <tr>
@@ -106,7 +106,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:180px">Access</th>
+    <th style="width:150px">Access</th>
   </thead>
   <tbody>
     <tr>
@@ -125,7 +125,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:180px">Access</th>
+    <th style="width:150px">Access</th>
   </thead>
   <tbody>
   <tr>
@@ -143,7 +143,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:180px">Access</th>
+    <th style="width:150px">Access</th>
   </thead>
   <tbody>
   <tr>
@@ -162,7 +162,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:180px">Access</th>
+    <th style="width:150px">Access</th>
   </thead>
   <tbody>
      <tr>
@@ -191,7 +191,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:180px">Access</th>
+    <th style="width:150px">Access</th>
   </thead>
   <tbody>
   <tr>
@@ -214,7 +214,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:180px">Access</th>
+    <th style="width:150px">Access</th>
   </thead>
   <tbody>
   <tr>
@@ -232,7 +232,7 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
    <thead>
     <th style="width:60px">Name</th>
     <th style="width:250px">Description and resources</th>
-    <th style="width:180px">Access</th>
+    <th style="width:150px">Access</th>
   </thead>
   <tbody>
   <tr>
