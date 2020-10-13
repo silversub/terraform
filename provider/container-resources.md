@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-12" 
+lastupdated: "2020-10-13" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -60,6 +60,31 @@ resource "ibm_container_addons" "addons" {
   addons {
     name    = "istio"
     version = "1.6"
+    version = "1.7"
+  }
+  addons {
+    name    = "kube-terminal"
+    version = "1.0.0"
+  }
+  addons {
+    name    = "alb-oauth-proxy"
+    version = "1.0.0"
+  }
+  addons {
+    name    = "debug-tool"
+    version = "2.0.0"
+  }
+  addons {
+    name    = "knative"
+    version = "0.17.0"
+  }
+  addons {
+    name    = "static-route"
+    version = "1.0.0"
+  }
+  addons {
+    name    = "vpc-block-csi-driver"
+    version = "2.0.3"
   }
 }
 
@@ -74,7 +99,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `addons` | Set | Required | Set of add-ons that needs to be enabled. |No|
-| `addons.name` | String | Optional | The add-on name such as `istio`.|No|
+| `addons.name` | String | Optional | The add-on name such as `istio`. Supported addons are `kube-terminal`, `alb-oauth-proxy`, `debug-tool`, `istio`, `knative`, `static-route`,`vpc-block-csi-driver`.| No |
 | `addons.version`| String | Optional | The add-on version. Omit the version that you want to use as the default version.This is required when you want to update the add-on to specified version. |No|
 | `cluster` | String | Required | The name or ID of the cluster. |No|
 | `resource_group_id` | String | Optional | The ID of the resource group. You can retrieve the value from data source ibm_resource_group. If not provided defaults to default resource group.|Yes|
