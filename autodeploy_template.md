@@ -42,7 +42,7 @@ To automate the deployment of {{site.data.keyword.cloud_notm}} Terraform v0.12 p
 
 1. Create a template example using {{site.data.keyword.cloud_notm}} Terraform provider and publish in the public Git repository. To create example, refer [Sample template example](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples){: external}.
 2. Copy the public Git repository URL, for example, `https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway`.
-3. Use this syntax to autodeploy into {{site.data.keyword.bplong_notm}} workspace creation.
+3. Use this syntax to autodeploy the Schematics workspace creation in the {{site.data.keyword.cloud_notm}}.
 
   **Syntax**
 
