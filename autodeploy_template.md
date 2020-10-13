@@ -42,7 +42,7 @@ To automate the deployment of {{site.data.keyword.cloud_notm}} Terraform v0.12 p
 
 1. Create a template example using {{site.data.keyword.cloud_notm}} Terraform provider and publish in the public Git repository. To create example, refer [Sample template example](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples){: external}.
 2. Copy the public Git repository URL, for example, `https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway`.
-3. Use this syntax to autoddeploy to {{site.data.keyword.bplong_notm}} workspace creation.
+3. Use this syntax to autodeploy into {{site.data.keyword.bplong_notm}} workspace creation.
 
   **Syntax**
 
@@ -58,13 +58,13 @@ To automate the deployment of {{site.data.keyword.cloud_notm}} Terraform v0.12 p
   ```
   {: pre}
 
-  The URL contains 2 parameters, first parameter has the name of the workspace and second parameter has the Terraform version. If you do not provide any parameters of ignore one parameter, the `Deploy to {{site.data.keyword.bplong_notm}}` link defaults to the repository's master branch. You can provide the terraform version parameter as per the Terraform version that you are using.
+  The URL contains 2 parameters, first parameter has the name of the workspace and second parameter has the Terraform version. If you do not provide any parameters of ignore one parameter, the `Deploy to {{site.data.keyword.cloud_notm}}` link defaults to the repository's master branch. You can provide the terraform version parameter as per the Terraform version that you are using.
   {: important}
 
 4. You can copy, and paste the example URL in the browser to view the {{site.data.keyword.cloud_notm}} Schematics workspace UI with the create button is display.
 5. Cross check the parameters in the workspace UI and click `Create` button.
 
-## Adding an image on deploy to {{site.data.keyword.bplong_notm}} hyperlink
+## Adding an image on deploy to {{site.data.keyword.cloud_notm}} hyperlink
 {: #add_an_image}
 
 You can add an image on `Deploy to {{site.data.keyword.cloud_notm}} Schematics` text by using the following syntax and example.
@@ -78,13 +78,13 @@ You can add an image on `Deploy to {{site.data.keyword.cloud_notm}} Schematics` 
 **Sample example**
 
 ```
-<a href="https://test.cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.bplong_notm}} <img src="/images/autodeploy.png"></a>
+<a href="https://test.cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}} <img src="/images/autodeploy.png"></a>
 ```
 {: pre}
 
 **Sample output**
 
-<img src="/images/deploytoschematics.png" alt="Deploy to {{site.data.keyword.bplong_notm}}" width="300" style="width: 300px; border-style: none"/>
+<img src="/images/deploytoschematics.png" alt="Deploy to {{site.data.keyword.cloud_notm}}" width="300" style="width: 300px; border-style: none"/>
 
 To view about the sample Terraform template examples, refer [Sample Terraform templates and deploy to {{site.data.keyword.bplong_notm}}](/docs/terraform?topic=terraform-sample_terraformtemplates#api-gwy-template).
 
