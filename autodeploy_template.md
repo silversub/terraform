@@ -35,10 +35,13 @@ subcollection: terraform
 {:step: data-tutorial-type='step'}
 
 
-# Automating the deployment for {{site.data.keyword.cloud_notm}} Terraform provider template in Schematics
-{: #autodeploy_schematics_workspace}
+# Creating a deploy to {{site.data.keyword.bplong_notm} link
+{: #create_deploy_to_schematics}
 
-To automate the deployment of {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}, you need to follow the steps:
+The deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git-sourced app so that other people can experiment with the code and deploy it to {{site.data.keyword.cloud_notm}} by using a toolchain. The button requires minimal configuration and you can insert it anywhere that supports markup. Anyone who clicks the button creates a cloned copy of the code in a new Git repository (repo) so that your original app remains unaffected.
+{: shortdesc}
+
+The following steps helps to create a deploy to {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}.
 
 1. Create a template example using {{site.data.keyword.cloud_notm}} Terraform provider and publish in the public Git repository. To create example, refer [Sample template example](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples){: external}.
 2. Copy the public Git repository URL, for example, `https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway`.
