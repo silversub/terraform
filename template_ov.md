@@ -37,13 +37,13 @@ subcollection: terraform
 
 
 
-# Sample Terraform templates and deploy to {{site.data.keyword.bplong_notm}}
+# Sample Terraform templates and deploy to {{site.data.keyword.cloud_notm}}
 {: #sample_terraformtemplates}
 
 All Terraform templates use the Terraform version 0.12 format.
 {: note}
 
-The sample Terraform templates and deploy to {{site.data.keyword.bplong_notm}} link is an efficient way to access the templates and experience the auto deploy of the {{site.data.keyword.bplong_notm}} to create workspace.
+The sample Terraform templates and deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to access the templates and experience the auto deploy to the {{site.data.keyword.cloud_notm}} to create workspace in Schematics.
 {: shortdesc}
 
 When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following actions occur:
