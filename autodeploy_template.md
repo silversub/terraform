@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-14"
+lastupdated: "2020-10-15"
 
 keywords: terraform provider deployment, automation, schematics workspace, ibm cloud terraform provider deployment, schematics workspace creation, autodeploy 
 
@@ -35,7 +35,7 @@ subcollection: terraform
 {:step: data-tutorial-type='step'}
 
 
-# Creating a deploy to {{site.data.keyword.bplong_notm} link
+# Creating a deploy to IBM Cloud Schematics link
 {: #create_deploy_to_schematics}
 
 The deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git-sourced app so that other people can experiment with the code and deploy it to {{site.data.keyword.cloud_notm}} by using a toolchain. The button requires minimal configuration and you can insert it anywhere that supports markup. Anyone who clicks the button creates a cloned copy of the code in a new Git repository (repo) so that your original app remains unaffected.
@@ -81,7 +81,7 @@ You can add an image on `Deploy to {{site.data.keyword.cloud_notm}} Schematics` 
 **Sample example**
 
 ```
-<a href="https://test.cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/autodeploy.png"></a>
+<a href="https://test.cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway&terraform_version=terraform_v0.12">Deploy to {{site.data.keyword.cloud_notm}}<img src="/images/deploytoschematics.png"></a>
 ```
 {: pre}
 
