@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-09"
+lastupdated: "2020-10-15"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -68,7 +68,7 @@ resource "ibm_resource_instance" "es_instance_1" {
 
   # parameters = {
   #   service-endpoints     = "private"                    # for enterprise instance only, Options are: "public", "public-and-private", "private". Default is "public" when not specified.
-  #   private_ip_allowlist = ["10.0.0.0/32", "10.0.0.1/32"] # for enterprise instance only. Specify 1 or more IP range in CIDR format.
+  #   private_ip_allowlist = "[10.0.0.0/32,10.0.0.1/32]" # for enterprise instance only. Specify 1 or more IP range in CIDR format.
   #   # Refer private service endpoint and IP allow list to restrict access documentation, (
 https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-restrict_access) for more details.
   #   throughput   = "150"  # for enterprise instance only. Options are: "150", "300", "450". Default is "150".
