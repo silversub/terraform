@@ -38,7 +38,7 @@ subcollection: terraform
 # Creating a deploy to IBM Cloud Schematics link
 {: #create_deploy_to_schematics}
 
-The deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git-sourced app so that other people can experiment with the code and deploy it to {{site.data.keyword.cloud_notm}} by using Schematics. The link requires minimal configuration and you can insert it anywhere that supports markup. If you click the hyper link, the configuration for the Schematic workspace is setup and by clicking create a workspace is created in Schematics.
+The deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git-sourced app so that other people can experiment with the code and deploy it to {{site.data.keyword.cloud_notm}} by using Schematics. The link requires minimal configuration and you can insert it anywhere that supports markup. If you click the hyper link, the configuration for the Schematic workspace is setup and you need to only click create button for workspace creation in Schematics.
 {: shortdesc}
 
 The following steps helps to create a deploy to {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}.
