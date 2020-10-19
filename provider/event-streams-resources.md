@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-15"
+lastupdated: "2020-10-19"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -204,6 +204,6 @@ Event Streams topic provides the following time outs:
 
 |Name|Description|
 |----|-----------|
-|`create`| Defaults to 15 minutes. **Note**: Use `3h` when creating enterprise instance. Add more `1h` for each level of non-default throughtput and add additional `30m` for each level of non-default storage size.|
+|`create`| Defaults to 15 minutes. **Note**: Use `3h` when creating enterprise instance. Add more `1h` for each level of non-default throught put and add extra `30m` for each level of non-default storage size.|
 |`delete`| Defaults to 15 minutes. |
-|`update`| Defaults to 15 minutes. **Note**: Use `1h` when updating enterprise instance. Add more `1h` for each level of non-default throughtput and add additional `30m` for each level of non-default storage size.|
+|`update`| Defaults to 15 minutes. **Note**: Use `1h` when updating enterprise instance. Add more `1h` for each level of non-default throught put and add extra `30m` for each level of non-default storage size.|

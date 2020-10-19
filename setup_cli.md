@@ -101,7 +101,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
 
       All other commands:
           debug              Debug output management (experimental)
-          force-unlock       Manually unlock the terraform state
+          force-unlock       Manually unlock the Terraform state
           state              Advanced state management
       ```
       {: screen}  
@@ -155,7 +155,7 @@ With the release of Terraform version 0.12, the syntax for configuration files c
    
 3. Use the Terraform version 0.12 CLI to automatically apply the new syntax to your Terraform configuration files. 
    ```
-   terraform 0.12upgrade
+   terraform 0.12 upgrade
    ```
    {: pre}
    

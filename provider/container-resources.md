@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-13" 
+lastupdated: "2020-10-19" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -945,7 +945,7 @@ terraform import ibm_container_worker_pool_zone_attachment.example mycluster/5c4
 The following timeouts are defined for this resource. 
 {: shortdesc}
 
-* **createe**: The attachment of the zone is considered `failed` if no response is received for 90 minutes. 
+* **create**: The attachment of the zone is considered `failed` if no response is received for 90 minutes. 
 * **update**: The update of the zone is considered `failed` if no response is received for 90 minutes. 
 * **delete**: The detachment of the zone is considered `failed` if no response is received for 90 minutes. 
 
