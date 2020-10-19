@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-12"
+lastupdated: "2020-10-19"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -101,7 +101,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
 
       All other commands:
           debug              Debug output management (experimental)
-          force-unlock       Manually unlock the terraform state
+          force-unlock       Manually unlock the Terraform state
           state              Advanced state management
       ```
       {: screen}  
@@ -111,20 +111,20 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
    2. Extract the {{site.data.keyword.cloud_notm}} Provider package to retrieve the binary file.
    3. Create a hidden folder for your plug-in. The {{site.data.keyword.cloud_notm}} Provider plug-in is used only by the Terraform CLI and is not meant to be accessed by the user.  
       ```
-      mkdir -p $HOME/.terraform.d/
+      mkdir -p $HOME/.terraform.d/plugins
       ```
       {: pre}
       
    4. Move the {{site.data.keyword.cloud_notm}} Provider plug-in into your hidden folder. 
       ```
-      mv $HOME/Downloads/terraform-provider-ibm* $HOME/.terraform.d/
+      mv $HOME/Downloads/terraform-provider-ibm* $HOME/.terraform.d/plugins
 
        ```
       {: pre}
       
    5. Navigate into your hidden directory and verify that the installation is complete. 
       ```
-      cd $HOME/.terraform.d/ && ./terraform-provider-ibm_*
+      cd $HOME/.terraform.d/plugins && ./terraform-provider-ibm_*
       ```
       {: pre}
       
@@ -155,7 +155,7 @@ With the release of Terraform version 0.12, the syntax for configuration files c
    
 3. Use the Terraform version 0.12 CLI to automatically apply the new syntax to your Terraform configuration files. 
    ```
-   terraform 0.12upgrade
+   terraform 0.12 upgrade
    ```
    {: pre}
    

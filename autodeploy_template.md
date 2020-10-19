@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-15"
+lastupdated: "2020-10-19"
 
-keywords: terraform provider deployment, automation, schematics workspace, ibm cloud terraform provider deployment, schematics workspace creation, autodeploy 
+keywords: terraform provider deployment, automation, schematics workspace, ibm cloud terraform provider deployment, schematics workspace creation, auto deploy 
 
 subcollection: terraform
 
@@ -38,14 +38,14 @@ subcollection: terraform
 # Creating a deploy to IBM Cloud Schematics link
 {: #create_deploy_to_schematics}
 
-The deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git-sourced app so that other people can experiment with the code and deploy it to {{site.data.keyword.cloud_notm}} by using a toolchain. The button requires minimal configuration and you can insert it anywhere that supports markup. Anyone who clicks the button creates a cloned copy of the code in a new Git repository (repo) so that your original app remains unaffected.
+The deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git repository so that other people can to create workspace by using Schematics without affecting your original code. The link requires minimal configuration and you can insert it anywhere that supports markup. If you click the hyper link, the configuration for the Schematic workspace is setup and you need to only click create button for workspace creation in Schematics.
 {: shortdesc}
 
 The following steps helps to create a deploy to {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}.
 
 1. Create a template example using {{site.data.keyword.cloud_notm}} Terraform provider and publish in the public Git repository. To create example, refer [Sample template example](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples){: external}.
 2. Copy the public Git repository URL, for example, `https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway`.
-3. Use this syntax to autodeploy the Schematics workspace creation in the {{site.data.keyword.cloud_notm}}.
+3. Use this syntax to auto deploy the Schematics workspace creation in the {{site.data.keyword.cloud_notm}}.
 
   **Syntax**
 
@@ -61,7 +61,7 @@ The following steps helps to create a deploy to {{site.data.keyword.cloud_notm}}
   ```
   {: pre}
 
-  The URL contains 2 parameters, first parameter has the name of the workspace and second parameter has the Terraform version. If you do not provide any parameters of ignore one parameter, the `Deploy to {{site.data.keyword.cloud_notm}}` link defaults to the repository's master branch. You can provide the terraform version parameter as per the Terraform version that you are using.
+  The URL contains 2 parameters, first parameter has the name of the workspace and second parameter has the Terraform version. If you do not provide any parameters of ignore one parameter, the `Deploy to {{site.data.keyword.cloud_notm}}` link defaults to the repository's master branch. You can provide the Terraform version parameter as per the Terraform version that you are using.
   {: important}
 
 4. You can copy, and paste the example URL in the browser to view the {{site.data.keyword.cloud_notm}} Schematics workspace UI with the create button is display.
