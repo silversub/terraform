@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-15"
+lastupdated: "2020-10-19"
 
 keywords: terraform provider deployment, automation, schematics workspace, ibm cloud terraform provider deployment, schematics workspace creation, autodeploy 
 
@@ -38,7 +38,7 @@ subcollection: terraform
 # Creating a deploy to IBM Cloud Schematics link
 {: #create_deploy_to_schematics}
 
-The deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git-sourced app so that other people can experiment with the code and deploy it to {{site.data.keyword.cloud_notm}} by using a toolchain. The button requires minimal configuration and you can insert it anywhere that supports markup. Anyone who clicks the button creates a cloned copy of the code in a new Git repository (repo) so that your original app remains unaffected.
+The deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git-sourced app so that other people can experiment with the code and deploy it to {{site.data.keyword.cloud_notm}} by using Schematics. The link requires minimal configuration and you can insert it anywhere that supports markup. If you click the hyper link, the configuration for the Schematic workspace is setup and by clicking create a workspace is created in Schematics.
 {: shortdesc}
 
 The following steps helps to create a deploy to {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}.
