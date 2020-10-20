@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-19"
+lastupdated: "2020-10-20"
 
 keywords: terraform provider deployment, automation, schematics workspace, ibm cloud terraform provider deployment, schematics workspace creation, auto deploy 
 
@@ -35,15 +35,15 @@ subcollection: terraform
 {:step: data-tutorial-type='step'}
 
 
-# Creating a deploy to IBM Cloud Schematics link
+# Creating a deployment to IBM Cloud Schematics link
 {: #create_deploy_to_schematics}
 
-The deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git repository so that other people can to create workspace by using Schematics without affecting your original code. The link requires minimal configuration and you can insert it anywhere that supports markup. If you click the hyper link, the configuration for the Schematic workspace is setup and you need to only click create button for workspace creation in Schematics.
+The deployment to {{site.data.keyword.cloud_notm}} link is an efficient way to share your public Git repository so that other people can to create workspace by using Schematics without affecting your original code. The link requires minimal configuration and you can insert it anywhere that supports markup. If you click the hyper link, the configuration for the Schematic workspace is setup and you need to only click create button for workspace creation in Schematics.
 {: shortdesc}
 
-The following steps helps to create a deploy to {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}.
+The following steps help to create a deployment to {{site.data.keyword.cloud_notm}} Terraform v0.12 provider template example in {{site.data.keyword.bplong_notm}}.
 
-1. Create a template example using {{site.data.keyword.cloud_notm}} Terraform provider and publish in the public Git repository. To create example, refer [Sample template example](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples){: external}.
+1. Create a template example by using {{site.data.keyword.cloud_notm}} Terraform provider and publish in the public Git repository. To create example, refer [Sample template example](https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples){: external}.
 2. Copy the public Git repository URL, for example, `https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-api-gateway`.
 3. Use this syntax to auto deploy the Schematics workspace creation in the {{site.data.keyword.cloud_notm}}.
 
@@ -61,13 +61,13 @@ The following steps helps to create a deploy to {{site.data.keyword.cloud_notm}}
   ```
   {: pre}
 
-  The URL contains 2 parameters, first parameter has the name of the workspace and second parameter has the Terraform version. If you do not provide any parameters of ignore one parameter, the `Deploy to {{site.data.keyword.cloud_notm}}` link defaults to the repository's master branch. You can provide the Terraform version parameter as per the Terraform version that you are using.
+  The URL contains two parameters, first parameter with the workspace name and second parameter contains the Terraform version. If you do not provide any parameters of ignore one parameter, the `Deploy to {{site.data.keyword.cloud_notm}}` link defaults to the repository's master branch. You can provide the Terraform version parameter that you are using.
   {: important}
 
 4. You can copy, and paste the example URL in the browser to view the {{site.data.keyword.cloud_notm}} Schematics workspace UI with the create button is display.
-5. Cross check the parameters in the workspace UI and click `Create` button.
+5. Cross-check the parameters in the workspace UI and click `Create` button.
 
-## Adding an image on deploy to {{site.data.keyword.cloud_notm}} hyperlink
+## Adding an image on deployment to {{site.data.keyword.cloud_notm}} hyperlink
 {: #add_an_image}
 
 You can add an image on `Deploy to {{site.data.keyword.cloud_notm}} Schematics` text by using the following syntax and example.

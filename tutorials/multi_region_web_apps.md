@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-10-20"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
@@ -40,26 +40,26 @@ completion-time: 1h
 {:step: data-tutorial-type='step'}
 
  
-# Tutorial: Deploying WordPress in a highly available, cross-region web site architecture with Terraform and Ansible  
+# Tutorial: Deploying Wordpress in a highly available, cross-region web site architecture with Terraform and Ansible  
 {: #multi_region}
 {: toc-content-type="tutorial"}
 {: toc-services="terraform, virtual-servers"}
 {: toc-completion-time="1h"}
 
-Use this tutorial to provision a highly available web site architecture across multiple regions on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform. Then, deploy a single instance of WordPress and replicate WordPress across the two regions to explore the security and resiliency features of {{site.data.keyword.cloud_notm}} Security Groups, DNS, Web Application Firewall (WAF), and global and local load balancers. With this setup, you can create a resilient, secure, and scalable web environment with highly available web sites that use custom DNS domain names. Terraform and Ansible are loosely integrated through the sharing of inventory information.
+Use this tutorial to provision a highly available web site architecture across multiple regions on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform. Then, deploy a single instance of Wordpress and replicate Wordpress across the two regions to explore the security and resiliency features of {{site.data.keyword.cloud_notm}} Security Groups, DNS, Web Application Firewall (WAF), and global and local load balancers. With this setup, you can create a resilient, secure, and scalable web environment with highly available web sites that use custom DNS domain names. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 {: shortdesc}
  
 ## Solution overview
 {: #overview}
 
 The following image shows the classic infrastructure and software components of the highly available web site architecture that you provision as part of this tutorial. 
-The basic web site architecture that is used in [Tutorial: Deploying WordPress on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform and Ansible](/docs/terraform/tutorials?topic=terraform-deploy_wordpress#deploy_wordpress) is deployed into each {{site.data.keyword.cloud_notm}} region. To balance the workload between the two regions, an {{site.data.keyword.cloud_notm}} Internet Services Load Balancer with a user-specified domain is deployed into your {{site.data.keyword.cloud_notm}} account and configured with a health check. The health check performs tests for each region to determine whether a region is available to receive network traffic. If one region becomes unavailable due to a network, app, or infrastructure failure, the health check determines this event and stops sending network traffic to the unavailable region.
+The basic web site architecture that is used in [Tutorial: Deploying Wordpress on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform and Ansible](/docs/terraform/tutorials?topic=terraform-deploy_wordpress#deploy_wordpress) is deployed into each {{site.data.keyword.cloud_notm}} region. To balance the workload between the two regions, an {{site.data.keyword.cloud_notm}} Internet Services Load Balancer with a user-specified domain is deployed into your {{site.data.keyword.cloud_notm}} account and configured with a health check. The health check performs tests for each region to determine whether a region is available to receive network traffic. If one region becomes unavailable due to a network, app, or infrastructure failure, the health check determines this event and stops sending network traffic to the unavailable region.
 
-{{site.data.keyword.cloud_notm}} Security Groups extend across regions and are used to secure all Apache web servers and the two MariaDB instances. The security groups provide secure outbound access to the open source repositories for Apache, MariaDB, and WordPress. At the same time, the security groups deny all inbound internet traffic except via the {{site.data.keyword.cloud_notm}} Load Balancers. To secure your environment, the communication between the WordPress instances and the MariaDB databases is limited to the private network and is allowed on the MariaDB ports only.
+{{site.data.keyword.cloud_notm}} Security Groups extend across regions and are used to secure all Apache web servers and the two MariaDB instances. The security groups provide secure outbound access to the open source repositories for Apache, MariaDB, and Wordpress. At the same time, the security groups deny all inbound internet traffic except via the {{site.data.keyword.cloud_notm}} Load Balancers. To secure your environment, the communication between the Wordpress instances and the MariaDB databases is limited to the private network and is allowed on the MariaDB ports only.
 
-The Ansible playbooks install multiple WordPress instances on Apache web servers and set up a replicated MariaDB database on {{site.data.keyword.cloud_notm}} classic virtual servers. To keep both MariaDB database instances in sync, a master-master replication between the two regions is set up on the private network. 
+The Ansible playbooks install multiple Wordpress instances on Apache web servers and set up a replicated MariaDB database on {{site.data.keyword.cloud_notm}} classic virtual servers. To keep both MariaDB database instances in sync, a master-master replication between the two regions is set up on the private network. 
 
-<img src="../images/multi_region_wordpress.png" alt="Infrastructure and app components to deploy WordPress on {{site.data.keyword.cloud_notm}} across regions with Terraform and Ansible" width="800" style="width: 800px; border-style: none"/>
+<img src="../images/multi_region_wordpress.png" alt="Infrastructure and app components to deploy Wordpress on {{site.data.keyword.cloud_notm}} across regions with Terraform and Ansible" width="800" style="width: 800px; border-style: none"/>
 
 The following {{site.data.keyword.cloud_notm}} resources are provisioned for you as part of this tutorial. 
 
@@ -73,36 +73,36 @@ The following {{site.data.keyword.cloud_notm}} resources are provisioned for you
 <tr>
 <td>Terraform</td>
 <td><ul>
-  <li>6 {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Servers that run CentOS 7.x; 4 Virtual Servers are used for the WordPress Apache web servers, 2 are used for the WordPress MariaDB database</li><li>2 {{site.data.keyword.cloud_notm}} classic infrastructure Security Groups to secure your WordPress Apache web servers and the MariaDB instances</li><li>2 {{site.data.keyword.cloud_notm}} CloudInit templates</li><li>2 {{site.data.keyword.cloud_notm}} classic infrastructure Load Balancers, one load balancer for each data center to balance workload between the WordPress Apache web servers</li><li>1 {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer to connect the two regions</li><li>2 {{site.data.keyword.cloud_notm}} Internet Services origin pools</li><li>1 {{site.data.keyword.cloud_notm}} Internet Services health check to check whether the regions are available to receive workloads</li><li>{{site.data.keyword.cloud_notm}} DNS Registration and domain name servers for your custom domain</li><li>1 {{site.data.keyword.cloud_notm}} Internet Services DNS record</li><li>1 {{site.data.keyword.cloud_notm}} Internet Services Web Application Firewall with DDoS protection</li></ul></td>
+  <li>6 {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Servers that run CentOS 7.x; 4 Virtual Servers are used for the Wordpress Apache web servers, 2 are used for the Wordpress MariaDB database</li><li>2 {{site.data.keyword.cloud_notm}} classic infrastructure Security Groups to secure your Wordpress Apache web servers and the MariaDB instances</li><li>2 {{site.data.keyword.cloud_notm}} CloudInit templates</li><li>2 {{site.data.keyword.cloud_notm}} classic infrastructure Load Balancers, one load balancer for each data center to balance workload between the Wordpress Apache web servers</li><li>1 {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer to connect the two regions</li><li>2 {{site.data.keyword.cloud_notm}} Internet Services origin pools</li><li>1 {{site.data.keyword.cloud_notm}} Internet Services health check to check whether the regions are available to receive workloads</li><li>{{site.data.keyword.cloud_notm}} DNS Registration and domain name servers for your custom domain</li><li>1 {{site.data.keyword.cloud_notm}} Internet Services DNS record</li><li>1 {{site.data.keyword.cloud_notm}} Internet Services Web Application Firewall with DDoS protection</li></ul></td>
 </tr>
 <tr>
 <td>Ansible</td>
 <td><ul>
-  <li>4 Apache (HTTPD) app servers for your WordPress instances</li>
-  <li>4 WordPress installations</li>
-  <li>2 MariaDB database servers for your WordPress database and the database replication</li>
+  <li>4 Apache (HTTPD) app servers for your Wordpress instances</li>
+  <li>4 Wordpress installations</li>
+  <li>2 MariaDB database servers for your Wordpress database and the database replication</li>
   <li>1 MariaDB master-master database replication to keep the databases in both data centers in sync</li>
-  <li>1 WordPress database instance</li>
-  <li>Automated WordPress configuration via CLI</li>
+  <li>1 Wordpress database instance</li>
+  <li>Automated Wordpress configuration via CLI</li>
 </ul></td>
 </tr>
 </tbody>
 </table>
 
-This tutorial intends to demonstrate the capability of building secure, resilient, highly available, and scalable websites on {{site.data.keyword.cloud_notm}} classic infrastructure with cross-region networking. However, the tutorial does not intend to provide a fully operational WordPress deployment. To run this tutorial, infrastructure costs incur for the virtual servers, load balancers, and the custom DNS domain name. The cost for the DNS domain name is fixed and depends on the domain name that you register and the duration that you request. The costs for your classic infrastructure resources depend on the number of hours or days that the classic infrastructure resources are provisioned for you. To cancel the billing for your resources, you must remove your classic infrastructure resources. 
+This tutorial intends to demonstrate the capability of building secure, resilient, highly available, and scalable websites on {{site.data.keyword.cloud_notm}} classic infrastructure with cross-region networking. However, the tutorial does not intend to provide a fully operational Wordpress deployment. To run this tutorial, infrastructure costs incur for the virtual servers, load balancers, and the custom DNS domain name. The cost for the DNS domain name is fixed and depends on the domain name that you register and the duration that you request. The costs for your classic infrastructure resources depend on the number of hours or days that the classic infrastructure resources are provisioned for you. To cancel the billing for your resources, you must remove your classic infrastructure resources. 
 {: important}
 
 ## Objectives
 {: #objectives_multi_region}
 
-In this tutorial, you use Terraform to deploy a highly available {{site.data.keyword.cloud_notm}} classic infrastructure setup that you use to deploy a WordPress sample app across {{site.data.keyword.cloud_notm}} regions by using Ansible. In particular, you will:
+In this tutorial, you use Terraform to deploy a highly available {{site.data.keyword.cloud_notm}} classic infrastructure setup that you use to deploy a Wordpress sample app across {{site.data.keyword.cloud_notm}} regions by using Ansible. In particular, you will:
 
-- Set up your environment and all the software that you need for the highly available WordPress app, including Terraform, the  {{site.data.keyword.cloud_notm}} Provider plug-in, and Ansible.
-- Provision {{site.data.keyword.cloud_notm}} classic infrastructure components for your WordPress sample app across regions by using Terraform.
+- Set up your environment and all the software that you need for the highly available Wordpress app, including Terraform, the  {{site.data.keyword.cloud_notm}} Provider plug-in, and Ansible.
+- Provision {{site.data.keyword.cloud_notm}} classic infrastructure components for your Wordpress sample app across regions by using Terraform.
 - Import infrastructure resource information from Terraform to Ansible. 
-- Deploy a sample WordPress app across {{site.data.keyword.cloud_notm}} regions on your {{site.data.keyword.cloud_notm}} classic infrastructure with Ansible. 
-- Use Ansible to finalize the setup of your WordPress app across both regions. 
-- Explore the high availability capabilities of the multi-region WordPress architecture.  
+- Deploy a sample Wordpress app across {{site.data.keyword.cloud_notm}} regions on your {{site.data.keyword.cloud_notm}} classic infrastructure with Ansible. 
+- Use Ansible to finalize the setup of your Wordpress app across both regions. 
+- Explore the high availability capabilities of the multi-region Wordpress architecture.  
 
 ## Audience
 {: #audience_multi_region}
@@ -114,11 +114,11 @@ This tutorial is intended for network administrators, software developers, and a
 - If you do not have one, create an {{site.data.keyword.cloud_notm}} [Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/classic/services/domains). 
 - [Set up a VPN connection and SSH authentication](/docs/terraform/ansible?topic=terraform-ansible#setup_vpn) to access {{site.data.keyword.cloud_notm}} classic infrastructure resources over the private network. 
 - If you do not have an existing DNS domain that is registered with IBM Cloud, register one with the {{site.data.keyword.cloud_notm}} Domain Registration service. For more information, about how to register a new domain, see [Register a New Domain](/docs/dns?topic=dns-register-a-new-domain). To transfer an existing domain to {{site.data.keyword.cloud_notm}}, see [Transfer an Existing Domain to {{site.data.keyword.cloud_notm}}](/docs/dns?topic=dns-transfer-domains). 
-- If you already completed the [Tutorial: Deploying WordPress on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform and Ansible](/docs/terraform/tutorials?topic=terraform-deploy_wordpress#deploy_wordpress), you can reuse the Terraform and Ansible installations. 
+- If you already completed the [Tutorial: Deploying Wordpress on {{site.data.keyword.cloud_notm}} classic infrastructure with Terraform and Ansible](/docs/terraform/tutorials?topic=terraform-deploy_wordpress#deploy_wordpress), you can reuse the Terraform and Ansible installations. 
   1. Remove the old Terraform `tf` configuration files from your Terraform project directory and follow step 1 and 6 in [Lesson 1](#setup_terraform) to copy the new Terraform configuration files into your project directory.
   2. Follow [Lesson 3](#provision_terraform_infrastructure) to provision the {{site.data.keyword.cloud_notm}} classic infrastructure. 
   3. After the classic infrastructure components are deployed, follow step 5 in [Lesson 4](#create_ansible_inventory) to update your Ansible classic infrastructure inventory. 
-  4. To deploy your WordPress app, continue with [Lesson 5](#install_configure_wordpress) in this tutorial. 
+  4. To deploy your Wordpress app, continue with [Lesson 5](#install_configure_wordpress) in this tutorial. 
 
 ## Lesson 1: Setting up Terraform 
 {: #setup_terraform}
@@ -244,7 +244,7 @@ To use Terraform to provision {{site.data.keyword.cloud_notm}} classic infrastru
       
 5. [Retrieve your {{site.data.keyword.cloud_notm}} infrastructure user name and API key](/docs/account?topic=account-classic_keys). 
    
-6. Copy the Terraform configuration files to create your WordPress infrastructure from the {{site.data.keyword.cloud_notm}} Terraform Provider package to your local Terraform project directory. 
+6. Copy the Terraform configuration files to create your Wordpress infrastructure from the {{site.data.keyword.cloud_notm}} Terraform Provider package to your local Terraform project directory. 
    ```
    mv /terraform-provider-ibm/examples/ibm-website-multi-region/* <terraform_project_path>
    ```
@@ -265,11 +265,11 @@ To use Terraform to provision {{site.data.keyword.cloud_notm}} classic infrastru
       ```
       {: codeblock}
       
-With your Terraform project directory set up, you can continue to set up your Ansible work environment in Lesson 2. 
+With your Terraform project directory set-up, you can continue to set up your Ansible work environment in Lesson 2. 
 
 ## Lesson 2: Setting up Ansible
 {: #setup_ansible_multi_region}
-Set up your Ansible project directory and install Ansible on your local machine to automate the deployment of WordPress on your Terraform-deployed infrastructure. 
+Set up your Ansible project directory and install Ansible on your local machine to automate the deployment of Wordpress on your Terraform-deployed infrastructure. 
 {: shortdesc}
 1. On the same level as your Terraform project directory, create an Ansible project directory and navigate into the directory. 
    ```
@@ -277,7 +277,7 @@ Set up your Ansible project directory and install Ansible on your local machine 
    ```
    {: pre}
    
-2. Copy the Ansible playbooks and configuration files to create your WordPress app from the `examples` folder of the {{site.data.keyword.cloud_notm}} Terraform Provider package to your Ansible project directory. 
+2. Copy the Ansible playbooks and configuration files to create your Wordpress app from the `examples` folder of the {{site.data.keyword.cloud_notm}} Terraform Provider package to your Ansible project directory. 
    ```
    mv terraform-provider-ibm/examples/ansible/ibm_ansible_wordpress/* <ansible_project_path>
    ```
@@ -312,7 +312,7 @@ Set up your Ansible project directory and install Ansible on your local machine 
       python version = 3.6.6 (v3.6.6:4cf1f54eb7, Jun 26 2018, 19:50:54) [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.57)]
       ```
       {: screen}
-4. If you run macOS on your local machine, securely store your local machine password with Ansible Vault in a `vault.yml` file. The WordPress sample playbook package requires `sudo` permissions to execute updates to the host file and to install modules to monitor the state of the app. Your local machine password is stored as the encrypted variable `su_password` by Ansible Vault in the `vault.yml` file in the `group_vars/control` folder of your Ansible project directory. If you use a Linux distribution, this step is not required. 
+4. If you run macOS on your local machine, securely store your local machine password with Ansible Vault in a `vault.yml` file. The Wordpress sample playbook package requires `sudo` permissions to execute updates to the host file and to install modules to monitor the state of the app. Your local machine password is stored as the encrypted variable `su_password` by Ansible Vault in the `vault.yml` file in the `group_vars/control` folder of your Ansible project directory. If you use a Linux distribution, this step is not required. 
    1. Create your `vault.yml` file. 
       ```
       ansible-vault create <ansible_project_path>/group_vars/control/vault.yml
@@ -331,11 +331,11 @@ Set up your Ansible project directory and install Ansible on your local machine 
       echo "<vault_file_password>" > ~/vault_pass.txt
       ```
    
-Great! Now that you completed the setup of Terraform and Ansible, you can start provisioning the WordPress classic infrastructure in {{site.data.keyword.cloud_notm}} by using Terraform in Lesson 3. 
+Great! Now that you completed the setup of Terraform and Ansible, you can start provisioning the Wordpress classic infrastructure in {{site.data.keyword.cloud_notm}} by using Terraform in Lesson 3. 
    
-## Lesson 3: Provisioning the WordPress classic infrastructure with Terraform
+## Lesson 3: Provisioning the Wordpress classic infrastructure with Terraform
 {: #provision_terraform_infrastructure}
-In this lesson, you deploy the classic infrastructure virtual server instances, the {{site.data.keyword.cloud_notm}} classic infrastructure load balancers, an {{site.data.keyword.cloud_notm}} Internet Services instance, a global load balancer, and origin pools that you need for your WordPress app. 
+In this lesson, you deploy the classic infrastructure virtual server instances, the {{site.data.keyword.cloud_notm}} classic infrastructure load balancers, an {{site.data.keyword.cloud_notm}} Internet Services instance, a global load balancer, and origin pools that you need for your Wordpress app. 
 {: shortdesc}
 1. In your Terraform project directory, update the `variables.tf` file. 
    1. Navigate into your Terraform project directory and edit the `variables.tf` file.
@@ -475,15 +475,15 @@ Use the {{site.data.keyword.cloud_notm}} Terraform inventory script to import cl
       ```
       {: pre}
       
-You successfully imported the {{site.data.keyword.cloud_notm}} classic infrastructure information into Ansible. You can now go ahead and use Ansible to install and configure your WordPress app in Lesson 5. 
+You successfully imported the {{site.data.keyword.cloud_notm}} classic infrastructure information into Ansible. You can now go ahead and use Ansible to install and configure your Wordpress app in Lesson 5. 
 
-## Lesson 5: Installing and configuring WordPress with Ansible
+## Lesson 5: Installing and configuring Wordpress with Ansible
 {: #install_configure_wordpress}
 
-Set up WordPress on the Terraform-provided {{site.data.keyword.cloud_notm}} classic infrastructure by using Ansible. 
+Set up Wordpress on the Terraform-provided {{site.data.keyword.cloud_notm}} classic infrastructure by using Ansible. 
 {: shortdesc}
 
-1. Install WordPress. The installation of WordPress can take up to 10 minutes. 
+1. Install Wordpress. The installation of Wordpress can take up to 10 minutes. 
    ``` 
    ansible-playbook -i inventory site.yml
    ```
@@ -506,10 +506,10 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.cloud_notm}} clas
    ```
    {: screen}
    
-   If errors occur during the WordPress installation, you can correct the errors that are reported by Ansible and rerun the Ansible playbook again. Ansible playbooks are idempotent and can be executed multiple times. When you execute a playbook multiple times, only changes that bring the environment to the required state are executed.
+   If errors occur during the Wordpress installation, you can correct the errors that are reported by Ansible and rerun the Ansible playbook again. Ansible playbooks are idempotent and can be executed multiple times. When you execute a playbook multiple times, only changes that bring the environment to the required state are executed.
    {: tip}
    
-2. Open WordPress. After the initial installation, WordPress is not accessible via the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer. When you try to access WordPress after the initial installation, a `503 Service unavailable` HTTP response code is returned from the {{site.data.keyword.cloud_notm}} Load Balancers that are deployed in each region. This behavior is expected. After the installation, WordPress forces the user who administers WordPress to set up the app by redirecting the user to the WordPress configuration dialog with a `302 Temporary redirect` HTTP response code. The {{site.data.keyword.cloud_notm}} Load Balancers in each region do not allow to customize the list of valid HTTP response codes and do not recognize a `302` HTTP response code as a healthy response code. As a consequence, the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer returns the `503` HTTP response code to the user.
+2. Open Wordpress. After the initial installation, Wordpress is not accessible via the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer. When you try to access Wordpress after the initial installation, a `503 Service unavailable` HTTP response code is returned from the {{site.data.keyword.cloud_notm}} Load Balancers that are deployed in each region. This behavior is expected. After the installation, Wordpress force the user who administers Wordpress to set up the app by redirecting the user to the Wordpress configuration dialog with a `302 Temporary redirect` HTTP response code. The {{site.data.keyword.cloud_notm}} Load Balancers in each region do not allow to customize the list of valid HTTP response codes and do not recognize a `302` HTTP response code as a healthy response code. As a consequence, the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer returns the `503` HTTP response code to the user.
    ```
    curl http://app101 -vS
    ```
@@ -540,9 +540,9 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.cloud_notm}} clas
    ```
    {: screen}
     
-3. Complete the WordPress setup dialog by using Ansible and the WordPress CLI. During the setup, you provide the user details of the WordPress admin that you want to use and configure the WordPress database. 
+3. Complete the Wordpress setup dialog by using Ansible and the Wordpress CLI. During the setup, you provide the user details of the Wordpress admin that you want to use and configure the Wordpress database. 
 
-   If you prefer to manually set up WordPress, you can access the WordPress site via the {{site.data.keyword.cloud_notm}} internal address `http://app101` from a web browser and complete the initial setup dialog. After you complete the setup, log in as the WordPress admin user. Go to **Settings** and enter the **web_dns_name** of the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer in the **WordPress Address (URL)** and **Site Address (URL)** fields in the format `http://<web_dns_name>`. Then, click **Save**. 
+   If you prefer to manually set up Wordpress, you can access the Wordpress site via the {{site.data.keyword.cloud_notm}} internal address `http://app101` from a web browser and complete the initial setup dialog. After you complete the setup, log in as the Wordpress admin user. Go to **Settings** and enter the **web_dns_name** of the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer in the **Wordpress Address (URL)** and **Site Address (URL)** fields in the format `http://<web_dns_name>`. Then, click **Save**. 
    {: tip}
    
    1. Open the `wp_site_setup.yaml` file. 
@@ -551,7 +551,7 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.cloud_notm}} clas
       ```
       {: pre}
    
-   2. Enter the user name, password, and email address of the WordPress admin user that you want to use. You can also use the default values that are already provided in the file.   
+   2. Enter the user name, password, and email address of the Wordpress admin user that you want to use. You can also use the default values that are already provided in the file.   
       ```
       ...
         site_admin: "<username>"
@@ -561,7 +561,7 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.cloud_notm}} clas
       ```
       {: codeblock}
       
-   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the initial setup dialog by using the WordPress CLI. During the setup, Ansible automatically retrieves the **web_dns_name** of the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer by using the Terraform inventory integration and uses the domain name to configure the WordPress site. 
+   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the initial setup dialog by using the Wordpress CLI. During the setup, Ansible automatically retrieves the **web_dns_name** of the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer by using the Terraform inventory integration and uses the domain name to configure the Wordpress site. 
       ```
       ansible-playbook -i inventory wp_site_setup.yml
       ```
@@ -581,7 +581,7 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.cloud_notm}} clas
       ```
       {: screen}
    
-4. Access your WordPress site from your preferred browser via the **web_dns_address** of the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer. The **web_dns_address** is returned as the `Wordpress URL` in the CLI output of the previous step. 
+4. Access your Wordpress site from your preferred browser via the **web_dns_address** of the {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer. The **web_dns_address** is returned as the `Wordpress URL` in the CLI output of the previous step. 
    ```
    http://<web-dns-address>
    ```
@@ -598,15 +598,15 @@ Set up WordPress on the Terraform-provided {{site.data.keyword.cloud_notm}} clas
    ```
    {: pre}   
 
-With your WordPress app up and running, explore the failover capabilities of your highly available WordPress architecture in {{site.data.keyword.cloud_notm}}. 
+With your Wordpress app up and running, explore the failover capabilities of your highly available Wordpress architecture in {{site.data.keyword.cloud_notm}}. 
 
 ## Lesson 6: Explore the high availability features of {{site.data.keyword.cloud_notm}} 
 {: #verify_resilience}
 
-With your WordPress app up and running, you can now experiment with what happens if one or more {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instances become unavailable. 
+With your Wordpress app up and running, you can now experiment with what happens if one or more {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instances become unavailable. 
 {: shortdesc}
 
-1. Shut down one {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instance where WordPress is deployed and observe the status change of the  {{site.data.keyword.cloud_notm}} Load Balancers and the availability of the web site. 
+1. Shut down one {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instance where Wordpress is deployed and observe the status change of the  {{site.data.keyword.cloud_notm}} Load Balancers and the availability of the web site. 
    1. Open the [classic infrastructure console](https://cloud.ibm.com/classic). 
    2. Select **Devices** > **Device List**. A list of your {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instances is shown. 
    3. Find the `app101` {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instance and select **Power On/Off** from the **Actions** menu.
@@ -620,13 +620,13 @@ With your WordPress app up and running, you can now experiment with what happens
    2. Select **Reliability** > **Global Load Balancers** to navigate to the status page for your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer. 
    3. Verify that your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer shows a `Healthy` health status. 
    
-4. Access WordPress with your preferred web browser and verify that your web site is available and shows the splash screen. 
+4. Access Wordpress with your preferred web browser and verify that your web site is available and shows the splash screen. 
    ```
    http://<web-dns-address>
    ```
    {: codeblock}
    
-5. Shut down a second {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instance where WordPress is deployed and observe the status change of the {{site.data.keyword.cloud_notm}} Load Balancers and the availability of the web site.
+5. Shut down a second {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instance where Wordpress is deployed and observe the status change of the {{site.data.keyword.cloud_notm}} Load Balancers and the availability of the web site.
    1. From the [classic infrastructure console](https://cloud.ibm.com/classic), select **Devices** > **Device List**. A list of your {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instances is shown. 
    3. Find the `app102` {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Server instance and select **Power On/Off** from the **Actions** menu.
 
@@ -639,7 +639,7 @@ With your WordPress app up and running, you can now experiment with what happens
    2. Select **Reliability** > **Global Load Balancers** to navigate to the status page for your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer. 
    3. Verify that your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer shows a `Degraded` health status. The `Degraded` status is displayed because only the origin pool in the second data center is still in a healthy state. 
    
-8. Access WordPress with your preferred web browser and verify that your web site is still available and shows the splash screen. 
+8. Access Wordpress with your preferred web browser and verify that your web site is still available and shows the splash screen. 
    ```
    http://<web-dns-address>
    ```
@@ -653,14 +653,14 @@ With your WordPress app up and running, you can now experiment with what happens
     1. Open the [status page](https://cloud.ibm.com/classic/network/loadbalancing/cloud) of your {{site.data.keyword.cloud_notm}} Load Balancers and open one of the {{site.data.keyword.cloud_notm}} Load Balancers. 
     2. Verify that the **Server Status** shows `0/2 Healthy` in the **Health Status**, which reflects that all of your {{site.data.keyword.cloud_notm}} classic infrastructure Virtual Servers are unavailable. 
     3. Open the other {{site.data.keyword.cloud_notm}} Load Balancers that is deployed in the other data center. 
-    4. Verify that the **Server Status** also shows `0/2 Healthy` in the **Health Status**. When the MariaDB database becomes unavailable, all WordPress app instances become unavailable immediately. 
+    4. Verify that the **Server Status** also shows `0/2 Healthy` in the **Health Status**. When the MariaDB database becomes unavailable, all Wordpress app instances become unavailable immediately. 
       
 11. Check the health of your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer.   
     1. From the [{{site.data.keyword.cloud_notm}} resource list](https://cloud.ibm.com/resources), select your **Internet Services** instance. 
     2. Select **Reliability** > **Global Load Balancers** to navigate to the status page for your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer. 
-    3. Verify that your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer shows a `Critical` health status. The `Critical` status is displayed because all WordPress app instances are unavailable.  
+    3. Verify that your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer shows a `Critical` health status. The `Critical` status is displayed because all Wordpress app instances are unavailable.  
 
-12. Access WordPress with your preferred web browser and verify that your web site is not accessible anymore. Your web browser displays a `503 Service Unavailable` HTTP response because both WordPress web servers in one data center are down and the MariaDB database in the other data center is down.   
+12. Access Wordpress with your preferred web browser and verify that your web site is not accessible anymore. Your web browser displays a `503 Service Unavailable` HTTP response because both Wordpress web servers in one data center are down and the MariaDB database in the other data center is down.   
     ```
     http://<web-dns-address>
     ```
@@ -681,11 +681,11 @@ With your WordPress app up and running, you can now experiment with what happens
     2. Select **Reliability** > **Global Load Balancers** to navigate to the status page for your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer. 
     3. Verify that your {{site.data.keyword.cloud_notm}} Internet Services Global Load Balancer shows a `Healthy` health status. It might take a few minutes to show a `Healthy` status because of the policies that are defined in the health check. 
     
-16. Access WordPress with your preferred web browser and verify that your web site is available again and shows the splash screen. 
+16. Access Wordpress with your preferred web browser and verify that your web site is available again and shows the splash screen. 
     ```
     http://<web-dns-address>
     ```
     {: codeblock}  
 
     
-Great! You successfully installed and configured a highly available instance of WordPress by using Ansible and Terraform. Now you can start designing and deploying resilient and scalable web sites with {{site.data.keyword.cloud_notm}}. Continue to explore WordPress by reviewing the [First steps with WordPress tutorial ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://codex.wordpress.org/First_Steps_With_WordPress). You can also research how to deploy any of the other widely available open source web site solutions on {{site.data.keyword.cloud_notm}}.
+Great! You successfully installed and configured a highly available instance of Wordpress by using Ansible and Terraform. Now you can start designing and deploying resilient and scalable web sites with {{site.data.keyword.cloud_notm}}. Continue to explore Wordpress by reviewing the [First steps with Wordpress tutorial ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://codex.wordpress.org/First_Steps_With_WordPress). You can also research how to deploy any of the other widely available open source web site solutions on {{site.data.keyword.cloud_notm}}.
