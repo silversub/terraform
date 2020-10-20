@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-10-20"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event streams topic
 
@@ -39,7 +39,7 @@ subcollection: terraform
 {: #event-streams-ds}
 
 
-Review the [Event Streams](/docs/EventStreams?topic=EventStreams-about) resource that you can connect, administer, develope with event streams and integrate with the other services. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration/resources.html){: external}.
+Review the [Event Streams](/docs/EventStreams?topic=EventStreams-about) resource that you can connect, administer, developed with event streams and integrate with the other services. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration/resources.html){: external}.
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
@@ -90,5 +90,5 @@ Review the output parameters that you can access after your resource is created.
 |----|-----------|--------|
 |`id`|String|The ID of the topic in CRN format. For example, `crn:v1:bluemix:public:messagehub:us-south:a/6db1b0d0b5c54ee5c201552547febcd8:cb5a0252-8b8d-4390-b017-80b743d32839:topic:my-es-topic`|
 |`kafka_http_url`|String|The API endpoint for interacting with event streams REST API.|
-|`kafka_brokers_sasl`|Array of Strings|Kafka brokers uses for interacting with Kafka native API.|
+|`kafka_brokers_sasl`|Array of Strings|Kafka brokers use for interacting with Kafka native API.|
 {: caption="Table 1. Available output parameters" caption-side="top"}

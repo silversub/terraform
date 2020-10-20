@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-20"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, single site, single zone
 
@@ -40,30 +40,30 @@ completion-time: 1h
 {:step: data-tutorial-type='step'}
 
 
-# Tutorial: Deploying WordPress on IBM Cloud classic infrastructure with Terraform and Ansible
+# Tutorial: Deploying Wordpress on IBM Cloud classic infrastructure with Terraform and Ansible
 {: #deploy_wordpress}
 {: toc-content-type="tutorial"}
 {: toc-services="terraform, virtual-servers"}
 {: toc-completion-time="1h"}
 
-Use this tutorial to automate the provisioning of classic infrastructure resources in {{site.data.keyword.Bluemix_notm}} by using Terraform and the deployment of WordPress on those resources with Ansible.  
+Use this tutorial to automate the provisioning of classic infrastructure resources in {{site.data.keyword.Bluemix_notm}} by using Terraform and the deployment of Wordpress on those resources with Ansible.  
 {: shortdesc}
 
-[Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} classic infrastructure with Terraform and then use Ansible to deploy WordPress on Apache web servers and MariaDB, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
+[Ansible](https://docs.ansible.com) and Terraform are complimentary solutions, each address a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. This tutorial shows how you provision {{site.data.keyword.Bluemix_notm}} classic infrastructure with Terraform and then use Ansible to deploy Wordpress on Apache web servers and MariaDB, on your Terraform-deployed infrastructure resources. Terraform and Ansible are loosely integrated through the sharing of inventory information.
 
 ## Solution overview
 {: #overview_single_site_wordpress}
 
 The following image shows the classic infrastructure and software components that you provision as part of this tutorial. 
 
-<img src="../images/wordpress_infrastructure.png" alt="Infrastructure and app components to deploy WordPress on {{site.data.keyword.Bluemix_notm}} with Terraform and Ansible" width="800" style="width: 800px; border-style: none"/>
+<img src="../images/wordpress_infrastructure.png" alt="Infrastructure and app components to deploy Wordpress on {{site.data.keyword.Bluemix_notm}} with Terraform and Ansible" width="800" style="width: 800px; border-style: none"/>
 
-For the WordPress sample app, the Ansible playbooks package implements a single site deployment of multiple Apache web servers with a single MariaDB database host that run on {{site.data.keyword.Bluemix_notm}} classic virtual servers. The private IP addresses of the Apache web servers are added to the {{site.data.keyword.Bluemix_notm}} Load Balancer that serves as the public endpoint for your WordPress deployment. 
+For the Wordpress sample app, the Ansible playbooks package implements a single site deployment of multiple Apache web servers with a single MariaDB database host that run on {{site.data.keyword.Bluemix_notm}} classic virtual servers. The private IP addresses of the Apache web servers are added to the {{site.data.keyword.Bluemix_notm}} Load Balancer that serves as the public endpoint for your Wordpress deployment. 
 
 Terraform classic infrastructure components are provisioned by using Terraform configuration files whereas Ansible uses playbooks to automate the deployment of software components. 
 
 <table>
-<caption>WordPress sample app infrastructure and software components</caption>
+<caption>Wordpress sample app infrastructure and software components</caption>
 <thead>
 <th>Tool</th>
 <th>Resources</th>
@@ -71,28 +71,28 @@ Terraform classic infrastructure components are provisioned by using Terraform c
 <tbody>
 <tr>
 <td>Terraform</td>
-<td><ul><li>Three {{site.data.keyword.Bluemix_notm}} classic virtual servers that run Centos 7.x</li><li>One {{site.data.keyword.Bluemix_notm}} classic load balancer</li></ul></td>
+<td><ul><li>Three {{site.data.keyword.Bluemix_notm}} classic virtual servers that run CentOS 7.x.</li><li>One {{site.data.keyword.Bluemix_notm}} classic load balancer</li></ul></td>
 </tr>
 <tr>
 <td>Ansible</td>
-<td><ul><li>Two Apache (HTTPD) app servers</li><li>One MariaDB</li><li>WordPress</li></ul></td>
+<td><ul><li>Two Apache (HTTPD) app servers</li><li>One MariaDB</li><li>Wordpress</li></ul></td>
 </tr>
 </tbody>
 </table>
 
-This tutorial intends to demonstrate the capability of building websites on {{site.data.keyword.Bluemix_notm}} classic infrastructure with secure networking, and does not intend to provide a fully operational WordPress deployment. To run this tutorial, the classic infrastructure costs that incur are restricted to the virtual servers and the load balancer that are provisioned as part of this tutorial. No costs are required for DNS domain names or SSL/TLS certificates. All classic infrastructure resources are provisioned with an hourly billing type. The actual costs for you depend on the type of classic virtual server that you provision and the number of hours that you use your classic infrastructure resources. As a result of limiting the costs for this tutorial, the website in WordPress is not configured with HTTPS security.
+This tutorial intends to demonstrate the capability of building websites on {{site.data.keyword.Bluemix_notm}} classic infrastructure with secure networking, and does not intend to provide a fully operational Wordpress deployment. To run this tutorial, the classic infrastructure costs that incur are restricted to the virtual servers and the load balancer that are provisioned as part of this tutorial. No costs are required for DNS domain names or SSL/TLS certificates. All classic infrastructure resources are provisioned with an hourly billing type. The actual costs for you depend on the type of classic virtual server that you provision and the number of hours that you use your classic infrastructure resources. As a result of limiting the costs for this tutorial, the website in Wordpress is not configured with HTTPS security.
 {: important}
 
 ## Objectives
 {: #objectives_single_site_wordpress}
 
-In this tutorial, you use Terraform to deploy {{site.data.keyword.Bluemix_notm}} classic infrastructure components that you use to set up a WordPress sample app by using Ansible. In particular, you will:
+In this tutorial, you use Terraform to deploy {{site.data.keyword.Bluemix_notm}} classic infrastructure components that you use to set up a Wordpress sample app by using Ansible. In particular, you will:
 
-- Set up your environment and all the software that you need for your sample WordPress app, such as Terraform, {{site.data.keyword.Bluemix_notm}} Provider plug-in, and Ansible.
-- Provision {{site.data.keyword.Bluemix_notm}} classic infrastructure components for your WordPress sample app by using Terraform.
+- Set up your environment and all the software that you need for your sample Wordpress app, such as Terraform, {{site.data.keyword.Bluemix_notm}} Provider plug-in, and Ansible.
+- Provision {{site.data.keyword.Bluemix_notm}} classic infrastructure components for your Wordpress sample app by using Terraform.
 - Import classic infrastructure resource information from Terraform to Ansible. 
-- Deploy a sample WordPress app on your {{site.data.keyword.Bluemix_notm}} classic infrastructure with Ansible. 
-- Use Ansible to finalize the setup of your WordPress app. 
+- Deploy a sample Wordpress app on your {{site.data.keyword.Bluemix_notm}} classic infrastructure with Ansible. 
+- Use Ansible to finalize the setup of your Wordpress app. 
 
 ## Audience
 {: #audience_single_site_wordpress}
@@ -233,14 +233,14 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} classic infrast
       
 5. [Retrieve your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key](/docs/account?topic=account-classic_keys).
 
-6. Copy the Terraform configuration files to create your WordPress infrastructure from the {{site.data.keyword.Bluemix_notm}} Terraform Provider package to your Terraform project directory. 
+6. Copy the Terraform configuration files to create your Wordpress infrastructure from the {{site.data.keyword.Bluemix_notm}} Terraform Provider package to your Terraform project directory. 
    ```
    mv /terraform-provider-ibm/examples/ibm-website-single-region/* <terraform_project_path>
    ```
    {: pre}
    
 7. Configure the {{site.data.keyword.Bluemix_notm}} Provider plug-in. 
-   1. Navigate into your Terraform project directory and 
+   1. Navigate into your Terraform project directory. 
       ```
       cd <terraform_project_path> && nano terraform.tfvars
       ```
@@ -254,12 +254,12 @@ To use Terraform to provision {{site.data.keyword.Bluemix_notm}} classic infrast
       ```
       {: codeblock}
       
-With your Terraform project directory set up, you can continue to set up your [Ansible work environment](#setup_ansible_single_site_wordpress). 
+With your Terraform project directory set-up, you can continue to set up your [Ansible work environment](#setup_ansible_single_site_wordpress). 
 
 ## Lesson 2: Setting up Ansible
 {: #setup_ansible_single_site_wordpress}
 
-Set up your Ansible project directory and install Ansible on your local machine to automate the deployment of WordPress on your Terraform-deployed infrastructure. 
+Set up your Ansible project directory and install Ansible on your local machine to automate the deployment of Wordpress on your Terraform-deployed infrastructure. 
 {: shortdesc}
 
 1. On the same level as your Terraform project directory, create an Ansible project directory and navigate into the directory. 
@@ -268,7 +268,7 @@ Set up your Ansible project directory and install Ansible on your local machine 
    ```
    {: pre}
    
-2. Copy the Ansible playbooks and configuration files to create your WordPress app from the `examples` folder of the {{site.data.keyword.Bluemix_notm}} Terraform Provider package to your Ansible project directory. 
+2. Copy the Ansible playbooks and configuration files to create your Wordpress app from the `examples` folder of the {{site.data.keyword.Bluemix_notm}} Terraform Provider package to your Ansible project directory. 
    ```
    mv terraform-provider-ibm/examples/ibm-ansible-samples/ibm_ansible_wordpress/* <ansible_project_path>
    ```
@@ -305,7 +305,7 @@ Set up your Ansible project directory and install Ansible on your local machine 
       ```
       {: screen}
 
-4. If you run macOS on your local machine, securely store your local machine password with Ansible Vault in a `vault.yml` file. The WordPress sample playbook package requires `sudo` permissions to execute updates to the host file and to install modules to monitor the state of the app. Your local machine password is stored as the encrypted variable `su_password` by Ansible Vault in the `vault.yml` file in the `group_vars/control` folder of your Ansible project directory. If you use a Linux distribution, this step is not required. 
+4. If you run macOS on your local machine, securely store your local machine password with Ansible Vault in a `vault.yml` file. The Wordpress sample playbook package requires `sudo` permissions to execute updates to the host file and to install modules to monitor the state of the app. Your local machine password is stored as the encrypted variable `su_password` by Ansible Vault in the `vault.yml` file in the `group_vars/control` folder of your Ansible project directory. If you use a Linux distribution, this step is not required. 
    1. Create your `vault.yml` file. 
       ```
       ansible-vault create <ansible_project_path>/group_vars/control/vault.yml
@@ -325,12 +325,12 @@ Set up your Ansible project directory and install Ansible on your local machine 
       echo "<vault_file_password>" > ~/vault_pass.txt
       ```
    
-Great! Now that you completed the setup of Terraform and Ansible, you can start [provisioning the WordPress infrastructure](#provision_terraform_infrastructure_single_site_wordpress) in {{site.data.keyword.Bluemix_notm}} by using Terraform. 
+Great! Now that you completed the setup of Terraform and Ansible, you can start [provisioning the Wordpress infrastructure](#provision_terraform_infrastructure_single_site_wordpress) in {{site.data.keyword.Bluemix_notm}} by using Terraform. 
    
-## Lesson 3: Provisioning the WordPress infrastructure with Terraform
+## Lesson 3: Provisioning the Wordpress infrastructure with Terraform
 {: #provision_terraform_infrastructure_single_site_wordpress}
 
-In this lesson, you deploy the classic virtual server instances and the {{site.data.keyword.Bluemix_notm}} classic load balancer that you need for your WordPress app. 
+In this lesson, you deploy the classic virtual server instances and the {{site.data.keyword.Bluemix_notm}} classic load balancer that you need for your Wordpress app. 
 {: shortdesc}
 
 1. In your Terraform project directory, update the `variables.tf` with values for your target `datacenter`, `ssh_label` and `ssh_key` for your environment.
@@ -461,10 +461,10 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
       ```
       {: pre}
 
-## Lesson 5: Installing and configuring WordPress with Ansible
+## Lesson 5: Installing and configuring Wordpress with Ansible
 {: #install_configure_wordpress_single_site_wordpress}
 
-1. Install WordPress. The installation of WordPress can take up to 10 minutes. 
+1. Install Wordpress. The installation of Wordpress can take up to 10 minutes. 
    ``` 
    ansible-playbook -i inventory site.yml
    ```
@@ -487,10 +487,10 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
    ```
    {: screen}
    
-   If errors occur during the WordPress installation, you can correct the errors that are reported by Ansible and rerun the Ansible playbook again. Ansible playbooks are idempotent and can be executed multiple times. When you execute a playbook multiple times, only changes that bring the environment to the required state are executed.
+   If errors occur during the Wordpress installation, you can correct the errors that are reported by Ansible and rerun the Ansible playbook again. Ansible playbooks are idempotent and can be executed multiple times. When you execute a playbook multiple times, only changes that bring the environment to the required state are executed.
    {: tip}
    
-2. Open WordPress. After the initial installation, WordPress is not accessible via the {{site.data.keyword.Bluemix_notm}} Load Balancer. When you try to access WordPress after the initial installation, a 503 Service unavailable HTTP response code is returned from the load balancer. This behavior is expected. After the installation, WordPress forces the user who administers WordPress to set up WordPress by redirecting the user to the configuration dialog with a 302 Temporary redirect HTTP response code. The {{site.data.keyword.Bluemix_notm}} load balancer does not allow customization of the valid HTTP response codes and does not recognize a 302 HTTP response code as a healthy response code. As a consequence, the load balancer returns the 503 HTTP response code to the user.
+2. Open Wordpress. After the initial installation, Wordpress are not accessible via the {{site.data.keyword.Bluemix_notm}} Load Balancer. When you try to access Wordpress after the initial installation, a 503 Service unavailable HTTP response code is returned from the load balancer. This behavior is expected. After the installation, Wordpress force the user who administers Wordpress to set up Wordpress by redirecting the user to the configuration dialog with a 302 Temporary redirect HTTP response code. The {{site.data.keyword.Bluemix_notm}} load balancer does not allow customization of the valid HTTP response codes and does not recognize a 302 HTTP response code as a healthy response code. As a consequence, the load balancer returns the 503 HTTP response code to the user.
    ```
    curl http://app101 -vS
    ```
@@ -521,8 +521,8 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
    ```
    {: screen}
     
-3. Complete the WordPress setup dialog by using Ansible and the WordPress CLI. During the setup, you provide the user details of the WordPress admin that you want to use and configure the WordPress database. 
-   If you prefer to manually set up WordPress, you can access the WordPress site via the {{site.data.keyword.Bluemix_notm}} internal address `http://app101` from a web browser and complete the initial setup dialog. After you complete the setup, log in as the WordPress admin user. Go to **Settings**, enter the **web_dns_name** of the load balancer in the **WordPress Address (URL)** and **Site Address (URL)** fields in the format `http://<web_dns_name>`, and click **Save**. 
+3. Complete the Wordpress setup dialog by using Ansible and the Wordpress CLI. During the setup, you provide the user details of the Wordpress admin that you want to use and configure the Wordpress database. 
+   If you prefer to manually set up Wordpress, you can access the Wordpress site via the {{site.data.keyword.Bluemix_notm}} internal address `http://app101` from a web browser and complete the initial setup dialog. After you complete the setup, log in as the Wordpress admin user. Go to **Settings**, enter the **web_dns_name** of the load balancer in the **Wordpress Address (URL)** and **Site Address (URL)** fields in the format `http://<web_dns_name>`, and click **Save**. 
    {: tip}
    
    1. Open the `wp_site_setup.yaml` file. 
@@ -531,7 +531,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
       ```
       {: pre}
    
-   2. Enter the user name, password, and email address of the WordPress admin user that you want to use. You can also use the values that are already provided in the file.   
+   2. Enter the user name, password, and email address of the Wordpress admin user that you want to use. You can also use the values that are already provided in the file.   
       ```
       ...
         site_admin: "<username>"
@@ -542,7 +542,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
       ```
       {: codeblock}
       
-   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the inital setup dialog by using the WordPress CLI. During the setup, Ansible automatically retrieves the **web_dns_name** of the load balancer by using the Terraform inventory integration and uses the domain name to configure the WordPress site. 
+   3. Run the `wp_site_setup.yaml` Ansible playbook to complete the initial setup dialog by using the Wordpress CLI. During the setup, Ansible automatically retrieves the **web_dns_name** of the load balancer by using the Terraform inventory integration and uses the domain name to configure the Wordpress site. 
       ```
       ansible-playbook -i inventory wp_site_setup.yml
       ```
@@ -562,7 +562,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
       ```
       {: screen}
    
-4. Access your WordPress site from your preferred browser via the **web_dns_address** of the load balancer. The domain name of the load balancer is returned as the `Wordpress URL` in the CLI output of the previous step. 
+4. Access your Wordpress site from your preferred browser via the **web_dns_address** of the load balancer. The domain name of the load balancer is returned as the `Wordpress URL` in the CLI output of the previous step. 
    ```
    http://<web-dns-address>
    ```
@@ -581,7 +581,7 @@ Use the {{site.data.keyword.Bluemix_notm}} Terraform inventory script to import 
    {: pre}
    
   
-Great! You successfully installed and configured WordPress by using Ansible. Now you can start designing your first website and exploring available WordPress features. Start by reviewing the [First steps with WordPress tutorial ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://codex.wordpress.org/First_Steps_With_WordPress). 
+Great! You successfully installed and configured Wordpress by using Ansible. Now you can start designing your first website and exploring available Wordpress features. Start by reviewing the [First steps with Wordpress tutorial ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://codex.wordpress.org/First_Steps_With_WordPress). 
    
       
    

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-19"
+lastupdated: "2020-10-20"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -39,7 +39,7 @@ subcollection: terraform
 {: #event-streams-resources}
 
 
-Review the [Event Streams](/docs/EventStreams?topic=EventStreams-about) resource that you can connect, administer, develope with event streams and integrate with the other services. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration/resources.html){: external}.
+Review the [Event Streams](/docs/EventStreams?topic=EventStreams-about) resource that you can connect, administer, developed with event streams and integrate with the other services. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration/resources.html){: external}.
 {: shortdesc}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
@@ -52,7 +52,7 @@ Before you start working with your resource, make sure to review the [required p
 Create and update the event streams.
 {: shortdesc}
 
-### Example 1: Create an event streams service instance and topic
+### Example 1 Create an event streams service instance and topic
 {: #event-stream-sample}
 
 Create an event streams service instance and topic.
@@ -99,7 +99,7 @@ resource "ibm_event_streams_topic" "es_topic_1" {
 
 ```
 
-### Example 2: Create a topic on an existing event streams instance
+### Example 2 Create a topic on an existing event streams instance
 {: #event-stream-sample2}
 
 Create topic on an existing event streams instance.
@@ -128,10 +128,10 @@ resource "ibm_event_streams_topic" "es_topic_2" {
 
 ```
 
-### Example 3: Create a Kafka consumer application connecting to an event streams instance and its topics
+### Example 3 Create a Kafka consumer application connection to an event streams instance and its topics
 {: #event-stream-sample3}
 
-Create a kafka consumer application connecting to an existing event streams instance and its topics.
+Create a Kafka consumer application connection to an existing event streams instance and its topics.
 {: shortdesc}
 
 ```
@@ -176,7 +176,7 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the topic in CRN format. For example, `crn:v1:bluemix:public:messagehub:us-south:a/6db1b0d0b5c54ee5c201552547febcd8:cb5a0252-8b8d-4390-b017-80b743d32839:topic:my-es-topic`|
-|`kafka_brokers_sasl`|Array of Strings|Kafka brokers uses for interacting with Kafka native API.|
+|`kafka_brokers_sasl`|Array of Strings|Kafka brokers use for interacting with Kafka native API.|
 |`kafka_http_url`|String|The API endpoint for interacting with event streams REST API.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
@@ -184,15 +184,18 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #event-streams-import}
 
-This resource can be imported by using `ID`. The ID is the 'CRN', the `resource type` is `topic`, the `resource` is the name of the topic.
+This resource can be imported by using `CRN`. The three parameters of the `CRN` with the colon separator are
+  - ID = CRN 
+  - resource type = topic
+  - resource = name of the topic.
 {: shortdesc}
 
-**Syntax**: 
+**Syntax**
 ```
 terraform import ibm_event_streams_topic.es_topic <crn>
 
 ```
-**Example**:
+**Example**
 ```
 terraform import ibm_event_streams_topic.es_topic crn:v1:bluemix:public:messagehub:us-south:a/6db1b0d0b5c54ee5c201552547febcd8:cb5a0252-8b8d-4390-b017-80b743d32839:topic:my-es-topic
 ```
@@ -200,7 +203,7 @@ terraform import ibm_event_streams_topic.es_topic crn:v1:bluemix:public:messageh
 ### Timeouts
 {: #event-streams-timeouts}
 
-Event Streams topic provides the following time outs:
+Event Streams topic provides the following timeouts:
 
 |Name|Description|
 |----|-----------|
