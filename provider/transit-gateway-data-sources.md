@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-10-22"
 
 keywords: terraform provider plugin, terraform transit gateway, terraform  transit gateways,  terraform transit gateway location, transit gateway locations, transit gateway, transit location
 
@@ -97,6 +97,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `resource_group` | String | The resource group identifier.|
 | `connections.name` | String | The user-defined name for the transit gateway connection.|
 | `connections.network_type` | String | The type of network connected with the connection. Possible values are `classic` or `VPC`. |
+| `connections.account_id` | String | The ID of the network connected account. This is used if the network is in a different account than the gateway. |
 | `connections.network_id` | String | The ID of the network being connected with the connection. |
 | `connections.id` | String | The unique identifier for the transit gateway connection to network either `VPC` or `classic`).|
 | `connections.created_at` | String | The date and time the connection is created.|
