@@ -76,9 +76,9 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- | ------- |
 | `gateway` | String | Required | Enter the transit gateway identifier. | Yes |
 | `name` | String| Optional | Enter a name. If unentered, the default name is provided based on the network type, such as `vpc` for network type VPC and `classic` for network type classic. | No|
+| `network_account_id` | String | Optional | The ID of the network connected account. This is used if the network is in a different account than the gateway. | Yes |
 | `network_type` | String | Required | Enter the network type. Allowed values are `classic` and `vpc`. | Yes |
 | `network_id` |  String | Optional | Enter the ID of the network being connected through this connection. This parameter is required for network type 'vpc', the CRN of the VPC to be connected. This field is required to be unspecified for network type 'classic'. For example, `crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b` | Yes |
-| `network_account_id` | String | Optional | The ID of the network connected account. This is used if the network is in a different account than the gateway. | Yes |
 
 ### Output parameters
 {: #tg-connection-r-output}
