@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-22"
+lastupdated: "2020-10-27"
 
 keywords: terraform provider plugin, terraform transit gateway, terraform  transit gateways,  terraform transit gateway location, transit gateway locations, transit gateway, transit location
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Transit Gateway data sources
 {: #transit-gateway-ds}
 
@@ -42,7 +41,6 @@ The {{site.data.keyword.cloud_notm}} [Transit Gateway](/docs/transit-gateway?top
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_tg_gateway`
 {: #tg-gateway-ds}
@@ -97,13 +95,12 @@ Review the output parameters that you can access after you retrieved your data s
 | `resource_group` | String | The resource group identifier.|
 | `connections.name` | String | The user-defined name for the transit gateway connection.|
 | `connections.network_type` | String | The type of network connected with the connection. Possible values are `classic` or `VPC`. |
-| `connections.account_id` | String | The ID of the network connected account. This is used if the network is in a different account than the gateway. |
+| `connections.network_account_id` | String | The ID of the network connected account. This is used if the network is in a different account than the gateway. |
 | `connections.network_id` | String | The ID of the network being connected with the connection. |
 | `connections.id` | String | The unique identifier for the transit gateway connection to network either `VPC` or `classic`).|
 | `connections.created_at` | String | The date and time the connection is created.|
 | `connections.updated_at` | String | The date and time the connection is last updated.|
 | `connections.status` | String | The current configuration state of the connection. Possible values are `attached`, `failed,` `pending`, `deleting`.|
-
 
 
 
@@ -158,7 +155,6 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
-
 ## `ibm_tg_location`
 {: #tg-location-ds}
  
@@ -207,7 +203,6 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
-
 ## `ibm_tg_locations`
 {: #tg-locations-ds}
  
@@ -242,7 +237,6 @@ Review the output parameters that you can access after you retrieved your data s
 | `locations.billing_location` | String | The geographical location of the location, used for billing purposes.|
 | `locations.name` | String | The name of the location.|
 | `locations.type` | String | The type of the location, determining a `multi-zone region`, a `single data center`, or a `point of presence`.|
-
 
 
 
