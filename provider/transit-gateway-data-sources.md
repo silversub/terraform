@@ -63,7 +63,7 @@ resource_group="30951d2dff914dafb26455a88c0c0092"
 } 
 
 data "ibm_tg_gateway" "ds_tggateway" {
-    id=ibm_tg_gateway.new_tg_gw.id
+    name=ibm_tg_gateway.new_tg_gw.name
 }
 ```
 
