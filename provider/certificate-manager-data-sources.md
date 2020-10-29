@@ -43,64 +43,6 @@ Before you start working with your data source, make sure to review the [require
 {: important}
 
 
-## `ibm_certificate_manager_certificates`
-{: #cert-manager-certificates}
-
-Retrieve the details of one or lists all certificates that are managed by your Certificate Manager service instance resource. 
-{: shortdesc}
-
-### Sample Terraform code
-{: #cert-manager-certificates-sample}
-
-```
-data "ibm_resource_instance" "cm" {
-    name     = "testname"
-    location = "us-south"
-    service  = "cloudcerts"
-}
-data "ibm_certificate_manager_certificates" "certs"{
-    certificate_manager_instance_id=data.ibm_resource_instance.cm.id
-}
-```
-{: codeblock}
-
-### Input parameters
-{: #cert-manager-certificates-input}
-
-Review the input parameters that you can specify for your resource. 
-{: shortdesc}
-
-| Input parameter | Data type | Required / optional | Description |
-| ------------- |-------------| ----- | -------------- |
-|`certificate_manager_instance_id`|String|Required|The CRN of the Certificate Manager service instance. |
-
-
-### Output parameters
-{: #cert-manager-certificates-output}
-
-Review the output parameters that you can access after your resource is created. 
-{: shortdesc}
-
-| Output parameter | Data type | Description |
-| ------------- |-------------| -------------- |
-|`id`|String|The ID of the certificate that is managed in Certificate Manager. The ID is composed of `<certificate_manager_instance_ID>:<certificate_ID>`. |
-|`name`|String|The display name of the certificate. |
-|`domains`|String| An array of valid domains for the issued certificate. The first domain is the primary domain. extra domains are secondary domains. |
-|`issuer`|String|The issuer of the certificate.|
-|`begins_on`|String|The creation date of the certificate in UNIX epoch time.|
-|`expires_on`|String|The expiration date of the certificate in Unix epoch time.|
-|`imported`|String|Indicates whether a certificate has imported or not.|
-|`status`|String|The status of a certificate.|
-|`has_previous`|String|Indicates whether a certificate has a previous version.|
-|`key_algorithm`|String|The Key Algorithm of a certificate.|
-|`algorithm`|String|The Algorithm of a certificate.|
-|`serial_number`|String| The serial number of a certificate.|
-|`issuance_info`|String| The issuance information of a certificate.|
-|`issuance_info.status`|String| The status of a certificate.|
-|`issuance_info.ordered_on`|String| The certificate ordered date.|
-|`issuance_info.code`|String| The code of a certificate.|
-|`issuance_info.additional_info`|String| The extra information of a certificate.|
-
 ## `ibm_certificate_manager_certificate`
 {: #cert-manager-certificate}
 
@@ -165,3 +107,62 @@ Review the output parameters that you can access after your resource is created.
 |`key_algorithm`|String|The key algorithm of the certificate. |
 |`serial_number`|String|The serial number of the certificate.|
 |`status`|String|The status of the certificate.|
+
+
+## `ibm_certificate_manager_certificates`
+{: #cert-manager-certificates}
+
+Retrieve the details of one or lists all certificates that are managed by your Certificate Manager service instance resource. 
+{: shortdesc}
+
+### Sample Terraform code
+{: #cert-manager-certificates-sample}
+
+```
+data "ibm_resource_instance" "cm" {
+    name     = "testname"
+    location = "us-south"
+    service  = "cloudcerts"
+}
+data "ibm_certificate_manager_certificates" "certs"{
+    certificate_manager_instance_id=data.ibm_resource_instance.cm.id
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #cert-manager-certificates-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`certificate_manager_instance_id`|String|Required|The CRN of the Certificate Manager service instance. |
+
+
+### Output parameters
+{: #cert-manager-certificates-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`algorithm`|String|The Algorithm of a certificate.|
+|`begins_on`|String|The creation date of the certificate in UNIX epoch time.|
+|`domains`|String| An array of valid domains for the issued certificate. The first domain is the primary domain. extra domains are secondary domains. |
+|`expires_on`|String|The expiration date of the certificate in Unix epoch time.|
+|`has_previous`|String|Indicates whether a certificate has a previous version.|
+|`key_algorithm`|String|The Key Algorithm of a certificate.|
+|`name`|String|The display name of the certificate. |
+|`id`|String|The ID of the certificate that is managed in Certificate Manager. The ID is composed of `<certificate_manager_instance_ID>:<certificate_ID>`. |
+|`issuer`|String|The issuer of the certificate.|
+|`issuance_info`|String| The issuance information of a certificate.|
+|`issuance_info.status`|String| The status of a certificate.|
+|`issuance_info.ordered_on`|String| The certificate ordered date.|
+|`issuance_info.code`|String| The code of a certificate.|
+|`issuance_info.additional_info`|String| The extra information of a certificate.|
+|`imported`|String|Indicates whether a certificate has imported or not.|
+|`serial_number`|String| The serial number of a certificate.|
+|`status`|String|The status of a certificate.|
