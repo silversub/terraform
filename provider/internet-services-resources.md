@@ -207,6 +207,57 @@ resource "ibm_cis_domain_settings" "test" {
 }
 ```
 
+```
+resource "ibm_cis_domain_settings" "test_domain_settings" {
+  cis_id    = data.ibm_cis.cis.id
+  domain_id = data.ibm_cis_domain.cis_domain.domain_id
+  dnssec                      = "disabled"
+  waf                         = "off"
+  ssl                         = "flexible"
+  min_tls_version             = "1.2"
+  cname_flattening            = "flatten_all"
+  opportunistic_encryption    = "off"
+  automatic_https_rewrites    = "on"
+  always_use_https            = "off"
+  ipv6                        = "off"
+  browser_check               = "off"
+  hotlink_protection          = "off"
+  http2                       = "on"
+  image_load_optimization     = "off"
+  image_size_optimization     = "lossless"
+  ip_geolocation              = "off"
+  origin_error_page_pass_thru = "off"
+  brotli                      = "off"
+  pseudo_ipv4                 = "off"
+  prefetch_preload            = "off"
+  response_buffering          = "off"
+  script_load_optimization    = "off"
+  server_side_exclude         = "off"
+  tls_client_auth             = "off"
+  true_client_ip_header       = "off"
+  websockets                  = "off"
+  challenge_ttl               = 31536000
+  max_upload                  = 300
+  cipher                      = ["AES128-SHA256"]
+  minify {
+    css  = "off"
+    js   = "off"
+    html = "off"
+  }
+  security_header {
+    enabled            = false
+    include_subdomains = false
+    max_age            = 0
+    nosniff            = false
+  }
+  mobile_redirect {
+    status           = "on"
+    mobile_subdomain = "m.domain.com"
+    strip_uri        = true
+  }
+}
+```
+
 ### Input parameters
 {: #cis-domain-settings-input}
 
@@ -215,33 +266,52 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
-|`domain_id`|String|Required|The ID of the domain that you want to customize. |
-|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
-|`waf`|String|Optional|Enable a web application firewall (WAF). Supported values are `off` and `on`.|
-|`min_tls_version`|String|Optional|The minimum TLS version that you want to allow. Allowed values are `1.1`, `1.2`, or `1.3`. |
-|`ssl`|String|Optional|Allowed values: `off`, `flexible`, `full`, `strict`, `origin_pull`.|
-|`automatic_https_rewrites`|String|Optional|Enable HTTPS rewrites. Allowed values are `off` and `on`. |
-|`opportunistic_encryption`|String|Optional|Supported values are `off` and `on`.|
-|`cname_flattening`|String|Optional|Supported values are `flatten_at_root`, `flatten_all`, and `flatten_none`.|
 |`always_use_https`|String|Optional|Supported values are `off` and `on`.|
-|`ipv6`|String|Optional|Supported values are `off` and `on`.|
+|`automatic_https_rewrites`|String|Optional|Enable HTTPS rewrites. Allowed values are `off` and `on`. |
 |`browser_check`|String|Optional|Enable a client browser check to look for common HTTP headers that are used by malicious users. If HTTP headers are found,  access to your website is blocked. Supported values are `off` and `on`.|
+|`brotli`|String|Optional|Supported values are `off` and `on`.|
+|`challenge_ttl`|String|Optional|Challenge TTL values are `300`, `900`, `1800`, `2700`, `3600`, `7200`, `10800`, `14400`, `28800`, `57600`, `86400`, `604800`, `2592000`, and `31536000`.|
+|`cipher`|String|Optional|Cipher setting values are  `ECDHE-ECDSA-AES128-GCM-SHA256`, `ECDHE-ECDSA-CHACHA20-POLY1305`,`ECDHE-RSA-AES128-GCM-SHA256`, `ECDHE-RSA-CHACHA20-POLY1305`, `ECDHE-ECDSA-AES128-SHA256`, `ECDHE-ECDSA-AES128-SHA`, `ECDHE-RSA-AES128-SHA256`, `ECDHE-RSA-AES128-SHA`, `AES128-GCM-SHA256`, `AES128-SHA256`, `AES128-SHA`, `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-ECDSA-AES256-SHA384`, `ECDHE-RSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-SHA384`, `ECDHE-RSA-AES256-SHA`, `AES256-GCM-SHA384`, `AES256-SHA256`, `AES256-SHA`, `DES-CBC3-SHA`.|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`cname_flattening`|String|Optional|Supported values are `flatten_at_root`, `flatten_all`, and `flatten_none`.|
+|`domain_id`|String|Required|The ID of the domain that you want to customize. |
+|`dnssec`|String|Optional|Can set to `active` only once. Allowed values are `active`, `disabled`.|
 |`hotlink_protection`|String|Optional|Supported values are `off` and `on`.|
 |`http2`|String|Optional|Supported values are `off` and `on`.|
-|`image_load_optimization`|String|Optional|Supported values are `off` and `on`.| 
-|`image_size_optimization`|String|Optional|Supported values are `lossless`,  `off`, and `lossy`.| 
-|`ip_geolocation`|String|Optional|Supported values are `off` and `on`.| 
-|`origin_error_page_pass_thru`|String|Optional|Supported values are `off` and `on`.| 
-|`brotli`|String|Optional|Supported values are `off` and `on`.| 
+|`image_load_optimization`|String|Optional|Supported values are `off` and `on`.|
+|`image_size_optimization`|String|Optional|Supported values are `lossless`,  `off`, and `lossy`.|
+|`ipv6`|String|Optional|Supported values are `off` and `on`.|
+|`ip_geolocation`|String|Optional|Supported values are `off` and `on`.|
+|`max_upload`|String|Optional|Maximum upload values are `100`, `125`, `150`, `175`, `200`, `225`, `250`, `275`, `300`, `325`, `350`, `375`, `400`, `425`, `450`, `475`, and `500`.|
+|`min_tls_version`|String|Optional|The minimum TLS version that you want to allow. Allowed values are `1.1`, `1.2`, or `1.3`. |
+|`minify`|List|Optional|Minify the setting as stated.|
+|`minify.css`|String|Required|CSS supported values are `on` and `off`.|
+|`minify.html`|String|Required|HTML supported values are `on` and `off`.|
+|`minify.js`|String|Required|JS supported values are `on` and `off`.|
+|`mobile_redirect`|List|Optional|Mobile redirect setting. |
+|`mobile_redirect.status`|Boolean|Required|Mobile redirect setting status values are `true` and `false`. |
+|`mobile_redirect.mobile_subdomain`|String|Optional|Mobile redirect subdomain. For example `m.domain.com` |
+|`mobile_redirect.strip_uri`|Boolean|Optional|Strip URI for mobile redirect. |
+|`origin_error_page_pass_thru`|String|Optional|Supported values are `off` and `on`.|
+|`opportunistic_encryption`|String|Optional|Supported values are `off` and `on`.|
 |`pseudo_ipv4`|String|Optional|Supported values are `overwrite_header`, `off`, and `add_header`.|
-|`prefetch_preload`|String|Optional|Supported values are `off` and `on`.| 
+|`prefetch_preload`|String|Optional|Supported values are `off` and `on`.|
 |`response_buffering`|String|Optional|Supported values are `off` and `on`.|
-|`script_load_optimization`|String|Optional|Supported values are `off` and `on`.| 
-|`server_side_exclude`|String|Optional|Supported values are `off` and `on`.| 
-|`tls_client_auth`|String|Optional|Supported values are `off` and `on`.| 
-|`true_client_ip_header`|String|Optional|Supported values are `off` and `on`.| 
-|`websockets`|String|Optional|Supported values are `off` and `on`.| 
+|`script_load_optimization`|String|Optional|Supported values are `off` and `on`.|
+|`server_side_exclude`|String|Optional|Supported values are `off` and `on`.|
+|`security_header`|List|Optional|Security headers as stated.|
+|`security_header.enabled`|Boolean|Required|Supported values are `true` and `false`. |
+|`security_header.include_subdomains`|Boolean|Required|Supported values are `true` and `false`. |
+|`security_header.max_age`|Integer|Required|Maximum age of the security header. |
+|`security_header.nosniff`|Boolean|Required|No sniff.|
+|`ssl`|String|Optional|Allowed values: `off`, `flexible`, `full`, `strict`, `origin_pull`.|
+|`tls_client_auth`|String|Optional|Supported values are `off` and `on`.|
+|`true_client_ip_header`|String|Optional|Supported values are `off` and `on`.|
+|`waf`|String|Optional|Enable a web application firewall (WAF). Supported values are `off` and `on`.|
+|`websockets`|String|Optional|Supported values are `off` and `on`.|
 
+ Extra settings are not implemented in this version of the provider.
+ {: note}
 
 ### Output parameters
 {: #cis-domain-settings-output}
