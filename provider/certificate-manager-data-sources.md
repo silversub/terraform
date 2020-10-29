@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-29"
 
 keywords: terraform provider plugin, terraform api gateway
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Certificate Manager data sources
 {: #cert-manager-data-sources}
 
@@ -44,11 +43,10 @@ Before you start working with your data source, make sure to review the [require
 {: important}
 
 
-
 ## `ibm_certificate_manager_certificates`
 {: #cert-manager-certificates}
 
-Retrieve the details of one or all certificates that are managed by your Certificate Manager service instance. 
+Retrieve the details of one or lists all certificates that are managed by your Certificate Manager service instance resource. 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -75,7 +73,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 |`certificate_manager_instance_id`|String|Required|The CRN of the Certificate Manager service instance. |
-|`name`|String|Required|The display name for the certificate.|
+
 
 ### Output parameters
 {: #cert-manager-certificates-output}
@@ -86,6 +84,66 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 |`id`|String|The ID of the certificate that is managed in Certificate Manager. The ID is composed of `<certificate_manager_instance_ID>:<certificate_ID>`. |
+|`name`|String|The display name of the certificate. |
+|`domains`|String| An array of valid domains for the issued certificate. The first domain is the primary domain. extra domains are secondary domains. |
+|`issuer`|String|The issuer of the certificate.|
+|`begins_on`|String|The creation date of the certificate in UNIX epoch time.|
+|`expires_on`|String|The expiration date of the certificate in Unix epoch time.|
+|`imported`|String|Indicates whether a certificate has imported or not.|
+|`status`|String|The status of a certificate.|
+|`has_previous`|String|Indicates whether a certificate has a previous version.|
+|`key_algorithm`|String|The Key Algorithm of a certificate.|
+|`algorithm`|String|The Algorithm of a certificate.|
+|`serial_number`|String| The serial number of a certificate.|
+|`issuance_info`|String| The issuance information of a certificate.|
+|`issuance_info.status`|String| The status of a certificate.|
+|`issuance_info.ordered_on`|String| The certificate ordered date.|
+|`issuance_info.code`|String| The code of a certificate.|
+|`issuance_info.additional_info`|String| The extra information of a certificate.|
+
+## `ibm_certificate_manager_certificate`
+{: #cert-manager-certificate}
+
+Retrieve the details of an existing certificate instance resource and lists all the certificates.
+{: shortdesc}
+
+### Sample Terraform code
+{: #cert-manager-certificate-sample}
+
+```
+data "ibm_resource_instance" "cm" {
+    name     = "testname"
+    location = "us-south"
+    service  = "cloudcerts"
+}
+data "ibm_certificate_manager_certificate" "source_certificate"{
+    certificate_manager_instance_id=data.ibm_resource_instance.cm.id
+    name = "certificate name"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #cert-manager-certificate-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`certificate_manager_instance_id`|String|Required|The CRN of the Certificate Manager service instance. |
+|`name`|String|Required|The display name for the certificate.|
+
+### Output parameters
+{: #cert-manager-certificate-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`algorithm`|String|The algorithm that is used for the certificate.| 
+|`begins_on`|Timestamp|The timestamp when the certificate was created in UNIX epoch time format.| 
 |`certificate_details`|String|List of certificates for the provided name. |
 |`certificate_details.cert_id`|String|The CRN based certificate ID. |
 |`certificate_details.name`|String|The name of the certificate. | 
@@ -94,17 +152,16 @@ Review the output parameters that you can access after your resource is created.
 |`certificate_details.data.content`|String|The content of certificate data, escaped. |
 |`certificate_details.data.priv_key`|String|The private key data, escaped. |
 |`certificate_details.data.intermediate`|String| The intermediate certificate data, escaped.|
-|`issuer`|String|The issuer of the certificate.|
-|`begins_on`|Timestamp|The timestamp when the certificate was created in UNIX epoch time format.| 
 |`expires_on`|Date|The date when the certificate expires in UNIX epoch time format.|
-|`imported`|Boolean|If set to **true**, the certificate is imported. |
-|`status`|String|The status of the certificate.|
 |`has_previous`|Boolean|If set to **true**, the certificate has a previous version.| 
-|`key_algorithm`|String|The key algorithm of the certificate. |
-|`algorithm`|String|The algorithm that is used for the certificate.| 
-|`serial_number`|String|The serial number of the certificate.|
+|`id`|String|The ID of the certificate that is managed in Certificate Manager. The ID is composed of `<certificate_manager_instance_ID>:<certificate_ID>`. |
+|`issuer`|String|The issuer of the certificate.|
 |`issuance_info`|List of objects|The issuance information of the certificate.| 
 |`issuance_info.status`|String|The status of the certificate.|
 |`issuance_info.ordered_on`|Date|The date when the certificate was ordered.|
 |`issuance_info.code`|String|The code of the certificate.|
 |`issuance_info.additional_info`|String|Any more information for the certificate.| 
+|`imported`|Boolean|If set to **true**, the certificate is imported. |
+|`key_algorithm`|String|The key algorithm of the certificate. |
+|`serial_number`|String|The serial number of the certificate.|
+|`status`|String|The status of the certificate.|
