@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-10-29"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Internet services resources
 {: #cis-resources}
 
@@ -43,7 +42,6 @@ Review the [{{site.data.keyword.cis_full_notm}}](/docs/cis?topic=cis-about-ibm-c
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_cis`
 {: #cis}
@@ -85,7 +83,7 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required|A descriptive name for your {{site.data.keyword.cis_full_notm}} instance.|
 |`plan`|String|Required|The name of the plan for your instance. To retrieve this value, run `ibmcloud catalog service internet-svcs`. |
 |`location`|String|Required|The target location where you want to create your instance.|
-|`resource_group_id`|String|Optional|The ID of the resource group where you want to create the service. To retrieve this value, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. If no value is specified, the `default` resource group is used.
+|`resource_group_id`|String|Optional|The ID of the resource group where you want to create the service. To retrieve this value, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. If no value is specified, the `default` resource group is used. |
 |`tags`|Array|Optional|A list of tags that you want to associate with the instance.|
 
 ### Output parameters
@@ -119,7 +117,6 @@ The {{site.data.keyword.cis_full_notm}} instance can be imported by using the `c
 terraform import ibm_cis.myorg <crn>
 ```
 {: pre}
-
 
 
 
@@ -260,7 +257,6 @@ Review the output parameters that you can access after your resource is created.
 
 
 
-
 ## `ibm_cis_dns_record`
 {: #cis-dns-record}
 
@@ -334,7 +330,6 @@ terraform import ibm_cis_dns_record.myorg <dns_record_ID>:<domain_ID>:<crn>
 terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aaa11111aa1a1a1111aaa111111a11a:crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::
 ```
 {: pre}
-
 
 
 
@@ -654,7 +649,6 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 
 
 
-
 ## `ibm_cis_healthcheck`
 {: #cis-health}
 
@@ -734,7 +728,6 @@ terraform import ibm_cis_healthcheck.myorg <healthcheck_ID>:<crn>
 terraform import ibm_cis_healthcheck.myorg 1aaaa111111aa11111111111a1a11a1:crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::
 ```
 {: pre}
-
 
 
 
@@ -826,7 +819,6 @@ terraform import ibm_cis_origin_pool.myorg <origin_pool_ID>:<crn>
 terraform import ibm_cis_origin_pool.myorg 1aaaa111111aa11111111111a1a11a1:crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::
 ```
 {: pre}
-
 
 
 
@@ -937,3 +929,86 @@ terraform import ibm_cis_rate_limit.ratelimit <rule_id>:<domain-id>:<crn>
 ```
 {: pre}
 
+## `ibm_cis_tls_settings`
+{: #cis-tls}
+
+Create, update, or delete an {{site.data.keyword.cis_full_notm}} TLS settings resources. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and an {{site.data.keyword.cis_full_notm}}Domain resource.
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis-tls-sample}
+
+```
+# Change TLS Settings of the domain
+
+resource "ibm_cis_tls_settings" "%[1]s" {
+	cis_id          = data.ibm_cis.cis.id
+	domain_id       = data.ibm_cis_domain.cis_domain.domain_id
+	tls_1_3         = "off"
+	tls_1_2_only    = "on"
+	min_tls_version = "1.2"
+	universal_ssl   = true
+}
+```
+
+### Input parameters
+{: #cis-tls-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the domain to change TLS settings. |
+|`tls_1_3`|String|Optional|The TLS 1.3 version setting. Valid values are `on`, `off`, `zrt`. zrt will enable TLS 1.3 and the Zero RTT feature. If `on` is set, then `zrt` is enabled by default.|
+|`min_tls_version`|String|Optional|The Minimum TLS version setting. Valid values are `1.1`, `1.2`, `1.3`, or `1.4`.|
+|`universal_ssl`|Boolean|Optional|The Universal SSL `enable` or `disable` setting.|
+|`ssl_mode`|String|Optional|The SSL mode settings. This is yet to support.|
+
+### Output parameters
+{: #cis-tls-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The record ID. It is a combination of <domain_id>,<cis_id> attributes concatenated with `:`. |
+
+### Import
+{: #cis-tls-import}
+
+The following timeouts are defined for this resource.
+{: shortdesc}
+
+- **Create**: The creation of the {{site.data.keyword.cis_full_notm}} instance is considered failed if no response is received for 10 minutes.
+- **Update**: The update of the {{site.data.keyword.cis_full_notm}} instance is considered failed if no response is received for 10 minutes.
+- **Delete**: The deletion of the {{site.data.keyword.cis_full_notm}} instance is considered failed if no response is received for 10 minutes.
+
+### Import
+{: #cis-tls-import}
+
+The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed from the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character.
+{: shortdesc}
+
+ The domain ID and CRN will be located on the overview page of the Internet Services instance in the domain heading of the UI, or through using the {{site.data.keyword.cis_full_notm}} CLI commands.
+
+ Domain ID is a 32 digit character string of the form: 9caf68812ae9b3f0377fdf986751a78f
+
+ CRN is a 120 digit character string of the form: crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+ {: note}
+
+ **Syntax**
+
+ ```
+ terraform import ibm_cis_tls_settings.tls_settings <domain-id>:<crn>
+ ```
+ {: pre}
+
+**Example**
+
+ ```
+ terraform import ibm_cis_tls_settings.tls_settings 9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+ ```
+ {: pre}
