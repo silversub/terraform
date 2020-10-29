@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-10-29"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Internet Services data sources
 {: #cis_data}
 
@@ -42,7 +41,6 @@ You can reference the output parameters for each resource in other resources or 
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_cis`
 {: #cis}
@@ -313,6 +311,58 @@ Review the output parameters that you can access after you retrieved your data s
 | `ipv4_cidrs` | String | The IPv4 address ranges that the CIS proxy uses and that you can reference to configure and allowed IP addresses in firewalls, network ACLs, and security groups. |
 | `ipv6_cidrs` | String | The IPv6 address ranges that the CIS proxy uses and that you can reference to configure and allowed IP addresses in firewalls, network ACLs, and security groups.|
 
+## `ibm_cis_origin_pool`
+{: #origin-pool}
+
+Retrieves an {{site.data.keyword.cis_full_notm}} origin pool resource. This provides a pool of origins that is used by an {{site.data.keyword.cis_full_notm}} Global Load Balancer. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and optionally a {{site.data.keyword.cis_full_notm}} Healthcheck monitor resource.
+{: shortdesc}
+
+### Sample Terraform code
+{: #origin-pool-sample}
+
+```
+data "ibm_cis_origin_pools" "test" {
+  cis_id = var.cis_crn
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #origin-pool-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+|`cis_id`|String|Required|The ID of the CIS service instance. |  
+
+### Output parameters
+{: #origin-pool-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`created_on`|String|Created RFC3339 timestamp of the Load Balancer. |
+|`description`|String|The description of the origin pool. |
+|`enabled`|String|The default value is `enabled`. Disabled pools do not receive traffic, and are excluded from health checks. Disabling a pool cause any Load Balancers using it to failover to the next pool (if any). |
+|`healthy`|String|The status of the origin pool. |
+|`id`|String|The ID of the Load Balancer pool.|
+|`modified_on`|String|Last modified RFC3339 timestamp of the Load Balancer. |
+|`monitor`|String|The ID of the monitor to use for health checking origins within this pool.|
+|`name`|String|A short name `tag` for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. |
+|`notification_email`|String|The Email address to send health status notifications. This can be an individual mailbox or a mailing list.|
+|`origins`|String|The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. Description of it's complex value is stated. |
+|`origins.name`|String|A human-identifiable name of the origin. |
+|`origins.address`|String|The IP address `IPv4` or `IPv6` of the origin, or the publicly addressable hostname. Hostnames entered is resolved directly to the origin, and not be a hostname proxied by CIS.|
+|`origins.enabled`|String|The default value is `enable`. Disabled origins do not receive traffic, and are excluded from health checks. The origin is disabled only for the current pool.|
+|`origins.weight`|String|The weight of the origin pool.|
+|`origins.healthy`|String|The status of origins health.|
+|`origins.disabled_at`|String|The disabled date and time.|
+|`origins.failure_reason`|String|The failure reason.|
+
 
 ## `ibm_cis_rate_limit`
 {: #rate-limit}
@@ -381,6 +431,3 @@ Review the output parameters that you can access after you retrieved your data s
 |`bypass`|List of bypass criteria|A list of key-value pairs that, when matched, allow the rate limiting rule to be ignored.  |
 |`bypass.name`|String|The name of the key that you want to apply. Supported values are `url`. |
 |`bypass.value`|String|The value of the key that you want to match. When `bypass.name` is set to `url`, `bypass.value` contains the URL that you want to exclude from the rate limiting rule. |
-
-
-
