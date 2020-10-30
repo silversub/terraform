@@ -325,7 +325,6 @@ data "ibm_cis_origin_pools" "test" {
   cis_id = var.cis_crn
 }
 ```
-{: codeblock}
 
 ### Input parameters
 {: #origin-pools-input}
