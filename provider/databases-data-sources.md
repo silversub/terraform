@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-10-30"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # {{site.data.keyword.databases-for}} data sources 
 {: #databases-data-sources}
 
@@ -42,7 +41,6 @@ You can reference the output parameters for each resource in other resources or 
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_database`
 {: #database}
@@ -101,6 +99,31 @@ Review the output parameters that you can access after you retrieved your data s
 |`platform_options.disk_encryption_key_crn`| String | The CRN of disk encryption key. |
 |`platform_options.backup_encryption_key_crn`| String | The CRN of backup encryption key. |
 |`connectionstrings` |List| List of connection strings by userid for the database. For information about how to use connection strings, see the [documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings). The results are returned in pairs of the userid and string: `connectionstrings.1.name = admin connectionstrings.1.string = postgres://admin:$PASSWORD@12345aa1-1111-1111-a1aa-a1aaa11aa1a1.a1a1a111a1a11a1a111a111a1a111a111.databases.appdomain.cloud:32554/ibmclouddb?sslmode=verify-full`|
+|`cert_file_path`|String| The absolute path to certificate PEM file.|
+|`auto_scaling`|List|Configure rules to allow your database to automatically increase its resources. Single block of autoscaling is allowed at once.|
+|`auto_scaling.cpu`|List|Autoscaling CPU.|
+|`auto_scaling.cpu.rate_increase_percent`|Integer|Auto scaling rate in increase percent.|
+|`auto_scaling.cpu.rate_limit_count_per_member`|Integer|Auto scaling rate limit in count per number.|
+|`auto_scaling.cpu.rate_period_seconds`|Integer|Auto scaling rate in period seconds.|
+|`auto_scaling.cpu.rate_units`|String|Auto scaling rate in units.|
+|`auto_scaling.disk`|List|Disk auto scaling.|
+|`auto_scaling.disk.capacity_enabled`|Boolean|Auto scaling scalar enables or disables the scalar capacity.|
+|`auto_scaling.disk.free_space_less_than_percent`|Integer|Auto scaling scalar capacity free space less than percent.|
+|`auto_scaling.disk.io_above_percent`|Integer|Auto scaling scalar I/O utilization above percent.|
+|`auto_scaling.disk.io_enabled`|Boolean|Auto scaling scalar I/O utilization enabled.|
+|`auto_scaling.disk.io_over_period`|Boolean|Auto scaling scalar I/O utilization over period.|
+|`auto_scaling.disk.rate_increase_percent`|Integer|Auto scaling rate increase percent.|
+|`auto_scaling.disk.rate_limit_mb_per_member`|Integer|Auto scaling rate limit in megabytes per member.|
+|`auto_scaling.disk.rate_period_seconds`|Integer|Auto scaling rate period in seconds.|
+|`auto_scaling.disk.rate_units`|String|Auto scaling rate in units.|
+|`auto_scaling.memory`|List|Memory Auto Scaling.|
+|`auto_scaling.io_above_percent`|Integer|Auto scaling scalar I/O utilization above percent.|
+|`auto_scaling.memory.io_enabled`|Boolean|Auto scaling scalar I/O utilization enabled.|
+|`auto_scaling.memory.io_over_period`|String|Auto scaling scalar I/O utilization over period.|
+|`auto_scaling.memory.rate_increase_percent`|Integer|Auto scaling rate in increase percent.|
+|`auto_scaling.memory.rate_limit_mb_per_member`|Integer|Auto scaling rate limit in megabytes per member.|
+|`auto_scaling.memory.rate_period_seconds`|Integer|Auto scaling rate period in seconds.|
+|`auto_scaling.memory.rate_units`|String|Auto scaling rate in units.|
 |`whitelist`|List| A list of whitelisted IP addresses or ranges.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-10-30"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # {{site.data.keyword.databases-for}} resources
 {: #databases-resources}
 
@@ -43,7 +42,6 @@ Review the {{site.data.keyword.databases-for}} resources that you can create, mo
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_database`
 {: #db}
@@ -220,7 +218,6 @@ Review the input parameters that you can specify for your resource.
 |`auto_scaling.memory.rate_limit_mb_per_member`|Integer|Optional|Auto scaling rate limit in megabytes per member.|No|
 |`auto_scaling.memory.rate_period_seconds`|Integer|Optional|Auto scaling rate period in seconds.|No|
 |`auto_scaling.memory.rate_units`|String|Optional|Auto scaling rate in units.|No|
-|
 
 
 ### Output parameters
