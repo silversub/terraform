@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-29" 
+lastupdated: "2020-10-30" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -563,7 +563,7 @@ Review the input parameters that you can specify for your resource.
 
 | Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
-|`name`|String|Required|The instance  group name.| Yes |
+|`name`|String|Required|The instance  group name.| No |
 |`instance_template`|String|Required| The ID of the instance template to create the instance group.| Yes |
 |`instance_count`|Integer|Optional|The number of instances to create in the instance group.| No |
 |`resource_group`|String|Optional|The resource group ID.| No |
