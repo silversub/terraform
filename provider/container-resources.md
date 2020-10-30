@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-29" 
+lastupdated: "2020-10-30" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -637,6 +637,7 @@ Review the input parameters that you can specify for your resource.
 | `workers_info.id` | String | Optional | The ID of the worker node that you want to update. | No |
 | `workers_info.version` | String | Optional | The Kubernetes version that you want to update your worker nodes to. | No |
 | `worker_num`| Integer|Optional|The number of worker nodes in your cluster. This attribute creates a worker node that is not associated with a worker pool.| No |
+| `wait_for_worker_update` | Boolean | Optional | Set to `true` to wait and update the kube version of worker nodes. **NOTE** Setting wait_for_worker_update to `false` is not recommended. Setting `false` results in upgrading all the worker nodes in the cluster at the same time causing the cluster downtime. | No |
 
 
 ### Output parameters
@@ -824,7 +825,6 @@ Review the input parameters that you can specify for your resource.
 | `name` | String | Required | The name of the worker pool. | Yes |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. | Yes |
 | `size_per_zone` | Integer | Required | The number of worker nodes per zone that you want to add to the worker pool. | No |
-| `wait_for_worker_update` | Boolean | Optional | Set to `true` to wait and update the kube version of worker nodes. **NOTE** Setting wait_for_worker_update to `false` is not recommended. Setting `false` results in upgrading all the worker nodes in the cluster at the same time causing the cluster downtime. | No |
 
  
 ### Output parameters
