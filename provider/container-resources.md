@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-19" 
+lastupdated: "2020-10-29" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Kubernetes Service resources
 {: #container-resources}
 
@@ -43,7 +42,6 @@ Create, modify, or delete [{{site.data.keyword.containerlong_notm}}](/docs/conta
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_container_addons`
 {: #container-addons}
@@ -826,6 +824,8 @@ Review the input parameters that you can specify for your resource.
 | `name` | String | Required | The name of the worker pool. | Yes |
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source. | Yes |
 | `size_per_zone` | Integer | Required | The number of worker nodes per zone that you want to add to the worker pool. | No |
+| `wait_for_worker_update` | Boolean | Optional | Set to `true` to wait and update the kube version of worker nodes. **NOTE** Setting wait_for_worker_update to `false` is not recommended. Setting `false` results in upgrading all the worker nodes in the cluster at the same time causing the cluster downtime. | No |
+
  
 ### Output parameters
 {: #container-feature-output}
@@ -1244,6 +1244,7 @@ Review the input parameters that you can specify for your resource.
 |`kms_config.private_endpoint`|Boolean|Optional|Set `true` to configure the KMS private service endpoint. Default value is `false`.| No |
 |`entitlement`|String|Optional|The {{site.data.keyword.openshiftshort}} cluster entitlement avoids the OCP license charges incurred. Use Cloud Pak with OCP Licence entitlement to create the {{site.data.keyword.openshiftshort}}cluster. **NOTE** <ul><li> It is set only the first time creation of the cluster, further modifications are not impacted. </li></ul> <ul><li> Set this argument to `cloud_pak` only if you use the cluster with a Cloud Pak that has an {{site.data.keyword.openshiftshort}} entitlement.</li></ul>| No |
 | `force_delete_storage`|Boolean|Optional|If set to `true`,force the removal of persistent storage associated with the cluster during cluster deletion. Default value is `false`. **NOTE** If `force_delete_storage` parameter is used after provisioning the cluster, then, you need to execute `terraform apply` before `terraform destroy` for `force_delete_storage` parameter to take effect. | No |
+| `wait_for_worker_update` | Boolean | Optional | Set to `true` to wait and update the kube version of worker nodes. **NOTE** Setting wait_for_worker_update to `false` is not recommended. Setting `false` results in upgrading all the worker nodes in the cluster at the same time causing the cluster downtime. | No |
 
 **Note**
 

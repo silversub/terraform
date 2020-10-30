@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-12" 
+lastupdated: "2020-10-30" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -34,13 +34,11 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # VPC infrastructure resources (Gen 2 compute)
 {: #vpc-gen2-resources}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_is_flow_log`
 {: #ibm_is_flow_log}
@@ -565,7 +563,7 @@ Review the input parameters that you can specify for your resource.
 
 | Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
-|`name`|String|Required|The instance  group name.| Yes |
+|`name`|String|Required|The instance  group name.| No |
 |`instance_template`|String|Required| The ID of the instance template to create the instance group.| Yes |
 |`instance_count`|Integer|Optional|The number of instances to create in the instance group.| No |
 |`resource_group`|String|Optional|The resource group ID.| No |
@@ -2005,6 +2003,59 @@ Review the output parameters that you can access after your resource is created.
 ```
 terraform import ibm_is_security_group_network_interface_attachment.example <security_group_ID>/<network_interface_ID>
 ```
+## `ibm_is_ssh_key`
+{: #ssh-key}
+
+Create, update, or delete an SSH key. The SSH key is used to access a Gen 2 virtual server instance.
+{: shortdesc}
+
+
+### Sample Terraform code
+{: #ssh-key-sample}
+
+```
+resource "ibm_is_ssh_key" "isExampleKey" {
+	name = "test_key"
+	public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCKVmnMOlHKcZK8tpt3MP1lqOLAcqcJzhsvJcjscgVERRN7/9484SOBJ3HSKxxNG5JN8owAjy5f9yYwcUg+JaUVuytn5Pv3aeYROHGGg+5G346xaq3DAwX6Y5ykr2fvjObgncQBnuU5KHWCECO/4h8uWuwh/kfniXPVjFToc+gnkqA+3RKpAecZhFXwfalQ9mMuYGFxn+fwn8cYEApsJbsEmb0iJwPiZ5hjFC8wREuiTlhPHDgkBLOiycd20op2nXzDbHfCHInquEe/gYxEitALONxm0swBOwJZwlTDOB7C6y2dzlrtxr1L59m7pCkWI4EtTRLvleehBoj3u7jB4usR"
+}
+```
+
+### Input parameters
+{: #ssh-key-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| -------- |
+|`name`|String|Required| The user-defined name for this key.| No |
+|`public_key`|String|Required|The public SSH key.| Yes |
+|`resource_group`|String|Optional|The resource group ID where the SSH is created.| Yes |
+|`tags`|List of strings|A list of tags that you want to add to your SSH key. Tags can help you find the SSH key more easily later. | No |
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #ssh-key-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The ID of the SSH key.|
+|`fingerprint`| String|The SHA256 fingerprint of the public key.|
+|`length`|String|The length of this key.|
+|`type`|String|The crypto system used by this key.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+### Import
+
+`ibm_is_ssh_key` can be imported by using the SSH key ID. 
+
+```
+terraform import ibm_is_ssh_key.example <ssh_key_ID>
+```
+{: pre}
 
 ## `ibm_is_subnet`
 {: #subnet}
@@ -2090,61 +2141,125 @@ terraform import ibm_is_subnet.example <subnet_ID>
 |`delete`|(Default 10 minutes) Used for deleting Instance.|
 {: caption="Table. Available timeout configuration options" caption-side="top"}
 
+## `ibm_is_subnet_network_acl_attachment`
+{: #subnet-network}
 
-## `ibm_is_ssh_key`
-{: #ssh-key}
-
-Create, update, or delete an SSH key. The SSH key is used to access a Gen 2 virtual server instance.
+Create, update, or delete a subnet network ACL attachment resource.
 {: shortdesc}
 
-
 ### Sample Terraform code
-{: #ssh-key-sample}
+{: #subnet-network-sample}
 
 ```
-resource "ibm_is_ssh_key" "isExampleKey" {
-	name = "test_key"
-	public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCKVmnMOlHKcZK8tpt3MP1lqOLAcqcJzhsvJcjscgVERRN7/9484SOBJ3HSKxxNG5JN8owAjy5f9yYwcUg+JaUVuytn5Pv3aeYROHGGg+5G346xaq3DAwX6Y5ykr2fvjObgncQBnuU5KHWCECO/4h8uWuwh/kfniXPVjFToc+gnkqA+3RKpAecZhFXwfalQ9mMuYGFxn+fwn8cYEApsJbsEmb0iJwPiZ5hjFC8wREuiTlhPHDgkBLOiycd20op2nXzDbHfCHInquEe/gYxEitALONxm0swBOwJZwlTDOB7C6y2dzlrtxr1L59m7pCkWI4EtTRLvleehBoj3u7jB4usR"
+resource "ibm_is_network_acl" "isExampleACL" {
+  name = "is-example-acl"
+  rules {
+    name        = "outbound"
+    action      = "allow"
+    source      = "0.0.0.0/0"
+    destination = "0.0.0.0/0"
+    direction   = "outbound"
+    icmp {
+      code = 1
+      type = 1
+    }
+  }
+  rules {
+    name        = "inbound"
+    action      = "allow"
+    source      = "0.0.0.0/0"
+    destination = "0.0.0.0/0"
+    direction   = "inbound"
+    icmp {
+      code = 1
+      type = 1
+    }
+  }
+}
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "test_subnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "192.168.0.0/1"
+
+}
+
+resource "ibm_is_subnet_network_acl_attachment" attach {
+  subnet      = ibm_is_subnet.testacc_subnet.id
+  network_acl = ibm_is_network_acl.isExampleACL.id
 }
 ```
 
 ### Input parameters
-{: #ssh-key-input}
+{: #subnet-network-input}
 
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
-|Name|Data type|Required / optional|Description| Forces new resource |
-|----|-----------|-----------|---------------------| -------- |
-|`name`|String|Required| The user-defined name for this key.| No |
-|`public_key`|String|Required|The public SSH key.| Yes |
-|`resource_group`|String|Optional|The resource group ID where the SSH is created.| Yes |
-|`tags`|List of strings|A list of tags that you want to add to your SSH key. Tags can help you find the SSH key more easily later. | No |
+|Name|Data type|Required / optional|Description|Forces new resource |
+|----|-----------|-----------|---------------------|-------|
+|`network_acl`|String|Optional|The network ACL identity.| No |
+|`subnet`|String|Optional|The subnet identifier.| Yes |
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
-{: #ssh-key-output}
+{: #subnet-network-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String|The ID of the SSH key.|
-|`fingerprint`| String|The SHA256 fingerprint of the public key.|
-|`length`|String|The length of this key.|
-|`type`|String|The crypto system used by this key.|
+|`created_at`|String|The creation date and time the network ACL.|
+|`crn`|String|The CRN of this network ACL.|
+|`href`|String|The URL of this network ACL.|
+|`id`|String|The unique identifier of this network ACL.|
+|`name`|String|The user-defined name of this network ACL.|
+|`protocol`|List|The protocol list to enforce.|
+|`protocol.icmp`|String|The protocol ICMP.|
+|`protocol.icmp.code`|String|The ICMP traffic code to allow. If unspecified, all codes are allowed. This can only be specified if type is also specified. |
+|`protocol.icmp.type`|String|The ICMP traffic type to allow. If unspecified, all types are allowed by this rule. |
+|`protocol.tcp`|String|The TCP protocol.|
+|`protocol.tcp.destination_port_max`|String|The inclusive maximum bound of TCP destination port range. |
+|`protocol.tcp.destination_port_min`|String|The inclusive minimum bound of TCP destination port range. |
+|`protocol.tcp.source_port_max`|String|The inclusive maximum bound of TCP source port range. |
+|`protocol.tcp.source_port_min`|String|The inclusive minimum bound of TCP source port range. |
+|`protocol.udp`|String|The UDP protocol.|
+|`protocol.udp.destination_port_max`|String|The inclusive maximum bound of UDP destination port range. |
+|`protocol.udp.destination_port_min`|String|The inclusive minimum bound of UDP destination port range. |
+|`protocol.udp.source_port_max`|String|The inclusive maximum bound of UDP source port range. |
+|`protocol.udp.source_port_min`|String|The inclusive minimum bound of UDP source port range. |
+|`protocol.subnets`|String|The subnets to which this network ACL is attached.|
+|`protocol.vpc`|String|The VPC to which this network ACL is a part of.|
+|`resource_group`|String|The resource group of this network ACL.|
+|`rules`|String|The ordered rules of this network ACL. If rules does not exist, all traffic will be denied. Nested rules blocks has the following structure.|
+|`rules.action`|String|Specify to allow or deny matching traffic.|
+|`rules.created_at`|String|The rule creation date and time.|
+|`rules.source`|String|The source CIDR block. The CIDR block 0.0.0.0/0 applies to all addresses.|
+|`rules.destination`|String|The destination CIDR block. The CIDR block 0.0.0.0/0 applies to all addresses.|
+|`rules.href`|String|The URL of the Network ACL rule.|
+|`rules.id`|String|The unique identifier of the Network ACL rule.|
+|`rules.ip_version`|String|The IP version of the rule.|
+|`rules.name`|String|The user-defined name of the rule.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 ### Import
+{: #subnet-network-import}
 
-`ibm_is_ssh_key` can be imported by using the SSH key ID. 
+`ibm_is_subnet_network_acl_attachment` can be imported by using the ID. 
 
+**Syntax**
 ```
-terraform import ibm_is_ssh_key.example <ssh_key_ID>
+terraform import ibm_is_subnet_network_acl_attachment.example <subnet_network_acl_ID>
 ```
 {: pre}
 
+**Example**
+```
+terraform import ibm_is_subnet_network_acl_attachment.example d7bec597-4726-451f-8a63-e62e6f19c32c
+```
+{: pre}
 
 ## `ibm_is_volume`
 {: #volume}
