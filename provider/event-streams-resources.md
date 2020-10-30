@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-20"
+lastupdated: "2020-10-30"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Event Streams resources
 {: #event-streams-resources}
 
@@ -44,7 +43,6 @@ Review the [Event Streams](/docs/EventStreams?topic=EventStreams-about) resource
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## ibm_event_streams_topic
 {: #event-streams}
@@ -207,6 +205,6 @@ Event Streams topic provides the following timeouts:
 
 |Name|Description|
 |----|-----------|
-|`create`| Defaults to 15 minutes. **Note**: Use `3h` when creating enterprise instance. Add more `1h` for each level of non-default throught put and add extra `30m` for each level of non-default storage size.|
+|`create`| Defaults to 15 minutes. **Note**: Use `3h` when creating enterprise instance. Add more `1h` for each level of non-default through put and add extra `30m` for each level of non-default storage size.|
 |`delete`| Defaults to 15 minutes. |
-|`update`| Defaults to 15 minutes. **Note**: Use `1h` when updating enterprise instance. Add more `1h` for each level of non-default throught put and add extra `30m` for each level of non-default storage size.|
+|`update`| Defaults to 15 minutes. **Note**: Use `1h` when updating enterprise instance. Add more `1h` for each level of non-default through put and add extra `30m` for each level of non-default storage size.|
