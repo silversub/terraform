@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-29"
+lastupdated: "2020-10-30"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -311,14 +311,14 @@ Review the output parameters that you can access after you retrieved your data s
 | `ipv4_cidrs` | String | The IPv4 address ranges that the CIS proxy uses and that you can reference to configure and allowed IP addresses in firewalls, network ACLs, and security groups. |
 | `ipv6_cidrs` | String | The IPv6 address ranges that the CIS proxy uses and that you can reference to configure and allowed IP addresses in firewalls, network ACLs, and security groups.|
 
-## `ibm_cis_origin_pool`
-{: #origin-pool}
+## `ibm_cis_origin_pools`
+{: #origin-pools}
 
 Retrieves an {{site.data.keyword.cis_full_notm}} origin pool resource. This provides a pool of origins that is used by an {{site.data.keyword.cis_full_notm}} Global Load Balancer. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and optionally a {{site.data.keyword.cis_full_notm}} Healthcheck monitor resource.
 {: shortdesc}
 
 ### Sample Terraform code
-{: #origin-pool-sample}
+{: #origin-pools-sample}
 
 ```
 data "ibm_cis_origin_pools" "test" {
@@ -328,7 +328,7 @@ data "ibm_cis_origin_pools" "test" {
 {: codeblock}
 
 ### Input parameters
-{: #origin-pool-input}
+{: #origin-pools-input}
 
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
@@ -338,7 +338,7 @@ Review the input parameters that you can specify for your data source.
 |`cis_id`|String|Required|The ID of the CIS service instance. |  
 
 ### Output parameters
-{: #origin-pool-output}
+{: #origin-pools-output}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
