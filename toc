@@ -23,6 +23,7 @@ Terraform
     manage_resources.md
     ansible/ansible.md
     autodeploy_template.md
+    provider-endpoint.md
     {: .navgroup-end}
     
     {: .navgroup id="reference"}
