@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-29"
+lastupdated: "2020-11-02"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -1059,7 +1059,7 @@ The following timeouts are defined for this resource.
 ### Import
 {: #cis-tls-import}
 
-The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed from the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character.
+The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed from the domain ID of the domain and the CRN (Cloud Resource Name) Concatenated using a `:` character.
 {: shortdesc}
 
  The domain ID and CRN will be located on the overview page of the Internet Services instance in the domain heading of the UI, or through using the {{site.data.keyword.cis_full_notm}} CLI commands.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-11-02"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -34,13 +34,11 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
-# VPC infrastructure data sources (Gen 2 compute) 
+# VPC infrastructure data sources 
 {: #vpc-gen2-data-sources}
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}.
 {: note}
@@ -677,7 +675,6 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
-
 ## `ibm_is_public_gateway`
 {: #public-gwy-g2}
 
@@ -732,7 +729,6 @@ Review the output parameters that you can access after you retrieve your data so
 | `floating_ip` | String | Lists the nested block describes the floating IP of the gateway.  with **id** and **address**. |
 | `floating_ip.id` | String | The ID of the floating IP that is bound to the public gateway. |
 | `floating_ip.address` | String | The IP address of the floating IP that is bound to the public gateway. |
-
 
 
 
@@ -832,7 +828,6 @@ Review the output parameters that you can access after you retrieve your data so
 
 
 
-
 ## `ibm_is_lbs`
 {: #ibm-is-lbs}
 
@@ -900,7 +895,6 @@ Review the output parameters that you can access after you retrieve your data so
 
 
 
-
 ## `ibm_is_lb_profiles`
 {: #ibm-is-lb-profiles}
 
@@ -935,7 +929,6 @@ Review the output parameters that you can access after you retrieved your data s
 |`lb_profiles.family`|String|The product family this load balancer profile belongs to.|
 |`lb_profiles.href`|String|The URL for this load balancer profile.|
 |`lb_profiles.name`|String|The name for this load balancer profile.|
-
 
 
 
@@ -980,7 +973,6 @@ Review the output parameters that you can access after you retrieved your data s
 |`status`|String|The status of the region.|
 |`endpoint`|String|The endpoint of the region.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
-
 
 
 
@@ -1081,7 +1073,6 @@ Review the output parameters that are exported.
 |`rules.port_min`|Integer|The TCP/UDP port range that includes the minimum bound. |
 |`protocol`|Integer| The type of the protocol rules `ALL`, `ICMP`, `UDP`, `TCP` |
 {: caption="Table 1. Available output parameters" caption-side="top"}
-
 
 
 
@@ -1301,7 +1292,6 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
-
 ## `ibm_is_vpc`
 {: #vpc}
 
@@ -1442,7 +1432,6 @@ Review the output parameters that you can access after you retrieved your data s
 |----|-----------|-------------|
 |`zones`|String|The list of zones in an {{site.data.keyword.cloud_notm}} region.  For example, `us-south-1`,`us-south-2`.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
-
 
 
 

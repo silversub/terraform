@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-30"
+lastupdated: "2020-11-02"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -45,7 +45,7 @@ Before you start working with your data source, make sure to review the [require
 ## `ibm_cis`
 {: #cis}
 
-Retrieve information about an existing {{site.data.keyword.cis_full_notm}} instance. 
+Retrieve information about an {{site.data.keyword.cis_full_notm}} instance. 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -68,7 +68,7 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type|Required/optional|Description|
 |----|-----------|------|--------|
-| `name` | String | Required | The name of your {{site.data.keyword.cis_full_notm}} instance. |
+| `name` | String | Required | The name of an {{site.data.keyword.cis_full_notm}} instance. |
 
 ### Output parameters
 {: #cis-output}
@@ -115,7 +115,7 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type|Required/optional|Description|
 |----|-----------|------|--------|
-| `domain` | String | Required | The DNS domain name that is added and managed for your {{site.data.keyword.cis_full_notm}} instance. |
+| `domain` | String | Required | The DNS domain name that is added and managed for an {{site.data.keyword.cis_full_notm}} instance. |
 | `cis_id` | String | Required | The ID of the {{site.data.keyword.cis_full_notm}} instance. |
 
 ### Output parameters
@@ -129,13 +129,13 @@ Review the output parameters that you can access after you retrieved your data s
 | `id` | String | The unique identifier of your domain. |
 | `paused` | Boolean | If set to **true**, network traffic to this domain is paused. If set to **false**, network traffic to this domain is permitted. The default value is **false**.  |
 | `status` | String | The status of your domain. Valid values are `active`, `pending`, `initializing`, `moved`, `deleted`, and `deactivated`. After creation, the status remains pending until the DNS Registrar is updated with the CIS name servers, exported in the ‘name_servers’ variable. |
-| `name_servers` | String | The IBM CIS assigned name servers, to be passed by interpolation to the resource dns_domain_registration_nameservers. |
+| `name_servers` | String | The {{site.data.keyword.cis_full_notm}} assigned name servers, to be passed by interpolation to the resource dns_domain_registration_nameservers. |
 | `original_name_servers` | String | The name servers from when the Domain was initially registered with the DNS Registrar.|
 
 ## `ibm_cis_edge_functions_actions`
 {: #cis-edge-functions-actions-ds}
 
-Retrieve information about an existing {{site.data.keyword.cis_full_notm}} edge function actions resource.
+Retrieve information about an {{site.data.keyword.cis_full_notm}} edge function actions resource.
 {: shortdesc}
 
 ### Sample Terraform code
@@ -184,7 +184,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_cis_edge_functions_triggers`
 {: #cis-edge-functions-triggers-ds}
 
-Retrieve information about an existing {{site.data.keyword.cis_full_notm}} edge function triggers resource.
+Retrieve information about an {{site.data.keyword.cis_full_notm}} edge function triggers resource.
 {: shortdesc}
 
 ### Sample Terraform code
@@ -314,7 +314,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_cis_origin_pools`
 {: #origin-pools}
 
-Retrieves an {{site.data.keyword.cis_full_notm}} origin pool resource. This provides a pool of origins that is used by an {{site.data.keyword.cis_full_notm}} Global Load Balancer. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and optionally a {{site.data.keyword.cis_full_notm}} Healthcheck monitor resource.
+Retrieves an {{site.data.keyword.cis_full_notm}} origin pool resource. This provides a pool of origins that is used by an {{site.data.keyword.cis_full_notm}} Global Load Balancer. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and optionally an {{site.data.keyword.cis_full_notm}} Healthcheck monitor resource.
 {: shortdesc}
 
 ### Sample Terraform code
@@ -366,10 +366,10 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_cis_rate_limit`
 {: #rate-limit}
 
-Retrieve information for a rate limiting rule of an IBM Cloud Internet Services domain.
+Retrieve information for a rate limiting rule of an {{site.data.keyword.cis_full_notm}} domain.
 {: shortdesc}
 
-To retrieve information about a rate limiting rule, you must have the enterprise plan for IBM Cloud Internet Services. 
+To retrieve information about a rate limiting rule, you must have the enterprise plan for an {{site.data.keyword.cis_full_notm}}. 
 {: note}
 
 ### Sample Terraform code
@@ -391,7 +391,7 @@ Review the input parameters that you can specify for your data source.
 
 |Name|Data type|Required/optional|Description|
 |----|-----------|------|--------|
-|`cis_id`|String|Required|The ID of the IBM Cloud Internet Services instance where you created the rate limiting rule. |  
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance where you created the rate limiting rule. |  
 |`domain_id`|String|Required|The ID of the domain where you created the rate limiting rule. |
 
 ### Output parameters
