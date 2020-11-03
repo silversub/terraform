@@ -34,7 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-# Configure the provider to use the service endpoint
+# Configure the Terraform provider to use the private service endpoint
 {: #config-provider}
 
 The steps involved in configuring your Terraform runtime to use the private Cloud Service Endpoint (CSE) of an {{site.data.keyword.cloud_notm}} service within  public CSE in [Production environment](https://cloud.ibm.com).
@@ -51,7 +51,7 @@ terraform init
 ```
 {: pre}
 
-|Service|Environment variable key|Private service endpoint for production|
+|Service|Environment variable key|Private service endpoint|
 |-------------|--------|----------------|
 |Account management|`IBMCLOUD_ACCOUNT_MANAGEMENT_API_ENDPOINT`|N/A|
 |Certificate manager|`IBMCLOUD_CERTIFICATE_MANAGER_API_ENDPOINT`|N/A|
