@@ -24,6 +24,7 @@ Terraform
     ansible/ansible.md
     autodeploy_template.md
     provider-endpoint.md
+    module-contribute.md
     {: .navgroup-end}
     
     {: .navgroup id="reference"}
