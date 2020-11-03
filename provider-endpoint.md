@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-02"
+lastupdated: "2020-11-03"
 
 keywords: terraform provider, terraform provider private endpoint, private endpoint
 
@@ -51,31 +51,27 @@ terraform init
 ```
 {: pre}
 
-
-  
-|Service|Environment variable key|Public service endpoint for staging|
-|-------------|--------|-----------------------|
-|Account management|`IBMCLOUD_ACCOUNT_MANAGEMENT_API_ENDPOINT`|`https://accountmanagement.stage1.ng.bluemix.net`|
-|Certificate manager|`IBMCLOUD_CERTIFICATE_MANAGER_API_ENDPOINT`|`https://us-south.certificate-manager.test.cloud.ibm.com`|
-|Cloud Foundry|`IBMCLOUD_MCCP_API_ENDPOINT`|`https://mccp.us-south.cf.test.cloud.ibm.com`|
-|Cloud functions|`IBMCLOUD_NAMESPACE_API_ENDPOINT`|`https://us-south.functions.cloud.ibm.com/api/v1`|
-|Containers|`IBMCLOUD_CS_API_ENDPOINT`|`https://containers.test.cloud.ibm.com/global`|
-|CIS|`IBMCLOUD_CIS_API_ENDPOINT`|`https://api.cis.test.cloud.ibm.com`|
-|Direct Link|`IBMCLOUD_DL_API_ENDPOINT`|`https://directlink.test.cloud.ibm.com/v1`|
-|GHoST / Tagging|`IBMCLOUD_GT_API_ENDPOINT`|`https://tags.global-search-tagging.test.cloud.ibm.com`|
-|HPCS|`IBMCLOUD_HPCS_API_ENDPOINT`| `https://zcryptobroker.stage1.mybluemix.net/crypto_v2/` |
-|IAM|`IBMCLOUD_IAM_API_ENDPOINT`|`https://iam.test.cloud.ibm.com`|
-|IAMPAP|`IBMCLOUD_IAMPAP_API_ENDPOINT`|`https://iam.test.cloud.ibm.com`|
-|ICD|`IBMCLOUD_ICD_API_ENDPOINT`|`https://api.us-south.databases.test.cloud.ibm.com`|
-|Key protect|`IBMCLOUD_KP_API_ENDPOINT`|`https://qa.us-south.kms.test.cloud.ibm.com`||
-|Private DNS|`IBMCLOUD_PRIVATE_DNS_API_ENDPOINT`| `https://api.dns-svcs.cloud.ibm.com/v1`|
-|Resource management|`IBMCLOUD_RESOURCE_MANAGEMENT_API_ENDPOINT`|`https://resource-controller.test.cloud.ibm.com`|
-|Resource controller|`IBMCLOUD_RESOURCE_CONTROLLER_API_ENDPOINT`|`https://resource-controller.test.cloud.ibm.com`|
-|Resource catalog|`IBMCLOUD_RESOURCE_CATALOG_API_ENDPOINT`|`https://globalcatalog.test.cloud.ibm.com`|
-|Schematics|`IBMCLOUD_SCHEMATICS_API_ENDPOINT`|`https://schematics.test.cloud.ibm.com`|
-|Transit Gateway|`IBMCLOUD_TG_API_ENDPOINT`| `https://transit.test.cloud.ibm.com/v1`|
-|UAA|`IBMCLOUD_UAA_ENDPOINT`|`https://login.stage1.ng.bluemix.net/UAALoginServerWAR`|
-|User management|`IBMCLOUD_USER_MANAGEMENT_ENDPOINT`|`https://user-management.test.cloud.ibm.co`|
-|VPC Gen1|`IBMCLOUD_IS_API_ENDPOINT`|`https://us-south-stage01.iaasdev.cloud.ibm.com`|
-|VPC Gen2|`IBMCLOUD_IS_NG_API_ENDPOINT`|`https://us-south-stage01.iaasdev.cloud.ibm.com`|
-
+|Service|Environment variable key|Private service endpoint for production|
+|-------------|--------|----------------|
+|Account management|`IBMCLOUD_ACCOUNT_MANAGEMENT_API_ENDPOINT`|N/A|
+|Certificate manager|`IBMCLOUD_CERTIFICATE_MANAGER_API_ENDPOINT`|N/A|
+|Cloud Foundry|`IBMCLOUD_MCCP_API_ENDPOINT`|N/A|
+|Cloud functions|`IBMCLOUD_NAMESPACE_API_ENDPOINT`|N/A|
+|Containers|`IBMCLOUD_CS_API_ENDPOINT`|[Docs](/docs/containers?topic=containers-plan_clusters#workeruser-master)|
+|CIS|`IBMCLOUD_CIS_API_ENDPOINT`|N/A|
+|Direct Link|`IBMCLOUD_DL_API_ENDPOINT`|N/A|
+|GHoST / Tagging|`IBMCLOUD_GT_API_ENDPOINT`|N/A|
+|HPCS|`IBMCLOUD_HPCS_API_ENDPOINT`|N/A|
+|IAM|`IBMCLOUD_IAM_API_ENDPOINT`|N/A|
+|IAMPAP|`IBMCLOUD_IAMPAP_API_ENDPOINT`|N/A|
+|ICD|`IBMCLOUD_ICD_API_ENDPOINT`|[Docs](/docs/account?topic=account-vrf-service-endpoint)|
+|Key protect|`IBMCLOUD_KP_API_ENDPOINT`|`https://private.<region>.kms.cloud.ibm.com`|
+|Private DNS|`IBMCLOUD_PRIVATE_DNS_API_ENDPOINT`| N/A|
+|Resource management|`IBMCLOUD_RESOURCE_MANAGEMENT_API_ENDPOINT`|N/A|
+|Resource controller|`IBMCLOUD_RESOURCE_CONTROLLER_API_ENDPOINT`|N/A|
+|Resource catalog|`IBMCLOUD_RESOURCE_CATALOG_API_ENDPOINT`|N/A|
+|Schematics|`IBMCLOUD_SCHEMATICS_API_ENDPOINT`|`https://private-us.schematics.cloud.ibm.com` <br> `https://private-eu.schematics.cloud.ibm.com`|
+|Transist Gateway|`IBMCLOUD_TG_API_ENDPOINT`| N/A|
+|UAA|`IBMCLOUD_UAA_ENDPOINT`|N/A|
+|User management|`IBMCLOUD_USER_MANAGEMENT_ENDPOINT`|N/A|
+|VPC Gen2|`IBMCLOUD_IS_NG_API_ENDPOINT`|N/A|
