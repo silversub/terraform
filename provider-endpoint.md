@@ -75,3 +75,6 @@ terraform init
 |UAA|`IBMCLOUD_UAA_ENDPOINT`|N/A|
 |User management|`IBMCLOUD_USER_MANAGEMENT_ENDPOINT`|N/A|
 |VPC Gen2|`IBMCLOUD_IS_NG_API_ENDPOINT`|N/A|
+
+You can collapse down the ranges into security group rules. For example, `US-South` and `US-East` as two security group rules like `[169.44.0.0/44, 169.60.0.0/14]`. For more information about creating security group rules, refer [IBM security group rules](/docs/security-groups?topic=security-groups-security-groups-guidelines#rules-1).
+{: note}
