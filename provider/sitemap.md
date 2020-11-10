@@ -133,7 +133,7 @@ subcollection: terraform
   </table>
   
   
-  ## DNS services
+  ## DNS Services
   {: #ibm-dns-service}
   
   <table>
