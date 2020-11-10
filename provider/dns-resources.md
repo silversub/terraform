@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-11-10"
 
 keywords: terraform provider plugin, terraform dns, terraform vpc dns, terraform private dns
 
@@ -34,8 +34,7 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
-# DNS service resources
+# DNS services resources
 {: #dns-resources}
 
 Review the IBM Cloud DNS service resources that you can create, modify, or delete. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
@@ -45,7 +44,6 @@ For more information, about IBM Cloud DNS service, see [About DNS services](/doc
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
  
 ## `ibm_dns_permitted_network`
 {: #dns-permitted-network}
@@ -218,7 +216,6 @@ terraform import ibm_dns_resource_record.example <instance_id>/<zone_id>/<dns_re
 
 
 
-
 ## `ibm_dns_zone`
 {: #dns-zone}
 
@@ -264,7 +261,6 @@ Review the output parameters that you can access after your resource is created.
 |`created_on`|Timestamp|The time when the DNS zone was created.| 
 |`modified_on`|Timestamp|The time when the DNS zone was updated.| 
 |`state`|String|The state of the DNS zone.|
-
 
 
 
