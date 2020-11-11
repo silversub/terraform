@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-08"
+lastupdated: "2020-11-06"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -35,7 +35,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Direct Link Gateway resources
 {: #dl-gateway-resource}
 
@@ -44,7 +43,6 @@ Use {{site.data.keyword.cloud_notm}} [Direct Link](/docs/dl?topic=dl-get-started
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_dl_gateway`
 {: #dl-gwy}
@@ -215,7 +213,7 @@ Review the output parameters that you can access after your resource are exporte
 |`id`|String|The unique ID of the resource with combination of gateway / virtual_connection_id.||
 |`virtual_connection_id`|String|The unique identifier for the direct link gateway virtual connection |
 |`status`|String|The status of the virtual connection. Possible values are `pending`, `attached`, `approval_pending`, `rejected`, `expired`, `deleting`, `detached_by_network_pending`, `detached_by_network`.|
-|`network_account`|String|The virtual connections across two different {{site.data.keyword.cloud_notm} accounts network_account indicates the account that owns the target network. For example, `00aa14a2e0fb102c8995ebeff65555`.|
+|`network_account`|String|The virtual connections across two different {{site.data.keyword.cloud_notm}} accounts network_account indicates the account that owns the target network. For example, `00aa14a2e0fb102c8995ebeff65555`.|
 
 ### Import
 {: #dl-gwyvc-import}

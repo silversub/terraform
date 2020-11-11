@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07" 
+lastupdated: "2020-11-06" 
 
 keywords: terraform provider plugin, terraform resource group, terraform iam service, terraform resource management
 
@@ -34,13 +34,11 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Resource management resources
 {: #resource-mgmt-resources}
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_resource_group`
 {: #rg}
@@ -88,7 +86,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #rg-import}
 
-`ibm_resource_group` can be imported using resource group ID. 
+`ibm_resource_group` can be imported using resource group ID. The `ibm_resource_group.example` is the resource block name.
 
 ```
 terraform import ibm_resource_group.example <resource_group_ID>

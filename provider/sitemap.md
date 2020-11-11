@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-02"
+lastupdated: "2020-11-10"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -133,7 +133,7 @@ subcollection: terraform
   </table>
   
   
-  ## DNS service
+  ## DNS Services
   {: #ibm-dns-service}
   
   <table>

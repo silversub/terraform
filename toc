@@ -82,5 +82,7 @@ Terraform
     
     {: .navgroup id="help"}
     faqs.md
-    terraform_ts_index.md
+    Troubleshooting
+          terraform_ts_index.md
+          region.md
     {: .navgroup-end}
