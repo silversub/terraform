@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-30" 
+lastupdated: "2020-11-11" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -97,7 +97,7 @@ Review the input parameters that you can specify for your resource.
 | Input parameter | Data type | Required / optional | Description |
 | ------------- |-------------| ----- | -------------- |
 | `addons` | Set | Required | Set of add-ons that needs to be enabled. |No|
-| `addons.name` | String | Optional | The add-on name such as `istio`. Supported addons are `kube-terminal`, `alb-oauth-proxy`, `debug-tool`, `istio`, `knative`, `static-route`,`vpc-block-csi-driver`.| No |
+| `addons.name` | String | Optional | The add-on name such as `istio`. Supported add-ons are `kube-terminal`, `alb-oauth-proxy`, `debug-tool`, `istio`, `knative`, `static-route`,`vpc-block-csi-driver`.| No |
 | `addons.version`| String | Optional | The add-on version. Omit the version that you want to use as the default version.This is required when you want to update the add-on to specified version. |No|
 | `cluster` | String | Required | The name or ID of the cluster. |No|
 | `resource_group_id` | String | Optional | The ID of the resource group. You can retrieve the value from data source ibm_resource_group. If not provided defaults to default resource group.|Yes|
@@ -637,7 +637,7 @@ Review the input parameters that you can specify for your resource.
 | `workers_info.id` | String | Optional | The ID of the worker node that you want to update. | No |
 | `workers_info.version` | String | Optional | The Kubernetes version that you want to update your worker nodes to. | No |
 | `worker_num`| Integer|Optional|The number of worker nodes in your cluster. This attribute creates a worker node that is not associated with a worker pool.| No |
-| `wait_for_worker_update` | Boolean | Optional | Set to `true` to wait and update the kube version of worker nodes. **NOTE** Setting wait_for_worker_update to `false` is not recommended. Setting `false` results in upgrading all the worker nodes in the cluster at the same time causing the cluster downtime. | No |
+| `wait_for_worker_update` | Boolean | Optional | Set to `true` to wait and update the Kubernetes version of worker nodes. **NOTE** Setting wait_for_worker_update to `false` is not recommended. Setting `false` results in upgrading all the worker nodes in the cluster at the same time causing the cluster downtime. | No |
 
 
 ### Output parameters
@@ -1242,9 +1242,9 @@ Review the input parameters that you can specify for your resource.
 |`kms_config.instance_id`|List|Optional|The GUID of the Key Protect instance.| No |
 |`kms_config.crk_id`|List|Optional|The ID of the customer root key (CRK).| No |
 |`kms_config.private_endpoint`|Boolean|Optional|Set `true` to configure the KMS private service endpoint. Default value is `false`.| No |
-|`entitlement`|String|Optional|The {{site.data.keyword.openshiftshort}} cluster entitlement avoids the OCP license charges incurred. Use Cloud Pak with OCP Licence entitlement to create the {{site.data.keyword.openshiftshort}}cluster. **NOTE** <ul><li> It is set only the first time creation of the cluster, further modifications are not impacted. </li></ul> <ul><li> Set this argument to `cloud_pak` only if you use the cluster with a Cloud Pak that has an {{site.data.keyword.openshiftshort}} entitlement.</li></ul>| No |
+|`entitlement`|String|Optional|The {{site.data.keyword.openshiftshort}} cluster entitlement avoids the OCP license charges incurred. Use Cloud Pak with OCP Licence entitlement to create the {{site.data.keyword.openshiftshort}} cluster. **NOTE** <ul><li> It is set only the first time creation of the cluster, further modifications are not impacted. </li></ul> <ul><li> Set this argument to `cloud_pak` only if you use the cluster with a Cloud Pak that has an {{site.data.keyword.openshiftshort}} entitlement.</li></ul>| No |
 | `force_delete_storage`|Boolean|Optional|If set to `true`,force the removal of persistent storage associated with the cluster during cluster deletion. Default value is `false`. **NOTE** If `force_delete_storage` parameter is used after provisioning the cluster, then, you need to execute `terraform apply` before `terraform destroy` for `force_delete_storage` parameter to take effect. | No |
-| `wait_for_worker_update` | Boolean | Optional | Set to `true` to wait and update the kube version of worker nodes. **NOTE** Setting wait_for_worker_update to `false` is not recommended. Setting `false` results in upgrading all the worker nodes in the cluster at the same time causing the cluster downtime. | No |
+| `wait_for_worker_update` | Boolean | Optional | Set to `true` to wait and update the Kubernetes  version of worker nodes. **NOTE** Setting wait_for_worker_update to `false` is not recommended. Setting `false` results in upgrading all the worker nodes in the cluster at the same time causing the cluster downtime. | No |
 
 **Note**
 
