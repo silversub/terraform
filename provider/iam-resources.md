@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-11-11"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Identity & Access (IAM) resources 
 {: #iam-resources}
 
@@ -43,7 +42,6 @@ Create, modify, or delete [{{site.data.keyword.cloud_notm}} Identity and Access 
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_iam_access_group`
 {: #iam-access-group}
@@ -88,7 +86,6 @@ Review the output parameters that you can access after your resource is created.
 | ------------- |-------------| -------------- |
 | `id` | String | The unique identifier of the access group. |
 | `version` | String | The version of the access group. |
-
 
 
 
@@ -158,7 +155,6 @@ Review the output parameters that you can access after your resource is created.
 ```
 $ terraform import ibm_iam_access_group_members.example AccessGroupId-5391772e-1207-45e8-b032-2a21941c11ab/2018-10-04 06:27:40.041599641 +0000 UTC
 ```
-
 
 
 
@@ -402,7 +398,6 @@ $ terraform import ibm_iam_access_group_policy.example <access_group_ID>/<access
 
 
 
-
 ## `ibm_iam_access_group_dynamic_rule`
 {: #iam-group-dynamic-rule}
 
@@ -466,7 +461,6 @@ The dynamic rule can be imported by using the access group ID and rule ID.
 terraform import ibm_iam_access_group_dynamic_rule.example <access_group_ID>/<rule_ID>
 ```
 {: pre}
-
 
 
 
@@ -623,7 +617,6 @@ This resource does not provide output parameters.
 
 
 
-
 ## `ibm_iam_custom_role`
 {: #iam-custom-role}
 
@@ -676,7 +669,6 @@ Review the output parameters that you can access after your resource is created.
 
 
 
-
 ## `ibm_iam_service_id`
 {: #iam-service-id}
 
@@ -714,10 +706,9 @@ Review the output parameters that you can access after your resource is created.
 | Output parameter | Data type | Description |
 | ------------- |-------------| -------------- |
 |`crn` |String| The CRN of the service ID.|
-|`iam_id`| String|The IAM ID of the serviceID.  |
+|`iam_id`| String|The IAM ID of the service ID.  |
 |`id`|String|The unique identifier of the service ID.|
 |`version` |String| The version of the service ID.|
-
 
 
 
@@ -909,7 +900,6 @@ $ terraform import ibm_iam_service_policy.example <service_ID>/<service_policy_I
 
 
 
-
 ## `ibm_iam_user_policy`
 {: #iam-user-policy}
 
@@ -1072,7 +1062,6 @@ $ terraform import ibm_iam_user_policy.example <ibm_id>/<user_policy_ID>
 
 
 
-
 ## `ibm_iam_user_settings`
 {: #iam-user-settings}
 
@@ -1108,7 +1097,6 @@ The following attributes are exported:
 |Name|Data type|Description|
 |----|-----------|-------------|
 |`id`|String|The unique identifier of the IAM user setting as `account_id`/`iam_id`.|
-
 
 
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-03"
+lastupdated: "2020-11-11"
 
 keywords: terraform provider, terraform provider private endpoint, private endpoint
 
@@ -71,7 +71,7 @@ terraform init
 |Resource controller|`IBMCLOUD_RESOURCE_CONTROLLER_API_ENDPOINT`|N/A|
 |Resource catalog|`IBMCLOUD_RESOURCE_CATALOG_API_ENDPOINT`|N/A|
 |Schematics|`IBMCLOUD_SCHEMATICS_API_ENDPOINT`|`https://private-us.schematics.cloud.ibm.com` <br> `https://private-eu.schematics.cloud.ibm.com`|
-|Transist Gateway|`IBMCLOUD_TG_API_ENDPOINT`| N/A|
+|Transit Gateway|`IBMCLOUD_TG_API_ENDPOINT`| N/A|
 |UAA|`IBMCLOUD_UAA_ENDPOINT`|N/A|
 |User management|`IBMCLOUD_USER_MANAGEMENT_ENDPOINT`|N/A|
 |VPC Gen2|`IBMCLOUD_IS_NG_API_ENDPOINT`|N/A|

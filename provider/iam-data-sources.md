@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-06"
+lastupdated: "2020-11-11"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -32,8 +32,7 @@ subcollection: terraform
 {:tsCauses: .tsCauses}
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
-{:step: data-tutorial-type='step'}
-}
+{:step: data-tutorial-type='step'}}
 
 # Identity & Access (IAM) data sources
 {: #iam-data-sources}
@@ -42,7 +41,6 @@ Review the data sources that you can use to retrieve information about your Iden
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_iam_access_group`
 {: #access_group}
@@ -238,7 +236,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`service_ids.bound_to`| String|The service the service ID is bound to.  |
 |`service_ids.crn`| String|The CRN of the service ID.  |
 |`service_ids.description`| String|A description of the service ID.  |
-|`service_ids.iam_id`| String|The IAM ID of the serviceID.  |
+|`service_ids.iam_id`| String|The IAM ID of the service ID.  |
 |`service_ids.id`|String|The unique identifier of the service ID.  |
 |`service_ids.locked`|Boolean| If set to **true**, the service ID is locked. |
 |`service_ids.version`| String|The version of the service ID.  |
