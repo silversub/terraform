@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-11-18"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Power Systems data sources
 {: #power-data-sources}
 
@@ -46,7 +45,6 @@ To find supported input parameter values, you can use the Power Systems CLI plug
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_pi_image`
 {: #power-image}
@@ -96,7 +94,6 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
-
 ## `ibm_pi_images`
 {: #power-images}
 
@@ -138,7 +135,6 @@ Review the output parameters that you can access after you retrieved your data s
 | `image_info.id` | String | The unique identifier of an image. | 
 | `image_info.name`| String | The name of an image. |
 | `image_info.state` | String | The state of an image. |
-
 
 
 
@@ -211,7 +207,6 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
-
 ## `ibm_pi_instance_ip`
 {: #power-instance-ip}
 
@@ -263,7 +258,6 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
-
 ## `ibm_pi_key`
 {: #power-ssh-key}
 
@@ -308,7 +302,6 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
-
 ## `ibm_pi_network`
 {: #power-network}
 
@@ -322,8 +315,8 @@ The following example retrieves information about a network that is named `mynet
 
 ```
 data "ibm_pi_network" "ds_network" {
-  pi_network_name = "mynetwork"
-  powerinstanceid = "11aaa1a1-11a1-11aa-1111-aaa111aa1a1a"
+  pi_network_name = "APP"
+  pi_cloud_instance_id = "49fba6c9-23f8-40bc-9899-aca322ee7d5b"
 }
 ```
 
@@ -355,7 +348,6 @@ Review the output parameters that you can access after you retrieved your data s
 | `vlan_id` | String | The VLAN ID that the network is connected to. |
 | `type`|String|The type of network.|
 |`cidr`|String|The CIDR of the network.|
-
 
 
 
@@ -398,7 +390,6 @@ Review the output parameters that you can access after you retrieved your data s
 | `id` | String | The ID of the network. |
 | `type` | String | The type of VLAN that the network is connected to. |
 | `vlan_id` | String | The ID of the VLAN that the network is connected to. |
-
 
 
 
@@ -451,7 +442,6 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
-
 ## `ibm_pi_volume`
 {: #power-volume}
 
@@ -495,7 +485,6 @@ Review the output parameters that you can access after you retrieved your data s
 | `state` | String | The state of the volume. |
 | `type` | String | The disk type that is used for the volume. |
 | `wwn` | String | The world wide name of the volume. |
-
 
 
 
