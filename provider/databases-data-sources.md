@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-30"
+lastupdated: "2020-11-18"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -124,7 +124,7 @@ Review the output parameters that you can access after you retrieved your data s
 |`auto_scaling.memory.rate_limit_mb_per_member`|Integer|Auto scaling rate limit in megabytes per member.|
 |`auto_scaling.memory.rate_period_seconds`|Integer|Auto scaling rate period in seconds.|
 |`auto_scaling.memory.rate_units`|String|Auto scaling rate in units.|
-|`whitelist`|List| A list of whitelisted IP addresses or ranges.|
+|`whitelist`|List| A list of allowed IP addresses or ranges.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 The provider only exports the admin user ID and associated connection string. It does not export any user IDs that are configured for the instance in addition. 
