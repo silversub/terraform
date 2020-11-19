@@ -252,15 +252,15 @@ Because Terraform supports multiple cloud providers, you must specify IBM as you
 
        **Usage**
 
-       ```
-       $ export IC_API_KEY="ibmcloud_api_key"
-       $ export IAAS_CLASSIC_USERNAME="iaas_classic_username"
-       $ export IAAS_CLASSIC_API_KEY="iaas_classic_api_key"
-       $ terraform plan
-       ```
-      {: pre}
+        ```
+        $ export IC_API_KEY="ibmcloud_api_key"
+        $ export IAAS_CLASSIC_USERNAME="iaas_classic_username"
+        $ export IAAS_CLASSIC_API_KEY="iaas_classic_api_key"
+        $ terraform plan
+        ```
+        {: pre}
 
-      To create or find your `ibmcloud_api_key`, refer to [API key](/docs/account?topic=account-userapikey#create_user_key). To create or find your `iaas_classic_username` with the VPN credentials, refer to [VPN credentials](/docs/account?topic=account-vpnpassword)
+        To create or find your `ibmcloud_api_key`, refer to [API key](/docs/account?topic=account-userapikey#create_user_key). To create or find your `iaas_classic_username` with the VPN credentials, refer to [VPN credentials](/docs/account?topic=account-vpnpassword)
 {: note}
 
 5. After you configured the provider with all required input parameters, you can now start [provisioning {{site.data.keyword.cloud_notm}} resources](/docs/terraform?topic=terraform-manage_resources#provision_resources). 
