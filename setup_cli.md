@@ -108,6 +108,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
 2. Install the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 
    **Install provider for Terraform v0.13**
+
    You can use the provided function block to use the IBM Terraform provider registry to support Terraform version 0.13.0
 
     **Syntax**
@@ -142,6 +143,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
    {: note}
 
    **Install provider for Terraform v0.12**
+
     1. [Download the latest version of the {{site.data.keyword.cloud_notm}} Provider binary package ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/IBM-Cloud/terraform-provider-ibm/releases). 
     2. Extract the {{site.data.keyword.cloud_notm}} provider package to retrieve the binary file.
     3. Create a hidden folder for your plug-in. The {{site.data.keyword.cloud_notm}} Provider plug-in is used only by the Terraform CLI and is not meant to be accessed by the user.  
@@ -228,7 +230,8 @@ Because Terraform supports multiple cloud providers, you must specify IBM as you
     - Static credentials
     - Environment variables
 
-   - Static credentials
+     **Static credentials**
+
       You can provide your static credentials by adding the `ibmcloud_api_key`, `iaas_classic_username`, and `iaas_classic_api_key` arguments in the {{site.data.keyword.cloud_notm}} provider block.
 
       ```
@@ -240,28 +243,30 @@ Because Terraform supports multiple cloud providers, you must specify IBM as you
        ```
       {: pre}
 
-    - Environment variables
+     **Environment variables**
 
-       You can provide your credentials by exporting the `IC_API_KEY`, `IAAS_CLASSIC_USERNAME`, and `IAAS_CLASSIC_API_KEY` environment variables, representing your {{site.data.keyword.cloud_notm}} platform API key, {{site.data.keyword.cloud_notm}} Classic Infrastructure (SoftLayer) user name, and {{site.data.keyword.cloud_notm}} infrastructure API key, respectively. The provider block with the empty definition overrides the credentials set through the environment variables.
-       {: shortdesc}
+      You can provide your credentials by exporting the `IC_API_KEY`, `IAAS_CLASSIC_USERNAME`, and `IAAS_CLASSIC_API_KEY` environment variables, representing your {{site.data.keyword.cloud_notm}} platform API key, {{site.data.keyword.cloud_notm}} Classic Infrastructure (SoftLayer) user name, and {{site.data.keyword.cloud_notm}} infrastructure API key, respectively. The provider block with the empty definition overrides the credentials set through the environment variables.
+      {: shortdesc}
 
-       ```
-        provider "ibm" {}
-       ```
+      ```
+       provider "ibm" {}
+      ```
       {: pre}
 
        **Usage**
 
-        ```
-        $ export IC_API_KEY="ibmcloud_api_key"
-        $ export IAAS_CLASSIC_USERNAME="iaas_classic_username"
-        $ export IAAS_CLASSIC_API_KEY="iaas_classic_api_key"
-        $ terraform plan
-        ```
-        {: pre}
+      ```
+       $ export IC_API_KEY="ibmcloud_api_key"
+       $ export IAAS_CLASSIC_USERNAME="iaas_classic_username"
+       $ export IAAS_CLASSIC_API_KEY="iaas_classic_api_key"
+       $ terraform plan
+      ```
+      {: pre}
 
-        To create or find your `ibmcloud_api_key`, refer to [API key](/docs/account?topic=account-userapikey#create_user_key). To create or find your `iaas_classic_username` with the VPN credentials, refer to [VPN credentials](/docs/account?topic=account-vpnpassword)
+
+      To create or find your `ibmcloud_api_key`, refer to [API key](/docs/account?topic=account-userapikey#create_user_key). To create or find your `iaas_classic_username` with the VPN credentials, refer to [VPN credentials](/docs/account?topic=account-vpnpassword)
 {: note}
+      {: note}
 
 5. After you configured the provider with all required input parameters, you can now start [provisioning {{site.data.keyword.cloud_notm}} resources](/docs/terraform?topic=terraform-manage_resources#provision_resources). 
 
