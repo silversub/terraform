@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-11-19"
 
 keywords: terraform, terraform provider release, terraform provider versions
 
@@ -34,12 +34,44 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Version changelog
 {: #provider-changelog}
 
 View information for updates to the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
 {:shortdesc}
+
+## Changelog for 1.14.0, released 29 October 2020
+{: #changelog-v1140}
+
+The following table shows the changes that are included in version 1.14.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.12.0 | 1.14.0 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.11.2](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.14.0){: external}.|
+{: caption="Terraform provider 1.14.0" caption-side="top"}
+
+## Changelog for 1.13.1, released 7 October 2020
+{: #changelog-v1131}
+
+The following table shows the changes that are included in version 1.13.1 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.12.0 | 1.13.1 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.11.2](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.13.1){: external}.|
+{: caption="Terraform provider 1.13.1" caption-side="top"}
+
+## Changelog for 1.13.0, released 1 October 2020
+{: #changelog-v1130}
+
+The following table shows the changes that are included in version 1.13.0 of the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+{: shortdesc}
+
+| Previous | Current | Description |
+| -------- | ------- | ----------- |
+| 1.12.0 | 1.13.0 |[See the release notes for the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform version 1.11.2](https://github.com/IBM-Cloud/terraform-provider-ibm/releases/tag/v1.13.0){: external}.|
+{: caption="Terraform provider 1.13.0" caption-side="top"}
 
 ## Changelog for 1.12.0, released 14 September 2020
 {: #changelog-v1120}
