@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-06"
+lastupdated: "2020-11-19"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -3013,7 +3013,7 @@ resource "ibm_object_storage_account" "foo" {
 
 |Name|Description|
 |----|-----------|
-|`tags`|(Optional, array of strings) Tags associated with the object storage account instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.
+|`tags`|(Optional, array of strings) Tags associated with the {{site.data.keyword.cos_full_notm}} account instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.
 
 
 ### Output parameters

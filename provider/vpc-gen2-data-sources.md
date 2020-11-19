@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-02"
+lastupdated: "2020-11-19"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -130,7 +130,7 @@ Review the output parameters that you can access after you retrieve your data so
 | `flow_log_collectors.lifecycle_state` | String | The lifecycle state of the flow log collector. |
 | `flow_log_collectors.name` | String | The flow log collector name. |
 | `flow_log_collectors.resource_group` | String | The resource group of the flow log. |
-| `flow_log_collectors.storage_bucket` | String | The COS bucket name where the flow logs are logged. |
+| `flow_log_collectors.storage_bucket` | String | The {{site.data.keyword.cos_full_notm}} bucket name where the flow logs are logged. |
 | `flow_log_collectors.target` | String | The target ID that the flow log collector collects the flow logs. |
 | `flow_log_collectors.vpc` | String | The VPC of the flow log collector that are associated. |
 
