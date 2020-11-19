@@ -223,44 +223,44 @@ Because Terraform supports multiple cloud providers, you must specify IBM as you
 
 4. create a Terraform provider configuration file that is named `provider.tf`. Use this file to specify IBM as your cloud provider and to reference the credentials from your `terraform.tfvars` file. To reference a variable, declare the variable first, and then retrieve the value of the variable by using Terraform interpolation syntax.
 
-The {{site.data.keyword.cloud_notm}} provider offers a flexible means of providing credentials for authentication. The following two methods are supported
+   The {{site.data.keyword.cloud_notm}} provider offers a flexible means of providing credentials for authentication. The following two methods are supported.
 
     - Static credentials
     - Environment variables
-{: shortdesc}
 
-   1. Static credentials
-   You can provide your static credentials by adding the `ibmcloud_api_key`, `iaas_classic_username`, and `iaas_classic_api_key` arguments in the {{site.data.keyword.cloud_notm}} provider block.
+   - Static credentials
+      You can provide your static credentials by adding the `ibmcloud_api_key`, `iaas_classic_username`, and `iaas_classic_api_key` arguments in the {{site.data.keyword.cloud_notm}} provider block.
 
-   ```
-   provider "ibm" {
-    ibmcloud_api_key = ""
-    iaas_classic_username = ""
-    iaas_classic_api_key = ""
-   }
-   ```
-   {: codeblock}
+      ```
+      provider "ibm" {
+          ibmcloud_api_key = ""
+          iaas_classic_username = ""
+          iaas_classic_api_key = ""
+         }
+       ```
+      {: pre}
 
-    2. Environment variables
-    You can provide your credentials by exporting the `IC_API_KEY`, `IAAS_CLASSIC_USERNAME`, and `IAAS_CLASSIC_API_KEY` environment variables, representing your {{site.data.keyword.cloud_notm}} platform API key, {{site.data.keyword.cloud_notm}} Classic Infrastructure (SoftLayer) user name, and {{site.data.keyword.cloud_notm}} infrastructure API key, respectively. The provider block with the empty definition overrides the credentials set through the environment variables.
-    {: shortdesc}
+    - Environment variables
 
-    ```
-    provider "ibm" {}
-    ```
-    {: pre}
+       You can provide your credentials by exporting the `IC_API_KEY`, `IAAS_CLASSIC_USERNAME`, and `IAAS_CLASSIC_API_KEY` environment variables, representing your {{site.data.keyword.cloud_notm}} platform API key, {{site.data.keyword.cloud_notm}} Classic Infrastructure (SoftLayer) user name, and {{site.data.keyword.cloud_notm}} infrastructure API key, respectively. The provider block with the empty definition overrides the credentials set through the environment variables.
+       {: shortdesc}
 
-    **Usage**
+       ```
+        provider "ibm" {}
+       ```
+      {: pre}
 
-    ```
-    $ export IC_API_KEY="ibmcloud_api_key"
-    $ export IAAS_CLASSIC_USERNAME="iaas_classic_username"
-    $ export IAAS_CLASSIC_API_KEY="iaas_classic_api_key"
-    $ terraform plan
-    ```
-    {: pre}
+       **Usage**
 
-   To create or find your `ibmcloud_api_key`, refer to [API key](/docs/account?topic=account-userapikey#create_user_key). To create or find your `iaas_classic_username` with the VPN credentials, refer to [VPN credentials](/docs/account?topic=account-vpnpassword)
+       ```
+       $ export IC_API_KEY="ibmcloud_api_key"
+       $ export IAAS_CLASSIC_USERNAME="iaas_classic_username"
+       $ export IAAS_CLASSIC_API_KEY="iaas_classic_api_key"
+       $ terraform plan
+       ```
+      {: pre}
+
+      To create or find your `ibmcloud_api_key`, refer to [API key](/docs/account?topic=account-userapikey#create_user_key). To create or find your `iaas_classic_username` with the VPN credentials, refer to [VPN credentials](/docs/account?topic=account-vpnpassword)
 {: note}
 
 5. After you configured the provider with all required input parameters, you can now start [provisioning {{site.data.keyword.cloud_notm}} resources](/docs/terraform?topic=terraform-manage_resources#provision_resources). 
