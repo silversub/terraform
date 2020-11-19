@@ -3013,7 +3013,7 @@ resource "ibm_object_storage_account" "foo" {
 
 |Name|Description|
 |----|-----------|
-|`tags`|(Optional, array of strings) Tags associated with the {{site.data.keyword.cos_full_notm}} account instance.     **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.
+|`tags`|(Optional, array of strings) Tags associated with the {{site.data.keyword.cos_full_notm}} account instance. **NOTE**: `Tags` are managed locally and not stored on the IBM Cloud Service Endpoint at this moment.
 
 
 ### Output parameters
@@ -3025,9 +3025,6 @@ The following attributes are exported:
 |----|-----------|
 |`id`|The Object Storage account name, which you can use with Swift resources.|
 {: caption="Table. Available input parameters" caption-side="top"}
-
-
-
 
 ## `ibm_security_group`
 {: #sec-group}
