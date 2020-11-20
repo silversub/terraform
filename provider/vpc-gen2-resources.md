@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-02" 
+lastupdated: "2020-11-19" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -106,7 +106,7 @@ Review the input parameters that you can specify for your resource.
 | ------------- |-------------| ----- | -------------- | ------- |
 | `name` | String | Required | The unique user-defined name for the flow log collector.| No |
 | `target` | String | Required | The ID of the target to collect flow logs. If the target is an instance, subnet, or VPC, flow logs is not collected for any network interfaces within the target that are more specific flow log collector. | Yes |
-| `storage_bucket` | String | Required | The name of the COS bucket where the collected flows will be logged. The bucket must exist and an IAM service authorization must grant {{site.data.keyword.cloud_notm}} flow logs resources of VPC infrastructure services writer access to the bucket. | Yes |
+| `storage_bucket` | String | Required | The name of the {{site.data.keyword.cos_full_notm}} bucket where the collected flows will be logged. The bucket must exist and an IAM service authorization must grant {{site.data.keyword.cloud_notm}} flow logs resources of VPC infrastructure services writer access to the bucket. | Yes |
 | `active` | String | Optional | Indicates whether the collector is active. If `false`, this collector is created in inactive mode. Default value is true. | No |
 | `resource_group` | String | Optional | The resource group ID where the flow log is created. | Yes |
 | `tags` | Array of Strings | Optional | The tags associated with the flow log. | No |

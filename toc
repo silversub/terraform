@@ -19,6 +19,7 @@ Terraform
     
     {: .navgroup id="howto"}
     setup_cli.md
+    migrate.md
     create-terraform-template.md
     manage_resources.md
     ansible/ansible.md
@@ -31,7 +32,7 @@ Terraform
     IBM Cloud provider for Terraform
          provider/sitemap.md
          provider/version_changelog.md
-         tf-provider.md
+         
          provider/provider-ref.md
          provider/api-gateway-resources.md
          provider/api-gateway-data-source.md
@@ -81,7 +82,11 @@ Terraform
     {: .navgroup-end}
     
     {: .navgroup id="help"}
-     faqs.md
-     terraform_ts_index.md
-     region.md
+    faqs.md
+    terraform_ts_index.md
+
+    {: .topicgroup}
+    Troubleshooting
+        region.md
     {: .navgroup-end}
+

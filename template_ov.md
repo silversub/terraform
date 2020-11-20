@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-15"
+lastupdated: "2020-11-20"
 
 keywords: terraform templates, schematics template
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
-
 
 
 # Sample Terraform templates and deploy to {{site.data.keyword.cloud_notm}}
@@ -222,8 +221,42 @@ When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following action
       <td>Create an {{site.data.keyword.cos_full_notm}} service instance with a bucket to store your data and provide a key management service resource for Hyper Protect Crypto Services and Key Protect service instance with a root key. This allow access between these services with an IBM Cloud Identity and Access Management policy.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_kms_key</code></li><li style="margin:0px; padding:0px"><code>ibm_kp_key</code></li></ul></td>
       <td><a href="https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms"><img src="/images/viewgithub.png"></a><br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-kms&terraform_version=terraform_v0.12"><img src="/images/deploytoschematics.png"></a></td>
   </tr>
+  <tr>
+    <td><code>ibm-hpcs-crypto</code></td>
+      <td>Create an {{site.data.keyword.cos_full_notm}} service instance with a bucket to store your data and provide a key management service resource for Hyper Protect Crypto Services instance with a root key. This allow access between these services with an IBM Cloud Identity and Access Management policy.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_kms_key</code></li><li style="margin:0px; padding:0px"><code>ibm_kp_key</code></li></ul></td>
+      <td><a href="https://github.com/IBM-Cloud/terraform-provider-ibm/blob/master/examples/ibm-hpcs-crypto"><img src="/images/viewgithub.png"></a><br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/blob/master/examples/ibm-hpcs-crypto&terraform_version=terraform_v0.12"><img src="/images/deploytoschematics.png"></a></td>
+  </tr>
   </tbody>
   </table>
+
+## Kubernetes templates
+{: #kubernetes-template}
+
+<table>
+   <thead>
+    <th style="width:60px">Name</th>
+    <th style="width:250px">Description and resources</th>
+    <th style="width:150px">Access</th>
+  </thead>
+  <tbody>
+ <tr>
+   <td><code>vpc-classic-cluster</code></td>
+      <td>Create an {{site.data.keyword.containerfull_notm}} cluster in a Virtual Private Cloud (VPC) for Generation 1 compute with worker nodes in a default worker pool that you spread across two zones. You can provision an IBM Cloud Object Storage service, and bind this service to the cluster.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><listyle="margin:0px; padding:0px"><code>ibm_is_vpc</code></li><li style="margin:0px; padding:0px"><code>ibm_is_subnet</code></li><li style="margin:0px; padding:0px"><code>ibm_container_vpc_cluster</code></li><li style="margin:0px; padding:0px"><code>ibm_container_vpc_worker_pool</code></li><li style="margin:0px; padding:0px"><code>ibm_resource_instance</code></li><li style="margin:0px; padding:0px"><code>ibm_container_bind_service</code></li></ul></td>
+      <td><a href="https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-cluster/vpc-classic-cluster"><img src="/images/viewgithub.png"></a><br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-cluster/vpc-classic-cluster&terraform_version=terraform_v0.12"><img src="/images/deploytoschematics.png"></a></td>
+  </tr>
+  <tr>
+   <td><code>vpc-gen2-cluster</code></td>
+      <td>Create an {{site.data.keyword.containerfull_notm}} cluster in a Virtual Private Cloud (VPC) for Generation 2 compute with worker nodes in a default worker pool that you spread across two zones. Also, you provision an IBM Cloud Object Storage service, and bind this service to the cluster.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_is_vpc</code></li><li style="margin:0px; padding:0px"><code>ibm_is_subnet</code></li><li style="margin:0px; padding:0px"><code>ibm_container_vpc_cluster</code></li><li style="margin:0px; padding:0px"><code>ibm_container_vpc_worker_pool</code></li><li style="margin:0px; padding:0px"><code>ibm_resource_instance</code></li><li style="margin:0px; padding:0px"><code>ibm_container_bind_service</code></li></ul></td>
+      <td><a href="https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-cluster/vpc-gen2-cluster"><img src="/images/viewgithub.png"></a><br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-cluster/vpc-gen2-cluster&terraform_version=terraform_v0.12"><img src="/images/deploytoschematics.png"></a></td>
+  </tr>
+   <tr>
+    <td><code>ibm-iks-classic-ROKS</code></td>
+      <td>Create a Red Hat View GitHub repository on IBM Cloud cluster that runs version 3.11 of the View GitHub repository Container Platform.<br><br>**Resources**<br><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px"><code>ibm_container_cluster</code></li></ul></td>
+      <td><a href="https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iks-classic-ROKS"><img src="/images/viewgithub.png"></a><br><br><a href="https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/terraform-provider-ibm/tree/master/examples/ibm-iks-classic-ROKS&terraform_version=terraform_v0.12"><img src="/images/deploytoschematics.png"></a></td>
+  </tr>
+  </tbody>
+  </table>
+
 
 ## Transit Gateway templates
 {: #transit-gwy-template}
