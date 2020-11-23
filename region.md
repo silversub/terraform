@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-20"
+lastupdated: "2020-11-23"
 
 keywords: ibm cloud region, location, region, ibm cloud location
 
@@ -35,7 +35,7 @@ subcollection: terraform
 {:step: data-tutorial-type='step'}
 
 
-# Why is my database provisioning is success in us-east and us-south, but fails in eu-de region?
+# Why is my database provisioning success in us-east and us-south, but fails in eu-de region?
 {: #db-provisioning-eu-de}
 
 In the {{site.data.keyword.cloud_notm}} global network of location to host your highly available resources and service instances workload. You can create resources in different regions but with the same billing and usage view, and deploy your resources and application to the location that is nearest to your customers to achieve low application latency. For more information, about location, refer to [Locations](/docs/overview?topic=overview-locations)

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-19" 
+lastupdated: "2020-11-23" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -2467,7 +2467,7 @@ terraform import ibm_is_vpc_address_prefix.example <vpc_ID>/<address_prefix_ID>
 ## `ibm_is_vpc_route`
 {: #vpc-route}
 
-Create, update, or delete a VPC route. For more information, about VPC routes, see [Setting up advanced routing in VPC](/docs/vpc?topic=vpc-advanced-routing).
+Create, update, or delete a VPC route. For more information, about VPC routes, see [Setting up advanced routing in VPC](/docs/vpc?topic=vpc-about-custom-routes).
 {: shortdesc}
 
 ### Sample Terraform code
