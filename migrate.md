@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-19"
+lastupdated: "2020-11-23"
 
 keywords: Add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, Terraform, provision resources
 
@@ -109,5 +109,5 @@ View the versions that are associated with the resources and data sources in the
 - **IBM Cloud Provider plug-in for Terraform version**: 1.14.0
 - **Terraform version**: 0.12 or more
 
-With the release of Terraform version 0.12, the syntax for configuration files changed. If you want to run your infrastructure code by using Terraform version 0.12, you must first [update your configuration files](#tf-0.12-migration) to apply the new syntax. 
+With the release of Terraform version 0.12, the syntax for configuration files changed. If you want to run your infrastructure code by using Terraform version 0.12, you must first [update your configuration files](#tf-0.1x-migration) to apply the new syntax. 
 {: important}

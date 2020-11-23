@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-02"
+lastupdated: "2020-11-23"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -1046,8 +1046,8 @@ Review the output parameters that you can access after your resource is created.
 |----|-----------|--------|
 |`id`|String|The record ID. It is a combination of <domain_id>,<cis_id> attributes concatenated with `:`. |
 
-### Import
-{: #cis-tls-import}
+### Timeouts
+{: #cis-tls-timeouts}
 
 The following timeouts are defined for this resource.
 {: shortdesc}
