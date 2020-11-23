@@ -38,7 +38,7 @@ subcollection: terraform
 # Migrating and version controling
 {: #migration-versioncontrol}
 
-IBM continually updates the Terraform provider to give you higher levels of performance and being upto date. Some of the instances aren't able to be upgraded, so they must be closed and you must migrate your resources with the right version.
+IBM continually updates the Terraform provider to give you higher levels of performance and being up-to-date. Some of the instances aren't able to be upgraded, so they must be closed and you must migrate your resources with the right version.
 
 View the versions that are associated in the Terraform and the {{site.data.keyword.cloud_notm}} provider plugin.
 {: shortdesc}

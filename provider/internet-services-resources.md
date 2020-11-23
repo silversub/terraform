@@ -1031,7 +1031,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
 |`domain_id`|String|Required|The ID of the domain to change TLS settings. |
-|`tls_1_3`|String|Optional|The TLS 1.3 version setting. Valid values are `on`, `off`, `zrt`. zrt will enable TLS 1.3 and the Zero RTT feature. If `on` is set, then `zrt` is enabled by default.|
+|`tls_1_3`|String|Optional|The TLS 1.3 version setting. Valid values are `on`, `off`, `zrt`. `zrt` will enable TLS 1.3 and the Zero RTT feature. If `on` is set, then `zrt` is enabled by default.|
 |`min_tls_version`|String|Optional|The Minimum TLS version setting. Valid values are `1.1`, `1.2`, `1.3`, or `1.4`.|
 |`universal_ssl`|Boolean|Optional|The Universal SSL `enable` or `disable` setting.|
 |`ssl_mode`|String|Optional|The SSL mode settings. This is yet to support.|
