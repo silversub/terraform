@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-11-24"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -34,14 +34,15 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Using Ansible to automate app deployment on Terraform-provided infrastructure
 {: #ansible}
 
 **What is Ansible?** </br>
+
 [Ansible ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ansible.com/) is a configuration management and provisioning tool, similar to [Chef ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.chef.io/products/chef-infra/) and [Puppet ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://puppet.com/), and is designed to automate multitier app deployments and provisioning in the cloud. Written in Python, Ansible uses YAML syntax to describe automation tasks, which makes Ansible easy to learn and use. 
 
 **How does Ansible work?** </br>
+
 Ansible does not use agents or a custom security infrastructure that must be present on a target machine to work properly. Instead, Ansible connects to compute hosts over the private network by using SSH keys. The SSH key can be preconfigured on the virtual server instance when you order the infrastructure in {{site.data.keyword.cloud_notm}} so that you can use Ansible at once after your virtual server instance is provisioned. You can choose to create your own SSH key and upload this SSH key to your {{site.data.keyword.cloud_notm}} portal. 
 
 Ansible models software packages, configuration, and services as resources on a managed host to ensure that the resource is in a specific state. To bring a resource to the required state, Ansible pushes modules to the managed host to run the required tasks. After the tasks are executed, the result is returned to the Ansible server and the module is removed from the managed host. You can use Ansible modules to execute a specific operation or group scripts and configurations in an Ansible playbook that you can execute. Ansible modules are idempotent such that executing the same playbook or operation multiple times returns the same result as resources are changed only if required. 
@@ -52,7 +53,9 @@ For more information, about Ansible, see:
 - [Ansible2 tutorial ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://serversforhackers.com/c/an-ansible2-tutorial)
 
 </br>
+
 **How do Ansible and Terraform work together?** </br>
+
 Ansible and Terraform are complimentary solutions, each addressing a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. 
 
 ## Setting up a VPN connection and SSH authentication to access IBM Cloud infrastructure
