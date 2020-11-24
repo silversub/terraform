@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-11-24"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Using Ansible to automate app deployment on Terraform-provided infrastructure
 {: #ansible}
 
@@ -52,7 +51,9 @@ For more information, about Ansible, see:
 - [Ansible2 tutorial ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://serversforhackers.com/c/an-ansible2-tutorial)
 
 </br>
+
 **How do Ansible and Terraform work together?** </br>
+
 Ansible and Terraform are complimentary solutions, each addressing a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. 
 
 ## Setting up a VPN connection and SSH authentication to access IBM Cloud infrastructure
