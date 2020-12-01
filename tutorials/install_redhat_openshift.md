@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-12-01"
 
 keywords: Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -38,7 +38,6 @@ completion-time: 3h
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
-
 
 # Tutorial: Using Terraform to manage your own Red Hat OpenShift Container Platform on IBM Cloud classic infrastructure
 {: #redhat}
@@ -232,7 +231,7 @@ In this tutorial, you provision {{site.data.keyword.cloud_notm}} classic infrast
    
    <table>
    <thead>
-   <th>Variable name</th>
+   <th>Variable</th>
    <th>Description</th>
    <th>Default value</th>
    </thead>
