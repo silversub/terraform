@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-18"
+lastupdated: "2020-12-01"
 
 keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, hpcs
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Key Management Service data sources
 {: #kms-data-sources}
 
@@ -42,7 +41,6 @@ You can reference the output parameters for each resource in other resources or 
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 ## `ibm_kms_key`
 {: #kms-key-ds}
@@ -75,7 +73,7 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
-|`instance_id`|String|Required|The key-protect instance GUID.|
+|`instance_id`|String|Required|The key-protect instance ID.|
 |`key_name`|String|Required|The name of the key. Only matching name of the keys are retrieved |
 |`endpoint_type`|String|Optional|The type of the public or private endpoint to be used for fetching keys. |
 

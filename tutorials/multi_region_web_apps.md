@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-20"
+lastupdated: "2020-12-01"
 
 keywords: Terraform, ansible, wordpress, automate, automation, iaas, highly available, multizone, cross-region
 
@@ -38,7 +38,6 @@ completion-time: 1h
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
-
  
 # Tutorial: Deploying Wordpress in a highly available, cross-region web site architecture with Terraform and Ansible  
 {: #multi_region}
@@ -211,6 +210,7 @@ To use Terraform to provision {{site.data.keyword.cloud_notm}} classic infrastru
       {: pre}
       
       Example output: 
+      
       ```
       2018/09/25 17:30:14 {{site.data.keyword.cloud_notm}} Provider version 0.11.3  fdc4aa0f0547177f3ea8b14c7a58a849e240f64a
       This binary is a plugin. These are not meant to be executed directly.

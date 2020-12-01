@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-11"
+lastupdated: "2020-12-01"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -672,7 +672,7 @@ Review the output parameters that you can access after your resource is created.
 ## `ibm_iam_service_id`
 {: #iam-service-id}
 
-Create, update, or delete an IAM service ID. 
+Create, update, or delete an IAM service ID by using resource group and resource type.
 {: shortdesc}
 
 ### Sample Terraform code
