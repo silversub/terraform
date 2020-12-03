@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-24"
+lastupdated: "2020-12-03"
 
 keywords: automation, automate, ansible, chef, puppet, playbook
 
@@ -56,7 +56,7 @@ For more information, about Ansible, see:
 
 **How do Ansible and Terraform work together?** </br>
 
-Ansible and Terraform are complimentary solutions, each addressing a key area of app and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. 
+Ansible and Terraform are complimentary solutions, each addressing a key area of application and environment management. Terraform provides lifecycle management of infrastructure whereas Ansible helps you to provision and configure apps. 
 
 ## Setting up a VPN connection and SSH authentication to access IBM Cloud infrastructure
 {: #setup_vpn}
