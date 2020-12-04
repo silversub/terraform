@@ -12,8 +12,6 @@ Terraform
     Tutorials
         tutorials/clusters.md
         tutorials/install_redhat_openshift.md
-        tutorials/wordpress_with_terraform_and_ansible.md
-        tutorials/multi_region_web_apps.md
         [Tutorial: Deploying a 3-Tier Web App in a Virtual Private Cloud (VPC)](https://github.com/jonghall/ibmcloud-terraform-vpc)
     {: .navgroup-end}
     
@@ -22,7 +20,6 @@ Terraform
     migrate.md
     create-terraform-template.md
     manage_resources.md
-    ansible/ansible.md
     autodeploy_template.md
     provider-endpoint.md
     {: .navgroup-end}
