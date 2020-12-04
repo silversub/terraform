@@ -22,7 +22,6 @@ Terraform
     migrate.md
     create-terraform-template.md
     manage_resources.md
-    ansible/ansible.md
     autodeploy_template.md
     provider-endpoint.md
     {: .navgroup-end}
