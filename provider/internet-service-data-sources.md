@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-02"
+lastupdated: "2020-12-04"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -223,6 +223,62 @@ Review the output parameters that you can access after you retrieved your data s
 | `pattern_url` | String | The Route pattern. It is a domain name in which the action is performed.|
 | `request_limit_fail_open` | String | An action request limit fail open.|
 | `trigger_id` | String | The route ID of an action trigger.|
+
+## `ibm_cis_global_load_balancers`
+{: #cis-global-lb-ds}
+
+Retrieve information 24 X 7 availability and performance of your application by using the {{site.data.keyword.cis_full_notm}} global load balancers. For more information, refer to [CIS global loadbalancer](/docs/cis?topic=cis-configure-glb).Import the details of an existing {{site.data.keyword.cis_full_notm}} global load balancers as a read-only data source. You can then reference the fields of the data source in other resources within the same configuration using interpolation syntax.
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis-global-lb-dssample}
+
+The following example retrieves information about an {{site.data.keyword.cis_full_notm}} global load balancer resource.
+{: shortdesc}
+
+```
+data "ibm_cis_global_load_balancers" "test" {
+  cis_id    = var.cis_crn
+  domain_id = var.zone_id
+}
+```
+
+### Input parameters
+{: #cis-global-lb-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+| `domain_id` | String | Required | The ID of the domain to retrieve the load balancers from. |
+| `cis_id` | String | Required | The resource CRN ID of the CIS on which zones were created. |
+
+### Output parameters
+{: #cis-global-lb-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+| `id` | String | The Load balancer ID, domain ID and CRN. For example, `id:domain-id:crn`. |
+| `description` | String | Free text description. |
+| `default_pool_ids` | String | A list of pool IDs ordered by their failover priority. Used whenever region or pop pools are not defined. |
+| `fallback_pool_id` | String | The pool ID to use when all other pools are detected as unhealthy. |
+| `glb_id` | String | The Load balancer ID. |
+| `enabled` | String | Indicates if the load balancer is enabled or not. Region and pop pools are not currently implemented in this version of the provider. |
+| `name` | String | The DNS name to associate with the load balancer. This can be a hostname, for example, `www` or the fully qualified name `www.example.com`, or `example.com`. |
+| `proxied` | String | Whether the hostname gets IBM's origin protection. Defaults to `false`.  |
+| `pop_pools` | String | A set containing mappings of IBM Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.|
+| `pop_pools.pop` | String | A 3-letter code for the Point-of-Presence. Multiple entries should not be specified with the same PoP.|
+| `pop_pools.pool_ids` | String | A list of pool IDs in failover priority to use for traffic reaching the given PoP.|
+| `region_pools` | String | A set containing mappings of region or country codes to a list of pool IDs (ordered by their failover priority) for the given region.|
+| `region_pools.region` | String | A region code. Multiple entries is not allowed with the same region.|
+| `region_pools.pool_ids` | String | A list of pool IDs in failover priority to use in the given region.|
+| `session_affinity` | String | Associates all requests coming from an end-user with a single origin. IBM will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, as long as it is available. |
+| `ttl` | String | Time to live (TTL) of the DNS entry for the IP address returned by this load balancer.  |
+
 
 ## `ibm_cis_healthchecks`
 {: #cis-healthchecks}

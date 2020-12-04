@@ -126,6 +126,7 @@ terraform import ibm_cis.myorg <crn>
 {: #cis-cache}
 
  Provides a {{site.data.keyword.cis_full_notm}} cache settings resource. This resource is associated with an IBM Cloud Internet Services instance and a CIS Domain resource. It allows to create, update, or delete cache settings of a domain of a {{site.data.keyword.cis_full_notm}} CIS instance. For more information about cache setting, refer to [CIS cache concepts](/docs/cis?topic=cis-caching-concepts).
+ {: shortdesc}
 
 ### Sample Terraform code
 {: #cis-cache-sample}
