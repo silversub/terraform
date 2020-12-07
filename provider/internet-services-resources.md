@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-23"
+lastupdated: "2020-12-05"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -121,6 +121,166 @@ terraform import ibm_cis.myorg <crn>
 
 
 
+
+## `ibm_cis_cache_settings`
+{: #cis-cache}
+
+ Provides a {{site.data.keyword.cis_full_notm}} cache settings resource. This resource is associated with an IBM Cloud Internet Services instance and a CIS Domain resource. It allows to create, update, or delete cache settings of a domain of a {{site.data.keyword.cis_full_notm}} CIS instance. For more information about cache setting, refer to [CIS cache concepts](/docs/cis?topic=cis-caching-concepts).
+ {: shortdesc}
+
+### Sample Terraform code
+{: #cis-cache-sample}
+
+```
+# Change Cache Settings of the domain
+
+resource "ibm_cis_cache_settings" "cache_settings" {
+  cis_id             = data.ibm_cis.cis.id
+  domain_id          = data.ibm_cis_domain.cis_domain.domain_id
+  caching_level      = "aggressive"
+  browser_expiration = 14400
+  development_mode   = "off"
+  query_string_sort  = "off"
+  purge_all          = true
+}
+```
+
+### Input parameters
+{: #cis-cache-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`browser_expiration`|Integer|Optional|The Browser expiration settings. Valid values are `0, 30, 60, 300, 1200, 1800, 3600, 7200, 10800, 14400, 18000, 28800, 43200, 57600, 72000, 86400, 172800, 259200, 345600, 432000, 691200, 1382400, 2073600, 2678400, 5356800, 16070400, 31536000`. |
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`caching_level`|String|Optional|The cache level settings. Valid values are `basic`, `simplified`, `aggressive`.|
+|`domain_id`|String|Required|The ID of the domain to change cache settings. |
+|`development_mode`|String|Optional|The development mode enable or disable settings. Valid values are `on`, and `off`.|
+|`purge_all`|Boolean|Optional| Purge all cached files.|
+|`purge_by_urls`|List of String|Optional| Purge cached urls.|
+|`purge_by_hosts`|List of String|Optional| Purge cached hosts.|
+|`purge_by_tags`|List of String|Optional| Purge cached item that matches the tags.|
+|`query_string_sort`|String|Optional|The query string sort settings. Valid values are `on`, and `off`.|
+
+- Among all the purge actions `purge_all`, `purge_by-urls`, `purge_by_hosts`, and `purge_by_tags`, only one is allowed to give inside a resource.
+- `serve_stale_content` is not supported yet.
+{: note}
+
+### Output parameters
+{: #cis-cache-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The record ID. It is a combination of `<domain_id>,<cis_id>` attributes concatenated with `:`.|
+
+### Import
+{: #cis-cache-import}
+
+The `ibm_cis_cache_settings` resource can be imported using the ID. The ID is formed from the domain ID of the domain and the CRN concatentated using a `:` character.
+
+The domain ID and CRN will be located on the overview page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
+
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Syntax**
+
+```
+terraform import ibm_cis_cache_settings.cache_settings <domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_cache_settings.cache_settings 9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
+
+## `ibm_cis_custom_page`
+{: #cis-custom}
+
+ Provides an {{site.data.keyword.cis_full_notm}} custom page resource that is associated with an IBM CIS instance and a CIS domain resource. It allows to create, update, and delete a custom page of a domain of a CIS instance. For more information about custom page, refer to [CIS custom page](/docs/cis?topic=cis-custom-page).
+ {: shortdesc}
+
+### Sample Terraform code
+{: #cis-custom-sample}
+
+```
+# Change Custom Page of the domain
+
+resource "ibm_cis_custom_page" "custom_page" {
+	cis_id    = data.ibm_cis.cis.id
+	domain_id = data.ibm_cis_domain.cis_domain.domain_id
+	page_id   = "basic_challenge"
+	url       = "https://test.com/index.html"
+}
+```
+
+### Input parameters
+{: #cis-custom-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the domain to change custom page. |
+|`page_id`|String|Required|The custom page identifier. Valid values are `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`.|
+|`url`|String|Required| The URL for custom page settings. By default URL is set with empty string `""`. Setting a duplicate empty string throws an error.|
+
+### Output parameters
+{: #cis-custom-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+The following attributes are exported:
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`created_on`|String|Create data and time of the custom page.|
+|`description`|String|The description of the custom page.|
+|`id`|String|The record ID. It is a combination of `<domain_id>,<cis_id>` attributes concatenated with `:`.|
+|`modified_on`|String|Modified data and time of the custom page.|
+|`preview_target`|String|The custom page target.|
+|`required_tokens`|List|The custom page required token which is expected from URL page. |
+|`state`|String|The custom page state. This is set default when there is an empty URL and can customize when URL is set with some URL.|
+
+### Import
+{: #cis-custom-import}
+
+The `ibm_cis_custom_page` resource can be imported using the ID. The ID is formed from the page_id, domain ID of the domain and the CRN concatentated using a `:` character.
+
+The domain ID and CRN will be located on the overview page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
+
+Page ID is a string of the form: `basic_challenge`
+
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Syntax**
+
+```
+terraform import ibm_cis_custom_page.custom_page <page_id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_custom_page.custom_page basic_challenge:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
 
 ## `ibm_cis_domain`
 {: #cis-domain}
@@ -996,6 +1156,78 @@ The resource can be imported by using the ID.
 
 ```
 terraform import ibm_cis_rate_limit.ratelimit <rule_id>:<domain-id>:<crn>
+```
+{: pre}
+
+## `ibm_cis_routing`
+{: #cis-routing}
+
+Provides a {{site.data.keyword.cis_full_notm}} routing resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a {{site.data.keyword.cis_short}} domain resource. It allows to change routing of a domain of a {{site.data.keyword.cis_short}} instance. For more information, refer to [about {{site.data.keyword.cis_short}}](/docs/cis?topic=cis-about-ibm-cloud-internet-services-cis).
+{: shortdesc}
+
+### Sample Terraform code
+{: #routing-sample}
+
+The following example shows how you can add a routing resource to an {{site.data.keyword.cis_full_notm}} domain. 
+
+```
+# Change Routing of the domain
+
+resource "ibm_cis_routing" "routing" {
+	cis_id          = data.ibm_cis.cis.id
+	domain_id       = data.ibm_cis_domain.cis_domain.domain_id
+	smart_routing   = "on"
+}
+```
+{: codeblock}
+
+### Input parameter 
+{: #routing-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance. |
+|`domain_id`|String|Required|The ID of the domain where you want to change routing. |
+|`smart_routing`|String|Optional|The smart routing to set enable or disable. Valid values are `on` and `off`. |
+
+`tiered_caching` is not supported yet.
+{: note}
+
+### Output parameter
+{: #routing-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String| The record ID. It is a combination of `<domain_id>,<cis_id>` attributes concatenated with `:`.|
+
+### Import
+{: #routing-import}
+
+The `ibm_cis_routing` resource can be imported using the ID. The ID is formed from the domain ID of the domain and the CRN concatentated using a `:` character.
+
+The domain ID and CRN will be located on the overview page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
+
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Syntax**
+
+```
+terraform import ibm_cis_routing.routing <domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_routing.routing 9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
 ```
 {: pre}
 
