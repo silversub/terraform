@@ -997,6 +997,7 @@ Review the output parameters that you can access after your resource is created.
 | `transform_protocol` | String | The transform protocol that is used in your IPSec policy. Only the `esp` protocol is supported that uses the triple DES (3DES) encryption algorithm to encrypt your data. |
 | `vpn_connections`| List | A collection of VPN connections that use the IPSec policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
 
+
 ## `ibm_is_image`
 {: #image}
 
@@ -1009,8 +1010,10 @@ Upload, update, or delete a custom virtual server instance image. For more infor
 ```
 resource "ibm_is_image" "test_is_images" {
  name                   = "test_image"
- href                   = "test_image_path"
- operating_system       = "test_os_info"
+ href                   = "cos://us-south/buckettesttest/livecd.ubuntu-cpc.azure.vhd"
+ operating_system       = "ubuntu-16-04-amd64"
+ encrypted_data_key     = "eJxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0="
+ encryption_key         = "crn:v1:bluemix:public:kms:us-south:a/6xxxxxxxxxxxxxxx:xxxxxxx-xxxx-xxxx-xxxxxxx:key:dxxxxxx-fxxx-4xxx-9xxx-7xxxxxxxx"
 }
 ```
 
@@ -1022,8 +1025,10 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ----- |
-|`name`|String|Required|The descriptive name used to identify an image.| No |
+|`encrypted_data_key`|String|Optional|A base64-encoded, encrypted representation of the key that was used to encrypt the data for this image.| Yes |
+|`encryption_key`|String|Optional|The CRN of the Key Protect Root Key or Hyper Protect Crypto Service Root Key for this resource.| Yes |
 |`href`|String|Required| The path of an image to be uploaded.| No |
+|`name`|String|Required|The descriptive name used to identify an image.| No |
 |`operating_system`|String|Required|Description of underlying OS of an image.| No |
 |`resource_group`|String|Optional|The resource group ID for this image.| Yes |
 |`tags`|Array of strings|Optional|A list of tags that you want to your image. Tags can help you find the image more easily later.| No |
@@ -1044,6 +1049,19 @@ Review the output parameters that you can access after your resource is created.
 |`resourceGroup`|String| The resource group to which the image belongs to.|
 |`status`|String| - The status of an image such as `corrupt`, or `available`.|
 |`visibility`|String|The access scope of an image such as `private` or `public`.|
+|`encryption`|String|The type of encryption used on the image.|
+
+### Import
+{: #image-import}
+
+The `ibm_is_image` can be imported by using image ID.
+
+**Example**
+
+```
+terraform import ibm_is_image.example d7bec597-4726-451f-8a63-e62e6f19c32c
+```
+{: pre}
 
 ## `ibm_is_lb`
 {: #lb}
