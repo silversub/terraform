@@ -2599,7 +2599,7 @@ Review the output parameters that you can access after your resource is created.
 |`lifecycle_state`|String| The lifecycle state of the routing table.|
 |`resource_type`|String| The resource type.|
 |`routing_table`|String|The generated routing table ID.|
-|`routes`|String|The routes for this routing table.|
+|`routes`|String|The routes for the routing table.|
 |`routes.id`|String| The unique ID of the route.|
 |`routes.name`| String| The user-defined name of the route.|
 |`subnets`|String| The subnets to which routing table is attached.|
