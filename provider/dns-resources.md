@@ -49,7 +49,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_dns_glb`
 {: #dns-glb}
 
-Provides a private DNS Global Load Balancer resource. This allows DNS Global Load Balancer to create, update, and delete. For more information, see [Working with global load balancers](/docs/dns-svcs?topic=dns-svcs-global-load-balancers). 
+Provides a private DNS Global Load Balancer resource. This allows DNS Global Load Balancer to create, update, and delete. For more information, see [Working with global Load Balancers](/docs/dns-svcs?topic=dns-svcs-global-load-balancers). 
 {: shortdesc}
 
 ### Sample Terraform code
@@ -277,7 +277,7 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String|The unique ID of the private DNS zone. The ID is composed of `<instance_id>/<glb_pool_id>`.| 
 |`pool_id`| The pool ID.|
 |`modified_on`|Timestamp|The time (modified On) of the DNS Global Load Balancer pool.|
-|`health`| The status of DNS GLB pool's health. Possible values are `DOWN`, `UP`, `DEGRADED`|
+|`health`| The status of DNS GLB pool's health. Possible values are `DOWN`, `UP`, `DEGRADED`.|
 |`origins.health`| Whether the health is `ture` or `false`. |
 |`origins.health_failure_reason`| The reason for health check failure.|
 
