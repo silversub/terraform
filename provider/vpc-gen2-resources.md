@@ -307,10 +307,11 @@ resource "ibm_is_instance" "testacc_instance" {
   zone = "us-south-1"
   keys = [ibm_is_ssh_key.testacc_sshkey.id]
 
-  //User can configure timeouts
+ //User can configure timeouts
   timeouts {
-    create = "90m"
-    delete = "30m"
+    create = "15m"
+    update = "15m"
+    delete = "15m"
   }
 }
 ```
@@ -388,8 +389,9 @@ resource "ibm_is_instance" "testacc_instance" {
 
   //User can configure timeouts
   timeouts {
-    create = "90m"
-    delete = "30m"
+    create = "15m"
+    update = "15m"
+    delete = "15m"
   }
 }
 ```
@@ -415,11 +417,13 @@ Review the input parameters that you can specify for your resource.
 |`network_interface.primary_ipv4_address`|Strings|Optional|The IPV4 address of the interface.| Yes |
 |`network_interfaces.subnet`|String|Required|The ID of the subnet.| No |
 |`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
+|`network_interfaces.allow_ip_spoofing`|Bool|Optional|Indicates whether IP spoofing is allowed on the interface. If `false`, IP spoofing is prevented on the interface. If `true`, IP spoofing is allowed on the interface.| No |
 |`primary_network_interface`|List|Required|A nested block describes the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
 |`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
 |`primary_network_interface.primary_ipv4_address`|Strings|Optional|The IPV4 address of the interface.| Yes |
 |`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
 |`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
+|`primary_network_interface.allow_ip_spoofing`|Bool|Optional|Indicates whether IP spoofing is allowed on the interface. If `false`, IP spoofing is prevented on the interface. If `true`, IP spoofing is allowed on the interface.| No |
 |`profile`|String|Required|The name of the profile that you want to use for your instance. To list supported profiles, run `ibmcloud is instance-profiles`.| Yes |
 |`resource_group`|String|Optional|The ID of the resource group where you want to create the instance.| Yes |
 |`tags`|Array of strings|Optional|A list of tags that you want to add to your instance. Tags can help you find your instance more easily later.| No |
@@ -454,12 +458,14 @@ Review the output parameters that you can access after your resource is created.
 |`primary_network_interface.subnet`|String|The ID of the subnet that the primary network interface is attached to.
 |`primary_network_interface.security_groups`|List of strings|A list of security groups that are used in the primary network interface.|
 |`primary_network_interface.primary_ipv4_address`|String|The primary IPv4 address.|
+|`primary_network_interface.allow_ip_spoofing`|String|Indicates whether IP spoofing is allowed on the interface.|
 |`network_interfaces`|List of more network interfaces|A list of more network interfaces that are attached to the instance.|
 |`network_interfaces.id`|String|The ID of the network interface.|
 |`network_interfaces.name`|String|The name of the network interface.|
 |`network_interfaces.subnet`|String|The ID of the subnet.|
 |`network_interfaces.security_groups`|List of strings|A list of security groups that are used in the network interface.|
 |`network_interfaces.primary_ipv4_address`|String|The primary IPv4 address.|
+|`network_interface.allow_ip_spoofing`|String|Indicates whether IP spoofing is allowed on the interface.|
 |`boot_volume`|List of boot volumes|A list of boot volumes that the instance uses.|
 |`boot_volume.name`|String|The name of the boot volume.|
 |`boot_volume.size`|Integer|The capacity of the volume in gigabytes.|
