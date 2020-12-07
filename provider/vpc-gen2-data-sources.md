@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-19"
+lastupdated: "2020-12-07"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -1347,6 +1347,178 @@ Review the output parameters that you can access after you retrieved your data s
 |`subnets.available_ipv4_address_count`|Integer|The number of IPv4 addresses in the subnet that are available for you to be used.|
 |`status`|String|The status of the VPC.|
 |`tags`|Array|Tags associated with the instance.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+## `ibm_is_vpc_default_routing_table`
+{: #vpc-default-routing-tableds}
+
+Retrieve information of an existing {{site.data.keyword.cloud_notm}} infrastructure VPC default routing table. For more information, see [routing tables for VPC](/docs/vpc?topic=vpc-list-routing-tables-for-vpc).
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-default-routing-table-dssample}
+
+```
+resource "ibm_is_vpc" "test_vpc" {
+  name = "test-vpc"
+}
+
+data "ibm_is_vpc_default_routing_table" "ds_default_routing_table" {
+	vpc = ibm_is_vpc.test_vpc.id
+}
+
+```
+
+### Input parameters
+{: #vpc-default-routing-table-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`vpc`|String|Required|The ID of the VPC.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #vpc-default-routing-table-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`created_at`|Timestamp| The date and time that the default routing table was created.|
+|`href`|String| The routing table URL.|
+|`id`|String| The unique ID for the default routing table. |
+|`is_default`|String| Indicates the default routing table for this VPC.|
+|`name`|String| The name for the default routing table.|
+|`lifecycle_state`|String| The lifecycle state of the routing table.|
+|`resource_type`|String| The resource type.|
+|`route_direct_link_ingress`|Boolean| Indicates the routing table is used to route traffic that originates from Direct Link to the VPC.|
+|`route_transit_gateway_ingress`|Boolean|Indicates the routing table is used to route traffic that originates from Transit Gateway to the VPC.|
+|`route_vpc_zone_ingress`|Boolean|Indicates the routing table is used to route traffic that originates from subnets in other zones in the VPC. |
+|`routes`|String|The routes for the default routing table.|
+|`routes.id`|String| The unique ID of the route.|
+|`routes.name`| String| The name of the route.|
+|`subnets`|String| The subnets to which routing table is attached.|
+|`subnets.id`|String| The unique ID of the subnet.|
+|`subnets.name`|String| The name of the subnet.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+## `ibm_is_vpc_routing_table_routes`
+{: #vpc-routing-tableds}
+
+Retrieve information of an existing {{site.data.keyword.cloud_notm}} infrastructure VPC default routing table. For more information, see [routing tables for VPC](/docs/vpc?topic=vpc-list-routing-tables-for-vpc).
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-routing-table-dssample}
+
+```
+resource "ibm_is_vpc" "test_vpc" {
+  name = "test-vpc"
+}
+
+resource "ibm_is_vpc_routing_table" "test_routing_table" {
+  name   = "test-routing-table"
+  vpc    = ibm_is_vpc.test_vpc.id
+}
+
+
+data "ibm_is_vpc_routing_table_routes" "ds_routing_table_routes" {
+	vpc = ibm_is_vpc.test_vpc.id
+	routing_table = ibm_is_vpc_routing_tables.test_routing_table.routing_table
+}
+```
+
+### Input parameters
+{: #vpc-routing-table-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`vpc`|String|Required|The ID of the VPC.|
+|`routing_table`|String|Required|The ID of the routing table.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #vpc-routing-table-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`routing_table_routes`|List| List of all the routing table in a VPC.|
+|`routing_table_routes.name`|String| The name for the default routing table.|
+|`routing_table_routes.route_id`|String| The unique ID for the route.|
+|`routing_table_routes.lifecycle_state`|String| The lifecycle state of the route.|
+|`routing_table_routes.href`|String| The routing table URL.|
+|`routing_table_routes.created_at`|Timestamp| The date and time that the route was created.|
+|`routing_table_routes.action`|String| The action to perform with a packet matching the route.|
+|`routing_table_routes.destination`|String| The destination of the route.|
+|`routing_table_routes.next_hop`|String| The next hop address of the route. |
+|`routing_table_routes.zone`|String| The zone name of the route. |
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+## `ibm_is_vpc_routing_tables`
+{: #vpc-routing-tablesds}
+
+Retrieve information of an existing {{site.data.keyword.cloud_notm}} infrastructure VPC default routing tables. For more information, see [routing tables for VPC](/docs/vpc?topic=vpc-list-routing-tables-for-vpc).
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-routing-tables-dssample}
+
+```
+resource "ibm_is_vpc" "test_vpc" {
+  name = "test-vpc"
+}
+
+data "ibm_is_vpc_routing_tables" "ds_routing_tables" {
+	vpc = ibm_is_vpc.test_vpc.id
+}
+```
+
+### Input parameters
+{: #vpc-routing-table-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`vpc`|String|Required|The ID of the VPC.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #vpc-routing-table-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`routing_tables`|List| List of all the routing tables in a VPC.|
+|`routing_tables.name`|String| The name for the default routing tables.|
+|`routing_tables.route_table`|String| The unique ID for the routing table.|
+|`routing_tables.lifecycle_state`|String| The lifecycle state of the routing table.|
+|`routing_tables.href`|String| The routing table URL.|
+|`routing_tables.resource_type`|String| The type of resource referenced.|
+|`routing_tables.created_at`|Timestamp| The date and time the routing table was created.|
+|`routing_tables.is_default`|String| Indicates whether the default routing table.|
+|`routing_tables.route_direct_link_ingress`|String| Indicates if the routing table is used to route traffic that originates from Direct Link to the VPC.|
+|`routing_tables.route_transit_gateway_ingress`|String| Indicates if the routing table is used to route traffic that originates from Transit Gateway to the VPC.|
+|`routing_tables.route_vpc_zone_ingress`|String| Indicates if the routing table is used to route traffic that originates from subnets in other zones of the VPC.|
+|`routes`|String|The routes for the routing table.|
+|`routes.id`|String| The unique ID of the route.|
+|`routes.name`| String| The user-defined name of the route.|
+|`subnets`|String| The subnets to which routing table is attached.|
+|`subnets.id`|String| The unique ID of the subnet.|
+|`subnets.name`|String| The user-defined name of the subnet.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-10"
+lastupdated: "2020-12-07"
 
 keywords: terraform provider plugin, terraform dns service, terraform dns, terraform private dns
 
@@ -41,6 +41,163 @@ You can reference the output parameters for each resource in other resources or 
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
+
+## `ibm_dns_glbs`
+{: #dns-glbs-ds}
+
+Retrieve the details of an existing {{site.data.keyword.cloud_notm}} infrastructure private DNS Global Load Balancers as a read-only data source. For more information, see [Working with global Load Balancers](/docs/dns-svcs?topic=dns-svcs-global-load-balancers).
+{: shortdesc}
+
+### Sample Terraform code
+{: #dns-glbs-ds-sample}
+
+```
+data "ibm_dns_glbs" "test1" {
+  instance_id = ibm_resource_instance.test-pdns-instance.guid
+  zone_id     = ibm_dns_zone.test-pdns-zone.zone_id
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #dns-glbs-ds-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`instance_id`|String|Required|The GUID of the private DNS service instance.|
+|`zone_id`|String|Required|The ID of the private DNS zone.|
+
+### Output parameters
+{: #dns-glbs-ds-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`dns_glbs`|List|List of all private DNS Load balancers in the {{site.data.keyword.cloud_notm}} infrastructure.|
+|`dns_glbs.name`|String|The name of the DNS Load balancers.|
+|`dns_glbs.description`|String|The descriptive text of the DNS Load balancers.|
+|`dns_glbs.ttl`|String| The time to live in second.|
+|`dns_glbs.fallback_pool`|String|The pool ID to use when all other pools are detected as unhealthy.|
+|`dns_glbs.default_pools`|String|TA list of pool IDs ordered by their failover priority.|
+|`dns_glbs.az_pools`|List|Map availability zones to the pool ID's.|
+|`dns_glbs.az_pools.availability_zone`|String|The availability zone.|
+|`dns_glbs.az_pools.pools`|String|List of Load Balancer pools.|
+|`created_on`|Timestamp|The date and time when the Load Balancer was created.|
+|`modified_on`|Timestamp|The date and time when the Load Balancer was modified.|
+|`glb_id`|String|The Load Balancer ID.|
+|`health`|String|Healthy state of the Load Balancer. Possible values are `DOWN`, `UP`, or `DEGRADED`.|
+
+## `ibm_dns_glb_monitors`
+{: #dns-glb-monitors-ds}
+
+Retrieve the details of an existing {{site.data.keyword.cloud_notm}} infrastructure private DNS Global Load Balancers monitors as a read-only data source. For more information, see [Viewing Global Load Balancer events](/docs/dns-svcs?topic=dns-svcs-health-check-events).
+{: shortdesc}
+
+### Sample Terraform code
+{: #dns-glb-monitors-ds-sample}
+
+```
+data "ibm_dns_glb_monitors" "ds_pdns_glb_monitors" {
+  instance_id = "resource_instance_guid"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #dns-glb-monitors-ds-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`instance_id`|String|Required|The GUID of the private DNS service instance.|
+
+### Output parameters
+{: #dns-glb-monitors-ds-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`dns_glb_monitors`|List|List of all private DNS Load balancer monitors in the {{site.data.keyword.cloud_notm}} infrastructure.|
+|`dns_glb_monitors.name`|String|The name of the DNS Load balancer monitor.|
+|`dns_glb_monitors.description`|String|The descriptive text of the DNS Load balancer montior.|
+|`dns_glb_monitors.type`|String| The protocol to use for the health check. Currently supported protocols are `HTTP`, `HTTPS`, and `TCP`.|
+|`dns_glb_monitors.port`|String| Port number to connect to for the health check. Required for TCP checks, HTTP, and HTTPS checks.|
+|`dns_glb_monitors.interval`|String|The interval between each health check.|
+|`dns_glb_monitors.retries`|String |The number of retries to attempt in case of a timeout before marking the origin as unhealthy.|
+|`dns_glb_monitors.timeout`|String|The timeout (in seconds) before marking the health check as failed.|
+|`dns_glb_monitors.method`|String|The method to use for the health check applicable to HTTP, HTTPS based checks, the default value is `GET`.|
+|`dns_glb_monitors.path`|String|The endpoint path to health check against. This parameter is only valid for HTTP and HTTPS monitors.|
+|`dns_glb_monitors.headers`|String|The HTTP request headers to send in the health check.|
+|`dns_glb_monitors.headers.name`|String|The name of the HTTP request header.|
+|`dns_glb_monitors.headers.value`|String|The value of the HTTP request header.|
+|`dns_glb_monitors.allow_insecure`|String|Do not validate the certificate when monitor use HTTPS|
+|`dns_glb_monitors.expected_codes`|String|The expected HTTP response code or code range of the health check.|
+|`dns_glb_monitors.expected_body`|String|A case insensitive substring to look for in the response body.|
+|`dns_glb_monitors.monitor_id`|String|The monitor ID.|
+
+## `ibm_dns_glb_pools`
+{: #dns-glb-pools-ds}
+
+Retrieve the details of an existing {{site.data.keyword.cloud_notm}} infrastructure private DNS Global Load Balancers pools as a read-only data source. For more information, see [Viewing Global Load Balancer events](/docs/dns-svcs?topic=dns-svcs-health-check-events).
+{: shortdesc}
+
+### Sample Terraform code
+{: #dns-glb-pools-ds-sample}
+
+```
+data "ibm_dns_glb_pools" "ds_pdns_glb_pools" {
+  instance_id = "resource_instance_guid"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #dns-glb-pools-ds-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+| Input parameter | Data type | Required / optional | Description |
+| ------------- |-------------| ----- | -------------- |
+|`instance_id`|String|Required|The resource GUID of the private DNS service on which zones are created.|
+
+### Output parameters
+{: #dns-glb-pools-ds-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+| Output parameter | Data type | Description |
+| ------------- |-------------| -------------- |
+|`dns_glb_pools`|List|List of all private DNS Load balancer pools in the {{site.data.keyword.cloud_notm}} infrastructure.|
+|`dns_glb_pools.name`|String|The name of the DNS Load balancer pool.|
+|`dns_glb_pools.description`|String|The descriptive text of the DNS Load balancer pool.|
+|`dns_glb_pools.enable`|String| Whether the Load Balancer pool is enabled.|
+|`dns_glb_pools.healthy_origins_threshold`|String| The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls less than this number, the pool will be marked unhealthy and will failover to the next available pool.|
+|`dns_glb_pools.origins`|List|The list of origins within the pool. Traffic directed to the pool is balanced across all currently healthy origins, provided the pool itself is healthy.|
+|`dns_glb_pools.origins.name`|String|The name of the origin server.|
+|`dns_glb_pools.origins.description`|String|The description of the origin server.|
+|`dns_glb_pools.origins.address`|String|The address of the origin server. It can be a hostname or an IP address.|
+|`dns_glb_pools.origins.enabled`|String|Whether the origin server is enabled.|
+|`dns_glb_pools.origins.health`|String|Whether the health is `true` or `false`.|
+|`dns_glb_pools.origins.health_failure_reason`|String|The reason for the health check failure.|
+|`dns_glb_pools.monitor`|String|The ID of the Load Balancer monitor to be associated to this pool.|
+|`dns_glb_pools.notification_channel`|String|The webhook URL as a notification channel.|
+|`dns_glb_pools.healthcheck_region`|String|Health check region of VSIs. Allowable values are `us-south`,`us-east`, `eu-gb`, `eu-du`, `au-syd`, `jp-tok`.|
+|`dns_glb_pools.healthcheck_subnets`|String|Health check subnet CRN of VSIs.|
+|`dns_glb_pools.pool_id`|String|The pool ID.|
+|`dns_glb_pools.created_on`|Timestamp|The time (created On) of the DNS Global Load Balancer pool|
+|`dns_glb_pools.modified_on`|Timestamp|he time (modified On) of the DNS Global Load Balancer pool.|
+|`dns_glb_pools.health`|String|The status of DNS GLB pool's health. Possible values are `DOWN`, `UP`, `DEGRADED`.|
 
 ## `ibm_dns_permitted_networks`
 {: #dns-permitted-network}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-09-25"
+lastupdated: "2020-12-07"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -33,7 +33,6 @@ subcollection: terraform
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
-
 
 # Power Systems resources
 {: #power-vsi}
@@ -208,7 +207,6 @@ terraform import ibm_pi_instance.example d7bec597-4726-451f-8453-e62e6f19c32c/ce
 
 
 
-
 ## `ibm_pi_key`
 {: #ssh-key}
 
@@ -271,7 +269,6 @@ The resource can be imported by using the ID that is composed of `<power_instanc
 terraform import ibm_pi_key.example <power_instance_id>/<key_name>
 ```
 {: pre}
-
 
 
 
@@ -351,11 +348,10 @@ terraform import ibm_pi_network.example <power_instance_id>/<network_id>
 
 
 
-
 ## `ibm_pi_network_port`
 {: #pi-networkport}
 
-Creates or updates network port in the Power Virtual Server Cloud.
+Creates or updates network port in the Power Virtual Server Cloud. For more information, see [about Power Systems](/docs/power-iaas?topic=power-iaas-about-virtual-server).
 {: shortdesc}
 
 ### Sample Terraform code
@@ -394,6 +390,7 @@ Review the output parameters that you can access after your resource is created.
 |`macaddress`|String|The MAC address of the port.|
 |`status`|String|The status of the port.|
 |`portid`|String|The ID of the port.|
+|`public_ip`|String| The public IP associated with the port. |
 
 ### Timeouts
 {: #pi-network-timeout}

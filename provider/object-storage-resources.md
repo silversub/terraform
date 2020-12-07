@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-19"
+lastupdated: "2020-12-07"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cloud object storage bucket, terraform get object storage resources
 
@@ -183,8 +183,14 @@ Review the input parameters that you can specify for your resource.
 | `region_location` | String | Optional | The location of a regional bucket. Supported values are `au-syd`, `eu-de`, `eu-gb`, `jp-tok`, `us-east`, `us-south`. If you set this parameter, do not set `single_site_location` or `cross_region_location` at the same time.|
 | `single_site_location` | String | Optional | The location for a single site bucket. Supported values are: `ams03`, `che01`, `hkg02`, `mel01`, `mex01`, `mil01`, `mon01`, `osl01`, `par01`, `sjc04`, `sao01`, `seo01`, `sng01`, and `tor01`. If you set this parameter, do not set `region_location` or `cross_region_location` at the same time.|
 | `storage_class` | String | Required | The storage class that you want to use for the bucket. Supported values are `standard`, `vault`, `cold`, `flex`, and `smart`. For more information, about storage classes, see [Use storage classes](/docs/cloud-object-storage?topic=cloud-object-storage-classes).|
+| `archive_rule` | List | Required | Nested archive_rule block has following structure. |
+| `archive_rule.rule_id` | String (Computed) | Optional | The unique ID for the rule. Archive rules allow you to set a specific time frame after the objects transition to the archive. |
+| `archive_rule.enable` | Bool | Required | Specifies archive rule status either `enable` or `disable` for a bucket. |
+| `archive_rule.days` | String | Required | Specifies the number of days when the specific rule action takes effect. |
+| `archive_rule.type` | String | Required | TSpecifies the storage class or archive type to which you want the object to transition. Allowed values are `Glacier` or `Accelerated`. |
 
 You need to set `cross_region_location`, `region_location`, or `single_site_location` to specify that location where you want to create the bucket. 
+Archive are available in certain regions only. For more information, see [Integrated Services](/docs/cloud-object-storage/basics?topic=cloud-object-storage-service-availability)
 {: note}
 
 ### Output parameters
@@ -210,8 +216,14 @@ The `ibm_cos_bucket` resource can be imported by using the `id`. The ID is forme
 
 id = `$CRN:meta:$buckettype:$bucketlocation`
 
+**Syntax**
+
 ```
 $ terraform import ibm_cos_bucket.mybucket <crn>
+```
 
+**Example**
+
+```
 $ terraform import ibm_cos_bucket.mybucket crn:v1:bluemix:public:cloud-object-storage:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3:bucket:mybucketname:meta:crl:eu:public
 ```
