@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-23" 
+lastupdated: "2020-12-07" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -2530,6 +2530,141 @@ The resource is set up with the following timeouts:
 - **create**: The creation of the route is considered `failed` when no response is received for 10 minutes. 
 - **delete**: The deletion of the route is considered `failed` when no response is received for 10 minutes. 
 
+
+## `ibm_is_vpc_routing_table`
+{: #vpc-routing-table}
+
+This resource allows VPC routing tables to create, update, or delete. For more information, about VPC routes, see [routing tables for VPC](/docs/vpc?topic=vpc-list-routing-tables-for-vpc).
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-routing-table-sample}
+
+```
+resource "ibm_is_vpc" "testacc_vpc" {
+  name = "testvpc"
+}
+resource "ibm_is_vpc_routing_table" "test_ibm_is_vpc_routing_table" {
+	vpc = ibm_is_vpc.testacc_vpc.id
+	name = "routTabletest"
+	route_direct_link_ingress = true
+	route_transit_gateway_ingress = false
+        route_vpc_zone_ingress = false
+}
+```
+
+### Input parameters
+{: #vpc-routing-table-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------ |
+|`name`|String|Optional|The routing table name.| No |
+|`route_direct_link_ingress`|Boolean|Optional| If set to `true`, the routing table is used to route traffic that originates from Direct Link to the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`. | No |
+|`route_transit_gateway_ingress`|Boolena|Optional|If set to `true`, the routing table is used to route traffic that originates from Transit Gateway to the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`.| No |
+|`route_vpc_zone_ingress`|Boolean|Optional|If set to true, the routing table is used to route traffic that originates from subnets in other zones in the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`.| No |
+|`vpc`|String|Required|The VPC ID. |  Yes |
+
+### Output parameters
+{: #vpc-routing-table-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`href`|String| The routing table URL.|
+|`id`|String|The routing table ID. The ID is composed of `<vpc_id>/<vpc_route_table_id>` of the VPC route. |
+|`is_default`|String| Indicates the default routing table for this VPC.|
+|`lifecycle_state`|String| The lifecycle state of the routing table.|
+|`resource_type`|String| The resource type.|
+|`routing_table`|String|The generated routing table ID.|
+|`routes`|String|The routes for this routing table.|
+|`routes.id`|String| The unique ID of the route.|
+|`routes.name`| String| The user-defined name of the route.|
+|`subnets`|String| The subnets to which routing table is attached.|
+|`subnets.id`|String| The unique ID of the subnet.|
+|`subnets.name`|String| The user-defined name of the subnet.|
+
+
+### Import
+{: #vpc-routing-table-import}
+
+The `ibm_is_vpc_routing_table` can be imported by using VPC ID and VPC Route table ID.
+
+**Example**
+
+```
+terraform import ibm_is_vpc_routing_table.example 56738c92-4631-4eb5-8938-8af9211a6ea4/fc2667e0-9e6f-4993-a0fd-cabab477c4d1
+```
+{: pre}
+
+
+## `ibm_is_vpc_routing_table_route`
+{: #vpc-routing-table-route}
+
+This resource allows VPC routing tables to create, update, or delete. For more information, about VPC routes, see [about routing tables and routes](/docs/vpc?topic=vpc-about-custom-routes).
+{: shortdesc}
+
+
+### Sample Terraform code
+{: #vpc-routing-table-route-sample}
+
+```
+resource "ibm_is_vpc_routing_table_route" "test_ibm_is_vpc_routing_table_route" {
+  vpc = ""
+  routing_table = ""
+  zone = "us-south-1"
+  name = "custom-route-2"
+  destination = "192.168.4.0/24"
+  action = "deliver"
+  next_hop    = "10.0.0.4"
+}
+```
+
+### Input parameters
+{: #vpc-routing-table-route-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------ |
+|`action`|String|Optional|The action to perform with a packet matching the route.| No |
+|`destination`|String|Required| The destination of the route. |  Yes |
+|`name`|String|Optional|The user-defined name of the route. If unspecified, the name will be a hyphenated list of randomly selected words. You need to provide unique name within the VPC routing table the route resides in.| No |
+|`next_hop`|String|Optional| The next hop of the route. |  No |
+|`routing_table`|String|Required|The routing table ID.| No |
+|`vpc`|String|Required| The VPC ID.| Yes |
+|`zone`|String|Required| Name of the zone. |  Yes |
+
+### Output parameters
+{: #vpc-routing-table-route-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`href`|String| The routing table URL.|
+|`id`|String|The routing table ID. The ID is composed of `<vpc_route_table_id>/<vpc_route_table_route_id>`. |
+|`is_default`|String| Indicates the default routing table for this VPC.|
+|`lifecycle_state`|String| The lifecycle state of the route.|
+|`resource_type`|String| The resource type.|
+
+### Import
+{: #vpc-routing-table-route-import}
+
+The `ibm_is_vpc_routing_table_route` can be imported by using VPC ID, VPC Route table ID, and VPC Route table Route ID.
+
+**Example**
+
+```
+terraform import ibm_is_vpc_routing_table_route.example 56738c92-4631-4eb5-8938-8af9211a6ea4/4993-a0fd-cabab477c4d1-8af9211a6ea4/fc2667e0-9e6f-4993-a0fd-cabab477c4d1
+```
+{: pre}
 
 ## `ibm_is_vpn_gateway`
 {: #vpn-gateway}
