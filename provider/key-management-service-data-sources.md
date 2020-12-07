@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-01"
+lastupdated: "2020-12-07"
 
 keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, hpcs
 
@@ -90,6 +90,21 @@ Review the output parameters that are exported.
 |`keys.id`|String|The unique ID for the key. |
 |`keys.crn`|String|The CRN of the key. |
 |`keys.standard_key`|String|Set the flag `true` for standard key, and `false` for root key. Default value is **false**.|
+|`keys.policy`|String|The policies associated with the key.|
+|`keys.policy.rotation`|String|The key rotation time interval in months, with a minimum of 1, and a maximum of 12.|
+|`keys.policy.rotation.created_by`|String|The unique ID for the resource that created the policy.|
+|`keys.policy.rotation.creation_date`|Timestamp|The date the policy was created. The date format follows RFC 3339.|
+|`keys.policy.rotation.id`|String|The v4 UUID used to uniquely identify the policy resource, as specified by RFC 4122.|
+|`keys.policy.rotation.interval_month`|String|The key rotation time interval in months.|
+|`keys.policy.rotation.last_update_date`|Timestamp| The date when the policy last replaced or modified. The date format follows RFC 3339.|
+|`keys.policy.rotation.updated_by`|String|The unique ID for the resource that updated the policy.|
+|`keys.policy.dual_auth_delete`|String|The data associated with the dual authorization delete policy.|
+|`keys.policy.dual_auth_delete.created_by`|String|The unique ID for the resource that created the policy.|
+|`keys.policy.dual_auth_delete.creation_date`|Timestamp|The date the policy was created. The date format follows RFC 3339.|
+|`keys.policy.dual_auth_delete.id`|String|The v4 UUID used to uniquely identify the policy resource, as specified by RFC 4122.|
+|`keys.policy.dual_auth_delete.enabled`|String|If set to `true`, Key Protect enables a dual authorization policy on the key.|
+|`keys.policy.dual_auth_delete.last_update_date`|Timestamp| The date when the policy last replaced or modified. The date format follows RFC 3339.|
+|`keys.policy.dual_auth_delete.updated_by`|String|The unique ID for the resource that updated the policy.|
 
 ## `ibm_kp_key`
 {: #kp-key}

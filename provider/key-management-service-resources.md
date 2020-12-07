@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-01"
+lastupdated: "2020-12-07"
 
 keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, HPCS
 
@@ -116,6 +116,56 @@ Complete the following steps to provision an HPCS, initialize the service and Ke
 }
 ```
 
+### Example usage to provision Key Management Service Key with Key Policies
+{: #kms-key-policies-sample}
+
+Set policies for a key, for an automatic rotation policy or a dual authorization policy to protect against the accidental deletion of keys.
+{: shortdesc}
+
+```
+resource "ibm_resource_instance" "kp_instance" {
+  name     = "test_kp"
+  service  = "kms"
+  plan     = "tiered-pricing"
+  location = "us-south"
+}
+resource "ibm_kms_key" "key" {
+  instance_id = ibm_resource_instance.kp_instance.guid
+  key_name       = "key"
+  standard_key   = false
+  expiration_date = "2020-12-05T15:43:46Z"
+  policies {
+    rotation {
+      interval_month = 3
+    }
+    dual_auth_delete {
+      enabled = false
+    }
+  }
+}
+```
+
+### Example usage to provision Key Management Service and Import a Key
+{: #kms-import-key-sample}
+
+Provision Key Management Service and import a key by using `ibm_resource_instance` and `ibm_kms_key`.
+: shortdesc}
+
+```
+resource "ibm_resource_instance" "kp_instance" {
+  name     = "test_kp"
+  service  = "kms"
+  plan     = "tiered-pricing"
+  location = "us-south"
+}
+resource "ibm_kms_key" "key" {
+  instance_id = ibm_resource_instance.kp_instance.guid
+  key_name       = "key"
+  standard_key   = false
+  payload = "aW1wb3J0ZWQucGF5bG9hZA=="
+}
+```
+
 ### Input parameters
 {: #kms-key-input}
 
@@ -132,10 +182,13 @@ Review the input parameters that you can specify for your resource.
 |`iv_value`|String|Optional| Used with import tokens. The initialization vector (IV) that is generated when you encrypt a nonce. The IV value is required to decrypt the encrypted nonce value that you provide when you make a key import request to the service. To generate an IV, encrypt the nonce by running `ibmcloud kp import-token encrypt-nonce`. Only for imported root key.|  Yes |
 |`key_name`|String|Required|The name of the key.| Yes |
 |`payload`|String|Optional| The base64 encoded key that you want to store and manage in the service. To import an existing key, provide a 256-bit key. To generate a new key, omit this parameter.| Yes |
-|`standard_key`|Boolean|Optional|Set flag `true` for standard key, and `false` for root key. Default value is **false**.| Yes |
+|`standard_key`|Bool|Optional|Set flag `true` for standard key, and `false` for root key. Default value is **false**.| Yes |
+|`policies`|List|Optional|Set policies for a key, for an automatic rotation policy or a dual authorization policy to protect against the accidental deletion of keys. Policies follow the following structure.| No |
+|`policies.rotation`|List|Optional|Specifies the key rotation time interval in months, with a minimum of 1, and a maximum of 12. | No |
+|`policies.rotation.interval_month`|Integer|Required|Specifies the key rotation time interval in months. CONSTRAINTS: 1 ≤ value ≤ 12 **NOTE:** Rotation policy cannot be set for standard key and imported key. Once the rotation policy is set, it cannot be unset or removed by using Terraform. | No |
+|`policies.dual_auth_delete`|List|Required|Data associated with the dual authorization delete policy.| No |
+|`policies.dual_auth_delete.enabled`|Bool|Required|If set to `true`, Key Protect enables a dual authorization policy on a single key. **NOTE:** Once the dual authorization policy is set on the key, it cannot be reverted. A key with dual authorization policy enabled cannot be destroyed by using Terraform.| No |
 
-You need to set `terraform destroy` a force_delete flag after the provisioning keys is initiated. Later, a `terraform apply` is used before the `terraform destroy` for force_delete flag to take effect.
-{: note}
 
 ### Output parameters
 {: #kms-key-output}
@@ -150,11 +203,30 @@ Review the output parameters that you can access after your resource is created.
 |`status`|String|The status of the key.|
 |`key_id`|String|The ID of the key.|
 |`type`|String|The type of the key KMS or HPCS.|
+|`policy`|String|The policies associated with the key.|
+|`policy.rotation`|String|The key rotation time interval in months, with a minimum of 1, and a maximum of 12.|
+|`policy.rotation.created_by`|String|The unique ID for the resource that created the policy.|
+|`policy.rotation.creation_date`|Timestamp|The date the policy was created. The date format follows RFC 3339.|
+|`policy.rotation.crn`|String|The Cloud Resource Name (CRN) that uniquely identifies your cloud resources.|
+|`policy.rotation.id`|String|The v4 UUID used to uniquely identify the policy resource, as specified by RFC 4122.|
+|`policy.rotation.interval_month`|String|The key rotation time interval in months.|
+|`policy.rotation.last_update_date`|Timestamp| The date when the policy last replaced or modified. The date format follows RFC 3339.|
+|`policy.rotation.updated_by`|String|The unique ID for the resource that updated the policy.|
+|`policy.dual_auth_delete`|String|The data associated with the dual authorization delete policy.|
+|`policy.dual_auth_delete.created_by`|String|The unique ID for the resource that created the policy.|
+|`policy.dual_auth_delete.creation_date`|Timestamp|The date the policy was created. The date format follows RFC 3339.|
+|`policy.dual_auth_delete.crn`|String|The Cloud Resource Name (CRN) that uniquely identifies your cloud resources.|
+|`policy.dual_auth_delete.id`|String|The v4 UUID used to uniquely identify the policy resource, as specified by RFC 4122.|
+|`policy.dual_auth_delete.enabled`|String|If set to `true`, Key Protect enables a dual authorization policy on the key.|
+|`policy.dual_auth_delete.last_update_date`|Timestamp| The date when the policy last replaced or modified. The date format follows RFC 3339.|
+|`policy.dual_auth_delete.updated_by`|String|The unique ID for the resource that updated the policy.|
 
 ### Import
 {: #kms-key-import}
 
 `ibm_kms_key` can be imported by using the `id` and `crn`.
+
+**Example**
 
 ```
 terraform import ibm_kms_key.crn crn:v1:bluemix:public:kms:us-south:a/faf6addbf6bf4768hhhhe342a5bdd702:05f5bf91-ec66-462f-80eb-8yyui138a315:key:52448f62-9272-4d29-a515-15019e3e5asd

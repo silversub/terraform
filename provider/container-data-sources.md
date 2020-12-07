@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-12-07"
  
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -34,7 +34,6 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Kubernetes Service data sources
 {: #container-data-sources}
 
@@ -42,7 +41,6 @@ You can reference the output parameters for each resource in other resources or 
 
 Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
-
 
 
 ## `ibm_container_addons`
@@ -263,6 +261,7 @@ Review the input parameters that you can specify for your data source.
 | `alb_type` | String | Optional | Filters the  `albs` based on type. The valid values are `private`, `public`, and `all`. The default value is `all`. |
 | `cluster_name_id` | String | Deprecated | The name or ID of the cluster that you want to retrieve. |
 |`name` | String | Optional | The name or ID of the cluster.|
+|`list_bounded_services`|Bool|Optional|If set to `false` services which are bound to the cluster are not going to be listed. The default value is `true`.|
 | `resource_group_id` | String | Optional | The ID of the resource group where your cluster is provisioned into. To list resource groups, run `ibmcloud resource groups` or use the `ibm_resource_group` data source.|
 
 ### Output parameters
