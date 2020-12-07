@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-10"
+lastupdated: "2020-12-07"
 
 keywords: terraform provider plugin, terraform dns, terraform vpc dns, terraform private dns
 
@@ -44,6 +44,80 @@ For more information, about IBM Cloud DNS service, see [About DNS services](/doc
 
 Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
 {: important}
+
+## `ibm_dns_glb`
+{: #dns-glb}
+
+Provides a private DNS Global Load Balancer resource. This allows DNS Global Load Balancer to create, update, and delete. For more information, see [Working with global load balancers](/docs/dns-svcs?topic=dns-svcs-global-load-balancers). 
+{: shortdesc}
+
+### Sample Terraform code
+{: #dns-glb-sample}
+
+```
+resource "ibm_dns_glb" "test_pdns_glb" {
+  depends_on    = [ibm_dns_glb_pool.test_pdns_glb_pool]
+  name          = "testglb"
+  instance_id   = ibm_resource_instance.test_pdns_instance.guid
+  zone_id       = ibm_dns_zone.test_pdns_glb_zone.zone_id
+  description   = "new glb"
+  ttl           = 120
+  fallback_pool = ibm_dns_glb_pool.test_pdns_glb_pool.pool_id
+  default_pools = [ibm_dns_glb_pool.test_pdns_glb_pool.pool_id]
+  az_pools {
+    availability_zone = "us-south-1"
+    pools             = [ibm_dns_glb_pool.test_pdns_glb_pool.pool_id]
+  }
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #dns-glb-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+| `az_pools` | Set | Optional | Map availability zones to pool ID's.| No |
+|`az_pools.availability_zone`|String|Required | Availability of the zone. | No |
+|`az_pools.pools`|List of String|Required |List of Load Balancer pools.| No |
+|`default_pools`|list of Strings|Required |TA list of pool IDs ordered by their failover priority.| No |
+|`description`|String|Optional| Descriptive text of the Load Balancer.| No |
+|`fallback_pool`|Integer|Required |The pool ID to use when all other pools are detected as unhealthy.| No |
+|`instance_id`|String|Required|The GUID of the private DNS.| Yes |
+|`name`|String|Required|The name of the Load Balancer.| No |
+|`ttl`|Integer|Optional|The time to live (TTL) in seconds.| No |
+|`zone_id`|String|Required|The ID of the private DNS Zone.| Yes |
+
+### Output parameters
+{: #dns-record-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`created_on`|Timestamp|The time when the Load Balancer was created.| 
+|`glb_id`|String|The Load Balancer ID.| 
+|`health`|String|Healthy state of the Load Balancer. Possible values are `DOWN`, `UP`, or `DEGRADED`.| 
+|`id`|String|The unique identifier of the DNS record. The ID is composed of `<instance_id>/<zone_id>/<glb_id>`.|
+|`modified_on`|Timestamp|The time when the Load Balancer was modified.|
+
+### Import
+{: #dns-glb-import}
+
+The `ibm_dns_glb` can be imported by using private DNS instance ID, zone ID, and global Load Balancer ID, eg
+
+```
+terraform import ibm_dns_glb.example 6ffda12064634723b079acdb018ef308/5ffda12064634723b079acdb018ef308/435da12064634723b079acdb018ef308
+```
+{: pre}
+
+
+
+
  
 ## `ibm_dns_permitted_network`
 {: #dns-permitted-network}
