@@ -149,5 +149,5 @@ Error: Error waiting for create resource alb cert (buvlsclf0qcur3hjcrng/ingress-
 
 **Solution**
 
-You need to update the {{site.data.keyword.cloud_notm}} Terraform provider to use `version 1.16.1` and above. For more information, see [Update Terraform provider](#ibm-terraform-provider-v13).
+You need to update the {{site.data.keyword.cloud_notm}} Terraform provider to use `version 1.16.1` and above.
 
