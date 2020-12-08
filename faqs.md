@@ -133,7 +133,7 @@ Complete the following steps can be used in IBM Terraform provider to support Te
     Detailed steps in the IBM Terraform documentation will be published shortly.
     {: note}
 
-## Why I am getting an issue when trying to provision a `ibm_container_alb_cert`?
+## Why I am getting an issue when trying to provision an `ibm_container_alb_cert`?
 {: #provision-ibm-container-alb-cert}
 {: faq}
 
@@ -145,6 +145,7 @@ If you are using the resource `ibm_container_alb_cert` to create a secret and fa
 stderr : 
 Error: Error waiting for create resource alb cert (buvlsclf0qcur3hjcrng/ingress-tls-cert) : The resource alb cert buvlsclf0qcur3hjcrng/ingress-tls-cert does not exist anymore: Request failed with status code: 404, ServerErrorResponse: {"incidentID":"5f82fa1696ce299a-IAD","code":"E0024","description":"The specified Ingress secret name is not found for this cluster.","type":"ALBSecret","recoveryCLI":"To list the Ingress secrets for a cluster, run 'ibmcloud ks ingress secret ls -c \u003ccluster_name_or_ID\u003e'."}
 ```
+{: pre}
 
 **Solution**
 
