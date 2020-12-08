@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-01"
+lastupdated: "2020-12-08"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -1106,7 +1106,7 @@ The following attributes are exported:
 ## `ibm_iam_user_invite`
 {: #iam-user-invite}
 
-Invite, update, or delete users to your IBM Cloud account. 
+Invite, update, or delete IAM users to your IBM Cloud account. User to be invited can be added to one or more access groups. For more information, see [inviting users](/docs/account?topic=account-access-getstarted).
 {: shortdesc}
 
 ### Sample Terraform code
@@ -1315,8 +1315,46 @@ Review the input parameters that you can specify for your resource.
 |`cloud_foundry_roles.spaces.space_guid`|String|Required|The ID of the Cloud Foundry space.|
 |`cloud_foundry_roles.spaces.space_roles`|List|Required|The space roles that you want to assign to the invited user. The supported space roles are `Manager`, `Developer`, `Auditor`.|
 
+ {{site.data.keyword.cloud_notm}} `Lite account` does not support classic infrastructure roles. For more information, see [What's available in lite account?](/docs/account?topic=account-accounts#lite-account-features).
+{: note}
+
 ### Output parameters
 {: #iam-user-invite-output}
 
-No output parameters are supported for this resource. 
+Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`number_of_invited_users`|String|Number of users invited to a particular account.|
+|`invited_users`|String|List of invited users. Nested invited_users block have the following structure.|
+|`invited_users.user_id`|String|The Email ID of the member.|
+|`invited_users.user_policies`|String| List of policies associated to a particular user. Nested user_policies block has following structure.|
+|`invited_users.user_policies.id`|String|The policy ID.|
+|`invited_users.user_policies.roles`|String|Comma separated list of the roles.|
+|`invited_users.user_policies.resources`|String| A nested block describes the resource of the policy. Nested resources block have the following structure.|
+|`invited_users.user_policies.resources.service`|String| Service name of the policy definition.|
+|`invited_users.user_policies.resources.resource_instance_id`|String| The resource insance ID of the policy definition.|
+|`invited_users.user_policies.resources.region`|String|The region of the policy definition.|
+|`invited_users.user_policies.resources.resource_type`|String|The resource type of the policy definition.|
+|`invited_users.user_policies.resources.resource`|String|The resource of the policy definition.|
+|`invited_users.user_policies.resources.resource_group_id`|String|The ID of the resource group.|
+|`invited_users.user_policies.resources.attributes`|String|The set of resource attributes.|
+|`access_groups`|String|The lockdown ID.|
+|`access_groups.name`|String|The name of the access group.|
+|`access_groups.policies`|String|The access group policies of invited user. Nested policies block have the following structure.|
+|`access_groups.policies.id`|String|The policy ID.|
+|`access_groups.policies.roles`|String|The roles associated to the policy.|
+|`access_groups.policies.resources`|String| A nested block describes the resource of the policy. Nested resources block have the following structure.|
+|`access_groups.policies.resources.service`|String| Service name of the policy definition.|
+|`access_groups.policies.resources.resource_instance_id`|String| The resource insance ID of the policy definition.|
+|`access_groups.policies.resources.region`|String|The region of the policy definition.|
+|`access_groups.policies.resources.resource_type`|String|The resource type of the policy definition.|
+|`access_groups.policies.resources.resource`|String|The resource of the policy definition.|
+|`access_groups.policies.resources.resource_group_id`|String|The ID of the resource group.|
+|`access_groups.policies.resources.attributes`|String|The set of resource attributes.|
+
+### Import
+{: #iam-user-invite-import}
+
+The import functionality is not supported for this resource.

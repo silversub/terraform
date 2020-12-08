@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07" 
+lastupdated: "2020-12-08" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -141,12 +141,10 @@ terraform import ibm_is_flow_log.example d7bec597-4726-451f-8a53-e62e6f19c32c
 ## `ibm_is_floating_ip`
 {: #provider-floating-ip}
 
-Create a floating IP address that you can associate with a {{site.data.keyword.vsi_is_short}} instance. You can use the floating IP address to access your instance from the public network, independent of whether the subnet is attached to a public gateway. 
+Create a floating IP address that you can associate with a {{site.data.keyword.vsi_is_short}} instance. You can use the floating IP address to access your instance from the public network, independent of whether the subnet is attached to a public gateway. For more information, see [About floatig IP](/docs/vpc?topic=vpc-creating-a-vpc-using-the-rest-apis#create-floating-ip-api-tutorial).
 {: shortdesc}
 
-For more information, see [About Networking for VPC](/docs/vpc-on-classic-network?topic=vpc-on-classic-network-about-networking-for-vpc). 
-
-### Sample Terraform code
+ ### Sample Terraform code
 {: #floating-ip-sample}
 
 The following example shows how to create a {{site.data.keyword.vsi_is_short}} instance and associate a floating IP address to the primary network interface of the virtual server instance. 
@@ -209,6 +207,18 @@ The following timeouts are defined for this resource.
 - **create**: The creation of the floating IP address is considered `failed` if no response is received for 10 minutes. 
 - **delete**: The deletion of the floating IP address is considered `failed` if no response is received for 10 minutes. 
 
+### Import
+{: #floating-ip-import}
+
+The `ibm_is_floating_ip` can be imported by using floating IP ID.
+
+**Example**
+```
+terraform import ibm_is_floating_ip.example d7bec597-4726-451f-8a63-e62e6f19c32c
+```
+{: pre}
+
+
 ## `ibm_is_ike_policy`
 {: #provider-ike-policy}
 
@@ -259,7 +269,18 @@ Review the output parameters that you can access after your resource is created.
 | `href`| String| The canonical URL that was assigned to your IKE policy. | 
 | `id` | String | The unique identifier of the IKE policy that you created. |
 | `negotiation_mode` | String | The negotiation mode that was set for your IKE policy. Only `main` is supported. | 
-| `vpn_connections`| List | A collection of VPN connections that use the IKE policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. | 
+| `vpn_connections`| List | A collection of VPN connections that use the IKE policy. Every connection is listed with a VPC connection `name`, `id`, and `canonical URL`. |
+
+### Import
+{: #provider-ike-policy-import}
+
+The `ibm_is_ike_policy` can be imported by using IKE Policy ID.
+
+**Example**
+```
+terraform import ibm_is_ike_policy.example d7bec597-4726-451f-8a63-e62e6f19c32c
+```
+{: pre}
 
 ## `ibm_is_instance`
 {: #provider-instance}
@@ -1462,10 +1483,10 @@ The following timeouts are configured for the resource:
 ## `ibm_is_lb_pool`
 {: #lb-pool}
 
-Create, update, or delete a VPC load balancer pool. 
+Create, update, or delete a VPC load balancer pool.  For more information, see [working with pool](/docs/vpc?topic=vpc-nlb-pools).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform code to create a Load Balancer pool.
 {: #lb-pool-sample}
 
 ```
@@ -1481,6 +1502,22 @@ resource "ibm_is_lb_pool" "testacc_pool" {
 }
 ```
 
+### Sample Terraform code to create a Load Balancer pool with HTTPS protocol.
+{: #lb-pool-https-sample2}
+
+```
+resource "ibm_is_lb_pool" "testacc_pool" {
+  name           = "test_pool"
+  lb             = "addfd-gg4r4-12345"
+  algorithm      = "round_robin"
+  protocol       = "https"
+  health_delay   = 60
+  health_retries = 5
+  health_timeout = 30
+  health_type    = "https"
+}
+```
+
 ### Input parameters
 {: #lb-pool-input}
 
@@ -1493,14 +1530,15 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Required| The name of the pool.| No |
 |`lb` |String|Required|The load balancer unique identifier.| Yes |
 |`algorithm`|String|Required|The load-balancing algorithm. Supported values are `round_robin`, `weighted_round_robin`, or `least_connections`.| No |
-|`protocol`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.| No |
+|`protocol`|String|Required|The pool protocol. Enumeration type: `http`, `https`, `tcp` are supported.| No |
 |`health_delay`|Integer|Required|The health check interval in seconds. Interval must be greater than `timeout` value.| No |
 |`health_retries`|Integer|Required|The health check max retries.| No |
 |`health_timeout`|Integer|Required|The health check timeout in seconds.| No |
-|`health_type`|String|Required|The pool protocol. Supported values are `http`, and `tcp`.| No |
+|`health_type`|String|Required|The pool protocol. Enumeration type: `http`, `https`, `tcp` are supported.| No |
 |`health_monitor_url`|String|Optional|The health check URL. This option is applicable only to the HTTP `health-type`.| No |
 |`health_monitor_port`|Integer|Optional|The health check port number.|  No |
-|`session_persistence_type`|String|Optional|The session persistence type. Only `source_ip` is supported.| No |
+|`session_persistence_type`|String|Optional|The persistence session type.  Enumeration type: `source_ip`, `http_cookie`, and `app_cookie` are supported.| No |
+|`session_persistence_cookie_name`|String|Optional|The session  cookie session name. This option is applicable only to `--session-persistence-type`.| No |
 
 ### Output parameters
 {: #lb-pool-output}
@@ -2092,20 +2130,27 @@ Create, update, or delete a subnet.
 
 ```
 resource "ibm_is_vpc" "testacc_vpc" {
-	name = "test"
+  name = "test"
 }
 
-resource "ibm_is_subnet" "testacc_subnet" {
-	name = "test_subnet"
-	vpc = ibm_is_vpc.testacc_vpc.id
-	zone = "us-south-1"
-	ipv4_cidr_block = "192.168.0.0/1"
+resource "ibm_is_vpc_routing_table" "test_cr_route_table1" {
+  name   = "test-cr-route-table1"
+  vpc    = data.ibm_is_vpc.testacc_vpc.id
+}
 
-	//User can configure timeouts
-  	timeouts {
-      	create = "90m"
-      	delete = "30m"
-    }
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "test_subnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "192.168.0.0/1"
+  routing_table   = ibm_is_vpc_routing_table.test_cr_route_table1.routing_table  
+
+  //User can configure timeouts
+  timeouts {
+    create = "90m"
+    delete = "30m"
+  }
 }
 ```
 
@@ -2126,6 +2171,7 @@ Review the input parameters that you can specify for your resource.
 |`resource_group`|String|Optional|The ID of the resource group where you want to create the subnet.| Yes |
 |`vpc`|String|Required|The VPC ID.| Yes |
 |`zone`|String|Required|The subnet zone name.| Yes |
+|`routing_table`|String|Optional| The routing table ID associated with the subnet.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2145,13 +2191,21 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #subnet-import}
 
-`ibm_is_subnet` can be imported by using the ID. 
+The `ibm_is_subnet` can be imported by using the ID. 
+
+**Syntax**
 
 ```
 terraform import ibm_is_subnet.example <subnet_ID>
 ```
 {: pre}
 
+**Example**
+
+```
+terraform import ibm_is_subnet.example d7bec597-4726-451f-8a63-e62e6f19c32c
+```
+{: pre}
 
 ### Timeouts
 {: #subnet-timeout}
@@ -2365,6 +2419,16 @@ Review the output parameters that you can access after your resource is created.
 |`delete`|(Default 10 minutes) Used for Deleting Instance.|
 {: caption="Table. Available timeout configuration options" caption-side="top"}
 
+### Import
+{: #volume-import}
+
+The `ibm_is_volume` can be imported by using volume ID.
+
+**Example**
+```
+terraform import ibm_is_volume.example d7bec597-4726-451f-8a63-e62e6f19c32c
+```
+{: pre}
 
 ## `ibm_is_vpc` 
 {: #provider-vps}
