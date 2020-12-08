@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07" 
+lastupdated: "2020-12-08" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -2092,20 +2092,27 @@ Create, update, or delete a subnet.
 
 ```
 resource "ibm_is_vpc" "testacc_vpc" {
-	name = "test"
+  name = "test"
 }
 
-resource "ibm_is_subnet" "testacc_subnet" {
-	name = "test_subnet"
-	vpc = ibm_is_vpc.testacc_vpc.id
-	zone = "us-south-1"
-	ipv4_cidr_block = "192.168.0.0/1"
+resource "ibm_is_vpc_routing_table" "test_cr_route_table1" {
+  name   = "test-cr-route-table1"
+  vpc    = data.ibm_is_vpc.testacc_vpc.id
+}
 
-	//User can configure timeouts
-  	timeouts {
-      	create = "90m"
-      	delete = "30m"
-    }
+
+resource "ibm_is_subnet" "testacc_subnet" {
+  name            = "test_subnet"
+  vpc             = ibm_is_vpc.testacc_vpc.id
+  zone            = "us-south-1"
+  ipv4_cidr_block = "192.168.0.0/1"
+  routing_table   = ibm_is_vpc_routing_table.test_cr_route_table1.routing_table  
+
+  //User can configure timeouts
+  timeouts {
+    create = "90m"
+    delete = "30m"
+  }
 }
 ```
 
@@ -2126,6 +2133,7 @@ Review the input parameters that you can specify for your resource.
 |`resource_group`|String|Optional|The ID of the resource group where you want to create the subnet.| Yes |
 |`vpc`|String|Required|The VPC ID.| Yes |
 |`zone`|String|Required|The subnet zone name.| Yes |
+|`routing_table`|String|Optional| The routing table ID associated with the subnet.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -2145,13 +2153,21 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #subnet-import}
 
-`ibm_is_subnet` can be imported by using the ID. 
+The `ibm_is_subnet` can be imported by using the ID. 
+
+**Syntax**
 
 ```
 terraform import ibm_is_subnet.example <subnet_ID>
 ```
 {: pre}
 
+**Example**
+
+```
+terraform import ibm_is_subnet.example d7bec597-4726-451f-8a63-e62e6f19c32c
+```
+{: pre}
 
 ### Timeouts
 {: #subnet-timeout}
