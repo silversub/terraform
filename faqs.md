@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-19"
+lastupdated: "2020-12-08"
 
 keywords: terraform faqs, softlayer, iaas
 
@@ -132,3 +132,21 @@ Complete the following steps can be used in IBM Terraform provider to support Te
 3. If you are using Terraform modules, the shared Terraform block to be used in all the module folders that is been used.
     Detailed steps in the IBM Terraform documentation will be published shortly.
     {: note}
+
+## Why I am getting an issue when trying to provision a new `ibm_container_alb_cert`?
+{: #provision-ibm-container-alb-cert}
+{: faq}
+
+If you are using the resource `ibm_container_alb_cert` to create a secret and fails with a following error
+
+**Error**
+
+```
+stderr : 
+Error: Error waiting for create resource alb cert (buvlsclf0qcur3hjcrng/ingress-tls-cert) : The resource alb cert buvlsclf0qcur3hjcrng/ingress-tls-cert does not exist anymore: Request failed with status code: 404, ServerErrorResponse: {"incidentID":"5f82fa1696ce299a-IAD","code":"E0024","description":"The specified Ingress secret name is not found for this cluster.","type":"ALBSecret","recoveryCLI":"To list the Ingress secrets for a cluster, run 'ibmcloud ks ingress secret ls -c \u003ccluster_name_or_ID\u003e'."}
+```
+
+**Solution**
+
+You need to update the {{site.data.keyword.cloud_notm}} Terraform provider to use `version 1.16.1` and above. For more information, see [Update Terraform provider](#ibm-terraform-provider-v13).
+
