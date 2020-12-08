@@ -133,7 +133,7 @@ Complete the following steps can be used in IBM Terraform provider to support Te
     Detailed steps in the IBM Terraform documentation will be published shortly.
     {: note}
 
-## Why I am getting an issue when trying to provision a new `ibm_container_alb_cert`?
+## Why I am getting an issue when trying to provision a `ibm_container_alb_cert`?
 {: #provision-ibm-container-alb-cert}
 {: faq}
 
