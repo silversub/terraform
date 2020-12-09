@@ -7,6 +7,7 @@ Terraform
     {: .navgroup id="learn"}
     getting-started.md
     about.md
+    whats-new.md
     
     {: .topicgroup}
     Tutorials
