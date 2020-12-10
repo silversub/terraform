@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07"
+lastupdated: "2020-12-10"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -1484,7 +1484,7 @@ data "ibm_is_vpc_routing_tables" "ds_routing_tables" {
 ```
 
 ### Input parameters
-{: #vpc-routing-table-dsinput}
+{: #vpc-routing-tables-dsinput}
 
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
