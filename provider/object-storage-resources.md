@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07"
+lastupdated: "2020-12-10"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cloud object storage bucket, terraform get object storage resources
 
@@ -157,6 +157,42 @@ resource "ibm_cos_bucket" "cold-ap-firewall" {
   allowed_ip =  ["223.196.168.27","223.196.161.38","192.168.0.1"]
 }
 
+### Configure archive and expire rules on COS Bucket
+
+resource "ibm_cos_bucket" "archive_expire_rule_cos" {
+  bucket_name          = "a-bucket-archive-expire"
+  resource_instance_id = ibm_resource_instance.cos_instance.id
+  region_location      = "us-south"
+  storage_class        = "standard"
+  force_delete         = true
+  archive_rule {
+    rule_id = "a-bucket-arch-rule"
+    enable  = true
+    days    = 0
+    type    = "GLACIER"
+  }
+  expire_rule {
+    rule_id = "a-bucket-expire-rule"
+    enable  = true
+    days    = 30
+    prefix  = "logs/"
+  }
+}
+
+### Configure expire rule to prepare a COS Bucket with a large number of objects for deletion
+
+resource "ibm_cos_bucket" "expire_rule_cos" {
+  bucket_name          = "a-bucket-expire"
+  resource_instance_id = ibm_resource_instance.cos_instance.id
+  region_location      = "us-south"
+  storage_class        = "standard"
+  force_delete         = true
+  expire_rule {
+    rule_id = "a-bucket-expire-rule"
+    enable  = true
+    days    = 1
+  }
+}
 ```
 
 ### Input parameters
@@ -175,6 +211,7 @@ Review the input parameters that you can specify for your resource.
 | `bucket_name` | String | Required | The name of the bucket. |
 | `cross_region_location` | String | Optional | Specify the cross-regional bucket location. Supported values are `us`, `eu`, and `ap`. If you use this parameter, do not set `single_site_location` or `region_location` at the same time. |
 |`endpoint_type`| String | Optional | The type of the endpoint either public or private to be used for buckets. Default value is `public`.|
+|`force_delete`|Bool| Optional | As the default value set to `true`, it will delete all the objects in the COS Bucket and then delete the bucket. **Note:** `force_delete` will timeout on buckets with a large amount of objects. 24 hours before you delete the bucket you can set an expire rule to remove all the files over a day old.|
 | `key_protect` | String | Optional | The CRN of the {{site.data.keyword.keymanagementservicelong_notm}} root key that you want to use to encrypt data that is sent and stored in {{site.data.keyword.cos_full_notm}}. Before you can enable {{site.data.keyword.keymanagementservicelong_notm}} encryption, you must provision an instance of {{site.data.keyword.keymanagementservicelong_notm}} and authorize the service to access {{site.data.keyword.cos_full_notm}}. For more information, see [Server-Side Encryption with IBM Key Protect or Hyper Protect Crypto Services (SSE-KP)](/docs/cloud-object-storage?topic=cloud-object-storage-encryption). |
 |`metrics_monitoring`| Object to enable metrics tracking with {{site.data.keyword.mon_full_notm}} | Optional| Set up your {{site.data.keyword.mon_full_notm}} service instance to receive metrics for your {{site.data.keyword.cos_full_notm}} bucket.|
 |`metrics_monitoring.usage_metrics_enabled`|Boolean|Optional|If set to **true**, all metrics are sent to your {{site.data.keyword.mon_full_notm}} service instance.|
@@ -187,11 +224,18 @@ Review the input parameters that you can specify for your resource.
 | `archive_rule.rule_id` | String (Computed) | Optional | The unique ID for the rule. Archive rules allow you to set a specific time frame after the objects transition to the archive. |
 | `archive_rule.enable` | Bool | Required | Specifies archive rule status either `enable` or `disable` for a bucket. |
 | `archive_rule.days` | String | Required | Specifies the number of days when the specific rule action takes effect. |
-| `archive_rule.type` | String | Required | TSpecifies the storage class or archive type to which you want the object to transition. Allowed values are `Glacier` or `Accelerated`. |
+| `archive_rule.type` | String | Required | Specifies the storage class or archive type to which you want the object to transition. Allowed values are `Glacier` or `Accelerated`. **Note** Archive is available in certain regions only. For more information, see [Integrated Services](/docs/cloud-object-storage/basics?topic=cloud-object-storage-service-availability). |
+| `expire_rule` | List | Required | Nested expire_rule block has following structure. |
+| `expire_rule.rule_id` | String (Computed) | Optional | Unique ID for the rule. Expire rules allow you to set a specific time frame after which objects are deleted. |
+| `expire_rule.enable` | Bool | Required | Specifies expire rule status either `enable` or `disable` for a bucket. |
+| `expire_rule.days` | String | Required | Specifies the number of days when the specific rule action takes effect. |
+| `expire_rule.prefix ` | String | Optional | Specifies a prefix filter to apply to only a subset of objects with names that match the prefix. |
 
-You need to set `cross_region_location`, `region_location`, or `single_site_location` to specify that location where you want to create the bucket. 
-Archive are available in certain regions only. For more information, see [Integrated Services](/docs/cloud-object-storage/basics?topic=cloud-object-storage-service-availability)
+
+Both `archive_rule` and `expire_rule` must be managed by Terraform as they use the same lifecycle configuration. If user creates any of the rule outside of Terraform by using CLI or UI, you can see unexpected difference like removal of any of the rule or one rule overrides another. The policy cannot match as expected due to API limitations, as the lifecycle is a single API request for both archive and expire.
 {: note}
+
+
 
 ### Output parameters
 {: #hpvs-cos-bucket-output}

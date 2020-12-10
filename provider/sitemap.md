@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07"
+lastupdated: "2020-12-10"
 
 keywords: terraform provider plugin, terraform functions, terraform openwhisk, terraform function action, terraform serverless
 
@@ -224,7 +224,7 @@ subcollection: terraform
   <tbody>
     <tr>
  <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kms-resources#kms-key)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kms-resources#kp-key)</li></ul></td>
-      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kms-data-sources)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kms-data-sources#kp-key)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[`ibm_kms_key`](/docs/terraform?topic=terraform-kms-data-sources)</li><li style="margin:0px; padding:0px">[`ibm_kms_keys`](/docs/terraform?topic=terraform-kms-data-sources#kms-keys-ds)</li><li style="margin:0px; padding:0px">[`ibm_kp_key`](/docs/terraform?topic=terraform-kms-data-sources#kp-key)</li></ul></td>
     </tr>
   </tbody>
   </table> 
