@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-08" 
+lastupdated: "2020-12-11" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -424,6 +424,8 @@ resource "ibm_is_instance" "testacc_instance" {
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
 
+
+
 | Input parameter | Data type | Required / optional | Description | Forces new resource |
 | ------------- |-------------| ----- | -------------- | ------- |
 |`boot_volume`|List|Optional|A list of boot volumes for an instance.| No |
@@ -435,13 +437,13 @@ Review the input parameters that you can specify for your resource.
 |`name`|String|Optional|The instance name.| No |
 |`network_interfaces`|List|Optional|A list of more network interfaces that are set up for the instance.| Yes |
 |`network_interfaces.name`|String|Optional|The name of the network interface.| No |
-|`network_interface.primary_ipv4_address`|Strings|Optional|The IPV4 address of the interface.| Yes |
+|`network_interface.primary_ipv4_address`|String|Optional|The IPV4 address of the interface.| Yes |
 |`network_interfaces.subnet`|String|Required|The ID of the subnet.| No |
 |`network_interfaces.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
 |`network_interfaces.allow_ip_spoofing`|Bool|Optional|Indicates whether IP spoofing is allowed on the interface. If `false`, IP spoofing is prevented on the interface. If `true`, IP spoofing is allowed on the interface.| No |
 |`primary_network_interface`|List|Required|A nested block describes the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
 |`primary_network_interface.name`|String|Optional|The name of the network interface.| No |
-|`primary_network_interface.primary_ipv4_address`|Strings|Optional|The IPV4 address of the interface.| Yes |
+|`primary_network_interface.primary_ipv4_address`|String|Optional|The IPV4 address of the interface.| Yes |
 |`primary_network_interface.subnet`|String|Required|The ID of the subnet.| No |
 |`primary_network_interface.security_groups`|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
 |`primary_network_interface.allow_ip_spoofing`|Bool|Optional|Indicates whether IP spoofing is allowed on the interface. If `false`, IP spoofing is prevented on the interface. If `true`, IP spoofing is allowed on the interface.| No |
