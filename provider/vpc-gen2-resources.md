@@ -426,35 +426,6 @@ Review the input parameters that you can specify for your resource.
 
 
 
-| Input parameter | Data type | Required / optional | Description | Forces new resource |
-| ------------- |-------------| ----- | -------------- | ------- |
-|boot_volume|List|Optional|A list of boot volumes for an instance.| No |
-|boot_volume.name|String|Optional|The name of the boot volume.| No |
-|boot_volume.encryption|String|Optional|The type of encryption to use for the boot volume.| No |
-|force_recovery_time|Integer|Optional|Define timeout (in minutes), to force the is_instance to recover from a perpetual "starting" state, during provisioning. And to force the is_instance to recover from a perpetual "stopping" state, during removal of user access. **Note** The force_recovery_time is used to retry multiple times until timeout.|No|
-|image|String|Required|The ID of the virtual server image that you want to use. To list supported images, run `ibmcloud is images`.| No |
-|keys|List|Required|A comma-separated list of SSH keys that you want to add to your instance.| No |
-|name|String|Optional|The instance name.| No |
-|network_interfaces|List|Optional|A list of more network interfaces that are set up for the instance.| Yes |
-|network_interfaces.name|String|Optional|The name of the network interface.| No |
-|network_interface.primary_ipv4_address|String|Optional|The IPV4 address of the interface.| Yes |
-|network_interfaces.subnet|String|Required|The ID of the subnet.| No |
-|network_interfaces.security_groups|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
-|network_interfaces.allow_ip_spoofing|Bool|Optional|Indicates whether IP spoofing is allowed on the interface. If `false`, IP spoofing is prevented on the interface. If `true`, IP spoofing is allowed on the interface.| No |
-|primary_network_interface|List|Required|A nested block describes the primary network interface of this instance. Only one primary network interface can be specified for an instance.| No |
-|primary_network_interface.name|String|Optional|The name of the network interface.| No |
-|primary_network_interface.primary_ipv4_address|String|Optional|The IPV4 address of the interface.| Yes |
-|primary_network_interface.subnet|String|Required|The ID of the subnet.| No |
-|primary_network_interface.security_groups|List of strings|Optional|A comma separated list of security groups to add to the primary network interface.| No |
-|primary_network_interface.allow_ip_spoofing|Bool|Optional|Indicates whether IP spoofing is allowed on the interface. If `false`, IP spoofing is prevented on the interface. If `true`, IP spoofing is allowed on the interface.| No |
-|profile|String|Required|The name of the profile that you want to use for your instance. To list supported profiles, run `ibmcloud is instance-profiles`.| Yes |
-|resource_group|String|Optional|The ID of the resource group where you want to create the instance.| Yes |
-|tags|Array of strings|Optional|A list of tags that you want to add to your instance. Tags can help you find your instance more easily later.| No |
-|user_data|String|Optional|User data to transfer to the instance.| No |
-|volumes|List|Optional|A comma separated list of volume IDs to attach to the instance.| No |
-|vpc|String|Required|The ID of the VPC where you want to create the instance.| Yes |
-|zone|String|Required|The name of the VPC zone where you want to create the instance.| Yes |
-
 ### Output parameters
 {: #instance-output}
 
