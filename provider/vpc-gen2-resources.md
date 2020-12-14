@@ -431,7 +431,7 @@ Review the input parameters that you can specify for your resource.
 |`boot_volume.encryption`|String|Optional|The type of encryption to use for the boot volume.| No |
 |`force_recovery_time`|Integer|Optional|Define timeout (in minutes), to force the is_instance to recover from a perpetual "starting" state, during provisioning. And to force the is_instance to recover from a perpetual "stopping" state, during removal of user access. **Note** The force_recovery_time is used to retry multiple times until timeout.|No|
 |`image`|String|Required|The ID of the virtual server image that you want to use. To list supported images, run `ibmcloud is images`.| No |
-|`keys|List|Required|A comma-separated list of SSH keys that you want to add to your instance.| No |
+|`keys`|List|Required|A comma-separated list of SSH keys that you want to add to your instance.| No |
 |`name`|String|Optional|The instance name.| No |
 |`network_interfaces`|List|Optional|A list of more network interfaces that are set up for the instance.| Yes |
 |`network_interfaces.name`|String|Optional|The name of the network interface.| No |
