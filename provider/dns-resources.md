@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07"
+lastupdated: "2020-12-15"
 
 keywords: terraform provider plugin, terraform dns, terraform vpc dns, terraform private dns
 
@@ -165,7 +165,7 @@ Review the input parameters that you can specify for your resource.
 | `expected_body` | String | Optional | A case-insensitive sub-string to look in the response body. If the string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.| No |
 |`expected_codes`|String|Optional | The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. Allowable values are `200, 201, 202, 203, 204,205, 206, 207, 208, 226, xx`. | No |
 |`allow_insecure`|String|Optional | Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTPS monitors.| No |
-|`description`|String|Optional| Descriptive text of the Load Balancer montior.| No |
+|`description`|String|Optional| Descriptive text of the Load Balancer monitor.| No |
 |`headers`|Set|Optional |The HTTP request headers to send in the health check. It is recommended you set a host header by default. The `User-Agent` header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.| No |
 |`headers.name`|String|Required|The name of the HTTP request header.| No |
 |`headers.value`|list of Strings|Required |The value of HTTP request header.| No |

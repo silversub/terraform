@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-08"
+lastupdated: "2020-12-15"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -1334,20 +1334,20 @@ Review the output parameters that you can access after your resource is created.
 |`invited_users.user_policies.roles`|String|Comma separated list of the roles.|
 |`invited_users.user_policies.resources`|String| A nested block describes the resource of the policy. Nested resources block have the following structure.|
 |`invited_users.user_policies.resources.service`|String| Service name of the policy definition.|
-|`invited_users.user_policies.resources.resource_instance_id`|String| The resource insance ID of the policy definition.|
+|`invited_users.user_policies.resources.resource_instance_id`|String| The resource instance ID of the policy definition.|
 |`invited_users.user_policies.resources.region`|String|The region of the policy definition.|
 |`invited_users.user_policies.resources.resource_type`|String|The resource type of the policy definition.|
 |`invited_users.user_policies.resources.resource`|String|The resource of the policy definition.|
 |`invited_users.user_policies.resources.resource_group_id`|String|The ID of the resource group.|
 |`invited_users.user_policies.resources.attributes`|String|The set of resource attributes.|
-|`access_groups`|String|The lockdown ID.|
+|`access_groups`|String|The lock down ID.|
 |`access_groups.name`|String|The name of the access group.|
 |`access_groups.policies`|String|The access group policies of invited user. Nested policies block have the following structure.|
 |`access_groups.policies.id`|String|The policy ID.|
 |`access_groups.policies.roles`|String|The roles associated to the policy.|
 |`access_groups.policies.resources`|String| A nested block describes the resource of the policy. Nested resources block have the following structure.|
 |`access_groups.policies.resources.service`|String| Service name of the policy definition.|
-|`access_groups.policies.resources.resource_instance_id`|String| The resource insance ID of the policy definition.|
+|`access_groups.policies.resources.resource_instance_id`|String| The resource instance ID of the policy definition.|
 |`access_groups.policies.resources.region`|String|The region of the policy definition.|
 |`access_groups.policies.resources.resource_type`|String|The resource type of the policy definition.|
 |`access_groups.policies.resources.resource`|String|The resource of the policy definition.|

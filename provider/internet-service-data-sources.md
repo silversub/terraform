@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07"
+lastupdated: "2020-12-15"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -279,7 +279,7 @@ data "ibm_cis_firewall" "lockdown" {
   firewall_type = "lockdowns"
 }
 ```
-IBM Terraform provider supports only lockdowns rules.
+IBM Terraform provider supports only lock down rules.
 {: note}
 
 ### Input parameters
@@ -303,7 +303,7 @@ Review the output parameters that you can access after your data source is creat
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the record. The ID is composed of `<firewall_type>,<lockdown_id/access_rule_id/ua_rule_id>,<domain_ID>,<cis_crn>`. Attributes are concatenated with `:`.|
-|`lockdown.lockdown_id`|List|List of lockdown to be created. The data describing a lockdowns rule.|
+|`lockdown.lockdown_id`|List|List of lock down to be created. The data describing a lock down rule.|
 |`lockdown.paused`|Boolean|Required|If set to **true**, the firewall rule is disabled. If set to **false**, the firewall rule is enabled.|
 |`lockdown.description`|String|A description for your firewall rule.|
 |`lockdown.priority`|Integer|The priority of the firewall rule. A low number is associated with a high priority. |
@@ -315,7 +315,7 @@ Review the output parameters that you can access after your data source is creat
 |`access_rule.rule_id`|String| The access rule ID. |
 |`access_rule.notes`|String| The free text for notes. |
 |`access_rule.mode`|String| The mode of access rule. The valid modes are `block`, `challenge`, `whitelist`, `js_challenge`.|
-|`access_rule.configuration`|List| The Configuration of firewall. (MaxItems: 1) |
+|`access_rule.configuration`|List| The Configuration of firewall. (Maximum items is 1) |
 |`access_rule.configuration.target`|String| The request property to target. Valid values are `ip`, `ip_range`, `asn`, `country`. |
 |`access_rule.configuration.value`|String| IP address or CIDR or Autonomous or Country code. |
 |`ua_rule`|String|Create the data describing the user agent rule. |
@@ -327,7 +327,7 @@ Review the output parameters that you can access after your data source is creat
 |`ua_rule.configuration.target`|String| The request property to target. Valid values are `ua`. |
 |`ua_rule.configuration.value`|String| The exact User Agent string to match the rule. |
 
-Exactly one of `lockdown`, `access_rule`, and `ua_rule` is allowed for the respective firewall types `lockdowns`, `access_rules`, and `ua_rules`.
+Exactly one of `lockdown`, `access_rule`, and `ua_rule` is allowed for the firewall types `lockdowns`, `access_rules`, and `ua_rules`.
 {: note}
 
 ## `ibm_cis_global_load_balancers`
@@ -476,7 +476,7 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_cis_origin_pools`
 {: #origin-pools}
 
-Retrieves an {{site.data.keyword.cis_full_notm}} origin pool resource. This provides a pool of origins that is used by an {{site.data.keyword.cis_full_notm}} Global Load Balancer. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and optionally an {{site.data.keyword.cis_full_notm}} Healthcheck monitor resource.
+Retrieves an {{site.data.keyword.cis_full_notm}} origin pool resource. This provides a pool of origins that is used by an {{site.data.keyword.cis_full_notm}} Global Load Balancer. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and optionally an {{site.data.keyword.cis_full_notm}} Health check monitor resource.
 {: shortdesc}
 
 ### Sample Terraform code

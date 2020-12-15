@@ -2651,7 +2651,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------| ------ |
 |`name`|String|Optional|The routing table name.| No |
 |`route_direct_link_ingress`|Boolean|Optional| If set to `true`, the routing table is used to route traffic that originates from Direct Link to the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`. | No |
-|`route_transit_gateway_ingress`|Boolena|Optional|If set to `true`, the routing table is used to route traffic that originates from Transit Gateway to the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`.| No |
+|`route_transit_gateway_ingress`|Boolean|Optional|If set to `true`, the routing table is used to route traffic that originates from Transit Gateway to the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`.| No |
 |`route_vpc_zone_ingress`|Boolean|Optional|If set to true, the routing table is used to route traffic that originates from subnets in other zones in the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`.| No |
 |`vpc`|String|Required|The VPC ID. |  Yes |
 
