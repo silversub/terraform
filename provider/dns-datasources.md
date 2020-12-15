@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07"
+lastupdated: "2020-12-15"
 
 keywords: terraform provider plugin, terraform dns service, terraform dns, terraform private dns
 
@@ -128,7 +128,7 @@ Review the output parameters that you can access after you retrieved your data s
 | ------------- |-------------| -------------- |
 |`dns_glb_monitors`|List|List of all private DNS Load balancer monitors in the {{site.data.keyword.cloud_notm}} infrastructure.|
 |`dns_glb_monitors.name`|String|The name of the DNS Load balancer monitor.|
-|`dns_glb_monitors.description`|String|The descriptive text of the DNS Load balancer montior.|
+|`dns_glb_monitors.description`|String|The descriptive text of the DNS Load balancer monitor.|
 |`dns_glb_monitors.type`|String| The protocol to use for the health check. Currently supported protocols are `HTTP`, `HTTPS`, and `TCP`.|
 |`dns_glb_monitors.port`|String| Port number to connect to for the health check. Required for TCP checks, HTTP, and HTTPS checks.|
 |`dns_glb_monitors.interval`|String|The interval between each health check.|

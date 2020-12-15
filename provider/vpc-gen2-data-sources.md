@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-10"
+lastupdated: "2020-12-15"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -1521,6 +1521,105 @@ Review the output parameters that you can access after you retrieved your data s
 |`subnets.name`|String| The user-defined name of the subnet.|
 {: caption="Table 1. Available output parameters" caption-side="top"}
 
+## `ibm_is_vpn_gateways`
+{: #vpc-gateways-ds}
+
+Retrieve information of an existing VPN gateways. For more information, see [use a VPC/VPN gateway for secure and private on-premises access](/docs/vpc-on-classic?topic=solution-tutorials-vpc-site2site-vpn).
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-gateways-dssample}
+
+```
+data "ibm_is_vpn_gateways" "ds_vpn_gateways" {
+  
+}
+```
+
+### Input parameters
+{: #vpc-gateways-dsinput}
+
+This resource do not support the input parameters.
+{: shortdesc}
+
+
+### Output parameters
+{: #vpc-gateways-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`id`|String| The ID of the VPN gateway.|
+|`name`| String |The VPN gateway instance name.|
+|`created_at`|timestamp| The date and time the VPN gateway was created.|
+|`crn`|String| The VPN gateway's CRN.|
+|`members`|String|Collection of VPN gateway members.|
+|`members.address`|String| The public IP address assigned to the VPN gateway member.|
+|`members.role`| String | The high availability role assigned to the VPN gateway member.|
+|`members.status`|String| The status of the VPN gateway member.|
+|`resource_type`|String| The resource type, supported value is `vpn_gateway`.|
+|`status`|String|The status of the VPN gateway, support values are `available`, `deleting`, `failed`, `pending`).|
+|`subnet`|String| The VPN gateway subnet information.|
+|`resource_group`|String| The resource group ID.|
+|`mode`|String|The VPN gateway mode, supported values are `policy` and `route`.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+## `ibm_is_vpn_gateway_connections`
+{: #vpc-gateways-connection-ds}
+
+Retrieve information of an existing VPN gateway connections. For more information, see [adding connections to a VPN gateway](/docs/vpc?topic=vpc-vpn-adding-connections).
+{: shortdesc}
+
+### Sample Terraform code
+{: #vpc-gateways-connection-dssample}
+
+```
+data "ibm_is_vpn_gateway_connections" "ds_vpn_gateway_connections" {
+  vpn_gateway = ibm_is_vpn_gateway.testacc_vpnGateway.id
+}
+```
+
+### Input parameters
+{: #vpc-gateways-connection-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`status`|String|Optional|Filters the collection to VPN gateway connections with the specified status.|
+|`vpn_gateway`|String|Required| The VPN gateway ID.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #vpc-gateways-connection-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`id`|String| The ID of the VPN gateway connection.|
+|`name`| String |The VPN gateway connection name.|
+|`created_at`|timestamp| The date and time the VPN gateway connection was created.|
+|`admin_state_up`|String| The VPN gateway connection admin state. Default value is `true`.|
+|`authentication_mode`|String|The authentication mode.|
+|`ike_policy`|String| The VPN gateway connection IKE Policy.|
+|`interval`| String | Interval for dead peer detection.|
+|`ipsec_policy`|String| The IP security policy VPN gateway connection.|
+|`local_cidrs`|String| The VPN gateway connection local CIDRs.|
+|`mode`|String|The mode of the VPN gateway.|
+|`peer_address`|String| The VPN gateway connection peer address.|
+|`peer_cidrs`|String| The VPN gateway connection peer CIDRs.|
+|`resource_type`|String|The resource type.|
+|`timeout`|String|Timeout for dead peer detection.|
+|`action`|String|Action detection for dead peer detection action.|
+|`tunnels`|String|The VPN tunnel configuration for the VPN gateway connection (in static route mode).|
+|`tunnels.address`|String|The IP address of the VPN gateway member in which the tunnel resides.|
+|`tunnels.status`|String|The status of the VPN tunnel.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
 
 ## `ibm_is_zone`
 {: #vpc-zone}

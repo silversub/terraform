@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07"
+lastupdated: "2020-12-15"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -181,7 +181,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-cache-import}
 
-The `ibm_cis_cache_settings` resource can be imported using the ID. The ID is formed from the domain ID of the domain and the CRN concatentated using a `:` character.
+The `ibm_cis_cache_settings` resource can be imported using the ID. The ID is formed from the domain ID of the domain and the CRN concatenated  using a `:` character.
 
 The domain ID and CRN will be located on the overview page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
 
@@ -258,7 +258,7 @@ The following attributes are exported:
 ### Import
 {: #cis-custom-import}
 
-The `ibm_cis_custom_page` resource can be imported using the ID. The ID is formed from the page_id, domain ID of the domain and the CRN concatentated using a `:` character.
+The `ibm_cis_custom_page` resource can be imported using the ID. The ID is formed from the page_id, domain ID of the domain and the CRN concatenated  using a `:` character.
 
 The domain ID and CRN will be located on the overview page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
 
@@ -784,22 +784,22 @@ Review the input parameters that you can specify for your resource.
 |`lockdown.configurations`|List of IP addresses|Required|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. |
 |`lockdown.configurations.target`|String|Optional|Specify if you want to target an `ip` or `ip_range`.|
 |`lockdown.configurations.value`|String|Optional|The IP address or IP address range that you want to target. Make sure that the value that you enter here matches the type of target that you specified in `lockdown.configurations.target`. |
-|`access_rule`|String|Optional| Create the data the describing access rule. (MaxItem: 1) |
+|`access_rule`|String|Optional| Create the data the describing access rule. (Maximum item is 1) |
 |`access_rule.notes`|String|Optional| The free text for notes. |
 |`access_rule.mode`|String|Required| The mode of access rule. The valid modes are `block`, `challenge`, `whitelist`, `js_challenge`.|
-|`access_rule.configuration`|List|Required| The Configuration of firewall. (MaxItems: 1) |
+|`access_rule.configuration`|List|Required| The Configuration of firewall. (Maximum items is 1) |
 |`access_rule.configuration.target`|String|Required| The request property to target. Valid values are `ip`, `ip_range`, `asn`, `country`. |
 |`access_rule.configuration.value`|String|Required| IP address or CIDR or Autonomous or Country code. |
-|`ua_rule`|String|Optional|Create the data describing the user agent rule. (MaxItem: 1) |
+|`ua_rule`|String|Optional|Create the data describing the user agent rule. (Maximum item is 1) |
 |`ua_rule.description `|String|Optional|The free text for description. |
 |`ua_rule.mode`|String|Optional|The mode of access rule. The valid modes are `block`, `challenge`,  `js_challenge`. |
 |`ua_rule.paused`|String|Optional|Whether the rule is currently disabled. |
-|`ua_rule.configuration`|List|Required| The Configuration of firewall. (MaxItems: 1) |
+|`ua_rule.configuration`|List|Required| The Configuration of firewall. (Maximum items is 1) |
 |`ua_rule.configuration.target`|String|Required| The request property to target. Valid values are `ua`. |
 |`ua_rule.configuration.value`|String|Required|  The exact User Agent string to match the rule. |
 
 
-Exactly one of `lockdown`, `access_rule`, and `ua_rule` is allowed for the respective firewall types `lockdowns`, `access_rules`, and `ua_rules`.
+Exactly one of `lockdown`, `access_rule`, and `ua_rule` is allowed for the firewall types `lockdowns`, `access_rules`, and `ua_rules`.
 {: note}
 
 ### Output parameters
@@ -811,14 +811,14 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The ID of the record. The ID is composed of `<firewall_type>,<lockdown_id/access_rule_id/ua_rule_id>,<domain_ID>,<cis_crn>`. Attributes are concatenated with `:`.|
-|`lockdown_id`|String|The lockdown ID.|
+|`lockdown_id`|String|The lock down ID.|
 |`access_rule_id`|String|The access rule ID.|
 |`ua_rule_id`|String|The user agent rule ID.|
 
 ### Import
 {: #cis-firewall-import}
 
-The `ibm_cis_firewall` resource is imported by using the ID. The ID is formed from the firewall type, the firewall ID, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character.
+The `ibm_cis_firewall` resource is imported by using the ID. The ID is formed from the firewall type, the firewall ID, the domain ID of the domain and the CRN (Cloud Resource Name) concatenated  using a `:` character.
 
 The domain ID and CRN is located on the Overview page of the internet services instance of the domain heading of the UI, or by using the `ibm cis` CLI commands.
 
@@ -1275,7 +1275,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #routing-import}
 
-The `ibm_cis_routing` resource can be imported using the ID. The ID is formed from the domain ID of the domain and the CRN concatentated using a `:` character.
+The `ibm_cis_routing` resource can be imported using the ID. The ID is formed from the domain ID of the domain and the CRN concatenated  using a `:` character.
 
 The domain ID and CRN will be located on the overview page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
 

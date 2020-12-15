@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-14" 
+lastupdated: "2020-12-15" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -1125,7 +1125,7 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------- |
 |`name`|String|Required|The name of the VPC load balancer.| No |
-|`profile`|String|Required|The profile to use for this load balancer. This is required for network load balancer.| Yes |
+|`profile`|String|Required|The profile to use for this Load Balancer. Supported value is `network-fixed`.| Yes |
 |`resource_group`|String|Optional| The resource group where the load balancer to be created.| Yes |
 |`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.| No |
 |`tags`|Array of strings|Optional|A list of tags that you want to add to your load balancer. Tags can help you find the load balancer more easily later. | No |
@@ -1222,10 +1222,10 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------| ------- |
 |`lb`|String|Required|The load balancer unique identifier.| Yes |
 |`port`|Integer|Required|The listener port number. Valid range 1 to 65535.| No |
-|`protocol`|String|Required|The listener protocol. Supported values are `http`, `tcp`, and `https`.| No |
+|`protocol`|String|Required|The listener protocol. Enumeration type are `http`, `tcp`, and `https`. Network Load Balancer supports only tcp protocol.| No |
 |`default_pool`|String|Required| The load balancer pool unique identifier.| No |
 |`certificate_instance`|String|Optional|The CRN of the certificate instance.| No |
-|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000.| No |
+|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000. Network Load Balancer does not support connection_limit argument.| No |
 
 ### Output parameters
 {: #lb-listener-output}
@@ -2651,7 +2651,7 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------| ------ |
 |`name`|String|Optional|The routing table name.| No |
 |`route_direct_link_ingress`|Boolean|Optional| If set to `true`, the routing table is used to route traffic that originates from Direct Link to the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`. | No |
-|`route_transit_gateway_ingress`|Boolena|Optional|If set to `true`, the routing table is used to route traffic that originates from Transit Gateway to the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`.| No |
+|`route_transit_gateway_ingress`|Boolean|Optional|If set to `true`, the routing table is used to route traffic that originates from Transit Gateway to the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`.| No |
 |`route_vpc_zone_ingress`|Boolean|Optional|If set to true, the routing table is used to route traffic that originates from subnets in other zones in the VPC. To succeed, the VPC must not already have a routing table with the property set to `true`.| No |
 |`vpc`|String|Required|The VPC ID. |  Yes |
 
@@ -2816,7 +2816,7 @@ The following timeouts are specified for this resource:
 ## `ibm_is_vpn_gateway_connection`
 {: #vpn-gateway-connection}
 
-Create, update, or delete a VPN gateway connection. 
+Create, update, or delete a VPN gateway connection. For more information, about VPN gateway, see [adding connections to a VPN gateway](/docs/vpc?topic=vpc-vpn-adding-connections).
 {: shortdesc}
 
 ### Sample Terraform code
@@ -2863,17 +2863,36 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The unique identifier of the VPN gateway connection. The ID is composed of `<vpn_gateway_id>/<vpn_gateway_connection_id>`.|
-|`status`|String|The status of the VPN gateway connection.|
+|`authentication_mode`|String|The authentication mode, only `psk` is supported now.|
+|`created_at`| String | The date and time that VPN gateway connection was created.|
+|`resource_type`| String | The resource type (vpn_gateway_connection). |
+|`status`| String | The status of a VPN gateway connection either `down` or `up`.|
+|`tunnels`| String | The VPN tunnel configuration for the VPN gateway connection (in static route mode).|
+|`tunnels.address`| String | The IP address of the VPN gateway member in which the tunnel resides.|
+|`tunnels.resource_type`| String | The status of the VPN tunnel.|
+|`crn` |String| The `VPN Gateway info(ID)`.|
+|`mode`| String |The mode of the `VPN gateway(policy,route)`.|
+
 
 ### Import
 {: #vpn-gateway-connection-import}
 
 `ibm_is_vpn_gateway_connection` can be imported by using the VPN gateway ID and the VPN gateway connection ID. 
 
+**Syntax**
+
 ```
 terraform import ibm_is_vpn_gateway_connection.example <vpn_gateway_ID>/<vpn_gateway_connection_ID>
 ```
 {: pre}
+
+**Example**
+
+```
+terraform import ibm_is_vpn_gateway_connection.example d7bec597-4726-451f-8a63-e62e6f19c32c/cea6651a-bc0a-4438-9t8a-a0770bbf3ebb
+```
+{: pre}
+
 
 ### Timeouts
 {: #vpn-gateway-connection-timeout}

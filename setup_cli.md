@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-20"
+lastupdated: "2020-12-15"
 
 keywords: install Terraform cli, set up Terraform cli, ibm cloud provider plugin, ibm cloud for Terraform
 
@@ -139,7 +139,7 @@ To support a multi-cloud approach, Terraform works with cloud providers. A cloud
       ```
       {: pre}
    
-   If you want to explicitly place the provider in your system location. You need to follow the steps provided in the Terraform provider, For more information about Terraform v0.13 plugin download, refer to [Explicit provider](https://www.terraform.io/upgrade-guides/0-13.html#explicit-provider-source-locations){: external}.
+   If you want to explicitly place the provider in your system location. You need to follow the steps provided in the Terraform provider, For more information about Terraform v0.13 plug-in download, refer to [Explicit provider](https://www.terraform.io/upgrade-guides/0-13.html#explicit-provider-source-locations){: external}.
    {: note}
 
    **Install provider for Terraform v0.12**
@@ -245,7 +245,7 @@ Because Terraform supports multiple cloud providers, you must specify IBM as you
 
      **Environment variables**
 
-      You can provide your credentials by exporting the `IC_API_KEY`, `IAAS_CLASSIC_USERNAME`, and `IAAS_CLASSIC_API_KEY` environment variables, representing your {{site.data.keyword.cloud_notm}} platform API key, {{site.data.keyword.cloud_notm}} Classic Infrastructure (SoftLayer) user name, and {{site.data.keyword.cloud_notm}} infrastructure API key, respectively. The provider block with the empty definition overrides the credentials set through the environment variables.
+      You can provide your credentials by exporting the `IC_API_KEY`, `IAAS_CLASSIC_USERNAME`, and `IAAS_CLASSIC_API_KEY` environment variables, representing your {{site.data.keyword.cloud_notm}} platform API key, {{site.data.keyword.cloud_notm}} Classic Infrastructure (SoftLayer) user name, and {{site.data.keyword.cloud_notm}} infrastructure API key. The provider block with the empty definition overrides the credentials set through the environment variables.
       {: shortdesc}
 
       ```
