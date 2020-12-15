@@ -1125,7 +1125,7 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| ------- |
 |`name`|String|Required|The name of the VPC load balancer.| No |
-|`profile`|String|Required|The profile to use for this load balancer. This is required for network load balancer.| Yes |
+|`profile`|String|Required|The profile to use for this Load Balancer. Supported value is `network-fixed`.| Yes |
 |`resource_group`|String|Optional| The resource group where the load balancer to be created.| Yes |
 |`subnets`|Array|Required|List of the subnets IDs to connect to the load balancer.| No |
 |`tags`|Array of strings|Optional|A list of tags that you want to add to your load balancer. Tags can help you find the load balancer more easily later. | No |
@@ -1222,10 +1222,10 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------| ------- |
 |`lb`|String|Required|The load balancer unique identifier.| Yes |
 |`port`|Integer|Required|The listener port number. Valid range 1 to 65535.| No |
-|`protocol`|String|Required|The listener protocol. Supported values are `http`, `tcp`, and `https`.| No |
+|`protocol`|String|Required|The listener protocol. Enumeration type are `http`, `tcp`, and `https`. Network Load Balancer supports only tcp protocol.| No |
 |`default_pool`|String|Required| The load balancer pool unique identifier.| No |
 |`certificate_instance`|String|Optional|The CRN of the certificate instance.| No |
-|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000.| No |
+|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000. Network Load Balancer does not support connection_limit argument.| No |
 
 ### Output parameters
 {: #lb-listener-output}

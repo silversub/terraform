@@ -114,7 +114,7 @@ Review the input parameters that you can specify for your resource.
 |Input parameter |Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| --------|
 |`bgp_asn`|Integer|Required|The BGP ASN of the gateway to be created. For example, `64999`.| Yes |
-|`bgp_base_cidr`|String|Required|The BGP base CIDR of the gateway to be created. For example, `10.254.30.76/30` | Yes |
+|`bgp_base_cidr`|String|Optional|The BGP base CIDR of the gateway to be created. For example, `10.254.30.76/30` | Yes |
 |`bgp_cer_cidr`|String|Optional|The BGP customer edge router CIDR. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can exclude and a CIDR is selected automatically. For example, `10.254.30.78/30`.| Yes |
 |`bgp_ibm_cidr`|String|Optional|The {{site.data.keyword.IBM_notm}} BGP ASN. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can exclude and a CIDR is selected automatically. For example, `10.254.30.77/30`.| Yes |
 |`carrier_name`|String|Required|The carrier name. Constraints are 1 ≤ length ≤ 128, Value must match regular expression ^[a-z][A-Z][0-9][ -_]$. For example, `myCarrierName`.| Yes |
