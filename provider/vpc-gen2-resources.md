@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-14" 
+lastupdated: "2020-12-15" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -2816,7 +2816,7 @@ The following timeouts are specified for this resource:
 ## `ibm_is_vpn_gateway_connection`
 {: #vpn-gateway-connection}
 
-Create, update, or delete a VPN gateway connection. 
+Create, update, or delete a VPN gateway connection. For more information, about VPN gateway, see [adding connections to a VPN gateway](/docs/vpc?topic=vpc-vpn-adding-connections).
 {: shortdesc}
 
 ### Sample Terraform code
@@ -2863,17 +2863,36 @@ Review the output parameters that you can access after your resource is created.
 |Name|Data type|Description|
 |----|-----------|--------|
 |`id`|String|The unique identifier of the VPN gateway connection. The ID is composed of `<vpn_gateway_id>/<vpn_gateway_connection_id>`.|
-|`status`|String|The status of the VPN gateway connection.|
+|`authentication_mode`|String|The authentication mode, only `psk` is supported now.|
+|`created_at`| String | The date and time that VPN gateway connection was created.|
+|`resource_type`| String | The resource type (vpn_gateway_connection). |
+|`status`| String | The status of a VPN gateway connection either `down` or `up`.|
+|`tunnels`| String | The VPN tunnel configuration for the VPN gateway connection (in static route mode).|
+|`tunnels.address`| String | The IP address of the VPN gateway member in which the tunnel resides.|
+|`tunnels.resource_type`| String | The status of the VPN tunnel.|
+|`crn` |String| The `VPN Gateway info(ID)`.|
+|`mode`| String |The mode of the `VPN gateway(policy,route)`.|
+
 
 ### Import
 {: #vpn-gateway-connection-import}
 
 `ibm_is_vpn_gateway_connection` can be imported by using the VPN gateway ID and the VPN gateway connection ID. 
 
+**Syntax**
+
 ```
 terraform import ibm_is_vpn_gateway_connection.example <vpn_gateway_ID>/<vpn_gateway_connection_ID>
 ```
 {: pre}
+
+**Example**
+
+```
+terraform import ibm_is_vpn_gateway_connection.example d7bec597-4726-451f-8a63-e62e6f19c32c/cea6651a-bc0a-4438-9t8a-a0770bbf3ebb
+```
+{: pre}
+
 
 ### Timeouts
 {: #vpn-gateway-connection-timeout}

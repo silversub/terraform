@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-06"
+lastupdated: "2020-12-15"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -47,7 +47,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_dl_gateway`
 {: #dl-gwy}
 
-Create, update, or delete a direct link gateway by using the direct link gateway resource.
+Create, update, or delete a direct link gateway by using the direct link gateway resource. For more information, see[about Direct Link](/docs/dl?topic=dl-dl-about).
 {: shortdesc}
 
 ### Sample Terraform code to create direct link of dedicated type
@@ -152,7 +152,7 @@ Review the output parameters that you can access after your resource is created.
 |`provider_api_managed`|String|Indicates whether gateway changes need to be made via a provider portal.|
 |`operational_status`|String|The gateway operational status. For gateways pending LOA approval, patch operational_status to the appropriate value to approve or reject its LOA. For example, `loa_accepted`.|
 
-Operational_status(gateway operational status) and loa_reject_reason(LOA reject reason) cannot be updated by using Terraform as the status and reason keeps changing with the different workflow actions.
+The `Operational_status(Gateway operational status)` and `loa_reject_reason(LOA reject reason)` cannot be updated by using Terraform as the status and reason keeps changing with the different workflow actions.
 {: note}
 
 ### Import
