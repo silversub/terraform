@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-15"
+lastupdated: "2020-12-16"
 
 keywords:  terraform provider plugin, direct link gateway, terraform direct link gateway, terraform direct link gateway data sources
 
@@ -47,7 +47,7 @@ Before you start working with your resource, make sure to review the [required p
 ## `ibm_dl_gateway`
 {: #dl-gwy}
 
-Create, update, or delete a direct link gateway by using the direct link gateway resource. For more information, see[about Direct Link](/docs/dl?topic=dl-dl-about).
+Create, update, or delete a direct link gateway by using the direct link gateway resource. For more information, see [about Direct Link](/docs/dl?topic=dl-dl-about).
 {: shortdesc}
 
 ### Sample Terraform code to create direct link of dedicated type
@@ -114,7 +114,7 @@ Review the input parameters that you can specify for your resource.
 |Input parameter |Data type|Required / optional|Description| Forces new resource |
 |----|-----------|-----------|---------------------| --------|
 |`bgp_asn`|Integer|Required|The BGP ASN of the gateway to be created. For example, `64999`.| Yes |
-|`bgp_base_cidr`|String|Optional|The BGP base CIDR of the gateway to be created. For example, `10.254.30.76/30` | Yes |
+|`bgp_base_cidr`|String|Optional|(Deprecated) The BGP base CIDR of the gateway to be created. For example, `10.254.30.76/30` | Yes |
 |`bgp_cer_cidr`|String|Optional|The BGP customer edge router CIDR. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can exclude and a CIDR is selected automatically. For example, `10.254.30.78/30`.| Yes |
 |`bgp_ibm_cidr`|String|Optional|The {{site.data.keyword.IBM_notm}} BGP ASN. Specify a value within bgp_base_cidr. If bgp_base_cidr is `169.254.0.0/16`, this parameter can exclude and a CIDR is selected automatically. For example, `10.254.30.77/30`.| Yes |
 |`carrier_name`|String|Required|The carrier name. Constraints are 1 ≤ length ≤ 128, Value must match regular expression ^[a-z][A-Z][0-9][ -_]$. For example, `myCarrierName`.| Yes |

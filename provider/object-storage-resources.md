@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-10"
+lastupdated: "2020-12-16"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cloud object storage bucket, terraform get object storage resources
 
@@ -234,8 +234,6 @@ Review the input parameters that you can specify for your resource.
 
 Both `archive_rule` and `expire_rule` must be managed by Terraform as they use the same lifecycle configuration. If user creates any of the rule outside of Terraform by using CLI or UI, you can see unexpected difference like removal of any of the rule or one rule overrides another. The policy cannot match as expected due to API limitations, as the lifecycle is a single API request for both archive and expire.
 {: note}
-
-
 
 ### Output parameters
 {: #hpvs-cos-bucket-output}
