@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-15"
+lastupdated: "2020-12-16"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -592,3 +592,188 @@ Review the output parameters that you can access after you retrieved your data s
 |`bypass`|List of bypass criteria|A list of key-value pairs that, when matched, allow the rate limiting rule to be ignored.  |
 |`bypass.name`|String|The name of the key that you want to apply. Supported values are `url`. |
 |`bypass.value`|String|The value of the key that you want to match. When `bypass.name` is set to `url`, `bypass.value` contains the URL that you want to exclude from the rate limiting rule. |
+
+## `ibm_cis_range_apps`
+{: #cis_range_apps}
+
+Retrieve an information of an {{site.data.keyword.cis_full_notm}} range applications. For more information, about CIS range application, see [getting started with range](/docs/cis?topic=cis-cis-range).
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis_range_apps-dssample}
+
+```
+data "ibm_cis_range_apps" "apps" {
+  cis_id    = ibm_cis.instance.id
+  domain_id = ibm_cis_domain.example.id
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #cis_range_apps-dsinput}
+
+Input parameters are not supported for this data source. 
+{: shortdesc}
+
+
+### Output parameters
+{: #cis_range_apps-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`id`|String| The range application ID. It is a combination of `<app_id>,<domain_id>,<cis_id>` attributes are concatenated with `:` character.|
+|`app_id`| String| The Range application id.|
+|`cis_id`| String| The ID of the CIS service instance.|
+|`domain_id`|String| The ID of the domain to add the range application.|
+|`protocol`| String| The Edge application protocol type. Valid values are `tcp`, `udp`. This attribute specified along with port number. For example, `tcp/22`.|
+|`dns`| String| The name of DNS record for the range application.|
+|`dns_type`| String| The DNS record type.
+|`origin_direct`| String| A list of destination addresses to the origin. IP address and port of the origin for Range application. If configuring a Load Balancer, use `origin_dns` and `origin_port`. This cannot be combined with `origin_dns` and `origin_port`. For example, `tcp://192.0.2.1:22`.
+|`ip_firewall`|String| Enables the IP firewall for the application. Only available for `TCP` applications.|
+|`proxy_protocol`| String| Allows for the true client IP to be passed to the service. Valid values are `off`, `v1`, `v2`, `simple`. Default value is `off`.|
+|`edge_ips_type`| String| The type of edge IP configuration. Valid value and default value is `dynamic`.|
+|`edge_ips_connectivity`|String| Specified IP version. Valid values are `ipv4`, `ipv6`, `all`. Default value is `all`.|
+|`traffic_type`| String| Configure how traffic is handled at the edge. If set to direct traffic is passed through to the service. In the case of HTTP or HTTPs, HTTPs features at the edge are applied to this traffic. Valid values are `direct`, `http`, `https`. Default value is `direct`.|
+|`tls`| String| Configure how TLS connections are terminated at the edge. Valid values are `off`, `flexible`, `full`, `strict`. Default value is `off`.|
+
+
+## `ibm_cis_waf_groups`
+{: #cis_waf_groups}
+
+Import the details of an existing {{site.data.keyword.cis_full_notm}} WAF rule groups. For more information, about WAF refer to [Web Application Firewall concepts](/docs/cis?topic=cis-waf-q-and-a).
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis_waf_groups-dssimple}
+
+```
+data "ibm_cis_waf_groups" "waf_groups" {
+  cis_id     = data.ibm_cis.cis.id
+  domain_id  = data.ibm_cis_domain.cis_domain.id
+  package_id = "c504870194831cd12c3fc0284f294abb"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #cis_waf_groups-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+|`cis_id`|String|Required| The resource CRN ID of the CIS on which zones were created.|
+|`domain_id`|String|Required|The ID of the domain to retrieve the Load Balancers. |
+|`package_id`|String|Required|The WAF Rule Package ID. |
+
+### Output parameters
+{: #cis_waf_groups-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`name`|String| The name ofthe  WAF rule group.|
+|`group_id`|String| The WAF group ID.|
+|`mode` |String| The `on` or `off` mode setting of the WAF rule group.|
+|`description` |String| The WAF rule group description.|
+|`rules_count`|String|  Number of rules in WAF Group.|
+|`modified_rules_count`|String|  Number of rules modified in WAF Group.|
+
+## `ibm_cis_waf_packages`
+{: #cis_waf_packages}
+
+Import the details of an existing {{site.data.keyword.cis_full_notm}} WAF package resource. For more information, about WAF refer to [CIS rule sets](/docs/cis?topic=cis-waf-settings).
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis_waf_packages-dssimple}
+
+```
+data "ibm_cis_rate_limit" "ratelimit" {
+    cis_id = data.ibm_cis.cis.id
+    domain_id = data.ibm_cis_domain.cis_domain.domain_id
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #cis_waf_packages-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+|`cis_id`|String|Required| The ID of the {{site.data.keyword.cis_full_notm}} service instance.|
+|`domain_id`|String|Required|The ID of the domain. |
+
+### Output parameters
+{: #cis_waf_packages-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`id`|String| The ID of resource. It is the combination of `<package_id>:<domain_id>:<cis_id>`.|
+|`description`|String|  The WAF package description.|
+|`package_id`|String| The WAF package ID.|
+|`detection_mode`|String| The WAF package detection mode.|
+
+
+## `ibm_cis_waf_rules`
+{: #cis_waf_rules}
+
+Import the details of an existing {{site.data.keyword.cis_full_notm}} WAF rules resource. For more information, see [CIS rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis_waf_rules-dssimple}
+
+```
+data "ibm_cis_waf_rules" "rules" {
+		cis_id    = data.ibm_cis.cis.id
+		domain_id = data.ibm_cis_domain.cis_domain.id
+		package_id = "1e334934fd7ae32ad705667f8c1057aa"
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #cis_waf_rules-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+|`cis_id`|String|Required| The ID of the {{site.data.keyword.cis_full_notm}} service instance.|
+|`domain_id`|String|Required|The ID of the domain to add the rate limit rule. |
+|`package_id`|String|Required|The ID of WAF rule package. |
+
+### Output parameters
+{: #cis_waf_rules-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`waf_rules`|List| The list of WAF rules. |
+|`waf_rules.id`|String| It is a combination of `<rule_id>,<package_id>,<domain_id>,<cis_id>` attributes concatenated with `:` character. |
+|`waf_rules.rule_id`|String| The ID of WAF rule package.|
+|`waf_rules.package_id`|String| The ID of WAF rule package.|
+|`waf_rules.mode`|String| The mode setting that can be set only once. Valid values are `on`, `off`, `default`, `disable`, `simulate`, `block`, `challenge`.|
+|`waf_rules.description`|String| The WAF rule description.|
+|`waf_rules.priority`|String| The WAF rule priority.|
+|`waf_rules.group`|String| The WAF rule group.|
+|`waf_rules.group.id`|String| The WAF rule group ID.|
+|`waf_rules.group.name`|String| The name of the WAF rule group.|
+|`waf_rules.allowed_modes`|String| The allowed modes for setting the WAF rule mode.|

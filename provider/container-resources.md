@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-15" 
+lastupdated: "2020-12-16" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -633,6 +633,9 @@ Review the input parameters that you can specify for your resource.
 | `tags` | Array of strings | Optional | A list of tags that you want to add to your cluster. Tags can help find a cluster more quickly.  | No |
 | `update_all_workers` | Boolean | Optional | If set to **true**, the Kubernetes version of the worker nodes is updated along with the Kubernetes version of the cluster that you specify in `kube_version`. | No |
 | `webhook` | Array of objects | Optional | The webhook that you want to add to the cluster. For available options, see the [`webhook create` command](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli). | No |
+| `webhook.level` | String | Optional| Notification level, such as `Normal` or `Warning`. | Yes |
+| `webhook.type` | String | Optional | The Webhook type. Currently, supported value is `slack`.| Yes |
+| `webhook.url` | String | Optional |The URL for the webhook.| Yes|
 | `workers_info` | Array of objects | Optional | The worker nodes that you want to update. | No |
 | `workers_info.id` | String | Optional | The ID of the worker node that you want to update. | No |
 | `workers_info.version` | String | Optional | The Kubernetes version that you want to update your worker nodes to. | No |

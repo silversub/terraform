@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-15"
+lastupdated: "2020-12-16"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -1225,6 +1225,96 @@ terraform import ibm_cis_rate_limit.ratelimit <rule_id>:<domain-id>:<crn>
 ```
 {: pre}
 
+
+## `ibm_cis_range_app`
+{: #cis_range_app}
+
+Create, update, or delete range application an {{site.data.keyword.cis_full_notm}} domain. For more information, about range, see [protecting TCT traffic](/docs/cis?topic=cis-cis-range).
+{: shortdesc}
+
+
+### Sample Terraform code
+{: #cis_range_app-sample}
+
+The following example shows how you can add a rate limit to an {{site.data.keyword.cis_full_notm}} domain. 
+
+```
+resource "ibm_cis_range_app" "app" {
+	cis_id         = data.ibm_cis.cis.id
+	domain_id      = data.ibm_cis_domain.cis_domain.id
+	protocol       = "tcp/22"
+	dns_type       = "CNAME"
+	dns            = "ssh.example.com"
+	origin_direct  = ["tcp://12.1.1.1:22"]
+	ip_firewall    = true
+	proxy_protocol = "v1"
+	traffic_type   = "direct"
+	tls            = "off"
+}
+```
+{: codeblock}
+
+### Input parameter 
+{: #cis_range_app-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance. |
+|`domain_id`|String|Required|The ID of the domain where you want  to add the range app. |
+|`protocol`|String|Required|The edge application protocol type. Valid values are `tcp`, `udp`. This attribute specified along with port number. For example, `tcp/22`. |
+|`dns`|String|Required|The name of DNS record for the range application. | 
+|`dns_type`|String|Required|The DNS record type. | 
+|`origin_direct`|List of Strings|Optional|A list of destination addresses to the origin. IP address and port of the origin for range application. If configuring a Load Balancer, use `origin_dns` and `origin_port`. This cannot be combined with `origin_dns` and `origin_port`. For example, `tcp://192.0.2.1:22`.|
+|`origin_dns`|String|Optional| DNS record pointing to the origin for the range application. This is used for configuring a Load Balancer. This requires `origin_port` and cannot be combined with `origin_direct`. When specifying an individual IP address, use `origin_direct`. For example, `origin.net`.|
+|`origin_port`|Integer|Optional|Port at the origin that listens to traffic from the range application. Requires `origin_dns` and cannot be combined with `origin_direct`. |
+|`ip_firewall`|Boolean|Optional|Enables the IP firewall for the application. Only available for TCP applications. |
+|`proxy_protocol`|String|Optional| Allows for the true client IP to be passed to the service. Valid values are `off`, `v1`, `v2`, `simple`. Default value is `off`.| 
+|`edge_ips_type`|String|Optional|The type of edge IP configuration. Valid value is `dynamic`. Default value is `dynamic`. |
+|`edge_ips_connectivity`|String|Optional|Specified IP version. Valid values are `ipv4`, `ipv6`, `all`. Default value is `all`.|
+|`traffic_type`|String|Optional|Configure how traffic is handled at the edge. If set to direct traffic is passed through to the service. In the case of HTTP or HTTPs, HTTPs features at the edge are applied to this traffic. Valid values are `direct`, `http`, `https`. Default value is `direct`.|
+|`tls`|String|Optional|Configure how TLS connections are terminated at the edge. Valid values are `off`, `flexible`, `full`, `strict`. Default value is `off`.|
+
+### Output parameter
+{: #cis_range_app-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The ID of the range application in the format `<app_id>:<domain_id>:<cis_id>`. |
+|`app_id`|String|The range application ID. |
+
+### Import
+{: #cis_range_app-import}
+
+The `ibm_cis_range_app` resource can be imported using the ID. The ID is formed from the application ID, the Domain ID of the domain and the CRN (Cloud Resource Name) concatentated by using a `:` character.
+
+The Domain ID and CRN will be located on the overview page of the Internet Services instance from the Domain heading of the UI, or by using the `ibm cis` CLI commands.
+
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+App ID is a 32 digit character string of the form: `489d96f0da6ed76251b475971b097205c.`
+
+**Syntax**
+
+```
+terraform import ibm_cis_range_app.myorg <app_id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_range_app.myorg 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
 ## `ibm_cis_routing`
 {: #cis-routing}
 
@@ -1360,7 +1450,7 @@ The following timeouts are defined for this resource.
 The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed from the domain ID of the domain and the CRN (Cloud Resource Name) Concatenated using a `:` character.
 {: shortdesc}
 
- The domain ID and CRN will be located on the overview page of the Internet Services instance in the domain heading of the UI, or through using the {{site.data.keyword.cis_full_notm}} CLI commands.
+ The domain ID and CRN will be located on the **Overview** page of the Internet Services instance in the domain heading of the UI, or through using the {{site.data.keyword.cis_full_notm}} CLI commands.
 
  Domain ID is a 32 digit character string of the form: 9caf68812ae9b3f0377fdf986751a78f
 
@@ -1380,3 +1470,239 @@ The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed f
  terraform import ibm_cis_tls_settings.tls_settings 9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
  ```
  {: pre}
+
+ ## `ibm_cis_waf_group`
+{: #cis_waf_group}
+
+Provides a {{site.data.keyword.cis_full_notm}} WAF rule rroup resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF Groups mode of a domain of a CIS instance. It is also named as CIS rule set. Please find OWASP rule set set tab under WAF of your instance in UI. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis_waf_group-sample}
+
+The following example shows how you can add a WAF group resource to an {{site.data.keyword.cis_full_notm}} domain. 
+
+```
+resource "ibm_cis_waf_group" "test" {
+  cis_id     = data.ibm_cis.cis.id
+  domain_id  = data.ibm_cis_domain.cis_domain.domain_id
+  package_id = "c504870194831cd12c3fc0284f294abb"
+  group_id   = "3d8fb0c18b5a6ba7682c80e94c7937b2"
+  mode       = "on"
+}
+```
+{: codeblock}
+
+### Input parameter 
+{: #cis_waf_group-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance. |
+|`domain_id`|String|Required|The ID of the domain to change WAF rule group mode. |
+|`package_id`|String|Required|The WAF rule group package ID. |
+|`group_id`|String|Required|The WAF rule group ID.|
+|`mode`|String|Required|The WAF group mode. Valid values are `on` and `off`. |
+
+### Output parameter
+{: #cis_waf_group-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String| The WAF rule group ID. It is a combination of `<group_id>:<package_id>:<domain-id>:<crn>` attributes concatenated with `:`.|
+|`name`|String| The WAF rule group name.|
+|`description`|String|The WAF rule group description.|
+|`rules_count`|String| Number of rules in WAF Group.|
+|`modified_rules_count`| String |Number of rules modified in WAF Group.|
+
+### Import
+{: #cis_waf_group-import}
+
+The `ibm_cis_waf_group` resource can be imported by using the ID. The ID is formed from the WAF Rule Group ID, the WAF rule package ID, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated by using `:` character.
+
+The domain ID and CRN will be located on the **Overview** page of the Internet Services instance of the domain heading of the UI, or by using the `ibmcloud cis` CLI commands.
+
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+Group ID is a 32 digit character string of the form: `57d96f0da6ed76251b475971b097205c`. The ID of an existing WAF rule group is not available in the UI. It can be retrieved programatically from the CIS API or the CLI by using the CIS command to list the defined WAF Groups `ibmcloud cis waf-groups <domain_id> <waf_package_id>`.
+
+**Syntax**
+
+```
+terraform import ibm_cis_waf_group.myorg <group_id>:<package_id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_domain.myorg  3d8fb0c18b5a6ba7682c80e94c7937b2:57d96f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
+ 
+## `ibm_cis_waf_package`
+{: #cis-waf-package}
+
+Provides a {{site.data.keyword.cis_full_notm}} WAF package resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to change WAF package settings of a domain of a {{site.data.keyword.cis_full_notm}} instance. It is also named as OWASP rule set. For more information, about WAF refer to [Web Application Firewall concepts](/docs/cis?topic=cis-waf-q-and-a).
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis-waf-package-sample}
+
+The following example shows how you can add a WAF package resource to an {{site.data.keyword.cis_full_notm}} domain. 
+
+```
+# Change WAF Package settings of the domain
+
+resource "ibm_cis_waf_package" "waf_package" {
+	cis_id      = data.ibm_cis.cis.id
+	domain_id   = data.ibm_cis_domain.cis_domain.domain_id
+	package_id  = "c504870194831cd12c3fc0284f294abb"
+	sensitivity = "low"
+	action_mode = "block"
+}
+```
+{: codeblock}
+
+### Input parameter 
+{: #cis-waf-package-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance. |
+|`domain_id`|String|Required|The ID of the domain where you want to change TLS settings. |
+|`package_id`|String|Required|The WAF package ID. This cannot be modified. |
+|`sensitivity`|String|Required|The WAF package sensitivity. Valid values are `high`, `medium`, `low`, `off`.|
+|`action_mode`|String|Required|The WAF package action mode. Valid values are `simulate`, `block`, `challenge`. |
+
+
+### Output parameter
+{: #cis-waf-package-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String| The WAF package ID. It is a combination of `<package_id>:<domain_id>:<cis_id>` attributes concatenated with `:`.|
+
+### Import
+{: #cis-waf-package-import}
+
+The `ibm_cis_waf_package` resource can be imported by using the ID. The ID is formed from the package ID, domain ID of the domain and the CRN (Cloud Resource Name) concatentated by using a : character.
+
+The domain ID and CRN will be located on the **Overview** page of the Internet Services instance of the Domain heading of the UI, or by using the `ibmcloud cis` CLI commands.
+
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Syntax**
+
+```
+terraform import ibm_cis_waf_package.waf_package <package-id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_waf_package.waf_package 489d96f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
+## `ibm_cis_waf_rule`
+{: #cis_waf_rule}
+
+Provides a {{site.data.keyword.cis_full_notm}} WAF rule settings resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF rule settings of a domain of a CIS instance. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
+{: shortdesc}
+
+### Sample Terraform code
+{: #cis_waf_rule-sample}
+
+The following example shows how you can add a WAF rule resource to an {{site.data.keyword.cis_full_notm}} domain. 
+
+```
+resource "ibm_cis_waf_rule" "test" {
+	cis_id     = data.ibm_cis.cis.id
+	domain_id  = data.ibm_cis_domain.cis_domain.id
+	package_id = "c504870194831cd12c3fc0284f294abb"
+	rule_id    = "100000356"
+	mode       = "on"
+}
+```
+{: codeblock}
+
+### Input parameter 
+{: #cis_waf_rule-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance. |
+|`domain_id`|String|Required|The ID of the domain where you want to change TLS settings. |
+|`package_id`|String|Required|The WAF rule package ID. This cannot be modified. |
+|`rule_id`|String|Required|The WAF rule ID. The filed cannot be modified.|
+|`mode`|String|Required|The mode to use when the rule is triggered. Value is restricted based on the allowed_modes of the rule. Valid values are `on`, `off`, `default`, `disable`, `simulate`, `block`, `challenge`.| |
+
+
+### Output parameter
+{: #cis_waf_rule-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String| The WAF package ID. It is a combination of `<rule_id>,<package_id>,<domain_id>,<cis_id>` attributes concatenated with `:`.|
+|`description`|String|The WAF rule description. |
+|`priority`|String|The WAF rule priority. |
+|`group`|String|The WAF rule group. |
+|`group.id`|String|The WAF rule group ID. |
+|`group.name`|String|The name of the WAF rule group. |
+|`allowed_modes`|String|The allowed modes for setting the WAF rule mode. |
+
+### Import
+{: #cis_waf_rule-import}
+
+The `ibm_cis_waf_rule` resource can be imported by using the ID. The ID is formed from the rule_id, `<package_id>, <domain ID>, <package ID>` of the domain and the CRN (Cloud Resource Name) concatentated by using a `:` character.
+
+The domain ID and CRN will be located on the **Overview** page of the Internet Services instance of the domain heading of the UI, or by using the `ibmcloud cis` CLI commands.
+
+Rule ID is a digit character string of the form: `100000356`
+
+Package ID is a 32 digit character string of the form: `c504870194831cd12c3fc0284f294abb`
+
+Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Syntax**
+
+```
+terraform import ibm_cis_waf_rule.waf_rule <rule_id>:<package_id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_waf_rule.waf_rule 100000356:c504870194831cd12c3fc0284f294abb:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
+

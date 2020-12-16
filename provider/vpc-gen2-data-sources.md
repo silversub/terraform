@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-15"
+lastupdated: "2020-12-16"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -1495,7 +1495,7 @@ Review the input parameters that you can specify for your data source.
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
-{: #vpc-routing-table-dsoutput}
+{: #vpc-routing-tables-dsoutput}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}

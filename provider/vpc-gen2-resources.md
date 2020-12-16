@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-15" 
+lastupdated: "2020-12-16" 
 
 keywords: terraform provider plugin, terraform gen 2 resources, terraform generation 2, terraform generation 2 compute
 
@@ -1093,7 +1093,7 @@ terraform import ibm_is_image.example d7bec597-4726-451f-8a63-e62e6f19c32c
 ## `ibm_is_lb`
 {: #lb}
 
-Create, update, or delete a VPC load balancer. 
+Create, update, or delete a VPC Load Balancer. For more information, see [Load Balancers for VPC](/docs/vpc?topic=vpc-nlb-vs-elb).
 {: shortdesc}
 
 ### Sample Terraform code
@@ -1173,7 +1173,7 @@ terraform import ibm_is_lb.example d7bec597-4726-451f-8a63-e62e6f19c32c
 ## `ibm_is_lb_listener`
 {: #lb-listener}
 
-Create, update, or delete a listener for a VPC load balancer.
+Create, update, or delete a listener for a VPC load balancer. For more information, see [working with listeners](/vpc?topic=vpc-nlb-listeners).
 
 When provisioning the load balancer listener along with load balancer pool or pool member, use explicit dependencies on the resources or perform the Terraform apply with parallelism 1. 
 {: note}
@@ -1222,10 +1222,10 @@ Review the input parameters that you can specify for your resource.
 |----|-----------|-----------|---------------------| ------- |
 |`lb`|String|Required|The load balancer unique identifier.| Yes |
 |`port`|Integer|Required|The listener port number. Valid range 1 to 65535.| No |
-|`protocol`|String|Required|The listener protocol. Enumeration type are `http`, `tcp`, and `https`. Network Load Balancer supports only tcp protocol.| No |
+|`protocol`|String|Required|The listener protocol. Enumeration type are `http`, `tcp`, and `https`. Network Load Balancer supports only `tcp` protocol.| No |
 |`default_pool`|String|Required| The load balancer pool unique identifier.| No |
 |`certificate_instance`|String|Optional|The CRN of the certificate instance.| No |
-|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range 1 to 15000. Network Load Balancer does not support connection_limit argument.| No |
+|`connection_limit`|Integer|Optional|The connection limit of the listener. Valid range is 1 to 15000. Network Load Balancer do not support `connection_limit` argument.| No |
 
 ### Output parameters
 {: #lb-listener-output}
