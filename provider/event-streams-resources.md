@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-30"
+lastupdated: "2020-12-16"
 
 keywords: terraform provider plugin, terraform event streams, terraform event stream service, terraform event
 
@@ -68,12 +68,12 @@ resource "ibm_resource_instance" "es_instance_1" {
   #   service-endpoints     = "private"                    # for enterprise instance only, Options are: "public", "public-and-private", "private". Default is "public" when not specified.
   #   private_ip_allowlist = "[10.0.0.0/32,10.0.0.1/32]" # for enterprise instance only. Specify 1 or more IP range in CIDR format.
   #   # Refer private service endpoint and IP allow list to restrict access documentation, (
-https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-restrict_access) for more details.
+/docs/EventStreams?topic=EventStreams-restrict_access) for more details.
   #   throughput   = "150"  # for enterprise instance only. Options are: "150", "300", "450". Default is "150".
   #   storage_size = "2048" # for enterprise instance only. Options are: "2048", "4096", "6144", "8192", "10240", "12288". Default is "2048".
   #   Note: When throughput is "300", storage_size starts from "4096",  when throughput is "450", storage_size starts from "6144".
   #   Refer support combinations of throughput and storage_size documentation (
-https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-ES_scaling_capacity#ES_scaling_combinations) for more details.
+/docs/EventStreams?topic=EventStreams-ES_scaling_capacity#ES_scaling_combinations) for more details.
   # }
 
   # timeouts {
