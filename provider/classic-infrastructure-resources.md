@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-19"
+lastupdated: "2020-12-17"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -3261,7 +3261,7 @@ ibm_storage_evault provides the following [Timeouts](https://www.terraform.io/do
 ## `ibm_storage_file`
 {: #storage-file}
 
-ibm_storage_file resource provides a file storage resource. This allows NFS-based Endurance and Performance [file storage](/docs/FileStorage?topic=FileStorage-about) to be created, updated, and deleted.
+ibm_storage_file resource provides a file storage resource. This allows NFS-based Endurance and Performance [file storage](/docs/FileStorage?topic=FileStorage-getting-started) to be created, updated, and deleted.
 
 File storage is mounted by using the NFS protocol. For example, a file storage resource with the `hostname` argument set to `nfsdal0501a.service.softlayer.com` and the `volumename` argument set to ` IBM01SV278685_7` has the mount point `nfsdal0501a.service.softlayer.com:\IBM01SV278685_7`.
 
@@ -3333,7 +3333,7 @@ The following arguments are supported:
 |`type`| String | Required | The type of the storage. Accepted values are `Endurance` and `Performance`| Yes |
 |`datacenter`| String | Required |The data center where you want to provision the file storage instance.| Yes |
 |`capacity`| Integer | Required |The amount of storage capacity that you want to allocate, expressed in gigabytes.| No |
-|`iops`| Float | Required | The IOPS value for the storage instance. For supported values, see [Provisioning](/docs/FileStorage?topic=FileStorage-about#provisioning). | No |
+|`iops`| Float | Required | The IOPS value for the storage instance. For supported values, see [Provisioning](/docs/FileStorage?topic=FileStorage-getting-started#provconsiderations). | No |
 |`snapshot_capacity`| Integer | Optional | The amount of snapshot capacity that you want to allocate, expressed in gigabytes.| Yes |
 |`allowed_virtual_guest_ids`| Array of integers | Optional | The virtual guests that you want to give access to this instance. Virtual guests must be in the same data center as the block storage. You can also use this field to import the list of virtual guests that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_vm_instance` resource.| No |
 |`allowed_hardware_ids`| Array of integers | Optional | The Bare Metal servers that you want to give access to this instance. Bare Metal servers must be in the same data center as the block storage. You can also use this field to import the list of Bare Metal servers that have access to this storage from the `block_storage_ids` argument in the `ibm_compute_bare_metal` resource.| No |
