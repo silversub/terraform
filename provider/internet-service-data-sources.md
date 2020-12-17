@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-16"
+lastupdated: "2020-12-17"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -594,13 +594,13 @@ Review the output parameters that you can access after you retrieved your data s
 |`bypass.value`|String|The value of the key that you want to match. When `bypass.name` is set to `url`, `bypass.value` contains the URL that you want to exclude from the rate limiting rule. |
 
 ## `ibm_cis_range_apps`
-{: #cis_range_apps}
+{: #cis-range-apps}
 
 Retrieve an information of an {{site.data.keyword.cis_full_notm}} range applications. For more information, about CIS range application, see [getting started with range](/docs/cis?topic=cis-cis-range).
 {: shortdesc}
 
 ### Sample Terraform code
-{: #cis_range_apps-dssample}
+{: #cis-range-apps-dssample}
 
 ```
 data "ibm_cis_range_apps" "apps" {
@@ -611,14 +611,14 @@ data "ibm_cis_range_apps" "apps" {
 {: codeblock}
 
 ### Input parameters
-{: #cis_range_apps-dsinput}
+{: #cis-range-apps-dsinput}
 
 Input parameters are not supported for this data source. 
 {: shortdesc}
 
 
 ### Output parameters
-{: #cis_range_apps-dsoutput}
+{: #cis-range-apps-dsoutput}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
@@ -637,18 +637,18 @@ Review the output parameters that you can access after you retrieved your data s
 |`proxy_protocol`| String| Allows for the true client IP to be passed to the service. Valid values are `off`, `v1`, `v2`, `simple`. Default value is `off`.|
 |`edge_ips_type`| String| The type of edge IP configuration. Valid value and default value is `dynamic`.|
 |`edge_ips_connectivity`|String| Specified IP version. Valid values are `ipv4`, `ipv6`, `all`. Default value is `all`.|
-|`traffic_type`| String| Configure how traffic is handled at the edge. If set to direct traffic is passed through to the service. In the case of HTTP or HTTPs, HTTPs features at the edge are applied to this traffic. Valid values are `direct`, `http`, `https`. Default value is `direct`.|
+|`traffic_type`| String| Configure how traffic is handled at the edge. If set to direct traffic is passed through to the service. In the case of HTTP or HTTPS, HTTPS features at the edge are applied to this traffic. Valid values are `direct`, `http`, `https`. Default value is `direct`.|
 |`tls`| String| Configure how TLS connections are terminated at the edge. Valid values are `off`, `flexible`, `full`, `strict`. Default value is `off`.|
 
 
 ## `ibm_cis_waf_groups`
-{: #cis_waf_groups}
+{: #cis-waf-groups}
 
 Import the details of an existing {{site.data.keyword.cis_full_notm}} WAF rule groups. For more information, about WAF refer to [Web Application Firewall concepts](/docs/cis?topic=cis-waf-q-and-a).
 {: shortdesc}
 
 ### Sample Terraform code
-{: #cis_waf_groups-dssimple}
+{: #cis-waf-groups-dssimple}
 
 ```
 data "ibm_cis_waf_groups" "waf_groups" {
@@ -660,7 +660,7 @@ data "ibm_cis_waf_groups" "waf_groups" {
 {: codeblock}
 
 ### Input parameters
-{: #cis_waf_groups-dsinput}
+{: #cis-waf-groups-dsinput}
 
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
@@ -672,14 +672,14 @@ Review the input parameters that you can specify for your data source.
 |`package_id`|String|Required|The WAF Rule Package ID. |
 
 ### Output parameters
-{: #cis_waf_groups-dsoutput}
+{: #cis-waf-groups-dsoutput}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
 
 |Name|Data type|Description|
 |----|-----------|----------|
-|`name`|String| The name ofthe  WAF rule group.|
+|`name`|String| The name of the  WAF rule group.|
 |`group_id`|String| The WAF group ID.|
 |`mode` |String| The `on` or `off` mode setting of the WAF rule group.|
 |`description` |String| The WAF rule group description.|
@@ -687,13 +687,13 @@ Review the output parameters that you can access after you retrieved your data s
 |`modified_rules_count`|String|  Number of rules modified in WAF Group.|
 
 ## `ibm_cis_waf_packages`
-{: #cis_waf_packages}
+{: #cis-waf-packages}
 
 Import the details of an existing {{site.data.keyword.cis_full_notm}} WAF package resource. For more information, about WAF refer to [CIS rule sets](/docs/cis?topic=cis-waf-settings).
 {: shortdesc}
 
 ### Sample Terraform code
-{: #cis_waf_packages-dssimple}
+{: #cis-waf-packages-dssimple}
 
 ```
 data "ibm_cis_rate_limit" "ratelimit" {
@@ -704,7 +704,7 @@ data "ibm_cis_rate_limit" "ratelimit" {
 {: codeblock}
 
 ### Input parameters
-{: #cis_waf_packages-dsinput}
+{: #cis-waf-packages-dsinput}
 
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
@@ -715,7 +715,7 @@ Review the input parameters that you can specify for your data source.
 |`domain_id`|String|Required|The ID of the domain. |
 
 ### Output parameters
-{: #cis_waf_packages-dsoutput}
+{: #cis-waf-packages-dsoutput}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}
@@ -729,13 +729,13 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 ## `ibm_cis_waf_rules`
-{: #cis_waf_rules}
+{: #cis-waf-rules}
 
 Import the details of an existing {{site.data.keyword.cis_full_notm}} WAF rules resource. For more information, see [CIS rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
 {: shortdesc}
 
 ### Sample Terraform code
-{: #cis_waf_rules-dssimple}
+{: #cis-waf-rules-dssimple}
 
 ```
 data "ibm_cis_waf_rules" "rules" {
@@ -747,7 +747,7 @@ data "ibm_cis_waf_rules" "rules" {
 {: codeblock}
 
 ### Input parameters
-{: #cis_waf_rules-dsinput}
+{: #cis-waf-rules-dsinput}
 
 Review the input parameters that you can specify for your data source. 
 {: shortdesc}
@@ -759,7 +759,7 @@ Review the input parameters that you can specify for your data source.
 |`package_id`|String|Required|The ID of WAF rule package. |
 
 ### Output parameters
-{: #cis_waf_rules-dsoutput}
+{: #cis-waf-rules-dsoutput}
 
 Review the output parameters that you can access after you retrieved your data source. 
 {: shortdesc}

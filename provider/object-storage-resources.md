@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-16"
+lastupdated: "2020-12-17"
 
 keywords: terraform provider plugin, terraform data source cos, terraform data source object storage, terraform get cloud object storage bucket, terraform get object storage resources
 
@@ -261,11 +261,16 @@ id = `$CRN:meta:$buckettype:$bucketlocation`
 **Syntax**
 
 ```
-$ terraform import ibm_cos_bucket.mybucket <crn>
+terraform import ibm_cos_bucket.mybucket <crn>
+
 ```
+{: pre}
 
 **Example**
 
 ```
-$ terraform import ibm_cos_bucket.mybucket crn:v1:bluemix:public:cloud-object-storage:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3:bucket:mybucketname:meta:crl:eu:public
+
+terraform import ibm_cos_bucket.mybucket crn:v1:bluemix:public:cloud-object-storage:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3:bucket:mybucketname:meta:crl:eu:public
+
 ```
+{: pre}

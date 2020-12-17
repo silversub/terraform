@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-16"
+lastupdated: "2020-12-17"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -1274,7 +1274,7 @@ Review the input parameters that you can specify for your resource.
 |`proxy_protocol`|String|Optional| Allows for the true client IP to be passed to the service. Valid values are `off`, `v1`, `v2`, `simple`. Default value is `off`.| 
 |`edge_ips_type`|String|Optional|The type of edge IP configuration. Valid value is `dynamic`. Default value is `dynamic`. |
 |`edge_ips_connectivity`|String|Optional|Specified IP version. Valid values are `ipv4`, `ipv6`, `all`. Default value is `all`.|
-|`traffic_type`|String|Optional|Configure how traffic is handled at the edge. If set to direct traffic is passed through to the service. In the case of HTTP or HTTPs, HTTPs features at the edge are applied to this traffic. Valid values are `direct`, `http`, `https`. Default value is `direct`.|
+|`traffic_type`|String|Optional|Configure how traffic is handled at the edge. If set to direct traffic is passed through to the service. In the case of HTTP or HTTPS, HTTPS features at the edge are applied to this traffic. Valid values are `direct`, `http`, `https`. Default value is `direct`.|
 |`tls`|String|Optional|Configure how TLS connections are terminated at the edge. Valid values are `off`, `flexible`, `full`, `strict`. Default value is `off`.|
 
 ### Output parameter
@@ -1472,13 +1472,13 @@ The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed f
  {: pre}
 
  ## `ibm_cis_waf_group`
-{: #cis_waf_group}
+{: #cis-waf-group}
 
 Provides a {{site.data.keyword.cis_full_notm}} WAF rule rroup resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF Groups mode of a domain of a CIS instance. It is also named as CIS rule set. Please find OWASP rule set set tab under WAF of your instance in UI. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
 {: shortdesc}
 
 ### Sample Terraform code
-{: #cis_waf_group-sample}
+{: #cis-waf-group-sample}
 
 The following example shows how you can add a WAF group resource to an {{site.data.keyword.cis_full_notm}} domain. 
 
@@ -1494,7 +1494,7 @@ resource "ibm_cis_waf_group" "test" {
 {: codeblock}
 
 ### Input parameter 
-{: #cis_waf_group-input}
+{: #cis-waf-group-input}
 
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
@@ -1508,7 +1508,7 @@ Review the input parameters that you can specify for your resource.
 |`mode`|String|Required|The WAF group mode. Valid values are `on` and `off`. |
 
 ### Output parameter
-{: #cis_waf_group-output}
+{: #cis-waf-group-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
@@ -1522,7 +1522,7 @@ Review the output parameters that you can access after your resource is created.
 |`modified_rules_count`| String |Number of rules modified in WAF Group.|
 
 ### Import
-{: #cis_waf_group-import}
+{: #cis-waf-group-import}
 
 The `ibm_cis_waf_group` resource can be imported by using the ID. The ID is formed from the WAF Rule Group ID, the WAF rule package ID, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated by using `:` character.
 
@@ -1532,7 +1532,7 @@ Domain ID is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986
 
 CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
 
-Group ID is a 32 digit character string of the form: `57d96f0da6ed76251b475971b097205c`. The ID of an existing WAF rule group is not available in the UI. It can be retrieved programatically from the CIS API or the CLI by using the CIS command to list the defined WAF Groups `ibmcloud cis waf-groups <domain_id> <waf_package_id>`.
+Group ID is a 32 digit character string of the form: `57d96f0da6ed76251b475971b097205c`. The ID of an existing WAF rule group is not available in the UI. It can be retrieved programmatically from the CIS API or the CLI by using the CIS command to list the defined WAF Groups `ibmcloud cis waf-groups <domain_id> <waf_package_id>`.
 
 **Syntax**
 
@@ -1624,13 +1624,13 @@ terraform import ibm_cis_waf_package.waf_package 489d96f0da6ed76251b475971b09720
 {: pre}
 
 ## `ibm_cis_waf_rule`
-{: #cis_waf_rule}
+{: #cis-waf-rule}
 
 Provides a {{site.data.keyword.cis_full_notm}} WAF rule settings resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF rule settings of a domain of a CIS instance. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
 {: shortdesc}
 
 ### Sample Terraform code
-{: #cis_waf_rule-sample}
+{: #cis-waf-rule-sample}
 
 The following example shows how you can add a WAF rule resource to an {{site.data.keyword.cis_full_notm}} domain. 
 
@@ -1646,7 +1646,7 @@ resource "ibm_cis_waf_rule" "test" {
 {: codeblock}
 
 ### Input parameter 
-{: #cis_waf_rule-input}
+{: #cis-waf-rule-input}
 
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
@@ -1661,7 +1661,7 @@ Review the input parameters that you can specify for your resource.
 
 
 ### Output parameter
-{: #cis_waf_rule-output}
+{: #cis-waf-rule-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
@@ -1677,7 +1677,7 @@ Review the output parameters that you can access after your resource is created.
 |`allowed_modes`|String|The allowed modes for setting the WAF rule mode. |
 
 ### Import
-{: #cis_waf_rule-import}
+{: #cis-waf-rule-import}
 
 The `ibm_cis_waf_rule` resource can be imported by using the ID. The ID is formed from the rule_id, `<package_id>, <domain ID>, <package ID>` of the domain and the CRN (Cloud Resource Name) concatentated by using a `:` character.
 
