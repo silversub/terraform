@@ -1673,7 +1673,7 @@ Provides rules for firewall resources in IBM. One rule resource is allowed per f
 
 When a rules resource is created, it cannot be deleted. IBM does not allow entire rule deletion.
 
-Firewalls should have at least one rule. If Terraform destroys the rules resources, _permit from any to any with TCP, UDP, ICMP, GRE, PPTP, ESP, and HA_ rule to be configured.
+Firewalls should have at least one rule. If Terraform destroys the rules resources, _permit from any to any with `TCP`, `UDP`, `ICMP`, `GRE`, `PPTP`, `ESP`, and `HA_` rule to be configured.
 
 ### Sample Terraform code
 {: #firewall-policy-sample}
