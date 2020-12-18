@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-03"
+lastupdated: "2020-12-18"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -34,10 +34,10 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-# Terraform provider block configuration
+# Terraform on {{site.data.keyword.cloud_notm}} provider block configuration
 {: #provider-reference}
 
-Review what credentials and information you need to provide to work with {{site.data.keyword.cloud_notm}} resources and data sources with the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform.
+Review what credentials and information you need to provide to work with {{site.data.keyword.cloud_notm}} resources and data sources with the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform on {{site.data.keyword.cloud_notm}}.
 {: shortdesc}
 
 ## Required input parameters for each resource category
@@ -59,7 +59,7 @@ Review what information you must provide in the `provider` block to work with a 
 ## Supported input parameters
 {: #provider-parameter-ov}
 
-Review what parameters you can set in the `provider` block of your Terraform configuration file.
+Review what parameters you can set in the `provider` block of your Terraform on {{site.data.keyword.cloud_notm}} configuration file.
 {: shortdesc}
 
 |Input parameter|Required / optional|Description|
@@ -81,13 +81,13 @@ Review what parameters you can set in the `provider` block of your Terraform con
 ## Example usage
 {: #provider-example}
 
-You can choose if you want to provide the input parameters as static values in the `provider` block or if you want to retrieve the values from Terraform variables or environment variables that you set. 
+You can choose if you want to provide the input parameters as static values in the `provider` block or if you want to retrieve the values from Terraform on {{site.data.keyword.cloud_notm}} variables or environment variables that you set. 
 {: shortdesc}
 
 ### Static values
 {: #static}
 
-You can provide the values for your provider input parameters as static values in the `provider` block of your Terraform configuration file. 
+You can provide the values for your provider input parameters as static values in the `provider` block of your Terraform on {{site.data.keyword.cloud_notm}} configuration file. 
 {: shortdesc}
 
 ```
@@ -98,13 +98,13 @@ provider "ibm" {
 }
 ```
 
-### Terraform variables file
+### Terraform on {{site.data.keyword.cloud_notm}} variables file
 {: #tf-variables}
 
-You can retrieve the values for the provider input parameters from a Terraform variables file (`terraform.tfvars`) that you created on your local machine.
+You can retrieve the values for the provider input parameters from a Terraform on {{site.data.keyword.cloud_notm}} variables file (`terraform.tfvars`) that you created on your local machine.
 {: shortdesc}
 
-1. Create the Terraform variables file `terraform.tfvars` on your local machine. 
+1. Create the Terraform on {{site.data.keyword.cloud_notm}} variables file `terraform.tfvars` on your local machine. 
    ```
    ibmcloud_api_key = "<ibmcloud_api_key>"
    iaas_classic_username = "<classic_infrastructure_username>"
@@ -112,7 +112,7 @@ You can retrieve the values for the provider input parameters from a Terraform v
    ```
    {: codeblock}
    
-2. Use Terraform interpolation syntax to reference the variables in the `provider` block of your Terraform configuration file. 
+2. Use Terraform on {{site.data.keyword.cloud_notm}} interpolation syntax to reference the variables in the `provider` block of your Terraform on {{site.data.keyword.cloud_notm}} configuration file. 
    ```
    provider "ibm" {
      ibmcloud_api_key    = var.ibmcloud_api_key
@@ -125,9 +125,9 @@ You can retrieve the values for the provider input parameters from a Terraform v
 ### Environment variables
 {: #env-vars}
 
-You can retrieve the values for the provider input parameters from environment variables that you set on your local machine. Make sure that you use the [correct name for an environment variable](#provider-parameter-ov) so that Terraform can automatically read these when you run a `terraform apply`, `plan`, or `destroy` action. For example, to specify a classic infrastructure user name, use `IAAS_CLASSIC_USERNAME`. 
+You can retrieve the values for the provider input parameters from environment variables that you set on your local machine. Make sure that you use the [correct name for an environment variable](#provider-parameter-ov) so that Terraform on {{site.data.keyword.cloud_notm}} can automatically read these when you run a `terraform apply`, `plan`, or `destroy` action. For example, to specify a classic infrastructure user name, use `IAAS_CLASSIC_USERNAME`. 
 
-1. Add an empty `provider` block to your Terraform configuration file.
+1. Add an empty `provider` block to your Terraform on {{site.data.keyword.cloud_notm}} configuration file.
    ```
    provider "ibm" {}
    ```
@@ -141,7 +141,7 @@ You can retrieve the values for the provider input parameters from environment v
    ```
    {: codeblock}
    
-3. Create a Terraform execution plan. 
+3. Create a Terraform on {{site.data.keyword.cloud_notm}} execution plan. 
    ```
    terraform plan
    ```
@@ -151,12 +151,12 @@ You can retrieve the values for the provider input parameters from environment v
 ## Creating multiple `provider` configurations
 {: #multiple-providers}
 
-You can add multiple `provider` configurations within the same Terraform configuration file to create your {{site.data.keyword.cloud_notm}} resources with different provider parameters. 
+You can add multiple `provider` configurations within the same Terraform on {{site.data.keyword.cloud_notm}} configuration file to create your {{site.data.keyword.cloud_notm}} resources with different provider parameters. 
 {: shortdesc}
 
-Creating multiple `provider` configurations is useful when you want to use different input parameters, such as different regions, zones, infrastructure generations, or accounts to create the {{site.data.keyword.cloud_notm}} resources in your Terraform configuration file. For more information, see [Multiple Provider Instances](https://www.terraform.io/docs/configuration/providers.html#alias-multiple-provider-instances){: external}. 
+Creating multiple `provider` configurations is useful when you want to use different input parameters, such as different regions, zones, infrastructure generations, or accounts to create the {{site.data.keyword.cloud_notm}} resources in your Terraform on {{site.data.keyword.cloud_notm}} configuration file. For more information, see [Multiple Provider Instances](https://www.terraform.io/docs/configuration/providers.html#alias-multiple-provider-instances){: external}. 
 
-1. In your Terraform configuration or `provider.tf` file, create multiple provider blocks with the same provider name. The provider configuration without an alias is considered the default provider configuration and is used for every resource where you do not specify a specific provider configuration. Any more provider configurations must include an alias so that you can reference this provider from your resource definition.
+1. In your Terraform on {{site.data.keyword.cloud_notm}} configuration or `provider.tf` file, create multiple provider blocks with the same provider name. The provider configuration without an alias is considered the default provider configuration and is used for every resource where you do not specify a specific provider configuration. Any more provider configurations must include an alias so that you can reference this provider from your resource definition.
    ```
    provider "ibm" {
      ibmcloud_api_key    = var.ibmcloud_api_key
@@ -181,12 +181,12 @@ Creating multiple `provider` configurations is useful when you want to use diffe
    {: codeblock}
    
 
-## Configuring Terraform to apply service end point in staging and production
+## Configuring Terraform on {{site.data.keyword.cloud_notm}} to apply service end point in staging and production
 {: #pvt-cse-env-vars}
 
-The steps involved in configuring your Terraform runtime to use the private Cloud Service Endpoint (CSE) of an {{site.data.keyword.cloud_notm}} service within  public CSE in [Production environment](https://cloud.ibm.com).
+The steps involved in configuring your Terraform on {{site.data.keyword.cloud_notm}} runtime to use the private Cloud Service Endpoint (CSE) of an {{site.data.keyword.cloud_notm}} service within  public CSE in [Production environment](https://cloud.ibm.com).
 
-You can configure the {{site.data.keyword.cloud_notm}} provider for Terraform to communicate with an {{site.data.keyword.cloud_notm}} service by using the service's private service endpoint. For more information, refer [Configure the provider to use private service endpoint](/docs/terraform?topic=terraform-config-provider).
+You can configure the {{site.data.keyword.cloud_notm}} provider for Terraform on {{site.data.keyword.cloud_notm}} to communicate with an {{site.data.keyword.cloud_notm}} service by using the service's private service endpoint. For more information, refer [Configure the provider to use private service endpoint](/docs/terraform?topic=terraform-config-provider).
 {: shortdesc}
 
 

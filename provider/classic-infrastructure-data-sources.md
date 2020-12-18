@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-12-18"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -34,15 +34,13 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 # Classic infrastructure data sources
 {: #infrastructure-data-sources}
 
-Review the data sources that you can use to retrieve information about your classic {{site.data.keyword.cloud_notm}} infrastructure resources. All data sources are imported as read-only information. You can reference the output parameters for each data source by using Terraform interpolation syntax.
+Review the data sources that you can use to retrieve information about your classic {{site.data.keyword.cloud_notm}} infrastructure resources. All data sources are imported as read-only information. You can reference the output parameters for each data source by using Terraform on {{site.data.keyword.cloud_notm}} interpolation syntax.
 
-Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform on {{site.data.keyword.cloud_notm}} configuration file. 
 {: important}
-
 
 ## `ibm_compute_bare_metal`
 {: #classic-bare-metal}
@@ -50,7 +48,7 @@ Before you start working with your data source, make sure to review the [require
 Retrieve information about a classic {{site.data.keyword.cloud_notm}} Bare Metal server.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-bare-metal-sample}
 
 ```
@@ -123,7 +121,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about an image template that you can use for a classic Bare Metal or virtual machine. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-image-sample}
 
 The following example shows how you can retrieve the ID of an image template and reference this ID in your `ibm_compute_vm_instance` resource.  
@@ -169,7 +167,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a placement group. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-placement-group-sample}
 
 ```
@@ -212,7 +210,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about an SSH key. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-ssh-key-sample}
 
 ```
@@ -230,7 +228,7 @@ Review the input parameters that you can specify for your data source.
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|----------------------|
 |`label`|String|Required|The label of the SSH key.|
-|`most_recent`|Boolean|Optional|If more than one SSH key matches the label, you can set this argument to `true` to import only the most recent key. **NOTE**: The search must return only one match. More or less than one match causes Terraform to fail. Ensure that your label is specific enough to return a single SSH key only, or use the `most_recent` argument.|
+|`most_recent`|Boolean|Optional|If more than one SSH key matches the label, you can set this argument to `true` to import only the most recent key. **NOTE**: The search must return only one match. More or less than one match causes Terraform on {{site.data.keyword.cloud_notm}} to fail. Ensure that your label is specific enough to return a single SSH key only, or use the `most_recent` argument.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
@@ -252,7 +250,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about an existing virtual machine. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-vm-sample}
 
 ```
@@ -312,7 +310,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a domain. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-domain-sample}
 
 ```
@@ -347,7 +345,7 @@ Review the output parameters that you can access after you retrieved your data s
 
 Retrieve information about a domain registration from the IBM DNS Domain Registration Service. The domain must initially be registered via the UI of the IBM Cloud DNS Registration Service. Typically the Domain Registration data source is used in configuration with global load-balancing services, , for example, Cloudflare, Akamai or IBM Cloud Internet Services (Cloudflare). For more information, see the resource `ibm_dns_domain_registration_nameservers`. 
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: classic-domain-reg-sample}
 
 ```
@@ -383,7 +381,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a DNS secondary zone. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-dns-secondary-sample}
 
 ```
@@ -423,7 +421,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a classic {{site.data.keyword.cloud_notm}} load balancer. 
 {: shortdesc}
  
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-lbaas-sample}
 
 ```
@@ -510,7 +508,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a VLAN. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-vlan-sample}
 
 ```
@@ -560,7 +558,7 @@ Retrieve information about a security group.
 {: shortdesc}
 
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #classic-security-group-sample}
 
 The following example retrieves information about the `allow_ssh` security group.
@@ -582,7 +580,7 @@ Review the input parameters that you can specify for your data source.
 |----|-----------|-----------|----------------------|
 |`name`|String|Required|The name of the security group.|
 |`description`|String|Optional|The description of the security group.|
-|`most_recent`|Boolean|Optional|If more than one security group has the same name or description, you can set this argument to `true` to import only the most recent security group. **NOTE**: The search must return only one match for Terraform to be success. Ensure that your name and description combinations are specific enough to return a single security group key only, or set the `most_recent` argument to `true`.|
+|`most_recent`|Boolean|Optional|If more than one security group has the same name or description, you can set this argument to `true` to import only the most recent security group. **NOTE**: The search must return only one match for Terraform on {{site.data.keyword.cloud_notm}} to be success. Ensure that your name and description combinations are specific enough to return a single security group key only, or set the `most_recent` argument to `true`.|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters

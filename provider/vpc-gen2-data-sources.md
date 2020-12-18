@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-16"
+lastupdated: "2020-12-18"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -37,10 +37,10 @@ subcollection: terraform
 # VPC infrastructure data sources 
 {: #vpc-gen2-data-sources}
 
-Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform on {{site.data.keyword.cloud_notm}} configuration file. 
 {: important}
 
-You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}.
+You can reference the output parameters for each resource in other resources or data sources by using [Terraform on {{site.data.keyword.cloud_notm}} interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}.
 {: note}
 
 ## ibm_is_floating_ip
@@ -49,7 +49,7 @@ You can reference the output parameters for each resource in other resources or 
 Retrieve the information about VPC floating IP. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #floating-ip-g2-dssample}
 
 The following example retrieves information about the VPC floating IP.
@@ -96,7 +96,7 @@ Review the output parameters that you can access after you retrieved your data s
 Import the details of an existing {{site.data.keyword.cloud_notm}} infrastructure flow logs as a read only data source.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #ibm-is-flowlogs-sample}
 
 
@@ -140,7 +140,7 @@ Review the output parameters that you can access after you retrieve your data so
 Retrieve information about a virtual server image for Gen 2 compute. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-image-sample}
 
 The following example retrieves information about the `centos-7.x-amd64` image. 
@@ -187,7 +187,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about Gen 2 virtual server images. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-images-sample}
 
 ```
@@ -228,7 +228,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve the details for a Gen 2 {{site.data.keyword.vsi_is_short}} instance.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #instance-sample}
 
 ```
@@ -348,7 +348,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve the details for all Gen 2 {{site.data.keyword.vsi_is_short}} instances in your account.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #instances-sample}
 
 ```
@@ -414,7 +414,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve the details for all Gen 2 {{site.data.keyword.vsi_is_short}} instance group in your account.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #instance-group-sample}
 
 ```
@@ -461,7 +461,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve all the instance group managers information of an instance group.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #instance-group-managers-sample}
 
 In the following example, you can retrieve a list of instance group managers information.
@@ -507,7 +507,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve the policy information of an instance group manager.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #instance-group-manager-policy-sample}
 
 In the following example, you can retrieve a policy information of an instance group manager.
@@ -554,7 +554,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve the details for all Gen 2 {{site.data.keyword.vsi_is_short}} instance group manager policies in your account.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #instance-group-manager-sample}
 
 In the following example, you can retrieve a policy information of an instance group manager.
@@ -600,7 +600,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a virtual server instance profile. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-instance-profile-sample}
 
 The following example retrieves information about the `bx2-2x8` instance profile. 
@@ -643,7 +643,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about supported virtual server instance profiles. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-instance-profiles-sample}
 
 ```
@@ -681,7 +681,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve the details for a public gateway data source.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #public-gwy-g2-sample}
 
 The following example shows how you can retrieve information about the `us-south` region. 
@@ -740,7 +740,7 @@ Review the output parameters that you can access after you retrieve your data so
 Import the details of an existing IBM VPC Load Balancer as a read only data source.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #ibm-is-lb-sample}
 
 The following example shows how you can retrieve information about the `us-south` region. 
@@ -834,7 +834,7 @@ Review the output parameters that you can access after you retrieve your data so
 Import the details of an existing IBM VPC Load Balancers as a read only data source.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #ibm-is-lbs-sample}
 
 The following example shows how you can declare the data. 
@@ -901,7 +901,7 @@ Review the output parameters that you can access after you retrieve your data so
 Retrieve information of an existing {{site.data.keyword.cloud_notm}} Infrastructure load balancer profiles.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #ibm-is-lb-profiles-sample}
 
 ```
@@ -940,7 +940,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a VPC Gen 2 Compute region. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-region-sample}
 
 ```
@@ -981,11 +981,11 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_is_security_group`
 {: #sec-group-datasource}
 
-Import the details of a security group as a read-only data source. You can reference the output parameters for each data source by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
+Import the details of a security group as a read-only data source. You can reference the output parameters for each data source by using [Terraform on {{site.data.keyword.cloud_notm}} interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
 {: shortdesc}
 
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #sec-group-sample}
 
 The following example allows to create a different types of protocol rules `ALL`, `ICMP`, `UDP`, `TCP` and read the security group.
@@ -1084,7 +1084,7 @@ Review the output parameters that are exported.
 Retrieve information about a VPC Gen 2 SSH key. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-ssh-key-sample}
 
 ```
@@ -1127,7 +1127,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a VPC Gen 2 compute subnet. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-subnet-sample}
 
 ```
@@ -1187,7 +1187,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about all existing VPC subnets in an IBM Cloud account. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-subnets-sample}
 
 ```
@@ -1230,7 +1230,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about all the instance template in an account. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-instance-templates-sample}
 
 The following example, you can fetch information of list of the instance templates VPC gen-2 infrastructure.
@@ -1298,7 +1298,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a Gen 2 compute VPC. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-sample}
 
 ```
@@ -1355,7 +1355,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information of an existing {{site.data.keyword.cloud_notm}} infrastructure VPC default routing table. For more information, see [routing tables for VPC](/docs/vpc?topic=vpc-list-routing-tables-for-vpc).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-default-routing-table-dssample}
 
 ```
@@ -1412,7 +1412,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information of an existing {{site.data.keyword.cloud_notm}} infrastructure VPC default routing table. For more information, see [routing tables for VPC](/docs/vpc?topic=vpc-list-routing-tables-for-vpc).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-routing-table-dssample}
 
 ```
@@ -1470,7 +1470,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information of an existing {{site.data.keyword.cloud_notm}} infrastructure VPC default routing tables. For more information, see [routing tables for VPC](/docs/vpc?topic=vpc-list-routing-tables-for-vpc).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-routing-tables-dssample}
 
 ```
@@ -1527,7 +1527,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information of an existing VPN gateways. For more information, see [use a VPC/VPN gateway for secure and private on-premises access](/docs/vpc-on-classic?topic=solution-tutorials-vpc-site2site-vpn).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-gateways-dssample}
 
 ```
@@ -1572,7 +1572,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information of an existing VPN gateway connections. For more information, see [adding connections to a VPN gateway](/docs/vpc?topic=vpc-vpn-adding-connections).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-gateways-connection-dssample}
 
 ```
@@ -1627,7 +1627,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about a Gen 2 compute zone. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-zone-sample}
 
 ```
@@ -1670,7 +1670,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieves information about Gen 2 compute zones. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #vpc-zones-sample}
 
 ```

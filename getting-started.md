@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-01"
+lastupdated: "2020-12-18"
 
 keywords: terraform quickstart, terraform getting started, terraform tutorial
 
@@ -35,19 +35,19 @@ subcollection: terraform
 {:step: data-tutorial-type='step'}
 
 
-# Getting started with Terraform
+# Getting started with Terraform on {{site.data.keyword.cloud_notm}}
 {: #getting-started}
 
-Terraform is an Open Source software that is developed by HashiCorp that enables predictable and consistent provisioning of {{site.data.keyword.cloud_notm}} platform, classic infrastructure, and VPC infrastructure resources by using a high-level scripting language. You can use Terraform to automate your {{site.data.keyword.cloud_notm}} resource provisioning, rapidly build complex, multi-tier cloud environments, and enable Infrastructure as Code (IaC).  
+Terraform on {{site.data.keyword.cloud_notm}} is an Open Source software that is developed by HashiCorp that enables predictable and consistent provisioning of {{site.data.keyword.cloud_notm}} platform, classic infrastructure, and VPC infrastructure resources by using a high-level scripting language. You can use Terraform on {{site.data.keyword.cloud_notm}} to automate your {{site.data.keyword.cloud_notm}} resource provisioning, rapidly build complex, multi-tier cloud environments, and enable Infrastructure as Code (IaC).  
 {: shortdesc}
 
-Looking for a managed Terraform solution? Try out [{{site.data.keyword.bplong_notm}}](/docs/schematics?topic=schematics-getting-started). With {{site.data.keyword.bpshort}}, you can use the Terraform scripting language that you are familiar with, but you don't have to worry about setting up and maintaining the Terraform CLI and {{site.data.keyword.cloud_notm}} Provider plug-in. {{site.data.keyword.bpshort}} also provides pre-defined Terraform templates that you can easily install from the {{site.data.keyword.cloud_notm}} catalog.
+Looking for a managed Terraform on {{site.data.keyword.cloud_notm}} solution? Try out [{{site.data.keyword.bplong_notm}}](/docs/schematics?topic=schematics-getting-started). With {{site.data.keyword.bpshort}}, you can use the Terraform on {{site.data.keyword.cloud_notm}} scripting language that you are familiar with, but you don't have to worry about setting up and maintaining the Terraform on {{site.data.keyword.cloud_notm}} CLI and {{site.data.keyword.cloud_notm}} Provider plug-in. {{site.data.keyword.bpshort}} also provides pre-defined Terraform on {{site.data.keyword.cloud_notm}} templates that you can easily install from the {{site.data.keyword.cloud_notm}} catalog.
 {: tip}
 
 **How does it work?**</br>
-Let's say you want to spin up multiple copies of your service that uses a cluster of virtual servers, a load balancer, and a database server. You could learn how to create each resource, review the API or the commands that you need, and write a bash script to spin up these components. But it's easier, faster, and more orderly to specify the type of resource that you want and let Terraform do it all for you. 
+Let's say you want to spin up multiple copies of your service that uses a cluster of virtual servers, a load balancer, and a database server. You could learn how to create each resource, review the API or the commands that you need, and write a bash script to spin up these components. But it's easier, faster, and more orderly to specify the type of resource that you want and let Terraform on {{site.data.keyword.cloud_notm}} do it all for you. 
 
-The Terraform configuration files describe the resources that you need and how you want to configure them. Based on your configuration, Terraform creates an execution plan and describes the actions that need to be executed to get to the required state. You can review the execution plan, change it, or simply execute the plan. When you change your configuration, Terraform can determine what changed and create incremental execution plans that you can apply to your existing {{site.data.keyword.cloud_notm}} resources. 
+The Terraform on {{site.data.keyword.cloud_notm}} configuration files describe the resources that you need and how you want to configure them. Based on your configuration, Terraform on {{site.data.keyword.cloud_notm}} creates an execution plan and describes the actions that need to be executed to get to the required state. You can review the execution plan, change it, or simply execute the plan. When you change your configuration, Terraform on {{site.data.keyword.cloud_notm}} can determine what changed and create incremental execution plans that you can apply to your existing {{site.data.keyword.cloud_notm}} resources. 
 
 **What do I need to get started?**</br>
 To provision {{site.data.keyword.cloud_notm}} infrastructure and platform resources, you must have a [Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/registration).  
@@ -56,26 +56,26 @@ To provision {{site.data.keyword.cloud_notm}} infrastructure and platform resour
 
 In this getting started tutorial, you provision a [classic infrastructure virtual server](/docs/virtual-servers?topic=virtual-servers-about-public-virtual-servers) and a [VPC virtual server instance](/docs/vpc-on-classic-vsi?topic=vpc-on-classic-vsi-getting-started). Both virtual server instances incur costs. Be sure to review the available plans for [classic infrastructure virtual servers ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) and [VPC virtual server instances](https://cloud.ibm.com/vpc/provision/vs) before you proceed.
 
-Sounds great? Get started by installing the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in. Then, configure the {{site.data.keyword.cloud_notm}} resources that you want and watch Terraform spin them up. 
+Sounds great? Get started by installing the Terraform on {{site.data.keyword.cloud_notm}} CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in. Then, configure the {{site.data.keyword.cloud_notm}} resources that you want and watch Terraform on {{site.data.keyword.cloud_notm}} spin them up. 
 
-## Installing the Terraform CLI and the IBM Cloud Provider plug-in
+## Installing the Terraform on {{site.data.keyword.cloud_notm}} CLI and the IBM Cloud Provider plug-in
 {: #install}
 
-To use Terraform to manage {{site.data.keyword.cloud_notm}} resources, you must install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform. 
+To use Terraform on {{site.data.keyword.cloud_notm}} to manage {{site.data.keyword.cloud_notm}} resources, you must install the Terraform on {{site.data.keyword.cloud_notm}} CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform on {{site.data.keyword.cloud_notm}}. 
 {: shortdesc}
 
-To support a multi-cloud approach, Terraform works with multiple cloud providers. A cloud provider is responsible for understanding the resources that you provision, their API, and the methods to expose these resources in the cloud. The {{site.data.keyword.cloud_notm}} Provider plug-in is aware of the {{site.data.keyword.cloud_notm}} resources that are supported and how you can configure and provision them. 
+To support a multi-cloud approach, Terraform on {{site.data.keyword.cloud_notm}} works with multiple cloud providers. A cloud provider is responsible for understanding the resources that you provision, their API, and the methods to expose these resources in the cloud. The {{site.data.keyword.cloud_notm}} Provider plug-in is aware of the {{site.data.keyword.cloud_notm}} resources that are supported and how you can configure and provision them. 
 
-1. Install Terraform on your local machine. 
+1. Install Terraform on {{site.data.keyword.cloud_notm}} on your local machine. 
    1. Create a folder on your local system that is called `terraform` and navigate into your folder. 
       ```
       mkdir terraform && cd terraform
       ```
       {: pre}
 
-   2. [Download the Terraform CLI version 0.12.x to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://releases.hashicorp.com/terraform/). 
-   3. Extract the Terraform package and copy the binary file into your `terraform` directory. 
-   4. Point the `$PATH` environment variable to your Terraform binary file.
+   2. [Download the Terraform on {{site.data.keyword.cloud_notm}} CLI version 0.12.x to your local machine ![External link icon](../icons/launch-glyph.svg "External link icon")](https://releases.hashicorp.com/terraform/). 
+   3. Extract the Terraform on {{site.data.keyword.cloud_notm}} package and copy the binary file into your `terraform` directory. 
+   4. Point the `$PATH` environment variable to your Terraform on {{site.data.keyword.cloud_notm}} binary file.
       ```
       export PATH=$PATH:$HOME/terraform
       ```
@@ -92,28 +92,28 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
       Usage: terraform [-version] [-help] <command> [args]
 
       The available commands for execution are listed.
-      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and Docs  before usage.
+      The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform on {{site.data.keyword.cloud_notm}}, stick with the common commands. For the other commands, please read the help and Docs  before usage.
 
       Common commands:
           apply              Builds or changes infrastructure
-          console            Interactive console for Terraform interpolations
-          destroy            Destroy Terraform-managed infrastructure
+          console            Interactive console for Terraform on {{site.data.keyword.cloud_notm}} interpolations
+          destroy            Destroy Terraform on {{site.data.keyword.cloud_notm}}-managed infrastructure
           env                Workspace management
           fmt                Rewrites config files to canonical format
           get                Download and install modules for the configuration
-          graph              Create a visual graph of Terraform resources
-          import             Import existing infrastructure into Terraform
-          init               Initialize a Terraform working directory
+          graph              Create a visual graph of Terraform on {{site.data.keyword.cloud_notm}} resources
+          import             Import existing infrastructure into Terraform on {{site.data.keyword.cloud_notm}}
+          init               Initialize a Terraform on {{site.data.keyword.cloud_notm}} working directory
           output             Read an output from a state file
           plan               Generate and show an execution plan
           providers          Prints a tree of the providers used in the configuration
-          push               Upload this Terraform module to Atlas to run
+          push               Upload this Terraform on {{site.data.keyword.cloud_notm}} module to Atlas to run
           refresh            Update local state file against real resources
-          show               Inspect Terraform state or plan
+          show               Inspect Terraform on {{site.data.keyword.cloud_notm}} state or plan
           taint              Manually mark a resource for recreation
           untaint            Manually unmark a resource as tainted
-          validate           Validates the Terraform files
-          version            Prints the Terraform version
+          validate           Validates the Terraform on {{site.data.keyword.cloud_notm}} files
+          version            Prints the Terraform on {{site.data.keyword.cloud_notm}} version
           workspace          Workspace management
 
       All other commands:
@@ -158,16 +158,16 @@ To support a multi-cloud approach, Terraform works with multiple cloud providers
 ## Configuring the IBM Cloud Provider plug-in
 {: #cloud_provider_config}
 
-Terraform uses the {{site.data.keyword.cloud_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.cloud_notm}} REST API. To provision and work with {{site.data.keyword.cloud_notm}} resources, you must configure your {{site.data.keyword.cloud_notm}} Provider plug-in to use the {{site.data.keyword.cloud_notm}} credentials that are required to access your resource. 
+Terraform on {{site.data.keyword.cloud_notm}} uses the {{site.data.keyword.cloud_notm}} Provider plug-in to securely communicate with the {{site.data.keyword.cloud_notm}} REST API. To provision and work with {{site.data.keyword.cloud_notm}} resources, you must configure your {{site.data.keyword.cloud_notm}} Provider plug-in to use the {{site.data.keyword.cloud_notm}} credentials that are required to access your resource. 
 {: shortdesc}
 
 **What credentials do I need?**</br>
 The credentials that you need depend on the type of resource that you want to provision. For example, to provision classic infrastructure resources, you must provide your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key. To provision VPC infrastructure, you need an {{site.data.keyword.cloud_notm}} API key. For more information, about what credentials you need for a specific {{site.data.keyword.cloud_notm}} resource, see [Required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters).
 
 **Where can I find an overview of available resources?**</br>
-To find a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in, see the [Index of Terraform resources and data sources](/docs/terraform?topic=terraform-index-of-terraform-resources-and-data-sources).
+To find a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in, see the [Index of Terraform on {{site.data.keyword.cloud_notm}} resources and data sources](/docs/terraform?topic=terraform-index-of-terraform-resources-and-data-sources).
 
-1. Create a folder on your local machine for your first Terraform project and navigate into the folder. This folder is used to store all configuration files and variable definitions. 
+1. Create a folder on your local machine for your first Terraform on {{site.data.keyword.cloud_notm}} project and navigate into the folder. This folder is used to store all configuration files and variable definitions. 
    ```
    mkdir myproject && cd myproject
    ```
@@ -179,9 +179,9 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
 
 4. [Retrieve your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key](/docs/account?topic=account-classic_keys). You use this user name and API key to provision the classic infrastructure virtual server in your {{site.data.keyword.cloud_notm}} account. 
         
-6. Create a local Terraform variables file that is named `terraform.tfvars` to store your {{site.data.keyword.cloud_notm}} classic infrastructure credentials and the {{site.data.keyword.cloud_notm}} API key. Make sure to save this file in the folder that you created for your first Terraform project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform when the Terraform CLI is initialized and you can reference them in every Terraform configuration file that you use. 
+6. Create a local Terraform on {{site.data.keyword.cloud_notm}} variables file that is named `terraform.tfvars` to store your {{site.data.keyword.cloud_notm}} classic infrastructure credentials and the {{site.data.keyword.cloud_notm}} API key. Make sure to save this file in the folder that you created for your first Terraform on {{site.data.keyword.cloud_notm}} project. Variables that are defined in the `terraform.tfvars` file are automatically loaded by Terraform on {{site.data.keyword.cloud_notm}} when the Terraform on {{site.data.keyword.cloud_notm}} CLI is initialized and you can reference them in every Terraform on {{site.data.keyword.cloud_notm}} configuration file that you use. 
 
-   Because the `terraform.tfvars` file contains confidential information, do not push this file to your version control system where you store the Terraform configuration files of the resources that you want to provision. This file is meant to be on your local system only. 
+   Because the `terraform.tfvars` file contains confidential information, do not push this file to your version control system where you store the Terraform on {{site.data.keyword.cloud_notm}} configuration files of the resources that you want to provision. This file is meant to be on your local system only. 
    {: important}
    
    ```
@@ -220,7 +220,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    </tbody>
    </table>
    
-7. Create a Terraform provider configuration file that is named `provider.tf`. Use this file to configure the {{site.data.keyword.cloud_notm}} Provider plug-in with the credentials from your `terraform.tfvars` file so that the plug-in can access and provision {{site.data.keyword.cloud_notm}} resources. To reference a variable from the `terraform.tfvars` file, use the syntax `var.<variable_name>`. 
+7. Create a Terraform on {{site.data.keyword.cloud_notm}} provider configuration file that is named `provider.tf`. Use this file to configure the {{site.data.keyword.cloud_notm}} Provider plug-in with the credentials from your `terraform.tfvars` file so that the plug-in can access and provision {{site.data.keyword.cloud_notm}} resources. To reference a variable from the `terraform.tfvars` file, use the syntax `var.<variable_name>`. 
    ```
    variable "ibmcloud_api_key" {}
    variable "iaas_classic_username" {}
@@ -251,7 +251,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    </tr>
    <tr>
    <td><code>generation</code></td>
-   <td>Enter <strong>1</strong> to configure the {{site.data.keyword.cloud_notm}} provider plug-in to provision VPC on Classic infrastructure resources. This value is used for all VPC resources that you specify in your Terraform configuration files. You can remove this parameter if you want to provision classic infrastructure resources only. </td>
+   <td>Enter <strong>1</strong> to configure the {{site.data.keyword.cloud_notm}} provider plug-in to provision VPC on Classic infrastructure resources. This value is used for all VPC resources that you specify in your Terraform on {{site.data.keyword.cloud_notm}} configuration files. You can remove this parameter if you want to provision classic infrastructure resources only. </td>
    </tr>
    <tr>
    <td><code>region</code></td>
@@ -271,7 +271,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
 ## Provisioning a virtual server instance in a VPC in {{site.data.keyword.cloud_notm}}
 {: #sample_vpc_config}
 
-Use Terraform to create a virtual server instance in a VPC, and set up networking for your VPC in your {{site.data.keyword.cloud_notm}} account. 
+Use Terraform on {{site.data.keyword.cloud_notm}} to create a virtual server instance in a VPC, and set up networking for your VPC in your {{site.data.keyword.cloud_notm}} account. 
 {: shortdesc}
 
 A VPC allows you to create your own space in {{site.data.keyword.cloud_notm}} so that you can run an isolated environment in the public cloud with custom network policies. The example in this topic provisions the following VPC infrastructure resources for you: 
@@ -285,15 +285,15 @@ Keep in mind that a VPC virtual server instance is an {{site.data.keyword.cloud_
 {: important}
 
 Before you begin: 
-- [Install the Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform](#install). 
+- [Install the Terraform on {{site.data.keyword.cloud_notm}} CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in for Terraform on {{site.data.keyword.cloud_notm}}](#install). 
 - [Install the {{site.data.keyword.cloud_notm}} CLI and the CLI plug-in to work with Virtual Private Cloud (VPC) infrastructure](/docs/vpc-on-classic?topic=vpc-on-classic-creating-a-vpc-using-the-ibm-cloud-cli). 
-- [Retrieve your {{site.data.keyword.cloud_notm}} credentials, upload an SSH key, and configure the Terraform provider plug-in](/docs/terraform?topic=terraform-getting-started#cloud_provider_config). 
+- [Retrieve your {{site.data.keyword.cloud_notm}} credentials, upload an SSH key, and configure the Terraform on {{site.data.keyword.cloud_notm}} provider plug-in](/docs/terraform?topic=terraform-getting-started#cloud_provider_config). 
 
 To create a VPC and a virtual server instance: 
 
 1. Make sure that you have the [required permissions](/docs/vpc-on-classic?topic=vpc-on-classic-managing-user-permissions-for-vpc-resources) to create and work with VPC infrastructure. 
 
-2. In the same directory where you stored the `terraform.tfvars` and `provider.tf` files, create a Terraform configuration file and name it `vpc.tf`. The configuration file includes the following definition blocks: 
+2. In the same directory where you stored the `terraform.tfvars` and `provider.tf` files, create a Terraform on {{site.data.keyword.cloud_notm}} configuration file and name it `vpc.tf`. The configuration file includes the following definition blocks: 
    - **locals**: Use this block to specify variables that you want to use multiple times throughout this configuration file. 
    - **resource**: Every resource block specifies the {{site.data.keyword.cloud_notm}} resource that you want to provision. To find more information about supported configurations for each resource, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference](/docs/terraform?topic=terraform-setup_cli#configure_provider).
    - **data**: Use this block to retrieve information for an existing resource in your {{site.data.keyword.cloud_notm}} account. 
@@ -434,11 +434,11 @@ To create a VPC and a virtual server instance:
      </tr>
      <tr>
        <td><code>data.ibm_is_image.name</code></td>
-       <td>Enter the name of the operating system that you want to install on your VPC virtual server instance. You use this Terraform resource to retrieve the ID of the operating system when you specify the VPC virtual server instance. For supported image names, run <code>ibmcloud is images</code>. </td>
+       <td>Enter the name of the operating system that you want to install on your VPC virtual server instance. You use this Terraform on {{site.data.keyword.cloud_notm}} resource to retrieve the ID of the operating system when you specify the VPC virtual server instance. For supported image names, run <code>ibmcloud is images</code>. </td>
      </tr>
      <tr>
        <td><code>data.ibm_is_ssh_key.name</code></td>
-       <td>Enter the name of the SSH key that you uploaded to your {{site.data.keyword.cloud_notm}} account. You use this Terraform resource to retrieve the ID of your SSH key when you specify the VPC virtual server instance. </td>
+       <td>Enter the name of the SSH key that you uploaded to your {{site.data.keyword.cloud_notm}} account. You use this Terraform on {{site.data.keyword.cloud_notm}} resource to retrieve the ID of your SSH key when you specify the VPC virtual server instance. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.name</code></td>
@@ -454,11 +454,11 @@ To create a VPC and a virtual server instance:
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.keys</code></td>
-       <td>Enter the UUID of the SSH key that you uploaded to your {{site.data.keyword.cloud_notm}} account. In this example, you retrieve the UUID from the <code>ibm_is_ssh_key</code> data source of this configuration file. Terraform uses the name of the SSH key that you define in your data source object to look up information about the SSH key in your {{site.data.keyword.cloud_notm}} account.</td>
+       <td>Enter the UUID of the SSH key that you uploaded to your {{site.data.keyword.cloud_notm}} account. In this example, you retrieve the UUID from the <code>ibm_is_ssh_key</code> data source of this configuration file. Terraform on {{site.data.keyword.cloud_notm}} uses the name of the SSH key that you define in your data source object to look up information about the SSH key in your {{site.data.keyword.cloud_notm}} account.</td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.image</code></td>
-       <td>Enter the ID of the image that represents the operating system that you want to install on your VPC virtual server instance. In this example, you retrieve the ID from the <code>ibm_is_image</code> data source of this configuration file. Terraform uses the name of the image that you define in your data source object to look up information about the image in the {{site.data.keyword.cloud_notm}} infrastructure portfolio. </td>
+       <td>Enter the ID of the image that represents the operating system that you want to install on your VPC virtual server instance. In this example, you retrieve the ID from the <code>ibm_is_image</code> data source of this configuration file. Terraform on {{site.data.keyword.cloud_notm}} uses the name of the image that you define in your data source object to look up information about the image in the {{site.data.keyword.cloud_notm}} infrastructure portfolio. </td>
      </tr>
      <tr>
        <td><code>resource.ibm_is_instance.profile</code></td>
@@ -487,7 +487,7 @@ To create a VPC and a virtual server instance:
    </tbody>
    </table>
 
-3. Initialize Terraform. 
+3. Initialize Terraform on {{site.data.keyword.cloud_notm}}. 
    ```
    terraform init
    ```
@@ -503,15 +503,15 @@ To create a VPC and a virtual server instance:
 
    * provider.ibm: version = "~> 0.11"
 
-   Terraform has been successfully initialized!
+   Terraform on {{site.data.keyword.cloud_notm}} has been successfully initialized!
 
-   You may now begin working with Terraform. Try running "terraform plan" to see any changes that are required for your infrastructure. All Terraform commands should now work.
+   You may now begin working with Terraform on {{site.data.keyword.cloud_notm}}. Try running "terraform plan" to see any changes that are required for your infrastructure. All Terraform on {{site.data.keyword.cloud_notm}} commands should now work.
 
-   If you ever set or change modules or backend configuration for Terraform, rerun this command to reinitialize your working directory. If you forget, other commands detect it and remind you to do so if necessary.
+   If you ever set or change modules or backend configuration for Terraform on {{site.data.keyword.cloud_notm}}, rerun this command to reinitialize your working directory. If you forget, other commands detect it and remind you to do so if necessary.
    ```
    {: screen}
    
-4. Generate a Terraform execution plan. When you execute this command, Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
+4. Generate a Terraform on {{site.data.keyword.cloud_notm}} execution plan. When you execute this command, Terraform on {{site.data.keyword.cloud_notm}} validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
    ```
    terraform plan
    ```
@@ -519,7 +519,7 @@ To create a VPC and a virtual server instance:
 
    Example output: 
    ```
-   Refreshing Terraform state in-memory prior to plan...
+   Refreshing Terraform on {{site.data.keyword.cloud_notm}} state in-memory prior to plan...
    The refreshed state be used to calculate this plan, but not be
    persisted to local or remote state storage.
 
@@ -527,7 +527,7 @@ To create a VPC and a virtual server instance:
    Resource actions are indicated with the following symbols:
      + create
 
-   Terraform performs the following actions:
+   Terraform on {{site.data.keyword.cloud_notm}} performs the following actions:
 
      + ibm_is_floating_ip.fip1
          id:                                               <computed>
@@ -602,7 +602,7 @@ To create a VPC and a virtual server instance:
 
    Plan: 6 to add, 0 to change, 0 to destroy.
 
-   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions be performed if "terraform apply" is subsequently run.
+   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform on {{site.data.keyword.cloud_notm}} can't guarantee that exactly these actions be performed if "terraform apply" is subsequently run.
    ```
    {: screen}
    
@@ -752,7 +752,7 @@ To create a VPC and a virtual server instance:
 ## Provisioning a classic infrastructure virtual server instance in {{site.data.keyword.cloud_notm}}
 {: #sample_infrastructure_config}
 
-Create your a classic infrastructure virtual service instance with Terraform. Similar to the VPC virtual server instance that you provisioned earlier, you create another configuration file with the specification for your classic infrastructure virtual server instance. 
+Create your a classic infrastructure virtual service instance with Terraform on {{site.data.keyword.cloud_notm}}. Similar to the VPC virtual server instance that you provisioned earlier, you create another configuration file with the specification for your classic infrastructure virtual server instance. 
 {: shortdesc}
 
 Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classic infrastructure resource that incurs costs. Be sure to review the [available plans ![External link icon](../icons/launch-glyph.svg "External link icon")](https://cloud.ibm.com/catalog/infrastructure/virtual-server-group) before you proceed.
@@ -840,7 +840,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    </tbody>
    </table>
    
-2. Initialize Terraform. 
+2. Initialize Terraform on {{site.data.keyword.cloud_notm}}. 
    ```
    terraform init
    ```
@@ -856,15 +856,15 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
 
    * provider.ibm: version = "~> 0.11"
 
-   Terraform has been successfully initialized!
+   Terraform on {{site.data.keyword.cloud_notm}} has been successfully initialized!
 
-   You may now begin working with Terraform. Try running "terraform plan" to see any changes that are required for your infrastructure. All Terraform commands should now work.
+   You may now begin working with Terraform on {{site.data.keyword.cloud_notm}}. Try running "terraform plan" to see any changes that are required for your infrastructure. All Terraform on {{site.data.keyword.cloud_notm}} commands should now work.
 
-   If you ever set or change modules or backend configuration for Terraform, rerun this command to reinitialize your working directory. If you forget, other commands detects it and remind you to do so if necessary.
+   If you ever set or change modules or backend configuration for Terraform on {{site.data.keyword.cloud_notm}}, rerun this command to reinitialize your working directory. If you forget, other commands detects it and remind you to do so if necessary.
    ```
    {: screen}
    
-3. Generate a Terraform execution plan. When you execute this command, Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
+3. Generate a Terraform on {{site.data.keyword.cloud_notm}} execution plan. When you execute this command, Terraform on {{site.data.keyword.cloud_notm}} validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
    ```
    terraform plan
    ```
@@ -872,14 +872,14 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
 
    Example output: 
    ```
-   Refreshing Terraform state in-memory prior to plan...
+   Refreshing Terraform on {{site.data.keyword.cloud_notm}} state in-memory prior to plan...
    The refreshed state be used to calculate this plan, but not be persisted to local or remote state storage.
 
    An execution plan has been generated and is shown.
    Resource actions are indicated with the following symbols:
      + create
 
-   Terraform performs the following actions:
+   Terraform on {{site.data.keyword.cloud_notm}} performs the following actions:
 
      + ibm_compute_vm_instance.vm1
          id:                           <computed>
@@ -924,11 +924,11 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
 
    Plan: 1 to add, 0 to change, 0 to destroy.
    ------------------------------------------------------------------------
-   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform can't guarantee that exactly these actions be performed if "terraform apply" is subsequently run.
+   **Note** You didn't specify an "-out" parameter to save this plan, so Terraform on {{site.data.keyword.cloud_notm}} can't guarantee that exactly these actions be performed if "terraform apply" is subsequently run.
    ```
    {: screen}
    
-4. Review the execution plan to verify the type of resource that is planned to be provisioned by Terraform.
+4. Review the execution plan to verify the type of resource that is planned to be provisioned by Terraform on {{site.data.keyword.cloud_notm}}.
 
 5. Create your classic infrastructure virtual server. Confirm the creation by entering **yes** when prompted. 
    ```
@@ -1031,4 +1031,4 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    {: pre}
 
 **What's next?** </br>
-[Explore other {{site.data.keyword.cloud_notm}} resources](/docs/terraform?topic=terraform-setup_cli#configure_provider) that you can provision with Terraform. 
+[Explore other {{site.data.keyword.cloud_notm}} resources](/docs/terraform?topic=terraform-setup_cli#configure_provider) that you can provision with Terraform on {{site.data.keyword.cloud_notm}}. 

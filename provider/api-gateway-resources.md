@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-10-07"
+lastupdated: "2020-12-18"
 
 keywords: terraform provider plugin, terraform certificate manager, terraform cert manager, terraform certificate
 
@@ -34,20 +34,18 @@ subcollection: terraform
 {:tsSymptoms: .tsSymptoms}
 {:step: data-tutorial-type='step'}
 
-
 #  API Gateway resources
 {: #api-gateway-resources}
 
-Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform on {{site.data.keyword.cloud_notm}} configuration file. 
 {: important}
-
 
 ## `ibm_api_gateway_endpoint`
 {: #api-gw-endpoint}
 
 Create, update, or delete an API endpoint for an API gateway. 
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #api-gw-endpoint-sample}
 
 #### Example for a single  API Documentation as input
@@ -142,7 +140,7 @@ Endpoint subscriptions can be added only if the endpoint is online. Make sure to
 {: important}
 
 
-### Sample Terraform code
+### Sample Terraform on {{site.data.keyword.cloud_notm}} code
 {: #api-gw-endpoint-subscript-sample}
 
 ```
