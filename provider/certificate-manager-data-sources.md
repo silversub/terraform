@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-18"
+lastupdated: "2020-12-28"
 
 keywords: terraform provider plugin, terraform api gateway
 
@@ -37,9 +37,9 @@ subcollection: terraform
 # Certificate Manager data sources
 {: #cert-manager-data-sources}
 
-Review the data sources that you can use to retrieve information about the certificates that your manage in Certificate Manager. All data sources are imported as read-only information. You can reference the output parameters for each data source by using Terraform on {{site.data.keyword.cloud_notm}} interpolation syntax.
+Review the data sources that you can use to retrieve information about the certificates that your manage in Certificate Manager. All data sources are imported as read-only information. You can reference the output parameters for each data source by using IBM Cloud Provider plug-in for Terraform interpolation syntax.
 
-Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform on {{site.data.keyword.cloud_notm}} configuration file. 
+Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your IBM Cloud Provider plug-in for Terraform configuration file. 
 {: important}
 
 
@@ -49,7 +49,7 @@ Before you start working with your data source, make sure to review the [require
 Retrieve the details of an existing certificate instance resource and lists all the certificates.
 {: shortdesc}
 
-### Sample Terraform on {{site.data.keyword.cloud_notm}} code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cert-manager-certificate-sample}
 
 ```
@@ -115,7 +115,7 @@ Review the output parameters that you can access after your resource is created.
 Retrieve the details of one or lists all certificates that are managed by your Certificate Manager service instance resource. 
 {: shortdesc}
 
-### Sample Terraform on {{site.data.keyword.cloud_notm}} code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cert-manager-certificates-sample}
 
 ```

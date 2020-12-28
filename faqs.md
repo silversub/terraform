@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-18"
+lastupdated: "2020-12-28"
 
 keywords: terraform faqs, softlayer, iaas
 
@@ -41,7 +41,7 @@ subcollection: terraform
 {: #vsi_config}
 {: faq}
 
-The Terraform on {{site.data.keyword.cloud_notm}} `ibm_compute_vm_instance` resource includes optional and mandatory configuration parameters. To find an overview of how you can configure your virtual server, use the {{site.data.keyword.Bluemix_notm}} CLI.  
+The IBM Cloud Provider plug-in for Terraform `ibm_compute_vm_instance` resource includes optional and mandatory configuration parameters. To find an overview of how you can configure your virtual server, use the {{site.data.keyword.Bluemix_notm}} CLI.  
 
 1. Install the [{{site.data.keyword.Bluemix_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli). 
 
@@ -60,7 +60,7 @@ Most {{site.data.keyword.Bluemix_notm}} platform resources provision within a fe
 
 Use the `terraform apply` and `terraform destroy` times in the following table as a reference for when you can expect your commands to complete. 
 
-If the Terraform on {{site.data.keyword.cloud_notm}} operation does not complete due to a timeout, wait for the resource state change to complete and retry the operation. 
+If the IBM Cloud Provider plug-in for Terraform operation does not complete due to a timeout, wait for the resource state change to complete and retry the operation. 
 {: tip}
 
 <table>
@@ -94,15 +94,15 @@ If the Terraform on {{site.data.keyword.cloud_notm}} operation does not complete
 </tbody>
 </table>
 
-## How do I setup IBM Terraform on {{site.data.keyword.cloud_notm}} provider for Terraform on {{site.data.keyword.cloud_notm}} version 0.13.0?
+## How do I setup IBM IBM Cloud Provider plug-in for Terraform provider for IBM Cloud Provider plug-in for Terraform version 0.13.0?
 {: #ibm-terraform-provider-v13}
 {: faq}
 
-Complete the following steps can be used in IBM Terraform on {{site.data.keyword.cloud_notm}} provider to support Terraform on {{site.data.keyword.cloud_notm}} version 0.13.0:
+Complete the following steps can be used in IBM IBM Cloud Provider plug-in for Terraform provider to support IBM Cloud Provider plug-in for Terraform version 0.13.0:
 
 1. From the HashiCorp site, [download version 0.13.x](https://releases.hashicorp.com/terraform/){: external}
-2. Find the [{{site.data.keyword.cloud_notm}} Terraform on {{site.data.keyword.cloud_notm}} provider](https://github.com/IBM-Cloud/terraform-provider-ibm/releases) version.
-2. Include the shared Terraform on {{site.data.keyword.cloud_notm}} block in the `providers.tf` file.
+2. Find the [IBM Cloud Provider plug-in for Terraform provider](https://github.com/IBM-Cloud/terraform-provider-ibm/releases) version.
+2. Include the shared IBM Cloud Provider plug-in for Terraform block in the `providers.tf` file.
 
   **Syntax**
 
@@ -129,8 +129,8 @@ Complete the following steps can be used in IBM Terraform on {{site.data.keyword
      }
    }
   ```
-3. If you are using Terraform on {{site.data.keyword.cloud_notm}} modules, the shared Terraform on {{site.data.keyword.cloud_notm}} block to be used in all the module folders that is been used.
-    Detailed steps in the IBM Terraform on {{site.data.keyword.cloud_notm}} documentation will be published shortly.
+3. If you are using IBM Cloud Provider plug-in for Terraform modules, the shared IBM Cloud Provider plug-in for Terraform block to be used in all the module folders that is been used.
+    Detailed steps in the IBM IBM Cloud Provider plug-in for Terraform documentation will be published shortly.
     {: note}
 
 ## Why I am getting an issue when trying to provision an `ibm_container_alb_cert`?
@@ -149,5 +149,5 @@ Error: Error waiting for create resource alb cert (buvlsclf0qcur3hjcrng/ingress-
 
 **Solution**
 
-You need to update the {{site.data.keyword.cloud_notm}} Terraform on {{site.data.keyword.cloud_notm}} provider to use `version 1.16.1` and above.
+You need to update the IBM Cloud Provider plug-in for Terraform provider to use `version 1.16.1` and above.
 

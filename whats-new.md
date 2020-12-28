@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-12-18"
+lastupdated: "2020-12-28"
 
 keywords: terraform resources, terraform modules, terraform provider, terraform autodeploy, 
 
@@ -23,10 +23,10 @@ subcollection: terraform
 {:download: .download}
 {:preview: .preview}
 
-# What's new in Terraform on {{site.data.keyword.cloud_notm}}?
+# What's new in IBM Cloud Provider plug-in for Terraform?
 {: #new-in-terraform}
 
-Learn about the latest changes to the Terraform on {{site.data.keyword.cloud_notm}} service that are grouped by month.
+Learn about the latest changes to the IBM Cloud Provider plug-in for Terraform service that are grouped by month.
 <staging>
 
 ## December 2020
