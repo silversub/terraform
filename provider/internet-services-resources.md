@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -203,6 +203,160 @@ terraform import ibm_cis_cache_settings.cache_settings 9caf68812ae9b3f0377fdf986
 ```
 {: pre}
 
+## `ibm_cis_certificate_order`
+{: #cis-certificate-order}
+
+ Provides an {{site.data.keyword.cis_full_notm}} certificate order resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to order and delete dedicated certificates of a domain of a CIS instance. For more information about CIS certificate order, refer to [managing origin certificates](/docs/cis?topic=cis-cis-origin-certificates).
+ {: shortdesc}
+
+ ### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-certificate-order-sample}
+
+```
+resource "ibm_cis_certificate_order" "test" {
+	cis_id    = data.ibm_cis.cis.id
+	domain_id = data.ibm_cis_domain.cis_domain.domain_id
+	hosts     = ["example.com"]
+}
+```
+
+### Input parameters
+{: #cis-certificate-order-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the domain. |
+|`hosts`|String|Required|The hosts for the certificates to be ordered.|
+
+
+### Output parameters
+{: #cis-certificate-order-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The record ID. It is a combination of `<certificate_id>,<domain_id>,<cis_id>` attributes concatenated with `:`.|
+|`certificate_id`|String |The certificate ID.|
+|`status`|String |The certificate status.|
+
+### Import
+{: #cis-certificate-order-import}
+
+The `ibm_cis_certificate_order` resource can be imported using the ID. The ID is formed from the certificate ID, the domain ID of the domain and the CRN concatentated by using a `:` character.
+
+The domain ID and CRN is located on the **Overview** page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
+
+**Domain ID** is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+**CRN** is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Certificate ID** is a 32 digit character string of the form: `489d96f0da6ed76251b475971b097205c`.
+
+
+**Syntax**
+
+```
+terraform import ibm_cis_certificate_order.myorg <certificate_id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_certificate_order.myorg certificate_order 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
+
+## `ibm_cis_certificate_upload`
+{: #cis-certificate-upload}
+
+ Provides an {{site.data.keyword.cis_full_notm}} certificate upload resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to upload, update, and delete certificates of a domain of a CIS instance. For more information about CIS certificate upload, refer to [Installing an origin certificate on your server](/docs/cis?topic=cis-cis-origin-certificates#cis-origin-certificates-installing).
+ {: shortdesc}
+
+ ### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-certificate-upload-sample}
+
+```
+# Upload a certificate for a domain
+
+resource "ibm_cis_certificate_upload" "cert" {
+    cis_id        = data.ibm_cis.cis.id
+    domain_id     = data.ibm_cis_domain.cis_domain.domain_id
+    certificate   = "xxxxx"
+    private_key   = "xxxxx
+    bundle_method = "ubiquitous"
+    priority      = 20
+}
+```
+
+### Input parameters
+{: #cis-certificate-upload-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the domain to add the rules dertificate upload. |
+|`certificate`|String|Required| The intermediate(s) certificate key.|
+|`private_key`|String|Required| The certificate private key.|
+|`bundle_method`|String|Optional| The certificate bundle method. The valid values are `ubiquitous`, `optimal`, `force`.|
+|`priority`|Integer|Optional | The order or priority in which the certificate is used in a request.|
+
+### Output parameters
+{: #cis-certificate-upload-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The record ID. It is a combination of `<custom_cert_id>:<domain_id>:<cis_id>` attributes concatenated with `:`.|
+|`certificate_id`|String |The certificate ID.|
+|`status`|String |The certificate status.|
+|`custom_cert_id`|String|The certificate upload rule ID.|
+|`status`|String|The ceritificate status.|
+|`issuer`|String|The certificate issuer.|
+|`signature`|String| The certificate signature.|
+|`expires_on`|String| The expiry date and time of the certificate.|
+|`uploaded_on`|String| The uploaded date and time of the certificate.|
+|`modified_on`|String| The modified date and time of the certificate.|
+
+### Import
+{: #cis-certificate-upload-import}
+
+The `ibm_cis_certificate_upload` resource can be imported using the ID. The ID is formed from the certificate upload ID, the domain ID of the domain and the CRN concatentated by using a `:` character.
+
+The domain ID and CRN is located on the **Overview** page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
+
+**Domain ID** is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+**CRN** is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Certificate upload ID** is a 32 digit character string of the form: `489d96f0da6ed76251b475971b097205c`.
+
+
+**Syntax**
+
+```
+terraform import ibm_cis_certificate_upload.ratelimit <custm_cert_id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_certificate_upload.certificate 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
 
 ## `ibm_cis_custom_page`
 {: #cis-custom}
@@ -279,6 +433,74 @@ terraform import ibm_cis_custom_page.custom_page <page_id>:<domain-id>:<crn>
 
 ```
 terraform import ibm_cis_custom_page.custom_page basic_challenge:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
+## `ibm_cis_dns_records_import`
+{: #cis-dns-records-import}
+
+Provides an {{site.data.keyword.cis_full_notm}} DNS records import resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to import DNS records from file of a domain of a CIS instance. For more information, about CIS DNS records, refer to [managing DNS records](/docs/dns-svcs?topic=dns-svcs-managing-dns-records).
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-dns-records-import-sample}
+
+```
+# Import DNS Records of the domain
+
+resource "ibm_cis_dns_records_import" "test" {
+	cis_id    = data.ibm_cis.cis.id
+	domain_id = data.ibm_cis_domain.cis_domain.domain_id
+	file      = "dns_records.txt"
+}
+```
+
+### Input parameters
+{: #cis-dns-records-import-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`domain_id`|String|Required|The ID of the domain to import the DNS records. | No |
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.| No |
+|`file`|String|Required| The DNS zone file that contains the details of the DNS records.| Yes |
+
+
+### Output parameters
+{: #cis-dns-records-import-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String| The record ID. It is a combination of `<total_records_parsed>:<records_added>:<file>:<domain_id>:<cis_id>` attributes concatenated with `:`.|
+|`total_records_parsed`|Integer|The parsed records count from imported file.|
+|`records_added`|String|The added records count from imported file.|
+
+
+### Import
+{: #cis-dns-records-imports}
+
+The `ibm_cis_dns_records_import` resource can be imported by using the ID. The ID is formed from the zone file, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character with the prefix of `0:0:`.
+
+The domain ID and CRN is located on the **Overview** page of the internet services instance under the domain heading of the UI, or via by using the `ibmcloud cis` CLI commands.
+
+**File** is a string of the form: `records.txt`
+
+**Domain ID** is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+**CRN** is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+```
+terraform import ibm_cis_dns_records_import.myorgs <total_records_parsed>:<records_added>:<file>:<domain-id>:<crn>
+```
+{: pre}
+
+```
+terraform import ibm_cis_dns_records_import.myorgs 0:0:records.txt:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
 ```
 {: pre}
 
@@ -1115,6 +1337,165 @@ terraform import ibm_cis_origin_pool.myorg <origin_pool_ID>:<crn>
 terraform import ibm_cis_origin_pool.myorg 1aaaa111111aa11111111111a1a11a1:crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::
 ```
 {: pre}
+
+
+
+
+
+## `ibm_cis_page_rule`
+{: #cis-page-rule}
+
+Provides an {{site.data.keyword.cis_full_notm}} page rule resource, to create, update, delete page rules of a domain. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a {{site.data.keyword.cis_full_notm}} domain resource. For more information, about {{site.data.keyword.cis_full_notm}} page rules, see [using page rules](/docs/cis?topic=cis-use-page-rules).
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-page-rule-sample}
+
+```
+# Add a page rule to the domain
+
+resource "ibm_cis_page_rule" "page_rule" {
+  cis_id    = var.cis_crn
+  domain_id = var.zone_id
+  targets {
+    target = "url"
+    constraint {
+      operator = "matches"
+      value    = "example.com"
+    }
+  }
+  actions {
+    id    = "email_obfuscation"
+    value = "on"
+  }
+  actions {
+    id          = "forwarding_url"
+    url         = "https://ibm.travis-kuganes1.sdk.cistest-load.com/*"
+    status_code = 302
+  }
+} 
+```
+
+### Input parameter 
+{: #cis-page-rule-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} domain.|
+|`status`|String|Optional|The status of the page rule. Valid values are `active` and `disabled`. Default value is `disabled`.|
+|`priority`|Integer|Optional|The priority of the page rule. Default value is `1`. `Set` and `Update` are not supported yet.|
+|`targets`|Set|Required|The targets, where rule is added.|
+|`targets.target`|String|Required|The target type. Valid value is `url`.|
+|`targets.constraint`|List |Required|The constrant of the page rule. Maximum items is `1`.|
+|`targets.constraint.operator`|String |Required|The operation on the page rule. Valid value is `matches`.|
+|`targets.constraint.value`|String |Required|The URL value on which page rule is applied.|
+|`actions`|List|Required|The list of actions performed on URL. Minimum items is `1`.|
+|`actions.id`|String|Required| The action ID. Valid values are `page rule action field map from UI` to `API CF-UI map API`). |
+|`actions.id.disable_security`|String| The action conflicts with `email_obfuscation`, `server_side_exclude`, `waf`. |
+|`actions.id.always_online`|String| The action conflicts with all other settings. |
+|`actions.id.forwarding_url`|String| The action conflicts with all other settings. |
+|`actions.id.always_use_https`|String| The action conflicts with all other settings. |
+|`actions.id.ssl`|String| The TLS settings. |
+|`actions.id.browser_cache_ttl`|String| The browser cache TTL. |
+|`actions.id.security_level`|String| The security level. |
+|`actions.id.cache_level`|String| The cache level. |
+|`actions.id.edge_cache_ttl`|String| The edge cache TTL.|
+|`actions.id.bypass_cache_on_cookie`|String| The bypass cache on cookie. |
+|`actions.id.browser_check`|String| The browser integrity check. |
+|`actions.id.server_side_exclude`|String| The server side excludes. |
+|`actions.id.server_stale_content`|String| The server stale content. |
+|`actions.id.email_obfuscation`|String| The Email obfuscation. |
+|`actions.id.automatic_https_rewrites`|String| The automatic HTTPS rewrites. |
+|`actions.id.opportunistic_encryption`|String| The opportunistic encryption. |
+|`actions.id.ip_geolocation`|String| The IP geography location header. |
+|`actions.id.explicit_cache_control`|String| The origin cache control. |
+|`actions.id.cache_deception_armor`|String| The cache deception armor. |
+|`actions.id.waf`|String| The Web Application Firewall. |
+|`actions.id.host_header_override`|String| The host header override. |
+|`actions.id.resolve_override`|String| The resolve override. |
+|`actions.id.cache_on_cookie`|String| The cache on cookie. |
+|`actions.id.disable_apps`|String| The disable apps. |
+|`actions.id.disable_performance`|String| The disable performance. |
+|`actions.id.image_load_optimization`|String| The image load optimization. |
+|`actions.id.origin_error_page_pass_thru`|String| The origin error page pass-through. |
+|`actions.id.response_buffering`|String| The response buffering. |
+|`actions.id.image_size_optimization`|String| The image size optimization. |
+|`actions.id.script_load_optimization`|String| The script load optimization. |
+|`actions.id.true_client_ip_header`|String| The true client IP header. |
+|`actions.id.sort_query_string_for_cache`|String| The sort query string. |
+|`value`|String|Required| The values for corresponding actions.|
+|`actions.value.always_online`|String| The valid values are `on`, `off`.|
+|`actions.value.ssl`|String| The valid values are `off`, `flexible`, `full`, `strict`, `origin_pull`.|
+|`actions.value.browser_cache_ttl`|Integer| The valid values are `0, 1800, 3600, 7200, 10800, 14400, 18000, 28800, 43200, 57600, 72000, 86400, 172800, 259200, 345600, 432000, 691200, 1382400, 2073600, 2678400, 5356800, 16070400, 31536000`.|
+|`actions.value.security_level`|String| The valid values are `disable_security`, `always_use_https`.|
+|`actions.value.cache_level`|String| The valid values are `bypass`, `aggressive`, `basic`, `simplified`, `cache_everything`.|
+|`actions.value.edge_cache_ttl`|String| The valid values are `0, 30, 60, 300, 600, 1200, 1800, 3600, 7200, 10800, 14400, 18000, 28800, 43200, 57600, 72000, 86400, 172800, 259200, 345600, 432000, 518400, 604800, 1209600, 2419200`.|
+|`actions.value.bypass_cache_on_cookie`|String| The valid values are `cookie tags`.|
+|`actions.value.browser_check`|String| The valid values are `on`, `off`.|
+|`actions.value.server_side_exclude`|String| The valid values are `on`, `off`.|
+|`actions.value.server_stale_content`|String| The valid values are `on`, `off`.|
+|`actions.value.email_obfuscation`|String| The valid values are `on`, `off`.|
+|`actions.value.automatic_https_rewrites`|String| The valid values are `on`, `off`.|
+|`actions.value.opportunistic_encryption`|String| The valid values are `on`, `off`.|
+|`actions.value.ip_geolocation`|String| The valid values are `on`, `off`.|
+|`actions.value.explicit_cache_control`|String| The valid values are `on`, `off`.|
+|`actions.value.cache_deception_armor`|String| The valid values are `on`, `off`.|
+|`actions.value.waf`|String| The valid values are `on`, `off`.|
+|`actions.value.host_header_override`|String| The header value.|
+|`actions.value.resolve_override`|String| The value for resolving URL override.|
+|`actions.value.cache_on_cookie`|String| The cookie value.|
+|`actions.value.disable_apps`|String| The value is not required.|
+|`actions.value.disable_performance`|String| The value is not required.|
+|`actions.value.image_load_optimization`|String| The valid values are `on`, `off`.|
+|`actions.value.origin_error_page_pass_thru`|String| The valid values are `on`, `off`.|
+|`actions.value.response_buffering`|String| The valid values are `on`, `off`.|
+|`actions.value.image_size_optimization`|String| The valid values are `on`, `off`.|
+|`actions.value.script_load_optimization`|String| The valid values are `off`, `lossless`, `lossy`.|
+|`actions.value.true_client_ip_header`|String| The valid values are `on`, `off`.|
+|`actions.value.sort_query_string_for_cache`|String| The valid values are `on`, `off`.|
+|`actions.value.minify`|String| This is not supported yet.|
+|`url`|String|Optional| The forward rule URL, a required attribute for `forwarding_url` action.|
+|`status_code`|String|Optional| The status code to check for URL forwarding. The required attribute for `forwarding_url` action. Valid values are `301` and `302`. It returns `0` for all other actions.|
+
+
+### Output parameter
+{: #cis-page-rule-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String| The record ID. It is a combination of `<rule_id>:<domain_id>:<cis_id>` attributes of the origin pool. |
+|`rule_id`|String|The page rule ID.|
+
+### Import
+{: #cis-page-rule-import}
+
+The `ibm_cis_page_rule` resource can be imported using the ID. The ID is formed from the rule ID, the domain ID of the domain and the CRN concatentated using a `:` character.
+
+The domain ID and CRN is located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via the `ibmcloud cis` CLI.
+
+- **Domain ID** is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`.
+
+- **CRN** is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
+
+- **Rule ID** is a 32 digit character string in the format `489d96f0da6ed76251b475971b097205c`.
+
+```
+terraform import ibm_cis_page_rule.myorg <rule_id>:<domain-id>:<crn>
+```
+{: pre}
+
+```
+terraform import ibm_cis_page_rule.myorg page_rule 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
 
 
 
