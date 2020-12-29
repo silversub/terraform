@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-16"
+lastupdated: "2020-12-28"
 
 keywords: terraform templates, schematics template
 
@@ -36,13 +36,13 @@ subcollection: terraform
 {:step: data-tutorial-type='step'}
 
 
-# Sample Terraform templates and deploy to {{site.data.keyword.cloud_notm}}
+# Sample IBM Cloud Provider plug-in for Terraform templates and deploy to {{site.data.keyword.cloud_notm}}
 {: #sample_terraformtemplates}
 
-All Terraform templates use the Terraform version 0.12 format.
+All IBM Cloud Provider plug-in for Terraform templates use the IBM Cloud Provider plug-in for Terraform version 0.12 format.
 {: note}
 
-The sample Terraform templates and deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to access the templates and experience the auto deploy to the {{site.data.keyword.cloud_notm}} to create workspace in Schematics.
+The sample IBM Cloud Provider plug-in for Terraform templates and deploy to {{site.data.keyword.cloud_notm}} link is an efficient way to access the templates and experience the auto deploy to the {{site.data.keyword.cloud_notm}} to create workspace in Schematics.
 {: shortdesc}
 
 When you click the `Deploy to {{site.data.keyword.cloud_notm}}` following actions occur:

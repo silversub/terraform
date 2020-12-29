@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-17"
+lastupdated: "2020-12-29"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -37,9 +37,9 @@ subcollection: terraform
 # Internet Services data sources
 {: #cis_data}
 
-You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
+You can reference the output parameters for each resource in other resources or data sources by using [IBM Cloud Provider plug-in for Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
 
-Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+Before you start working with your data source, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your IBM Cloud Provider plug-in for Terraform configuration file. 
 {: important}
 
 ## `ibm_cis`
@@ -48,7 +48,7 @@ Before you start working with your data source, make sure to review the [require
 Retrieve information about an {{site.data.keyword.cis_full_notm}} instance. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-sample}
 
 The following example retrieves information about an {{site.data.keyword.cis_full_notm}} instance. 
@@ -84,13 +84,109 @@ Review the output parameters that you can access after you retrieved your data s
 | `location` | String | The location of your instance. |
 | `status` | String | The status of your instance. |
 
+## `ibm_cis_certificates`
+{: #cis-certificates}
+
+ Imports a read only copy of an existing {{site.data.keyword.cis_full_notm}} certificates resource. For more information about CIS certificate order, refer to [managing origin certificates](/docs/cis?topic=cis-cis-origin-certificates).
+ {: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-certificates-dssample}
+
+```
+data "ibm_cis_certificates" "test" {
+  cis_id    = ibm_cis.instance.id
+  domain_id = ibm_cis_domain.example.id
+}
+```
+### Input parameters
+{: #cis-certificates-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the domain. |
+
+
+### Output parameters
+{: #cis-certificates-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`certificates`|String|The collection of the certificates.|
+|`certificates.id`|String| It is a combination of `<certificate_id>:<domain_id>:<cis_id>`.|
+|`certificates.certificate_id`|String| The certificate ID.|
+|`certificates.type`|String| The certificate type.|
+|`certificates.hosts`|String|  The hosts of the ordered certificates.|
+|`certificates.status`|String| The certificate status.|
+|`certificates.primary_certificate`|String| The primary certificate ID.|
+|`certificates.certificates`|List| The list of certificates associated with the ordered certificate.|
+|`certificates.certificates.id`|String| The certificate ID.|
+|`certificates.certificates.hosts`|String| The hosts of the associated with the certificates.|
+|`certificates.certificates.status`|String| The certificate status.|
+
+## `ibm_cis_custom_certificates`
+{: #cis-custom-certificates}
+
+ Imports a read only copy of an existing {{site.data.keyword.cis_full_notm}} custom certificates resource. For more information about CIS certificate order, refer to [upload custom certificates](/docs/cis?topic=cis-manage-your-ibm-cis-for-optimal-security#upload-custom-certs).
+ {: shortdesc}
+ 
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-custom-certificates-dssample}
+
+```
+# Get custom certificates of the domain
+
+data "ibm_cis_custom_certificates" "custom_certificates" {
+    cis_id    = data.ibm_cis.cis.id
+    domain_id = data.ibm_cis_domain.cis_domain.domain_id
+}
+```
+### Input parameters
+{: #cis-custom-certificates-dsinput}
+
+The input parameters are not support for this data source. 
+{: shortdesc}
+
+
+### Output parameters
+{: #cis-custom-certificates-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`cis_id`|String|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|The ID of the domain to change custom certificate. |
+|`custom_certificates`|String|The collection of the custom certificates.|
+|`custom_certificates.id`|String| It is a combination of `<custom_cert_id>:<domain_id>:<cis_id>`.|
+|`custom_certificates.custom_cert_id`|String| The custom certificate ID.|
+|`custom_certificates.bundle_method`|String| The custom certificate bundle method.|
+|`custom_certificates.type`|String| The certificate type.|
+|`custom_certificates.hosts`|String|  The list of hosts that are uploaded in a certificate.|
+|`custom_certificates.priority`|String|  The custom certificate priority.|
+|`custom_certificates.status`|String| The custom certificate status.|
+|`custom_certificates.issuer`|String| The custom certificate issuer.|
+|`custom_certificates.signature`|String| The custom certificate signature.|
+|`custom_certificates.expires_on`|String| The expiry date and time of the certificate.|
+|`custom_certificates.uploaded_on`|String| The uploaded date and time of the certificate.|
+|`custom_certificates.modified_on`|String| The modified date and time of the certificate.|
+
+
 ## `ibm_cis_custom_pages`
 {: #cis-custom-pages}
 
- Imports a read only copy of an existing {{site.data.keyword.cis_full_notm}} custom pages resource. For more information about custom page, refer to [CIS custom page](/docs/cis?topic=cis-custom-page).
+ Imports a read only copy of an existing {{site.data.keyword.cis_full_notm}} custom pages resource. For more information, about custom page, refer to [CIS custom page](/docs/cis?topic=cis-custom-page).
  {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-custom-pages-sample}
 
 ```
@@ -123,13 +219,67 @@ Review the output parameters that you can access after you retrieved your data s
 | `url` | String | The URL for custom page settings. By default URL is set with empty string `""`. Setting a duplicate empty string throws an error.|
 
 
+## `ibm_cis_dns_record`
+{: #cis-dns-record}
+
+Retrieve information about an {{site.data.keyword.cis_full_notm}} domain name service record. For more information, about DNS records, refer to [Managing DNS records](/docs/dns-svcs?topic=dns-svcs-managing-dns-records). 
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-dns-record-sample}
+
+The following example retrieves information about an {{site.data.keyword.cis_full_notm}} domain. 
+{: shortdesc}
+
+```
+data "ibm_cis_dns_records" "test" {
+  cis_id    = var.cis_crn
+  domain_id = var.zone_id
+  file      = "records.txt"
+}
+```
+
+### Input parameters
+{: #cis-dns-record-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+| `domain_id` | String | Required |  The resource domain ID of the DNS on which zones were created.|
+| `cis_id` | String | Required | The ID of the {{site.data.keyword.cis_full_notm}} instance on which zones were created. |
+|`file`| String | Optional| The file that DNS records to be exported.|
+
+### Output parameters
+{: #cis-dns-record-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+| `cis_dns_records` | List | The list of DNS records. |
+| `cis_dns_records.id` | String | The ID which consists of record id, zone id and CRN with `:` seperator. |
+| `cis_dns_records.record_id` | String | The DNS record identifier. |
+| `cis_dns_records.name` | String | The name of a DNS record. |
+| `cis_dns_records.proxiable` | String | Whether the record has option to set proxied. |
+| `cis_dns_records.proxied` | String | Whether the record gets CIS's origin protection; defaults to `false`. |
+| `cis_dns_records.created_on` | String | The created date of the DNS record. |
+| `cis_dns_records.modified_on` | String | The modified date of the DNS record. |
+| `cis_dns_records.zone_name` | String | The DNS zone name. |
+| `cis_dns_records.type` | String | The type of the DNS record to be created. Supported Record types are `A`, `AAAA`, `CNAME`, `LOC`, `TXT`, `MX`, `SRV`, `SPF`, `NS`, `CAA`. |
+| `cis_dns_records.ttl` | String | TTL of the record. It should be automatic that is `ttl=1`, if the record is proxied. Terraform provider takes `ttl` in unit seconds. |
+| `cis_dns_records.priority` | String | The priority of the record. Mandatory field for `SRV` record type. |
+| `cis_dns_records.data` | String | Map of attributes that constitute the record value. Only for `LOC`, `CAA` and SRV record types. |
+  
 ## `ibm_cis_domain`
 {: #cis_domain}
 
 Retrieve information about an {{site.data.keyword.cis_full_notm}} domain. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-domain-sample}
 
 The following example retrieves information about an {{site.data.keyword.cis_full_notm}} domain. 
@@ -177,7 +327,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about an {{site.data.keyword.cis_full_notm}} edge function actions resource.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-edge-functions-actions-dssample}
 
 The following example retrieves information about an {{site.data.keyword.cis_full_notm}} edge function actions resource.
@@ -226,7 +376,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about an {{site.data.keyword.cis_full_notm}} edge function triggers resource.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-edge-functions-triggers-dssample}
 
 The following example retrieves information about an {{site.data.keyword.cis_full_notm}} edge function actions resource.
@@ -269,7 +419,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieves an existing {{site.data.keyword.cis_full_notm}} instance. For more information, see [firewall rule actions](/docs/cis?topic=cis-actions).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-firewall-dssample}
 
 ```
@@ -279,7 +429,7 @@ data "ibm_cis_firewall" "lockdown" {
   firewall_type = "lockdowns"
 }
 ```
-IBM Terraform provider supports only lock down rules.
+IBM IBM Cloud Provider plug-in for Terraform provider supports only lock down rules.
 {: note}
 
 ### Input parameters
@@ -291,8 +441,8 @@ Review the input parameters that you can specify for your data source.
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance where you want to create the firewall.|
-|`domain_id`|String|Required|The ID of the domain where you want to add the lockdown.|
-|`firewall_type`|String|Required|The type of firewall that you want to create for your domain. Supported values are `lockdowns`, `access_rules`, and `ua_rules`. Consider the following information when choosing your firewall type: <ul><li><strong><code>access_rules</code></strong>: Access rules allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.</li><li><strong><code>ua_rules</code></strong>: Apply firewall rules only if the user agent that is used by the client matches the user agent that you defined. </li><li><strong><code>lockdowns</code></strong>: Allow access to your domain for specific IP addresses or IP address ranges only. If you choose this firewall type, you must define your firewall rules in the `lockdown` input parameter.</li></ul>|
+|`domain_id`|String|Required|The ID of the domain where you want to add the lock down.|
+|`firewall_type`|String|Required|The type of firewall that you want to create for your domain. Supported values are `lockdowns`, `access_rules`, and `ua_rules`. Consider the following information when choosing your firewall type: <ul><li><strong><code>access_rules</code></strong>: Access rules allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.</li><li><strong><code>ua_rules</code></strong>: Apply firewall rules only if the user agent that is used by the client matches the user agent that you defined. </li><li><strong><code>`lockdowns`</code></strong>: Allow access to your domain for specific IP addresses or IP address ranges only. If you choose this firewall type, you must define your firewall rules in the `lockdown` input parameter.</li></ul>|
 
 ### Output parameters
 {: #cis-firewall-dsoutput}
@@ -309,7 +459,7 @@ Review the output parameters that you can access after your data source is creat
 |`lockdown.priority`|Integer|The priority of the firewall rule. A low number is associated with a high priority. |
 |`lockdown.urls`|List of URLs|A list of URLs that you want to include in your firewall rule. You can specify wildcard URLs. The URL pattern is escaped before use.|
 |`lockdown.configurations`|List of IP addresses|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. |
-|`lockdown.configurations.target`|String|Specify if you want to target an `ip` or `ip_range`.|
+|`lockdown.configurations.target`|String|Specify if you want to target an `IP` or `ip_range`.|
 |`lockdown.configurations.value`|String|The IP addresses or CIDR. |
 |`access_rule`|String|Create the data describing the access rule. |
 |`access_rule.rule_id`|String| The access rule ID. |
@@ -336,7 +486,7 @@ Exactly one of `lockdown`, `access_rule`, and `ua_rule` is allowed for the firew
 Retrieve information 24 X 7 availability and performance of your application by using the {{site.data.keyword.cis_full_notm}} global load balancers. For more information, refer to [CIS global loadbalancer](/docs/cis?topic=cis-configure-glb).Import the details of an existing {{site.data.keyword.cis_full_notm}} global load balancers as a read-only data source. You can then reference the fields of the data source in other resources within the same configuration using interpolation syntax.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-global-lb-dssample}
 
 The following example retrieves information about an {{site.data.keyword.cis_full_notm}} global load balancer resource.
@@ -392,7 +542,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieve information about an {{site.data.keyword.cis_full_notm}} global load balancer health monitor or check as a read-only data source.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-healthchecks-sample}
 
 The following example retrieves information about an {{site.data.keyword.cis_full_notm}} domain. 
@@ -443,10 +593,10 @@ Review the output parameters that you can access after you retrieved your data s
 ## `ibm_cis_ip_addresses`
 {: #cis_ip}
 
-Import a list of all IP addresses that the CIS proxy uses. The CIS proxy uses these IP addresses for both `client-to-proxy` and `proxy-to-origin` communication. You can reference the IP addresses by using Terraform interpolation syntax to configure and allowed IP addresses in firewalls, network ACLs, and security groups. 
+Import a list of all IP addresses that the CIS proxy uses. The CIS proxy uses these IP addresses for both `client-to-proxy` and `proxy-to-origin` communication. You can reference the IP addresses by using IBM Cloud Provider plug-in for Terraform interpolation syntax to configure and allowed IP addresses in firewalls, network ACLs, and security groups. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-ip-sample}
 
 The following example retrieves information about IP addresses that {{site.data.keyword.cis_full_notm}} uses for name servers. 
@@ -479,7 +629,7 @@ Review the output parameters that you can access after you retrieved your data s
 Retrieves an {{site.data.keyword.cis_full_notm}} origin pool resource. This provides a pool of origins that is used by an {{site.data.keyword.cis_full_notm}} Global Load Balancer. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and optionally an {{site.data.keyword.cis_full_notm}} Health check monitor resource.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #origin-pools-sample}
 
 ```
@@ -534,7 +684,7 @@ Retrieve information for a rate limiting rule of an {{site.data.keyword.cis_full
 To retrieve information about a rate limiting rule, you must have the enterprise plan for an {{site.data.keyword.cis_full_notm}}. 
 {: note}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #rate-limit-sample}
 
 ```
@@ -593,13 +743,126 @@ Review the output parameters that you can access after you retrieved your data s
 |`bypass.name`|String|The name of the key that you want to apply. Supported values are `url`. |
 |`bypass.value`|String|The value of the key that you want to match. When `bypass.name` is set to `url`, `bypass.value` contains the URL that you want to exclude from the rate limiting rule. |
 
+## `ibm_cis_page_rules`
+{: #cis-page-rules}
+
+Retrieve an information of an {{site.data.keyword.cis_full_notm}} page rules resource. For more information, about {{site.data.keyword.cis_full_notm}} page rules, see [using page rules](/docs/cis?topic=cis-use-page-rules).
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-page-rules-dssample}
+
+```
+data "ibm_cis_page_rules" "rules" {
+  cis_id    = ibm_cis.instance.id
+  domain_id = ibm_cis_domain.example.id
+}
+```
+{: codeblock}
+
+### Input parameters
+{: #cis-page-rules-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance . |
+|`domain_id`|String|Required|The ID of the domain. |
+
+
+### Output parameters
+{: #cis-page-rules-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+|`cis_page_rules`|String| The page rules detail.|
+|`cis_page_rules.rule_id`|String| The page rule ID.|
+|`cis_page_rules.priority`|String| The priority of the page rule.|
+|`cis_page_rules.status`|String|  The status of the page rule. Default value is `active`.|
+|`cis_page_rules.targets`|String|  The targets, of the added rule.|
+|`cis_page_rules.targets.target`|String| The target type. Valid value is `url`.|
+|`cis_page_rules.targets.constraint`|String| The constraint of the page rule.|
+|`cis_page_rules.targets.constraint.operator`|String| The operation on page rule. Valid value is `matches`.|
+|`cis_page_rules.targets.constraint.value`|String| The URL value on the applied page rule.|
+|`cis_page_rules.actions`|String|  The actions to be performed on the URL.|
+|`cis_page_rules.id`|String| The action ID. Valid values are `page rule action field map from UI` to `API CF-UI map API`). |
+|`cis_page_rules.id.disable_security`|String| The action conflicts with `email_obfuscation`, `server_side_exclude`, `waf`. |
+|`cis_page_rules.id.always_online`|String| The action conflicts with all other settings. |
+|`cis_page_rules.id.forwarding_url`|String| The action conflicts with all other settings. |
+|`cis_page_rules.id.always_use_https`|String| The action conflicts with all other settings. |
+|`cis_page_rules.id.ssl`|String| The TLS settings. |
+|`cis_page_rules.id.browser_cache_ttl`|String| The browser cache TTL. |
+|`cis_page_rules.id.security_level`|String| The security level. |
+|`cis_page_rules.id.cache_level`|String| The cache level. |
+|`cis_page_rules.id.edge_cache_ttl`|String| The edge cache TTL.|
+|`cis_page_rules.id.bypass_cache_on_cookie`|String| The bypass cache on cookie. |
+|`cis_page_rules.id.browser_check`|String| The browser integrity check. |
+|`cis_page_rules.id.server_side_exclude`|String| The server side excludes. |
+|`cis_page_rules.id.server_stale_content`|String| The server stale content. |
+|`cis_page_rules.id.email_obfuscation`|String| The Email obfuscation. |
+|`cis_page_rules.id.automatic_https_rewrites`|String| The automatic HTTPS rewrites. |
+|`cis_page_rules.id.opportunistic_encryption`|String| The opportunistic encryption. |
+|`cis_page_rules.id.ip_geolocation`|String| The IP geography location header. |
+|`cis_page_rules.id.explicit_cache_control`|String| The origin cache control. |
+|`cis_page_rules.id.cache_deception_armor`|String| The cache deception armor. |
+|`cis_page_rules.id.waf`|String| The Web Application Firewall. |
+|`cis_page_rules.id.host_header_override`|String| The host header override. |
+|`cis_page_rules.id.resolve_override`|String| The resolve override. |
+|`cis_page_rules.id.cache_on_cookie`|String| The cache on cookie. |
+|`cis_page_rules.id.disable_apps`|String| The disable apps. |
+|`cis_page_rules.id.disable_performance`|String| The disable performance. |
+|`cis_page_rules.id.image_load_optimization`|String| The image load optimization. |
+|`cis_page_rules.id.origin_error_page_pass_thru`|String| The origin error page pass-through. |
+|`cis_page_rules.id.response_buffering`|String| The response buffering. |
+|`cis_page_rules.id.image_size_optimization`|String| The image size optimization. |
+|`cis_page_rules.id.script_load_optimization`|String| The script load optimization. |
+|`cis_page_rules.id.true_client_ip_header`|String| The true client IP header. |
+|`cis_page_rules.id.sort_query_string_for_cache`|String| The sort query string. |
+|`cis_page_rules.value`|String| The values for corresponding actions.|
+|`cis_page_rules.value.always_online`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.ssl`|String| The valid values are `off`, `flexible`, `full`, `strict`, `origin_pull`.|
+|`cis_page_rules.value.browser_cache_ttl`|Integer| The valid values are `0, 1800, 3600, 7200, 10800, 14400, 18000, 28800, 43200, 57600, 72000, 86400, 172800, 259200, 345600, 432000, 691200, 1382400, 2073600, 2678400, 5356800, 16070400, 31536000`.|
+|`cis_page_rules.value.security_level`|String| The valid values are `disable_security`, `always_use_https`.|
+|`cis_page_rules.value.cache_level`|String| The valid values are `bypass`, `aggressive`, `basic`, `simplified`, `cache_everything`.|
+|`cis_page_rules.value.edge_cache_ttl`|String| The valid values are `0, 30, 60, 300, 600, 1200, 1800, 3600, 7200, 10800, 14400, 18000, 28800, 43200, 57600, 72000, 86400, 172800, 259200, 345600, 432000, 518400, 604800, 1209600, 2419200`.|
+|`cis_page_rules.value.bypass_cache_on_cookie`|String| The valid values are `cookie tags`.|
+|`cis_page_rules.value.browser_check`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.server_side_exclude`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.server_stale_content`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.email_obfuscation`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.automatic_https_rewrites`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.opportunistic_encryption`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.ip_geolocation`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.explicit_cache_control`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.cache_deception_armor`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.waf`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.host_header_override`|String| The header value.|
+|`cis_page_rules.value.resolve_override`|String| The value for resolving URL override.|
+|`cis_page_rules.value.cache_on_cookie`|String| The cookie value.|
+|`cis_page_rules.value.disable_apps`|String| The value is not required.|
+|`cis_page_rules.value.disable_performance`|String| The value is not required.|
+|`cis_page_rules.value.image_load_optimization`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.origin_error_page_pass_thru`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.response_buffering`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.image_size_optimization`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.script_load_optimization`|String| The valid values are `off`, `lossless`, `lossy`.|
+|`cis_page_rules.value.true_client_ip_header`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.value.sort_query_string_for_cache`|String| The valid values are `on`, `off`.|
+|`cis_page_rules.url`|String| The forward rule URL, a required attribute for `forwarding_url` action.|
+|`cis_page_rules.status_code`|String| The status code to check for URL forwarding. The required attribute for `forwarding_url` action. Valid values are `301` and `302`. It returns `0` for all other actions.|
+
 ## `ibm_cis_range_apps`
 {: #cis-range-apps}
 
 Retrieve an information of an {{site.data.keyword.cis_full_notm}} range applications. For more information, about CIS range application, see [getting started with range](/docs/cis?topic=cis-cis-range).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-range-apps-dssample}
 
 ```
@@ -647,7 +910,7 @@ Review the output parameters that you can access after you retrieved your data s
 Import the details of an existing {{site.data.keyword.cis_full_notm}} WAF rule groups. For more information, about WAF refer to [Web Application Firewall concepts](/docs/cis?topic=cis-waf-q-and-a).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-waf-groups-dssimple}
 
 ```
@@ -681,7 +944,7 @@ Review the output parameters that you can access after you retrieved your data s
 |----|-----------|----------|
 |`name`|String| The name of the  WAF rule group.|
 |`group_id`|String| The WAF group ID.|
-|`mode` |String| The `on` or `off` mode setting of the WAF rule group.|
+|`mode` |String| The `on`, `off` mode setting of the WAF rule group.|
 |`description` |String| The WAF rule group description.|
 |`rules_count`|String|  Number of rules in WAF Group.|
 |`modified_rules_count`|String|  Number of rules modified in WAF Group.|
@@ -692,7 +955,7 @@ Review the output parameters that you can access after you retrieved your data s
 Import the details of an existing {{site.data.keyword.cis_full_notm}} WAF package resource. For more information, about WAF refer to [CIS rule sets](/docs/cis?topic=cis-waf-settings).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-waf-packages-dssimple}
 
 ```
@@ -734,7 +997,7 @@ Review the output parameters that you can access after you retrieved your data s
 Import the details of an existing {{site.data.keyword.cis_full_notm}} WAF rules resource. For more information, see [CIS rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-waf-rules-dssimple}
 
 ```

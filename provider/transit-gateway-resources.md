@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-02"
+lastupdated: "2020-12-28"
 
 keywords: terraform provider plugin, terraform transit gateway resource, terraform transit gateway, transit gateway resource, transit gateway
 
@@ -37,9 +37,9 @@ subcollection: terraform
 # Transit Gateway resources
 {: #tg-resource}
 
-The {{site.data.keyword.cloud_notm}} [Transit Gateway](/docs/transit-gateway?topic=transit-gateway-getting-started) provides to create,  manage gateways and connections and list available locations for gateways. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}.
+The {{site.data.keyword.cloud_notm}} [Transit Gateway](/docs/transit-gateway?topic=transit-gateway-getting-started) provides to create,  manage gateways and connections and list available locations for gateways. You can reference the output parameters for each resource in other resources or data sources by using [IBM Cloud Provider plug-in for Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}.
 
-Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your IBM Cloud Provider plug-in for Terraform configuration file. 
 {: important}
 
 ## `ibm_tg_connection`
@@ -48,7 +48,7 @@ Before you start working with your resource, make sure to review the [required p
 Create, update and delete for the transit gateway's connection resource. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #tg-connection-sample}
 
 The following example shows how to create, update and delete a transit gateway connection by using a transit gateway resource.
@@ -109,7 +109,7 @@ terraform import ibm_tg_connection.example 5ffda12064634723b079acdb018ef308/cea6
 Create, update and delete for the transit gateway resource. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #tg-gatewy-sample}
 
 The following example shows how to create, update and delete a transit gateway by using a transit gateway resource.

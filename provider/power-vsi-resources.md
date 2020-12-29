@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-07"
+lastupdated: "2020-12-28"
 
 keywords: terraform provider plugin, terraform power resources, terraform power systems resources, terraform power
 
@@ -37,13 +37,13 @@ subcollection: terraform
 # Power Systems resources
 {: #power-vsi}
 
-Review the [Power Systems resources](/docs/power-iaas?topic=power-iaas-about-virtual-server) that you can create. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
+Review the [Power Systems resources](/docs/power-iaas?topic=power-iaas-about-virtual-server) that you can create. You can reference the output parameters for each resource in other resources or data sources by using [IBM Cloud Provider plug-in for Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
 {: shortdesc}
 
 To find supported input parameter values, you can use the Power Systems CLI plug-in in {{site.data.keyword.cloud_notm}}. To install the plug-in, run `ibmcloud plugin install pi`. 
 {: tip}
 
-If you want to create, update, or delete Power System resources in a multizone-capable region, you must specify the `zone` in the `provider` block of your Terraform configuration file. For more information, see the [`provider` block configuration](/docs/terraform?topic=terraform-provider-reference).
+If you want to create, update, or delete Power System resources in a multizone-capable region, you must specify the `zone` in the `provider` block of your IBM Cloud Provider plug-in for Terraform configuration file. For more information, see the [`provider` block configuration](/docs/terraform?topic=terraform-provider-reference).
 {: important}
 
 ## `ibm_pi_image`
@@ -52,7 +52,7 @@ If you want to create, update, or delete Power System resources in a multizone-c
 Create, update, or delete for a Power Systems Virtual Server image. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #power-image-sample}
 
 ```
@@ -101,7 +101,7 @@ The following timeouts are defined for this resource:
 Create or update a [Power Systems Virtual Server instance](/docs/power-iaas?topic=power-iaas-creating-power-virtual-server).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #power-instance-sample}
 
 The following example creates a Power Systems Virtual Server instance. 
@@ -213,7 +213,7 @@ terraform import ibm_pi_instance.example d7bec597-4726-451f-8453-e62e6f19c32c/ce
 Create, update, or delete an SSH key for your Power Systems Virtual Server instance. The SSH key is used to access the instance after it is created.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #ssh-key-sample}
 
 The following example creates an SSH key that is named `mykey`. 
@@ -281,7 +281,7 @@ terraform import ibm_pi_key.example <power_instance_id>/<key_name>
 Create, update, or delete a network connection for your Power Systems Virtual Server instance. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #power-network-sample}
 
 The following example creates a network connection for your Power Systems Virtual Server instance.
@@ -354,7 +354,7 @@ terraform import ibm_pi_network.example <power_instance_id>/<network_id>
 Creates or updates network port in the Power Virtual Server Cloud. For more information, see [about Power Systems](/docs/power-iaas?topic=power-iaas-about-virtual-server).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #pi-network-sample}
 
 ```
@@ -416,7 +416,7 @@ terraform import ibm_pi_network_port.example d7bec597-4726-451f-8a63-e62e6f19c32
 Creates, updates, deletes, and manages snapshots in the Power Virtual Server Cloud.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #pi-snapshot-sample}
 
 ```
@@ -481,7 +481,7 @@ terraform import ibm_pi_snapshot.example d7bec597-4726-451f-8a63-e62e6f19c32c/ce
 Create, update, or delete a volume to attach it to a Power Systems Virtual Server instance. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #power-volume-sample}
 
 The following example creates a 20 GB volume. 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-17"
+lastupdated: "2020-12-29"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -37,10 +37,10 @@ subcollection: terraform
 # Internet services resources
 {: #cis-resources}
 
-Review the [{{site.data.keyword.cis_full_notm}}](/docs/cis?topic=cis-about-ibm-cloud-internet-services-cis) resources that you can create, modify, or delete. You can reference the output parameters for each resource in other resources or data sources by using [Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
+Review the [{{site.data.keyword.cis_full_notm}}](/docs/cis?topic=cis-about-ibm-cloud-internet-services-cis) resources that you can create, modify, or delete. You can reference the output parameters for each resource in other resources or data sources by using [IBM Cloud Provider plug-in for Terraform interpolation syntax](https://www.terraform.io/docs/configuration-0-11/interpolation.html){: external}. 
 {: shortdesc}
 
-Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your Terraform configuration file. 
+Before you start working with your resource, make sure to review the [required parameters](/docs/terraform?topic=terraform-provider-reference#required-parameters) that you need to specify in the `provider` block of your IBM Cloud Provider plug-in for Terraform configuration file. 
 {: important}
 
 ## `ibm_cis`
@@ -48,7 +48,7 @@ Before you start working with your resource, make sure to review the [required p
 
 Create, update, or delete an {{site.data.keyword.cis_full_notm}} instance. 
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-sample}
 
 ```
@@ -125,10 +125,10 @@ terraform import ibm_cis.myorg <crn>
 ## `ibm_cis_cache_settings`
 {: #cis-cache}
 
- Provides a {{site.data.keyword.cis_full_notm}} cache settings resource. This resource is associated with an IBM Cloud Internet Services instance and a CIS Domain resource. It allows to create, update, or delete cache settings of a domain of a {{site.data.keyword.cis_full_notm}} CIS instance. For more information about cache setting, refer to [CIS cache concepts](/docs/cis?topic=cis-caching-concepts).
+ Provides an {{site.data.keyword.cis_full_notm}} cache settings resource. This resource is associated with an IBM Cloud Internet Services instance and a CIS Domain resource. It allows to create, update, or delete cache settings of a domain of an {{site.data.keyword.cis_full_notm}} CIS instance. For more information about cache setting, refer to [CIS cache concepts](/docs/cis?topic=cis-caching-concepts).
  {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-cache-sample}
 
 ```
@@ -159,7 +159,7 @@ Review the input parameters that you can specify for your resource.
 |`domain_id`|String|Required|The ID of the domain to change cache settings. |
 |`development_mode`|String|Optional|The development mode enable or disable settings. Valid values are `on`, and `off`.|
 |`purge_all`|Boolean|Optional| Purge all cached files.|
-|`purge_by_urls`|List of String|Optional| Purge cached urls.|
+|`purge_by_urls`|List of String|Optional| Purge cached URLs.|
 |`purge_by_hosts`|List of String|Optional| Purge cached hosts.|
 |`purge_by_tags`|List of String|Optional| Purge cached item that matches the tags.|
 |`query_string_sort`|String|Optional|The query string sort settings. Valid values are `on`, and `off`.|
@@ -203,6 +203,160 @@ terraform import ibm_cis_cache_settings.cache_settings 9caf68812ae9b3f0377fdf986
 ```
 {: pre}
 
+## `ibm_cis_certificate_order`
+{: #cis-certificate-order}
+
+ Provides an {{site.data.keyword.cis_full_notm}} certificate order resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to order and delete dedicated certificates of a domain of a CIS instance. For more information about CIS certificate order, refer to [managing origin certificates](/docs/cis?topic=cis-cis-origin-certificates).
+ {: shortdesc}
+
+ ### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-certificate-order-sample}
+
+```
+resource "ibm_cis_certificate_order" "test" {
+	cis_id    = data.ibm_cis.cis.id
+	domain_id = data.ibm_cis_domain.cis_domain.domain_id
+	hosts     = ["example.com"]
+}
+```
+
+### Input parameters
+{: #cis-certificate-order-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the domain. |
+|`hosts`|String|Required|The hosts for the certificates to be ordered.|
+
+
+### Output parameters
+{: #cis-certificate-order-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The record ID. It is a combination of `<certificate_id>,<domain_id>,<cis_id>` attributes concatenated with `:`.|
+|`certificate_id`|String |The certificate ID.|
+|`status`|String |The certificate status.|
+
+### Import
+{: #cis-certificate-order-import}
+
+The `ibm_cis_certificate_order` resource can be imported using the ID. The ID is formed from the certificate ID, the domain ID of the domain and the CRN concatentated by using a `:` character.
+
+The domain ID and CRN is located on the **Overview** page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
+
+**Domain ID** is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+**CRN** is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Certificate ID** is a 32 digit character string of the form: `489d96f0da6ed76251b475971b097205c`.
+
+
+**Syntax**
+
+```
+terraform import ibm_cis_certificate_order.myorg <certificate_id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_certificate_order.myorg certificate_order 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
+
+## `ibm_cis_certificate_upload`
+{: #cis-certificate-upload}
+
+ Provides an {{site.data.keyword.cis_full_notm}} certificate upload resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to upload, update, and delete certificates of a domain of a CIS instance. For more information about CIS certificate upload, refer to [Installing an origin certificate on your server](/docs/cis?topic=cis-cis-origin-certificates#cis-origin-certificates-installing).
+ {: shortdesc}
+
+ ### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-certificate-upload-sample}
+
+```
+# Upload a certificate for a domain
+
+resource "ibm_cis_certificate_upload" "cert" {
+    cis_id        = data.ibm_cis.cis.id
+    domain_id     = data.ibm_cis_domain.cis_domain.domain_id
+    certificate   = "xxxxx"
+    private_key   = "xxxxx
+    bundle_method = "ubiquitous"
+    priority      = 20
+}
+```
+
+### Input parameters
+{: #cis-certificate-upload-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the domain to add the rules dertificate upload. |
+|`certificate`|String|Required| The intermediate(s) certificate key.|
+|`private_key`|String|Required| The certificate private key.|
+|`bundle_method`|String|Optional| The certificate bundle method. The valid values are `ubiquitous`, `optimal`, `force`.|
+|`priority`|Integer|Optional | The order or priority in which the certificate is used in a request.|
+
+### Output parameters
+{: #cis-certificate-upload-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The record ID. It is a combination of `<custom_cert_id>:<domain_id>:<cis_id>` attributes concatenated with `:`.|
+|`certificate_id`|String |The certificate ID.|
+|`status`|String |The certificate status.|
+|`custom_cert_id`|String|The certificate upload rule ID.|
+|`status`|String|The ceritificate status.|
+|`issuer`|String|The certificate issuer.|
+|`signature`|String| The certificate signature.|
+|`expires_on`|String| The expiry date and time of the certificate.|
+|`uploaded_on`|String| The uploaded date and time of the certificate.|
+|`modified_on`|String| The modified date and time of the certificate.|
+
+### Import
+{: #cis-certificate-upload-import}
+
+The `ibm_cis_certificate_upload` resource can be imported using the ID. The ID is formed from the certificate upload ID, the domain ID of the domain and the CRN concatentated by using a `:` character.
+
+The domain ID and CRN is located on the **Overview** page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
+
+**Domain ID** is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+**CRN** is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Certificate upload ID** is a 32 digit character string of the form: `489d96f0da6ed76251b475971b097205c`.
+
+
+**Syntax**
+
+```
+terraform import ibm_cis_certificate_upload.ratelimit <custm_cert_id>:<domain-id>:<crn>
+```
+{: pre}
+
+**Example**
+
+```
+terraform import ibm_cis_certificate_upload.certificate 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
 
 ## `ibm_cis_custom_page`
 {: #cis-custom}
@@ -210,7 +364,7 @@ terraform import ibm_cis_cache_settings.cache_settings 9caf68812ae9b3f0377fdf986
  Provides an {{site.data.keyword.cis_full_notm}} custom page resource that is associated with an IBM CIS instance and a CIS domain resource. It allows to create, update, and delete a custom page of a domain of a CIS instance. For more information about custom page, refer to [CIS custom page](/docs/cis?topic=cis-custom-page).
  {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-custom-sample}
 
 ```
@@ -282,13 +436,81 @@ terraform import ibm_cis_custom_page.custom_page basic_challenge:9caf68812ae9b3f
 ```
 {: pre}
 
+## `ibm_cis_dns_records_import`
+{: #cis-dns-records-import}
+
+Provides an {{site.data.keyword.cis_full_notm}} DNS records import resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to import DNS records from file of a domain of a CIS instance. For more information, about CIS DNS records, refer to [managing DNS records](/docs/dns-svcs?topic=dns-svcs-managing-dns-records).
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-dns-records-import-sample}
+
+```
+# Import DNS Records of the domain
+
+resource "ibm_cis_dns_records_import" "test" {
+	cis_id    = data.ibm_cis.cis.id
+	domain_id = data.ibm_cis_domain.cis_domain.domain_id
+	file      = "dns_records.txt"
+}
+```
+
+### Input parameters
+{: #cis-dns-records-import-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description| Forces new resource |
+|----|-----------|-----------|---------------------| ------- |
+|`domain_id`|String|Required|The ID of the domain to import the DNS records. | No |
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.| No |
+|`file`|String|Required| The DNS zone file that contains the details of the DNS records.| Yes |
+
+
+### Output parameters
+{: #cis-dns-records-import-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String| The record ID. It is a combination of `<total_records_parsed>:<records_added>:<file>:<domain_id>:<cis_id>` attributes concatenated with `:`.|
+|`total_records_parsed`|Integer|The parsed records count from imported file.|
+|`records_added`|String|The added records count from imported file.|
+
+
+### Import
+{: #cis-dns-records-imports}
+
+The `ibm_cis_dns_records_import` resource can be imported by using the ID. The ID is formed from the zone file, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character with the prefix of `0:0:`.
+
+The domain ID and CRN is located on the **Overview** page of the internet services instance under the domain heading of the UI, or via by using the `ibmcloud cis` CLI commands.
+
+**File** is a string of the form: `records.txt`
+
+**Domain ID** is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+**CRN** is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+```
+terraform import ibm_cis_dns_records_import.myorgs <total_records_parsed>:<records_added>:<file>:<domain-id>:<crn>
+```
+{: pre}
+
+```
+terraform import ibm_cis_dns_records_import.myorgs 0:0:records.txt:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
 ## `ibm_cis_domain`
 {: #cis-domain}
 
 Create, update, or delete an {{site.data.keyword.cis_full_notm}} domain.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-domain-sample}
 
 ```
@@ -354,7 +576,7 @@ terraform import ibm_cis_domain.myorg 1aaa11111aa1a1a1111aaa111111a11a:crn:v1:bl
 Customize the {{site.data.keyword.cis_full_notm}} domain settings.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-domain-settings-sample}
 
 ```
@@ -490,11 +712,13 @@ Review the output parameters that you can access after your resource is created.
 ## `ibm_cis_dns_record`
 {: #cis-dns-record}
 
-Create, update, or delete a DNS record for a domain.
+Create, update, or delete an {{site.data.keyword.cis_full_notm}} DNS record resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. For more information, about CIS DNS record, refer to [managing DNS records](/docs/dns-svcs?topic=dns-svcs-managing-dns-records).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-dns-record-sample}
+
+**Example Usage 1** Create a record.
 
 ```
 # Add a DNS record to the domain
@@ -507,6 +731,221 @@ resource "ibm_cis_dns_record" "example" {
 }
 ```
 
+**Example Usage 1** Create `A` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_a_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  name    = "test-exmple"
+  type    = "A"
+  content = "1.2.3.4"
+  ttl     = 900
+}
+
+output "a_record_output" {
+  value = ibm_cis_dns_record.test_dns_a_record
+}
+```
+
+**Example Usage 2** Create `AAAA` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_aaaa_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  name    = "test-exmple.aaaa"
+  type    = "AAAA"
+  content = "2001::4"
+  ttl     = 900
+}
+
+output "aaaa_record_output" {
+  value = ibm_cis_dns_record.test_dns_aaaa_record
+}
+```
+
+**Example Usage 3** Create `CNAME` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_cname_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  name    = "test-exmple.cname.com"
+  type    = "CNAME"
+  content = "domain.com"
+  ttl     = 900
+}
+
+output "cname_record_output" {
+  value = ibm_cis_dns_record.test_dns_cname_record
+}
+```
+**Example Usage 4** Create `MX` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_mx_record" {
+  cis_id   = var.cis_crn
+  domain_id  = var.zone_id
+  name     = "test-exmple.mx"
+  type     = "MX"
+  content  = "domain.com"
+  ttl      = 900
+  priority = 5
+}
+
+output "mx_record_output" {
+  value = ibm_cis_dns_record.test_dns_mx_record
+}
+```
+
+**Example Usage 5** Create `LOC` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_loc_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  name    = "test-exmple.loc"
+  type    = "LOC"
+  ttl     = 900
+  data = {
+    altitude       = 98
+    lat_degrees    = 60
+    lat_direction  = "N"
+    lat_minutes    = 53
+    lat_seconds    = 53
+    long_degrees   = 45
+    long_direction = "E"
+    long_minutes   = 34
+    long_seconds   = 34
+    precision_horz = 56
+    precision_vert = 64
+    size           = 68
+  }
+}
+
+output "loc_record_output" {
+  value = ibm_cis_dns_record.test_dns_loc_record
+}
+```
+
+**Example Usage 6** Create `CAA` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_caa_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  name    = "test-exmple.caa"
+  type    = "CAA"
+  ttl     = 900
+  data = {
+    tag   = "http"
+    value = "domain.com"
+  }
+}
+
+output "caa_record_output" {
+  value = ibm_cis_dns_record.test_dns_caa_record
+}
+```
+**Example Usage 7** Create `SRV` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_srv_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  type = "SRV"
+  ttl  = 900
+  data = {
+    name     = "test-example.srv"
+    port     = 1
+    priority = 1
+    proto    = "_udp"
+    service  = "_sip"
+    target   = "domain.com"
+    weight   = 1
+  }
+}
+
+output "srv_record_output" {
+  value = ibm_cis_dns_record.test_dns_srv_record
+}
+```
+**Example Usage 8** Create `SPF` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_spf_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  name    = "test-exmple.spf"
+  type    = "SPF"
+  content = "test"
+}
+
+output "spf_record_output" {
+  value = ibm_cis_dns_record.test_dns_spf_record
+}
+```
+
+**Example Usage 9** Create `TXT` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_txt_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  name    = "test-exmple.txt"
+  type    = "TXT"
+  content = "test"
+}
+
+output "txt_record_output" {
+  value = ibm_cis_dns_record.test_dns_txt_record
+}
+```
+
+**Example Usage 10** Create `NS` record.
+
+```
+resource "ibm_cis_dns_record" "test_dns_ns_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  name    = "test-exmple.ns"
+  type    = "NS"
+  content = "ns1.name.ibm.com"
+}
+
+output "ns_record_output" {
+  value = ibm_cis_dns_record.test_dns_ns_record
+}
+
+output "caa_record_output" {
+  value = ibm_cis_dns_record.test_dns_caa_record
+}
+
+## Example Usage 7 : Create SRV record
+
+```hcl
+resource "ibm_cis_dns_record" "test_dns_srv_record" {
+  cis_id  = var.cis_crn
+  domain_id = var.zone_id
+  type = "SRV"
+  ttl  = 900
+  data = {
+    name     = "test-example.srv"
+    port     = 1
+    priority = 1
+    proto    = "_udp"
+    service  = "_sip"
+    target   = "domain.com"
+    weight   = 1
+  }
+}
+
+output "srv_record_output" {
+  value = ibm_cis_dns_record.test_dns_srv_record
+}
+```
+
 ### Input parameters
 {: #cis-dns-record-input}
 
@@ -515,15 +954,33 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
-|`domain_id`|String|Required|The ID of the domain for which you want to add a DNS record. |
+|`domain_id`|String|Required|The ID of the domain to add a DNS record. It can be a combination of `<domain_id>:<cis_id> or <domain_id>`. |
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
-|`name`|String|Required|The name of the record, like, for example, `www`.|
-|`type`|String|Required|The type of the record. Allowed values are `A`, `AAAA`, `CNAME`, `NS`, `MX`, `TXT`, `LOC`, `SRV`, `SPF`, or `CAA`. |
-|`content`|String|Optional|The value of the record, like, for example, `192.168.127.127`. |
-|`data`|Map|Optional|A map of attributes that constitute the record value. This value is required for `LOC`, `CAA` and `SRV` record types. |
-|`priority`|String|Optional|The priority of the record.|
+|`name`|String|Required|The name of the DNS record.|
+|`type`|String|Required|The type of the DNS record to be created. Allowed values are `A`, `AAAA`, `CNAME`, `NS`, `MX`, `TXT`, `LOC`, `SRV`, `SPF`, or `CAA`. |
+|`content`|String|Optional|The value of the record. For example, `192.168.127.127`. You need to provide this or data to be specified.|
+|`priority`|String|Optional|The priority of the record. Mandatory field for `SRV` record type.|
 |`proxied`|Boolean|Optional|Indicates if the record receives origin protection by {{site.data.keyword.cis_full_notm}}. The default value is **false**.|
-|`ttl`|Integer|Optional|The time to live (TTL) in seconds for how long the resolved DNS record entry is cached before the IP address of the DNS entry must be looked up again. If your global load balancer is proxied, this value is automatically set and cannot be changed. If your global load balancer is not in proxy, you can enter a value that is 120 or greater. |
+|`ttl`|Integer|Optional|The time to live `(TTL)` record. The automatic is `ttl=1`. if the record is proxied. Terraform provider takes `TTL` in unit seconds. Therefore, it starts with value 120. |
+|`data`|Map|Optional|A map of attributes that constitute the record value. This value is required for `LOC`, `CAA` and `SRV` record types. |
+|`data.weight`|Integer|Optional|The weight of distributing queries among multiple target servers. Mandatory field for `SRV` record type. |
+|`data.port`|Integer|Optional|The port number of the target server. Mandatory field for `SRV` record type.|
+|`data.service`|Integer|Optional|The symbolic name of the desired service, start with an underscore `_`. Mandatory field for `SRV` record type. |
+|`data.protocol`|Integer|Optional|The symbolic name of the desired protocol. Mandatory field for `SRV` record type. |
+|`data.altitude`|Integer|Optional|The `LOC` altitude. Mandatory field for `LOC` record type. |
+|`data.size`|Integer|Optional|The `LOC` altitude size. Mandatory field for `LOC` record type. |
+|`data.lat_degrees`|Integer|Optional|The `LOC` latitude degrees. Mandatory field for `LOC` record type. |
+|`data.lat_direction`|String|Optional|The `LOC` latitude direction `N`, `E`, `S`, `W`. Mandatory field for `LOC` record type. |
+|`data.lat_minutes`|Integer|Optional|The `LOC` latitude minutes. Mandatory field for `LOC` record type. |
+|`data.lat_seconds`|Integer|Optional|The `LOC` latitude seconds. Mandatory field for `LOC` record type. |
+|`data.long_degrees`|Integer|Optional|The `LOC` longitude degrees. Mandatory field for `LOC` record type. |
+|`data.long_direction`|String|Optional|The `LOC` longitude direction `N`, `E`, `S`, `W`. Mandatory field for `LOC` record type. |
+|`data.long_minutes`|Integer|Optional|The `LOC` longitude minutes. Mandatory field for `LOC` record type. |
+|`data.long_seconds`|Integer|Optional|The `LOC` longitude seconds. Mandatory field for `LOC` record type. |
+|`data.precision_horz`|Integer|Optional|The `LOC` horizontal precision. Mandatory field for `LOC` record type. |
+|`data.precision_vert`|Integer|Optional|The `LOC` vertical precision. Mandatory field for `LOC` record type. |
+|`data.priority`|Integer|Optional|The priority of the record. |
+|`proxied`|Bool|Optional|Indicates the record gets CIS's origin protection. Default is `false`. |
 
 ### Output parameters
 {: #cis-dns-record-output}
@@ -533,31 +990,36 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String| The ID of the record. |
-|`name`|String| The FQDN of the record. |
-|`proxiable`|Boolean|Indicates if the record can be proxied. |
+|`id`|String| The ID of the record, zone and CRN with `:` seperator. |
+|`name`|String| The name of the DNS record. |
+|`proxiable`|Bool|Indicates if the record can be proxied. |
+|`proxied`|Bool|Indicates the record gets CIS's origin protection. Default is `false`. |
 |`record_id`|String|The DNS record ID.|
-|`created_on`|String|The RFC3339 timestamp of when the record was created. |
-|`modified_on`|String|The RFC3339 timestamp of when the record was last modified. |
-|`data`|Map|A map of attributes that constitute the record value.|
+|`created_on`|String|The created date of the DNS record. |
+|`modified_on`|String|The modified date of the DNS record. |
+|`zone_name`|String|The DNS zone name.|
 
 ### Import
 {: #cis-dns-record-import}
 
-The DNS record can be imported by using the `id`. The ID is formed from the DNS record ID, the domain ID and the CRN (Cloud Resource Name). All values are concatenated with a `:` character.
-The Domain ID and CRN are located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
+The `ibm_cis_dns_record` resource can be imported by using the ID. The ID is formed from the DNS record ID, the domain ID, and the CRN (Cloud Resource Name). All values are concatentated by using a `:` character. 
 
-- **Domain ID**: The domain ID is a 32 digit character string of the format `1aaa11111aa1a1a1111aaa111111a11a`.
-- **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
-- **DNS record ID**: The DNS record ID is a 32 digit character string of the form: 111a11a1aa1aa11111a111111a111111a. The ID of an existing DNS record is not available via the UI. It can be retrieved via the CIS API or via the CLI by running `ibmcloud cis dns-records <domain_id>`.
+The domain ID and CRN are located on the **Overview** page of the internet services instance in the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI commands.
+
+**Domain ID** is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`
+
+**CRN** is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
+
+**Dns Record ID** is a 32 digit character string of the form: `489d96f0da6ed76251b475971b097205c`. The ID of an existing DNS record is not avaiable via the UI. You can retrieve programatically via the CIS API or via the CLI using the CIS command `ibmcloud cis dns-records <domain_id>` to list the defined DNS records.
+
 
 ```
-terraform import ibm_cis_dns_record.myorg <dns_record_ID>:<domain_ID>:<crn>
+terraform import ibm_cis_dns_record.myorg <dns_record_id>:<domain-id>:<crn>
 ```
 {: pre}
 
 ```
-terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aaa11111aa1a1a1111aaa111111a11a:crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::
+terraform import ibm_cis_dns_record.myorg  48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
 ```
 {: pre}
 
@@ -571,7 +1033,7 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 Create, update, or delete an edge functions action for a domain to include in your CIS edge functions action resource.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-edge-functions-action-sample}
 
 The example to add an edge functions action to the domain.
@@ -642,7 +1104,7 @@ terraform import ibm_cis_edge_functions_action.test_action sample_script:9caf688
 Create, update, or delete an edge functions trigger for a domain to include in your CIS edge functions trigger resource.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-edge-functions-trigger-sample}
 
 The example to add an edge functions trigger to the domain.
@@ -707,7 +1169,7 @@ terraform import ibm_cis_edge_functions_trigger.test_trigger <trigger_id>:<domai
 **Example**
 
 ```
-terraform import ibm_cis_edge_functions_trigger.test_trigger 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+terraform import ibm_cis_edge_functions_trigger.test_trigger 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:ibmcloud:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
 ```
 {: pre}
 
@@ -717,7 +1179,7 @@ terraform import ibm_cis_edge_functions_trigger.test_trigger 48996f0da6ed76251b4
 Create, update, or delete a firewall for a domain that you included in your {{site.data.keyword.cis_full_notm}} instance. For more information, see [firewall rule actions](/docs/cis?topic=cis-actions).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-firewall-sample}
 
 ```
@@ -782,7 +1244,7 @@ Review the input parameters that you can specify for your resource.
 |`lockdown.priority`|Integer|Optional|The priority of the firewall rule. A low number is associated with a high priority. |
 |`lockdown.urls`|List of URLs|Required|A list of URLs that you want to include in your firewall rule. You can specify wildcard URLs. The URL pattern is escaped before use.|
 |`lockdown.configurations`|List of IP addresses|Required|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. |
-|`lockdown.configurations.target`|String|Optional|Specify if you want to target an `ip` or `ip_range`.|
+|`lockdown.configurations.target`|String|Optional|Specify if you want to target an `IP` or `ip_range`.|
 |`lockdown.configurations.value`|String|Optional|The IP address or IP address range that you want to target. Make sure that the value that you enter here matches the type of target that you specified in `lockdown.configurations.target`. |
 |`access_rule`|String|Optional| Create the data the describing access rule. (Maximum item is 1) |
 |`access_rule.notes`|String|Optional| The free text for notes. |
@@ -851,10 +1313,10 @@ terraform import ibm_cis_firewall.myorg lockdowns lockdowns:48996f0da6ed76251b47
 Create, update, or delete a global load balancer. 
 {: shortdesc}
 
-The IBM Cloud Terraform Provider plug-in does not support the setup of a region pool for a global load balancer. 
+The IBM Cloud IBM Cloud Provider plug-in for Terraform Provider plug-in does not support the setup of a region pool for a global load balancer. 
 {: note}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-global-lb-sample}
 
 ```
@@ -951,7 +1413,7 @@ terraform import ibm_cis_dns_record.myorg  111a11a1aa1aa11111a111111a111111a:1aa
 Create, update, or delete an HTTPS health check for your {{site.data.keyword.cis_full_notm}} instance. 
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-health-sample}
 
 ```
@@ -1013,7 +1475,7 @@ The health check can be imported by using the `id`. The ID is formed from the he
 The CRN can be located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
 
 - **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
-- **Healthcheck ID**: The health check ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a health check is not available via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-monitors`.
+- **HealthCheck ID**: The health check ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a health check is not available via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-monitors`.
 
 ```
 terraform import ibm_cis_healthcheck.myorg <healthcheck_ID>:<crn>
@@ -1035,7 +1497,7 @@ terraform import ibm_cis_healthcheck.myorg 1aaaa111111aa11111111111a1a11a1:crn:v
 Create, update, or delete an origin pool for your {{site.data.keyword.cis_full_notm}} instance.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-origin-pool-sample}
 
 ```
@@ -1120,6 +1582,165 @@ terraform import ibm_cis_origin_pool.myorg 1aaaa111111aa11111111111a1a11a1:crn:v
 
 
 
+## `ibm_cis_page_rule`
+{: #cis-page-rule}
+
+Provides an {{site.data.keyword.cis_full_notm}} page rule resource, to create, update, delete page rules of a domain. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and an {{site.data.keyword.cis_full_notm}} domain resource. For more information, about {{site.data.keyword.cis_full_notm}} page rules, see [using page rules](/docs/cis?topic=cis-use-page-rules).
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-page-rule-sample}
+
+```
+# Add a page rule to the domain
+
+resource "ibm_cis_page_rule" "page_rule" {
+  cis_id    = var.cis_crn
+  domain_id = var.zone_id
+  targets {
+    target = "url"
+    constraint {
+      operator = "matches"
+      value    = "example.com"
+    }
+  }
+  actions {
+    id    = "email_obfuscation"
+    value = "on"
+  }
+  actions {
+    id          = "forwarding_url"
+    url         = "https://ibm.travis-kuganes1.sdk.cistest-load.com/*"
+    status_code = 302
+  }
+} 
+```
+
+### Input parameter 
+{: #cis-page-rule-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+|Name|Data type|Required / optional|Description|
+|----|-----------|-----------|---------------------|
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
+|`domain_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} domain.|
+|`status`|String|Optional|The status of the page rule. Valid values are `active` and `disabled`. Default value is `disabled`.|
+|`priority`|Integer|Optional|The priority of the page rule. Default value is `1`. `Set` and `Update` are not supported yet.|
+|`targets`|Set|Required|The targets, where rule is added.|
+|`targets.target`|String|Required|The target type. Valid value is `url`.|
+|`targets.constraint`|List |Required|The constrant of the page rule. Maximum items is `1`.|
+|`targets.constraint.operator`|String |Required|The operation on the page rule. Valid value is `matches`.|
+|`targets.constraint.value`|String |Required|The URL value on which page rule is applied.|
+|`actions`|List|Required|The list of actions performed on URL. Minimum items is `1`.|
+|`actions.id`|String|Required| The action ID. Valid values are `page rule action field map from UI` to `API CF-UI map API`). |
+|`actions.id.disable_security`|String| The action conflicts with `email_obfuscation`, `server_side_exclude`, `waf`. |
+|`actions.id.always_online`|String| The action conflicts with all other settings. |
+|`actions.id.forwarding_url`|String| The action conflicts with all other settings. |
+|`actions.id.always_use_https`|String| The action conflicts with all other settings. |
+|`actions.id.ssl`|String| The TLS settings. |
+|`actions.id.browser_cache_ttl`|String| The browser cache TTL. |
+|`actions.id.security_level`|String| The security level. |
+|`actions.id.cache_level`|String| The cache level. |
+|`actions.id.edge_cache_ttl`|String| The edge cache TTL.|
+|`actions.id.bypass_cache_on_cookie`|String| The bypass cache on cookie. |
+|`actions.id.browser_check`|String| The browser integrity check. |
+|`actions.id.server_side_exclude`|String| The server side excludes. |
+|`actions.id.server_stale_content`|String| The server stale content. |
+|`actions.id.email_obfuscation`|String| The Email obfuscation. |
+|`actions.id.automatic_https_rewrites`|String| The automatic HTTPS rewrites. |
+|`actions.id.opportunistic_encryption`|String| The opportunistic encryption. |
+|`actions.id.ip_geolocation`|String| The IP geography location header. |
+|`actions.id.explicit_cache_control`|String| The origin cache control. |
+|`actions.id.cache_deception_armor`|String| The cache deception armor. |
+|`actions.id.waf`|String| The Web Application Firewall. |
+|`actions.id.host_header_override`|String| The host header override. |
+|`actions.id.resolve_override`|String| The resolve override. |
+|`actions.id.cache_on_cookie`|String| The cache on cookie. |
+|`actions.id.disable_apps`|String| The disable apps. |
+|`actions.id.disable_performance`|String| The disable performance. |
+|`actions.id.image_load_optimization`|String| The image load optimization. |
+|`actions.id.origin_error_page_pass_thru`|String| The origin error page pass-through. |
+|`actions.id.response_buffering`|String| The response buffering. |
+|`actions.id.image_size_optimization`|String| The image size optimization. |
+|`actions.id.script_load_optimization`|String| The script load optimization. |
+|`actions.id.true_client_ip_header`|String| The true client IP header. |
+|`actions.id.sort_query_string_for_cache`|String| The sort query string. |
+|`value`|String|Required| The values for corresponding actions.|
+|`actions.value.always_online`|String| The valid values are `on`, `off`.|
+|`actions.value.ssl`|String| The valid values are `off`, `flexible`, `full`, `strict`, `origin_pull`.|
+|`actions.value.browser_cache_ttl`|Integer| The valid values are `0, 1800, 3600, 7200, 10800, 14400, 18000, 28800, 43200, 57600, 72000, 86400, 172800, 259200, 345600, 432000, 691200, 1382400, 2073600, 2678400, 5356800, 16070400, 31536000`.|
+|`actions.value.security_level`|String| The valid values are `disable_security`, `always_use_https`.|
+|`actions.value.cache_level`|String| The valid values are `bypass`, `aggressive`, `basic`, `simplified`, `cache_everything`.|
+|`actions.value.edge_cache_ttl`|String| The valid values are `0, 30, 60, 300, 600, 1200, 1800, 3600, 7200, 10800, 14400, 18000, 28800, 43200, 57600, 72000, 86400, 172800, 259200, 345600, 432000, 518400, 604800, 1209600, 2419200`.|
+|`actions.value.bypass_cache_on_cookie`|String| The valid values are `cookie tags`.|
+|`actions.value.browser_check`|String| The valid values are `on`, `off`.|
+|`actions.value.server_side_exclude`|String| The valid values are `on`, `off`.|
+|`actions.value.server_stale_content`|String| The valid values are `on`, `off`.|
+|`actions.value.email_obfuscation`|String| The valid values are `on`, `off`.|
+|`actions.value.automatic_https_rewrites`|String| The valid values are `on`, `off`.|
+|`actions.value.opportunistic_encryption`|String| The valid values are `on`, `off`.|
+|`actions.value.ip_geolocation`|String| The valid values are `on`, `off`.|
+|`actions.value.explicit_cache_control`|String| The valid values are `on`, `off`.|
+|`actions.value.cache_deception_armor`|String| The valid values are `on`, `off`.|
+|`actions.value.waf`|String| The valid values are `on`, `off`.|
+|`actions.value.host_header_override`|String| The header value.|
+|`actions.value.resolve_override`|String| The value for resolving URL override.|
+|`actions.value.cache_on_cookie`|String| The cookie value.|
+|`actions.value.disable_apps`|String| The value is not required.|
+|`actions.value.disable_performance`|String| The value is not required.|
+|`actions.value.image_load_optimization`|String| The valid values are `on`, `off`.|
+|`actions.value.origin_error_page_pass_thru`|String| The valid values are `on`, `off`.|
+|`actions.value.response_buffering`|String| The valid values are `on`, `off`.|
+|`actions.value.image_size_optimization`|String| The valid values are `on`, `off`.|
+|`actions.value.script_load_optimization`|String| The valid values are `off`, `lossless`, `lossy`.|
+|`actions.value.true_client_ip_header`|String| The valid values are `on`, `off`.|
+|`actions.value.sort_query_string_for_cache`|String| The valid values are `on`, `off`.|
+|`actions.value.minify`|String| This is not supported yet.|
+|`url`|String|Optional| The forward rule URL, a required attribute for `forwarding_url` action.|
+|`status_code`|String|Optional| The status code to check for URL forwarding. The required attribute for `forwarding_url` action. Valid values are `301` and `302`. It returns `0` for all other actions.|
+
+
+### Output parameter
+{: #cis-page-rule-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String| The record ID. It is a combination of `<rule_id>:<domain_id>:<cis_id>` attributes of the origin pool. |
+|`rule_id`|String|The page rule ID.|
+
+### Import
+{: #cis-page-rule-import}
+
+The `ibm_cis_page_rule` resource can be imported by using the ID. The ID is formed from the rule ID, the domain ID of the domain and the CRN concatenated by using a `:` character.
+
+The domain ID and CRN is located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via the `ibmcloud cis` CLI.
+
+- **Domain ID** is a 32 digit character string of the form: `9caf68812ae9b3f0377fdf986751a78f`.
+
+- **CRN** is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
+
+- **Rule ID** is a 32 digit character string in the format `489d96f0da6ed76251b475971b097205c`.
+
+```
+terraform import ibm_cis_page_rule.myorg <rule_id>:<domain-id>:<crn>
+```
+{: pre}
+
+```
+terraform import ibm_cis_page_rule.myorg page_rule 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+```
+{: pre}
+
+
+
+
+
+
 ## `ibm_cis_rate_limit`
 {: #rate-limit}
 
@@ -1129,7 +1750,7 @@ Create, update, or delete custom rate limits for an IBM Cloud Internet Services 
 Rate limiting rule can only be created when you have the enterprise plan for IBM Cloud Internet Services.
 {: note}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #rate-limit-sample}
 
 The following example shows how you can add a rate limit to an IBM Cloud Internet Services domain. 
@@ -1233,7 +1854,7 @@ Create, update, or delete range application an {{site.data.keyword.cis_full_notm
 {: shortdesc}
 
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis_range_app-sample}
 
 The following example shows how you can add a rate limit to an {{site.data.keyword.cis_full_notm}} domain. 
@@ -1318,10 +1939,10 @@ terraform import ibm_cis_range_app.myorg 48996f0da6ed76251b475971b097205c:9caf68
 ## `ibm_cis_routing`
 {: #cis-routing}
 
-Provides a {{site.data.keyword.cis_full_notm}} routing resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a {{site.data.keyword.cis_short}} domain resource. It allows to change routing of a domain of a {{site.data.keyword.cis_short}} instance. For more information, refer to [about {{site.data.keyword.cis_short}}](/docs/cis?topic=cis-about-ibm-cloud-internet-services-cis).
+Provides an {{site.data.keyword.cis_full_notm}} routing resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and an {{site.data.keyword.cis_short}} domain resource. It allows to change routing of a domain of an {{site.data.keyword.cis_short}} instance. For more information, refer to [about {{site.data.keyword.cis_short}}](/docs/cis?topic=cis-about-ibm-cloud-internet-services-cis).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #routing-sample}
 
 The following example shows how you can add a routing resource to an {{site.data.keyword.cis_full_notm}} domain. 
@@ -1393,7 +2014,7 @@ terraform import ibm_cis_routing.routing 9caf68812ae9b3f0377fdf986751a78f:crn:v1
 Create, update, or delete an {{site.data.keyword.cis_full_notm}} TLS settings resources. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and an {{site.data.keyword.cis_full_notm}}Domain resource.
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-tls-sample}
 
 ```
@@ -1454,7 +2075,7 @@ The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed f
 
  Domain ID is a 32 digit character string of the form: 9caf68812ae9b3f0377fdf986751a78f
 
- CRN is a 120 digit character string of the form: crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+ CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
  {: note}
 
  **Syntax**
@@ -1474,10 +2095,10 @@ The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed f
  ## `ibm_cis_waf_group`
 {: #cis-waf-group}
 
-Provides a {{site.data.keyword.cis_full_notm}} WAF rule rroup resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF Groups mode of a domain of a CIS instance. It is also named as CIS rule set. Please find OWASP rule set set tab under WAF of your instance in UI. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
+Provides an {{site.data.keyword.cis_full_notm}} WAF rule group resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF Groups mode of a domain of a CIS instance. It is also named as CIS rule set. Please find `OWASP` rule set set tab under WAF of your instance in UI. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-waf-group-sample}
 
 The following example shows how you can add a WAF group resource to an {{site.data.keyword.cis_full_notm}} domain. 
@@ -1552,10 +2173,10 @@ terraform import ibm_cis_domain.myorg  3d8fb0c18b5a6ba7682c80e94c7937b2:57d96f0d
 ## `ibm_cis_waf_package`
 {: #cis-waf-package}
 
-Provides a {{site.data.keyword.cis_full_notm}} WAF package resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to change WAF package settings of a domain of a {{site.data.keyword.cis_full_notm}} instance. It is also named as OWASP rule set. For more information, about WAF refer to [Web Application Firewall concepts](/docs/cis?topic=cis-waf-q-and-a).
+Provides an {{site.data.keyword.cis_full_notm}} WAF package resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to change WAF package settings of a domain of an {{site.data.keyword.cis_full_notm}} instance. It is also named as `OWASP` rule set. For more information, about WAF refer to [Web Application Firewall concepts](/docs/cis?topic=cis-waf-q-and-a).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-waf-package-sample}
 
 The following example shows how you can add a WAF package resource to an {{site.data.keyword.cis_full_notm}} domain. 
@@ -1626,10 +2247,10 @@ terraform import ibm_cis_waf_package.waf_package 489d96f0da6ed76251b475971b09720
 ## `ibm_cis_waf_rule`
 {: #cis-waf-rule}
 
-Provides a {{site.data.keyword.cis_full_notm}} WAF rule settings resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF rule settings of a domain of a CIS instance. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
+Provides an {{site.data.keyword.cis_full_notm}} WAF rule settings resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF rule settings of a domain of a CIS instance. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
 {: shortdesc}
 
-### Sample Terraform code
+### Sample IBM Cloud Provider plug-in for Terraform code
 {: #cis-waf-rule-sample}
 
 The following example shows how you can add a WAF rule resource to an {{site.data.keyword.cis_full_notm}} domain. 
