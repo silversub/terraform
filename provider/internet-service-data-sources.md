@@ -219,6 +219,60 @@ Review the output parameters that you can access after you retrieved your data s
 | `url` | String | The URL for custom page settings. By default URL is set with empty string `""`. Setting a duplicate empty string throws an error.|
 
 
+## `ibm_cis_dns_record`
+{: #cis-dns-record}
+
+Retrieve information about an {{site.data.keyword.cis_full_notm}} domain name service record. For more information, about DNS records, refer to [Managing DNS records](/docs/dns-svcs?topic=dns-svcs-managing-dns-records). 
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #cis-dns-record-sample}
+
+The following example retrieves information about an {{site.data.keyword.cis_full_notm}} domain. 
+{: shortdesc}
+
+```
+data "ibm_cis_dns_records" "test" {
+  cis_id    = var.cis_crn
+  domain_id = var.zone_id
+  file      = "records.txt"
+}
+```
+
+### Input parameters
+{: #cis-dns-record-dsinput}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type|Required/optional|Description|
+|----|-----------|------|--------|
+| `domain_id` | String | Required |  The resource domain ID of the DNS on which zones were created.|
+| `cis_id` | String | Required | The ID of the {{site.data.keyword.cis_full_notm}} instance on which zones were created. |
+|`file`| String | Optional| The file that DNS records to be exported.|
+
+### Output parameters
+{: #cis-dns-record-dsoutput}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|----------|
+| `cis_dns_records` | List | The list of DNS records. |
+| `cis_dns_records.id` | String | The ID which consists of record id, zone id and CRN with `:` seperator. |
+| `cis_dns_records.record_id` | String | The DNS record identifier. |
+| `cis_dns_records.name` | String | The name of a DNS record. |
+| `cis_dns_records.proxiable` | String | Whether the record has option to set proxied. |
+| `cis_dns_records.proxied` | String | Whether the record gets CIS's origin protection; defaults to `false`. |
+| `cis_dns_records.created_on` | String | The created date of the DNS record. |
+| `cis_dns_records.modified_on` | String | The modified date of the DNS record. |
+| `cis_dns_records.zone_name` | String | The DNS zone name. |
+| `cis_dns_records.type` | String | The type of the DNS record to be created. Supported Record types are `A`, `AAAA`, `CNAME`, `LOC`, `TXT`, `MX`, `SRV`, `SPF`, `NS`, `CAA`. |
+| `cis_dns_records.ttl` | String | TTL of the record. It should be automatic that is `ttl=1`, if the record is proxied. Terraform provider takes `ttl` in unit seconds. |
+| `cis_dns_records.priority` | String | The priority of the record. Mandatory field for `SRV` record type. |
+| `cis_dns_records.data` | String | Map of attributes that constitute the record value. Only for `LOC`, `CAA` and SRV record types. |
+  
 ## `ibm_cis_domain`
 {: #cis_domain}
 
