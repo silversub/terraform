@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: terraform template guidelines, terraform config file guidelines, sample terraform files, terraform provider, terraform variables, terraform input variables, terraform template
 
@@ -50,7 +50,7 @@ You can write your IBM Cloud Provider plug-in for Terraform configuration file b
 {: help}
 {: support}
 
-Specify the cloud provider that you want to use in the `provider` block of your IBM Cloud Provider plug-in for Terraform configuration file. The `provider` block includes all the input variables that the {{site.data.keyword.cloud_notm}} Provider plug-in for IBM Cloud Provider plug-in for Terraform requires to provision your resources.
+Specify the cloud provider that you want to use in the `provider` block of your IBM Cloud Provider plug-in for Terraform configuration file. The `provider` block includes all the input variables that the {{site.data.keyword.cloud_notm}} Provider plug-in for the IBM Cloud Provider plug-in for Terraform to provision your resources.
 {: shortdesc}
 
 **Do I need to provide the {{site.data.keyword.cloud_notm}} API key?** </br>
