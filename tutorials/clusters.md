@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: terraform create kubernetes cluster, terraform create openshift cluster, terraform kubernetes cluster, terraform openshift cluster, schematics create kubernetes cluster, schematics create openshift cluster, schematics kubernetes cluster, schematics openshift cluster, terraform iks cluster, terraform roks cluster, schematics iks cluster, schematics roks cluster, terraform multizone cluster, schematics multizone cluster, terraform remove default worker pool, schematics remove default worker pool 
 
@@ -83,12 +83,12 @@ This tutorial is intended for system administrators that want to learn how to cr
 
 1. [Install the IBM Cloud Provider plug-in for Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#install_cli).
 2. If you do not have one, [create an {{site.data.keyword.cloud_notm}} API key](/docs/account?topic=account-userapikey#create_user_key).
-3. Create a IBM Cloud Provider plug-in for Terraform project directory. The directory will hold all your IBM Cloud Provider plug-in for Terraform configuration files that you create as part of this tutorial. The directory in this tutorial is named `tf-cluster`, but you can use any name for the directory.
+3. Create an IBM Cloud Provider plug-in for Terraform project directory. The directory will hold all your IBM Cloud Provider plug-in for Terraform configuration files that you create as part of this tutorial. The directory in this tutorial is named `tf-cluster`, but you can use any name for the directory.
    ``` 
    mkdir tf-cluster && cd tf-cluster
    ```
    {: pre}
-4. In your project directory, create a `terraform.tfvars` file and add the {{site.data.keyword.cloud_notm}} API key that you created earlier. The `terraform.tfvars` file is a IBM Cloud Provider plug-in for Terraform variables file that you store on your local machine. When you initialize the IBM Cloud Provider plug-in for Terraform CLI, all variables that are defined in this file are automatically loaded into IBM Cloud Provider plug-in for Terraform and you can reference them in every IBM Cloud Provider plug-in for Terraform configuration file in the same project directory.
+4. In your project directory, create a `terraform.tfvars` file and add the {{site.data.keyword.cloud_notm}} API key that you created earlier. The `terraform.tfvars` file is an IBM Cloud Provider plug-in for Terraform variables file that you store on your local machine. When you initialize the IBM Cloud Provider plug-in for Terraform CLI, all variables that are defined in this file are automatically loaded into IBM Cloud Provider plug-in for Terraform and you can reference them in every IBM Cloud Provider plug-in for Terraform configuration file in the same project directory.
    ```
    ibmcloud_api_key = "<ibmcloud_api_key>"
    ```
@@ -116,7 +116,7 @@ Great! Now that you completed your IBM Cloud Provider plug-in for Terraform setu
 Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} cluster by using IBM Cloud Provider plug-in for Terraform. 
 {: shortdesc}
    
-1. Create a IBM Cloud Provider plug-in for Terraform configuration file for your single zone cluster. The following example creates a single zone cluster in the `dal10` zone with a default worker pool that consists of 3 worker nodes that are connected to a private and public VLAN in `dal10`.
+1. Create an IBM Cloud Provider plug-in for Terraform configuration file for your single zone cluster. The following example creates a single zone cluster in the `dal10` zone with a default worker pool that consists of 3 worker nodes that are connected to a private and public VLAN in `dal10`.
 
    **Example for an {{site.data.keyword.containerlong_notm}} cluster**: 
    ```
@@ -232,7 +232,7 @@ Create a classic {{site.data.keyword.containerlong_notm}} or {{site.data.keyword
    ```
    {: pre}
    
-3. Create a IBM Cloud Provider plug-in for Terraform execution plan. When you execute this command, IBM Cloud Provider plug-in for Terraform validates the syntax of your configuration file and resource definitions against the specifications of the {{site.data.keyword.cloud_notm}} Provider plug-in.
+3. Create an IBM Cloud Provider plug-in for Terraform execution plan. When you execute this command, IBM Cloud Provider plug-in for Terraform validates the syntax of your configuration file and resource definitions against the specifications of the {{site.data.keyword.cloud_notm}} Provider plug-in.
    ```
    terraform plan
    ```
@@ -368,7 +368,7 @@ Add zones to the default worker pool in your cluster that you created in lesson 
   </tbody>
   </table>
   
-2. Create a IBM Cloud Provider plug-in for Terraform execution plan and review the action IBM Cloud Provider plug-in for Terraform is about to perform.
+2. Create an IBM Cloud Provider plug-in for Terraform execution plan and review the action IBM Cloud Provider plug-in for Terraform is about to perform.
    ```
    terraform plan
    ```
@@ -533,7 +533,7 @@ Adding a worker pool only does not create any worker nodes. To create worker nod
    </tbody>
    </table>
    
-2. Create a IBM Cloud Provider plug-in for Terraform execution plan and review the actions that IBM Cloud Provider plug-in for Terraform is about to perform.
+2. Create an IBM Cloud Provider plug-in for Terraform execution plan and review the actions that IBM Cloud Provider plug-in for Terraform is about to perform.
    ```
    terraform plan
    ```
@@ -587,7 +587,7 @@ You can remove the default worker pool from your cluster.
 
 The default worker pool is automatically created when the cluster is created. Because you do not explicitly specify the default worker pool in your configuration file, you cannot remove this worker pool by removing the `ibm_container_worker_pool` resource from your file. Instead, you use the `local-exec` IBM Cloud Provider plug-in for Terraform provisioner to run an {{site.data.keyword.containerlong_notm}} or {{site.data.keyword.openshiftlong_notm}} command against your cluster to remove the default worker pool. 
 
-1. Open your IBM Cloud Provider plug-in for Terraform configuration and add the following content. To run a command against your cluster, you embed the `local-exec` provisioner in a IBM Cloud Provider plug-in for Terraform [`null_resource`](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource){: external}. 
+1. Open your IBM Cloud Provider plug-in for Terraform configuration and add the following content. To run a command against your cluster, you embed the `local-exec` provisioner in an IBM Cloud Provider plug-in for Terraform [`null_resource`](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource){: external}. 
    
    **Example for an {{site.data.keyword.containerlong_notm}} cluster:**
    ```
@@ -615,7 +615,7 @@ The default worker pool is automatically created when the cluster is created. Be
    ```
    {: pre}
    
-3. Create a IBM Cloud Provider plug-in for Terraform execution plan and review the actions that IBM Cloud Provider plug-in for Terraform is about to perform.
+3. Create an IBM Cloud Provider plug-in for Terraform execution plan and review the actions that IBM Cloud Provider plug-in for Terraform is about to perform.
    ```
    terraform plan
    ```

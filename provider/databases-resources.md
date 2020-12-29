@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: terraform provider plugin, terraform cloud databases, terraform databases, terraform postgres, terraform mysql, terraform compose
 
@@ -251,7 +251,7 @@ ICD create instance typically takes between 10 - 20 minutes. Delete and update t
 ### Import
 {: #db-import}
 
-The database instance can be imported by using the ID, that is formed from the CRN. To import the resource, you must specify the `region` parameter in the `provider` block of your IBM Cloud Provider plug-in for Terraform configuration file. If the region is not specified, `us-south` is used by default. A IBM Cloud Provider plug-in for Terraform refresh or apply fails, if the database instance is not in the same region as configured in the provider or its alias.
+The database instance can be imported by using the ID, that is formed from the CRN. To import the resource, you must specify the `region` parameter in the `provider` block of your IBM Cloud Provider plug-in for Terraform configuration file. If the region is not specified, `us-south` is used by default. An IBM Cloud Provider plug-in for Terraform refresh or apply fails, if the database instance is not in the same region as configured in the provider or its alias.
 
 CRN is a 120 digit character string of the form -  `crn:v1:bluemix:public:databases-for-postgresql:us-south:a/4ea1882a2d3401ed1e459979941966ea:79226bd4-4076-4873-b5ce-b1dba48ff8c4::`
 {: important}

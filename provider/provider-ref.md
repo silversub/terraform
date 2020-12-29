@@ -101,7 +101,7 @@ provider "ibm" {
 ### IBM Cloud Provider plug-in for Terraform variables file
 {: #tf-variables}
 
-You can retrieve the values for the provider input parameters from a IBM Cloud Provider plug-in for Terraform variables file (`terraform.tfvars`) that you created on your local machine.
+You can retrieve the values for the provider input parameters from an IBM Cloud Provider plug-in for Terraform variables file (`terraform.tfvars`) that you created on your local machine.
 {: shortdesc}
 
 1. Create the IBM Cloud Provider plug-in for Terraform variables file `terraform.tfvars` on your local machine. 
@@ -141,7 +141,7 @@ You can retrieve the values for the provider input parameters from environment v
    ```
    {: codeblock}
    
-3. Create a IBM Cloud Provider plug-in for Terraform execution plan. 
+3. Create an IBM Cloud Provider plug-in for Terraform execution plan. 
    ```
    terraform plan
    ```

@@ -40,7 +40,7 @@ subcollection: terraform
 Learn how to create IBM Cloud Provider plug-in for Terraform templates that are well-structured, reusable, and comprehensive.
 {: shortdesc}
 
-A IBM Cloud Provider plug-in for Terraform template consists of one or more IBM Cloud Provider plug-in for Terraform configuration files that declare the state that you want to achieve for your {{site.data.keyword.cloud_notm}} resources. To successfully work with your resources, you must [configure IBM as your cloud provider](#configure-provider) and [add resources to your IBM Cloud Provider plug-in for Terraform configuration file](#configure-resources). Optionally, you can use [input variables](#configure-variables) to customize your resources.
+An IBM Cloud Provider plug-in for Terraform template consists of one or more IBM Cloud Provider plug-in for Terraform configuration files that declare the state that you want to achieve for your {{site.data.keyword.cloud_notm}} resources. To successfully work with your resources, you must [configure IBM as your cloud provider](#configure-provider) and [add resources to your IBM Cloud Provider plug-in for Terraform configuration file](#configure-resources). Optionally, you can use [input variables](#configure-variables) to customize your resources.
 
 You can write your IBM Cloud Provider plug-in for Terraform configuration file by using HashiCorp Configuration Language (HCL) or JSON syntax. For more information, see [Configuration language](https://www.terraform.io/docs/configuration/index.html){: external}.  
 

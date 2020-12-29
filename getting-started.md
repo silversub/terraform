@@ -103,7 +103,7 @@ To support a multi-cloud approach, IBM Cloud Provider plug-in for Terraform work
           get                Download and install modules for the configuration
           graph              Create a visual graph of IBM Cloud Provider plug-in for Terraform resources
           import             Import existing infrastructure into IBM Cloud Provider plug-in for Terraform
-          init               Initialize a IBM Cloud Provider plug-in for Terraform working directory
+          init               Initialize an IBM Cloud Provider plug-in for Terraform working directory
           output             Read an output from a state file
           plan               Generate and show an execution plan
           providers          Prints a tree of the providers used in the configuration
@@ -220,7 +220,7 @@ To find a full list of {{site.data.keyword.cloud_notm}} resources that you can p
    </tbody>
    </table>
    
-7. Create a IBM Cloud Provider plug-in for Terraform provider configuration file that is named `provider.tf`. Use this file to configure the {{site.data.keyword.cloud_notm}} Provider plug-in with the credentials from your `terraform.tfvars` file so that the plug-in can access and provision {{site.data.keyword.cloud_notm}} resources. To reference a variable from the `terraform.tfvars` file, use the syntax `var.<variable_name>`. 
+7. Create an IBM Cloud Provider plug-in for Terraform provider configuration file that is named `provider.tf`. Use this file to configure the {{site.data.keyword.cloud_notm}} Provider plug-in with the credentials from your `terraform.tfvars` file so that the plug-in can access and provision {{site.data.keyword.cloud_notm}} resources. To reference a variable from the `terraform.tfvars` file, use the syntax `var.<variable_name>`. 
    ```
    variable "ibmcloud_api_key" {}
    variable "iaas_classic_username" {}
@@ -293,7 +293,7 @@ To create a VPC and a virtual server instance:
 
 1. Make sure that you have the [required permissions](/docs/vpc-on-classic?topic=vpc-on-classic-managing-user-permissions-for-vpc-resources) to create and work with VPC infrastructure. 
 
-2. In the same directory where you stored the `terraform.tfvars` and `provider.tf` files, create a IBM Cloud Provider plug-in for Terraform configuration file and name it `vpc.tf`. The configuration file includes the following definition blocks: 
+2. In the same directory where you stored the `terraform.tfvars` and `provider.tf` files, create an IBM Cloud Provider plug-in for Terraform configuration file and name it `vpc.tf`. The configuration file includes the following definition blocks: 
    - **locals**: Use this block to specify variables that you want to use multiple times throughout this configuration file. 
    - **resource**: Every resource block specifies the {{site.data.keyword.cloud_notm}} resource that you want to provision. To find more information about supported configurations for each resource, see the [{{site.data.keyword.cloud_notm}} Provider plug-in reference](/docs/terraform?topic=terraform-setup_cli#configure_provider).
    - **data**: Use this block to retrieve information for an existing resource in your {{site.data.keyword.cloud_notm}} account. 
@@ -511,7 +511,7 @@ To create a VPC and a virtual server instance:
    ```
    {: screen}
    
-4. Generate a IBM Cloud Provider plug-in for Terraform execution plan. When you execute this command, IBM Cloud Provider plug-in for Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
+4. Generate an IBM Cloud Provider plug-in for Terraform execution plan. When you execute this command, IBM Cloud Provider plug-in for Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
    ```
    terraform plan
    ```
@@ -864,7 +864,7 @@ Keep in mind that a virtual server is an {{site.data.keyword.cloud_notm}} classi
    ```
    {: screen}
    
-3. Generate a IBM Cloud Provider plug-in for Terraform execution plan. When you execute this command, IBM Cloud Provider plug-in for Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
+3. Generate an IBM Cloud Provider plug-in for Terraform execution plan. When you execute this command, IBM Cloud Provider plug-in for Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
    ```
    terraform plan
    ```

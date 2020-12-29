@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: Add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, IBM Cloud Provider plug-in for Terraform, provision resources
 
@@ -101,7 +101,7 @@ Looking for other resource types? Find a complete list of supported resource typ
    ```
    {: screen}
    
-3. Generate a IBM Cloud Provider plug-in for Terraform execution plan. When you execute this command, IBM Cloud Provider plug-in for Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
+3. Generate an IBM Cloud Provider plug-in for Terraform execution plan. When you execute this command, IBM Cloud Provider plug-in for Terraform validates the syntax of your configuration file and resource definitions against the specifications that are provided by the {{site.data.keyword.cloud_notm}} Provider plug-in. 
    ```
    terraform plan
    ```
@@ -277,7 +277,8 @@ You can update your resources by changing your IBM Cloud Provider plug-in for Te
    
 2. Open your `sample.tf` configuration file and change a value. For example, you can change the **network_speed** to **100**. To find an overview of parameters that you can change, see the [{{site.data.keyword.cloud_notm}} resource reference](/docs/terraform?topic=terraform-setup_cli#configure_provider).
    
-3. Create a IBM Cloud Provider plug-in for Terraform execution plan. 
+3. Create an IBM Cloud Provider plug-in for Terraform execution plan.
+ 
    ```
    terraform plan
    ```

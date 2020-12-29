@@ -51,7 +51,7 @@ Learn the basics about IBM Cloud Provider plug-in for Terraform by reviewing the
 <dt>Resources</dt>
 <dd>Resources are infrastructure components or services that you can provision in a cloud environment. Typical examples are Bare Metal servers, virtual servers, auto-scaling groups, load balancers, or software-defined networking components. Every cloud provider supports different types of resources that you can provision with IBM Cloud Provider plug-in for Terraform. </dd>
 <dt>IBM Cloud Provider plug-in for Terraform configuration</dt>
-<dd>A IBM Cloud Provider plug-in for Terraform configuration is a set of files that define which resources you want to provision with a specific cloud provider. You can write IBM Cloud Provider plug-in for Terraform configurations in HashiCorp Configuration Language(HCL) or JSON syntax.</dd>
+<dd>An IBM Cloud Provider plug-in for Terraform configuration is a set of files that define which resources you want to provision with a specific cloud provider. You can write IBM Cloud Provider plug-in for Terraform configurations in HashiCorp Configuration Language(HCL) or JSON syntax.</dd>
 </dl>
 
 
