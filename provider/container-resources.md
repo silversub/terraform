@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28" 
+lastupdated: "2020-12-29" 
 
 keywords: terraform provider plugin, terraform kubernetes service, terraform container service, terraform cluster, terraform worker nodes, terraform iks, terraform kubernetes
 
@@ -219,6 +219,8 @@ Review the input parameters that you can specify for your resource.
 | `cluster_id` | String | Required | The ID of the cluster that hosts the Ingress ALB that you want to configure for SSL traffic. | Yes |
 | `region` | String | Optional | The {{site.data.keyword.cloud_notm}} region where your SSL certificate is stored. | No |
 | `secret_name` | String | Required | The name of the ALB certificate secret. | Yes |
+|`namespace`|String| Optional| The namespace in which the secret is created. Default value is `ibm-cert-store`.|
+|`persistence`|Bool | Optional | Persist the secret data in your cluster. If the secret is later deleted from the CLI or OpenShift web console, the secret is automatically re-created in your cluster. |
 
 ### Output parameters
 {: #container-alb-cert-output}
@@ -231,14 +233,17 @@ Review the output parameters that you can access after your resource is created.
 | `cluster_crn` | String | The CRN of the cluster that hosts the Ingress ALB. |
 | `cloud_cert_instance_id` | String | The {{site.data.keyword.cloudcerts_long_notm}} instance ID from which the certificate was downloaded. |
 | `domain_name` | String | The domain name of the certificate. |
+| `expires_on` | Date | The date the certificate expires. |
 | `id` | String | The unique identifier of the certificate in the format `<cluster_name_id>/<secret_name>`.
 | `issuer_name` | String | The name of the issuer of the certificate. | 
-| `expires_on` | Date | The date the certificate expires. |  
+|`status`|String| The Status of the secret. |
 
 ### Import
 {: #container-alb-cert-import}
 
-ibm_container_alb_cert can be imported by using cluster_id, secret_name eg
+ibm_container_alb_cert can be imported by using cluster_id, secret_name.
+
+**Example**
 
 ```
 $ terraform import ibm_container_alb_cert.example 166179849c9a469581f28939874d0c82/mysecret
@@ -250,9 +255,9 @@ $ terraform import ibm_container_alb_cert.example 166179849c9a469581f28939874d0c
 The following timeouts are defined for this resource. 
 {: shortdesc}
 
-* **Create**: The creation of the SSL certificate is considered `failed` if no response is received for 5 minutes.
-* **Update**: The update of the SSL certificate is considered `failed` if no response is received for 5 minutes. 
-
+* **Create**: The creation of the SSL certificate is considered `failed` if no response is received for 10 minutes.
+* **Delete**: The deletion of the SSL certificate is considered `failed` if no response is received for 10 minutes.
+* **Update**: The update of the SSL certificate is considered `failed` if no response is received for 10 minutes. 
 
 ## `ibm_container_bind_service`
 {: #container-bind}
@@ -621,6 +626,7 @@ Review the input parameters that you can specify for your resource.
 | `kms_config.crk_id`|String|Optional|The ID of the customer root key (CRK).| No |
 | `kms_config.private_endpoint`|Boolean|Optional|Set to `true` to configure the KMS private service endpoint. Default value is `false`.| No |
 | `kube_version` | String | Optional | The Kubernetes or OpenShift version that you want to set up in your cluster. If the version is not specified, the default version in [{{site.data.keyword.containerlong_notm}}](/docs/containers?topic=containers-cs_versions) or [{{site.data.keyword.openshiftlong_notm}}](/docs/openshift?topic=openshift-openshift_versions#version_types) is used. For example, to specify Kubernetes version 1.16, enter `1.16`. For OpenShift clusters, you can specify version `3.11_openshift` or `4.3.1_openshift`.| No |
+|`labels`| Map| Optional| Labels on all the workers in the default worker pool.|No|
 | `machine_type` | String | Optional | The machine type for your worker node. The machine type determines the amount of memory, CPU, and disk space that is available to the worker node. For an overview of supported machine types, see [Planning your worker node setup](/docs/containers?topic=containers-planning_worker_nodes). | Yes |
 | `name` | String | Required | The name of the cluster. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions. The cluster name and the region in which the cluster is deployed form the fully qualified domain name for the Ingress subdomain. To ensure that the Ingress subdomain is unique within a region, the cluster name might be truncated and appended with a random value within the Ingress domain name. | Yes |
 | `no_subnet` | Boolean | Optional | If set to **true**, no portable subnet is created during cluster creation. The portable subnet is used to provide portable IP addresses for the Ingress subdomain and Kubernetes load balancer services. If set to **false**, a portable subnet is created by default. The default is **false**. | Yes |
