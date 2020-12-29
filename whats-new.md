@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: terraform resources, terraform modules, terraform provider, terraform autodeploy, 
 
@@ -28,9 +28,28 @@ subcollection: terraform
 
 Learn about the latest changes to the IBM Cloud Provider plug-in for Terraform service that are grouped by month.
 <staging>
+  
+## 29 December 2020
+{: #29-december-2020}
 
-## December 2020
-{: #december-2020}
+<table>
+    <thead>
+    <th style="width:80px">New resources</th>
+    <th style="width:80px">New data sources</th>
+    <th style="width:500px">Enhancements</th>
+    </thead>
+  <tbody>
+    <tr>
+ <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[ibm_cis_certificate_order](/docs/terraform?topic=terraform-cis-resources#cis-certificate-order)</li><li style="margin:0px; padding:0px">[ibm_cis_certificate_upload](/docs/terraform?topic=terraform-cis-resources#cis-certificate-upload)<li style="margin:0px; padding:0px">[ibm_cis_dns_records_import](/docs/terraform?topic=terraform-cis-resources#cis-dns-records-import)<li style="margin:0px; padding:0px">[ibm_cis_dns_record](/docs/terraform?topic=terraform-cis-resources#cis-dns-record)<li style="margin:0px; padding:0px">[ibm_cis_page_rule](/docs/terraform?topic=terraform-cis-resources#cis-page-rule)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">[ibm_cis_certificates](/docs/terraform?topic=terraform-cis_data#cis-certificates)</li><li style="margin:0px; padding:0px">[ibm_cis_custom_certificates](/docs/terraform?topic=terraform-cis_data#cis-custom-certificates)</li><li style="margin:0px; padding:0px">[ibm_cis_page_rules](/docs/terraform?topic=terraform-cis_data#cis-page-rules)</li><li style="margin:0px; padding:0px">[ibm_cis_dns_record](/docs/terraform?topic=terraform-cis_data#cis-dns-record
+)</li></ul></td>
+      <td><ul style="margin:0px 0px 0px 20px; padding:0px"><li style="margin:0px; padding:0px">status attribute for [ibm_container_alb_cert resource](/docs/terraform?topic=terraform-container-resources#container-alb-cert)</li><li style="margin:0px; padding:0px">Persistence and namespace attribute for [ibm_container_alb_cert resource](/docs/terraform?topic=terraform-container-resources#container-alb-cert)</li><li style="margin:0px; padding:0px">Support container labels argument for [ibm_container_cluster resource](/docs/terraform?topic=terraform-container-resources#container-cluster)</li></ul></td>
+    </tr>
+  </tbody>
+  </table>
+
+## 14 December 2020
+{: #14-december-2020}
 
 <table>
     <thead>
