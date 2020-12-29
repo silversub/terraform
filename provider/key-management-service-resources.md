@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: terraform provider plugin, terraform key management service, terraform key management, terraform kms, kms, terraform key protect, terraform kp, terraform root key, hyper protect crypto service, HPCS
 
@@ -149,7 +149,7 @@ resource "ibm_kms_key" "key" {
 {: #kms-import-key-sample}
 
 Provision Key Management Service and import a key by using `ibm_resource_instance` and `ibm_kms_key`.
-: shortdesc}
+{: shortdesc}
 
 ```
 resource "ibm_resource_instance" "kp_instance" {

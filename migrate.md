@@ -40,7 +40,7 @@ subcollection: terraform
 
 IBM continually updates the IBM Cloud Provider plug-in for Terraform provider to give you higher levels of performance and being up-to-date. Some of the instances aren't able to be upgraded, so they must be closed and you must migrate your resources with the right version.
 
-View the versions that are associated in the IBM Cloud Provider plug-in for Terraform and the {{site.data.keyword.cloud_notm}} provider plugin.
+View the versions that are associated in the IBM Cloud Provider plug-in for Terraform and the {{site.data.keyword.cloud_notm}} provider plug-in.
 {: shortdesc}
 
 ## Migrating your IBM Cloud Provider plug-in for Terraform version

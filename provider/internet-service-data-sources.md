@@ -441,8 +441,8 @@ Review the input parameters that you can specify for your data source.
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance where you want to create the firewall.|
-|`domain_id`|String|Required|The ID of the domain where you want to add the lockdown.|
-|`firewall_type`|String|Required|The type of firewall that you want to create for your domain. Supported values are `lockdowns`, `access_rules`, and `ua_rules`. Consider the following information when choosing your firewall type: <ul><li><strong><code>access_rules</code></strong>: Access rules allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.</li><li><strong><code>ua_rules</code></strong>: Apply firewall rules only if the user agent that is used by the client matches the user agent that you defined. </li><li><strong><code>lockdowns</code></strong>: Allow access to your domain for specific IP addresses or IP address ranges only. If you choose this firewall type, you must define your firewall rules in the `lockdown` input parameter.</li></ul>|
+|`domain_id`|String|Required|The ID of the domain where you want to add the lock down.|
+|`firewall_type`|String|Required|The type of firewall that you want to create for your domain. Supported values are `lockdowns`, `access_rules`, and `ua_rules`. Consider the following information when choosing your firewall type: <ul><li><strong><code>access_rules</code></strong>: Access rules allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.</li><li><strong><code>ua_rules</code></strong>: Apply firewall rules only if the user agent that is used by the client matches the user agent that you defined. </li><li><strong><code>`lockdowns`</code></strong>: Allow access to your domain for specific IP addresses or IP address ranges only. If you choose this firewall type, you must define your firewall rules in the `lockdown` input parameter.</li></ul>|
 
 ### Output parameters
 {: #cis-firewall-dsoutput}
@@ -459,7 +459,7 @@ Review the output parameters that you can access after your data source is creat
 |`lockdown.priority`|Integer|The priority of the firewall rule. A low number is associated with a high priority. |
 |`lockdown.urls`|List of URLs|A list of URLs that you want to include in your firewall rule. You can specify wildcard URLs. The URL pattern is escaped before use.|
 |`lockdown.configurations`|List of IP addresses|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. |
-|`lockdown.configurations.target`|String|Specify if you want to target an `ip` or `ip_range`.|
+|`lockdown.configurations.target`|String|Specify if you want to target an `IP` or `ip_range`.|
 |`lockdown.configurations.value`|String|The IP addresses or CIDR. |
 |`access_rule`|String|Create the data describing the access rule. |
 |`access_rule.rule_id`|String| The access rule ID. |

@@ -125,7 +125,7 @@ terraform import ibm_cis.myorg <crn>
 ## `ibm_cis_cache_settings`
 {: #cis-cache}
 
- Provides a {{site.data.keyword.cis_full_notm}} cache settings resource. This resource is associated with an IBM Cloud Internet Services instance and a CIS Domain resource. It allows to create, update, or delete cache settings of a domain of a {{site.data.keyword.cis_full_notm}} CIS instance. For more information about cache setting, refer to [CIS cache concepts](/docs/cis?topic=cis-caching-concepts).
+ Provides an {{site.data.keyword.cis_full_notm}} cache settings resource. This resource is associated with an IBM Cloud Internet Services instance and a CIS Domain resource. It allows to create, update, or delete cache settings of a domain of an {{site.data.keyword.cis_full_notm}} CIS instance. For more information about cache setting, refer to [CIS cache concepts](/docs/cis?topic=cis-caching-concepts).
  {: shortdesc}
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
@@ -159,7 +159,7 @@ Review the input parameters that you can specify for your resource.
 |`domain_id`|String|Required|The ID of the domain to change cache settings. |
 |`development_mode`|String|Optional|The development mode enable or disable settings. Valid values are `on`, and `off`.|
 |`purge_all`|Boolean|Optional| Purge all cached files.|
-|`purge_by_urls`|List of String|Optional| Purge cached urls.|
+|`purge_by_urls`|List of String|Optional| Purge cached URLs.|
 |`purge_by_hosts`|List of String|Optional| Purge cached hosts.|
 |`purge_by_tags`|List of String|Optional| Purge cached item that matches the tags.|
 |`query_string_sort`|String|Optional|The query string sort settings. Valid values are `on`, and `off`.|
@@ -1169,7 +1169,7 @@ terraform import ibm_cis_edge_functions_trigger.test_trigger <trigger_id>:<domai
 **Example**
 
 ```
-terraform import ibm_cis_edge_functions_trigger.test_trigger 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+terraform import ibm_cis_edge_functions_trigger.test_trigger 48996f0da6ed76251b475971b097205c:9caf68812ae9b3f0377fdf986751a78f:crn:v1:ibmcloud:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
 ```
 {: pre}
 
@@ -1244,7 +1244,7 @@ Review the input parameters that you can specify for your resource.
 |`lockdown.priority`|Integer|Optional|The priority of the firewall rule. A low number is associated with a high priority. |
 |`lockdown.urls`|List of URLs|Required|A list of URLs that you want to include in your firewall rule. You can specify wildcard URLs. The URL pattern is escaped before use.|
 |`lockdown.configurations`|List of IP addresses|Required|A list of IP address or CIDR ranges that you want to allow access to the URLs that you defined in `lockdown.urls`. |
-|`lockdown.configurations.target`|String|Optional|Specify if you want to target an `ip` or `ip_range`.|
+|`lockdown.configurations.target`|String|Optional|Specify if you want to target an `IP` or `ip_range`.|
 |`lockdown.configurations.value`|String|Optional|The IP address or IP address range that you want to target. Make sure that the value that you enter here matches the type of target that you specified in `lockdown.configurations.target`. |
 |`access_rule`|String|Optional| Create the data the describing access rule. (Maximum item is 1) |
 |`access_rule.notes`|String|Optional| The free text for notes. |
@@ -1475,7 +1475,7 @@ The health check can be imported by using the `id`. The ID is formed from the he
 The CRN can be located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
 
 - **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
-- **Healthcheck ID**: The health check ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a health check is not available via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-monitors`.
+- **HealthCheck ID**: The health check ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a health check is not available via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-monitors`.
 
 ```
 terraform import ibm_cis_healthcheck.myorg <healthcheck_ID>:<crn>
@@ -1585,7 +1585,7 @@ terraform import ibm_cis_origin_pool.myorg 1aaaa111111aa11111111111a1a11a1:crn:v
 ## `ibm_cis_page_rule`
 {: #cis-page-rule}
 
-Provides an {{site.data.keyword.cis_full_notm}} page rule resource, to create, update, delete page rules of a domain. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a {{site.data.keyword.cis_full_notm}} domain resource. For more information, about {{site.data.keyword.cis_full_notm}} page rules, see [using page rules](/docs/cis?topic=cis-use-page-rules).
+Provides an {{site.data.keyword.cis_full_notm}} page rule resource, to create, update, delete page rules of a domain. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and an {{site.data.keyword.cis_full_notm}} domain resource. For more information, about {{site.data.keyword.cis_full_notm}} page rules, see [using page rules](/docs/cis?topic=cis-use-page-rules).
 {: shortdesc}
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
@@ -1716,7 +1716,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-page-rule-import}
 
-The `ibm_cis_page_rule` resource can be imported using the ID. The ID is formed from the rule ID, the domain ID of the domain and the CRN concatentated using a `:` character.
+The `ibm_cis_page_rule` resource can be imported by using the ID. The ID is formed from the rule ID, the domain ID of the domain and the CRN concatenated by using a `:` character.
 
 The domain ID and CRN is located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via the `ibmcloud cis` CLI.
 
@@ -1939,7 +1939,7 @@ terraform import ibm_cis_range_app.myorg 48996f0da6ed76251b475971b097205c:9caf68
 ## `ibm_cis_routing`
 {: #cis-routing}
 
-Provides a {{site.data.keyword.cis_full_notm}} routing resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a {{site.data.keyword.cis_short}} domain resource. It allows to change routing of a domain of a {{site.data.keyword.cis_short}} instance. For more information, refer to [about {{site.data.keyword.cis_short}}](/docs/cis?topic=cis-about-ibm-cloud-internet-services-cis).
+Provides an {{site.data.keyword.cis_full_notm}} routing resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and an {{site.data.keyword.cis_short}} domain resource. It allows to change routing of a domain of an {{site.data.keyword.cis_short}} instance. For more information, refer to [about {{site.data.keyword.cis_short}}](/docs/cis?topic=cis-about-ibm-cloud-internet-services-cis).
 {: shortdesc}
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
@@ -2075,7 +2075,7 @@ The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed f
 
  Domain ID is a 32 digit character string of the form: 9caf68812ae9b3f0377fdf986751a78f
 
- CRN is a 120 digit character string of the form: crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::
+ CRN is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
  {: note}
 
  **Syntax**
@@ -2095,7 +2095,7 @@ The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed f
  ## `ibm_cis_waf_group`
 {: #cis-waf-group}
 
-Provides a {{site.data.keyword.cis_full_notm}} WAF rule rroup resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF Groups mode of a domain of a CIS instance. It is also named as CIS rule set. Please find OWASP rule set set tab under WAF of your instance in UI. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
+Provides an {{site.data.keyword.cis_full_notm}} WAF rule group resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF Groups mode of a domain of a CIS instance. It is also named as CIS rule set. Please find `OWASP` rule set set tab under WAF of your instance in UI. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
 {: shortdesc}
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
@@ -2173,7 +2173,7 @@ terraform import ibm_cis_domain.myorg  3d8fb0c18b5a6ba7682c80e94c7937b2:57d96f0d
 ## `ibm_cis_waf_package`
 {: #cis-waf-package}
 
-Provides a {{site.data.keyword.cis_full_notm}} WAF package resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to change WAF package settings of a domain of a {{site.data.keyword.cis_full_notm}} instance. It is also named as OWASP rule set. For more information, about WAF refer to [Web Application Firewall concepts](/docs/cis?topic=cis-waf-q-and-a).
+Provides an {{site.data.keyword.cis_full_notm}} WAF package resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS domain resource. It allows to change WAF package settings of a domain of an {{site.data.keyword.cis_full_notm}} instance. It is also named as `OWASP` rule set. For more information, about WAF refer to [Web Application Firewall concepts](/docs/cis?topic=cis-waf-q-and-a).
 {: shortdesc}
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
@@ -2247,7 +2247,7 @@ terraform import ibm_cis_waf_package.waf_package 489d96f0da6ed76251b475971b09720
 ## `ibm_cis_waf_rule`
 {: #cis-waf-rule}
 
-Provides a {{site.data.keyword.cis_full_notm}} WAF rule settings resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF rule settings of a domain of a CIS instance. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
+Provides an {{site.data.keyword.cis_full_notm}} WAF rule settings resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF rule settings of a domain of a CIS instance. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
 {: shortdesc}
 
 ### Sample IBM Cloud Provider plug-in for Terraform code

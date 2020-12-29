@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: Terraform on {{site.data.keyword.cloud_notm}} help, Terraform on {{site.data.keyword.cloud_notm}} troubleshooting, ansible help, ansible troubleshooting
 
@@ -50,6 +50,6 @@ If you run into an issue with the IBM Cloud Provider plug-in for Terraform provi
 </br>
 If you have general questions about IBM Cloud Provider plug-in for Terraform or Ansible, you can use one of the following channels: 
 
-- **Reddit**:  Subscribe to the [IBM Cloud Provider plug-in for Terraform channel on Reddit](https://www.reddit.com/r/IBM Cloud Provider plug-in for Terraform/){: external} and browse through this channel to read about user issues and how they resolved them. 
+- **Reddit**:  Subscribe to the [IBM Cloud Provider plug-in for Terraform channel on Reddit](https://www.reddit.com/r/terraform/){: external} and browse through this channel to read about user issues and how they resolved them. 
 - **Open source community**: Get help from the open source community by searching for information on the internet or by asking questions in forums and on websites that support these tools.
 

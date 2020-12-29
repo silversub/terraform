@@ -715,19 +715,19 @@ For more information, about Red Hat OpenShift Container Platform components, see
    <tbody>
    <tr>
    <td>Red Hat® Enterprise Linux 7 Server (RPMs)</td>
-   <td>rhel-7-server-rpms</td>
+   <td>`rhel-7-server-rpms`</td>
    </tr>
    <tr>
    <td>Red Hat® OpenShift Enterprise 3.11 (RPMs)</td>
-   <td>rhel-7-server-ose-3.11-rpms</td>
+   <td>`rhel-7-server-ose-3.11-rpms`</td>
    </tr>
    <tr>
    <td>Red Hat® Enterprise Linux 7 Server - Extras (RPMs)</td>
-   <td>rhel-7-server-extras-rpms</td>
+   <td>`rhel-7-server-extras-rpms`</td>
    </tr>
    <tr>
    <td>Red Hat® Enterprise Linux 7 Server - Fast Datapath (RPMs)</td>
-   <td>rhel-7-fast-datapath-rpms</td>
+   <td>`rhel-7-fast-datapath-rpms`</td>
    </tr>
    </tbody>
    </table>

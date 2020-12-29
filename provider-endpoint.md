@@ -63,7 +63,7 @@ terraform init
 |GHoST / Tagging|`IBMCLOUD_GT_API_ENDPOINT`|N/A|
 |HPCS|`IBMCLOUD_HPCS_API_ENDPOINT`|N/A|
 |IAM|`IBMCLOUD_IAM_API_ENDPOINT`|N/A|
-|IAMPAP|`IBMCLOUD_IAMPAP_API_ENDPOINT`|N/A|
+|`IAMPAP`|`IBMCLOUD_IAMPAP_API_ENDPOINT`|N/A|
 |ICD|`IBMCLOUD_ICD_API_ENDPOINT`|[Docs](/docs/account?topic=account-vrf-service-endpoint)|
 |Key protect|`IBMCLOUD_KP_API_ENDPOINT`|`https://private.<region>.kms.cloud.ibm.com`|
 |Private DNS|`IBMCLOUD_PRIVATE_DNS_API_ENDPOINT`| N/A|

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -2314,11 +2314,11 @@ The following attributes are exported:
 ## `ibm_lb_vpx_ha`
 {: #lb-vpx-ha}
 
-Configure a high availability (HA) pair with two `NetscalerVPX` devices. The two NetscalerVPXs must be version 10.5 and located in the same subnet. A primary `NetscalerVPX` provides load-balancing services in active mode, and a secondary `NetscalerVPX` provides load-balancing services when the primary `NetscalerVPX` fails. For more information, refer to the  [Citrix support Docs  ](https://support.citrix.com/article/CTX116748){: external} and the [Knowledge layer Netscaler Docs](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
+Configure a high availability (HA) pair with two `NetscalerVPX` devices. The two `NetscalerVPXs` must be version 10.5 and located in the same subnet. A primary `NetscalerVPX` provides load-balancing services in active mode, and a secondary `NetscalerVPX` provides load-balancing services when the primary `NetscalerVPX` fails. For more information, refer to the  [Citrix support Docs  ](https://support.citrix.com/article/CTX116748){: external} and the [Knowledge layer Netscaler Docs](/docs/citrix-netscaler-vpx?topic=citrix-netscaler-vpx-setting-up-citrix-netscaler-vpx-for-high-availability-ha-).
 
 **NOTE**: This resource only supports Netscaler VPX 10.5. The [NITRO API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html) is used to configure HA. IBM Cloud Provider plug-in for Terraform can only access the NITRO API in the IBM Cloud Classic Infrastructure (SoftLayer) private network, so connect to the private network when running IBM Cloud Provider plug-in for Terraform. You can also use the [SSL VPN](https://www.ibm.com/cloud/vpn-access){: external} to access a private network connection.
 
-The two NetscalerVPXs use the same password in HA mode. When you create this resource, IBM Cloud Provider plug-in for Terraform changes the password of the secondary Netscaler VPX to the password of the primary Netscaler VPX. When you destroy this resource, IBM Cloud Provider plug-in for Terraform restores the original password of the secondary Netscaler VPX.
+The two `NetscalerVPXs` use the same password in HA mode. When you create this resource, IBM Cloud Provider plug-in for Terraform changes the password of the secondary Netscaler VPX to the password of the primary Netscaler VPX. When you destroy this resource, IBM Cloud Provider plug-in for Terraform restores the original password of the secondary Netscaler VPX.
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
 {: #lb-vpx-ha-sample}
