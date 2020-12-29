@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: IBM Cloud Provider plug-in for Terraform, ansible, red hat, openshift, automate, automation, iaas
 
@@ -97,7 +97,7 @@ In this tutorial, you provision {{site.data.keyword.cloud_notm}} classic infrast
 1. Create a Docker container that installs IBM Cloud Provider plug-in for Terraform and the {{site.data.keyword.cloud_notm}} Provider plug-in. To execute IBM Cloud Provider plug-in for Terraform commands, you must be logged in to the container. 
    You can also [install IBM Cloud Provider plug-in for Terraform and the {{site.data.keyword.cloud_notm}} Provider plug-in](/docs/terraform?topic=terraform-setup_cli#setup_cli) on your local machine to run IBM Cloud Provider plug-in for Terraform commands without a Docker container. 
    {: tip}
-   1. Download the latest version of the Docker image for IBM Cloud Provider plug-in for Terraform and the {{site.data.keyword.cloud_notm}} Provider plug-in to your local machine. 
+   1. Download the latest version of the Docker image for IBM Cloud Provider plug-in for Terraform to your local machine. 
       ```
       docker pull ibmterraform/terraform-provider-ibm-docker
       ```

@@ -285,7 +285,7 @@ Keep in mind that a VPC virtual server instance is an {{site.data.keyword.cloud_
 {: important}
 
 Before you begin: 
-- [Install the IBM Cloud Provider plug-in for Terraform CLI and the {{site.data.keyword.cloud_notm}} Provider plug-in for IBM Cloud Provider plug-in for Terraform](#install). 
+- [Install the IBM Cloud Provider plug-in for Terraform CLI and the IBM Cloud Provider plug-in for Terraform](#install). 
 - [Install the {{site.data.keyword.cloud_notm}} CLI and the CLI plug-in to work with Virtual Private Cloud (VPC) infrastructure](/docs/vpc-on-classic?topic=vpc-on-classic-creating-a-vpc-using-the-ibm-cloud-cli). 
 - [Retrieve your {{site.data.keyword.cloud_notm}} credentials, upload an SSH key, and configure the IBM Cloud Provider plug-in for Terraform provider plug-in](/docs/terraform?topic=terraform-getting-started#cloud_provider_config). 
 

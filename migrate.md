@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: Add resources, remove resources, iaas, softlayer, ibm cloud resources, ibm cloud services, IBM Cloud Provider plug-in for Terraform, provision resources
 
@@ -51,7 +51,7 @@ Update your IBM Cloud Provider plug-in for Terraform configuration files from ve
 With the release of IBM Cloud Provider plug-in for Terraform version 0.12, the syntax for configuration files changed. If you want to run your infrastructure code by using IBM Cloud Provider plug-in for Terraform version 0.12, you must first update your configuration files to apply the new syntax. 
 {: important}
 
-1. Follow the [instructions](/docs/terraform?topic=terraform-setup_cli#install_cli) to install IBM Cloud Provider plug-in for Terraform version 0.1x and the latest release of the {{site.data.keyword.cloud_notm}} Provider plug-in for IBM Cloud Provider plug-in for Terraform. 
+1. Follow the [instructions](/docs/terraform?topic=terraform-setup_cli#install_cli) to install IBM Cloud Provider plug-in for Terraform version 0.1x and the latest release of the IBM Cloud Provider plug-in for Terraform. 
 2. Copy your IBM Cloud Provider plug-in for Terraform version 0.1x configuration files into your IBM Cloud Provider plug-in for Terraform working directory. 
    ```
    mv <tf_config_file_path> $HOME/terraform

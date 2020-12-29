@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: terraform identity and access, terraform iam, terraform permissions, terraform iam policy
 
@@ -37,7 +37,7 @@ subcollection: terraform
 # IBM Cloud Provider plug-in for Terraform provider block configuration
 {: #provider-reference}
 
-Review what credentials and information you need to provide to work with {{site.data.keyword.cloud_notm}} resources and data sources with the {{site.data.keyword.cloud_notm}} Provider plug-in for IBM Cloud Provider plug-in for Terraform.
+Review what credentials and information you need to provide to work with {{site.data.keyword.cloud_notm}} resources and data sources with the IBM Cloud Provider plug-in for Terraform.
 {: shortdesc}
 
 ## Required input parameters for each resource category
@@ -186,7 +186,7 @@ Creating multiple `provider` configurations is useful when you want to use diffe
 
 The steps involved in configuring your IBM Cloud Provider plug-in for Terraform runtime to use the private Cloud Service Endpoint (CSE) of an {{site.data.keyword.cloud_notm}} service within  public CSE in [Production environment](https://cloud.ibm.com).
 
-You can configure the {{site.data.keyword.cloud_notm}} provider for IBM Cloud Provider plug-in for Terraform to communicate with an {{site.data.keyword.cloud_notm}} service by using the service's private service endpoint. For more information, refer [Configure the provider to use private service endpoint](/docs/terraform?topic=terraform-config-provider).
+You can configure the IBM Cloud Provider plug-in for Terraform to communicate with an {{site.data.keyword.cloud_notm}} service by using the service's private service endpoint. For more information, refer [Configure the provider to use private service endpoint](/docs/terraform?topic=terraform-config-provider).
 {: shortdesc}
 
 

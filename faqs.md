@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-28"
+lastupdated: "2020-12-29"
 
 keywords: terraform faqs, softlayer, iaas
 
@@ -94,7 +94,7 @@ If the IBM Cloud Provider plug-in for Terraform operation does not complete due 
 </tbody>
 </table>
 
-## How do I setup IBM IBM Cloud Provider plug-in for Terraform provider for IBM Cloud Provider plug-in for Terraform version 0.13.0?
+## How do I setup IBM Cloud Provider plug-in for Terraform version 0.13.0?
 {: #ibm-terraform-provider-v13}
 {: faq}
 
