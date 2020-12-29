@@ -165,7 +165,7 @@ IBM Cloud Provider plug-in for Terraform uses the {{site.data.keyword.cloud_notm
 The credentials that you need depend on the type of resource that you want to provision. For example, to provision classic infrastructure resources, you must provide your {{site.data.keyword.cloud_notm}} classic infrastructure user name and API key. To provision VPC infrastructure, you need an {{site.data.keyword.cloud_notm}} API key. For more information, about what credentials you need for a specific {{site.data.keyword.cloud_notm}} resource, see [Required input parameters for each resource category](/docs/terraform?topic=terraform-provider-reference#required-parameters).
 
 **Where can I find an overview of available resources?**</br>
-To find a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in, see the [Index of IBM Cloud Provider plug-in for Terraform resources and data sources](/docs/terraform?topic=terraform-index-of-terraform-resources-and-data-sources).
+To find a full list of {{site.data.keyword.cloud_notm}} resources that you can provision with the {{site.data.keyword.cloud_notm}} Provider plug-in, see the [Index of IBM Cloud Provider plug-in for Terraform resources and data sources](/docs/terraform?topic=terraform-index-of-ibm-cloud-provider-plug-in-for-terraform-resources-and-data-sources).
 
 1. Create a folder on your local machine for your first IBM Cloud Provider plug-in for Terraform project and navigate into the folder. This folder is used to store all configuration files and variable definitions. 
    ```
