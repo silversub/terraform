@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-29"
+lastupdated: "2020-12-31"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -125,7 +125,7 @@ terraform import ibm_cis.myorg <crn>
 ## `ibm_cis_cache_settings`
 {: #cis-cache}
 
- Provides an {{site.data.keyword.cis_full_notm}} cache settings resource. This resource is associated with an IBM Cloud Internet Services instance and a CIS Domain resource. It allows to create, update, or delete cache settings of a domain of an {{site.data.keyword.cis_full_notm}} CIS instance. For more information about cache setting, refer to [CIS cache concepts](/docs/cis?topic=cis-caching-concepts).
+ Provides an {{site.data.keyword.cis_full_notm}} cache settings resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to create, update, or delete cache settings of a domain of an {{site.data.keyword.cis_full_notm}} CIS instance. For more information about cache setting, refer to [CIS cache concepts](/docs/cis?topic=cis-caching-concepts).
  {: shortdesc}
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
@@ -248,7 +248,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-certificate-order-import}
 
-The `ibm_cis_certificate_order` resource can be imported using the ID. The ID is formed from the certificate ID, the domain ID of the domain and the CRN concatentated by using a `:` character.
+The `ibm_cis_certificate_order` resource can be imported using the ID. The ID is formed from the certificate ID, the domain ID of the domain and the CRN  Concatenated  by using a `:` character.
 
 The domain ID and CRN is located on the **Overview** page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
 
@@ -305,7 +305,7 @@ Review the input parameters that you can specify for your resource.
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
 |`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance.|
-|`domain_id`|String|Required|The ID of the domain to add the rules dertificate upload. |
+|`domain_id`|String|Required|The ID of the domain to add the rules certificate upload. |
 |`certificate`|String|Required| The intermediate(s) certificate key.|
 |`private_key`|String|Required| The certificate private key.|
 |`bundle_method`|String|Optional| The certificate bundle method. The valid values are `ubiquitous`, `optimal`, `force`.|
@@ -323,7 +323,7 @@ Review the output parameters that you can access after your resource is created.
 |`certificate_id`|String |The certificate ID.|
 |`status`|String |The certificate status.|
 |`custom_cert_id`|String|The certificate upload rule ID.|
-|`status`|String|The ceritificate status.|
+|`status`|String|The certificate status.|
 |`issuer`|String|The certificate issuer.|
 |`signature`|String| The certificate signature.|
 |`expires_on`|String| The expiry date and time of the certificate.|
@@ -333,7 +333,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-certificate-upload-import}
 
-The `ibm_cis_certificate_upload` resource can be imported using the ID. The ID is formed from the certificate upload ID, the domain ID of the domain and the CRN concatentated by using a `:` character.
+The `ibm_cis_certificate_upload` resource can be imported using the ID. The ID is formed from the certificate upload ID, the domain ID of the domain and the CRN  Concatenated  by using a `:` character.
 
 The domain ID and CRN is located on the **Overview** page of the {{site.data.keyword.cis_full_notm}} instance of the UI domain heading, or by using the `ibmcloud cis` CLI commands.
 
@@ -484,7 +484,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-dns-records-imports}
 
-The `ibm_cis_dns_records_import` resource can be imported by using the ID. The ID is formed from the zone file, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated using a `:` character with the prefix of `0:0:`.
+The `ibm_cis_dns_records_import` resource can be imported by using the ID. The ID is formed from the zone file, the domain ID of the domain and the CRN (Cloud Resource Name)  Concatenated  using a `:` character with the prefix of `0:0:`.
 
 The domain ID and CRN is located on the **Overview** page of the internet services instance under the domain heading of the UI, or via by using the `ibmcloud cis` CLI commands.
 
@@ -965,8 +965,8 @@ Review the input parameters that you can specify for your resource.
 |`data`|Map|Optional|A map of attributes that constitute the record value. This value is required for `LOC`, `CAA` and `SRV` record types. |
 |`data.weight`|Integer|Optional|The weight of distributing queries among multiple target servers. Mandatory field for `SRV` record type. |
 |`data.port`|Integer|Optional|The port number of the target server. Mandatory field for `SRV` record type.|
-|`data.service`|Integer|Optional|The symbolic name of the desired service, start with an underscore `_`. Mandatory field for `SRV` record type. |
-|`data.protocol`|Integer|Optional|The symbolic name of the desired protocol. Mandatory field for `SRV` record type. |
+|`data.service`|Integer|Optional|The symbolic name of the required service, start with an underscore `_`. Mandatory field for `SRV` record type. |
+|`data.protocol`|Integer|Optional|The symbolic name of the required protocol. Mandatory field for `SRV` record type. |
 |`data.altitude`|Integer|Optional|The `LOC` altitude. Mandatory field for `LOC` record type. |
 |`data.size`|Integer|Optional|The `LOC` altitude size. Mandatory field for `LOC` record type. |
 |`data.lat_degrees`|Integer|Optional|The `LOC` latitude degrees. Mandatory field for `LOC` record type. |
@@ -990,7 +990,7 @@ Review the output parameters that you can access after your resource is created.
 
 |Name|Data type|Description|
 |----|-----------|--------|
-|`id`|String| The ID of the record, zone and CRN with `:` seperator. |
+|`id`|String| The ID of the record, zone and CRN with `:` separator . |
 |`name`|String| The name of the DNS record. |
 |`proxiable`|Bool|Indicates if the record can be proxied. |
 |`proxied`|Bool|Indicates the record gets CIS's origin protection. Default is `false`. |
@@ -1002,7 +1002,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-dns-record-import}
 
-The `ibm_cis_dns_record` resource can be imported by using the ID. The ID is formed from the DNS record ID, the domain ID, and the CRN (Cloud Resource Name). All values are concatentated by using a `:` character. 
+The `ibm_cis_dns_record` resource can be imported by using the ID. The ID is formed from the DNS record ID, the domain ID, and the CRN (Cloud Resource Name). All values are  Concatenated  by using a `:` character. 
 
 The domain ID and CRN are located on the **Overview** page of the internet services instance in the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI commands.
 
@@ -1010,7 +1010,7 @@ The domain ID and CRN are located on the **Overview** page of the internet servi
 
 **CRN** is a 120 digit character string of the form: `crn:v1:bluemix:public:internet-svcs:global:a/4ea1882a2d3401ed1e459979941966ea:31fa970d-51d0-4b05-893e-251cba75a7b3::`
 
-**Dns Record ID** is a 32 digit character string of the form: `489d96f0da6ed76251b475971b097205c`. The ID of an existing DNS record is not avaiable via the UI. You can retrieve programatically via the CIS API or via the CLI using the CIS command `ibmcloud cis dns-records <domain_id>` to list the defined DNS records.
+**DNS Record ID** is a 32 digit character string of the form: `489d96f0da6ed76251b475971b097205c`. The ID of an existing DNS record is not available via the UI. You can retrieve programmatically via the CIS API or via the CLI using the CIS command `ibmcloud cis dns-records <domain_id>` to list the defined DNS records.
 
 
 ```
@@ -1475,7 +1475,7 @@ The health check can be imported by using the `id`. The ID is formed from the he
 The CRN can be located on the **Overview** page of the Internet Services instance under the **Domain** heading of the UI, or via using the `ibmcloud cis` CLI.
 
 - **CRN**: The CRN is a 120 digit character string of the format `crn:v1:bluemix:public:internet-svcs:global:a/1aa1111a1a1111aa1a111111111111aa:11aa111a-11a1-1a11-111a-111aaa11a1a1::` 
-- **HealthCheck ID**: The health check ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a health check is not available via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-monitors`.
+- **`Healthcheck ID`**: The health check ID is a 32 digit character string in the format 1aaaa111111aa11111111111a1a11a1. The ID of a health check is not available via the UI. It can be retrieved programmatically via the CIS API or via the CLI by running `ibmcloud cis glb-monitors`.
 
 ```
 terraform import ibm_cis_healthcheck.myorg <healthcheck_ID>:<crn>
@@ -1630,7 +1630,7 @@ Review the input parameters that you can specify for your resource.
 |`priority`|Integer|Optional|The priority of the page rule. Default value is `1`. `Set` and `Update` are not supported yet.|
 |`targets`|Set|Required|The targets, where rule is added.|
 |`targets.target`|String|Required|The target type. Valid value is `url`.|
-|`targets.constraint`|List |Required|The constrant of the page rule. Maximum items is `1`.|
+|`targets.constraint`|List |Required|The constraint cof the page rule. Maximum items is `1`.|
 |`targets.constraint.operator`|String |Required|The operation on the page rule. Valid value is `matches`.|
 |`targets.constraint.value`|String |Required|The URL value on which page rule is applied.|
 |`actions`|List|Required|The list of actions performed on URL. Minimum items is `1`.|
@@ -1744,16 +1744,16 @@ terraform import ibm_cis_page_rule.myorg page_rule 48996f0da6ed76251b475971b0972
 ## `ibm_cis_rate_limit`
 {: #rate-limit}
 
-Create, update, or delete custom rate limits for an IBM Cloud Internet Services domain. For more information, about rate limits, see [Rate limiting](/docs/cis?topic=cis-cis-rate-limiting).
+Create, update, or delete custom rate limits for an {{site.data.keyword.cis_full_notm}} domain. For more information, about rate limits, see [Rate limiting](/docs/cis?topic=cis-cis-rate-limiting).
 {: shortdesc}
 
-Rate limiting rule can only be created when you have the enterprise plan for IBM Cloud Internet Services.
+Rate limiting rule can only be created when you have the enterprise plan for {{site.data.keyword.cis_full_notm}}.
 {: note}
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
 {: #rate-limit-sample}
 
-The following example shows how you can add a rate limit to an IBM Cloud Internet Services domain. 
+The following example shows how you can add a rate limit to an {{site.data.keyword.cis_full_notm}} domain. 
 
 ```
 resource "ibm_cis_rate_limit" "ratelimit" {
@@ -1797,7 +1797,7 @@ Review the input parameters that you can specify for your resource.
 
 |Name|Data type|Required / optional|Description|
 |----|-----------|-----------|---------------------|
-|`cis_id`|String|Required|The ID of the IBM Cloud Internet Services instance. |
+|`cis_id`|String|Required|The ID of the {{site.data.keyword.cis_full_notm}} instance. |
 |`domain_id`|String|Required|The ID of the domain where you want to add a rate limit. |
 |`threshold`|Integer|Required|The number of requests received within a specific time period (`period`) before connections to the domain are refused. The threshold value must be between 2 and 1000000. |
 |`period`|Integer|Required|The period of time in seconds where incoming requests to a domain are counted. If the number of requests exceeds the `threshold`, then connections to the domain are refused. The `period` value must be between 1 and 3600. | 
@@ -1912,7 +1912,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis_range_app-import}
 
-The `ibm_cis_range_app` resource can be imported using the ID. The ID is formed from the application ID, the Domain ID of the domain and the CRN (Cloud Resource Name) concatentated by using a `:` character.
+The `ibm_cis_range_app` resource can be imported using the ID. The ID is formed from the application ID, the Domain ID of the domain and the CRN (Cloud Resource Name)  Concatenated  by using a `:` character.
 
 The Domain ID and CRN will be located on the overview page of the Internet Services instance from the Domain heading of the UI, or by using the `ibm cis` CLI commands.
 
@@ -2145,7 +2145,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-waf-group-import}
 
-The `ibm_cis_waf_group` resource can be imported by using the ID. The ID is formed from the WAF Rule Group ID, the WAF rule package ID, the domain ID of the domain and the CRN (Cloud Resource Name) concatentated by using `:` character.
+The `ibm_cis_waf_group` resource can be imported by using the ID. The ID is formed from the WAF Rule Group ID, the WAF rule package ID, the domain ID of the domain and the CRN (Cloud Resource Name)  Concatenated  by using `:` character.
 
 The domain ID and CRN will be located on the **Overview** page of the Internet Services instance of the domain heading of the UI, or by using the `ibmcloud cis` CLI commands.
 
@@ -2222,7 +2222,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-waf-package-import}
 
-The `ibm_cis_waf_package` resource can be imported by using the ID. The ID is formed from the package ID, domain ID of the domain and the CRN (Cloud Resource Name) concatentated by using a : character.
+The `ibm_cis_waf_package` resource can be imported by using the ID. The ID is formed from the package ID, domain ID of the domain and the CRN (Cloud Resource Name)  Concatenated  by using a : character.
 
 The domain ID and CRN will be located on the **Overview** page of the Internet Services instance of the Domain heading of the UI, or by using the `ibmcloud cis` CLI commands.
 
@@ -2300,7 +2300,7 @@ Review the output parameters that you can access after your resource is created.
 ### Import
 {: #cis-waf-rule-import}
 
-The `ibm_cis_waf_rule` resource can be imported by using the ID. The ID is formed from the rule_id, `<package_id>, <domain ID>, <package ID>` of the domain and the CRN (Cloud Resource Name) concatentated by using a `:` character.
+The `ibm_cis_waf_rule` resource can be imported by using the ID. The ID is formed from the rule_id, `<package_id>, <domain ID>, <package ID>` of the domain and the CRN (Cloud Resource Name)  Concatenated  by using a `:` character.
 
 The domain ID and CRN will be located on the **Overview** page of the Internet Services instance of the domain heading of the UI, or by using the `ibmcloud cis` CLI commands.
 

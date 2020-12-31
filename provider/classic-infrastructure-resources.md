@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-29"
+lastupdated: "2020-12-31"
 
 keywords: terraform provider plugin, terraform classic infrastructure, terraform classic, terraform softlayer, terraform sl, terraform vsi, terraform Bare Metal server
 
@@ -1197,7 +1197,7 @@ The following attributes are exported:
 
 Configures the (custom) name servers associated with a DNS domain registration managed by the IBM Cloud DNS Registration Service. The default IBM Cloud name servers specified when the domain was initially registered are replaced with the values passed when this resource is created. 
 
-This resource is typically used in conjunction with IBM Cloud Internet Services to enable DNS services for the domain to be managed via IBM Cloud Internet Services. All further configuration of the domain is then performed by using the Cloud Internet Services resource instances. To transfer management control, the IBM Cloud DNS domain registration is updated with the Internet Services specific name servers. This step is required before the domain in Cloud Internet Services becomes active and start serving web traffic. Using interpolation syntax, the computed name servers of the CIS resource are passed into this resource. 
+This resource is typically used in conjunction with {{site.data.keyword.cis_full_notm}} to enable DNS services for the domain to be managed via {{site.data.keyword.cis_full_notm}}. All further configuration of the domain is then performed by using the Cloud Internet Services resource instances. To transfer management control, the IBM Cloud DNS domain registration is updated with the Internet Services specific name servers. This step is required before the domain in Cloud Internet Services becomes active and start serving web traffic. Using interpolation syntax, the computed name servers of the CIS resource are passed into this resource. 
 
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
@@ -1237,7 +1237,7 @@ The following arguments are supported:
 |Name|Description|
 |----|-----------|
 |`dns_registration_id`|(Required, string) The unique ID of the domain's registration. This is exported by the ibm_dns_domain_registration data source. |
-|`name_servers`|(Required, Array of strings) Example for an array of name servers returned from configuration of a domain on an instance of IBM Cloud Internet Services. This is of the format: ["ns006.name.cloud.ibm.com", "ns017.name.cloud.ibm.com"]|
+|`name_servers`|(Required, Array of strings) Example for an array of name servers returned from configuration of a domain on an instance of {{site.data.keyword.cis_full_notm}}. This is of the format: ["ns006.name.cloud.ibm.com", "ns017.name.cloud.ibm.com"]|
 {: caption="Table. Available input parameters" caption-side="top"}
 
 ### Output parameters
