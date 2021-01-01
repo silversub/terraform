@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-12-29"
+lastupdated: "2020-12-31"
 
 keywords: terraform internet services, terraform cis, terraform provider plugin
 
@@ -260,7 +260,7 @@ Review the output parameters that you can access after you retrieved your data s
 |Name|Data type|Description|
 |----|-----------|----------|
 | `cis_dns_records` | List | The list of DNS records. |
-| `cis_dns_records.id` | String | The ID which consists of record id, zone id and CRN with `:` seperator. |
+| `cis_dns_records.id` | String | The ID which consists of record id, zone id and CRN with `:` separator . |
 | `cis_dns_records.record_id` | String | The DNS record identifier. |
 | `cis_dns_records.name` | String | The name of a DNS record. |
 | `cis_dns_records.proxiable` | String | Whether the record has option to set proxied. |
@@ -271,7 +271,7 @@ Review the output parameters that you can access after you retrieved your data s
 | `cis_dns_records.type` | String | The type of the DNS record to be created. Supported Record types are `A`, `AAAA`, `CNAME`, `LOC`, `TXT`, `MX`, `SRV`, `SPF`, `NS`, `CAA`. |
 | `cis_dns_records.ttl` | String | TTL of the record. It should be automatic that is `ttl=1`, if the record is proxied. Terraform provider takes `ttl` in unit seconds. |
 | `cis_dns_records.priority` | String | The priority of the record. Mandatory field for `SRV` record type. |
-| `cis_dns_records.data` | String | Map of attributes that constitute the record value. Only for `LOC`, `CAA` and SRV record types. |
+| `cis_dns_records.data` | String | Map of attributes that constitute the record value. Only for `LOC`, `CAA` and `SRV` record types. |
   
 ## `ibm_cis_domain`
 {: #cis_domain}
