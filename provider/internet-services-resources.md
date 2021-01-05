@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-12-31"
+  years: 2017, 2021
+lastupdated: "2021-01-05"
 
 keywords: terraform provider, terraform resources internet service, terraform resources cis, tf provider plugin
 
@@ -2093,13 +2093,13 @@ The `ibm_cis_tls_settings` resource is imported using the ID. The ID is formed f
  {: pre}
 
  ## `ibm_cis_waf_group`
-{: #cis-waf-group}
+{: #cis-waf-grp}
 
 Provides an {{site.data.keyword.cis_full_notm}} WAF rule group resource. This resource is associated with an {{site.data.keyword.cis_full_notm}} instance and a CIS Domain resource. It allows to change WAF Groups mode of a domain of a CIS instance. It is also named as CIS rule set. Please find `OWASP` rule set set tab under WAF of your instance in UI. For more information, refer to [{{site.data.keyword.cis_full_notm}} rule sets](/docs/cis?topic=cis-waf-settings#cis-ruleset-for-waf).
 {: shortdesc}
 
 ### Sample IBM Cloud Provider plug-in for Terraform code
-{: #cis-waf-group-sample}
+{: ##cis-waf-grp-sample}
 
 The following example shows how you can add a WAF group resource to an {{site.data.keyword.cis_full_notm}} domain. 
 
@@ -2115,7 +2115,7 @@ resource "ibm_cis_waf_group" "test" {
 {: codeblock}
 
 ### Input parameter 
-{: #cis-waf-group-input}
+{: ##cis-waf-grp-input}
 
 Review the input parameters that you can specify for your resource. 
 {: shortdesc}
@@ -2129,7 +2129,7 @@ Review the input parameters that you can specify for your resource.
 |`mode`|String|Required|The WAF group mode. Valid values are `on` and `off`. |
 
 ### Output parameter
-{: #cis-waf-group-output}
+{: ##cis-waf-grp-output}
 
 Review the output parameters that you can access after your resource is created. 
 {: shortdesc}
@@ -2143,7 +2143,7 @@ Review the output parameters that you can access after your resource is created.
 |`modified_rules_count`| String |Number of rules modified in WAF Group.|
 
 ### Import
-{: #cis-waf-group-import}
+{: ##cis-waf-grp-import}
 
 The `ibm_cis_waf_group` resource can be imported by using the ID. The ID is formed from the WAF Rule Group ID, the WAF rule package ID, the domain ID of the domain and the CRN (Cloud Resource Name)  Concatenated  by using `:` character.
 
