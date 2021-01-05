@@ -2228,6 +2228,7 @@ Create, update, or delete a subnet network ACL attachment resource.
 ### Sample IBM Cloud Provider plug-in for Terraform code
 {: #subnet-network-sample}
 
+
 ```
 resource "ibm_is_network_acl" "isExampleACL" {
   name = "is-example-acl"
@@ -2349,14 +2350,14 @@ Create, update, or delete a VPC endpoint gateway by using virtual endpoint gatew
 ### Sample IBM Cloud Provider plug-in for Terraform code
 {: #virtual-endpoint-gwy-sample}
 
-The following example creates a volume with 10 IOPS. 
+The following example creates a VPN gateway. 
 
 ```
 resource "ibm_is_virtual_endpoint_gateway" "endpoint_gateway1" {
 		
   name = "my-endpoint-gateway-1"
   target {
-	name          = "ibm-dns-server2"
+  name          = "ibm-dns-server2"
     resource_type = "provider_infrastructure_service"
   }
   vpc = ibm_is_vpc.testacc_vpc.id
@@ -2364,8 +2365,8 @@ resource "ibm_is_virtual_endpoint_gateway" "endpoint_gateway1" {
 }
 
 resource "ibm_is_virtual_endpoint_gateway" "endpoint_gateway2" {
-	name = "my-endpoint-gateway-1"
-	target {
+  name = "my-endpoint-gateway-1"
+ 	target {
 	  name          = "ibm-dns-server2"
 	  resource_type = "provider_infrastructure_service"
 	}
@@ -2439,6 +2440,77 @@ The `ibm_is_virtual_endpoint_gateway` can be imported by using virtual endpoint 
 terraform import ibm_is_virtual_endpoint_gateway.example d7bec597-4726-451f-8a63-e62e6f19c345
 ```
 {: pre}
+
+
+## `ibm_is_virtual_endpoint_gateway_ip`
+{: #virtual-endpoint-gwyip}
+
+Create, update, or delete a VPC endpoint gateway IP by using virtual endpoint gateway resource. For more information, about the VPC endpoint gateways, see [About VPC gateways](/docs/vpc?topic=vpc-about-vpe).
+{: shortdesc}
+
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #virtual-endpoint-gwyip-sample}
+
+The following example creates a VPN gateway IP.
+
+```
+resource "ibm_is_virtual_endpoint_gateway_ip" "virtual_endpoint_gateway_ip" {
+	gateway_id = ibm_is_virtual_endpoint_gateway.endpoint_gateway.id
+	reserved_ip = "0737-5ab3c18e-6f6c-4a69-8f48-20e3456647b5"
+}
+
+```
+
+### Input parameters
+{: #virtual-endpoint-gwyip-input}
+
+Review the input parameters that you can specify for your resource. 
+{: shortdesc}
+
+    gateway - (Required, string,ForceNew) Endpoint gateway ID
+    reserved_ip - (Required, string,ForceNew) Endpoint gateway IP id
+
+
+|Name|Data type|Required / optional|Description|Forces new resource|
+|----|-----------|-----------|---------------------| ------- |
+|`gateway`|String|Required|The endpoint gateway ID.| Yes |
+|`reserver_ip`|String|Required|The endpoint gateway IP ID.| Yes |
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #virtual-endpoint-gwyip-output}
+
+Review the output parameters that you can access after your resource is created. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|--------|
+|`id`|String|The unique identifier of the VPN gateway connection. The ID is composed of `<gateway_id>/<gateway_ip_id>`.|
+|`name`|String|The endpoint gateway IP name.|
+|`created_at`|String|The created date and time of the endpoint gateway IP.|
+|`resource_type`|String|The endpoint gateway Ip resource type.|
+|`auto_delete`|String|The endpoint gateway IP auto delete.|
+|`address`|String|The endpoint gateway IP address.|
+|`target`|String|The endpoint gateway target details.|
+|`target.id`|String|The IPs target ID.|
+|`target.name`|String|The IPs target name.|
+|`target.resource_type`|String|The endpoint gateway resource type.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+### Import
+{: #virtual-endpoint-gwyip-import}
+
+The `ibm_is_virtual_endpoint_gateway` can be imported by using virtual endpoint gateway ID.
+The `ibm_is_virtual_endpoint_gateway_ip` can be imported using virtual endpoint gateway ID and gateway IP ID.
+
+**Example**
+```
+terraform import ibm_is_virtual_endpoint_gateway_ip.example d7bec597-4726-451f-8a63-e62e6f19c32c/d7bec597-4726-451f-8a63-e62e6f19d35f
+
+```
+{: pre}
+
 
 ## `ibm_is_volume`
 {: #volume}
