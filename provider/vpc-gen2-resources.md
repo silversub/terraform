@@ -2489,7 +2489,7 @@ Review the output parameters that you can access after your resource is created.
 |`id`|String|The unique identifier of the VPN gateway connection. The ID is composed of `<gateway_id>/<gateway_ip_id>`.|
 |`name`|String|The endpoint gateway IP name.|
 |`created_at`|String|The created date and time of the endpoint gateway IP.|
-|`resource_type`|String|The endpoint gateway Ip resource type.|
+|`resource_type`|String|The endpoint gateway IP resource type.|
 |`auto_delete`|String|The endpoint gateway IP auto delete.|
 |`address`|String|The endpoint gateway IP address.|
 |`target`|String|The endpoint gateway target details.|

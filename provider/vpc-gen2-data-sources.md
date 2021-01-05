@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-12-28"
+  years: 2017, 2021
+lastupdated: "2021-01-05"
 
 keywords: terraform provider plugin, terraform gen 2, terraform gen 2 compute
 
@@ -1291,6 +1291,153 @@ Review the output parameters that you can access after you retrieved your data s
 
 
 
+
+## `ibm_is_virtual_endpoint_gateway`
+{: #vpc-endpoint-gwyds}
+
+Create, update, or delete a VPC endpoint gateway by using virtual endpoint gateway resource. For more information, about the VPC endpoint gateway, see [Creating an endpoint gateway](/docs/vpc?topic=vpc-ordering-endpoint-gateway).
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #vpc-endpoint-gwyds-sample}
+
+```
+data "ibm_is_virtual_endpoint_gateway" "data_test" {    
+    name = ibm_is_virtual_endpoint_gateway.endpoint_gateway.name
+}
+
+```
+
+### Input parameters
+{: #vpc-endpoint-gwyds-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`name`|String|Required|The endpoint gateway name.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #vpc-endpoint-gwyds-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`resource_group`|String| The unique identifier for the resource group.|
+|`created_at`|String|The created data and time of the endpoint gateway.|
+|`health_state`|String|Endpoint gateway health state. `ok: Healthy`, `degraded: Suffering from compromised performance, capacity, or connectivity`, `faulted: Completely unreachable, inoperative, or entirely incapacitated`, `inapplicable: The health state does not apply because of the current lifecycle state`. A resource with a lifecycle state of failed or deleting will have a health state of inapplicable. A pending resource may have this state.|
+|`lifecycle_state`|String|The endpoint gateway lifecycle state, supported values are `deleted`, `deleting`, `failed`, `pending`, `stable`, `updating`, `waiting`, `suspended`.|
+|`ips`|String|The unique identifier for the reserved IP.|
+|`ips.id`|String|The collection of reserved IPs bound to an endpoint gateway.|
+|`ips.name`|String|The user defined or system provided name of the resource IP.|
+|`ips.resource_type`|String|The endpoint gateway IP resource type.|
+|`target`|String| The endpoint gateway target.|
+|`target.name`|String|The target name.|
+|`target.resource_type`|String|The resource type of the subnet reserved IP.|
+|`vpc`|String|The VPC ID.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+
+## `ibm_is_virtual_endpoint_gateway_ips`
+{: #vpc-endpoint-gwy-ipsds}
+
+Create, update, or delete a VPC endpoint gateway IPs by using virtual endpoint gateway ips resource. For more information, about the VPC endpoint gateways, see [About VPC gateways](/docs/vpc?topic=vpc-about-vpe).
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #vpc-endpoint-gwy-ipsds-sample}
+
+```
+data "ibm_is_virtual_endpoint_gateway_ips" "data_test1" {
+  gateway_id     = ibm_is_virtual_endpoint_gateway.endpoint_gateway.id
+}
+```
+
+### Input parameters
+{: #vpc-endpoint-gwy-ipsds-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`gateway`|String|Required|The endpoint gateway ID.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #vpc-endpoint-gwy-ipsds-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`id`|String|The endpoint gateway reserved IP ID.|
+|`name`|String|The endpoint gateway IP name.|
+|`reserved_ip`|String|The endpoint gateway reserved IP ID.|
+|`created_at`|String|The created date and time of the endpoint gateway IP.|
+|`resource_type`|String|The endpoint gateway IP resource type.|
+|`auto_delete`|String|The endpoint gateway IP auto delete.|
+|`address`|String|The endpoint gateway IP address.|
+|`target`|String|The endpoint gateway target details.|
+|`target.id`|String|The IPs target ID.|
+|`target.name`|String|The IPs target name.|
+|`target.resource_type`|String|The endpoint gateway resource type.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
+
+## `ibm_is_virtual_endpoint_gateways`
+{: #vpc-endpoint-gwysds}
+
+Create, update, or delete a VPC endpoint gateways by using virtual endpoint gateways resource. For more information, about the VPC endpoint gateway, see [Creating an endpoint gateway](/docs/vpc?topic=vpc-ordering-endpoint-gateway).
+{: shortdesc}
+
+### Sample IBM Cloud Provider plug-in for Terraform code
+{: #vpc-endpoint-gwysds-sample}
+
+```
+data "ibm_is_virtual_endpoint_gateways" "data_test" {    
+    
+}
+```
+
+### Input parameters
+{: #vpc-endpoint-gwysds-input}
+
+Review the input parameters that you can specify for your data source. 
+{: shortdesc}
+
+|Name|Data type| Required / optional|Description|
+|----|-----------|--------|----------------------|
+|`name`|String|Required|The endpoint gateways name.|
+{: caption="Table. Available input parameters" caption-side="top"}
+
+### Output parameters
+{: #vpc-endpoint-gwysds-output}
+
+Review the output parameters that you can access after you retrieved your data source. 
+{: shortdesc}
+
+|Name|Data type|Description|
+|----|-----------|-------------|
+|`id`|String| The endpoint gateway ID.|
+|`name`|String| The endpoint gateway name.|
+|`resource_group`|String| The unique identifier for the resource group.|
+|`created_at`|String|The created data and time of the endpoint gateway.|
+|`health_state`|String|Endpoint gateway health state. `ok: Healthy`, `degraded: Suffering from compromised performance, capacity, or connectivity`, `faulted: Completely unreachable, inoperative, or entirely incapacitated`, `inapplicable: The health state does not apply because of the current lifecycle state`. A resource with a lifecycle state of failed or deleting will have a health state of inapplicable. A pending resource may have this state.|
+|`lifecycle_state`|String|The endpoint gateway lifecycle state, supported values are `deleted`, `deleting`, `failed`, `pending`, `stable`, `updating`, `waiting`, `suspended`.|
+|`ips`|String|The collection of reserved IPs bound to an endpoint gateway.|
+|`ips.id`|String|The unique identifier for the reserved IP.|
+|`ips.name`|String|The user defined or system provided name of the resource IP.|
+|`ips.resource_type`|String|The endpoint gateway IP resource type or the subnet reserved IP.|
+|`target`|String| The endpoint gateway target services.|
+|`target.name`|String|The endpoint gateway target name.|
+|`target.resource_type`|String|The endpoint gateway target resource type.|
+|`vpc`|String|The VPC ID.|
+{: caption="Table 1. Available output parameters" caption-side="top"}
 
 ## `ibm_is_vpc`
 {: #vpc}
