@@ -1630,7 +1630,7 @@ Review the input parameters that you can specify for your resource.
 |`priority`|Integer|Optional|The priority of the page rule. Default value is `1`. `Set` and `Update` are not supported yet.|
 |`targets`|Set|Required|The targets, where rule is added.|
 |`targets.target`|String|Required|The target type. Valid value is `url`.|
-|`targets.constraint`|List |Required|The constraint cof the page rule. Maximum items is `1`.|
+|`targets.constraint`|List |Required|The constraint of the page rule. Maximum items is `1`.|
 |`targets.constraint.operator`|String |Required|The operation on the page rule. Valid value is `matches`.|
 |`targets.constraint.value`|String |Required|The URL value on which page rule is applied.|
 |`actions`|List|Required|The list of actions performed on URL. Minimum items is `1`.|
